@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import Nav from '../assets/nav';
+import Nav from './assets/nav';
 import React from 'react';
 
 export default function Home({state}) {
   return (
     <main className="">
       <title>Web dev tools</title>
-      <Nav state={state}></Nav>
+      <Nav></Nav>
       <div id='about' className="py-8 px-6 flex justify-center">
         <div className="rounded-full bg-gradient-to-t from-slate-400 w-3/6 p-10">
           <h1 className="text-white text-2xl font-bold">About</h1>

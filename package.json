@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "autoprefixer": "10.4.14",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1",
     "next": "^13.4.6",
     "next-navigation": "^1.0.6",
     "postcss": "8.4.24",
