@@ -7,7 +7,7 @@ export default function Nav() {
 
       <Search />
 
-      <div className="ml-80">
+      <div className="">
         <a href='/codeedit' className=' mr-5'>
           New Project
         </a>
