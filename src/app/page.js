@@ -1,3 +1,4 @@
+"use client";
 import Image from 'next/image';
 import Nav from './assets/nav';
 import React from 'react';
