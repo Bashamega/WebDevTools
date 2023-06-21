@@ -95,69 +95,7 @@ export default function ButtonCustomizer() {
 
   return (
     <div>
-      {showSuccessMessage && (
-        <div className="fixed inset-0 flex items-center justify-center">
-        <div className="bg-green-500 text-white px-4 py-2 rounded flex items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 inline-block mr-2 text-white"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-          </svg>
-          <span className="inline-block align-middle">Action successfully completed!</span>
-        </div>
-      </div>
-      )}
-      <nav className="bg-blue-500 py-4 px-6 flex items-center justify-between">
-        <a
-          href="https://web-dev-tools.vercel.app/"
-          className="flex items-center border rounded p-2 hover:bg-blue-600"
-        >
-          <h1 className="text-white text-2xl font-bold mr-2">Web Dev Tools</h1>
-          <p>Button Customizer</p>
-        </a>
-        <Search />
-      </nav>
-
-      <button className="m-3 bg-red-700 p-5 rounded" onClick={handleCodeButtonClick}>
-        Code
-      </button>
-
-      {showCode && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className=" bg-slate-500 p-8">
-            <p>
-              <code>
-              &lt;button style="
-                backgroundColor: {backgroundColor};
-                color: {textColor};
-                borderRadius: {borderRadius}px;
-                padding: 10px 20px;
-                fontSize: {fontsize}px;
-                fontWeight: {fontw};
-                fontFamily: {fontf};
-                border: none;
-                cursor: {cursor};
-                width: {width}px;
-                height: {height}px;
-              "&gt;
-                Customized Button
-              &lt;/button&gt;
-                
-              </code>
-            </p>
-            <button className="bg-blue-500 text-white px-4 py-2 mt-4 mr-2" onClick={handleCopyCode}>
-              Copy
-            </button>
-            <button className="bg-blue-500 text-white px-4 py-2 mt-4" onClick={() => setShowCode(false)}>
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+      
 
       <section className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <button style={buttonStyles} className="text-4xl">Customized Button</button>
@@ -295,6 +233,69 @@ export default function ButtonCustomizer() {
 
         </TabPanel>
       </Tabs>
+      {showSuccessMessage && (
+        <div className="fixed inset-0 flex items-center justify-center">
+        <div className="bg-green-500 text-white px-4 py-2 rounded flex items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 inline-block mr-2 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+          </svg>
+          <span className="inline-block align-middle">Action successfully completed!</span>
+        </div>
+      </div>
+      )}
+      <nav className="bg-blue-500 py-4 px-6 flex items-center justify-between">
+        <a
+          href="https://web-dev-tools.vercel.app/"
+          className="flex items-center border rounded p-2 hover:bg-blue-600"
+        >
+          <h1 className="text-white text-2xl font-bold mr-2">Web Dev Tools</h1>
+          <p>Button Customizer</p>
+        </a>
+        <Search />
+      </nav>
+
+      <button className="m-3 bg-red-700 p-5 rounded" onClick={handleCodeButtonClick}>
+        Code
+      </button>
+
+      {showCode && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className=" bg-slate-500 p-8">
+            <p>
+              <code>
+              &lt;button style="
+                backgroundColor: {backgroundColor};
+                color: {textColor};
+                borderRadius: {borderRadius}px;
+                padding: 10px 20px;
+                fontSize: {fontsize}px;
+                fontWeight: {fontw};
+                fontFamily: {fontf};
+                border: none;
+                cursor: {cursor};
+                width: {width}px;
+                height: {height}px;
+              "&gt;
+                Customized Button
+              &lt;/button&gt;
+                
+              </code>
+            </p>
+            <button className="bg-blue-500 text-white px-4 py-2 mt-4 mr-2" onClick={handleCopyCode}>
+              Copy
+            </button>
+            <button className="bg-blue-500 text-white px-4 py-2 mt-4" onClick={() => setShowCode(false)}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
   
