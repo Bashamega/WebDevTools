@@ -47,6 +47,13 @@ export default function Nav() {
             >
               Buttons
             </a>
+            <hr></hr>
+            <a
+              href="customizer/LoremIpsumGenerator"
+              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+            >
+              Lorem Ipsum Generator
+            </a>
           </div>
         )}
       </div>

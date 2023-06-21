@@ -31,7 +31,7 @@ export default function Search() {
     const jsonData = [ // Simulated JSON data
       { id: 1, name: 'Code editor', link:"https://web-dev-tools.vercel.app/codeedit" },
       { id: 2, name: 'Button customizer', link: "https://web-dev-tools.vercel.app/customizer/button" },
-     
+      {id: 3, name: 'Lorem Ipsum Generator', link: "https://web-dev-tools.vercel.app/customizer/LoremIpsumGenerator"}
     ];
 
     const filteredData = jsonData.filter(item =>
