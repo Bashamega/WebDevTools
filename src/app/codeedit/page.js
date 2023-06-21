@@ -113,6 +113,7 @@ export default function Nav() {
         <iframe
           id="result-iframe"
           title="Result"
+          className=" w-full"
         ></iframe>
       </section>
     </div>
