@@ -5,7 +5,7 @@ export default function Search() {
       <input 
       type="search"
       placeholder="Search .."
-      className="ml-80"
+      className="grow mx-4"
       value={searchval}
       ></input>
       
