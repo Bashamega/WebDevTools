@@ -20,13 +20,13 @@ export default function ButtonCustomizer() {
   const handleCopyCode = () => {
     const code = `
 <button style="
-  backgroundColor: ${backgroundColor};
+  background-Color: ${backgroundColor};
   color: ${textColor};
-  borderRadius: ${borderRadius}px;
+  border-Radius: ${borderRadius}px;
   padding: 10px 20px;
   fontSize: ${fontsize}px;
   fontWeight: ${fontw};
-  fontFamily: ${fontf};
+  font-Family: ${fontf};
   border: none;
   cursor: ${cursor};
   width: ${width}px;
@@ -270,13 +270,13 @@ export default function ButtonCustomizer() {
             <p>
               <code>
               &lt;button style="
-                backgroundColor: {backgroundColor};
+                background-Color: {backgroundColor};
                 color: {textColor};
-                borderRadius: {borderRadius}px;
+                border-Radius: {borderRadius}px;
                 padding: 10px 20px;
                 fontSize: {fontsize}px;
                 fontWeight: {fontw};
-                fontFamily: {fontf};
+                font-Family: {fontf};
                 border: none;
                 cursor: {cursor};
                 width: {width}px;
