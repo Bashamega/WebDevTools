@@ -109,7 +109,7 @@ export default function Nav() {
           ></textarea>
         </div>
       </section>
-      <section className=" bg-white w-full h-2/3">
+      <section className="bg-white w-full h-2/3 flex">
         <iframe
           id="result-iframe"
           title="Result"
