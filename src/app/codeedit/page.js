@@ -69,13 +69,13 @@ export default function Nav() {
     <div className='h-screen'>
       <nav className="bg-blue-500 py-4 px-6 flex h-15">
         <a href='https://web-dev-tools.vercel.app/codeedit' class='w-1/5 mr-2 flex border rounded p-2 hover:bg-blue-600'>
-          
+
           <h1 className="text-white text-2xl font-bold mr-1">Web Dev Tools</h1>
           <p>Code editor</p>
-          
+
         </a>
-        
-        <Search/>
+
+        <Search />
         <button
           className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 ml-96"
           onClick={handleDownload}
