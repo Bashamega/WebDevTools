@@ -19,15 +19,12 @@ export default function Nav() {
   const [JS, setJS] = useState('JAVASCRIPT')
 
   const handleHtmlChange = (value) => {
-    console.log(value.target.value);
     setHTML(value.target.value)
   }
   const handleCSSChange = (value) => {
-    console.log(value.target.value);
     setCSS(value.target.value)
   }
   const handleJsChange = (value) => {
-    console.log(value.target.value);
     setJS(value.target.value)
   }
 
@@ -88,31 +85,37 @@ export default function Nav() {
       </nav>
       <section className="flex h-1/4">
         <div className="w-1/3 h-full  border border-gray-200 relative">
-          <textarea
-            className="w-1/2 h-1/2 overflow-hidden outline-none text-black bg-transparent absolute z-10 p-2 syntax-highlighter-textarea"
-            onChange={handleHtmlChange}
-          ></textarea>
-          <SyntaxHighlighter language="htmlbars" style={atomOneDark} className="w-full h-full relative !mt-0">
+           <SyntaxHighlighter language="htmlbars" style={atomOneDark} className="w-full h-full relative !mt-0">
             {HTML}
-          </SyntaxHighlighter>
+          </SyntaxHighlighter> 
+          <textarea
+            className="w-full h-full overflow-hidden outline-none text-black bg-transparent  syntax-highlighter-textarea"
+            onChange={handleHtmlChange}
+            placeholder='Enter html text here...'
+          ></textarea>
+        
         </div>
         <div className="w-1/3 h-full  border border-gray-200 relative">
-          <textarea
-            className="w-1/2 h-1/2 overflow-hidden outline-none text-black bg-transparent absolute z-10 p-2 syntax-highlighter-textarea"
-            onChange={handleCSSChange}
-          ></textarea>
+       
           <SyntaxHighlighter language="css" style={atomOneDark} className="w-full h-full relative !mt-0">
             {CSS}
           </SyntaxHighlighter>
+          <textarea
+            className="w-full h-full overflow-hidden outline-none text-black bg-transparent  syntax-highlighter-textarea"
+            onChange={handleHtmlChange}
+            placeholder='Enter css text here...'
+          ></textarea>
         </div>
         <div className="w-1/3 h-full  border border-gray-200 relative">
-          <textarea
-            className="w-1/2 h-1/2 overflow-hidden outline-none text-black bg-transparent absolute z-10 p-2 syntax-highlighter-textarea"
-            onChange={handleJsChange}
-          ></textarea>
+         
           <SyntaxHighlighter language="javascript" style={atomOneDark} className="w-full h-full relative !mt-0">
             {JS}
           </SyntaxHighlighter>
+          <textarea
+            className="w-full h-full overflow-hidden outline-none text-black bg-transparent  syntax-highlighter-textarea"
+            onChange={handleHtmlChange}
+            placeholder='Enter javascript text here...'
+          ></textarea>
         </div>
       </section>
       <section className=" bg-white w-full h-2/3">
