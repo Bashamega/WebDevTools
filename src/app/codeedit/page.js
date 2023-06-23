@@ -97,7 +97,7 @@ export default function Nav() {
           </SyntaxHighlighter>
           <textarea
             className="w-full h-full overflow-hidden outline-none text-black bg-transparent  syntax-highlighter-textarea"
-            onChange={handleHtmlChange}
+            onChange={handleCSSChange}
             placeholder='Enter css text here...'
           ></textarea>
         </div>
@@ -108,7 +108,7 @@ export default function Nav() {
           </SyntaxHighlighter>
           <textarea
             className="w-full h-full overflow-hidden outline-none text-black bg-transparent  syntax-highlighter-textarea"
-            onChange={handleHtmlChange}
+            onChange={handleJsChange}
             placeholder='Enter javascript text here...'
           ></textarea>
         </div>
