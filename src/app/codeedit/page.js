@@ -3,29 +3,30 @@ import React, { useState } from 'react';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import Search from '../assets/search';
+import { Editor } from '@monaco-editor/react';
 export default function Nav() {
-  const [htmlCode, setHtmlCode] = useState('');
-  const [cssCode, setCssCode] = useState('');
-  const [jsCode, setJsCode] = useState('');
+  // const [htmlCode, setHtmlCode] = useState('');
+  // const [cssCode, setCssCode] = useState('');
+  // const [jsCode, setJsCode] = useState('');
   const [result, setResult] = useState('');
 
-  const handleHtmlChange = (event) => {
-    const newHtmlCode = event.target.value;
-    setHtmlCode(newHtmlCode);
-    executeCode(newHtmlCode, cssCode, jsCode);
-  };
+  // const handleHtmlChange = (event) => {
+  //   const newHtmlCode = event.target.value;
+  //   setHtmlCode(newHtmlCode);
+  //   executeCode(newHtmlCode, cssCode, jsCode);
+  // };
 
-  const handleCssChange = (event) => {
-    const newCssCode = event.target.value;
-    setCssCode(newCssCode);
-    executeCode(htmlCode, newCssCode, jsCode);
-  };
+  // const handleCssChange = (event) => {
+  //   const newCssCode = event.target.value;
+  //   setCssCode(newCssCode);
+  //   executeCode(htmlCode, newCssCode, jsCode);
+  // };
 
-  const handleJsChange = (event) => {
-    const newJsCode = event.target.value;
-    setJsCode(newJsCode);
-    executeCode(htmlCode, cssCode, newJsCode);
-  };
+  // const handleJsChange = (event) => {
+  //   const newJsCode = event.target.value;
+  //   setJsCode(newJsCode);
+  //   executeCode(htmlCode, cssCode, newJsCode);
+  // };
 
   const executeCode = (html, css, js) => {
     const iframe = document.getElementById('result-iframe').contentWindow.document;
@@ -69,13 +70,13 @@ export default function Nav() {
     <div className='h-screen'>
       <nav className="bg-blue-500 py-4 px-6 flex h-15">
         <a href='https://web-dev-tools.vercel.app/' class='w-1/5 mr-2 flex border rounded p-2 hover:bg-blue-600'>
-          
+
           <h1 className="text-white text-2xl font-bold mr-1">Web Dev Tools</h1>
           <p>Code editor</p>
-          
+
         </a>
-        
-        <Search/>
+
+        <Search />
         <button
           className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 ml-96"
           onClick={handleDownload}
@@ -85,28 +86,13 @@ export default function Nav() {
       </nav>
       <section className="flex h-1/4">
         <div className="w-1/3 h-full bottom-2 border border-gray-200">
-          <textarea
-            className="w-full h-full outline-none resize-none bg-slate-700"
-            placeholder="HTML"
-            onChange={handleHtmlChange}
-            value={htmlCode}
-          ></textarea>
+          <Editor theme='vs-dark' defaultLanguage='html' width='100%' height='100%' defaultValue='<!-- add some html code here -->' />
         </div>
         <div className="w-1/3 h-full border border-gray-200 text-black">
-          <textarea
-            className="w-full h-full outline-none resize-none text-black bg-slate-700"
-            placeholder="CSS"
-            onChange={handleCssChange}
-            value={cssCode}
-          ></textarea>
+          <Editor theme='vs-dark' defaultLanguage='css' width='100%' height='100%' defaultValue='/* add some CSS code here ... */' />
         </div>
         <div className="w-1/3 h-full border border-gray-200">
-          <textarea
-            className="w-full h-full outline-none resize-none text-black bg-slate-700"
-            placeholder="JS"
-            onChange={handleJsChange}
-            value={jsCode}
-          ></textarea>
+          <Editor theme='vs-dark' defaultLanguage='javascript' width='100%' height='100%' defaultValue='// add some Javascript code here.. ' />
         </div>
       </section>
       <section className="bg-white w-full h-2/3 flex">
