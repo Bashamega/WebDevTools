@@ -3,24 +3,29 @@ import React, { useState } from 'react';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import Search from '../assets/search';
-import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import './page.css'
-
 export default function Nav() {
-  const [HTML, setHTML] = useState('HTML')
-  const [CSS, setCSS] = useState('CSS')
-  const [JS, setJS] = useState('JAVASCRIPT')
+  const [htmlCode, setHtmlCode] = useState('');
+  const [cssCode, setCssCode] = useState('');
+  const [jsCode, setJsCode] = useState('');
+  const [result, setResult] = useState('');
 
-  const handleHtmlChange = (value) => {
-    setHTML(value.target.value)
-  }
-  const handleCSSChange = (value) => {
-    setCSS(value.target.value)
-  }
-  const handleJsChange = (value) => {
-    setJS(value.target.value)
-  }
+  const handleHtmlChange = (event) => {
+    const newHtmlCode = event.target.value;
+    setHtmlCode(newHtmlCode);
+    executeCode(newHtmlCode, cssCode, jsCode);
+  };
+
+  const handleCssChange = (event) => {
+    const newCssCode = event.target.value;
+    setCssCode(newCssCode);
+    executeCode(htmlCode, newCssCode, jsCode);
+  };
+
+  const handleJsChange = (event) => {
+    const newJsCode = event.target.value;
+    setJsCode(newJsCode);
+    executeCode(htmlCode, cssCode, newJsCode);
+  };
 
   const executeCode = (html, css, js) => {
     const iframe = document.getElementById('result-iframe').contentWindow.document;
@@ -63,14 +68,14 @@ export default function Nav() {
   return (
     <div className='h-screen'>
       <nav className="bg-blue-500 py-4 px-6 flex h-15">
-        <a href='https://web-dev-tools.vercel.app/' className='w-1/5 mr-2 flex border rounded p-2 hover:bg-blue-600'>
-
+        <a href='https://web-dev-tools.vercel.app/' class='w-1/5 mr-2 flex border rounded p-2 hover:bg-blue-600'>
+          
           <h1 className="text-white text-2xl font-bold mr-1">Web Dev Tools</h1>
           <p>Code editor</p>
-
+          
         </a>
-
-        <Search />
+        
+        <Search/>
         <button
           className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 ml-96"
           onClick={handleDownload}
@@ -79,37 +84,28 @@ export default function Nav() {
         </button>
       </nav>
       <section className="flex h-1/4">
-        <div className="w-1/3 h-full  border border-gray-200 relative">
-          <SyntaxHighlighter language="htmlbars" style={atomOneDark} className="w-full h-full relative !mt-0">
-            {HTML}
-          </SyntaxHighlighter>
+        <div className="w-1/3 h-full bottom-2 border border-gray-200">
           <textarea
-            className="w-full h-full overflow-hidden outline-none text-black bg-transparent  syntax-highlighter-textarea"
+            className="w-full h-full outline-none resize-none bg-slate-700"
+            placeholder="HTML"
             onChange={handleHtmlChange}
-            placeholder='Enter html text here...'
-          ></textarea>
-
-        </div>
-        <div className="w-1/3 h-full  border border-gray-200 relative">
-
-          <SyntaxHighlighter language="css" style={atomOneDark} className="w-full h-full relative !mt-0">
-            {CSS}
-          </SyntaxHighlighter>
-          <textarea
-            className="w-full h-full overflow-hidden outline-none text-black bg-transparent  syntax-highlighter-textarea"
-            onChange={handleCSSChange}
-            placeholder='Enter css text here...'
+            value={htmlCode}
           ></textarea>
         </div>
-        <div className="w-1/3 h-full  border border-gray-200 relative">
-
-          <SyntaxHighlighter language="javascript" style={atomOneDark} className="w-full h-full relative !mt-0">
-            {JS}
-          </SyntaxHighlighter>
+        <div className="w-1/3 h-full border border-gray-200 text-black">
           <textarea
-            className="w-full h-full overflow-hidden outline-none text-black bg-transparent  syntax-highlighter-textarea"
+            className="w-full h-full outline-none resize-none text-black bg-slate-700"
+            placeholder="CSS"
+            onChange={handleCssChange}
+            value={cssCode}
+          ></textarea>
+        </div>
+        <div className="w-1/3 h-full border border-gray-200">
+          <textarea
+            className="w-full h-full outline-none resize-none text-black bg-slate-700"
+            placeholder="JS"
             onChange={handleJsChange}
-            placeholder='Enter javascript text here...'
+            value={jsCode}
           ></textarea>
         </div>
       </section>
