@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from 'react';
+
+import React, { useState, useEffect, useRef } from 'react';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import Search from '../assets/search';
@@ -66,6 +67,61 @@ export default function Nav() {
     });
   };
 
+  const handleViewClick = () => {
+    setShowViewSection(true);
+    setShowIndexHtmlSection(false);
+    setShowStyleCssSection(false);
+    setShowScriptJsSection(false);
+  };
+
+  useEffect(() => {
+    if (showViewSection) {
+      const iframe = iframeRef.current;
+      iframe.contentWindow.document.open();
+      iframe.contentWindow.document.writeln(code);
+      iframe.contentWindow.document.close();
+    }
+  }, [showViewSection, code]);
+
+  const handleIndexHtmlClick = () => {
+    setShowViewSection(false);
+    setShowIndexHtmlSection(true);
+    setShowStyleCssSection(false);
+    setShowScriptJsSection(false);
+  };
+
+  const handleStyleCssClick = () => {
+    setShowViewSection(false);
+    setShowIndexHtmlSection(false);
+    setShowStyleCssSection(true);
+    setShowScriptJsSection(false);
+  };
+
+  const handleScriptJsClick = () => {
+    setShowViewSection(false);
+    setShowIndexHtmlSection(false);
+    setShowStyleCssSection(false);
+    setShowScriptJsSection(true);
+  };
+  useEffect(() => {
+    document.querySelectorAll('textarea').forEach((textarea) => {
+      textarea.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab') {
+          e.preventDefault();
+
+          // Get the current cursor position
+          var start = this.selectionStart;
+          var end = this.selectionEnd;
+
+          // Insert three spaces at the cursor position
+          this.value = this.value.substring(0, start) + '   ' + this.value.substring(end);
+
+          // Move the cursor position after the inserted spaces
+          this.selectionStart = this.selectionEnd = start + 3;
+        }
+      });
+    });
+  }, []);
   return (
     <div className='h-screen'>
       <nav className="bg-blue-500 py-4 px-6 flex h-15">
