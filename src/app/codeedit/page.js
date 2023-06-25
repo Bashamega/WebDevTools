@@ -4,6 +4,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 import Search from '../assets/search';
+import { AiFillHtml5, } from 'react-icons/ai'
+import { FaCss3, FaJs } from 'react-icons/fa'
 
 export default function Nav() {
   const [htmlCode, setHtmlCode] = useState(`
@@ -141,9 +143,9 @@ export default function Nav() {
             <button onClick={handleDownload} className='w-full bg-slate-400 hover:bg-slate-500'>Download</button>
           </div>
           <button onClick={handleViewClick} className='w-full text-center bg-slate-800 hover:bg-slate-900 h-10'>View</button>
-          <button onClick={handleIndexHtmlClick} className='w-full text-center bg-slate-800 hover:bg-slate-900 h-10'>Index.html</button>
-          <button onClick={handleStyleCssClick} className='w-full text-center bg-slate-800 hover:bg-slate-900 h-10'>Style.css</button>
-          <button onClick={handleScriptJsClick} className='w-full text-center bg-slate-800 hover:bg-slate-900 h-10'>Script.js</button>
+          <button onClick={handleIndexHtmlClick} className='w-full text-center bg-slate-800 hover:bg-slate-900 h-10 flex pl-8 pt-2'><AiFillHtml5 className='mr-2' size={18} color='#E34F26'></AiFillHtml5>Index.html</button>
+          <button onClick={handleStyleCssClick} className='w-full text-center bg-slate-800 hover:bg-slate-900 h-10 flex pl-8 pt-2'><FaCss3 className='mr-2' size={18} color='#0000FF'></FaCss3>Style.css</button>
+          <button onClick={handleScriptJsClick} className='w-full text-center bg-slate-800 hover:bg-slate-900 h-10 flex pl-8 pt-2'><FaJs className='mr-2' size={18} color='#FFFF00'></FaJs>Script.js</button>
         </section>
 
         <section className='w-2/3 h-full'>
