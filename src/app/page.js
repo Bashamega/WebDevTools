@@ -23,6 +23,37 @@ export default function Home({state}) {
           </p>
         </div>
       </div>
+      <div id='contributers' className="py-8 px-6 flex justify-center ml-5 mt-10">
+        <div className="rounded-full bg-gradient-to-t from-indigo-500 to-purple-600 w-3/6 p-10">
+          <h1 className="text-white text-2xl font-bold m-5">Contributeres</h1>
+          <div className='flex'>
+            <div  className=' bg-white w-1/4 rounded p-2 m-5'>
+              <a href='https://github.com/Bashamega'>
+                <img src='https://avatars.githubusercontent.com/u/110662505?v=4'></img>
+                <h1 className='bold text-black center'>Bashamega</h1>
+              </a>
+              
+            </div>
+            <div  className=' bg-white w-1/4 rounded p-2 m-5'>
+              <a href='https://github.com/elidakirigo'>
+                <img src='https://avatars.githubusercontent.com/u/42931101?v=4'></img>
+                <h1 className='bold text-black center'>Eli da (moon pie)</h1>
+              </a>
+              
+            </div>
+            <div  className=' bg-white w-1/4 rounded p-2 m-5'>
+              <a href='https://github.com/Silent-Watcher'>
+                <img src='https://avatars.githubusercontent.com/u/91375198?v=4'></img>
+                <h1 className='bold text-black center'>Ali t.nazari</h1>
+              </a>
+              
+            </div>
+            
+          </div>
+          
+          
+        </div>
+      </div>
     </main>
 
 
