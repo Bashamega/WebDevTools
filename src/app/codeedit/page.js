@@ -6,7 +6,7 @@ import { saveAs } from 'file-saver';
 import Search from '../assets/search';
 import { AiFillHtml5, } from 'react-icons/ai'
 import { FaCss3, FaJs } from 'react-icons/fa'
-
+import { Editor } from '@monaco-editor/react';
 export default function Nav() {
   const [htmlCode, setHtmlCode] = useState(`
     <!DOCTYPE html>
@@ -111,7 +111,7 @@ export default function Nav() {
   };
   useEffect(() => {
     document.querySelectorAll('textarea').forEach((textarea) => {
-      textarea.addEventListener('keydown', function(e) {
+      textarea.addEventListener('keydown', function (e) {
         if (e.key === 'Tab') {
           e.preventDefault();
 
@@ -161,17 +161,20 @@ export default function Nav() {
           )}
           {showIndexHtmlSection && (
             <section className='w-full h-full'>
-              <textarea value={htmlCode} onChange={handleHtmlChange} className='bg-slate-500 w-full h-full'></textarea>
+              <Editor theme='vs-dark' defaultLanguage='html' width='100%' height='100%' defaultValue={`${htmlCode ? htmlCode : '<!-- add some html code here -->'} `} />
+              {/* <textarea value={htmlCode} onChange={handleHtmlChange} className='bg-slate-500 w-full h-full'></textarea> */}
             </section>
           )}
           {showStyleCssSection && (
             <section className='w-full h-full'>
-              <textarea value={cssCode} onChange={handleCssChange} className='bg-slate-500 w-full h-full'></textarea>
+              <Editor theme='vs-dark' defaultLanguage='css' width='100%' height='100%' defaultValue={`${cssCode ? cssCode : '/* add some CSS code here */'} `} />
+              {/* <textarea value={cssCode} onChange={handleCssChange} className='bg-slate-500 w-full h-full'></textarea> */}
             </section>
           )}
           {showScriptJsSection && (
             <section className='w-full h-full'>
-              <textarea value={jsCode} onChange={handleJsChange} className='bg-slate-500 w-full h-full'></textarea>
+              <Editor theme='vs-dark' defaultLanguage='javascript' width='100%' height='100%' defaultValue={`${jsCode ? jsCode : '// add some JvaScript code here '} `} />
+              {/* <textarea value={jsCode} onChange={handleJsChange} className='bg-slate-500 w-full h-full'></textarea> */}
             </section>
           )}
           {!showViewSection && !showIndexHtmlSection && !showStyleCssSection && !showScriptJsSection && (
