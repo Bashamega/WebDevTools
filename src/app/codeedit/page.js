@@ -161,20 +161,38 @@ export default function Nav() {
           )}
           {showIndexHtmlSection && (
             <section className='w-full h-full'>
-              <Editor theme='vs-dark' defaultLanguage='html' width='100%' height='100%' defaultValue={`${htmlCode ? htmlCode : '<!-- add some html code here -->'} `} />
-              {/* <textarea value={htmlCode} onChange={handleHtmlChange} className='bg-slate-500 w-full h-full'></textarea> */}
+              <Editor
+                theme='vs-dark'
+                defaultLanguage='html'
+                width='100%'
+                height='100%'
+                value={htmlCode}
+                onChange={handleHtmlChange}
+              />
             </section>
           )}
           {showStyleCssSection && (
             <section className='w-full h-full'>
-              <Editor theme='vs-dark' defaultLanguage='css' width='100%' height='100%' defaultValue={`${cssCode ? cssCode : '/* add some CSS code here */'} `} />
-              {/* <textarea value={cssCode} onChange={handleCssChange} className='bg-slate-500 w-full h-full'></textarea> */}
+              <Editor
+                theme='vs-dark'
+                defaultLanguage='css'
+                width='100%'
+                height='100%'
+                value={cssCode}
+                onChange={handleCssChange}
+              />
             </section>
           )}
           {showScriptJsSection && (
             <section className='w-full h-full'>
-              <Editor theme='vs-dark' defaultLanguage='javascript' width='100%' height='100%' defaultValue={`${jsCode ? jsCode : '// add some JvaScript code here '} `} />
-              {/* <textarea value={jsCode} onChange={handleJsChange} className='bg-slate-500 w-full h-full'></textarea> */}
+              <Editor
+                theme='vs-dark'
+                defaultLanguage='javascript'
+                width='100%'
+                height='100%'
+                value={jsCode}
+                onChange={handleJsChange}
+              />
             </section>
           )}
           {!showViewSection && !showIndexHtmlSection && !showStyleCssSection && !showScriptJsSection && (
