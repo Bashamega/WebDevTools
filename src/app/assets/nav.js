@@ -54,6 +54,12 @@ export default function Nav() {
             >
               Lorem Ipsum Generator
             </a>
+            <a
+              href="customizer/conversionCalculator"
+              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+            >
+              Conversion Calculator
+            </a>
           </div>
         )}
       </div>
