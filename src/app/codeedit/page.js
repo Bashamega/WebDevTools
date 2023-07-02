@@ -27,32 +27,40 @@ export default function Nav() {
   const [showIndexHtmlSection, setShowIndexHtmlSection] = useState(false);
   const [showStyleCssSection, setShowStyleCssSection] = useState(false);
   const [showScriptJsSection, setShowScriptJsSection] = useState(false);
-  const [code, setCode] = useState('');
 
   const iframeRef = useRef(null);
 
   useEffect(() => {
-    setCode(`
+    // Generate the code to display in the iframe
+    const code = `
       <style>${cssCode}</style>
       ${htmlCode}
       <script>${jsCode}</script>
-    `);
-  }, [htmlCode, cssCode, jsCode]);
+    `;
+    // Update the iframe content when code or section visibility changes
+    if (showViewSection) {
+      const iframe = iframeRef.current;
+      iframe.contentWindow.document.open();
+      iframe.contentWindow.document.writeln(code);
+      iframe.contentWindow.document.close();
+    }
+  }, [htmlCode, cssCode, jsCode, showViewSection]);
 
-  const handleHtmlChange = (event) => {
-    const newHtmlCode = event.target.value;
-    setHtmlCode(newHtmlCode);
+  /** By passing the value property to the respective state update functions, 
+   * we can correctly update the state variables htmlCode, cssCode, and jsCode
+   * when the code in the editors changes.
+  */
+  const handleHtmlChange = (value) => {
+    setHtmlCode(value);
   };
-
-  const handleCssChange = (event) => {
-    const newCssCode = event.target.value;
-    setCssCode(newCssCode);
+  
+  const handleCssChange = (value) => {
+    setCssCode(value);
   };
-
-  const handleJsChange = (event) => {
-    const newJsCode = event.target.value;
-    setJsCode(newJsCode);
-  };
+  
+  const handleJsChange = (value) => {
+    setJsCode(value);
+  };  
 
   const handleDownload = () => {
     const zip = new JSZip();
@@ -79,15 +87,6 @@ export default function Nav() {
     setShowStyleCssSection(false);
     setShowScriptJsSection(false);
   };
-
-  useEffect(() => {
-    if (showViewSection) {
-      const iframe = iframeRef.current;
-      iframe.contentWindow.document.open();
-      iframe.contentWindow.document.writeln(code);
-      iframe.contentWindow.document.close();
-    }
-  }, [showViewSection, code]);
 
   const handleIndexHtmlClick = () => {
     setShowViewSection(false);
@@ -193,12 +192,6 @@ export default function Nav() {
                 value={jsCode}
                 onChange={handleJsChange}
               />
-            </section>
-          )}
-          {!showViewSection && !showIndexHtmlSection && !showStyleCssSection && !showScriptJsSection && (
-            <section className='h-full flex flex-col justify-center items-center'>
-              <h1 className='font-bold text-center'>Nothing to view</h1>
-              <p className='mt-4 text-center'>Please select a file to view</p>
             </section>
           )}
         </section>
