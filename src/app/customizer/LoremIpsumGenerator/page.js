@@ -19,7 +19,7 @@ export default function ButtonCustomizer() {
   }
 
   return (
-    <main className='h-screen flex flex-col gap-10'>
+    <main>
       <nav className="bg-blue-500 py-4 px-6 flex h-15">
         <a href="https://web-dev-tools.vercel.app/" className="w-1/5 mr-2 flex border rounded p-2 hover:bg-blue-600">
           <h1 className="text-white text-2xl font-bold mr-1">Web Dev Tools</h1>
@@ -27,28 +27,24 @@ export default function ButtonCustomizer() {
         </a>
         <Search />
       </nav>
-      <section className='flex items-center justify-center'>
-        <div className=' bg-white p-10 w-full max-w-5xl overflow-y-scroll max-h-[75vh]'>
-          <div className='flex justify-between pb-5'>
-            <div className='flex gap-2 items-center'>
-              <label htmlFor="paragraphs">Number of paragraphs:</label><br></br><br></br>
-              <input
-                type="number"
-                id="paragraphs"
-                value={paragraphs}
-                min={1}
-                className="text-black bg-gray-100 text-center"
-                max={10}
-                onChange={(e) => setParagraphs(e.target.value)}
-              />
-            </div> 
-            <div className='flex gap-5'>
-              <button onClick={generateLoremIpsum} className=' rounded bg-slate-500 text-white p-5'>Generate</button><br></br>
-              <button onClick={copy} className=' rounded bg-slate-500 text-white p-5'>Copy</button><br></br>
-            </div>
-          </div>
+      <section className='flex items-center justify-center h-screen'>
+        <div className=' bg-slate-800 p-10 w-full max-w-5xl overflow-y-scroll max-h-96'>
+          <label htmlFor="paragraphs">Number of paragraphs:</label><br></br><br></br>
+          <input
+            type="number"
+            id="paragraphs"
+            value={paragraphs}
+            min={1}
+            className="text-black"
+            max={10}
+            onChange={(e) => setParagraphs(e.target.value)}
+          /><br></br><br></br>
+          <button onClick={generateLoremIpsum} className=' rounded bg-slate-500 text-white p-5'>Generate</button><br></br>
+          <br></br>
+          <button onClick={copy} className=' rounded bg-slate-500 text-white p-5'>Copy</button><br></br>
           {code}
         </div>
+        
       </section>
     </main>
   );
