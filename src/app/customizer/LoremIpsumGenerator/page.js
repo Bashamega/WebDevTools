@@ -28,10 +28,10 @@ export default function ButtonCustomizer() {
         <Search />
       </nav>
       <section className='flex items-center justify-center'>
-        <div className=' bg-white p-10 w-full max-w-5xl overflow-y-scroll max-h-[75vh]'>
+        <div className=' bg-white text-black p-10 w-full max-w-5xl overflow-y-scroll max-h-[75vh]'>
           <div className='flex justify-between pb-5'>
             <div className='flex gap-2 items-center'>
-              <label htmlFor="paragraphs">Number of paragraphs:</label><br></br><br></br>
+              <label htmlFor="paragraphs">Number of paragraphs:</label>
               <input
                 type="number"
                 id="paragraphs"
@@ -43,8 +43,8 @@ export default function ButtonCustomizer() {
               />
             </div> 
             <div className='flex gap-5'>
-              <button onClick={generateLoremIpsum} className=' rounded bg-slate-500 text-white p-5'>Generate</button><br></br>
-              <button onClick={copy} className=' rounded bg-slate-500 text-white p-5'>Copy</button><br></br>
+              <button onClick={generateLoremIpsum} className=' rounded bg-slate-500 text-white p-5'>Generate</button>
+              <button onClick={copy} className=' rounded bg-slate-500 text-white p-5'>Copy</button>
             </div>
           </div>
           {code}
