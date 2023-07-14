@@ -1,22 +1,31 @@
 # About
+
 WebDev Tools is a comprehensive online platform designed to empower web developers with a wide array of code samples and snippets. Whether you are a seasoned professional or just starting your journey in web development, our website provides you with a vast collection of code examples to streamline your workflow, enhance productivity, and create exceptional websites and web applications.
+
 # Contribute
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+
 1. Download the repo use:
+
 ```bash
 git clone https://github.com/Bashamega/WebDevTools.git
 ```
+
 2. Go to WebDevTools
+
 ```bash
 cd WebDevTools
 ```
+
 3. Install the required packages:
+
 ```basha
 npm i
 ```
+
 3. First, run the development server:
 
 ```bash
