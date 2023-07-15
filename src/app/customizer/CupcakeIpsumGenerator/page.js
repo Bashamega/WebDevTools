@@ -32,17 +32,11 @@ export default function ButtonCustomizer() {
         <Search />
       </nav>
       <section className="flex items-center justify-center h-screen">
-        <div className=" bg-slate-800 p-10 w-full max-w-5xl overflow-y-scroll max-h-96">
+        <div className="bg-slate-800 p-10 w-full max-w-5xl overflow-y-scroll max-h-96">
           <label htmlFor="cupcakes">Number of cupcakes:</label>
           <br></br>
           <br></br>
           <div>
-            <label
-              for="first_name"
-              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              First name
-            </label>
             <input
               type="number"
               id="cupcakes"
@@ -54,7 +48,6 @@ export default function ButtonCustomizer() {
               required
             />
           </div>
-          <br></br>
           <br></br>
           <div class="inline-flex rounded-md shadow-sm" role="group">
             <button
@@ -74,7 +67,7 @@ export default function ButtonCustomizer() {
               Copy
             </button>
           </div>
-          <br></br>
+          <br></br><br></br>
           {cup}
         </div>
       </section>

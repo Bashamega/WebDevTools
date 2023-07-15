@@ -12,7 +12,7 @@ export default function Nav() {
     <nav className="bg-blue-500 py-2 px-4 flex items-center justify-between">
       <div className="flex items-center">
         <div className="text-white text-2xl font-bold">Web Dev Tools</div>
-        <Search />
+        &emsp;<Search />
       </div>
 
       <div className="relative">
