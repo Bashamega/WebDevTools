@@ -146,12 +146,6 @@ export default function Home({ state }) {
                   Repository
                 </a>
               </li>
-              <li>
-                &emsp;
-                <a href="https://github.com/Axorax" class="hover:underline">
-                  Axorax
-                </a>
-              </li>
             </ul>
           </div>
         </footer>
