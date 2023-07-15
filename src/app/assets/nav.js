@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Search from './search';
+import React, { useState } from "react";
+import Search from "./search";
 
 export default function Nav() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -23,7 +23,7 @@ export default function Nav() {
           Customizer tools
           <svg
             className={`${
-              isDropdownOpen ? 'transform rotate-180' : ''
+              isDropdownOpen ? "transform rotate-180" : ""
             } inline-block ml-1 w-4 h-4`}
             fill="none"
             stroke="currentColor"
@@ -53,6 +53,12 @@ export default function Nav() {
               className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
             >
               Lorem Ipsum Generator
+            </a>
+            <a
+              href="customizer/CupcakeIpsumGenerator"
+              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+            >
+              Cupcake Ipsum Generator
             </a>
             <a
               href="customizer/conversionCalculator"

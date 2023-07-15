@@ -319,8 +319,6 @@ export default function ButtonCustomizer() {
                   </option>
                 ))}
               </select>
-
-              
             </div>
             <div className="mb-4">
               <label className="mr-2">Font Family:</label>
@@ -337,9 +335,6 @@ export default function ButtonCustomizer() {
                   </option>
                 ))}
               </select>
-
-
-
             </div>
           </div>
         </TabPanel>
