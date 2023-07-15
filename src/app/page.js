@@ -1,9 +1,26 @@
 "use client";
-import Image from "next/image";
 import Nav from "./assets/nav";
 import React from "react";
+import { useState, useEffect } from "react";
 
 export default function Home({ state }) {
+  const [contributors, setContributors] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        "https://api.github.com/repos/bashamega/webdevtools/contributors"
+      );
+      const data = await response.json();
+      setContributors(data);
+    } catch (error) {
+      console.error("Error fetching contributors:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <main className="" class="bg-gray-900">
       <title>Web dev tools</title>
@@ -64,57 +81,31 @@ export default function Home({ state }) {
           </div>
         </div>
 
-        <div
-          id="contributers"
-          class="my-9 min-w-[40rem] max-w-full break-words block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-        >
-          <div class="flex">
-            <div className="bg-blue-100 w-1/4 rounded p-2 m-5">
-              <a href="https://github.com/Bashamega">
-                <img
-                  class="rounded"
-                  src="https://avatars.githubusercontent.com/u/110662505?v=4"
-                ></img>
-                <h1 className="bold p-1 pt-2 text-s text-black center">
-                  Bashamega
-                </h1>
-              </a>
-            </div>
-            <div className="bg-blue-100 w-1/4 rounded p-2 m-5">
-              <a href="https://github.com/elidakirigo">
-                <img
-                  class="rounded"
-                  src="https://avatars.githubusercontent.com/u/42931101?v=4"
-                ></img>
-                <h1 className="bold p-1 pt-2 text-s text-black center">
-                  Eli da
-                </h1>
-              </a>
-            </div>
-            <div className="bg-blue-100 w-1/4 rounded p-2 m-5">
-              <a href="https://github.com/Axorax">
-                <img
-                  class="rounded"
-                  src="https://avatars.githubusercontent.com/u/78349410?v=4"
-                ></img>
-                <h1 className="bold p-1 pt-2 text-s text-black center">
-                  Axorax
-                </h1>
-              </a>
-            </div>
-            <div className="bg-blue-100 w-1/4 rounded p-2 m-5">
-              <a href="https://github.com/Silent-Watcher">
-                <img
-                  class="rounded"
-                  src="https://avatars.githubusercontent.com/u/91375198?v=4"
-                ></img>
-                <h1 className="bold p-1 pt-2 text-s text-black center">
-                  Ali t.nazari
-                </h1>
-              </a>
+        <div id="contributers" className="my-9 min-w-[40rem] max-w-full break-words block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+          <div className="flex justify-center">
+            <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {contributors && contributors.length > 0 ? (
+                contributors.map((item, index) => (
+                  <div key={index} className="bg-gray-700 rounded-lg p-4 flex flex-col items-center">
+                    <a href={item.html_url} target="_blank" rel="noopener noreferrer" className="">
+                      <img
+                        src={item.avatar_url}
+                        alt={item.login}
+                        width={48}
+                        height={48}
+                        className="w-12 h-12 mr-2 rounded-full self-center"
+                      />
+                      {item.login}
+                    </a>
+                  </div>
+                ))
+              ) : (
+                <p className="text-white">No data available</p>
+              )}
             </div>
           </div>
         </div>
+
 
         <footer class="w-[40rem] max-w-full bg-white rounded-lg shadow m-4 dark:bg-gray-800">
           <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
