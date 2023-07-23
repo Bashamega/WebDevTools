@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@monaco-editor/react": "^4.5.1",
+    "@mui/icons-material": "^5.14.1",
+    "@mui/material": "^5.14.1",
     "autoprefixer": "10.4.14",
     "codemirror": "^6.0.1",
     "convert-units": "^2.3.4",
