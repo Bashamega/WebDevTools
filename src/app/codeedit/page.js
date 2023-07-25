@@ -130,12 +130,14 @@ export default function Nav() {
   }, []);
   return (
     <div className="h-screen overflow-hidden">
-      <nav className="bg-blue-500 py-4 px-6 flex">
+      <nav className="bg-blue-500 py-4 px-6 flex justify-between items-center">
         <a
           href="https://web-dev-tools.vercel.app/"
-          className="w-1/5 mr-2 flex border rounded p-2 hover:bg-blue-600"
+          className="mr-2 flex items-center border rounded p-2 hover:bg-blue-600"
         >
-          <h1 className="text-white text-2xl font-bold mr-1">Web Dev Tools</h1>
+          <h1 className="text-white text-lg md:text-2xl font-bold mr-4">
+            Web Dev Tools
+          </h1>
           <p>Code editor</p>
         </a>
         <Search />
