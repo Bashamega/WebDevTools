@@ -20,12 +20,14 @@ export default function ButtonCustomizer() {
 
   return (
     <main className="h-screen flex flex-col gap-10">
-      <nav className="bg-blue-500 py-4 px-6 flex h-15">
+      <nav className="bg-blue-500 py-4 px-6 flex justify-between items-center h-15">
         <a
           href="https://web-dev-tools.vercel.app/"
-          className="w-1/5 mr-2 flex border rounded p-2 hover:bg-blue-600"
+          className=" mr-4 flex border items-center rounded p-2 hover:bg-blue-600"
         >
-          <h1 className="text-white text-2xl font-bold mr-1">Web Dev Tools</h1>
+          <h1 className="text-white text-lg md:text-2xl font-bold mr-4">
+            Web Dev Tools
+          </h1>
           <p>Lorem Ipsum Generator</p>
         </a>
         <Search />
@@ -51,9 +53,9 @@ export default function ButtonCustomizer() {
                 onClick={generateLoremIpsum}
                 class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:outline-none"
               >
-              <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                Generate
-              </span>
+                <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                  Generate
+                </span>
               </button>
               <button
                 onClick={copy}

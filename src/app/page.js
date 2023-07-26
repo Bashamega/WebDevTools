@@ -81,13 +81,24 @@ export default function Home({ state }) {
           </div>
         </div>
 
-        <div id="contributers" className="my-9 min-w-[40rem] max-w-full break-words block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div
+          id="contributers"
+          className="my-9 min-w-[40rem] max-w-full break-words block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+        >
           <div className="flex justify-center">
             <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {contributors && contributors.length > 0 ? (
                 contributors.map((item, index) => (
-                  <div key={index} className="bg-gray-700 rounded-lg p-4 flex flex-col items-center">
-                    <a href={item.html_url} target="_blank" rel="noopener noreferrer" className="">
+                  <div
+                    key={index}
+                    className="bg-gray-700 rounded-lg p-4 flex flex-col items-center"
+                  >
+                    <a
+                      href={item.html_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className=""
+                    >
                       <img
                         src={item.avatar_url}
                         alt={item.login}
@@ -105,7 +116,6 @@ export default function Home({ state }) {
             </div>
           </div>
         </div>
-
 
         <footer class="w-[40rem] max-w-full bg-white rounded-lg shadow m-4 dark:bg-gray-800">
           <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
