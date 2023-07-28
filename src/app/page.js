@@ -25,10 +25,10 @@ export default function Home({ state }) {
     <main className="" class="bg-gray-900">
       <title>Web dev tools</title>
       <Nav></Nav>
-      <div class="flex justify-center flex-col items-center">
+      <div class="flex justify-center flex-col items-center w-full">
         <div
           id="about"
-          class="my-9 min-w-[40rem] max-w-full break-words block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+          class="my-9 break-words block max-w-[26rem] md:max-w-[40rem] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 "
         >
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             About
@@ -43,7 +43,7 @@ export default function Home({ state }) {
           </p>
         </div>
 
-        <div class="p-4 text-center w-[40rem] max-w-full bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div class="p-4 text-center max-w-[26rem] md:max-w-[40rem] bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
           <h5 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
             Want to contribute?
           </h5>
@@ -83,15 +83,15 @@ export default function Home({ state }) {
 
         <div
           id="contributers"
-          className="my-9 min-w-[40rem] max-w-full break-words block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+          className="my-9  break-words block w-[26rem] sm:w-[42rem] md:max-w-[40rem] py-6 md:p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
         >
-          <div className="flex justify-center">
+          <div className="flex justify-center items-center">
             <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {contributors && contributors.length > 0 ? (
                 contributors.map((item, index) => (
                   <div
                     key={index}
-                    className="bg-gray-700 rounded-lg p-4 flex flex-col items-center"
+                    className="bg-gray-700 rounded-lg p-4 flex flex-col items-center justify-center"
                   >
                     <a
                       href={item.html_url}
@@ -117,7 +117,7 @@ export default function Home({ state }) {
           </div>
         </div>
 
-        <footer class="w-[40rem] max-w-full bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+        <footer class="w-[26rem] md:w-[40rem] max-w-full bg-white rounded-lg shadow m-4 dark:bg-gray-800">
           <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
             <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
               © 2023{" "}
