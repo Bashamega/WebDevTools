@@ -6,7 +6,6 @@ import { HexColorPicker } from "react-colorful"
 
 export default function colorPicker() {
   const [hexColor, setHexColor] = useState("#ffffff");
-  const [RGBColor, setRGBCOlor] = useState("");
 
   const handleHex = () => {
     navigator.clipboard.writeText(hexColor);
