@@ -41,7 +41,7 @@ export default function colorPicker() {
             <HexColorPicker color={hexColor} onChange={setHexColor} />
           </span>
         </div>
-        <div className="flex flex-col jusitfy-center items-center mb-8 sm:pt-[270px] xl:pr-36">
+        <div className="flex flex-col jusitfy-center items-center mb-8 sm:pt-[270px] xl:pr-36 xl:pt-[300px]">
           <h1 className="font-bold text-[5.5rem] sm:text-[4rem] lg:text-7xl xl:text-8xl pb-8">{hexColor}</h1>
           <button onClick={handleHex} className="bg-blue-500 hover:bg-blue-700 font-bold p-4 mb-6 transition-all">Copy Hex Code</button>
           <button onClick={handleRGB} className="bg-blue-500 hover:bg-blue-700 font-bold p-4 mb-6 transition-all">Copy RGB Code</button>
