@@ -1,10 +1,13 @@
 "use client";
 import Search from "@/app/assets/search";
 import React, { useState } from "react";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import CloseIcon from "@mui/icons-material/Close";
 
 export default function ButtonCustomizer() {
   const [paragraphs, setParagraphs] = useState(1);
   const [code, setcode] = useState("");
+  const [copiedStatus, setCopiedStatus] = useState("");
 
   const generateLoremIpsum = () => {
     let loremIpsumText = "";
@@ -15,7 +18,11 @@ export default function ButtonCustomizer() {
   };
   const copy = () => {
     navigator.clipboard.writeText(code);
-    setcode("Text copied succesfully");
+    setCopiedStatus("Text copied succesfully");
+  };
+
+  const closeBtn = () => {
+    setCopiedStatus("");
   };
 
   return (
@@ -34,7 +41,7 @@ export default function ButtonCustomizer() {
       </nav>
       <section className="flex items-center justify-center">
         <div className="bg-slate-800 p-10 w-full max-w-5xl overflow-y-scroll max-h-96">
-          <div className="flex justify-between pb-5">
+          <div className="flex justify-center pb-5 flex-wrap gap-4 md:justify-between">
             <div className="flex gap-2 items-center">
               <label htmlFor="paragraphs">Number of paragraphs:</label>
               <input
@@ -62,10 +69,19 @@ export default function ButtonCustomizer() {
                 class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 mr-2 mb-2"
               >
                 Copy
+                <ContentCopyIcon fontSize="small" className="ml-2" />
               </button>
             </div>
           </div>
-          {code}
+          {code !== "" && !copiedStatus && code}
+          {copiedStatus !== "" && (
+            <div className="copyStatus bg-green-500 font-bold text-center rounded-lg p-2 relative">
+              <button className="absolute top-0 right-1" onClick={closeBtn}>
+                <CloseIcon fontSize="small" />
+              </button>
+              {copiedStatus}
+            </div>
+          )}
         </div>
       </section>
     </main>
