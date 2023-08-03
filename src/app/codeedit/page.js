@@ -154,13 +154,13 @@ export default function Nav() {
           </div>
           <button
             onClick={handleViewClick}
-            className="w-full text-center bg-slate-800 hover:bg-slate-900 h-10"
+            className="w-full text-center bg-slate-800 text-slate-400 hover:bg-slate-900 h-10"
           >
             View
           </button>
           <button
             onClick={handleIndexHtmlClick}
-            className="w-full text-center bg-slate-800 hover:bg-slate-900 h-10 flex pl-8 pt-2"
+            className="w-full text-center bg-slate-800 text-white hover:bg-slate-900 h-10 flex pl-8 pt-2"
           >
             <AiFillHtml5
               className="mr-2"
@@ -171,14 +171,14 @@ export default function Nav() {
           </button>
           <button
             onClick={handleStyleCssClick}
-            className="w-full text-center bg-slate-800 hover:bg-slate-900 h-10 flex pl-8 pt-2"
+            className="w-full text-center bg-slate-800 text-white hover:bg-slate-900 h-10 flex pl-8 pt-2"
           >
             <FaCss3 className="mr-2" size={18} color="#0000FF"></FaCss3>
             Style.css
           </button>
           <button
             onClick={handleScriptJsClick}
-            className="w-full text-center bg-slate-800 hover:bg-slate-900 h-10 flex pl-8 pt-2"
+            className="w-full text-center bg-slate-800 text-white hover:bg-slate-900 h-10 flex pl-8 pt-2"
           >
             <FaJs className="mr-2" size={18} color="#FFFF00"></FaJs>Script.js
           </button>
