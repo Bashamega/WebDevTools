@@ -56,6 +56,11 @@ export default function Search() {
         name: "Cupcake Ipsum Generator",
         link: "https://web-dev-tools.vercel.app/customizer/CupcakeIpsumGenerator",
       },
+      {
+        id: 6,
+        name: "Color Picker",
+        link: "https://web-dev-tools.vercel.app/customizer/colorPicker"
+      }
     ];
 
     const filteredData = toolList.filter(
