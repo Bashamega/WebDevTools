@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Search from "./search";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -6,16 +6,33 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 export default function Nav() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
+  const dropdownRef = useRef(null);
+
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
   function searchToggle() {
-    setToggle((prevData) => setToggle(!prevData));
+    setToggle((prevData) => !prevData);
   }
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <nav className="bg-blue-500 py-2 px-4 flex items-center justify-around gap-1 w-full relative">
       <div className="flex flex-0 items-center flex-shrink">
-        <div className="text-white  text-[0.7rem] font-bold sm:text-lg md:text-2xl sm:font-bold">
+        <div className="text-white text-[0.7rem] font-bold sm:text-lg md:text-2xl sm:font-bold">
           <p>Web Dev Tools</p>
         </div>
         &emsp;
@@ -24,7 +41,7 @@ export default function Nav() {
         </div>
       </div>
 
-      <div className="relative ">
+      <div className="relative">
         <button
           onClick={toggleDropdown}
           className="text-white focus:outline-none text-[0.58rem] font-bold sm:font-bold items-center sm:text-sm flex md:text-sm  flex-1"
@@ -49,14 +66,17 @@ export default function Nav() {
         </button>
 
         {isDropdownOpen && (
-          <div className="absolute right-0 mt-2 py-2 bg-white rounded shadow-lg z-75">
+          <div
+            ref={dropdownRef}
+            className="absolute right-0 mt-2 py-2 bg-white rounded shadow-lg z-75 w-40"
+          >
             <a
               href="customizer/button"
               className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
             >
               Buttons
             </a>
-            <hr></hr>
+            <hr />
             <a
               href="customizer/LoremIpsumGenerator"
               className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
