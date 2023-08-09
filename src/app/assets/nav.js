@@ -75,7 +75,7 @@ export default function Nav() {
               className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
             >
               Buttons
-            </a>
+            </a>  
             <hr />
             <a
               href="customizer/LoremIpsumGenerator"
@@ -111,6 +111,12 @@ export default function Nav() {
           className="text-white  text-[0.57rem] font-bold  sm:text-sm"
         >
           <p>Code Editor</p>
+        </a>
+        <a
+          href="/MD"
+          className="text-white  text-[0.57rem] font-bold  sm:text-sm"
+        >
+          <p>Markdown Editor</p>
         </a>
         <a
           href="#about"

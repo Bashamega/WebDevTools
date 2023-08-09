@@ -60,6 +60,11 @@ export default function Search() {
         id: 6,
         name: "Color Picker",
         link: "https://web-dev-tools.vercel.app/customizer/colorPicker"
+      },
+      {
+        id: 7,
+        name: "Mark down Editor",
+        link: "https://web-dev-tools.vercel.app/MD"
       }
     ];
 
