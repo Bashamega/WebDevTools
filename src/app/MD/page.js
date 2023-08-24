@@ -1,13 +1,15 @@
-"use client"
-import React, { useState, useRef} from "react";
+"use client";
+import React, { useState, useRef } from "react";
 import Search from "@/app/assets/search";
-import snarkdown from 'snarkdown';
+import snarkdown from "snarkdown";
 import { saveAs } from "file-saver";
+import SearchIcon from "@mui/icons-material/Search";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function MarkdownEditor() {
-  
   const [markdown, setMarkdown] = useState("# hey");
-  const [name, setName] = useState('untitled');
+  const [name, setName] = useState("untitled");
+  const [toggle, setToggle] = useState(false);
   const textareaRef = useRef(null);
 
   const handleNameChange = (e) => {
@@ -57,17 +59,21 @@ export default function MarkdownEditor() {
     { label: "Horizontal Rule", data: "\n---\n" },
     // Add more buttons and their corresponding data strings here
   ];
+  function searchToggle() {
+    setToggle(!toggle);
+  }
+  console.log(toggle);
   return (
     <main className="h-screen">
-      <nav className="bg-blue-500 py-4 px-6 flex items-center justify-between">
+      <nav className="bg-blue-500 py-4 px-6 flex items-center justify-between h-[69px]">
         <a
           href="https://web-dev-tools.vercel.app/"
-          className="mr-2 flex border items-center rounded p-2 hover:bg-blue-600"
+          className="mr-2 flex  border items-center rounded  hover:bg-blue-600"
         >
-          <h1 className="text-white text-lg md:text-2xl font-bold mr-4">
+          <h1 className="text-white text-sm md:text-2xl font-bold mr-4 ml-1">
             Web Dev Tools
           </h1>
-          <p>MD Editor</p>
+          <p className="mr-2 text-sm">MD Editor</p>
         </a>
         <div className="flex items-center">
           <input
@@ -77,30 +83,52 @@ export default function MarkdownEditor() {
           />
           <button
             onClick={handleDownload}
-            className="ml-2 bg-gray-700 border border-gray-600 text-white text-sm rounded p-1.5 px-2 hover:bg-gray-600"
+            className="ml-2 mr-2 bg-gray-700 border border-gray-600 text-white text-sm rounded p-1.5 px-2 hover:bg-gray-600"
           >
             Download
           </button>
-          <Search />
+          <div className="hidden lg:block ml-6">
+            <Search />
+          </div>
+
+          <button onClick={searchToggle} className="lg:hidden">
+            <SearchIcon className="text-white" onClick={searchToggle} />
+          </button>
+          <div
+            className={`absolute w-full h-[69px] flex  items-center  bg-blue-500 ${
+              toggle
+                ? "left-0 duration-300 ease-in"
+                : "left-[100%] duration-300 ease-in"
+            } `}
+          >
+            <div className="flex flex-1 items-center text-white justify-center relative">
+              <ArrowBackIcon
+                className="mr-4 absolute left-2 cursor-pointer"
+                onClick={searchToggle}
+              />
+              <Search />
+            </div>
+          </div>
         </div>
       </nav>
       <div className="flex justify-between">
-        {markdownButtons.map((button, index) => (
+        <div className="flex flex-wrap justify-center md:justify-normal ">
+          {markdownButtons.map((button, index) => (
             <button
               key={index}
               onClick={() => insertMarkdown(button.data)}
-              className="bg-gray-700 border border-gray-600 text-white text-sm rounded p-1.5 px-2 hover:bg-gray-600"
+              className=" bg-gray-700 border border-gray-600 text-white text-sm rounded  px-2 py-2 hover:bg-gray-600 m-2"
             >
               {button.label}
             </button>
           ))}
-
+        </div>
       </div>
-      
-      <section className="flex w-full h-full">
-       
-        <section className="w-1/2 mr-1">
+
+      <section className="flex flex-col md:flex-row w-full h-[100%] gap-3">
+        <section className="w-[96%] h-full  md:w-1/2 ml-2 mr-2 ">
           {/* Add your Markdown editor here */}
+          <h1>Markdown</h1>
           <textarea
             className="border p-2 h-full w-full resize-none text-black"
             value={markdown}
@@ -108,12 +136,15 @@ export default function MarkdownEditor() {
             ref={textareaRef}
           />
         </section>
-        <section className="w-1/2 h-full">
+        <section className=" w-[96%] md:w-1/2 h-full ml-2 mr-2 mt-6 md:mt-0 ">
           {/* Display the parsed Markdown */}
+          <h1>Output</h1>
           <iframe
             className="w-full h-full bg-white"
             title="Parsed Markdown"
-            srcDoc={`<!DOCTYPE html><html><head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css"><style>body { margin: 0; padding: 16px; }</style></head><body class="markdown-body">${snarkdown(markdown)}</body></html>`}
+            srcDoc={`<!DOCTYPE html><html><head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css"><style>body { margin: 0; padding: 16px; }</style></head><body class="markdown-body">${snarkdown(
+              markdown
+            )}</body></html>`}
           />
         </section>
       </section>
