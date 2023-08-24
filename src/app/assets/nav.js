@@ -13,7 +13,7 @@ export default function Nav() {
   };
 
   function searchToggle() {
-    setToggle((prevData) => !prevData);
+    setToggle(!toggle);
   }
 
   const handleClickOutside = (event) => {
@@ -75,7 +75,7 @@ export default function Nav() {
               className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
             >
               Buttons
-            </a>  
+            </a>
             <hr />
             <a
               href="customizer/LoremIpsumGenerator"
