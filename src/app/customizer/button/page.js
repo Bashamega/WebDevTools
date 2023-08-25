@@ -191,20 +191,22 @@ export default function ButtonCustomizer() {
       </section>
 
       <Tabs className="fixed bottom-0 left-0 right-0 mt-5 bg-slate-700">
-        <TabList className="flex border-b bg-slate-600">
-          <Tab>Background Color</Tab>
-          <Tab>Text Color</Tab>
-          <Tab>Border Radius</Tab>
-          <Tab>Width and height</Tab>
-          <Tab>Cursor</Tab>
-          <Tab>Font</Tab>
+        <TabList className="flex border-b bg-slate-600 flex flex-wrap p-2 gap-4">
+          <Tab className="font-mono cursor-pointer p-1">Background Color</Tab>
+          <Tab className="font-mono cursor-pointer p-1">Text Color</Tab>
+          <Tab className="font-mono cursor-pointer p-1">Border Radius</Tab>
+          <Tab className="font-mono cursor-pointer p-1">Width and height</Tab>
+          <Tab className="font-mono cursor-pointer p-1">Cursor</Tab>
+          <Tab className="font-mono cursor-pointer p-1">Font</Tab>
         </TabList>
 
         <TabPanel className="bg-slate-700">
-          <div className="my-8">
-            <h2 className="text-2xl font-bold mb-4">Button Customizer</h2>
+          <div className="my-8 bg-black text-white p-5 w-[80%] mx-auto rounded-md shadow-md">
+            <h2 className="text-2xl font-bold mb-4 font-mono">
+              Button Customizer
+            </h2>
             <div className="mb-4">
-              <label className="mr-2">Background Color:</label>
+              <label className="mr-2 font-mono">Background Color:</label>
               <input
                 type="color"
                 value={backgroundColor}
@@ -215,10 +217,12 @@ export default function ButtonCustomizer() {
         </TabPanel>
 
         <TabPanel>
-          <div className="my-8">
-            <h2 className="text-2xl font-bold mb-4">Button Customizer</h2>
+          <div className="my-8 bg-black text-white p-5 w-[80%] mx-auto rounded-md shadow-md">
+            <h2 className="text-2xl font-bold mb-4 font-mono">
+              Button Customizer
+            </h2>
             <div className="mb-4">
-              <label className="mr-2">Text Color:</label>
+              <label className="mr-2 font-mono">Text Color:</label>
               <input
                 type="color"
                 value={textColor}
@@ -229,14 +233,17 @@ export default function ButtonCustomizer() {
         </TabPanel>
 
         <TabPanel>
-          <div className="my-8">
-            <h2 className="text-2xl font-bold mb-4">Button Customizer</h2>
+          <div className="my-8 bg-black text-white p-5 w-[80%] mx-auto rounded-md shadow-md">
+            <h2 className="text-2xl font-bold mb-4 font-mono">
+              Button Customizer
+            </h2>
             <div className="mb-4">
-              <label className="mr-2">Border Radius:</label>
+              <label className="mr-2 font-mono">Border Radius:</label>
               <input
                 type="number"
                 min="0"
-                className="text-black"
+                placeholder="Enter border radius"
+                className="text-white bg-gray-700 p-1 rounded-md font-mono"
                 value={borderRadius}
                 onChange={handleBorderRadiusChange}
               />
@@ -244,24 +251,26 @@ export default function ButtonCustomizer() {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="my-8">
-            <h2 className="text-2xl font-bold mb-4">Button Customizer</h2>
+          <div className="my-8 bg-black text-white p-5 w-[80%] mx-auto rounded-md shadow-md">
+            <h2 className="text-2xl font-bold mb-4 font-mono">
+              Button Customizer
+            </h2>
             <div className="mb-4">
-              <label className="mr-2">Width:</label>
+              <label className="mr-2 font-mono">Width:</label>
               <input
                 type="number"
                 min="0"
-                className="text-black"
+                className="text-white bg-gray-700 p-1 rounded-md font-mono"
                 value={width}
                 onChange={handleBorderwidth}
               />
             </div>
             <div className="mb-4">
-              <label className="mr-2">Height:</label>
+              <label className="mr-2 font-mono">Height:</label>
               <input
                 type="number"
                 min="0"
-                className="text-black"
+                className="text-white bg-gray-700 p-1 rounded-md font-mono"
                 value={height}
                 onChange={handleBorderheight}
               />
@@ -269,10 +278,12 @@ export default function ButtonCustomizer() {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="my-8">
-            <h2 className="text-2xl font-bold mb-4">Button Customizer</h2>
+          <div className="my-8 bg-black text-white p-5 w-[80%] mx-auto rounded-md shadow-md">
+            <h2 className="text-2xl font-bold mb-4 font-mono">
+              Button Customizer
+            </h2>
             <div className="mb-4">
-              <label className="mr-2" for="cursor-options">
+              <label className="mr-2 font-mono" for="cursor-options">
                 Cursor:
               </label>
 
@@ -281,6 +292,7 @@ export default function ButtonCustomizer() {
                 id="cursor-options"
                 onChange={handlecursor}
                 value={cursor}
+                className="text-white bg-gray-700 p-1 rounded-md font-mono"
               >
                 {cursorOptions.map((option) => (
                   <option name={option} value={option}>
@@ -292,26 +304,29 @@ export default function ButtonCustomizer() {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="my-8">
-            <h2 className="text-2xl font-bold mb-4">Button Customizer</h2>
+          <div className="my-8 bg-black text-white p-5 w-[80%] mx-auto rounded-md shadow-md">
+            <h2 className="text-2xl font-bold mb-4 font-mono">
+              Button Customizer
+            </h2>
             <div className="mb-4">
-              <label className="mr-2">Font size:</label>
+              <label className="mr-2 font-mono">Font size:</label>
               <input
                 type="number"
                 min="0"
-                className="text-black"
+                className="text-white bg-gray-700 p-1 rounded-md font-mono"
                 value={fontsize}
                 onChange={handlefonts}
               />
             </div>
             <div className="mb-4">
-              <label className="mr-2">Font Weight:</label>
+              <label className="mr-2 font-mono">Font Weight:</label>
 
               <select
                 name="weight-options"
                 id="weight-options"
                 onChange={handlefontw}
                 value={fontw}
+                className="text-white bg-gray-700 p-1 rounded-md font-mono"
               >
                 {fontWeights.map((option) => (
                   <option name={option} value={option}>
@@ -321,13 +336,14 @@ export default function ButtonCustomizer() {
               </select>
             </div>
             <div className="mb-4">
-              <label className="mr-2">Font Family:</label>
+              <label className="mr-2 font-mono">Font Family:</label>
 
               <select
                 name="family-options"
                 id="family-options"
                 onChange={handlefontf}
                 value={fontf}
+                className="text-white bg-gray-700 p-1 rounded-md font-mono"
               >
                 {fontFamilies.map((option) => (
                   <option name={option} value={option}>
