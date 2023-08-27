@@ -201,7 +201,7 @@ export default function ButtonCustomizer() {
         </TabList>
 
         <TabPanel className="bg-slate-700">
-          <div className="my-8 bg-black text-white p-5 w-[80%] mx-auto rounded-md shadow-md">
+          <div className="my-8 bg-black text-white p-5 w-full rounded-md shadow-md flex flex-col items-center">
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
             </h2>
@@ -217,7 +217,7 @@ export default function ButtonCustomizer() {
         </TabPanel>
 
         <TabPanel>
-          <div className="my-8 bg-black text-white p-5 w-[80%] mx-auto rounded-md shadow-md">
+          <div className="my-8 bg-black text-white p-5 w-full rounded-md shadow-md flex flex-col items-center">
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
             </h2>
@@ -233,7 +233,7 @@ export default function ButtonCustomizer() {
         </TabPanel>
 
         <TabPanel>
-          <div className="my-8 bg-black text-white p-5 w-[80%] mx-auto rounded-md shadow-md">
+          <div className="my-8 bg-black text-white p-5 w-full rounded-md shadow-md flex flex-col items-center">
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
             </h2>
@@ -251,7 +251,7 @@ export default function ButtonCustomizer() {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="my-8 bg-black text-white p-5 w-[80%] mx-auto rounded-md shadow-md">
+          <div className="my-8 bg-black text-white p-5 w-full rounded-md shadow-md flex flex-col items-center">
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
             </h2>
@@ -278,7 +278,7 @@ export default function ButtonCustomizer() {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="my-8 bg-black text-white p-5 w-[80%] mx-auto rounded-md shadow-md">
+          <div className="my-8 bg-black text-white p-5 w-full rounded-md shadow-md flex flex-col items-center">
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
             </h2>
@@ -304,7 +304,7 @@ export default function ButtonCustomizer() {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="my-8 bg-black text-white p-5 w-[80%] mx-auto rounded-md shadow-md">
+          <div className="my-8 bg-black text-white p-5 w-full rounded-md shadow-md flex flex-col items-center">
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
             </h2>
