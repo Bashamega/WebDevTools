@@ -53,12 +53,12 @@ export default function ButtonCustomizer() {
           minHeight: "calc(100vh - 15rem)",
         }}
       >
-        <section className="flex bg-slate-600 p-4 rounded">
-          <section className="mr-2 block">
+        <section className="flex flex-col gap-4 bg-slate-600 p-4 rounded md:flex-row">
+          <section className="">
             <input
               type="number"
               value={from}
-              className="text-black text-center p-2 border border-gray-300 rounded"
+              className="text-black text-center p-2 border border-gray-300 rounded "
               onChange={handleFromChange}
             />
             <br></br>
@@ -66,7 +66,7 @@ export default function ButtonCustomizer() {
               id="dropdown"
               value={opFrom}
               onChange={handleOpFromChange}
-              className="bg-slate-500 text-center p-2 border border-gray-300 rounded w-full"
+              className="bg-slate-500 text-center p-2 border border-gray-300 rounded w-full mt-2"
             >
               {options.map((option, index) => (
                 <option key={index} value={option}>
@@ -75,18 +75,18 @@ export default function ButtonCustomizer() {
               ))}
             </select>
           </section>
-          <section>
+          <section className="flex flex-col gap-2">
             <input
               type="number"
               value={to}
-              className="text-black text-center p-2 border border-gray-300 rounded w-3/4"
+              className="text-black text-center p-2 border border-gray-300 rounded"
               readOnly
             />
             <select
               id="dropdown"
               value={opTo}
               onChange={handleToChange}
-              className="bg-slate-500 text-center p-2 border border-gray-300 rounded w-3/4"
+              className="bg-slate-500 text-center p-2 border border-gray-300 rounded "
             >
               {options.map((option, index) => (
                 <option key={index} value={option}>
