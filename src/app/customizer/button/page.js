@@ -5,6 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
 export default function ButtonCustomizer() {
+  const [containerBackground, setContainerBackground] = useState('')
   const [backgroundColor, setBackgroundColor] = useState("#FF0000");
   const [textColor, setTextColor] = useState("#FFFFFF");
   const [borderRadius, setBorderRadius] = useState(4);
@@ -37,6 +38,10 @@ export default function ButtonCustomizer() {
     navigator.clipboard.writeText(code);
     setShowCode(false);
   };
+
+  const handleContainerBackgroundColorChange = (event) => {
+    setContainerBackground(event.target.value)
+  }
 
   const handleBackgroundColorChange = (event) => {
     setBackgroundColor(event.target.value);
@@ -90,6 +95,19 @@ export default function ButtonCustomizer() {
     cursor: cursor,
     width: `${width}px`,
     height: `${height}px`,
+  };
+
+  const buttonContainerStyles = {
+    backgroundColor: containerBackground,
+    width: "100vw",
+    height: "100vh",
+    zIndex: "-1",
+    position: "fixed",
+    top: "0px",
+    left: "0px",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   };
 
   const cursorOptions = [
@@ -184,7 +202,7 @@ export default function ButtonCustomizer() {
 
   return (
     <div>
-      <section className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <section className="buttonContainer" style={buttonContainerStyles}>
         <button style={buttonStyles} className="text-4xl">
           Customized Button
         </button>
@@ -211,6 +229,14 @@ export default function ButtonCustomizer() {
                 type="color"
                 value={backgroundColor}
                 onChange={handleBackgroundColorChange}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="mr-2 font-mono">Container Background Color:</label>
+              <input
+                type="color"
+                value={containerBackground}
+                onChange={handleContainerBackgroundColorChange}
               />
             </div>
           </div>
