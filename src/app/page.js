@@ -83,10 +83,10 @@ export default function Home({ state }) {
 
         <div
           id="contributers"
-          className="my-9  break-words block w-[26rem] sm:w-[42rem] md:max-w-[40rem] py-6 md:p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+          className="my-9 max-w-[26rem] md:max-w-[40rem]  break-words block py-6 md:p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
         >
           <div className="flex justify-center items-center">
-            <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid gap-2 grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
               {contributors && contributors.length > 0 ? (
                 contributors.map((item, index) => (
                   <div
