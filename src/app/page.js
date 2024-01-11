@@ -97,7 +97,7 @@ export default function Home({ state }) {
                       href={item.html_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className=""
+                      className="flex items-center justify-center flex-col"
                     >
                       <img
                         src={item.avatar_url}
