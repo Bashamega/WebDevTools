@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import Search from "./search";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { FaCode, FaInfo, FaMarkdown, FaTools } from "react-icons/fa";
+import { IoMdGitPullRequest } from "react-icons/io";
 
 export default function Nav() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -46,6 +48,7 @@ export default function Nav() {
           onClick={toggleDropdown}
           className="text-white focus:outline-none text-[0.58rem] font-bold sm:font-bold items-center sm:text-sm flex md:text-sm  flex-1 p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
         >
+          <FaTools fontSize={20} className="mr-2" />
           Customizer tools
           <svg
             className={`${
@@ -110,24 +113,33 @@ export default function Nav() {
           href="/codeedit"
           className="text-white  text-[0.57rem] font-bold  sm:text-sm p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
         >
-          <p>Code Editor</p>
+          <p className="flex items-center justify-center gap-2">
+            <FaCode fontSize={20} />
+            Code Editor
+          </p>
         </a>
         <a
           href="/MD"
           className="text-white  text-[0.57rem] font-bold  sm:text-sm p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
         >
-          <p>Markdown Editor</p>
+          <p className="flex items-center justify-center gap-2">
+            {" "}
+            <FaMarkdown fontSize={20} />
+            Markdown Editor
+          </p>
         </a>
         <a
           href="#about"
-          className="text-white font-bold text-[0.6rem]  sm:text-sm p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
+          className="text-white font-bold text-[0.6rem]  sm:text-sm p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
         >
+          <FaInfo fontSize={15} />
           About
         </a>
         <a
           href="#contribute"
-          className="text-white font-bold text-[0.6rem]  sm:text-sm  p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
+          className="text-white font-bold text-[0.6rem]  sm:text-sm  p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
         >
+          <IoMdGitPullRequest fontSize={20} />
           Contribute
         </a>
         <button onClick={searchToggle} className="lg:hidden">
