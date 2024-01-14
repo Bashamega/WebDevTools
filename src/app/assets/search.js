@@ -105,7 +105,7 @@ export default function Search() {
       {showDropdown && (
         <ul
           ref={dropdownRef}
-          className="bg-white border border-gray-300 ml-4 shadow absolute z-10"
+          className="bg-white border border-gray-300 shadow absolute  rounded-sm z-10"
         >
           {searchResults.map((item) => (
             <a href={item.link}>
