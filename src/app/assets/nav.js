@@ -44,7 +44,7 @@ export default function Nav() {
       <div className="relative">
         <button
           onClick={toggleDropdown}
-          className="text-white focus:outline-none text-[0.58rem] font-bold sm:font-bold items-center sm:text-sm flex md:text-sm  flex-1"
+          className="text-white focus:outline-none text-[0.58rem] font-bold sm:font-bold items-center sm:text-sm flex md:text-sm  flex-1 p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
         >
           Customizer tools
           <svg
@@ -108,25 +108,25 @@ export default function Nav() {
       <div className="flex ml-1 justify-center gap-2  md:gap-4 items-center">
         <a
           href="/codeedit"
-          className="text-white  text-[0.57rem] font-bold  sm:text-sm"
+          className="text-white  text-[0.57rem] font-bold  sm:text-sm p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
         >
           <p>Code Editor</p>
         </a>
         <a
           href="/MD"
-          className="text-white  text-[0.57rem] font-bold  sm:text-sm"
+          className="text-white  text-[0.57rem] font-bold  sm:text-sm p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
         >
           <p>Markdown Editor</p>
         </a>
         <a
           href="#about"
-          className="text-white font-bold text-[0.6rem]  sm:text-sm"
+          className="text-white font-bold text-[0.6rem]  sm:text-sm p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
         >
           About
         </a>
         <a
           href="#contribute"
-          className="text-white font-bold text-[0.6rem]  sm:text-sm "
+          className="text-white font-bold text-[0.6rem]  sm:text-sm  p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
         >
           Contribute
         </a>

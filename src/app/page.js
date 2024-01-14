@@ -51,10 +51,10 @@ export default function Home({ state }) {
             Visit the Github repo, make sure to follow the guidelines and
             contribute!
           </p>
-          <div class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
+          <div class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 ">
             <a
               href="https://github.com/Bashamega/WebDevTools"
-              class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+              class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 hover:shadow-card-shadow  transition-all duration-500 ease-in"
             >
               <svg
                 class="mr-3 w-7 h-7"
@@ -71,9 +71,9 @@ export default function Home({ state }) {
                 />
               </svg>
 
-              <div class="text-left">
+              <div class="text-left ">
                 <div class="mb-1 text-xs">Go to the</div>
-                <div class="-mt-1 font-sans text-sm font-semibold">
+                <div class="-mt-1 font-sans text-sm font-semibold ">
                   Github Repo
                 </div>
               </div>
@@ -91,20 +91,20 @@ export default function Home({ state }) {
                 contributors.map((item, index) => (
                   <div
                     key={index}
-                    className="bg-gray-700 rounded-lg p-4 flex flex-col items-center justify-center"
+                    className="bg-gray-700 rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-card-shadow  transition-all duration-500 ease-in "
                   >
                     <a
                       href={item.html_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center flex-col"
+                      className="flex items-center justify-center flex-col hover:scale-105 transition-all duration-500 ease"
                     >
                       <img
                         src={item.avatar_url}
                         alt={item.login}
                         width={48}
                         height={48}
-                        className="w-12 h-12 mr-2 rounded-full self-center"
+                        className="w-12 h-12 mr-2 rounded-full self-center "
                       />
                       {item.login}
                     </a>
