@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { FaSearch } from "react-icons/fa";
 
 export default function Search() {
   const [searchValue, setSearchValue] = useState(""); // State to store the value of search input
@@ -59,17 +60,17 @@ export default function Search() {
       {
         id: 6,
         name: "Color Picker",
-        link: "https://web-dev-tools.vercel.app/customizer/colorPicker"
+        link: "https://web-dev-tools.vercel.app/customizer/colorPicker",
       },
       {
         id: 7,
         name: "Mark down Editor",
-        link: "https://web-dev-tools.vercel.app/MD"
-      }
+        link: "https://web-dev-tools.vercel.app/MD",
+      },
     ];
 
     const filteredData = toolList.filter(
-      (item) => item.name.toLowerCase().includes(searchValue.toLowerCase()), // Filter the JSON data based on the search value
+      (item) => item.name.toLowerCase().includes(searchValue.toLowerCase()) // Filter the JSON data based on the search value
     );
     setSearchResults(filteredData); // Update the filtered search results
     setShowDropdown(searchValue !== "" && filteredData.length > 0); // Show the dropdown if search value is not empty and there are filtered results
@@ -86,23 +87,35 @@ export default function Search() {
 
   return (
     <div>
-      <div ref={inputRef}>
-            <input
-                      value={searchValue}
-                      onChange={handleInputChange}
-            type="search" id="search" class="grow outline-none w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded block w-full p-1.5 px-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Search" required />
+      <div
+        ref={inputRef}
+        className="flex items-center justify-center w-full rounded p-1 px-2   dark:bg-gray-700 border-gray-300 dark:border-gray-600"
+      >
+        <FaSearch className="" />
+        <input
+          value={searchValue}
+          onChange={handleInputChange}
+          type="search"
+          id="search"
+          class="grow bg-gray-50 border outline-none border-none  dark:bg-gray-700 text-gray-900 text-sm block w-full p-1.5 px-2   dark:placeholder-gray-400 dark:text-white"
+          placeholder="Search"
+          required
+        />
       </div>
       {showDropdown && (
         <ul
           ref={dropdownRef}
-          className="bg-white border border-gray-300 ml-4 shadow absolute z-10"
+          className="bg-white border border-gray-300 shadow absolute  rounded-sm z-10"
         >
           {searchResults.map((item) => (
             <a href={item.link}>
               <li
                 key={item.id}
-                className="px-4 py-2 text-black hover:bg-gray-100 cursor-pointer"
+                className="px-2 py-2 text-black hover:bg-gray-100 cursor-pointer flex gap-[10px] border-b border-slate-500"
               >
+                <span className="flex items-center justify-between text-slate-700">
+                  <FaSearch />
+                </span>
                 {item.name}
               </li>
             </a>
