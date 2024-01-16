@@ -111,8 +111,11 @@ export default function Search() {
             <a href={item.link}>
               <li
                 key={item.id}
-                className="px-4 py-2 text-black hover:bg-gray-100 cursor-pointer"
+                className="px-2 py-2 text-black hover:bg-gray-100 cursor-pointer flex gap-[10px] border-b border-slate-500"
               >
+                <span className="flex items-center justify-between text-slate-700">
+                  <FaSearch />
+                </span>
                 {item.name}
               </li>
             </a>
