@@ -2,6 +2,7 @@
 import Nav from "./assets/nav";
 import React from "react";
 import { useState, useEffect } from "react";
+import { FaGithub, FaHome } from "react-icons/fa";
 
 export default function Home({ state }) {
   const [contributors, setContributors] = useState([]);
@@ -134,16 +135,18 @@ export default function Home({ state }) {
               <li>
                 <a
                   href="https://web-dev-tools.vercel.app/"
-                  class="mr-4 hover:underline md:mr-6 "
+                  class="mr-4 hover:underline md:mr-6 flex items-center justify-center gap-2"
                 >
+                  <FaHome />
                   Home
                 </a>
               </li>
               <li>
                 <a
                   href="https://github.com/Bashamega/WebDevTools"
-                  class="hover:underline"
+                  class="hover:underline flex items-center justify-center gap-2"
                 >
+                  <FaGithub />
                   Repository
                 </a>
               </li>
