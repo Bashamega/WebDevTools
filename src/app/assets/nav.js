@@ -136,7 +136,7 @@ export default function Nav() {
           About
         </a>
         <a
-          href="#contribute"
+          href="https://github.com/Bashamega/WebDevTools"
           className="text-white font-bold text-[0.6rem]  sm:text-sm  p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
         >
           <IoMdGitPullRequest fontSize={20} />
