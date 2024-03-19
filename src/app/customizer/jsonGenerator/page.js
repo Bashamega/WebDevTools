@@ -5,29 +5,51 @@ import Search from "@/app/assets/search";
 
 export default function JsonGenerator() {
   const [showModal, setShowModal] = useState(false);
+  const [rowNumber, setRowNumber] = useState(10);
   //   const [chosenType, setChosenType] = useState("");
   const [chosenRow, setChosenRow] = useState("");
   const [jsonList, setJsonList] = useState([
     {
       fieldName: "address",
       type: "location.street",
-      typeLabel: "street address",
+      typeLabel: "Street Address",
     },
-    { fieldName: "email", type: "internet.email", typeLabel: "email" },
+    { fieldName: "email", type: "internet.email", typeLabel: "Email" },
   ]);
 
   const fakerListType = [
-    { typeLabel: "email", function: "internet.email" },
-    { typeLabel: "userName", function: "internet.userName" },
-    { typeLabel: "streetAddress", function: "location.streetAddress" },
-    { typeLabel: "date", function: "date.past" },
-    { typeLabel: "text", function: "lorem.sentence" },
-    { typeLabel: "name", function: "person.firstName" },
-    { typeLabel: "phoneNumber", function: "phone.number" },
-    { typeLabel: "companyName", function: "company.catchPhrase" },
-    { typeLabel: "productName", function: "commerce.productName" },
-    { typeLabel: "color", function: "color.human" },
+    { typeLabel: "Email", typedesciption: "", function: "internet.email" },
+    {
+      typeLabel: "User Name",
+      typedesciption: "",
+      function: "internet.userName",
+    },
+    {
+      typeLabel: "Street Address",
+      typedesciption: "",
+      function: "location.streetAddress",
+    },
+    { typeLabel: "Date", typedesciption: "", function: "date.past" },
+    { typeLabel: "Text", typedesciption: "", function: "lorem.sentence" },
+    { typeLabel: "Name", typedesciption: "", function: "person.firstName" },
+    { typeLabel: "Phone Number", typedesciption: "", function: "phone.number" },
+    {
+      typeLabel: "Company Name",
+      typedesciption: "",
+      function: "company.catchPhrase",
+    },
+    {
+      typeLabel: "Product Name",
+      typedesciption: "",
+      function: "commerce.productName",
+    },
+    { typeLabel: "Color", typedesciption: "", function: "color.human" },
   ];
+  const dummy = {
+    fieldName: "address",
+    type: "location.street",
+    typeLabel: "Street Address",
+  };
 
   const onGenerate = () => {
     function generateData(fakerMethod) {
@@ -48,7 +70,7 @@ export default function JsonGenerator() {
     }
     function transformInputData() {
       let combinedData = [];
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < rowNumber; i++) {
         const transformedData = jsonList.map((item) => ({
           [item.fieldName]: generateData(item.type),
         }));
@@ -192,35 +214,67 @@ export default function JsonGenerator() {
                           setShowModal(true);
                         }}
                         type="button"
-                        className="m-1 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                        className="m-1 w-48 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                       >
-                        {item.type.split(".")[1]}
+                        {item.typeLabel}
                       </button>
                     </td>
-                    <td className="px-6 py-4">Silver</td>
+                    <td className="px-6 py-4">
+                      <button
+                        onClick={() => {
+                          setJsonList(
+                            jsonList.filter((obj, index) => index !== i)
+                          );
+                        }}
+                        type="button"
+                        className="m-1 w-48 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                      >
+                        Delete
+                      </button>
+                    </td>
                   </tr>
                 );
               })}
             </tbody>
           </table>
+          <div className="pb-11">
+            <button
+              onClick={() => {
+                setJsonList([...jsonList, dummy]);
+              }}
+              type="button"
+              className="m-2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            >
+              Add Field
+            </button>
+          </div>
         </div>
         <div> {modal()}</div>
       </div>
+
+      {/* the footer */}
       <div className="fixed bottom-0 left-0 right-0 mt-5 bg-slate-700 flex justify-center ">
         <button
           onClick={onGenerate}
           type="button"
-          className="m-1 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+          className="m-2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
         >
           Generate JSON Data
         </button>
-        {/* <button
-          onClick={() => {}}
-          type="button"
-          className="m-1 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-        >
-          Preview
-        </button> */}
+
+        <input
+          placeholder="Row Number"
+          type="number"
+          value={rowNumber}
+          className="m-2 text-black text-center p-2 border border-gray-300 rounded"
+          onChange={(e) => {
+            if (+e.target.value <= 1000) {
+              setRowNumber(+e.target.value);
+            } else {
+              setRowNumber(1000);
+            }
+          }}
+        />
       </div>
     </main>
   );
