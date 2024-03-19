@@ -4,39 +4,49 @@ import React, { useState, useEffect } from "react";
 import Search from "@/app/assets/search";
 
 export default function JsonGenerator() {
-  const [jsonList, setJsonList] = useState([
-    { fieldName: "address", type: "location.street" },
-    { fieldName: "id", type: "location.street" },
-  ]);
   const [showModal, setShowModal] = useState(false);
-  const [chosenType, setChosenType] = useState("");
+  //   const [chosenType, setChosenType] = useState("");
   const [chosenRow, setChosenRow] = useState("");
+  const [jsonList, setJsonList] = useState([
+    {
+      fieldName: "address",
+      type: "location.street",
+      typeLabel: "street address",
+    },
+    { fieldName: "email", type: "internet.email", typeLabel: "email" },
+  ]);
+
+  const fakerListType = [
+    { typeLabel: "email", function: "internet.email" },
+    { typeLabel: "userName", function: "internet.userName" },
+    { typeLabel: "streetAddress", function: "location.streetAddress" },
+    { typeLabel: "date", function: "date.past" },
+    { typeLabel: "text", function: "lorem.sentence" },
+    { typeLabel: "name", function: "person.firstName" },
+    { typeLabel: "phoneNumber", function: "phone.number" },
+    { typeLabel: "companyName", function: "company.catchPhrase" },
+    { typeLabel: "productName", function: "commerce.productName" },
+    { typeLabel: "color", function: "color.human" },
+  ];
 
   const onGenerate = () => {
-    //get all the fieldname into one list
-
     function generateData(fakerMethod) {
-      // Split the faker method string to navigate the faker object
       const methodParts = fakerMethod.split(".");
       let result = faker;
 
-      // Dynamically navigate the faker object based on the methodParts
+      // check the faker object based on the methodParts
       for (const part of methodParts) {
         if (typeof result[part] === "function") {
           result = result[part]();
         } else if (result[part]) {
           result = result[part];
         } else {
-          // Handle case where the specified method does not exist
           throw new Error(`Faker method not found: ${fakerMethod}`);
         }
       }
       return result;
     }
-
     function transformInputData() {
-      // Generate an array of objects, each object containing one key-value pair
-
       let combinedData = [];
       for (let i = 0; i < 10; i++) {
         const transformedData = jsonList.map((item) => ({
@@ -45,11 +55,16 @@ export default function JsonGenerator() {
         combinedData.push(Object.assign({}, ...transformedData));
       }
 
-      // Optional: Combine all objects into a single object if needed
-
       return combinedData;
     }
-    console.log(transformInputData());
+    const data = transformInputData();
+    const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+      JSON.stringify(data)
+    )}`;
+    const link = document.createElement("a");
+    link.href = jsonString;
+    link.download = "data.json";
+    link.click();
   };
 
   const modal = () => {
@@ -65,25 +80,33 @@ export default function JsonGenerator() {
             </div>
 
             <div className="grid grid-cols-3 gap-4">
-              <div
-                onClick={() => {
-                  setJsonList(
-                    jsonList.map((item, index) => {
-                      if (chosenRow === index) {
-                        return { ...item, type: "email" };
-                      }
-                      return item;
-                    })
-                  );
-                  setShowModal(false);
-                }}
-                className="hover:bg-sky-700"
-              >
-                <h2 className="font-semibold text-lg ">email</h2>
-                <p className="text-sm">email</p>
-              </div>
-            </div>
+              {fakerListType.map((obj) => {
+                return (
+                  <div
+                    onClick={() => {
+                      setJsonList(
+                        jsonList.map((item, index) => {
+                          if (chosenRow === index) {
+                            return {
+                              ...item,
+                              type: obj.function,
+                              typeLabel: obj.typeLabel,
+                            };
+                          }
+                          return item;
+                        })
+                      );
 
+                      setShowModal(false);
+                    }}
+                    className="hover:bg-sky-700"
+                  >
+                    <h2 className="font-semibold text-lg ">{obj.typeLabel}</h2>
+                    <p className="text-sm">{obj.typeLabel}</p>
+                  </div>
+                );
+              })}
+            </div>
             <div className="flex justify-end pt-2">
               <button
                 onClick={() => {
@@ -100,7 +123,6 @@ export default function JsonGenerator() {
     );
   };
 
-  useEffect(() => {}, []);
   return (
     <main>
       <nav className="bg-blue-500 py-4 px-6 flex items-center justify-between h-15">
@@ -117,8 +139,8 @@ export default function JsonGenerator() {
       </nav>
 
       <div className="flex justify-center align-top">
-        <div className="relative overflow-x-auto">
-          <table className="m-2 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <div className="flex-1 relative overflow-x-auto m-3">
+          <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" className="px-6 py-3">
@@ -172,7 +194,7 @@ export default function JsonGenerator() {
                         type="button"
                         className="m-1 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                       >
-                        {item.type}
+                        {item.type.split(".")[1]}
                       </button>
                     </td>
                     <td className="px-6 py-4">Silver</td>
@@ -186,21 +208,19 @@ export default function JsonGenerator() {
       </div>
       <div className="fixed bottom-0 left-0 right-0 mt-5 bg-slate-700 flex justify-center ">
         <button
-          onClick={() => {
-            onGenerate();
-          }}
+          onClick={onGenerate}
           type="button"
           className="m-1 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
         >
           Generate JSON Data
         </button>
-        <button
+        {/* <button
           onClick={() => {}}
           type="button"
           className="m-1 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
         >
           Preview
-        </button>
+        </button> */}
       </div>
     </main>
   );
