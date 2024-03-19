@@ -2,11 +2,13 @@
 import { faker } from "@faker-js/faker";
 import React, { useState, useEffect } from "react";
 import Search from "@/app/assets/search";
+import Button from "./components/Button";
+import { fakerListType } from "./constants/fakerConstants";
+import Modal from "./components/Modal";
 
 export default function JsonGenerator() {
   const [showModal, setShowModal] = useState(false);
-  const [rowNumber, setRowNumber] = useState(10);
-  //   const [chosenType, setChosenType] = useState("");
+  const [rowNumber, setRowNumber] = useState("");
   const [chosenRow, setChosenRow] = useState("");
   const [jsonList, setJsonList] = useState([
     {
@@ -17,34 +19,6 @@ export default function JsonGenerator() {
     { fieldName: "email", type: "internet.email", typeLabel: "Email" },
   ]);
 
-  const fakerListType = [
-    { typeLabel: "Email", typedesciption: "", function: "internet.email" },
-    {
-      typeLabel: "User Name",
-      typedesciption: "",
-      function: "internet.userName",
-    },
-    {
-      typeLabel: "Street Address",
-      typedesciption: "",
-      function: "location.streetAddress",
-    },
-    { typeLabel: "Date", typedesciption: "", function: "date.past" },
-    { typeLabel: "Text", typedesciption: "", function: "lorem.sentence" },
-    { typeLabel: "Name", typedesciption: "", function: "person.firstName" },
-    { typeLabel: "Phone Number", typedesciption: "", function: "phone.number" },
-    {
-      typeLabel: "Company Name",
-      typedesciption: "",
-      function: "company.catchPhrase",
-    },
-    {
-      typeLabel: "Product Name",
-      typedesciption: "",
-      function: "commerce.productName",
-    },
-    { typeLabel: "Color", typedesciption: "", function: "color.human" },
-  ];
   const dummy = {
     fieldName: "address",
     type: "location.street",
@@ -87,62 +61,6 @@ export default function JsonGenerator() {
     link.href = jsonString;
     link.download = "data.json";
     link.click();
-  };
-
-  const modal = () => {
-    return (
-      showModal && (
-        <div
-          className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
-          id="my-modal"
-        >
-          <div className="relative top-20 mx-auto p-5 border w-3/4 shadow-lg rounded-md bg-black">
-            <div className="flex justify-between items-center pb-3">
-              <p className="text-2xl font-bold">Choose a Type</p>
-            </div>
-
-            <div className="grid grid-cols-3 gap-4">
-              {fakerListType.map((obj) => {
-                return (
-                  <div
-                    onClick={() => {
-                      setJsonList(
-                        jsonList.map((item, index) => {
-                          if (chosenRow === index) {
-                            return {
-                              ...item,
-                              type: obj.function,
-                              typeLabel: obj.typeLabel,
-                            };
-                          }
-                          return item;
-                        })
-                      );
-
-                      setShowModal(false);
-                    }}
-                    className="hover:bg-sky-700"
-                  >
-                    <h2 className="font-semibold text-lg ">{obj.typeLabel}</h2>
-                    <p className="text-sm">{obj.typeLabel}</p>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="flex justify-end pt-2">
-              <button
-                onClick={() => {
-                  setShowModal(false);
-                }}
-                className="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )
-    );
   };
 
   return (
@@ -208,30 +126,25 @@ export default function JsonGenerator() {
                       />
                     </th>
                     <td className="px-6 py-4">
-                      <button
+                      <Button
                         onClick={() => {
                           setChosenRow(i);
                           setShowModal(true);
                         }}
-                        type="button"
-                        className="m-1 w-48 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                      >
-                        {item.typeLabel}
-                      </button>
+                        title={item.typeLabel}
+                      />
                     </td>
                     <td className="px-6 py-4">
-                      <button
+                      <Button
                         onClick={() => {
                           setJsonList(
                             jsonList.filter((obj, index) => index !== i)
                           );
                         }}
-                        type="button"
-                        className="m-1 w-48 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                      >
-                        Delete
-                      </button>
-                      <button
+                        title={"Delete"}
+                      />
+
+                      <Button
                         onClick={() => {
                           if (i < jsonList.length - 1) {
                             let newArr = [...jsonList];
@@ -242,27 +155,23 @@ export default function JsonGenerator() {
                             setJsonList(newArr);
                           }
                         }}
-                        type="button"
-                        className="m-1 w-20 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                      >
-                        Down
-                      </button>
-                      <button
+                        title={"down"}
+                        size="small"
+                      />
+                      <Button
                         onClick={() => {
                           if (i > 0) {
                             let newArr = [...jsonList];
                             [newArr[i], newArr[i - 1]] = [
                               newArr[i - 1],
                               newArr[i],
-                            ]; // Swap elements
+                            ];
                             setJsonList(newArr);
                           }
                         }}
-                        type="button"
-                        className="m-1 w-20 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                      >
-                        UP
-                      </button>
+                        title={"up"}
+                        size="small"
+                      />
                     </td>
                   </tr>
                 );
@@ -270,18 +179,45 @@ export default function JsonGenerator() {
             </tbody>
           </table>
           <div className="pb-11">
-            <button
+            <Button
               onClick={() => {
                 setJsonList([...jsonList, dummy]);
               }}
-              type="button"
-              className="m-2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-            >
-              Add Field
-            </button>
+              title="Add Field"
+              size="large"
+            />
           </div>
         </div>
-        <div> {modal()}</div>
+
+        <Modal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          content={fakerListType.map((obj) => {
+            return (
+              <div
+                onClick={() => {
+                  setJsonList(
+                    jsonList.map((item, index) => {
+                      if (chosenRow === index) {
+                        return {
+                          ...item,
+                          type: obj.function,
+                          typeLabel: obj.typeLabel,
+                        };
+                      }
+                      return item;
+                    })
+                  );
+                  setShowModal(false);
+                }}
+                className="hover:bg-sky-700"
+              >
+                <h2 className="font-semibold text-lg ">{obj.typeLabel}</h2>
+                <p className="text-sm">{obj.typeDescription}</p>
+              </div>
+            );
+          })}
+        />
       </div>
 
       {/* the footer */}
