@@ -108,7 +108,7 @@ export default function Nav() {
               href="customizer/jsonGenerator"
               className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
             >
-              JsonGenerator
+              JSON Generator
             </a>
           </div>
         )}
