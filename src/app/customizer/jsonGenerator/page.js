@@ -78,19 +78,11 @@ export default function JsonGenerator() {
     //convert the data to json file, and download it to users' browser
     const data = transformInputData();
     setJsonData(data);
-
-    // const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
-    //   JSON.stringify(data)
-    // )}`;
-    // const link = document.createElement("a");
-    // link.href = jsonString;
-    // link.download = "data.json";
-    // link.click();
   };
 
   const onDownload = () => {
+    setShowPreview(false);
     onGenerate();
-
     const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
       JSON.stringify(jsonData)
     )}`;
