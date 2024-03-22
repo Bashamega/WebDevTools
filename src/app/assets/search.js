@@ -67,6 +67,11 @@ export default function Search() {
         name: "Mark down Editor",
         link: "https://web-dev-tools.vercel.app/MD",
       },
+      {
+        id: 8,
+        name: "JSON Generator",
+        link: "https://web-dev-tools.vercel.app/customizer/jsonGenerator",
+      },
     ];
 
     const filteredData = toolList.filter(
