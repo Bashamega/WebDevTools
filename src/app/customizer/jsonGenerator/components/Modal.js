@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const Modal = ({ showModal, content, setShowModal }) => {
+const Modal = ({ showModal, content, setShowModal, title }) => {
   const modal = () => {
     return (
       showModal && (
@@ -12,7 +12,7 @@ const Modal = ({ showModal, content, setShowModal }) => {
         >
           <div className="relative top-20 mx-auto p-5 border w-3/4 shadow-lg rounded-md bg-black">
             <div className="flex justify-between items-center pb-3">
-              <p className="text-2xl font-bold">Choose a Type</p>
+              <p className="text-2xl font-bold">{title}</p>
             </div>
             <div className="grid grid-cols-3 gap-4">{content}</div>
             <div className="flex justify-end pt-2">

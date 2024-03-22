@@ -8,6 +8,7 @@ import Modal from "./components/Modal";
 
 export default function JsonGenerator() {
   const [showModal, setShowModal] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
   //restrict to 1000
   const [rowNumber, setRowNumber] = useState(10);
   const [chosenRow, setChosenRow] = useState("");
@@ -19,11 +20,17 @@ export default function JsonGenerator() {
     },
     { fieldName: "email", type: "internet.email", typeLabel: "Email" },
   ]);
+  const [jsonData, setJsonData] = useState([]);
 
   const dummy = {
     fieldName: "address",
     type: "location.street",
     typeLabel: "Street Address",
+  };
+
+  const onPreview = () => {
+    onGenerate();
+    setShowPreview(true);
   };
 
   const onGenerate = () => {
@@ -70,8 +77,22 @@ export default function JsonGenerator() {
     }
     //convert the data to json file, and download it to users' browser
     const data = transformInputData();
+    setJsonData(data);
+
+    // const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+    //   JSON.stringify(data)
+    // )}`;
+    // const link = document.createElement("a");
+    // link.href = jsonString;
+    // link.download = "data.json";
+    // link.click();
+  };
+
+  const onDownload = () => {
+    onGenerate();
+
     const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
-      JSON.stringify(data)
+      JSON.stringify(jsonData)
     )}`;
     const link = document.createElement("a");
     link.href = jsonString;
@@ -208,6 +229,37 @@ export default function JsonGenerator() {
           </div>
         </div>
         <Modal
+          title={"Preview the Json File"}
+          showModal={showPreview}
+          setShowModal={setShowPreview}
+          // content={<pre>{JSON.stringify(jsonData, null, 2)}</pre>}
+          content={
+            <div>
+              <div className="flex flex-row">
+                <h1 className="italic m-5">
+                  Below is the first 100 lines of code:
+                </h1>
+                <Button
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      JSON.stringify(jsonData, null, 2)
+                    );
+                  }}
+                  title={"Copy"}
+                  size={"small"}
+                />
+              </div>
+              <pre>
+                {JSON.stringify(jsonData, null, 2)
+                  .split("\n")
+                  .slice(0, 100)
+                  .join("\n")}
+              </pre>
+            </div>
+          }
+        />
+        <Modal
+          title={"Choose a Type"}
           showModal={showModal}
           setShowModal={setShowModal}
           content={fakerListType.map((obj) => {
@@ -240,13 +292,12 @@ export default function JsonGenerator() {
 
       {/* the footer */}
       <div className="fixed bottom-0 left-0 right-0 mt-5 bg-slate-700 flex justify-center ">
-        <button
-          onClick={onGenerate}
-          type="button"
-          className="m-2 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-        >
-          Generate JSON Data
-        </button>
+        <Button
+          onClick={onDownload}
+          title={"Generate JSON Data"}
+          size="large"
+        />
+        <Button onClick={onPreview} title={"Preview"} size="large" />
         <div></div>
         <div className="mt-4">Row Number:</div>
         <input
