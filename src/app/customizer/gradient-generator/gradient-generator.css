@@ -1,0 +1,23 @@
+div[data-rbd-droppable-id="droppable"]::-webkit-scrollbar {
+  height: 4px;
+}
+
+div[data-rbd-droppable-id="droppable"]::-webkit-scrollbar-thumb {
+  background-color: rgb(90, 105, 135);
+  border-radius: 20px;
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  border: none;
+  width: 50px;
+  height: 40px;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
