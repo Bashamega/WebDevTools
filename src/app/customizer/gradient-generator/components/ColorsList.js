@@ -23,7 +23,7 @@ const getListStyle = (isDraggingOver) => ({
   display: "flex",
   padding: grid,
   paddingLeft: 10,
-  paddingBottom: 30,
+  paddingBottom: 45,
   overflow: "auto",
   overflowY: "hidden",
 });
@@ -51,6 +51,24 @@ const ColorsList = ({ colorsList, setColorsList }) => {
               style={getListStyle(snapshot.isDraggingOver)}
               {...provided.droppableProps}
             >
+              <div className="rounded-lg border-[3px] border-gray-900 shadow-[0px_0px_1px_2px_#5B656F] hover:shadow-[0px_0px_1px_2px_#9CA8B4] flex justify-center items-center min-w-[84px] min-h-[84px] mr-[15px]">
+                <button
+                  className="outline-none text-white rounded-full justify-center items-center text-4xl font-thin h-full w-full active:scale-75 transition-all duration-300 ease-in-out "
+                  onClick={() =>
+                    setColorsList([
+                      ...colorsList,
+                      {
+                        id: `item-${new Date().getTime().toString()}`,
+                        color: "#3b82f6",
+                        position: "50%",
+                      },
+                    ])
+                  }
+                >
+                  +
+                </button>
+              </div>
+
               {colorsList.map((item, index) => (
                 <Draggable key={item.id} draggableId={item.id} index={index}>
                   {(provided, snapshot) => (
@@ -69,10 +87,10 @@ const ColorsList = ({ colorsList, setColorsList }) => {
                         <svg
                           stroke="currentColor"
                           fill="none"
-                          stroke-width="2"
+                          strokeWidth="2"
                           viewBox="0 0 24 24"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <circle cx="12" cy="9" r="1"></circle>
@@ -94,39 +112,41 @@ const ColorsList = ({ colorsList, setColorsList }) => {
                         }}
                       />
 
-                      <button
-                        onClick={() => {
-                          if (colorsList.length === 1) return;
-                          const newItems = [...colorsList];
-                          newItems.splice(index, 1);
-                          setColorsList(newItems);
-                        }}
-                        className="absolute -bottom-7 left-1/2 transform -translate-x-1/2 bg-transparent outline-none text-neutral-400 hover:text-white px-2 py-1 rounded-full w-5 h-5 justify-center items-center text-2xl font-normal flex opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
-                      >
-                        &times;
-                      </button>
+                      <div className="absolute -bottom-11 left-1/2 transform -translate-x-1/2 flex justify-center items-center flex-col w-full">
+                        <div className="w-full max-w-xs mx-auto">
+                          <div className="text-center text-xs">
+                            {item.position}
+                          </div>
+                          <input
+                            type="range"
+                            min="0"
+                            max="100"
+                            value={item.position}
+                            onChange={(e) => {
+                              const newItems = [...colorsList];
+                              newItems[index].position = e.target.value;
+                              setColorsList(newItems);
+                            }}
+                            className="w-full h-1 bg-gray-200 rounded-full appearance-none focus:outline-none"
+                          />
+                        </div>
+
+                        <button
+                          onClick={() => {
+                            if (colorsList.length === 1) return;
+                            const newItems = [...colorsList];
+                            newItems.splice(index, 1);
+                            setColorsList(newItems);
+                          }}
+                          className="bg-transparent outline-none text-neutral-400 hover:text-white px-2 py-1 rounded-full w-5 h-5 justify-center items-center text-2xl font-normal flex opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
+                        >
+                          &times;
+                        </button>
+                      </div>
                     </div>
                   )}
                 </Draggable>
               ))}
-
-              <div className="rounded-lg border-[3px] border-gray-900 shadow-[0px_0px_1px_2px_#5B656F] hover:shadow-[0px_0px_1px_2px_#9CA8B4] flex justify-center items-center min-w-[84px] min-h-[84px]">
-                <button
-                  className="outline-none text-white rounded-full justify-center items-center text-4xl font-thin h-full w-full active:scale-75 transition-all duration-300 ease-in-out "
-                  onClick={() =>
-                    setColorsList([
-                      ...colorsList,
-                      {
-                        id: `item-${new Date().getTime().toString()}`,
-                        color: "#3b82f6",
-                      },
-                    ])
-                  }
-                >
-                  +
-                </button>
-              </div>
-
               {provided.placeholder}
             </div>
           )}
