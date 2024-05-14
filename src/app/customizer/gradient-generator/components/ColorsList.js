@@ -60,7 +60,7 @@ const ColorsList = ({ colorsList, setColorsList }) => {
                       {
                         id: `item-${new Date().getTime().toString()}`,
                         color: "#3b82f6",
-                        position: "50%",
+                        position: 50,
                       },
                     ])
                   }

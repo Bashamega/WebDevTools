@@ -1,6 +1,6 @@
 "use client";
 import Nav from "@/app/assets/nav";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaGithub, FaHome, FaCheck, FaChevronDown } from "react-icons/fa";
 import {
   Listbox,
@@ -60,6 +60,8 @@ const GradientGenerator = () => {
   const [gradientRotation, setGradientRotation] = useState(
     gradientRotations[0]
   );
+  const colorsListRef = useRef(colorsList);
+  const gradientRef = useRef(gradient);
 
   const generateRandomColor = () => {
     return (
@@ -79,26 +81,50 @@ const GradientGenerator = () => {
     return items;
   };
 
+  // update the colorsListRef whenever colorsList changes
   useEffect(() => {
-    console.log(colorsList);
-    let newGrad = colorsList
+    colorsListRef.current = colorsList;
+  }, [colorsList]);
+
+  // update the gradientRef whenever gradient changes
+  useEffect(() => {
+    gradientRef.current = gradient;
+  }, [gradient]);
+
+  useEffect(() => {
+    console.log(colorsListRef.current);
+    let newGrad = colorsListRef.current
       .map((color, index) => {
         return `${color.color} ${color.position}%`;
       })
       .join(", ");
 
-    if (gradientType.value === "linear-gradient") {
-      setGradient(
-        `${gradientType.value}(${gradientRotation.value}deg, ${newGrad})`
-      );
-    } else if (gradientType.value === "conic-gradient") {
-      setGradient(
-        `${gradientType.value}(from ${gradientRotation.value}deg, ${newGrad})`
-      );
-    } else {
-      setGradient(`${gradientType.value}(${newGrad})`);
+    if (colorsListRef.current.length > 0) {
+      if (colorsListRef.current.length == 1) {
+        setGradient(`${colorsListRef.current[0].color}`);
+        gradientRef.current = `${colorsListRef.current[0].color}`;
+        console.log("object yes");
+      } else {
+        console.log("object no");
+        if (gradientType.value === "linear-gradient") {
+          setGradient(
+            `${gradientType.value}(${gradientRotation.value}deg, ${newGrad})`
+          );
+          gradientRef.current = `${gradientType.value}(${gradientRotation.value}deg, ${newGrad})`;
+        } else if (gradientType.value === "conic-gradient") {
+          setGradient(
+            `${gradientType.value}(from ${gradientRotation.value}deg, ${newGrad})`
+          );
+          gradientRef.current = `${gradientType.value}(from ${gradientRotation.value}deg, ${newGrad})`;
+        } else {
+          setGradient(`${gradientType.value}(${newGrad})`);
+          gradientRef.current = `${gradientType.value}(${newGrad})`;
+        }
+      }
     }
+
     console.log(gradient);
+    console.log(gradientRef);
     console.log(colorsList);
   }, [colorsList, gradientType, gradientPosition, gradientRotation]);
 
@@ -411,8 +437,10 @@ const GradientGenerator = () => {
           <div
             className={`w-1/2 h-auto rounded-xl`}
             style={{
-              // background: `${colorsList.length > 1 && colorsList[0].color}`,
-              backgroundImage: `${gradient}`,
+              background:
+                colorsListRef.current.length > 0 && gradientRef.current,
+              backgroundImage:
+                colorsListRef.current.length > 0 && gradientRef.current,
             }}
           ></div>
         </div>
