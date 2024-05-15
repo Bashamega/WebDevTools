@@ -1,16 +1,13 @@
 "use client";
 import Nav from "@/app/assets/nav";
 import React, { useEffect, useRef, useState } from "react";
-import { FaGithub, FaHome, FaCheck, FaChevronDown } from "react-icons/fa";
-import {
-  Listbox,
-  ListboxButton,
-  ListboxOption,
-  ListboxOptions,
-  Transition,
-} from "@headlessui/react";
+import { FaGithub, FaHome, FaExpandArrowsAlt } from "react-icons/fa";
 import ColorsList from "./components/ColorsList";
 import "./gradient-generator.css";
+import CopyCSSModal from "./components/CopyCSSModal";
+import GradientType from "./components/GradientType";
+import GradientRotation from "./components/GradientRotation";
+import GradientFullScreen from "./components/GradientFullScreen";
 
 const people = [
   { id: 1, name: "Tom Cook" },
@@ -65,24 +62,8 @@ const GradientGenerator = () => {
   );
   const colorsListRef = useRef(colorsList);
   const gradientRef = useRef(gradient);
-
-  const generateRandomColor = () => {
-    return (
-      "#" + ((Math.random() * 0xffffff) << 0).toString(16).padStart(6, "0")
-    );
-  };
-
-  const getItems = (count) => {
-    let items = [];
-    for (let i = 0; i < count; i++) {
-      items.push({
-        id: `item-${new Date().getTime().toString()}`,
-        color: generateRandomColor(),
-      });
-    }
-    console.log(items);
-    return items;
-  };
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const [copyCSSModal, setCopyCSSModal] = useState(false);
 
   // update the colorsListRef whenever colorsList changes
   useEffect(() => {
@@ -95,7 +76,6 @@ const GradientGenerator = () => {
   }, [gradient]);
 
   useEffect(() => {
-    console.log(colorsListRef.current);
     let newGrad = colorsListRef.current
       .map((color, index) => {
         return `${color.color} ${color.position}%`;
@@ -125,21 +105,91 @@ const GradientGenerator = () => {
     }
   }, [colorsList, gradientType, gradientPosition, gradientRotation]);
 
+  const generateRandomGradient = () => {
+    function createHex() {
+      var hexCode1 = "";
+      var hexValues1 = "0123456789abcdef";
+
+      for (var i = 0; i < 6; i++) {
+        hexCode1 += hexValues1.charAt(
+          Math.floor(Math.random() * hexValues1.length)
+        );
+      }
+      return hexCode1;
+    }
+
+    var deg = Math.floor(Math.random() * 360);
+    const randomNoOfColors = Math.floor(Math.random() * 4) + 2; // generate random number of colors between 1 and 4
+    var gradient = "";
+    var colors = [];
+
+    for (var i = 0; i < randomNoOfColors; i++) {
+      colors.push({
+        id: `item_${i + 1}`,
+        color: "#" + createHex(),
+        position: i * 100,
+      });
+    }
+
+    colors.sort((a, b) => a.position - b.position);
+
+    colors.forEach((color, index) => {
+      gradient += `${color.color} ${color.position}%${
+        index < colors.length - 1 ? ", " : ""
+      }`;
+    });
+
+    setGradient(`linear-gradient(${deg}deg, ${gradient})`);
+    gradientRef.current = `linear-gradient(${deg}deg, ${gradient})`;
+    setColorsList(colors);
+    setGradientRotation({
+      id: gradientRotations.length + 1,
+      name: `${deg}°`,
+      value: deg,
+    });
+
+    // setGradient(gradient);
+    // gradientRef.current = gradient;
+    // setColorsList([
+    //   {
+    //     id: 1,
+    //     color: "#" + createHex(),
+    //     position: 0,
+    //   },
+    //   {
+    //     id: 2,
+    //     color: "#" + createHex(),
+    //     position: 100,
+    //   },
+    // ]);
+  };
+
   return (
     <main className="" class="bg-gray-900">
       <title>Web dev tools</title>
       <Nav></Nav>
       <div class="flex justify-center flex-col items-center w-full">
         <div className="flex flex-col gap-3 mt-10 items-center">
-          <h1 className="text-5xl font-extrabold">Gradient Generator</h1>
-          <p className="text-slate-400">
+          <h1 className="text-5xl font-extrabold text-center">
+            Gradient Generator
+          </h1>
+          <p className="text-slate-400 text-center">
             Create and export beautiful gradients.
           </p>
         </div>
 
-        <div className="flex justify-between flex-col md:flex-row mb-[100px] mt-[50px] w-full max-w-6xl mx-auto gap-8">
+        {copyCSSModal && (
+          <CopyCSSModal
+            colorsListRef={colorsListRef}
+            gradientRef={gradientRef}
+            setCopyCSSModal={setCopyCSSModal}
+            key={colorsListRef.current.length}
+          />
+        )}
+
+        <div className="flex justify-between flex-col md:flex-row mb-[100px] mt-[50px] w-full max-w-6xl mx-auto gap-8 px-4">
           {/* generator maker */}
-          <div className="w-1/2 p-5 rounded-xl bg-gray-800 shadow-lg">
+          <div className="md:w-1/2 w-full p-5 rounded-xl bg-gray-800 shadow-lg md:order-1 order-2">
             <div className="mb-4">
               <ColorsList
                 colorsList={colorsList}
@@ -148,164 +198,66 @@ const GradientGenerator = () => {
             </div>
 
             <div className="flex justify-between items-center gap-4 mb-6">
-              <div className="w-full relative">
-                <div className="mb-2 flex justify-between items-center">
-                  <label className="text-xs">Type</label>
-                </div>
-
-                <Listbox value={gradientType} onChange={setGradientType}>
-                  <ListboxButton
-                    className="relative block w-full rounded-lg bg-gray-700 py-3 pr-8 pl-3 text-left text-sm/6 text-white
-                      focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
-                  >
-                    {gradientType.name}
-                    <FaChevronDown
-                      className="group pointer-events-none absolute top-[18px] right-2.5 text-xs fill-white"
-                      aria-hidden="true"
-                    />
-                  </ListboxButton>
-                  <Transition
-                    leave="transition ease-in duration-100"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
-                  >
-                    <ListboxOptions
-                      anchor="bottom"
-                      className="w-[var(--button-width)] rounded-xl border border-white/5 bg-gray-700 p-1 focus:outline-none"
-                    >
-                      {gradientTypes.map((grad) => (
-                        <ListboxOption
-                          key={grad.name}
-                          value={grad}
-                          className={`group flex cursor-default items-center gap-2 rounded-lg py-1.5 px-3 select-none ${
-                            gradientType.id == grad.id
-                              ? "bg-blue-500 bg-opacity-20"
-                              : "data-[focus]:bg-white/10"
-                          }`}
-                        >
-                          <FaCheck
-                            className={`invisible text-xs ${
-                              gradientType.id == grad.id
-                                ? "fill-blue-500"
-                                : "fill-white"
-                            } group-data-[selected]:visible`}
-                          />
-                          <div
-                            className={`text-sm/6 ${
-                              gradientType.id == grad.id
-                                ? "text-blue-500"
-                                : "text-white"
-                            }`}
-                          >
-                            {grad.name}
-                          </div>
-                        </ListboxOption>
-                      ))}
-                    </ListboxOptions>
-                  </Transition>
-                </Listbox>
-              </div>
-
-              <div className="w-full relative">
-                <div className="mb-2 flex justify-between items-center">
-                  <label className="text-xs">Rotation °</label>
-                </div>
-
-                <div className="flex items-center rounded-lg bg-gray-700 p-3 text-left text-sm/6 text-white">
-                  <div className="flex-1">
-                    <input
-                      type="number"
-                      placeholder="Rotation"
-                      className="outline-none bg-transparent pr-2 w-full text-center"
-                      value={gradientRotation.value}
-                      onChange={(e) => {
-                        setGradientRotation({
-                          id: gradientRotations.length + 1,
-                          name: `${e.target.value}°`,
-                          value: e.target.value,
-                        });
-                      }}
-                    />
-                  </div>
-
-                  <Listbox
-                    value={gradientRotation}
-                    onChange={setGradientRotation}
-                  >
-                    <ListboxButton className="relative block focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25 w-8 h-6 text-center">
-                      <FaChevronDown
-                        className="group pointer-events-none absolute top-1.5 right-0 text-xs fill-white"
-                        aria-hidden="true"
-                      />
-                    </ListboxButton>
-                    <Transition
-                      leave="transition ease-in duration-100"
-                      leaveFrom="opacity-100"
-                      leaveTo="opacity-0"
-                    >
-                      <ListboxOptions
-                        anchor="bottom"
-                        className="w-fit rounded-xl border border-white/5 bg-gray-700 p-1 focus:outline-none"
-                      >
-                        {gradientRotations.map((rot) => (
-                          <ListboxOption
-                            key={rot.name}
-                            value={rot}
-                            className={`group flex cursor-default items-center gap-2 rounded-lg py-1.5 px-3 select-none ${
-                              gradientRotation.id == rot.id
-                                ? "bg-blue-500 bg-opacity-20"
-                                : "data-[focus]:bg-white/10"
-                            }`}
-                          >
-                            <FaCheck
-                              className={`invisible text-xs ${
-                                gradientRotation.id == rot.id
-                                  ? "fill-blue-500"
-                                  : "fill-white"
-                              } group-data-[selected]:visible`}
-                            />
-                            <div
-                              className={`text-sm/6 ${
-                                gradientRotation.id == rot.id
-                                  ? "text-blue-500"
-                                  : "text-white"
-                              }`}
-                            >
-                              {rot.name}
-                            </div>
-                          </ListboxOption>
-                        ))}
-                      </ListboxOptions>
-                    </Transition>
-                  </Listbox>
-                </div>
-              </div>
+              <GradientType
+                gradientType={gradientType}
+                gradientTypes={gradientTypes}
+                setGradientType={setGradientType}
+              />
+              <GradientRotation
+                gradientRotation={gradientRotation}
+                gradientRotations={gradientRotations}
+                setGradientRotation={setGradientRotation}
+              />
             </div>
 
             <div className="flex justify-between items-center gap-4 mt-12">
               <div className="w-full relative">
-                <button className="rounded-lg bg-gray-700 p-3 text-md font-semibold text-white w-full text-center border outline-none border-gray-600 active:scale-95 transition-transform duration-200">
+                <button
+                  className="rounded-lg bg-gray-700 p-3 text-md font-semibold text-white w-full text-center border outline-none border-gray-600 active:scale-95 transition-transform duration-200"
+                  onClick={generateRandomGradient}
+                >
                   Random
                 </button>
               </div>
 
               <div className="w-full relative">
-                <button className="rounded-lg bg-blue-600 p-3 text-md font-semibold text-white w-full text-center border outline-none border-blue-600 active:scale-95 transition-transform duration-200">
+                <button
+                  className="rounded-lg bg-blue-600 p-3 text-md font-semibold text-white w-full text-center border outline-none border-blue-600 active:scale-95 transition-transform duration-200"
+                  onClick={() => setCopyCSSModal(true)}
+                >
                   Copy CSS
                 </button>
               </div>
             </div>
           </div>
           <div
-            className={`w-1/2 h-auto rounded-xl`}
+            className={`md:w-1/2 w-full md:h-auto h-[250px] rounded-xl md:order-2 order-1 relative`}
             style={{
               background:
                 colorsListRef.current.length > 0 && gradientRef.current,
               backgroundImage:
                 colorsListRef.current.length > 0 && gradientRef.current,
             }}
-          ></div>
+          >
+            {colorsListRef.current.length > 0 && (
+              <button
+                className="absolute right-2 top-2"
+                onClick={() => setIsFullScreen(!isFullScreen)}
+              >
+                <FaExpandArrowsAlt className="text-white text-base font-normal" />
+              </button>
+            )}
+          </div>
         </div>
+
+        {isFullScreen && (
+          <GradientFullScreen
+            colorsListRef={colorsListRef}
+            gradientRef={gradientRef}
+            isFullScreen={isFullScreen}
+            setIsFullScreen={setIsFullScreen}
+          />
+        )}
 
         <footer class="w-[26rem] md:w-[40rem] max-w-full bg-white rounded-lg shadow m-4 dark:bg-gray-800">
           <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const reorder = (list, startIndex, endIndex) => {
@@ -120,7 +120,7 @@ const ColorsList = ({ colorsList, setColorsList }) => {
                           <input
                             type="range"
                             min="0"
-                            max="100"
+                            // max="100"
                             value={item.position}
                             onChange={(e) => {
                               const newItems = [...colorsList];
