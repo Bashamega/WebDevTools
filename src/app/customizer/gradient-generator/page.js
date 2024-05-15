@@ -23,6 +23,9 @@ const gradientTypes = [
   { id: 1, name: "Linear", value: "linear-gradient" },
   { id: 2, name: "Radial", value: "radial-gradient" },
   { id: 3, name: "Conic", value: "conic-gradient" },
+  { id: 4, name: "Repeating Linear", value: "repeating-linear-gradient" },
+  { id: 5, name: "Repeating Radial", value: "repeating-radial-gradient" },
+  { id: 6, name: "Repeating Conic", value: "repeating-conic-gradient" },
 ];
 const gradientPositions = [
   { id: 1, name: "0%", value: 0 },
@@ -103,9 +106,7 @@ const GradientGenerator = () => {
       if (colorsListRef.current.length == 1) {
         setGradient(`${colorsListRef.current[0].color}`);
         gradientRef.current = `${colorsListRef.current[0].color}`;
-        console.log("object yes");
       } else {
-        console.log("object no");
         if (gradientType.value === "linear-gradient") {
           setGradient(
             `${gradientType.value}(${gradientRotation.value}deg, ${newGrad})`
@@ -122,10 +123,6 @@ const GradientGenerator = () => {
         }
       }
     }
-
-    console.log(gradient);
-    console.log(gradientRef);
-    console.log(colorsList);
   }, [colorsList, gradientType, gradientPosition, gradientRotation]);
 
   return (
@@ -211,16 +208,23 @@ const GradientGenerator = () => {
 
               <div className="w-full relative">
                 <div className="mb-2 flex justify-between items-center">
-                  <label className="text-xs">Rotation</label>
+                  <label className="text-xs">Rotation °</label>
                 </div>
 
                 <div className="flex items-center rounded-lg bg-gray-700 p-3 text-left text-sm/6 text-white">
                   <div className="flex-1">
                     <input
-                      type="text"
-                      placeholder="Color 1"
+                      type="number"
+                      placeholder="Rotation"
                       className="outline-none bg-transparent pr-2 w-full text-center"
-                      value="176°"
+                      value={gradientRotation.value}
+                      onChange={(e) => {
+                        setGradientRotation({
+                          id: gradientRotations.length + 1,
+                          name: `${e.target.value}°`,
+                          value: e.target.value,
+                        });
+                      }}
                     />
                   </div>
 
@@ -268,148 +272,6 @@ const GradientGenerator = () => {
                               }`}
                             >
                               {rot.name}
-                            </div>
-                          </ListboxOption>
-                        ))}
-                      </ListboxOptions>
-                    </Transition>
-                  </Listbox>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center gap-4 mb-6">
-              <div className="w-full relative">
-                <div className="mb-2 flex justify-between items-center">
-                  <label className="text-xs">Position</label>
-                </div>
-
-                <div className="flex items-center rounded-lg bg-gray-700 p-3 text-left text-sm/6 text-white">
-                  <div className="flex-1">
-                    <input
-                      type="text"
-                      placeholder="Position"
-                      className="outline-none bg-transparent pr-2 w-full text-center"
-                      value={gradientPosition.value}
-                      onChange={(e) => {
-                        setGradientPosition({
-                          id: gradientPositions.length + 1,
-                          name: `${e.target.value}%`,
-                          value: e.target.value,
-                        });
-                      }}
-                    />
-                  </div>
-
-                  <Listbox
-                    value={gradientPosition}
-                    onChange={setGradientPosition}
-                  >
-                    <ListboxButton className="relative block focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25 w-8 h-6 text-center">
-                      <FaChevronDown
-                        className="group pointer-events-none absolute top-1.5 right-0 text-xs fill-white"
-                        aria-hidden="true"
-                      />
-                    </ListboxButton>
-                    <Transition
-                      leave="transition ease-in duration-100"
-                      leaveFrom="opacity-100"
-                      leaveTo="opacity-0"
-                    >
-                      <ListboxOptions
-                        anchor="bottom"
-                        className="w-fit rounded-xl border border-white/5 bg-gray-700 p-1 focus:outline-none"
-                      >
-                        {gradientPositions.map((pos) => (
-                          <ListboxOption
-                            key={pos.name}
-                            value={pos}
-                            className={`group flex cursor-default items-center gap-2 rounded-lg py-1.5 px-3 select-none ${
-                              gradientPosition.id == pos.id
-                                ? "bg-blue-500 bg-opacity-20"
-                                : "data-[focus]:bg-white/10"
-                            }`}
-                          >
-                            <FaCheck
-                              className={`invisible text-xs ${
-                                gradientPosition.id == pos.id
-                                  ? "fill-blue-500"
-                                  : "fill-white"
-                              } group-data-[selected]:visible`}
-                            />
-                            <div
-                              className={`text-sm/6 ${
-                                gradientPosition.id == pos.id
-                                  ? "text-blue-500"
-                                  : "text-white"
-                              }`}
-                            >
-                              {pos.name}
-                            </div>
-                          </ListboxOption>
-                        ))}
-                      </ListboxOptions>
-                    </Transition>
-                  </Listbox>
-                </div>
-              </div>
-
-              <div className="w-full relative">
-                <div className="mb-2 flex justify-between items-center">
-                  <label className="text-xs">Rotation</label>
-                </div>
-
-                <div className="flex items-center rounded-lg bg-gray-700 p-3 text-left text-sm/6 text-white">
-                  <div className="flex-1">
-                    <input
-                      type="text"
-                      placeholder="Color 1"
-                      className="outline-none bg-transparent pr-2 w-full text-center"
-                      value="176°"
-                    />
-                  </div>
-
-                  <Listbox value={selected} onChange={setSelected}>
-                    <ListboxButton className="relative block focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25 w-8 h-6 text-center">
-                      <FaChevronDown
-                        className="group pointer-events-none absolute top-1.5 right-0 text-xs fill-white"
-                        aria-hidden="true"
-                      />
-                    </ListboxButton>
-                    <Transition
-                      leave="transition ease-in duration-100"
-                      leaveFrom="opacity-100"
-                      leaveTo="opacity-0"
-                    >
-                      <ListboxOptions
-                        anchor="bottom"
-                        className="w-fit rounded-xl border border-white/5 bg-gray-700 p-1 focus:outline-none"
-                      >
-                        {people.map((person) => (
-                          <ListboxOption
-                            key={person.name}
-                            value={person}
-                            className={`group flex cursor-default items-center gap-2 rounded-lg py-1.5 px-3 select-none ${
-                              selected.id == person.id
-                                ? "bg-blue-500 bg-opacity-20"
-                                : "data-[focus]:bg-white/10"
-                            }`}
-                          >
-                            <FaCheck
-                              className={`invisible text-xs ${
-                                selected.id == person.id
-                                  ? "fill-blue-500"
-                                  : "fill-white"
-                              } group-data-[selected]:visible`}
-                            />
-                            <div
-                              className={`text-sm/6 ${
-                                selected.id == person.id
-                                  ? "text-blue-500"
-                                  : "text-white"
-                              }`}
-                            >
-                              {person.name}
                             </div>
                           </ListboxOption>
                         ))}

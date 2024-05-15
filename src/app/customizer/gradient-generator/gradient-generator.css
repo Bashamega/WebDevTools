@@ -1,3 +1,7 @@
+div[data-rbd-droppable-id="droppable"] {
+  padding-bottom: 60px !important;
+}
+
 div[data-rbd-droppable-id="droppable"]::-webkit-scrollbar {
   height: 4px;
 }

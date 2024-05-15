@@ -112,7 +112,7 @@ const ColorsList = ({ colorsList, setColorsList }) => {
                         }}
                       />
 
-                      <div className="absolute -bottom-11 left-1/2 transform -translate-x-1/2 flex justify-center items-center flex-col w-full">
+                      <div className="absolute -bottom-13 left-1/2 transform -translate-x-1/2 flex justify-center items-center flex-col w-full">
                         <div className="w-full max-w-xs mx-auto">
                           <div className="text-center text-xs">
                             {item.position}
@@ -138,7 +138,7 @@ const ColorsList = ({ colorsList, setColorsList }) => {
                             newItems.splice(index, 1);
                             setColorsList(newItems);
                           }}
-                          className="bg-transparent outline-none text-neutral-400 hover:text-white px-2 py-1 rounded-full w-5 h-5 justify-center items-center text-2xl font-normal flex opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
+                          className="bg-transparent mt-1 outline-none text-neutral-400 hover:text-white px-2 py-1 rounded-full w-5 h-5 justify-center items-center text-2xl font-normal flex opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
                         >
                           &times;
                         </button>
