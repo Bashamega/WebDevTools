@@ -71,8 +71,16 @@ export default function Nav() {
         {isDropdownOpen && (
           <div
             ref={dropdownRef}
-            className="absolute right-0 mt-2 py-2 bg-white rounded shadow-lg z-75 w-40"
+            className="absolute right-0 mt-2 py-2 bg-white rounded shadow-lg w-40"
+            style={{ zIndex: 100 }}
           >
+            <a
+              href="customizer/gradient-generator"
+              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+            >
+              CSS Gradient Generator
+            </a>
+            <hr />
             <a
               href="customizer/button"
               className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
