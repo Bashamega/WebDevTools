@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from "sweetalert2";
 
 const CopyCSSModal = ({ gradientRef, colorsListRef, setCopyCSSModal }) => {
   const copyCSSCode = async () => {
@@ -32,7 +33,12 @@ const CopyCSSModal = ({ gradientRef, colorsListRef, setCopyCSSModal }) => {
     try {
       if (navigator.clipboard) {
         await navigator.clipboard.writeText(data);
-        alert("Copied to clipboard!");
+        Swal.fire({
+          title: "Good job!",
+          text: "CSS code copied to clipboard!",
+          icon: "success",
+          confirmButtonColor: "#2563EB",
+        });
       } else {
         var textArea = document.createElement("textarea");
         textArea.style.position = "fixed";
@@ -49,11 +55,22 @@ const CopyCSSModal = ({ gradientRef, colorsListRef, setCopyCSSModal }) => {
         document.execCommand("copy");
         document.body.removeChild(textArea);
 
-        alert("Copied to clipboard!");
+        Swal.fire({
+          title: "Good job!",
+          text: "CSS code copied to clipboard!",
+          icon: "success",
+          confirmButtonColor: "#2563EB",
+        });
       }
     } catch (error) {
       console.log(error);
-      alert("Failed to cop. Please try again.");
+      Swal.fire({
+        title: "Oops!",
+        text: "Something went wrong!",
+        icon: "error",
+      });
+    } finally {
+      setCopyCSSModal(false);
     }
   };
 

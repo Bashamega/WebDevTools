@@ -8,6 +8,7 @@ import CopyCSSModal from "./components/CopyCSSModal";
 import GradientType from "./components/GradientType";
 import GradientRotation from "./components/GradientRotation";
 import GradientFullScreen from "./components/GradientFullScreen";
+import Swal from "sweetalert2";
 
 const people = [
   { id: 1, name: "Tom Cook" },
@@ -164,6 +165,20 @@ const GradientGenerator = () => {
     // ]);
   };
 
+  const handleCopyCSSClick = () => {
+    if (colorsListRef.current.length < 1) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please generate a gradient first!",
+        confirmButtonColor: "#2563EB",
+      });
+      return;
+    }
+
+    setCopyCSSModal(true);
+  };
+
   return (
     <main className="" class="bg-gray-900">
       <title>Web dev tools</title>
@@ -223,7 +238,7 @@ const GradientGenerator = () => {
               <div className="w-full relative">
                 <button
                   className="rounded-lg bg-blue-600 p-3 text-md font-semibold text-white w-full text-center border outline-none border-blue-600 active:scale-95 transition-transform duration-200"
-                  onClick={() => setCopyCSSModal(true)}
+                  onClick={() => handleCopyCSSClick()}
                 >
                   Copy CSS
                 </button>
