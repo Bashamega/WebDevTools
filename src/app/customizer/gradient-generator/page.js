@@ -1,5 +1,5 @@
 "use client";
-import Nav from "@/app/assets/nav";
+import Search from "@/app/assets/search";
 import React, { useEffect, useRef, useState } from "react";
 import { FaGithub, FaHome, FaExpandArrowsAlt } from "react-icons/fa";
 import ColorsList from "./components/ColorsList";
