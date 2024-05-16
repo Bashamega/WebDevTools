@@ -42,6 +42,29 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Adding a New Feature
+
+If you'd like to add a new feature, please follow these steps:
+
+1. Create a new branch for your feature:
+
+   `git checkout -b feature/your-feature-yourname`
+
+   Example:
+
+   `git checkout -b feature/css-gradient-johar`
+
+2. Implement your feature within the branch.
+3. Once your feature is ready, push the branch to the repository:
+
+   `git push origin feature/your-feature-yourname`
+
+   Example:
+
+   `git push origin feature/css-gradient-johar`
+
+4. Submit a pull request for your changes to be reviewed and merged into the main branch.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
