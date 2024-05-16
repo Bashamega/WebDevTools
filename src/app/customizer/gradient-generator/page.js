@@ -167,7 +167,18 @@ const GradientGenerator = () => {
   return (
     <main className="" class="bg-gray-900">
       <title>Web dev tools</title>
-      <Nav></Nav>
+       <nav className="bg-blue-500 py-4 px-6 flex items-center justify-between h-15">
+        <a
+          href="https://web-dev-tools.vercel.app/"
+          className="mr-2 flex border items-center rounded p-2 hover:bg-blue-600"
+        >
+          <h1 className="text-white text-lg md:text-2xl font-bold mr-4">
+            Web Dev Tools
+          </h1>
+          <p>Gradient generator</p>
+        </a>
+        <Search />
+      </nav>
       <div class="flex justify-center flex-col items-center w-full">
         <div className="flex flex-col gap-3 mt-10 items-center">
           <h1 className="text-5xl font-extrabold text-center">
