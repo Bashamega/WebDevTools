@@ -34,7 +34,7 @@ const CopyCSSModal = ({ gradientRef, colorsListRef, setCopyCSSModal }) => {
       if (navigator.clipboard) {
         await navigator.clipboard.writeText(data);
         Swal.fire({
-          title: "Good job!",
+          title: "Operation is complete!",
           text: "CSS code copied to clipboard!",
           icon: "success",
           confirmButtonColor: "#2563EB",
