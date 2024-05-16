@@ -10,13 +10,6 @@ import GradientRotation from "./components/GradientRotation";
 import GradientFullScreen from "./components/GradientFullScreen";
 import Swal from "sweetalert2";
 
-const people = [
-  { id: 1, name: "Tom Cook" },
-  { id: 2, name: "Wade Cooper" },
-  { id: 3, name: "Tanya Fox" },
-  { id: 4, name: "Arlene Mccoy" },
-  { id: 5, name: "Devon Webb" },
-];
 const gradientTypes = [
   { id: 1, name: "Linear", value: "linear-gradient" },
   { id: 2, name: "Radial", value: "radial-gradient" },
@@ -51,7 +44,6 @@ const gradientRotations = [
 ];
 
 const GradientGenerator = () => {
-  const [selected, setSelected] = useState(people[1]);
   const [colorsList, setColorsList] = useState([]);
   const [gradient, setGradient] = useState("");
   const [gradientType, setGradientType] = useState(gradientTypes[0]);
