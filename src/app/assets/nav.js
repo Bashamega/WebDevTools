@@ -75,6 +75,12 @@ export default function Nav() {
             style={{ zIndex: 100 }}
           >
             <a
+              href="customizer/box-shadow-generator"
+              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+            >
+              Box Shadow Generator
+            </a>
+            <a
               href="customizer/gradient-generator"
               className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
             >
