@@ -58,7 +58,29 @@ export default class Categories {
             return this.#categories[category].map(option => option.name);
         }
 
-        getFunction(category, optionName) {
-            return this.#categories[category].find(specificOption => specificOption.name === optionName).func;
+        getOptionFunc(category, optionName) {
+            const categoryData = this.#categories[category];
+            if (categoryData) {
+                const option = categoryData.find(specificOption => specificOption.name === optionName);
+                if (option) {
+                    return option.func;
+                }
+            }
+            return undefined;
         }
-    }
+
+        getCurrentSchema(fields) {
+            const newMappedSchema = {};
+            this.getECategoriesArr().map((category) => {
+                fields.map((field) => {
+                const mappedFunc = this.getOptionFunc(category, field.fieldType);
+                if (mappedFunc) {
+                    newMappedSchema[field.fieldName] = mappedFunc;
+                    }
+                }
+                );
+            });
+            return newMappedSchema;
+        }
+
+}
