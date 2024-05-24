@@ -1,10 +1,8 @@
 import { RxDragHandleDots2 } from 'react-icons/rx';
 import { CiCircleRemove } from 'react-icons/ci';
-import { Autocomplete, TextField } from '@mui/material';
-import Categories from '../utils';
+import '../styles.css';
 
-const Item = ({ field, handleChange, removeField, controls }) => {
-    const categoryData = new Categories();
+const Item = ({ field, handleChange, removeField, controls, categoryData }) => {
     return (
         <div 
             key={field.id} 
@@ -34,11 +32,11 @@ const Item = ({ field, handleChange, removeField, controls }) => {
                     name="fieldType" 
                     value={field.fieldType} 
                     onChange={(e) => handleChange(field.id, e)} 
-                    className='p-2 mr-3 text-gray-500 bg-black border border-gray-700 rounded-md'
-                >
+                    className='p-2 mr-3 text-gray-500 bg-black border border-gray-700 rounded-md focus:outline-none focus:border-gray-500 focus:bg-gray-800 scrollbar'
+                    >
                     <option value="defualt">Select field type</option>
                     {categoryData.getECategoriesArr().map((category, index) => (
-                        <optgroup key={index} label={category}>
+                        <optgroup key={index} label={category} className=''>
                             {categoryData.getOptionNameArr(category).map((option, index) => (
                                 <option key={index} value={option}>{option}</option>
                             ))}
