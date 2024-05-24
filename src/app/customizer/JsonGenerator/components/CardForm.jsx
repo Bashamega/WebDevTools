@@ -19,7 +19,7 @@ export default function CardForm() {
     const [numRows, setNumRows] = useState(5);
     const [previewClicked, setPreviewClicked] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-
+ 
     useEffect(() => {
         if (previewClicked && categoryData) {
             const MappedSchema = categoryData.getCurrentSchema(fields);
@@ -35,7 +35,7 @@ export default function CardForm() {
                 setIsLoading(false);
             })();
         }
-        setPreviewClicked(false); // Reset after logging
+        setPreviewClicked(false);
     }, [previewClicked]);
 
     const addField = () => {
