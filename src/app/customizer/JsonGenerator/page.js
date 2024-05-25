@@ -9,7 +9,6 @@ export function JsonGeneratorMain(){
             <JsonNav />
             <Heroish />
             <CardForm />
-            <JsonFooter />
         </main>
 )}
 
