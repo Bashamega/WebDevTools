@@ -26,21 +26,22 @@ export default function CardForm() {
     const [responseData, setResponseData] = useState([]);
  
     useEffect(() => {
+        const MappedSchema = categoryData.getCurrentSchema(fields);
+        function jsonPopulate() {
+            const data = Array.from({ length: numRows }, () => {
+                const newData = {};
+                for (const [key, value] of Object.entries(MappedSchema)) {
+                    if (typeof value !== 'undefined' && typeof value === 'function') {
+                        newData[key] = value();
+                    }                    
+                }
+                return newData;
+            });
+            setResponseData(data.filter(item => Object.keys(item).length !== 0));
+            
+        }
         if (previewClicked || submitClicked && categoryData && responseData.length === 0) {
-            const MappedSchema = categoryData.getCurrentSchema(fields);
-            (() => {
-                const data = Array.from({ length: numRows }, () => {
-                    const newData = {};
-                    for (const [key, value] of Object.entries(MappedSchema)) {
-                        if (typeof value !== 'undefined' && typeof value === 'function') {
-                            newData[key] = value();
-                        }                    
-                    }
-                    return newData;
-                });
-                setResponseData(data.filter(item => Object.keys(item).length !== 0));
-                
-            })();
+            jsonPopulate();
         }
         if (submitClicked && responseData.length > 0) {
             const blob = new Blob([JSON.stringify(responseData, (_, value) => typeof value === 'bigint' ? value.toString() : value, 2)], { type: 'application/json' });
@@ -105,7 +106,8 @@ export default function CardForm() {
                      className='flex p-1 pl-3 pr-3 mt-2 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800'><span className='p-1'>Preview</span></button>
                     <button onClick={() => {
                         setIsLoading(true) 
-                        setSubmitClicked(true)}
+                        setSubmitClicked(true)
+                    }
                     }
                     className='flex p-1 pl-3 pr-3 mt-2 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800'><span className='p-1'>Export</span></button>
                         <div>
