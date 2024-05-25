@@ -102,6 +102,11 @@ export default function CardForm() {
                         setIsLoading(true) 
                         setPreviewClicked(true)}}
                      className='flex p-1 pl-3 pr-3 mt-2 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800'><span className='p-1'>Preview</span></button>
+                    <button onClick={() => {
+                        setIsLoading(true) 
+                        setSubmitClicked(true)}
+                    }
+                    className='flex p-1 pl-3 pr-3 mt-2 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800'><span className='p-1'>Download</span></button>
                         <div>
                             <span className='border-b '># rows</span>
                             <input 
@@ -114,11 +119,6 @@ export default function CardForm() {
                             />
 
                         </div>
-                    <button onClick={() => {
-                        setIsLoading(true) 
-                        setSubmitClicked(true)}
-                    }
-                    className='flex p-1 pl-3 pr-3 mt-2 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800'><span className='p-1'>Download</span></button>
                 </div>
                 <div className='flex flex-col flex-shrink-0 h-[50vh]'>
                     {responseData.length > 0 && 
