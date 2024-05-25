@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import {v4 as uuidv4} from 'uuid'
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 import { Reorder, useDragControls} from 'framer-motion';
 import { GrAdd } from "react-icons/gr";
 import Item from './Item'
@@ -19,22 +21,23 @@ export default function CardForm() {
     const [numRows, setNumRows] = useState(5);
     const [previewClicked, setPreviewClicked] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [responseData, setResponseData] = useState([]);
  
     useEffect(() => {
         if (previewClicked && categoryData) {
             const MappedSchema = categoryData.getCurrentSchema(fields);
-            (async () => {
-                const data = await Promise.all(Array.from({ length: numRows }, async () => {
+            (() => {
+                const data = Array.from({ length: numRows }, () => {
                     const newData = {};
                     for (const [key, value] of Object.entries(MappedSchema)) {
-                        newData[key] = await value();
+                        newData[key] = value();
                     }
                     return newData;
-                }));
-                console.log(data);
-                setIsLoading(false);
+                });
+                setResponseData(data);
             })();
         }
+        setIsLoading(false); // Set isLoading to false after the data is fetched
         setPreviewClicked(false);
     }, [previewClicked]);
 
@@ -62,37 +65,66 @@ export default function CardForm() {
 
     return (
         <Reorder.Group className='mt-40 ml-4' axis='y' values={fields} onReorder={setFields}>
-            <div className='flex items-center justify-between w-[50vw] mb-5 text-2xl text-gray-500 font-sans font-bold'>
-            <h1 className='w-full pl-14'>Field Name</h1>
-            <h1 className='w-full'>Field Type</h1> 
-            </div>
-            {fields.map((field) => (
-                <Reorder.Item 
-                    key={field.id} 
-                    value={field} 
-                    dragControls={controls} 
-                    dragListener={true} 
-                    className='flex items-center bg-black-200 w-fit' 
-                    >
-                    <Item 
-                        field={field} 
-                        handleChange={handleChange} 
-                        removeField={removeField} 
-                        controls={controls} 
-                        categoryData={categoryData}
-                    />
+            <div className='flex justify-around'>
+                <div className='flex flex-col'>
+                    <div className='flex items-center gap-3 mb-5 font-sans text-2xl font-bold text-gray-500 ml-9'>
+                        <h1 className='w-full'>Field Name</h1> 
+                        <h1 className='w-full'>Field Type</h1> 
+                    </div>
+                    {fields.map((field) => (
+                        <Reorder.Item 
+                            key={field.id} 
+                            value={field} 
+                            dragControls={controls} 
+                            dragListener={true} 
+                            className='flex items-center bg-black-200 w-fit' 
+                        >
+                            <Item 
+                                field={field} 
+                                handleChange={handleChange} 
+                                removeField={removeField} 
+                                controls={controls} 
+                                categoryData={categoryData}
+                            />
+                        </Reorder.Item>
+                    ))}
+                    <button onClick={addField} className='flex p-1 pl-3 pr-3 mt-2 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800'><span className='pt-1 pr-2'><GrAdd/></span> ADD ANOTHER FIELD</button>
+                    <button onClick={() => {
+                        setIsLoading(true) 
+                        setPreviewClicked(true)}}
+                     className='flex p-1 pl-3 pr-3 mt-2 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800'><span className='p-1'>Preview</span></button>
+                        <div>
+                            <span className='border-b '># rows</span>
+                            <input 
+                                type='text' 
+                                className='w-40 p-2 mt-2 bg-black border border-gray-700 rounded-md focus:outline-none focus:border-gray-500 focus:bg-gray-800 ml-7' 
+                                placeholder='# Rows'
+                                value={numRows}
+                                label='Number of Rows'
+                                onChange={(e) => setNumRows(e.target.value)}
+                            />
 
-                </Reorder.Item>
-            ))}
-            <button onClick={addField} className='flex p-1 pl-3 pr-3 mt-2 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800'><span className='pt-1 pr-2'><GrAdd/></span> ADD ANOTHER FIELD</button>
-            <button onClick={() => setPreviewClicked(true) && setIsLoading(true)} className='flex p-1 pl-3 pr-3 mt-2 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800'><span className='p-1'>Preview</span></button>
-            <input 
-            type='text' className='p-2 mt-2 bg-black border border-gray-700 rounded-md focus:outline-none focus:border-gray-500 focus:bg-gray-800' 
-            placeholder='# Rows'
-            value={numRows}
-            onChange={(e) => setNumRows(e.target.value)}
-            
-            />
+                        </div>
+                </div>
+                <div className='flex flex-col flex-shrink-0 h-[50vh]'>
+                    {responseData.length > 0 && 
+                        <div className='flex flex-col border border-gray-700 rounded-md max-h-[50vh] max-w-[40vw] min-w-[45vw] overflow-auto mr-2 p-2'>
+                            <div className='pt-2 mb-1 font-sans text-2xl font-bold text-center text-gray-500'>Preview</div>
+                            <div className='flex max-w-full pr-2 overflow-auto'>
+                                    {
+                                    isLoading ?
+                                    <div className='flex items-center justify-center w-full h-full'>
+                                        <Box sx={{ display: 'flex'}}>
+                                            <CircularProgress disableShrink size={50}/>
+                                        </Box> 
+                                    </div> :
+                                        <pre className='p-3 overflow-auto break-words whitespace-pre-wrap'>{JSON.stringify(responseData, (_, value) => typeof value === 'bigint' ? value.toString() : value, 2)}</pre>
+                                    }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
         </Reorder.Group>
     );
 }
