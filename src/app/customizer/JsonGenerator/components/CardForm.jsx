@@ -107,7 +107,7 @@ export default function CardForm() {
                         setIsLoading(true) 
                         setSubmitClicked(true)}
                     }
-                    className='flex p-1 pl-3 pr-3 mt-2 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800'><span className='p-1'>Download</span></button>
+                    className='flex p-1 pl-3 pr-3 mt-2 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800'><span className='p-1'>Export</span></button>
                         <div>
                             <span className='border-b '># rows</span>
                             <input 
