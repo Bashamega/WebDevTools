@@ -42,7 +42,7 @@ export default function CardForm() {
                 
             })();
         }
-        if (submitClicked) {
+        if (submitClicked && responseData.length > 0) {
             const blob = new Blob([JSON.stringify(responseData, (_, value) => typeof value === 'bigint' ? value.toString() : value, 2)], { type: 'application/json' });
             saveAs(blob, 'data.json');
         }
@@ -123,6 +123,7 @@ export default function CardForm() {
                 </div>
                 <div className='flex flex-col flex-shrink-0 h-[50vh]'>
                     {responseData.length > 0 && 
+
                         <div className='flex flex-col border border-gray-700 rounded-md max-h-[50vh] max-w-[40vw] min-w-[45vw] overflow-auto mr-2 p-2'>
                             <div className='pt-2 mb-1 font-sans text-2xl font-bold text-center text-gray-500'>Preview</div>
                             <div className='flex max-w-full pr-2 '>
