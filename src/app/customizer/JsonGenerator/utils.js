@@ -55,18 +55,14 @@ export default class Categories {
         }
 
         getOptionNameArr(category) {
-            return this.#categories[category].map(option => option.name);
+            return this.#categories[category]?.map(option => option.name);
         }
 
         getOptionFunc(category, optionName) {
             const categoryData = this.#categories[category];
-            if (categoryData) {
-                const option = categoryData.find(specificOption => specificOption.name === optionName);
-                if (option) {
-                    return option.func;
-                }
-            }
-            return undefined;
+            const option = categoryData?.find(specificOption => specificOption.name === optionName);
+            
+            return option?.func;
         }
 
         getCurrentSchema(fields) {
