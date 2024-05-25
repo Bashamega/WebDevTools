@@ -13,11 +13,11 @@ import Categories from '../utils';
 export default function CardForm() {
 
     const [fields, setFields] = useState([
-        { id: uuidv4(), fieldName: "id", fieldType: "sometype" },
-        { id: uuidv4(), fieldName: "first_name", fieldType: "sometype"},
-        { id: uuidv4(), fieldName: "last_name", fieldType: "sometype" },
-        { id: uuidv4(), fieldName: "email", fieldType: "sometype" },
-        { id: uuidv4(), fieldName: "gender", fieldType: "sometype" },
+        { id: uuidv4(), fieldName: "id", fieldType: "" },
+        { id: uuidv4(), fieldName: "first_name", fieldType: ""},
+        { id: uuidv4(), fieldName: "last_name", fieldType: "" },
+        { id: uuidv4(), fieldName: "email", fieldType: "" },
+        { id: uuidv4(), fieldName: "gender", fieldType: "" },
     ]);
     const [numRows, setNumRows] = useState(5);
     const [previewClicked, setPreviewClicked] = useState(false);
@@ -28,6 +28,7 @@ export default function CardForm() {
     useEffect(() => {
         const MappedSchema = categoryData.getCurrentSchema(fields);
         function jsonPopulate() {
+            console.log(MappedSchema)
             const data = Array.from({ length: numRows }, () => {
                 const newData = {};
                 for (const [key, value] of Object.entries(MappedSchema)) {
@@ -40,12 +41,17 @@ export default function CardForm() {
             setResponseData(data.filter(item => Object.keys(item).length !== 0));
             
         }
-        if (previewClicked || submitClicked && categoryData && responseData.length === 0) {
+        if (previewClicked && !submitClicked) {
             jsonPopulate();
         }
-        if (submitClicked && responseData.length > 0) {
-            const blob = new Blob([JSON.stringify(responseData, (_, value) => typeof value === 'bigint' ? value.toString() : value, 2)], { type: 'application/json' });
-            saveAs(blob, 'data.json');
+        if (submitClicked && !previewClicked) {
+
+            jsonPopulate()
+
+            if (Object.keys(MappedSchema).length > 0) {
+                const blob = new Blob([JSON.stringify(responseData, (_, value) => typeof value === 'bigint' ? value.toString() : value, 2)], { type: 'application/json' });
+                saveAs(blob, 'WebDevTools.json');
+            }
         }
         setIsLoading(false);
         setPreviewClicked(false);
