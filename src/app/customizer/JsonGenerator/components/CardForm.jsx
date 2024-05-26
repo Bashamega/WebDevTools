@@ -106,17 +106,17 @@ export default function CardForm() {
                         </Reorder.Item>
                     ))}
                     <button onClick={addField} className='flex p-1 pl-3 pr-3 mt-2 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800'><span className='pt-1 pr-2'><GrAdd/></span> ADD ANOTHER FIELD</button>
-                    <div className='fixed bottom-0 bg-white left-0 w-full flex gap-2 justify-center items-center py-2 bg-gradient-to-b from-neutral-200 to-neutral-600'>
+                    <div className='fixed bottom-5 bg-white left-1/2 -translate-x-1/2 px-40 rounded flex gap-2 justify-center items-center py-2 dark:bg-gray-800'>
 											<button onClick={() => {
 													setIsLoading(true) 
 													setPreviewClicked(true)}}
-											className='flex p-1 pl-3 pr-3 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800'><span className='p-1'>Preview</span></button>
+											className='flex p-1 pl-3 pr-3 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800  hover:text-white dark:text-gray-400'><span className='p-1'>Preview</span></button>
 											<button onClick={() => {
 													setIsLoading(true) 
 													setSubmitClicked(true)
 											}
 											}
-											className='flex p-1 pl-3 pr-3 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800'><span className='p-1'>Export</span></button>
+											className='flex p-1 pl-3 pr-3 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800 hover:text-white dark:text-gray-400'><span className='p-1'>Export</span></button>
 										</div>
                         <div>
                             <span className='border-b '># rows</span>
