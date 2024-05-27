@@ -92,8 +92,6 @@ export default function CardForm() {
                         <Reorder.Item 
                             key={field.id} 
                             value={field} 
-                            dragControls={controls} 
-                            dragListener={true} 
                             className='flex items-center bg-black-200 w-fit' 
                         >
                             <Item 
