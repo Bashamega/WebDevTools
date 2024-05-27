@@ -5,7 +5,7 @@
 @media screen and (max-width: 1024px) {
   .custom-color-picker .react-colorful {
     width: 270px;
-    height: 270px
+    height: 270px;
   }
 }
 
@@ -17,12 +17,10 @@
 }
 
 @layer components {
-
   .custom-color-picker .react-colorful {
     width: 400px;
-    height: 400px;   
+    height: 400px;
   }
-  
 }
 
 :root {

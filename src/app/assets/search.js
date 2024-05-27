@@ -67,6 +67,11 @@ export default function Search() {
         name: "Mark down Editor",
         link: "https://web-dev-tools.vercel.app/MD",
       },
+      {
+        id: 8,
+        name: "Box shadow generator",
+        link: "https://web-dev-tools.vercel.app/customizer/box-shadow-generator",
+      },
     ];
 
     const filteredData = toolList.filter(
