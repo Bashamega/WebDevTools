@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Search from "@/app/assets/search";
 import InputRange from "@/app/components/Input/InputRange";
 import Footer from "@/app/components/Footer";
+import Swal from "sweetalert2";
 
 const page = () => {
   const [shadow, setShadow] = useState({
@@ -13,7 +14,6 @@ const page = () => {
     color: "#00000080",
     inset: false,
   });
-  const [successfullyCopied, setSuccessfullyCopied] = useState(false);
 
   const handleCopyCSSClick = () => {
     navigator.clipboard
@@ -23,10 +23,12 @@ const page = () => {
         }px ${shadow.color} ${shadow.inset ? "inset" : ""} ;`
       )
       .then(() => {
-        setSuccessfullyCopied(true);
-        setTimeout(() => {
-          setSuccessfullyCopied(false);
-        }, 3000);
+        Swal.fire({
+          title: "Operation is complete!",
+          text: "CSS code copied to clipboard!",
+          icon: "success",
+          confirmButtonColor: "#2563EB",
+        });
       })
       .catch((err) => {
         console.error("Failed to copy text: ", err);
@@ -134,9 +136,6 @@ const page = () => {
                 >
                   Copy CSS
                 </button>
-                <p className=" h-2 text-green-500 text-center py-1">
-                  {successfullyCopied ? "Successfully copied!" : " "}
-                </p>
               </div>
             </div>
           </div>
