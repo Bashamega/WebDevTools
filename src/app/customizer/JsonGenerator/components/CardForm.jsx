@@ -41,8 +41,10 @@ export default function CardForm() {
             setResponseData(data.filter(item => Object.keys(item).length !== 0));
             
         }
-        if (previewClicked && !submitClicked) {
+        if (previewClicked && !submitClicked && !categoryData.isDataCached(numRows, responseData, MappedSchema)) {
             jsonPopulate();
+        } else {
+            console.log('Using cached data');
         }
         if (submitClicked && !previewClicked) {
 

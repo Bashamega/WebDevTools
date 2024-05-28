@@ -78,4 +78,15 @@ export default class Categories {
             return newMappedSchema;
         }
 
+        isDataCached(currentRowsRequested, previousResponseData, mappedSchema) {
+            return (
+                // Check if a request has already been made for data (check for cached data)
+                previousResponseData.length > 0 &&
+                // Check if the requested data has changed from the previous data requested
+                Object.keys(mappedSchema).sort().join(",") ==
+                Object.keys(previousResponseData[0]).sort().join(",") &&
+                // Check if the number of rows requested is the same as the number of rows in the previous request
+                currentRowsRequested == previousResponseData.length);
+        }
+
 }
