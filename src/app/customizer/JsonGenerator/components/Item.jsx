@@ -7,8 +7,6 @@ const Item = ({ field, handleChange, removeField, controls, categoryData }) => {
         <div 
             key={field.id} 
             value={field} 
-            dragControls={controls} 
-            dragListener={true} 
             className='flex items-center bg-black-200 w-fit' 
         >
             <div 

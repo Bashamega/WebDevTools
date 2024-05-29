@@ -42,7 +42,7 @@ export default function CardForm() {
             setResponseData(data.filter(item => Object.keys(item).length !== 0));
             
         }
-        if (previewClicked && !submitClicked) {
+        if (previewClicked && !submitClicked && !categoryData.isDataCached(numRows, responseData, MappedSchema)) {
             jsonPopulate();
             setShowPreview(true);
         }
@@ -94,8 +94,6 @@ export default function CardForm() {
                         <Reorder.Item 
                             key={field.id} 
                             value={field} 
-                            dragControls={controls} 
-                            dragListener={true} 
                             className='flex items-center bg-black-200 w-fit' 
                         >
                             <Item 

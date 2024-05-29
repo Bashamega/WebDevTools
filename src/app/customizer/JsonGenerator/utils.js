@@ -48,7 +48,7 @@ export default class Categories {
                     { name: 'buildingNumber', func: faker.location.buildingNumber},
                     { name: 'cardinalDirection', func: faker.location.cardinalDirection},
                 ],
-            }
+        }
 
         getECategoriesArr() {
             return Object.keys(this.#categories);
@@ -69,14 +69,24 @@ export default class Categories {
             const newMappedSchema = {};
             this.getECategoriesArr().map((category) => {
                 fields.map((field) => {
-                const mappedFunc = this.getOptionFunc(category, field.fieldType);
-                if (mappedFunc) {
-                    newMappedSchema[field.fieldName] = mappedFunc;
+                    const mappedFunc = this.getOptionFunc(category, field.fieldType);
+                    if (mappedFunc) {
+                        newMappedSchema[field.fieldName] = mappedFunc;
                     }
-                }
-                );
+                });
             });
             return newMappedSchema;
+        }
+
+        isDataCached(currentRowsRequested, previousResponseData, mappedSchema) {
+            return (
+                // Check if a request has already been made for data (check for cached data)
+                previousResponseData.length > 0 &&
+                // Check if the requested data has changed from the previous data requested
+                Object.keys(mappedSchema).sort().join(",") ==
+                Object.keys(previousResponseData[0]).sort().join(",") &&
+                // Check if the number of rows requested is the same as the number of rows in the previous request
+                currentRowsRequested == previousResponseData.length);
         }
 
 }
