@@ -69,6 +69,11 @@ export default function Search() {
       },
       {
         id: 8,
+        name: "Json Generator",
+        link: "https://web-dev-tools.vercel.app/customizer/JsonGenerator",
+      },
+      {
+        id: 9,
         name: "Box shadow generator",
         link: "https://web-dev-tools.vercel.app/customizer/box-shadow-generator",
       },
