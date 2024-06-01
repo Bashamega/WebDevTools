@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useRef } from "react";
-import Search from "@/app/assets/search";
 import snarkdown from "snarkdown";
 import { saveAs } from "file-saver";
 import SearchIcon from "@mui/icons-material/Search";

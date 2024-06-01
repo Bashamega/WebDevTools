@@ -1,5 +1,5 @@
 "use client";
-import Search from "@/app/assets/search";
+import { NavBar } from "@/app/assets/navbar";
 import React, { use, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -378,18 +378,7 @@ export default function ButtonCustomizer() {
           </div>
         </div>
       )}
-      <nav className="bg-blue-500 py-4 px-6 flex items-center justify-between">
-        <a
-          href="https://web-dev-tools.vercel.app/"
-          className="flex items-center border rounded p-2 hover:bg-blue-600 mr-2"
-        >
-          <h1 className="text-white  text-lg md:text-2xl font-bold mr-2">
-            Web Dev Tools
-          </h1>
-          <p>Button Customizer</p>
-        </a>
-        <Search />
-      </nav>
+      <NavBar title={"Button customizer"}/>
 
       <button
         className="m-3 bg-red-700 p-5 rounded"

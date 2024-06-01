@@ -1,6 +1,6 @@
 "use client";
-import Search from "@/app/assets/search";
 import React, { useState } from "react";
+import { Navbar } from "react-bootstrap";
 
 export default function ButtonCustomizer() {
   const [cupcakes, setCupcakes] = useState(1);
@@ -21,18 +21,7 @@ export default function ButtonCustomizer() {
 
   return (
     <main>
-      <nav className="bg-blue-500 py-4 px-6 flex items-center justify-between h-15">
-        <a
-          href="https://web-dev-tools.vercel.app/"
-          className="mr-2 flex border rounded items-center p-2 hover:bg-blue-600"
-        >
-          <h1 className="text-white text-[18px] md:text-2xl font-bold mr-4">
-            Web Dev Tools
-          </h1>
-          <p>Cupcake Ipsum Generator</p>
-        </a>
-        <Search />
-      </nav>
+      <Navbar title="Cupcake Ipsum Generator"/>
       <section className="flex items-center justify-center h-screen">
         <div className="bg-slate-800 p-10 w-full max-w-5xl overflow-y-scroll max-h-96">
           <label htmlFor="cupcakes">Number of cupcakes:</label>

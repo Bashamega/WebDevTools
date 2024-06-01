@@ -1,8 +1,8 @@
 "use client";
-import Search from "@/app/assets/search";
 import React, { useState } from "react";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import CloseIcon from "@mui/icons-material/Close";
+import { NavBar } from "@/app/assets/navbar";
 
 export default function ButtonCustomizer() {
   const [paragraphs, setParagraphs] = useState(1);
@@ -27,18 +27,7 @@ export default function ButtonCustomizer() {
 
   return (
     <main className="h-screen flex flex-col gap-10">
-      <nav className="bg-blue-500 py-4 px-6 flex justify-between items-center h-15">
-        <a
-          href="https://web-dev-tools.vercel.app/"
-          className=" mr-4 flex border items-center rounded p-2 hover:bg-blue-600"
-        >
-          <h1 className="text-white text-lg md:text-2xl font-bold mr-4">
-            Web Dev Tools
-          </h1>
-          <p>Lorem Ipsum Generator</p>
-        </a>
-        <Search />
-      </nav>
+      <NavBar title={"Lorem Ipsum generator"}/>
       <section className="flex items-center justify-center">
         <div className="bg-slate-800 p-10 w-full max-w-5xl overflow-y-scroll max-h-96">
           <div className="flex justify-center pb-5 flex-wrap gap-4 md:justify-between">

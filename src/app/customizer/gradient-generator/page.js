@@ -1,5 +1,4 @@
 "use client";
-import Search from "@/app/assets/search";
 import React, { useEffect, useRef, useState } from "react";
 import { FaGithub, FaHome, FaExpandArrowsAlt } from "react-icons/fa";
 import ColorsList from "./components/ColorsList";
@@ -9,6 +8,7 @@ import GradientType from "./components/GradientType";
 import GradientRotation from "./components/GradientRotation";
 import GradientFullScreen from "./components/GradientFullScreen";
 import Swal from "sweetalert2";
+import { NavBar } from "@/app/assets/navbar";
 
 const gradientTypes = [
   { id: 1, name: "Linear", value: "linear-gradient" },
@@ -174,18 +174,7 @@ const GradientGenerator = () => {
   return (
     <main className="" class="bg-gray-900">
       <title>Web dev tools</title>
-       <nav className="bg-blue-500 py-4 px-6 flex items-center justify-between h-15">
-        <a
-          href="https://web-dev-tools.vercel.app/"
-          className="mr-2 flex border items-center rounded p-2 hover:bg-blue-600"
-        >
-          <h1 className="text-white text-lg md:text-2xl font-bold mr-4">
-            Web Dev Tools
-          </h1>
-          <p>Gradient generator</p>
-        </a>
-        <Search />
-      </nav>
+       <NavBar title={"Gradient generator"}/>
       <div class="flex justify-center flex-col items-center w-full">
         <div className="flex flex-col gap-3 mt-10 items-center">
           <h1 className="text-5xl font-extrabold text-center">
