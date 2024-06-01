@@ -1,5 +1,5 @@
 "use client";
-import { NavBar } from "@/app/assets/navbar";
+import { NavBar } from "@/app/components/navbar";
 import React, { use, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";

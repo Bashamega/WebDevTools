@@ -1,5 +1,5 @@
 "use client";
-import { NavBar } from "@/app/assets/navbar";
+import { NavBar } from "@/app/components/navbar";
 import React, { useState } from "react";
 const convert = require("convert-units");
 

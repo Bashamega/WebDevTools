@@ -8,7 +8,7 @@ import GradientType from "./components/GradientType";
 import GradientRotation from "./components/GradientRotation";
 import GradientFullScreen from "./components/GradientFullScreen";
 import Swal from "sweetalert2";
-import { NavBar } from "@/app/assets/navbar";
+import { NavBar } from "@/app/components/navbar";
 
 const gradientTypes = [
   { id: 1, name: "Linear", value: "linear-gradient" },

@@ -1,5 +1,5 @@
 "use client";
-import Nav from "./assets/nav";
+import Nav from "./components/nav";
 import React from "react";
 import { useState, useEffect } from "react";
 import { FaGithub, FaHome } from "react-icons/fa";

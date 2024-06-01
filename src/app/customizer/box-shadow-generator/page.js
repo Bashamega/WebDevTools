@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import InputRange from "@/app/components/Input/InputRange";
 import Footer from "@/app/components/Footer";
 import Swal from "sweetalert2";
-import { NavBar } from "@/app/assets/navbar";
+import { NavBar } from "@/app/components/navbar";
 
 const page = () => {
   const [shadow, setShadow] = useState({

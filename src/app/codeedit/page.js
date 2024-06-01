@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
-import Search from "../assets/search";
+import Search from "../components/search";
 import { AiFillHtml5 } from "react-icons/ai";
 import { FaCss3, FaJs } from "react-icons/fa";
 import { Editor } from "@monaco-editor/react";
