@@ -24,7 +24,7 @@ export default function Home({ state }) {
   }, []);
   return (
     <main className="" class="bg-gray-900">
-      <title>Web dev tools</title>
+
       <Nav></Nav>
       <div class="flex justify-center flex-col items-center w-full">
         <div
