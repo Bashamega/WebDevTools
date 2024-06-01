@@ -4,7 +4,7 @@ import snarkdown from "snarkdown";
 import { saveAs } from "file-saver";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-
+import Search from "../components/search";
 export default function MarkdownEditor() {
   const [markdown, setMarkdown] = useState("# hey");
   const [name, setName] = useState("untitled");
