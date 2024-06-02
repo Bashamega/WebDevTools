@@ -32,7 +32,7 @@ export default function Nav() {
   }, []);
 
   return (
-    <nav className="bg-blue-500 py-2 px-4 flex items-center justify-around gap-1 w-full relative">
+    <nav className="bg-blue-500 py-2 px-4 flex items-center justify-around gap-1 w-full relative mb-10">
       <div className="flex flex-0 items-center flex-shrink">
         <Link
           href="/"
