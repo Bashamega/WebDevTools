@@ -35,7 +35,7 @@ export default function Nav() {
     <nav className="bg-blue-500 py-2 px-4 flex items-center justify-around gap-1 w-full relative">
       <div className="flex flex-0 items-center flex-shrink">
         <a
-          href="https://web-dev-tools.vercel.app/"
+          href="/"
           className="flex items-center border rounded p-2 hover:bg-blue-600 mr-2"
         >
           <h1 className="text-white text-lg md:text-2xl font-bold mr-2">

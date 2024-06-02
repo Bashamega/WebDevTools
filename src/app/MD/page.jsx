@@ -66,7 +66,7 @@ export default function MarkdownEditor() {
     <main className="h-screen">
       <nav className="bg-blue-500 py-4 px-6 flex items-center justify-between h-[69px]">
         <a
-          href="https://web-dev-tools.vercel.app/"
+          href="/"
           className="mr-2 flex  border items-center  p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
         >
           <h1 className="text-white text-sm md:text-2xl font-bold mr-4 ml-1">

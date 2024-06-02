@@ -2,41 +2,41 @@
     {
       "id": 1,
       "name": "Code editor",
-      "link": "https://web-dev-tools.vercel.app/codeedit"
+      "link": "/codeedit"
     },
     {
       "id": 2,
       "name": "Button customizer",
-      "link": "https://web-dev-tools.vercel.app/customizer/button"
+      "link": "/customizer/button"
     },
     {
       "id": 3,
       "name": "Lorem Ipsum Generator",
-      "link": "https://web-dev-tools.vercel.app/customizer/LoremIpsumGenerator"
+      "link": "/customizer/LoremIpsumGenerator"
     },
     {
       "id": 4,
       "name": "Conversion Calculator",
-      "link": "https://web-dev-tools.vercel.app/customizer/conversionCalculator"
+      "link": "/customizer/conversionCalculator"
     },
     {
       "id": 5,
       "name": "Cupcake Ipsum Generator",
-      "link": "https://web-dev-tools.vercel.app/customizer/CupcakeIpsumGenerator"
+      "link": "/customizer/CupcakeIpsumGenerator"
     },
     {
       "id": 6,
       "name": "Color Picker",
-      "link": "https://web-dev-tools.vercel.app/customizer/colorPicker"
+      "link": "/customizer/colorPicker"
     },
     {
       "id": 7,
       "name": "Mark down Editor",
-      "link": "https://web-dev-tools.vercel.app/MD"
+      "link": "/MD"
     },
     {
       "id": 8,
       "name": "Box shadow generator",
-      "link": "https://web-dev-tools.vercel.app/customizer/box-shadow-generator"
+      "link": "/customizer/box-shadow-generator"
     }
   ]
