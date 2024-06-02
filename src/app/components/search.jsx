@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
-
+import toolList from "@/db/tools.json"
 export default function Search() {
   const [searchValue, setSearchValue] = useState(""); // State to store the value of search input
   const [searchResults, setSearchResults] = useState([]); // State to store the filtered search results
@@ -30,49 +30,6 @@ export default function Search() {
   }, []);
 
   useEffect(() => {
-    const toolList = [
-      // Simulated JSON data
-      {
-        id: 1,
-        name: "Code editor",
-        link: "https://web-dev-tools.vercel.app/codeedit",
-      },
-      {
-        id: 2,
-        name: "Button customizer",
-        link: "https://web-dev-tools.vercel.app/customizer/button",
-      },
-      {
-        id: 3,
-        name: "Lorem Ipsum Generator",
-        link: "https://web-dev-tools.vercel.app/customizer/LoremIpsumGenerator",
-      },
-      {
-        id: 4,
-        name: "Conversion Calculator",
-        link: "https://web-dev-tools.vercel.app/customizer/conversionCalculator",
-      },
-      {
-        id: 5,
-        name: "Cupcake Ipsum Generator",
-        link: "https://web-dev-tools.vercel.app/customizer/CupcakeIpsumGenerator",
-      },
-      {
-        id: 6,
-        name: "Color Picker",
-        link: "https://web-dev-tools.vercel.app/customizer/colorPicker",
-      },
-      {
-        id: 7,
-        name: "Mark down Editor",
-        link: "https://web-dev-tools.vercel.app/MD",
-      },
-      {
-        id: 8,
-        name: "Box shadow generator",
-        link: "https://web-dev-tools.vercel.app/customizer/box-shadow-generator",
-      },
-    ];
 
     const filteredData = toolList.filter(
       (item) => item.name.toLowerCase().includes(searchValue.toLowerCase()) // Filter the JSON data based on the search value
