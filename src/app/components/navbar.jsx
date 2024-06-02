@@ -4,7 +4,7 @@ import Search from "./search";
 export function NavBar({ title }) {
     return (
         <nav className="bg-blue-500 py-4 px-6 flex items-center justify-between">
-            <a
+            <Link
                 href="/"
                 className="flex items-center border rounded p-2 hover:bg-blue-600 mr-2"
             >
@@ -12,7 +12,7 @@ export function NavBar({ title }) {
                     Web Dev Tools
                 </h1>
                 <p>{title}</p>
-            </a>
+            </Link>
             <Search />
         </nav>
     );

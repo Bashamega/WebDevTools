@@ -5,6 +5,7 @@ import { saveAs } from "file-saver";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Search from "../components/search";
+import Link from "next/link";
 export default function MarkdownEditor() {
   const [markdown, setMarkdown] = useState("# hey");
   const [name, setName] = useState("untitled");
@@ -65,7 +66,7 @@ export default function MarkdownEditor() {
   return (
     <main className="h-screen">
       <nav className="bg-blue-500 py-4 px-6 flex items-center justify-between h-[69px]">
-        <a
+        <Link
           href="/"
           className="mr-2 flex  border items-center  p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
         >
@@ -73,7 +74,7 @@ export default function MarkdownEditor() {
             Web Dev Tools
           </h1>
           <p className="mr-2 text-sm">MD Editor</p>
-        </a>
+        </Link>
         <div className="flex items-center">
           <input
             value={name}
@@ -101,7 +102,7 @@ export default function MarkdownEditor() {
             } `}
           >
             <div className="flex flex-1 items-center text-white justify-center relative">
-              <ArrowBackIcon
+              <ainkrrowBackIcon
                 className="mr-4 absolute left-2 cursor-pointer"
                 onClick={searchToggle}
               />

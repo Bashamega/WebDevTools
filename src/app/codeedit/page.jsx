@@ -7,6 +7,7 @@ import Search from "../components/search";
 import { AiFillHtml5 } from "react-icons/ai";
 import { FaCss3, FaJs } from "react-icons/fa";
 import { Editor } from "@monaco-editor/react";
+import Link from "next/link";
 export default function Nav() {
   const [htmlCode, setHtmlCode] = useState(`
     <!DOCTYPE html>
@@ -131,7 +132,7 @@ export default function Nav() {
   return (
     <div className="h-screen overflow-hidden">
       <nav className="bg-blue-500 py-4 px-6 flex justify-between items-center">
-        <a
+        <Link
           href="/"
           className="mr-2 flex items-center border rounded p-2 hover:bg-blue-600"
         >
@@ -139,7 +140,7 @@ export default function Nav() {
             Web Dev Tools
           </h1>
           <p>Code editor</p>
-        </a>
+        </Link>
         <Search />
       </nav>
       <main className="flex h-full overflow-hidden">
@@ -162,11 +163,11 @@ export default function Nav() {
             onClick={handleIndexHtmlClick}
             className="w-full text-center bg-slate-800 text-white hover:bg-slate-900 h-10 flex pl-8 pt-2"
           >
-            <AiFillHtml5
+            <ainkiFillHtml5
               className="mr-2"
               size={18}
               color="#E34F26"
-            ></AiFillHtml5>
+            ></ainkiFillHtml5>
             Index.html
           </button>
           <button

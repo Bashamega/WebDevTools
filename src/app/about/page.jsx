@@ -36,7 +36,7 @@ export default function Home() {
             contribute!
           </p>
           <div class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 ">
-            <a
+            <Link
               href="https://github.com/Bashamega/WebDevTools"
               class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 hover:shadow-card-shadow  transition-all duration-500 ease-in"
             >
@@ -61,7 +61,7 @@ export default function Home() {
                   Github Repo
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
 

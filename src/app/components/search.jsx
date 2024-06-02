@@ -70,7 +70,7 @@ export default function Search() {
           className="bg-white border border-gray-300 shadow absolute  rounded-sm z-10"
         >
           {searchResults.map((item) => (
-            <a href={item.link}>
+            <Link href={item.link}>
               <li
                 key={item.id}
                 className="px-2 py-2 text-black hover:bg-gray-100 cursor-pointer flex gap-[10px] border-b border-slate-500"
@@ -80,7 +80,7 @@ export default function Search() {
                 </span>
                 {item.name}
               </li>
-            </a>
+            </Link>
           ))}
         </ul>
       )}
