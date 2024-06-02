@@ -1,4 +1,9 @@
 [
+  {
+    "id": 1,
+    "name": "Code Snippets",
+    "link": "/snippet"
+  },
     {
       "id": 1,
       "name": "Code editor",
