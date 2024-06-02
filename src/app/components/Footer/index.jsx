@@ -3,7 +3,7 @@ import { FaGithub, FaHome } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer class="w-[26rem] md:w-[40rem] max-w-full bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+    <footer class="w-[26rem] md:w-[40rem] max-w-full bg-white rounded-lg shadow-lg m-4 dark:bg-gray-800 fixed bottom-0">
       <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
         <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
           © {new Date().getFullYear()}{" "}
