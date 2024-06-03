@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Search from "./search";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { FaCode, FaInfo, FaMarkdown, FaTools } from "react-icons/fa";
+import { FaTools, FaCode, FaMarkdown, FaInfo } from "react-icons/fa";
 import { IoMdGitPullRequest } from "react-icons/io";
 import Link from "next/link";
 export default function Nav() {

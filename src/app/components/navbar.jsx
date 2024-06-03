@@ -1,6 +1,7 @@
+"use client"
 import React from "react";
 import Search from "./search";
-
+import Link from "next/link";
 export function NavBar({ title }) {
     return (
         <nav className="bg-blue-500 py-4 px-6 flex items-center justify-between">
