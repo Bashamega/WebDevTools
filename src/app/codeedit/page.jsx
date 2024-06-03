@@ -1,16 +1,13 @@
 import React from "react";
-import Footer from "@/app/components/Footer";
+//import Footer from "@/app/components/Footer";
 import { NavBar } from "@/app/components/navbar";
-import Link from "next/link";
+import Editor from "./components/Editor";
 const page = () => {
 
   return (
-    <div>
+    <div className=" max-h-[100vh] overflow-hidden">
       <NavBar title={"Box Shadow generator"}/>
-      <main className="flex justify-center flex-col items-center w-full">
-        
-        <Footer />
-      </main>
+        <Editor />
     </div>
   );
 };
