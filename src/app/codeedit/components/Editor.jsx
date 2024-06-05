@@ -16,12 +16,12 @@ export default function Editor() {
             setValue(activeFile.content)
         }
     }, [activeFile]);
-    const handleChange = (val, ev)=>{
+    const handleChange = (val, ev) => {
         //console.log(val)
         setValue(val);
         files.forEach(element => {
             //console.log(element)
-            if(element.name == activeFile.name){
+            if (element.name == activeFile.name) {
                 element.content = val
                 //console.log(true)
             }
@@ -29,17 +29,17 @@ export default function Editor() {
     }
     return (
         <div className="h-screen flex">
-            {activeFile.name !=""?
+            {activeFile.name != "" ?
                 <div>
+                    <FooterOptions file={activeFile} setFile={setActiveFile} files={files} />
                     <CodeEditor language={activeFile.lang} theme="vs-dark" value={value} onChange={handleChange} />
-                    <FooterOptions file={activeFile} setFile={setActiveFile} files={files}/>
                 </div>
                 :
                 <div className=" bg-[#3c3c3c] w-[80vw] h-[90vh] flex justify-center items-center">
                     <h1 className="text-white text-2xl">No file selected</h1>
                 </div>
             }
-            <Sider files={files} newfile={setFiles} activateFile={setActiveFile}/>
+            <Sider files={files} newfile={setFiles} activateFile={setActiveFile} />
         </div>
     )
 }
