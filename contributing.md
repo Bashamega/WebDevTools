@@ -38,6 +38,7 @@ For code contributions:
 2. Create a branch (`git checkout -b feature/your-feature-name`).
 3. Make your changes.
 4. Test thoroughly.
+5. Add your feature(if it is a tool) to the `src/db/tools.json`
 5. Commit and push (`git commit -am 'Add new feature'` and `git push origin feature/your-feature-name`).
 6. Open a pull request.
 
