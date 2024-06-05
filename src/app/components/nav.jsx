@@ -122,6 +122,12 @@ export default function Nav() {
             >
               Color picker
             </Link>
+            <Link
+              href="customizer/JsonGenerator"
+              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+            >
+              Json Generator
+            </Link>
           </div>
         )}
       </div>
