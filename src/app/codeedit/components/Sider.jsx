@@ -20,7 +20,8 @@ export default function Sider({ files, newfile, activateFile }) {
         setNewFile(false);
         files.push({
             name: fileName,
-            content: ''
+            content: '',
+            lang: ''
         });
         setFile("");
     }
