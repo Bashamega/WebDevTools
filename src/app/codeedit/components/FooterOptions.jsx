@@ -1,19 +1,19 @@
 import { CloseSharp } from "@mui/icons-material";
 import React, { useState } from "react";
-export function FooterOptions({ file, setFile, files }) {
+export function FooterOptions({ file, setFile, files, saveFunction }) {
     const [Popup, setPop] = useState(false)
     const [localLang, setLocalLang] = useState('')
     const chooseLang = () => {
         setFile({ ...file, lang: localLang })
         setPop(false)
         files.forEach(element => {
-            if(element.name ==  file.name){
+            if (element.name == file.name) {
                 element.lang = localLang
             }
         });
     }
     return (
-        <footer className="h-[5vh] w-full bg-slate-400">
+        <footer className="h-[5vh] w-full bg-slate-400 flex">
             <div onClick={() => { setPop(true) }} className="bg-slate-600 hover:bg-slate-700 cursor-pointer h-full w-[200px] flex items-center  justify-center">
                 {file.lang ? (
                     <p>{file.lang}</p>
@@ -21,6 +21,10 @@ export function FooterOptions({ file, setFile, files }) {
                     <p>Choose a language</p>
                 )}
             </div>
+            <div className="bg-slate-400 h-full w-1"/>
+            <button onClick={saveFunction} className="bg-slate-600 hover:bg-slate-700 cursor-pointer h-full w-[200px] flex items-center  justify-center">
+                Download
+            </button>
             {Popup ? (
                 <section className="absolute top-0 left-0 flex justify-center items-center w-screen h-screen backdrop-blur-lg">
                     <div className="p-5 rounded-lg shadow bg-gray-700 w-1/2 max-h-1/2">

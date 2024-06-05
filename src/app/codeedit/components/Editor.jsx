@@ -3,6 +3,8 @@ import CodeEditor from "./CodeEditor";
 import { useState, useEffect } from "react";
 import Sider from "./Sider";
 import { FooterOptions } from "./FooterOptions";
+import JSZip from "jszip";
+import { saveAs } from "file-saver";
 export default function Editor() {
     const [value, setValue] = useState("console.log('Hello, World!');");
     const [files, setFiles] = useState([]);
@@ -27,12 +29,22 @@ export default function Editor() {
             }
         });
     }
+    const saver = ()=>{
+        const zip = new JSZip()
+        files.forEach(element => {
+            zip.file(element.name, element.content);
+        });
+        zip.generateAsync({ type: "blob" }).then((content) => {
+            // Save the zip file
+            saveAs(content, "code_files.zip");
+        });
+    }
     return (
         <div className="h-screen flex">
             {activeFile.name != "" ?
                 <div>
-                    <FooterOptions file={activeFile} setFile={setActiveFile} files={files} />
                     <CodeEditor language={activeFile.lang} theme="vs-dark" value={value} onChange={handleChange} />
+                    <FooterOptions file={activeFile} setFile={setActiveFile} files={files} saveFunction={saver} />
                 </div>
                 :
                 <div className=" bg-[#3c3c3c] w-[80vw] h-[90vh] flex justify-center items-center">
