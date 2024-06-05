@@ -1,14 +1,26 @@
 import { NoteAdd } from "@mui/icons-material";
 import { useState } from "react";
+import Swal from "sweetalert2";
 export default function Sider({ files, newfile, activateFile }) {
     const [newFile, setNewFile] = useState(false);
     const [fileName, setFile] = useState("");
     const handleSubmit = (e) => {
         e.preventDefault();
+        let fileExists = false;
+        files.forEach(element => {
+            if(element.name === fileName){
+                fileExists = true;
+                return;
+            }
+        });
+        if(fileExists){
+            Swal.fire('Error', 'File name exists', 'error');
+            return;
+        }
         setNewFile(false);
         files.push({
             name: fileName,
-            content: fileName
+            content: ''
         });
         setFile("");
     }
