@@ -3,7 +3,7 @@ import Nav from "../components/nav";
 import React from "react";
 import { useState, useEffect } from "react";
 import Footer from "../components/Footer";
-
+import Link from "next/link";
 export default function Home() {
   const [contributors, setContributors] = useState([]);
 
