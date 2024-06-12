@@ -378,7 +378,7 @@ export default function ButtonCustomizer() {
           </div>
         </div>
       )}
-      <NavBar title={"Button customizer"}/>
+      <NavBar title={"Button customizer"} />
 
       <button
         className="m-3 bg-red-700 p-5 rounded"

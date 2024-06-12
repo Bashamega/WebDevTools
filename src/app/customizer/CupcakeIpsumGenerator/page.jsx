@@ -21,7 +21,7 @@ export default function ButtonCustomizer() {
 
   return (
     <main>
-      <Navbar title="Cupcake Ipsum Generator"/>
+      <Navbar title="Cupcake Ipsum Generator" />
       <section className="flex items-center justify-center h-screen">
         <div className="bg-slate-800 p-10 w-full max-w-5xl overflow-y-scroll max-h-96">
           <label htmlFor="cupcakes">Number of cupcakes:</label>

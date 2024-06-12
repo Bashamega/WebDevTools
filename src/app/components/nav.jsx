@@ -56,8 +56,9 @@ export default function Nav() {
           <FaTools fontSize={20} className="mr-2" />
           Customizer tools
           <svg
-            className={`${isDropdownOpen ? "transform rotate-180" : ""
-              } inline-block ml-[2px] w-[12px] h-4`}
+            className={`${
+              isDropdownOpen ? "transform rotate-180" : ""
+            } inline-block ml-[2px] w-[12px] h-4`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -170,10 +171,11 @@ export default function Nav() {
           <SearchIcon className="text-white" onClick={searchToggle} />
         </button>
         <div
-          className={`absolute w-full h-full flex  items-center  bg-blue-500 ${toggle
+          className={`absolute w-full h-full flex  items-center  bg-blue-500 ${
+            toggle
               ? "left-0 duration-300 ease-in"
               : "left-[100%] duration-300 ease-in"
-            } `}
+          } `}
         >
           <div className="flex flex-1 items-center text-white justify-center relative">
             <ainkrrowBackIcon

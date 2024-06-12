@@ -5,10 +5,8 @@ import React from "react";
 import Link from "next/link";
 
 export default function Home() {
-  
   return (
     <main className="" class="bg-gray-900">
-
       <Nav></Nav>
       <div class="flex justify-center flex-col items-center w-full">
         <div
@@ -66,8 +64,7 @@ export default function Home() {
           </div>
         </div>
 
-
-        <Footer/>
+        <Footer />
       </div>
     </main>
   );

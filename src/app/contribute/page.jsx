@@ -10,7 +10,7 @@ export default function Home() {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "https://api.github.com/repos/bashamega/webdevtools/contributors"
+        "https://api.github.com/repos/bashamega/webdevtools/contributors",
       );
       const data = await response.json();
       setContributors(data);
@@ -24,16 +24,13 @@ export default function Home() {
   }, []);
   return (
     <main className="" class="bg-gray-900">
-
       <Nav></Nav>
       <div class="flex justify-center flex-col items-center w-full">
-        
-
         <div
           id="contributers"
           className="my-9 max-w-[26rem] md:max-w-[40rem]  break-words block py-6 md:p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
         >
-            <h5 class="mb-2 text-3xl font-bold text-center text-gray-900 dark:text-white">
+          <h5 class="mb-2 text-3xl font-bold text-center text-gray-900 dark:text-white">
             Contributors
           </h5>
           <div className="flex justify-center items-center">
@@ -66,7 +63,6 @@ export default function Home() {
               )}
             </div>
           </div>
-          
         </div>
         <div class="p-4 text-center max-w-[26rem] md:max-w-[40rem] bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
           <h5 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
@@ -106,7 +102,7 @@ export default function Home() {
           </div>
         </div>
 
-        <Footer/>
+        <Footer />
       </div>
     </main>
   );

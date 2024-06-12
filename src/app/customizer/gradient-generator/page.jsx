@@ -49,10 +49,10 @@ const GradientGenerator = () => {
   const [gradient, setGradient] = useState("");
   const [gradientType, setGradientType] = useState(gradientTypes[0]);
   const [gradientPosition, setGradientPosition] = useState(
-    gradientPositions[0]
+    gradientPositions[0],
   );
   const [gradientRotation, setGradientRotation] = useState(
-    gradientRotations[0]
+    gradientRotations[0],
   );
   const colorsListRef = useRef(colorsList);
   const gradientRef = useRef(gradient);
@@ -83,12 +83,12 @@ const GradientGenerator = () => {
       } else {
         if (gradientType.value === "linear-gradient") {
           setGradient(
-            `${gradientType.value}(${gradientRotation.value}deg, ${newGrad})`
+            `${gradientType.value}(${gradientRotation.value}deg, ${newGrad})`,
           );
           gradientRef.current = `${gradientType.value}(${gradientRotation.value}deg, ${newGrad})`;
         } else if (gradientType.value === "conic-gradient") {
           setGradient(
-            `${gradientType.value}(from ${gradientRotation.value}deg, ${newGrad})`
+            `${gradientType.value}(from ${gradientRotation.value}deg, ${newGrad})`,
           );
           gradientRef.current = `${gradientType.value}(from ${gradientRotation.value}deg, ${newGrad})`;
         } else {
@@ -106,7 +106,7 @@ const GradientGenerator = () => {
 
       for (var i = 0; i < 6; i++) {
         hexCode1 += hexValues1.charAt(
-          Math.floor(Math.random() * hexValues1.length)
+          Math.floor(Math.random() * hexValues1.length),
         );
       }
       return hexCode1;
@@ -174,8 +174,7 @@ const GradientGenerator = () => {
 
   return (
     <main className="" class="bg-gray-900">
-
-       <NavBar title={"Gradient generator"}/>
+      <NavBar title={"Gradient generator"} />
       <div class="flex justify-center flex-col items-center w-full">
         <div className="flex flex-col gap-3 mt-10 items-center">
           <h1 className="text-5xl font-extrabold text-center">
@@ -267,7 +266,7 @@ const GradientGenerator = () => {
           />
         )}
 
-        <Footer/>
+        <Footer />
       </div>
     </main>
   );

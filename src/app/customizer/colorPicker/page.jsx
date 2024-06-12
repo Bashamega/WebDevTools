@@ -14,7 +14,7 @@ export default function colorPicker() {
     return result
       ? `(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(
           result[3],
-          16
+          16,
         )})`
       : null;
   };
@@ -40,7 +40,7 @@ export default function colorPicker() {
 
   return (
     <main>
-      <NavBar title={"Color picker"}/>
+      <NavBar title={"Color picker"} />
       <div className="grid grid-rows-2 grid-cols-1 sm:grid-cols-2 sm:grid-rows-1 sm:gap-x-8 h-[100vh] w-[100vw] items-center overflow-hidden">
         <div className="flex justify-center items-center sm:flex sm:justify-end sm:items-center">
           <span className="custom-color-picker">

@@ -27,7 +27,7 @@ export default function ButtonCustomizer() {
 
   return (
     <main className="h-screen flex flex-col gap-10">
-      <NavBar title={"Lorem Ipsum generator"}/>
+      <NavBar title={"Lorem Ipsum generator"} />
       <section className="flex items-center justify-center">
         <div className="bg-slate-800 p-10 w-full max-w-5xl overflow-y-scroll max-h-96">
           <div className="flex justify-center pb-5 flex-wrap gap-4 md:justify-between">

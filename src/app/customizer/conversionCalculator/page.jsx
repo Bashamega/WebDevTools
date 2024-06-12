@@ -33,7 +33,7 @@ export default function ButtonCustomizer() {
 
   return (
     <main>
-      <NavBar title={"Button customizer"}/>
+      <NavBar title={"Button customizer"} />
       <div
         style={{
           display: "flex",

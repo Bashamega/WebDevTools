@@ -20,7 +20,7 @@ const page = () => {
       .writeText(
         `box-shadow: ${shadow.hOffset}px ${shadow.vOffset}px ${shadow.blur}px ${
           shadow.spread
-        }px ${shadow.color} ${shadow.inset ? "inset" : ""} ;`
+        }px ${shadow.color} ${shadow.inset ? "inset" : ""} ;`,
       )
       .then(() => {
         Swal.fire({
@@ -36,7 +36,7 @@ const page = () => {
   };
   return (
     <div>
-      <NavBar title={"Box Shadow generator"}/>
+      <NavBar title={"Box Shadow generator"} />
       <main className=" max-w-6xl m-auto">
         <div className="flex flex-col gap-3 mt-10 items-center">
           <h1 className="text-5xl font-extrabold text-center">
