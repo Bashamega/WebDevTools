@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import Search from "@/app/assets/search";
 import InputRange from "@/app/components/Input/InputRange";
 import Footer from "@/app/components/Footer";
 import Swal from "sweetalert2";
+import { NavBar } from "@/app/components/navbar";
 
 const page = () => {
   const [shadow, setShadow] = useState({
@@ -20,7 +20,7 @@ const page = () => {
       .writeText(
         `box-shadow: ${shadow.hOffset}px ${shadow.vOffset}px ${shadow.blur}px ${
           shadow.spread
-        }px ${shadow.color} ${shadow.inset ? "inset" : ""} ;`
+        }px ${shadow.color} ${shadow.inset ? "inset" : ""} ;`,
       )
       .then(() => {
         Swal.fire({
@@ -36,18 +36,7 @@ const page = () => {
   };
   return (
     <div>
-      <nav className="bg-blue-500 py-4 px-6 flex items-center justify-between">
-        <a
-          href="https://web-dev-tools.vercel.app/"
-          className="flex items-center border rounded p-2 hover:bg-blue-600 mr-2"
-        >
-          <h1 className="text-white  text-lg md:text-2xl font-bold mr-2">
-            Web Dev Tools
-          </h1>
-          <p>Box Shadow Generator</p>
-        </a>
-        <Search />
-      </nav>
+      <NavBar title={"Box Shadow generator"} />
       <main className=" max-w-6xl m-auto">
         <div className="flex flex-col gap-3 mt-10 items-center">
           <h1 className="text-5xl font-extrabold text-center">

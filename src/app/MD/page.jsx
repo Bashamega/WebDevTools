@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useRef } from "react";
-import Search from "@/app/assets/search";
 import snarkdown from "snarkdown";
 import { saveAs } from "file-saver";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-
+import Search from "../components/search";
+import Link from "next/link";
 export default function MarkdownEditor() {
   const [markdown, setMarkdown] = useState("# hey");
   const [name, setName] = useState("untitled");
@@ -66,15 +66,15 @@ export default function MarkdownEditor() {
   return (
     <main className="h-screen">
       <nav className="bg-blue-500 py-4 px-6 flex items-center justify-between h-[69px]">
-        <a
-          href="https://web-dev-tools.vercel.app/"
+        <Link
+          href="/"
           className="mr-2 flex  border items-center  p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
         >
           <h1 className="text-white text-sm md:text-2xl font-bold mr-4 ml-1">
             Web Dev Tools
           </h1>
           <p className="mr-2 text-sm">MD Editor</p>
-        </a>
+        </Link>
         <div className="flex items-center">
           <input
             value={name}
@@ -102,7 +102,7 @@ export default function MarkdownEditor() {
             } `}
           >
             <div className="flex flex-1 items-center text-white justify-center relative">
-              <ArrowBackIcon
+              <ainkrrowBackIcon
                 className="mr-4 absolute left-2 cursor-pointer"
                 onClick={searchToggle}
               />
@@ -143,7 +143,7 @@ export default function MarkdownEditor() {
             className="w-full h-full bg-white"
             title="Parsed Markdown"
             srcDoc={`<!DOCTYPE html><html><head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css"><style>body { margin: 0; padding: 16px; }</style></head><body class="markdown-body">${snarkdown(
-              markdown
+              markdown,
             )}</body></html>`}
           />
         </section>

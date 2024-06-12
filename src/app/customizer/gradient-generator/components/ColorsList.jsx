@@ -36,7 +36,7 @@ const ColorsList = ({ colorsList, setColorsList }) => {
     const updatedItems = reorder(
       colorsList,
       result.source.index,
-      result.destination.index
+      result.destination.index,
     );
     setColorsList(updatedItems);
   };
@@ -79,7 +79,7 @@ const ColorsList = ({ colorsList, setColorsList }) => {
                       style={getItemStyle(
                         snapshot.isDragging,
                         provided.draggableProps.style,
-                        item.color
+                        item.color,
                       )}
                       className="group rounded-lg border-[3px] border-gray-900 shadow-[0px_0px_1px_2px_#5B656F] hover:shadow-[0px_0px_1px_2px_#9CA8B4]"
                     >

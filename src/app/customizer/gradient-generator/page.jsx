@@ -1,5 +1,4 @@
 "use client";
-import Search from "@/app/assets/search";
 import React, { useEffect, useRef, useState } from "react";
 import { FaGithub, FaHome, FaExpandArrowsAlt } from "react-icons/fa";
 import ColorsList from "./components/ColorsList";
@@ -9,6 +8,8 @@ import GradientType from "./components/GradientType";
 import GradientRotation from "./components/GradientRotation";
 import GradientFullScreen from "./components/GradientFullScreen";
 import Swal from "sweetalert2";
+import { NavBar } from "@/app/components/navbar";
+import Footer from "@/app/components/Footer";
 
 const gradientTypes = [
   { id: 1, name: "Linear", value: "linear-gradient" },
@@ -48,10 +49,10 @@ const GradientGenerator = () => {
   const [gradient, setGradient] = useState("");
   const [gradientType, setGradientType] = useState(gradientTypes[0]);
   const [gradientPosition, setGradientPosition] = useState(
-    gradientPositions[0]
+    gradientPositions[0],
   );
   const [gradientRotation, setGradientRotation] = useState(
-    gradientRotations[0]
+    gradientRotations[0],
   );
   const colorsListRef = useRef(colorsList);
   const gradientRef = useRef(gradient);
@@ -82,12 +83,12 @@ const GradientGenerator = () => {
       } else {
         if (gradientType.value === "linear-gradient") {
           setGradient(
-            `${gradientType.value}(${gradientRotation.value}deg, ${newGrad})`
+            `${gradientType.value}(${gradientRotation.value}deg, ${newGrad})`,
           );
           gradientRef.current = `${gradientType.value}(${gradientRotation.value}deg, ${newGrad})`;
         } else if (gradientType.value === "conic-gradient") {
           setGradient(
-            `${gradientType.value}(from ${gradientRotation.value}deg, ${newGrad})`
+            `${gradientType.value}(from ${gradientRotation.value}deg, ${newGrad})`,
           );
           gradientRef.current = `${gradientType.value}(from ${gradientRotation.value}deg, ${newGrad})`;
         } else {
@@ -105,7 +106,7 @@ const GradientGenerator = () => {
 
       for (var i = 0; i < 6; i++) {
         hexCode1 += hexValues1.charAt(
-          Math.floor(Math.random() * hexValues1.length)
+          Math.floor(Math.random() * hexValues1.length),
         );
       }
       return hexCode1;
@@ -173,19 +174,7 @@ const GradientGenerator = () => {
 
   return (
     <main className="" class="bg-gray-900">
-      <title>Web dev tools</title>
-       <nav className="bg-blue-500 py-4 px-6 flex items-center justify-between h-15">
-        <a
-          href="https://web-dev-tools.vercel.app/"
-          className="mr-2 flex border items-center rounded p-2 hover:bg-blue-600"
-        >
-          <h1 className="text-white text-lg md:text-2xl font-bold mr-4">
-            Web Dev Tools
-          </h1>
-          <p>Gradient generator</p>
-        </a>
-        <Search />
-      </nav>
+      <NavBar title={"Gradient generator"} />
       <div class="flex justify-center flex-col items-center w-full">
         <div className="flex flex-col gap-3 mt-10 items-center">
           <h1 className="text-5xl font-extrabold text-center">
@@ -277,41 +266,7 @@ const GradientGenerator = () => {
           />
         )}
 
-        <footer class="w-[26rem] md:w-[40rem] max-w-full bg-white rounded-lg shadow m-4 dark:bg-gray-800">
-          <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-              © {new Date().getFullYear()}{" "}
-              <a
-                href="https://web-dev-tools.vercel.app/"
-                class="hover:underline"
-              >
-                WebDevTools
-              </a>
-              . All Rights Reserved.
-            </span>{" "}
-            &emsp;
-            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-              <li>
-                <a
-                  href="https://web-dev-tools.vercel.app/"
-                  class="mr-4 hover:underline md:mr-6 flex items-center justify-center gap-2"
-                >
-                  <FaHome />
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/Bashamega/WebDevTools"
-                  class="hover:underline flex items-center justify-center gap-2"
-                >
-                  <FaGithub />
-                  Repository
-                </a>
-              </li>
-            </ul>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </main>
   );
