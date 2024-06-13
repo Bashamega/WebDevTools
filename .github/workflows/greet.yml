@@ -1,0 +1,26 @@
+name: Greet New PRs
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Greet the user
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { github, context } = require('@actions/github');
+            const pr = context.payload.pull_request;
+            const commentBody = `Hey there! 👋
+
+            Thanks for taking the time to send in this pull request. We're happy to have your contribution! If you have any questions or need any help, feel free to ask.`;
+
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+              body: commentBody
+            });
