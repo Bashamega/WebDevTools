@@ -12,8 +12,8 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const { context } = require('@actions/github');
             const github = require('@actions/github');
+            const context = github.context;
 
             const pr = context.payload.pull_request;
             const commentBody = `Hey there! 👋
