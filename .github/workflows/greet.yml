@@ -16,9 +16,7 @@ jobs:
             const context = github.context;
 
             const pr = context.payload.pull_request;
-            const commentBody = `Hey there! 👋
-
-Thanks for taking the time to send in this pull request. We're happy to have your contribution! If you have any questions or need any help, feel free to ask.`;
+            const commentBody = `Hey there! 👋 Thanks for taking the time to send in this pull request. We're happy to have your contribution! If you have any questions or need any help, feel free to ask.`;
 
             github.rest.issues.createComment({
               owner: context.repo.owner,
