@@ -12,7 +12,7 @@ import {
 } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
-export default function Example({ open, togglePanel }) {
+export default function HamburgerMenu({ open, togglePanel }) {
   return (
     <Dialog
       open={open}

@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Search from "./search";
-import Example from "./hamburger-menu";
+import HamburgerMenu from "./hamburger-menu";
 import SearchIcon from "@mui/icons-material/Search";
 import { FaTools, FaCode, FaMarkdown, FaInfo } from "react-icons/fa";
 import { IoMdGitPullRequest } from "react-icons/io";
@@ -204,7 +204,7 @@ export default function Nav() {
       </div>
 
       {/*  */}
-      <Example open={open} togglePanel={togglePanel} />
+      <HamburgerMenu open={open} togglePanel={togglePanel} />
     </nav>
   );
 }
