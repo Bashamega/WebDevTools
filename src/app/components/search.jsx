@@ -58,7 +58,7 @@ export default function Search() {
           onChange={handleInputChange}
           type="search"
           id="search"
-          class="grow bg-gray-50 border outline-none border-none  dark:bg-gray-700 text-gray-900 text-sm block w-full p-1.5 px-2   dark:placeholder-gray-400 dark:text-white"
+          className="grow bg-gray-50 border outline-none border-none  dark:bg-gray-700 text-gray-900 text-sm block w-full p-1.5 px-2   dark:placeholder-gray-400 dark:text-white"
           placeholder="Search"
           required
         />

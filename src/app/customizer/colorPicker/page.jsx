@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { HexColorPicker } from "react-colorful";
-import { NavBar } from "@/app/components/navbar";
+import Nav from "@/app/components/nav";
 
 export default function colorPicker() {
   const [hexColor, setHexColor] = useState("#ffffff");
@@ -39,9 +39,9 @@ export default function colorPicker() {
   }, [hexColor]);
 
   return (
-    <main>
-      <NavBar title={"Color picker"} />
-      <div className="grid grid-rows-2 grid-cols-1 sm:grid-cols-2 sm:grid-rows-1 sm:gap-x-8 h-[100vh] w-[100vw] items-center overflow-hidden">
+    <main className="min-w-80">
+      <Nav />
+      <div className="grid grid-rows-2 grid-cols-1 sm:grid-cols-2 sm:grid-rows-1 sm:gap-x-8 h-[100vh] w-[100vw] items-center overflow-hidden min-w-80">
         <div className="flex justify-center items-center sm:flex sm:justify-end sm:items-center">
           <span className="custom-color-picker">
             <HexColorPicker color={hexColor} onChange={setHexColor} />

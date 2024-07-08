@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import CloseIcon from "@mui/icons-material/Close";
-import { NavBar } from "@/app/components/navbar";
+import Nav from "@/app/components/nav";
 
 export default function ButtonCustomizer() {
   const [paragraphs, setParagraphs] = useState(1);
@@ -26,8 +26,8 @@ export default function ButtonCustomizer() {
   };
 
   return (
-    <main className="h-screen flex flex-col gap-10">
-      <NavBar title={"Lorem Ipsum generator"} />
+    <main className="h-screen flex flex-col gap-10 min-w-80">
+      <Nav />
       <section className="flex items-center justify-center">
         <div className="bg-slate-800 p-10 w-full max-w-5xl overflow-y-scroll max-h-96">
           <div className="flex justify-center pb-5 flex-wrap gap-4 md:justify-between">
