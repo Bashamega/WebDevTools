@@ -1,6 +1,6 @@
 "use client";
+import Nav from "@/app/components/nav";
 import React, { useState } from "react";
-import { Navbar } from "react-bootstrap";
 
 export default function ButtonCustomizer() {
   const [cupcakes, setCupcakes] = useState(1);
@@ -20,8 +20,8 @@ export default function ButtonCustomizer() {
   };
 
   return (
-    <main>
-      <Navbar title="Cupcake Ipsum Generator" />
+    <main className="min-w-80">
+      <Nav />
       <section className="flex items-center justify-center h-screen">
         <div className="bg-slate-800 p-10 w-full max-w-5xl overflow-y-scroll max-h-96">
           <label htmlFor="cupcakes">Number of cupcakes:</label>

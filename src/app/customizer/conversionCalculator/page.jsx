@@ -1,5 +1,5 @@
 "use client";
-import { NavBar } from "@/app/components/navbar";
+import Nav from "@/app/components/nav";
 import React, { useState } from "react";
 const convert = require("convert-units");
 
@@ -32,8 +32,8 @@ export default function ButtonCustomizer() {
   };
 
   return (
-    <main>
-      <NavBar title={"Button customizer"} />
+    <main className="min-w-80">
+      <Nav />
       <div
         style={{
           display: "flex",

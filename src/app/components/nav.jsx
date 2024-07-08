@@ -1,13 +1,16 @@
+"use client";
+
 import React, { useState, useRef, useEffect } from "react";
 import Search from "./search";
+import Example from "./hamburger-menu";
 import SearchIcon from "@mui/icons-material/Search";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { FaTools, FaCode, FaMarkdown, FaInfo } from "react-icons/fa";
 import { IoMdGitPullRequest } from "react-icons/io";
 import Link from "next/link";
 export default function Nav() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
+  const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
@@ -31,8 +34,12 @@ export default function Nav() {
     };
   }, []);
 
+  const togglePanel = () => {
+    setOpen((prev) => !prev);
+  };
+
   return (
-    <nav className="bg-blue-500 py-2 px-4 flex items-center justify-around gap-1 w-full relative mb-10 max-h-[10vh]">
+    <nav className="bg-blue-500 py-2 px-4 flex items-center justify-between lg:justify-around gap-1 w-full relative mb-10 max-h-[10vh] min-w-80">
       <div className="flex flex-0 items-center flex-shrink">
         <Link
           href="/"
@@ -48,7 +55,7 @@ export default function Nav() {
         </div>
       </div>
 
-      <div className="relative">
+      <div className="relative hidden md:block">
         <button
           onClick={toggleDropdown}
           className="text-white focus:outline-none text-[0.58rem] font-bold sm:font-bold items-center sm:text-sm flex md:text-sm  flex-1 p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
@@ -133,7 +140,7 @@ export default function Nav() {
         )}
       </div>
 
-      <div className="flex ml-1 justify-center gap-2  md:gap-4 items-center">
+      <div className="flex ml-1 justify-center gap-2  md:gap-4 items-center hidden lg:flex">
         <Link
           href="/codeedit"
           className="text-white  text-[0.57rem] font-bold  sm:text-sm p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
@@ -186,6 +193,18 @@ export default function Nav() {
           </div>
         </div>
       </div>
+
+      <div
+        className="flex flex-col gap-2 lg:hidden cursor-pointer"
+        onClick={togglePanel}
+      >
+        <span className="w-8 h-0.5 bg-white"></span>
+        <span className="w-8 h-0.5 bg-white"></span>
+        <span className="w-8 h-0.5 bg-white"></span>
+      </div>
+
+      {/*  */}
+      <Example open={open} togglePanel={togglePanel} />
     </nav>
   );
 }

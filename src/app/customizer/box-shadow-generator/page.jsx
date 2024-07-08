@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import InputRange from "@/app/components/Input/InputRange";
 import Footer from "@/app/components/Footer";
 import Swal from "sweetalert2";
-import { NavBar } from "@/app/components/navbar";
+import Nav from "@/app/components/nav";
 
 const page = () => {
   const [shadow, setShadow] = useState({
@@ -36,8 +36,8 @@ const page = () => {
   };
   return (
     <div>
-      <NavBar title={"Box Shadow generator"} />
-      <main className=" max-w-6xl m-auto">
+      <Nav />
+      <main className=" max-w-6xl m-auto min-w-80">
         <div className="flex flex-col gap-3 mt-10 items-center">
           <h1 className="text-5xl font-extrabold text-center">
             Box Shadow Generator

@@ -173,7 +173,7 @@ const GradientGenerator = () => {
   };
 
   return (
-    <main className="" class="bg-gray-900">
+    <main className="" class="bg-gray-900 min-w-80">
       <NavBar title={"Gradient generator"} />
       <div class="flex justify-center flex-col items-center w-full">
         <div className="flex flex-col gap-3 mt-10 items-center">
