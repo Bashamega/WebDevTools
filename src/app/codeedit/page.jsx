@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import React, { useState } from "react";
 import { NavBar } from "@/app/components/navbar";
@@ -14,7 +14,7 @@ const Page = () => {
   return (
     <div className={`max-h-[100vh] overflow-hidden ${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"}`}>
       <NavBar title={"Code Editor"} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-      <Editor />
+      <Editor isDarkMode={isDarkMode} />
     </div>
   );
 };
