@@ -89,7 +89,7 @@ export default function MarkdownEditor() {
           />
           <button
             onClick={handleDownload}
-            className={`ml-2 mr-2 text-sm rounded p-1.5 px-2 hover:bg-gray-600 ${isDarkMode ? "bg-gray-700 border-gray-600 text-white" : "bg-gray-700 border-gray-600 text-white"}`}
+            className={`ml-2 mr-2 text-sm rounded p-1.5 px-2 hover:bg-gray-600 ${isDarkMode ? "bg-gray-700 border-gray-600 text-white" : "bg-gray-300 border-gray-200 text-black"}`}
           >
             Download
           </button>
@@ -98,7 +98,8 @@ export default function MarkdownEditor() {
           </div>
 
           <button onClick={searchToggle} className="lg:hidden">
-            <SearchIcon className="text-white" onClick={searchToggle} />
+            <SearchIcon className={`${isDarkMode ? "text-gray-400" : "text-gray-800"}`} onClick={searchToggle} />
+
           </button>
           <div
             className={`absolute w-full h-[69px] flex items-center ${isDarkMode ? "bg-gray-800" : "bg-blue-500"} ${
@@ -132,7 +133,7 @@ export default function MarkdownEditor() {
             <button
               key={index}
               onClick={() => insertMarkdown(button.data)}
-              className={`text-sm rounded px-2 py-2 hover:bg-gray-600 m-2 ${isDarkMode ? "bg-gray-700 border-gray-600 text-white" : "bg-gray-700 border-gray-600 text-white"}`}
+              className={`text-sm rounded px-2 py-2 hover:bg-gray-600 m-2 ${isDarkMode ? "bg-gray-700 border-gray-600 text-white" : "bg-gray-300 border-gray-200 text-black"}`}
             >
               {button.label}
             </button>
