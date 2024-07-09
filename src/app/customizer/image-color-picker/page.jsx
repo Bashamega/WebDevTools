@@ -7,7 +7,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 const ColorPicker = () => {
   const [image, setImage] = useState(null);
-  const [color, setColor] = useState("rgb(29 78 216)");
+  const [color, setColor] = useState(null);
   const canvasRef = useRef(null);
 
   const handleImageUpload = (event) => {
@@ -61,6 +61,9 @@ const ColorPicker = () => {
   };
 
   function rgbToHex(color) {
+    if (!color) {
+      return;
+    }
     const rgbRegex = /rgb\((\d+), (\d+), (\d+)\)/;
     const match = color.match(rgbRegex);
     if (!match) {
