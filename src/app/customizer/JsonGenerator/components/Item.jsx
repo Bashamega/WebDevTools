@@ -2,12 +2,13 @@ import { RxDragHandleDots2 } from "react-icons/rx";
 import { CiCircleRemove } from "react-icons/ci";
 import "../styles.css";
 
-const Item = ({ field, handleChange, removeField, controls, categoryData }) => {
+const Item = ({ field, handleChange, removeField, controls, categoryData}) => {
   return (
     <div
       key={field.id}
       value={field}
       className="flex items-center bg-black-200 w-fit"
+      
     >
       <div
         className="p-1 mb-2 rounded-md cursor-pointer reorder-handle hover:bg-gray-800"
@@ -24,7 +25,7 @@ const Item = ({ field, handleChange, removeField, controls, categoryData }) => {
           onFocus={(e) => e.target.select()}
           onBlur={(e) => e.target.setSelectionRange(0, 0)}
           autoComplete="off"
-          className="p-2 mb-2 mr-2 text-gray-500 bg-black border border-gray-700 rounded-md focus:outline-none focus:border-gray-500 focus:bg-gray-800"
+          className="p-2 mb-2 mr-2 text-gray-500 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:border-gray-500 focus:bg-gray-800"
         />
         <select
           name="fieldType"

@@ -5,7 +5,9 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { FaTools, FaCode, FaMarkdown, FaInfo } from "react-icons/fa";
 import { IoMdGitPullRequest } from "react-icons/io";
 import Link from "next/link";
-export default function Nav() {
+import Switch from "@mui/material/Switch";
+
+export default function Nav({ isDarkMode, toggleTheme }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [toggle, setToggle] = useState(false);
   const dropdownRef = useRef(null);
@@ -32,13 +34,19 @@ export default function Nav() {
   }, []);
 
   return (
-    <nav className="bg-blue-500 py-2 px-4 flex items-center justify-around gap-1 w-full relative mb-10 max-h-[10vh]">
+    <nav
+      className={`${
+        isDarkMode ? "bg-gray-800 text-white" : "bg-blue-500 text-black"
+      } py-2 px-4 flex items-center justify-around gap-1 w-full relative mb-10 max-h-[10vh]`}
+    >
       <div className="flex flex-0 items-center flex-shrink">
         <Link
           href="/"
-          className="flex items-center border rounded p-2 hover:bg-blue-600 mr-2"
+          className={`flex items-center border rounded p-2 hover:${
+            isDarkMode ? "bg-gray-700" : "bg-blue-600"
+          } mr-2`}
         >
-          <h1 className="text-white text-lg md:text-2xl font-bold mr-2">
+          <h1 className="text-sm md:text-lg lg:text-xl font-bold mr-1">
             Web Dev Tools
           </h1>
         </Link>
@@ -51,7 +59,9 @@ export default function Nav() {
       <div className="relative">
         <button
           onClick={toggleDropdown}
-          className="text-white focus:outline-none text-[0.58rem] font-bold sm:font-bold items-center sm:text-sm flex md:text-sm  flex-1 p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
+          className={`focus:outline-none text-[0.58rem] font-bold sm:font-bold items-center sm:text-sm flex md:text-sm  flex-1 p-2 hover:${
+            isDarkMode ? "bg-gray-700" : "bg-blue-700"
+          } transition-all duration-700 rounded-lg`}
         >
           <FaTools fontSize={20} className="mr-2" />
           Customizer tools
@@ -76,56 +86,72 @@ export default function Nav() {
         {isDropdownOpen && (
           <div
             ref={dropdownRef}
-            className="absolute right-0 mt-2 py-2 bg-white rounded shadow-lg w-40"
+            className={`absolute right-0 mt-2 py-2 bg-white rounded shadow-lg w-40 `}
             style={{ zIndex: 100 }}
           >
             <Link
               href="customizer/box-shadow-generator"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              className={`block px-4 py-2 hover:${
+                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-800 text-gray-500"
+              }`}
             >
               Box Shadow Generator
             </Link>
             <Link
               href="customizer/gradient-generator"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              className={`block px-4 py-2 hover:${
+                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-800 text-gray-500"
+              }`}
             >
               CSS Gradient Generator
             </Link>
             <hr />
             <Link
               href="customizer/button"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              className={`block px-4 py-2 hover:${
+                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-800 text-gray-500"
+              }`}
             >
               Buttons
             </Link>
             <hr />
             <Link
               href="customizer/LoremIpsumGenerator"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              className={`block px-4 py-2 hover:${
+                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-800 text-gray-500"
+              }`}
             >
               Lorem Ipsum Generator
             </Link>
             <Link
               href="customizer/CupcakeIpsumGenerator"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              className={`block px-4 py-2 hover:${
+                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-800 text-gray-500"
+              }`}
             >
               Cupcake Ipsum Generator
             </Link>
             <Link
               href="customizer/conversionCalculator"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              className={`block px-4 py-2 hover:${
+                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-800 text-gray-500"
+              }`}
             >
               Conversion Calculator
             </Link>
             <Link
               href="customizer/colorPicker"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              className={`block px-4 py-2 hover:${
+                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-800 text-gray-500"
+              }`}
             >
               Color picker
             </Link>
             <Link
               href="customizer/JsonGenerator"
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              className={`block px-4 py-2 hover:${
+                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-800 text-gray-500"
+              }`}
             >
               Json Generator
             </Link>
@@ -136,7 +162,9 @@ export default function Nav() {
       <div className="flex ml-1 justify-center gap-2  md:gap-4 items-center">
         <Link
           href="/codeedit"
-          className="text-white  text-[0.57rem] font-bold  sm:text-sm p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
+          className={`text-[0.57rem] font-bold  sm:text-sm p-2 hover:${
+            isDarkMode ? "bg-gray-700" : "bg-blue-700"
+          } transition-all duration-700 rounded-lg`}
         >
           <p className="flex items-center justify-center gap-2">
             <FaCode fontSize={20} />
@@ -145,7 +173,9 @@ export default function Nav() {
         </Link>
         <Link
           href="/MD"
-          className="text-white  text-[0.57rem] font-bold  sm:text-sm p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg"
+          className={`text-[0.57rem] font-bold  sm:text-sm p-2 hover:${
+            isDarkMode ? "bg-gray-700" : "bg-blue-700"
+          } transition-all duration-700 rounded-lg`}
         >
           <p className="flex items-center justify-center gap-2">
             {" "}
@@ -155,14 +185,18 @@ export default function Nav() {
         </Link>
         <Link
           href="/about"
-          className="text-white font-bold text-[0.6rem]  sm:text-sm p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
+          className={`font-bold text-[0.6rem]  sm:text-sm p-2 hover:${
+            isDarkMode ? "bg-gray-700" : "bg-blue-700"
+          } transition-all duration-700 rounded-lg flex items-center justify-center gap-2`}
         >
           <FaInfo fontSize={15} />
           About
         </Link>
         <Link
           href="/contribute"
-          className="text-white font-bold text-[0.6rem]  sm:text-sm  p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
+          className={`font-bold text-[0.6rem]  sm:text-sm  p-2 hover:${
+            isDarkMode ? "bg-gray-700" : "bg-blue-700"
+          } transition-all duration-700 rounded-lg flex items-center justify-center gap-2`}
         >
           <IoMdGitPullRequest fontSize={20} />
           Contribute
@@ -178,13 +212,22 @@ export default function Nav() {
           } `}
         >
           <div className="flex flex-1 items-center text-white justify-center relative">
-            <ainkrrowBackIcon
+            <ArrowBackIcon
               className="mr-4 absolute left-2 cursor-pointer"
               onClick={searchToggle}
             />
             <Search />
           </div>
         </div>
+      </div>
+
+      <div className="flex items-center">
+        <Switch
+          checked={isDarkMode}
+          onChange={toggleTheme}
+          color="default"
+          inputProps={{ "aria-label": "toggle dark mode" }}
+        />
       </div>
     </nav>
   );

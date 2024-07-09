@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -8,7 +8,7 @@ import { saveAs } from "file-saver";
 import Item from "./Item";
 import Categories from "../utils";
 
-export default function CardForm() {
+export default function CardForm({ isDarkMode }) {
   const [fields, setFields] = useState([
     { id: uuidv4(), fieldName: "id", fieldType: "" },
     { id: uuidv4(), fieldName: "first_name", fieldType: "" },
@@ -92,7 +92,7 @@ export default function CardForm() {
 
   return (
     <Reorder.Group
-      className="mt-40"
+      className={`mt-40 ${isDarkMode ? "dark" : ""}`}
       axis="y"
       values={fields}
       onReorder={setFields}
@@ -115,6 +115,7 @@ export default function CardForm() {
                 removeField={removeField}
                 controls={controls}
                 categoryData={categoryData}
+                isDarkMode={isDarkMode}
               />
             </Reorder.Item>
           ))}
@@ -162,7 +163,7 @@ export default function CardForm() {
         <div className="absolute top-1/2 shadow-lg rounded-md -translate-y-1/2 z-10 flex flex-col flex-shrink-0 h-[50vh] dark:bg-gray-800">
           {responseData.length > 0 && showPreview && (
             <div className="flex flex-col max-h-[50vh] max-w-[40vw] min-w-[45vw] overflow-auto mr-2 p-2 ">
-              <div className="relative flex justify-center pt-2 mb-1 font-sans text-2xl font-bold text-center text-white">
+              <div className="relative flex justify-center pt-2 mb-1 font-sans text-2xl font-bold text-center bg-gray-500 text-white">
                 <span>Preview</span>
                 <span
                   className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer hover:text-gray-400"

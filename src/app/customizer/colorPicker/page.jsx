@@ -8,6 +8,7 @@ import { NavBar } from "@/app/components/navbar";
 export default function colorPicker() {
   const [hexColor, setHexColor] = useState("#ffffff");
   const [RGBColor, setRGBColor] = useState();
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toRGB = (hex) => {
     let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -38,9 +39,13 @@ export default function colorPicker() {
     setRGBColor(toRGB(hexColor));
   }, [hexColor]);
 
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <main>
-      <NavBar title={"Color picker"} />
+    <main className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-h-screen`}>
+      <NavBar title={"Color picker"} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <div className="grid grid-rows-2 grid-cols-1 sm:grid-cols-2 sm:grid-rows-1 sm:gap-x-8 h-[100vh] w-[100vw] items-center overflow-hidden">
         <div className="flex justify-center items-center sm:flex sm:justify-end sm:items-center">
           <span className="custom-color-picker">

@@ -5,6 +5,7 @@ import Sider from "./Sider";
 import { FooterOptions } from "./FooterOptions";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
+
 export default function Editor() {
   const [value, setValue] = useState("console.log('Hello, World!');");
   const [files, setFiles] = useState([]);

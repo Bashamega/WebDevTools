@@ -1,10 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { Navbar } from "react-bootstrap";
-
+// import { Navbar } from "react-bootstrap";
+import { NavBar } from "@/app/components/navbar";
 export default function ButtonCustomizer() {
   const [cupcakes, setCupcakes] = useState(1);
   const [cup, setCup] = useState("");
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const generate = () => {
     let text = "";
@@ -19,9 +20,13 @@ export default function ButtonCustomizer() {
     setCup("Text copied successfully");
   };
 
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <main>
-      <Navbar title="Cupcake Ipsum Generator" />
+    <main className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-h-screen`}>
+      <NavBar title="Cupcake Ipsum Generator" isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <section className="flex items-center justify-center h-screen">
         <div className="bg-slate-800 p-10 w-full max-w-5xl overflow-y-scroll max-h-96">
           <label htmlFor="cupcakes">Number of cupcakes:</label>
@@ -66,3 +71,4 @@ export default function ButtonCustomizer() {
     </main>
   );
 }
+
