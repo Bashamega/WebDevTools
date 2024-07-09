@@ -64,7 +64,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div class="p-4 text-center max-w-[26rem] md:max-w-[40rem] bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+        <div class="p-4 mb-24 text-center max-w-[26rem] md:max-w-[40rem] bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
           <h5 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
             Want to contribute?
           </h5>
