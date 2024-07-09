@@ -41,7 +41,7 @@ export default function Editor({ isDarkMode }) {
   };
 
   return (
-    <div className={`h-screen flex ${isDarkMode ? "bg-gray-900" : "bg-white"}`}>
+    <div className={`h-screen flex ${isDarkMode ? "bg-gray-800" : "bg-gray-500"}`}>
       {activeFile.name ? (
         <div className="flex flex-col flex-grow">
           <CodeEditor

@@ -63,9 +63,13 @@ export default function MarkdownEditor() {
     // Add more buttons and their corresponding data strings here
   ];
 
-  const searchToggle = () => {
+  // const searchToggle = () => {
+  //   setToggle(!toggle);
+  // };
+  function searchToggle() {
     setToggle(!toggle);
-  };
+  }
+  console.log(toggle);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -109,7 +113,7 @@ export default function MarkdownEditor() {
             } `}
           >
             <div className="flex flex-1 items-center justify-center relative">
-              <ArrowBackIcon
+              <ainkrrowBackIcon
                 className="mr-4 absolute left-2 cursor-pointer"
                 onClick={searchToggle}
               />
@@ -124,7 +128,7 @@ export default function MarkdownEditor() {
             color="default"
             inputProps={{ "aria-label": "toggle dark mode" }}
           />
-          <span className="ml-2">{isDarkMode ? "Dark Mode" : "Light Mode"}</span>
+          {/* <span className="ml-2">{isDarkMode ? "Dark Mode" : "Light Mode"}</span> */}
         </div>
       </nav>
       <div className="flex justify-between">
