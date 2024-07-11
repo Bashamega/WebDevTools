@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import InputRange from "@/app/components/Input/InputRange";
 import Footer from "@/app/components/Footer";
 import Swal from "sweetalert2";
-// import Nav from "@/app/components/nav";
-import { Nav } from "@/app/components/nav";
+import Nav from "@/app/components/nav";
 
 const Page = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
