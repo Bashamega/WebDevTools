@@ -43,5 +43,10 @@
     "id": 8,
     "name": "Box shadow generator",
     "link": "/customizer/box-shadow-generator"
+  },
+  {
+    "id": 9,
+    "name": "Image color picker",
+    "link": "/customizer/image-color-picker"
   }
 ]

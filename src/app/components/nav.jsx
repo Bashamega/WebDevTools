@@ -41,7 +41,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
   };
 
   return (
-    <nav className={`${isDarkMode ? "bg-gray-800 text-white" : "bg-blue-500 text-black"} py-2 px-4 flex items-center justify-around gap-1 w-full relative mb-10 max-h-[10vh] min-w-80`}>
+    <nav className={`${isDarkMode ? "bg-gray-800 text-white" : "bg-blue-500 text-black"} py-2 px-4 flex items-cener justify-between lg:justify-around gap-1 w-full relative mb-10 max-h-[10vh] min-w-80`}>
       <div className="flex flex-0 items-center flex-shrink">
         <Link href="/" className={`flex items-center border rounded p-2 hover:${isDarkMode ? "bg-gray-700" : "bg-blue-600"} mr-2`}>
           <h1 className="text-sm md:text-lg lg:text-xl font-bold mr-1">Web Dev Tools</h1>
@@ -80,8 +80,10 @@ export default function Nav({ isDarkMode, toggleTheme }) {
         )}
       </div>
 
-      <div className="flex ml-1 justify-center gap-2 md:gap-4 items-center hidden lg:flex">
-        <Link href="/codeedit" className={`text-[0.57rem] font-bold sm:text-sm p-2 hover:${isDarkMode ? "bg-gray-700" : "bg-blue-700"} transition-all duration-700 rounded-lg`}>
+      <div className="flex ml-1 justify-center gap-2 md:gap-4 items-center lg:flex">
+        <Link
+          href="/codeedit"
+          className={`text-[0.57rem] font-bold sm:text-sm p-2 hover:${isDarkMode ? "bg-gray-700" : "bg-blue-700"} transition-all duration-700 rounded-lg`}>
           <p className="flex items-center justify-center gap-2">
             <FaCode fontSize={20} />
             Code Editor
@@ -111,7 +113,6 @@ export default function Nav({ isDarkMode, toggleTheme }) {
           </div>
         </div>
       </div>
-
       <div className="flex flex-col gap-2 lg:hidden cursor-pointer" onClick={togglePanel}>
         <span className="w-8 h-0.5 bg-white"></span>
         <span className="w-8 h-0.5 bg-white"></span>
@@ -128,6 +129,8 @@ export default function Nav({ isDarkMode, toggleTheme }) {
           inputProps={{ "aria-label": "theme toggle switch" }}
         />
       </div>
+
+
     </nav>
   );
 }

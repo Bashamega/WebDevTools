@@ -1,7 +1,6 @@
-"use client"; 
-
-import { NavBar } from "@/app/components/navbar";
-import React, { useState } from "react";
+"use client";
+import { Nav } from "@/app/components/nav";
+import React, { use, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
@@ -192,9 +191,8 @@ export default function ButtonCustomizer() {
   ];
 
   return (
-    <div className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-h-screen`}>
-      <NavBar title={"Button Customizer"} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-
+    <div className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-w-80`}>
+      <Nav title={"Button Customizer"} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <section className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <button style={buttonStyles} className="text-4xl">
           Customized Button
@@ -403,6 +401,7 @@ export default function ButtonCustomizer() {
           </div>
         </div>
       )}
+      {/* <Nav title={"Button customizer"} /> */}
 
       <button
         className="m-3 bg-red-700 p-5 rounded text-gray-400 font-bold"

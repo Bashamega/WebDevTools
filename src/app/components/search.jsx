@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import toolList from "@/db/tools.json";
 import Link from "next/link";
-
 export default function Search({ isDarkMode }) {
   const [searchValue, setSearchValue] = useState(""); // State to store the value of search input
   const [searchResults, setSearchResults] = useState([]); // State to store the filtered search results
@@ -62,7 +61,7 @@ export default function Search({ isDarkMode }) {
           onChange={handleInputChange}
           type="search"
           id="search"
-          className={`grow outline-none border-none ${isDarkMode ? "bg-gray-700 text-white" : "bg-white text-gray-900"} text-sm p-1.5`}
+          className={`grow border outline-none border-none ${isDarkMode ? "bg-gray-700 text-white" : "bg-white text-gray-900"} text-sm block w-full p-1.5 px-2   dark:placeholder-gray-400`}
           placeholder="Search"
           required
         />

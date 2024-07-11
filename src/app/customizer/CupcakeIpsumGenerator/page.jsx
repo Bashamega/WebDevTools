@@ -1,6 +1,7 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { NavBar } from "@/app/components/navbar";
+import React, { useState } from "react";
+import Nav from "@/app/components/nav";
+import { Navbar } from "react-bootstrap";
 
 export default function ButtonCustomizer() {
   const [cupcakes, setCupcakes] = useState(1);
@@ -38,8 +39,8 @@ export default function ButtonCustomizer() {
   };
 
   return (
-    <main className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-h-screen`}>
-      <NavBar title="Cupcake Ipsum Generator" isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+    <main className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"}min-w-80 `}>
+      <Nav title= {"Cupcake Ipsum Generator"} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <section className="flex items-center justify-center h-screen">
         <div className={`${isDarkMode ? "bg-gray-700 text-gray-400" : "bg-slate-800 text-gray-500"} p-10 w-full max-w-5xl overflow-y-scroll max-h-96`}>
           <label htmlFor="cupcakes">Number of cupcakes:</label>

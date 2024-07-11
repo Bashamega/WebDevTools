@@ -75,8 +75,8 @@ export default function ContributePage() {
             </div>
           </div>
         </div>
-        <div className={`p-4 text-center max-w-[26rem] md:max-w-[40rem] ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} border border-gray-200 rounded-lg shadow sm:p-8`}>
-          <h5 className="mb-2 text-3xl font-bold">
+        <div className={`p-4 mb-24 text-center max-w-[26rem] md:max-w-[40rem] ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} border border-gray-200 rounded-lg shadow sm:p-8`}>
+        <h5 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
             Want to contribute?
           </h5>
           <p className="mb-5 text-base sm:text-lg">

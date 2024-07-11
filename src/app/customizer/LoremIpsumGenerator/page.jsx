@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import CloseIcon from "@mui/icons-material/Close";
-import { NavBar } from "@/app/components/navbar";
+import Nav from "@/app/components/nav";
 
 export default function ButtonCustomizer() {
   const [paragraphs, setParagraphs] = useState(1);
@@ -32,10 +32,10 @@ export default function ButtonCustomizer() {
   };
 
   return (
-    <main className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} h-screen flex flex-col gap-10`}>
-      <NavBar title={"Lorem Ipsum generator"} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+    <main className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} h-screen flex flex-col gap-10 min-w-80`}>
+      <Nav title={"Lorem Ipsum generator"} isDarkMode={isDarkMode} toggleTheme={toggleTheme}  />
       <section className="flex items-center justify-center">
-        <div className={`${isDarkMode ? "bg-gray-800" : "bg-gray-400"} p-10 w-full max-w-5xl overflow-y-scroll max-h-96`}>
+        <div className={`${isDarkMode ? "bg-gray-800" : "bg-gray-400"} p-10 w-full max-w-5xl overflow-y-scroll max-h-96 min-w-80`}>
           <div className="flex justify-center pb-5 flex-wrap gap-4 md:justify-between">
             <div className="flex gap-2 items-center">
               <label htmlFor="paragraphs">Number of paragraphs:</label>

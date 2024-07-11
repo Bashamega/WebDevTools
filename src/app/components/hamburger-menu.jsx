@@ -31,14 +31,7 @@ export default function HamburgerMenu({ open, togglePanel }) {
               transition
               className="pointer-events-auto relative w-screen max-w-md transform transition duration-500 ease-in-out data-[closed]:translate-x-full sm:duration-700"
             >
-              <TransitionChild
-                enter="transition-opacity ease-linear duration-300"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="transition-opacity ease-linear duration-300"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
+              <TransitionChild>
                 <div className="absolute left-0 top-0 -ml-8 flex pr-2 pt-4 duration-500 ease-in-out data-[closed]:opacity-0 sm:-ml-10 sm:pr-4">
                   <button
                     type="button"
@@ -58,7 +51,7 @@ export default function HamburgerMenu({ open, togglePanel }) {
                     <Search />
                     <Link
                       href="/codeedit"
-                      className="text-white text-[0.57rem] font-bold sm:text-sm p-4 bg-blue-500 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
+                      className="text-white  text-[0.57rem] font-bold  sm:text-sm p-4 bg-blue-500 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
                     >
                       <p className="flex items-center justify-center gap-2">
                         <FaCode fontSize={20} />
@@ -67,31 +60,32 @@ export default function HamburgerMenu({ open, togglePanel }) {
                     </Link>
                     <Link
                       href="/MD"
-                      className="text-white text-[0.57rem] font-bold sm:text-sm p-4 bg-blue-500 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
+                      className="text-white  text-[0.57rem] font-bold  sm:text-sm p-4 bg-blue-500 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
                     >
                       <p className="flex items-center justify-center gap-2">
+                        {" "}
                         <FaMarkdown fontSize={20} />
                         Markdown Editor
                       </p>
                     </Link>
                     <Link
                       href="/about"
-                      className="text-white font-bold text-[0.6rem] sm:text-sm p-4 bg-blue-500 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
+                      className="text-white font-bold text-[0.6rem]  sm:text-sm p-4 bg-blue-500 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
                     >
                       <FaInfo fontSize={15} />
                       About
                     </Link>
                     <Link
                       href="/contribute"
-                      className="text-white font-bold text-[0.6rem] sm:text-sm p-4 bg-blue-500 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
+                      className="text-white font-bold text-[0.6rem]  sm:text-sm  p-4 bg-blue-500 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
                     >
                       <IoMdGitPullRequest fontSize={20} />
                       Contribute
                     </Link>
                   </div>
-                  <span className="text-sm text-gray-500 text-center dark:text-gray-400">
+                  <span class="text-sm text-gray-500 text-center dark:text-gray-400">
                     © {new Date().getFullYear()}{" "}
-                    <Link href="/" className="hover:underline">
+                    <Link href="/" class="hover:underline">
                       WebDevTools
                     </Link>
                     . All Rights Reserved.

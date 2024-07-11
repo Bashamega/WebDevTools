@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import InputRange from "@/app/components/Input/InputRange";
 import Footer from "@/app/components/Footer";
 import Swal from "sweetalert2";
-import { NavBar } from "@/app/components/navbar";
+import Nav from "@/app/components/nav";
 
 const Page = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -40,9 +40,9 @@ const Page = () => {
   };
 
   return (
-    <div className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} min-h-screen`}>
-      <NavBar title={"Box Shadow generator"} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-      <main className="max-w-6xl m-auto">
+    <div className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"}`}>
+      <Nav title={"Box Shadow generator"} isDarkMode={isDarkMode} toggleTheme={toggleTheme}/>
+      <main className=" max-w-6xl m-auto min-w-80">
         <div className="flex flex-col gap-3 mt-10 items-center">
           <h1 className="text-5xl font-extrabold text-center">Box Shadow Generator</h1>
           <p className="text-slate-400 text-center">Create and export beautiful box shadow.</p>

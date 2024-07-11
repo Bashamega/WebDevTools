@@ -148,9 +148,9 @@ const GradientGenerator = () => {
   };
 
   return (
-    <main className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-h-screen`}>
-      <NavBar title={"Gradient Generator"} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-      <div className="flex justify-center flex-col items-center w-full">
+    <main className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-w-80`}>
+      <NavBar title={"Gradient generator"} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+      <div class="flex justify-center flex-col items-center w-full">
         <div className="flex flex-col gap-3 mt-10 items-center">
           <h1 className="text-5xl font-extrabold text-center">
             Gradient Generator
