@@ -5,7 +5,8 @@ import Sider from "./Sider";
 import { FooterOptions } from "./FooterOptions";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
-export default function Editor() {
+
+export default function Editor({ isDarkMode }) {
   const [value, setValue] = useState("console.log('Hello, World!');");
   const [files, setFiles] = useState([]);
   const [activeFile, setActiveFile] = useState({
@@ -13,39 +14,39 @@ export default function Editor() {
     content: "",
     lang: "",
   });
+
   useEffect(() => {
     if (activeFile) {
       setValue(activeFile.content);
     }
   }, [activeFile]);
+
   const handleChange = (val, ev) => {
-    //console.log(val)
     setValue(val);
     files.forEach((element) => {
-      //console.log(element)
-      if (element.name == activeFile.name) {
+      if (element.name === activeFile.name) {
         element.content = val;
-        //console.log(true)
       }
     });
   };
+
   const saver = () => {
     const zip = new JSZip();
     files.forEach((element) => {
       zip.file(element.name, element.content);
     });
     zip.generateAsync({ type: "blob" }).then((content) => {
-      // Save the zip file
       saveAs(content, "code_files.zip");
     });
   };
+
   return (
-    <div className="h-screen flex">
-      {activeFile.name != "" ? (
-        <div>
+    <div className={`h-screen flex ${isDarkMode ? "bg-gray-800" : "bg-gray-500"}`}>
+      {activeFile.name ? (
+        <div className="flex flex-col flex-grow">
           <CodeEditor
             language={activeFile.lang}
-            theme="vs-dark"
+            theme={isDarkMode ? "vs-dark" : "vs-light"}
             value={value}
             onChange={handleChange}
           />
@@ -57,8 +58,8 @@ export default function Editor() {
           />
         </div>
       ) : (
-        <div className=" bg-[#3c3c3c] w-[80vw] h-[90vh] flex justify-center items-center">
-          <h1 className="text-white text-2xl">No file selected</h1>
+        <div className={`w-[80vw] h-[90vh] flex justify-center items-center ${isDarkMode ? "bg-gray-700" : "bg-gray-100"}`}>
+          <h1 className={`text-2xl ${isDarkMode ? "text-white" : "text-black"}`}>No file selected</h1>
         </div>
       )}
       <Sider files={files} newfile={setFiles} activateFile={setActiveFile} />

@@ -8,6 +8,7 @@ export default function ButtonCustomizer() {
   const [to, setTo] = useState("10");
   const [opTo, setOpTo] = useState("cm");
   const [opFrom, setOpFrom] = useState("cm");
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const options = convert()
     .possibilities("length")
     .filter((unit) => unit !== "px");
@@ -31,9 +32,14 @@ export default function ButtonCustomizer() {
     calc();
   };
 
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+  
+
   return (
-    <main className="min-w-80">
-      <Nav />
+    <main className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-w-80`}>
+      <Nav title={"Button customizer"} isDarkMode={isDarkMode} toggleTheme={toggleTheme}/>
       <div
         style={{
           display: "flex",

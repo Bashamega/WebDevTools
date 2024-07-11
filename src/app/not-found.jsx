@@ -1,6 +1,7 @@
 import { NavBar } from "@/app/components/navbar";
 import React from "react";
 import Link from "next/link";
+import { Nav } from "@/app/components/nav";
 const styles = {
   h1: {
     fontSize: "1000",
