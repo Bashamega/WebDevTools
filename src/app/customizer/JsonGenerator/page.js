@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { NavBar } from "@/app/components/navbar";
 import CardForm from "./components/CardForm";
 import Heroish from "./components/Heroish";
+import { Nav } from "@/app/components/nav";
 
 export function JsonGeneratorMain() {
   const [isDarkMode, setIsDarkMode] = useState(false);

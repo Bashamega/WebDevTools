@@ -1,6 +1,6 @@
 "use client";
 import { Nav } from "@/app/components/nav";
-import React, { use, useState } from "react";
+import React, {useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 

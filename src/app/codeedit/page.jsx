@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import { NavBar } from "../components/navbar";
+// import { NavBar } from "../components/navbar";
 import Editor from "./components/Editor";
-import Nav from "../components/nav";
+// import Nav from "../components/nav";
+import { Nav } from "@/app/components/nav";
 
 const page = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);

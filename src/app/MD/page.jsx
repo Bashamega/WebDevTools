@@ -113,7 +113,7 @@ export default function MarkdownEditor() {
             } `}
           >
             <div className="flex flex-1 items-center justify-center relative">
-              <ainkrrowBackIcon
+              <ArrowBackIcon
                 className="mr-4 absolute left-2 cursor-pointer"
                 onClick={searchToggle}
               />
