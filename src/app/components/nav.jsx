@@ -198,7 +198,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
         </div>
       </div>
 
-      <div className="relative hidden md:block">
+      <div className="relative hidden lg:block">
         <button
           onClick={toggleDropdown}
           className={`focus:outline-none text-[0.58rem] font-bold sm:font-bold items-center sm:text-sm flex md:text-sm flex-1 p-2 hover:${
@@ -303,7 +303,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
         )}
       </div>
 
-      <div className="flex ml-1 justify-center gap-2 md:gap-4 items-center lg:flex">
+      <div className="flex ml-1 justify-center gap-2 md:gap-4 items-center hidden lg:flex">
         <Link
           href="/codeedit"
           className={`text-[0.57rem] font-bold sm:text-sm p-2 hover:${
