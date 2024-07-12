@@ -198,7 +198,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
         </div>
       </div>
 
-      <div className="relative hidden md:block">
+      <div className="relative hidden lg:block">
         <button
           onClick={toggleDropdown}
           className={`focus:outline-none text-[0.58rem] font-bold sm:font-bold items-center sm:text-sm flex md:text-sm flex-1 p-2 hover:${
