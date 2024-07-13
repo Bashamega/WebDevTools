@@ -12,7 +12,7 @@ export default function ContributePage() {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "https://api.github.com/repos/bashamega/webdevtools/contributors"
+        "https://api.github.com/repos/bashamega/webdevtools/contributors",
       );
       const data = await response.json();
       setContributors(data);
@@ -38,20 +38,22 @@ export default function ContributePage() {
   };
 
   return (
-    <main className={`${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
+    <main
+      className={`${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}
+    >
       <Nav isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <div className="flex justify-center flex-col items-center w-full">
-        <div className={`my-9 max-w-[26rem] md:max-w-[40rem] break-words block py-6 md:p-6 ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} border border-gray-200 rounded-lg shadow`}>
-          <h5 className="mb-2 text-3xl font-bold text-center">
-            Contributors
-          </h5>
+        <div
+          className={`my-9 max-w-[26rem] md:max-w-[40rem] break-words block py-6 md:p-6 ${isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"} border border-gray-200 rounded-lg shadow`}
+        >
+          <h5 className="mb-2 text-3xl font-bold text-center">Contributors</h5>
           <div className="flex justify-center items-center">
             <div className="grid gap-2 grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
               {contributors && contributors.length > 0 ? (
                 contributors.map((item, index) => (
                   <div
                     key={index}
-                    className={`${isDarkMode ? 'bg-gray-700 text-white' : 'bg-gray-100 text-black'} rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-card-shadow transition-all duration-500 ease-in`}
+                    className={`${isDarkMode ? "bg-gray-700 text-white" : "bg-gray-100 text-black"} rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-card-shadow transition-all duration-500 ease-in`}
                   >
                     <Link
                       href={item.html_url}
@@ -76,8 +78,10 @@ export default function ContributePage() {
             </div>
           </div>
         </div>
-        <div className={`p-4 mb-24 text-center max-w-[26rem] md:max-w-[40rem] ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-black'} border border-gray-200 rounded-lg shadow sm:p-8`}>
-        <h5 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
+        <div
+          className={`p-4 mb-24 text-center max-w-[26rem] md:max-w-[40rem] ${isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"} border border-gray-200 rounded-lg shadow sm:p-8`}
+        >
+          <h5 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
             Want to contribute?
           </h5>
           <p className="mb-5 text-base sm:text-lg">
@@ -87,7 +91,7 @@ export default function ContributePage() {
           <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
             <Link
               href="https://github.com/Bashamega/WebDevTools"
-              className={`w-full sm:w-auto focus:ring-4 focus:outline-none rounded-lg inline-flex items-center justify-center px-4 py-2.5 ${isDarkMode ? 'bg-gray-800 hover:bg-gray-700 text-white' : 'bg-white hover:bg-gray-200 text-black'}`}
+              className="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 hover:shadow-card-shadow  transition-all duration-500 ease-in"
             >
               <svg
                 className="mr-3 w-7 h-7"
