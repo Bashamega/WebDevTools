@@ -6,7 +6,7 @@ import Heroish from "./components/Heroish";
 import { Nav } from "@/app/components/nav";
 
 export function JsonGeneratorMain() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('theme'));
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);

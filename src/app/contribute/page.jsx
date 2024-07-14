@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function ContributePage() {
   const [contributors, setContributors] = useState([]);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('theme'));
 
   const fetchData = async () => {
     try {

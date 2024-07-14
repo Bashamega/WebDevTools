@@ -170,11 +170,13 @@ export default function Nav({ isDarkMode, toggleTheme }) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
   const togglePanel = () => {
     setOpen((prev) => !prev);
   };
-
+  const handletoggleTheme = ()=>{
+    localStorage.setItem('theme', !isDarkMode);
+    toggleTheme()
+  }
   return (
     <nav
       className={`${
@@ -371,7 +373,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
       <div className="flex items-center">
         <Switch
           checked={isDarkMode}
-          onChange={toggleTheme}
+          onChange={handletoggleTheme}
           color="default"
           inputProps={{ "aria-label": "theme toggle switch" }}
         />

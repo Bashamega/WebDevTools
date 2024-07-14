@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import Nav from "@/app/components/nav";
 
 const Page = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('theme'));
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);

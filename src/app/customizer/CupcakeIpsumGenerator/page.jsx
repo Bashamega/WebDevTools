@@ -8,7 +8,7 @@ import Nav from "@/app/components/nav";
 export default function ButtonCustomizer() {
   const [cupcakes, setCupcakes] = useState(1);
   const [cup, setCup] = useState("");
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('theme'));
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
