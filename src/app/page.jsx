@@ -1,5 +1,4 @@
 "use client";
-// import Nav from "./components/nav";
 import Nav from "@/app/components/nav";
 import React, { useState, useEffect } from "react";
 import Footer from "./components/Footer";
@@ -7,25 +6,7 @@ import toolList from "@/db/tools.json";
 import { Card } from "./components/card";
 
 export default function Home({ state }) {
-  const [contributors, setContributors] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(false);
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch(
-        "https://api.github.com/repos/bashamega/webdevtools/contributors"
-      );
-      const data = await response.json();
-      setContributors(data);
-    } catch (error) {
-      console.error("Error fetching contributors:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
@@ -37,7 +18,6 @@ export default function Home({ state }) {
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
-
   return (
     <main className={`${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"} min-w-80`}>
       <Nav isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
