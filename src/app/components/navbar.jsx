@@ -5,6 +5,16 @@ import Link from "next/link";
 import Switch from "@mui/material/Switch";
 
 export function NavBar({ title, isDarkMode, toggleTheme }) {
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme !== null && JSON.parse(storedTheme) !== isDarkMode) {
+      toggleTheme();
+    }
+  }, []);
+  const handletoggleTheme = ()=>{
+    localStorage.setItem('theme', !isDarkMode);
+    toggleTheme()
+  }
   return (
     <nav className={`py-4 px-6 flex items-center justify-between ${isDarkMode ? "bg-gray-800" : "bg-blue-500"}`}>
       <Link
@@ -20,7 +30,7 @@ export function NavBar({ title, isDarkMode, toggleTheme }) {
         <Search isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
         <Switch
           checked={isDarkMode}
-          onChange={toggleTheme}
+          onChange={handletoggleTheme}
           color="default"
           inputProps={{ "aria-label": "toggle dark mode" }}
         />
