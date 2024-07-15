@@ -36,7 +36,7 @@ export default function Home() {
           <div className="flex justify-center items-center">
             <div className="grid gap-2 grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
               {contributors && contributors.length > 0 ? (
-                contributors.map((item, index) => (
+                contributors.filter(contributor=>contributor.type === "User").map((item, index) => (
                   <div
                     key={index}
                     className="bg-gray-700 rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-card-shadow  transition-all duration-500 ease-in "
