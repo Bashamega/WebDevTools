@@ -8,7 +8,7 @@ export default function ButtonCustomizer() {
   const [paragraphs, setParagraphs] = useState(1);
   const [code, setCode] = useState("");
   const [copiedStatus, setCopiedStatus] = useState("");
-  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('theme'));
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const generateLoremIpsum = () => {
     let loremIpsumText = "";

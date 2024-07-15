@@ -6,7 +6,7 @@ import Nav from "../components/nav";
 // import { Nav } from "@/app/components/nav";
 
 const page = () => {
-  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('theme'));
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };

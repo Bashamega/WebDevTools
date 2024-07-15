@@ -8,7 +8,7 @@
 // export default function colorPicker() {
 //   const [hexColor, setHexColor] = useState("#ffffff");
 //   const [RGBColor, setRGBColor] = useState();
-//   const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('theme'));
+//   const [isDarkMode, setIsDarkMode] = useState(false);
 
 //   const toRGB = (hex) => {
 //     let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -93,7 +93,7 @@ import Nav from "@/app/components/nav"; // Correct import path
 export default function ColorPicker() {
   const [hexColor, setHexColor] = useState("#ffffff");
   const [RGBColor, setRGBColor] = useState();
-  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('theme'));
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toRGB = (hex) => {
     let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);

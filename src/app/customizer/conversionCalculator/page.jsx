@@ -8,7 +8,7 @@ export default function ButtonCustomizer() {
   const [to, setTo] = useState("10");
   const [opTo, setOpTo] = useState("cm");
   const [opFrom, setOpFrom] = useState("cm");
-  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('theme'));
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const options = convert()
     .possibilities("length")
     .filter((unit) => unit !== "px");

@@ -51,7 +51,7 @@ const GradientGenerator = () => {
   const [gradientType, setGradientType] = useState(gradientTypes[0]);
   const [gradientPosition, setGradientPosition] = useState(gradientPositions[0]);
   const [gradientRotation, setGradientRotation] = useState(gradientRotations[0]);
-  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('theme'));
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [copyCSSModal, setCopyCSSModal] = useState(false);
 

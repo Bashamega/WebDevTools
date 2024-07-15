@@ -12,7 +12,7 @@ export default function MarkdownEditor() {
   const [markdown, setMarkdown] = useState("# hey");
   const [name, setName] = useState("untitled");
   const [toggle, setToggle] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('theme'));
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const textareaRef = useRef(null);
 
   const handleNameChange = (e) => {

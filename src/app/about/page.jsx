@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 export default function Home() {
-  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('theme'));
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);

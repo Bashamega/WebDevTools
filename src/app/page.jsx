@@ -8,7 +8,7 @@ import { Card } from "./components/card";
 
 export default function Home({ state }) {
   const [contributors, setContributors] = useState([]);
-  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('theme'));
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const fetchData = async () => {
     try {
