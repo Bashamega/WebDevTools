@@ -100,7 +100,7 @@ const Page = () => {
               </div>
             </div>
             <div>
-              <h3 className="my-2 py-4 px-3 bg-gray-700 rounded-lg">
+              <h3 className="my-2 py-4 px-3 bg-gray-700 rounded-lg text-white">
                 {`box-shadow: ${shadow.hOffset}px ${shadow.vOffset}px ${shadow.blur}px ${shadow.spread}px ${shadow.color} ${shadow.inset ? "inset" : ""};`}
               </h3>
               <div className="w-full relative py-2">
