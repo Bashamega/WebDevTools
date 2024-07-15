@@ -192,7 +192,7 @@ export default function ButtonCustomizer() {
   ];
 
   return (
-    <div className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} min-h-screen`}>
+    <div className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-500"} min-h-screen`}>
       <NavBar title={"Button Customizer"} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
 
       <section className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -204,12 +204,12 @@ export default function ButtonCustomizer() {
 
       <Tabs className="fixed bottom-0 left-0 right-0 mt-5 bg-slate-700">
         <TabList className="flex border-b bg-slate-600 flex-wrap p-2 gap-4">
-          <Tab className="font-mono cursor-pointer p-1">Background Color</Tab>
-          <Tab className="font-mono cursor-pointer p-1">Text Color</Tab>
-          <Tab className="font-mono cursor-pointer p-1">Border Radius</Tab>
-          <Tab className="font-mono cursor-pointer p-1">Width and Height</Tab>
-          <Tab className="font-mono cursor-pointer p-1">Cursor</Tab>
-          <Tab className="font-mono cursor-pointer p-1">Font</Tab>
+          <Tab className="font-mono cursor-pointer p-1 text-white">Background Color</Tab>
+          <Tab className="font-mono cursor-pointer p-1 text-white">Text Color</Tab>
+          <Tab className="font-mono cursor-pointer p-1 text-white">Border Radius</Tab>
+          <Tab className="font-mono cursor-pointer p-1 text-white">Width and Height</Tab>
+          <Tab className="font-mono cursor-pointer p-1 text-white">Cursor</Tab>
+          <Tab className="font-mono cursor-pointer p-1 text-white">Font</Tab>
         </TabList>
 
         <TabPanel className="bg-slate-700">

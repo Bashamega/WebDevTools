@@ -18,14 +18,14 @@ export function FooterOptions({ file, setFile, files, saveFunction }) {
         onClick={() => {
           setPop(true);
         }}
-        className="bg-slate-600 hover:bg-slate-700 cursor-pointer h-full w-[200px] flex items-center  justify-center"
+        className="bg-slate-600 hover:bg-slate-700 cursor-pointer h-full w-[200px] flex items-center  justify-center text-white"
       >
         {file.lang ? <p>{file.lang}</p> : <p>Choose a language</p>}
       </div>
       <div className="bg-slate-400 h-full w-1" />
       <button
         onClick={saveFunction}
-        className="bg-slate-600 hover:bg-slate-700 cursor-pointer h-full w-[200px] flex items-center  justify-center"
+        className="bg-slate-600 hover:bg-slate-700 cursor-pointer h-full w-[200px] flex items-center  justify-center text-white"
       >
         Download
       </button>
@@ -40,7 +40,7 @@ export function FooterOptions({ file, setFile, files, saveFunction }) {
             />
             <select
               onChange={(e) => setLocalLang(e.target.value)}
-              className="bg-slate-600 rounded-lg p-2 hover:bg-slate-700 cursor-pointer text-center w-full flex items-center justify-center"
+              className="bg-slate-600 rounded-lg p-2 hover:bg-slate-700 cursor-pointer text-center w-full flex items-center justify-center text-white"
             >
               <option value="">Choose a language</option>
               <option value="typescript">TypeScript</option>
