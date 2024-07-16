@@ -148,7 +148,7 @@ export default function CardForm({ isDarkMode }) {
               <span className="p-1">Export</span>
             </button>
           </div>
-          <div>
+          <div className="mb-24">
             <span className="border-b "># rows</span>
             <input
               type="text"
