@@ -7,8 +7,12 @@ import Switch from "@mui/material/Switch";
 export function NavBar({ title, isDarkMode, toggleTheme }) {
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
-    if (storedTheme !== null && JSON.parse(storedTheme) !== isDarkMode) {
-      toggleTheme();
+    try {
+      if (storedTheme !== null && JSON.parse(storedTheme) !== isDarkMode) {
+        toggleTheme();
+      }
+    }catch{
+      console.log("Failed to read localstorage")
     }
   }, []);
   const handletoggleTheme = ()=>{
