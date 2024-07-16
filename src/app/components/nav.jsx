@@ -236,15 +236,16 @@ export default function Nav({ isDarkMode, toggleTheme }) {
             <Link
               href="/customizer/box-shadow-generator"
               className={`block px-4 py-2 hover:${
-                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-200"
+                isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
               }`}
             >
               Box Shadow Generator
             </Link>
+            <hr />
             <Link
               href="/customizer/gradient-generator"
               className={`block px-4 py-2 hover:${
-                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-200"
+                isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
               }`}
             >
               CSS Gradient Generator
@@ -253,7 +254,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
             <Link
               href="/customizer/button"
               className={`block px-4 py-2 hover:${
-                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-200"
+                isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
               }`}
             >
               Buttons
@@ -262,39 +263,43 @@ export default function Nav({ isDarkMode, toggleTheme }) {
             <Link
               href="/customizer/LoremIpsumGenerator"
               className={`block px-4 py-2 hover:${
-                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-200"
+                isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
               }`}
             >
               Lorem Ipsum Generator
             </Link>
+            <hr />
             <Link
               href="/customizer/CupcakeIpsumGenerator"
               className={`block px-4 py-2 hover:${
-                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-200"
+                isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
               }`}
             >
               Cupcake Ipsum Generator
             </Link>
+            <hr />
             <Link
               href="/customizer/conversionCalculator"
               className={`block px-4 py-2 hover:${
-                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-200"
+                isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
               }`}
             >
               Conversion Calculator
             </Link>
+            <hr />
             <Link
               href="/customizer/colorPicker"
               className={`block px-4 py-2 hover:${
-                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-200"
+                isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
               }`}
             >
               Color picker
             </Link>
+            <hr />
             <Link
               href="/customizer/JsonGenerator"
               className={`block px-4 py-2 hover:${
-                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-200"
+                isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
               }`}
             >
               Json Generator
@@ -349,7 +354,9 @@ export default function Nav({ isDarkMode, toggleTheme }) {
         </button>
         <div
           className={`absolute w-full h-full flex items-center bg-blue-500 ${
-            toggle ? "left-0 duration-300 ease-in" : "left-[100%] duration-300 ease-in"
+            toggle
+              ? "left-0 duration-300 ease-in"
+              : "left-[100%] duration-300 ease-in"
           }`}
         >
           <div className="flex flex-1 items-center text-white justify-center relative">
