@@ -2,13 +2,12 @@ import { RxDragHandleDots2 } from "react-icons/rx";
 import { CiCircleRemove } from "react-icons/ci";
 import "../styles.css";
 
-const Item = ({ field, handleChange, removeField, controls, categoryData}) => {
+const Item = ({ field, handleChange, removeField, controls, categoryData }) => {
   return (
     <div
       key={field.id}
       value={field}
       className="flex items-center bg-black-200 w-fit"
-      
     >
       <div
         className="p-1 mb-2 rounded-md cursor-pointer reorder-handle hover:bg-gray-800"
