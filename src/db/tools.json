@@ -6,6 +6,11 @@
   },
   {
     "id": 1,
+    "name": "JSON GENERATOR",
+    "link": "/customizer/JsonGenerator"
+  },
+  {
+    "id": 1,
     "name": "Code editor",
     "link": "/codeedit"
   },
