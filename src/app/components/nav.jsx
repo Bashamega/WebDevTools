@@ -48,10 +48,10 @@ export default function Nav({ isDarkMode, toggleTheme }) {
   const togglePanel = () => {
     setOpen((prev) => !prev);
   };
-  const handletoggleTheme = ()=>{
-    localStorage.setItem('theme', !isDarkMode);
-    toggleTheme()
-  }
+  const handletoggleTheme = () => {
+    localStorage.setItem("theme", !isDarkMode);
+    toggleTheme();
+  };
   return (
     <nav
       className={`${
