@@ -41,7 +41,9 @@ export default function Editor({ isDarkMode }) {
   };
 
   return (
-    <div className={`h-screen flex ${isDarkMode ? "bg-gray-800" : "bg-gray-500"}`}>
+    <div
+      className={`h-screen flex ${isDarkMode ? "bg-gray-800" : "bg-gray-500"}`}
+    >
       {activeFile.name ? (
         <div className="flex flex-col flex-grow">
           <CodeEditor
@@ -58,8 +60,14 @@ export default function Editor({ isDarkMode }) {
           />
         </div>
       ) : (
-        <div className={`w-[80vw] h-[90vh] flex justify-center items-center ${isDarkMode ? "bg-gray-700" : "bg-gray-100"}`}>
-          <h1 className={`text-2xl ${isDarkMode ? "text-white" : "text-black"}`}>No file selected</h1>
+        <div
+          className={`w-[80vw] h-[90vh] flex justify-center items-center ${isDarkMode ? "bg-gray-700" : "bg-gray-100"}`}
+        >
+          <h1
+            className={`text-2xl ${isDarkMode ? "text-white" : "text-black"}`}
+          >
+            No file selected
+          </h1>
         </div>
       )}
       <Sider files={files} newfile={setFiles} activateFile={setActiveFile} />

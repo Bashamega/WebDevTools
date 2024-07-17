@@ -4,33 +4,29 @@
 
 <p id="description">WebDev Tools is a comprehensive online platform designed to empower web developers with a wide array of code samples and snippets. Whether you are a seasoned professional or just starting your journey in web development our website provides you with a vast collection of code examples to streamline your workflow enhance productivity and create exceptional websites and web applications.</p>
 
-  
-  
 <h2>🧐 Features</h2>
 
 Here're some of the project's best features:
 
-*   Simple Code Editor
-*   Markdown Editor
-*   Button Customizer
-*   Conversion Calculator
-*   Lorem Ipsum Generator
-*   Cupcake Ipsum Generator
-*   Box Shadow Generator
-*   Color Picker
-*   Image Color Picker
+- Simple Code Editor
+- Markdown Editor
+- Button Customizer
+- Conversion Calculator
+- Lorem Ipsum Generator
+- Cupcake Ipsum Generator
+- Box Shadow Generator
+- Color Picker
+- Image Color Picker
 
 <h2>🛠️ Installation Steps:</h2>
 
-  
-  
 <h2>💻 Built with</h2>
 
 Technologies used in the project:
 
-*   Next.js
-*   React.js
-*   Tailwind
+- Next.js
+- React.js
+- Tailwind
 
 <h2>🛡️ License:</h2>
 

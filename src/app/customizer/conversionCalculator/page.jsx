@@ -35,11 +35,16 @@ export default function ButtonCustomizer() {
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
-  
 
   return (
-    <main className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-h-screen`}>
-      <Nav title={"Button customizer"} isDarkMode={isDarkMode} toggleTheme={toggleTheme}/>
+    <main
+      className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-h-screen`}
+    >
+      <Nav
+        title={"Button customizer"}
+        isDarkMode={isDarkMode}
+        toggleTheme={toggleTheme}
+      />
       <div
         style={{
           display: "flex",

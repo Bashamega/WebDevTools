@@ -32,7 +32,7 @@ export default function Search({ isDarkMode }) {
 
   useEffect(() => {
     const filteredData = toolList.filter(
-      (item) => item.name.toLowerCase().includes(searchValue.toLowerCase()) // Filter the JSON data based on the search value
+      (item) => item.name.toLowerCase().includes(searchValue.toLowerCase()), // Filter the JSON data based on the search value
     );
     setSearchResults(filteredData); // Update the filtered search results
     setShowDropdown(searchValue !== "" && filteredData.length > 0); // Show the dropdown if search value is not empty and there are filtered results
@@ -54,7 +54,9 @@ export default function Search({ isDarkMode }) {
         ref={inputRef}
         className={`flex items-center w-full rounded p-1 px-2 border ${isDarkMode ? "bg-gray-700 border-gray-600" : "bg-white border-gray-300"}`}
       >
-        <FaSearch className={`mr-2 ${isDarkMode ? "text-gray-400" : "text-gray-800"}`} />
+        <FaSearch
+          className={`mr-2 ${isDarkMode ? "text-gray-400" : "text-gray-800"}`}
+        />
 
         <input
           value={searchValue}
@@ -73,7 +75,9 @@ export default function Search({ isDarkMode }) {
         >
           {searchResults.map((item) => (
             <Link key={item.id} href={item.link}>
-              <li className={`px-2 py-2 hover:bg-gray-100 cursor-pointer flex gap-[10px] border-b ${isDarkMode ? "border-gray-600 text-white" : "border-gray-300 text-black"}`}>
+              <li
+                className={`px-2 py-2 hover:bg-gray-100 cursor-pointer flex gap-[10px] border-b ${isDarkMode ? "border-gray-600 text-white" : "border-gray-300 text-black"}`}
+              >
                 <FaSearch className="mr-2" />
                 {item.name}
               </li>

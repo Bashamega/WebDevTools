@@ -11,21 +11,25 @@ export function NavBar({ title, isDarkMode, toggleTheme }) {
       if (storedTheme !== null && JSON.parse(storedTheme) !== isDarkMode) {
         toggleTheme();
       }
-    }catch{
-      console.log("Failed to read localstorage")
+    } catch {
+      console.log("Failed to read localstorage");
     }
   }, []);
-  const handletoggleTheme = ()=>{
-    localStorage.setItem('theme', !isDarkMode);
-    toggleTheme()
-  }
+  const handletoggleTheme = () => {
+    localStorage.setItem("theme", !isDarkMode);
+    toggleTheme();
+  };
   return (
-    <nav className={`py-4 px-6 flex items-center justify-between ${isDarkMode ? "bg-gray-800" : "bg-blue-500"}`}>
+    <nav
+      className={`py-4 px-6 flex items-center justify-between ${isDarkMode ? "bg-gray-800" : "bg-blue-500"}`}
+    >
       <Link
         href="/"
         className="flex items-center border rounded p-2 hover:bg-blue-600 mr-2"
       >
-        <h1 className={`text-lg md:text-2xl font-bold mr-2 ${isDarkMode ? "text-white" : "text-black"}`}>
+        <h1
+          className={`text-lg md:text-2xl font-bold mr-2 ${isDarkMode ? "text-white" : "text-black"}`}
+        >
           Web Dev Tools
         </h1>
         <p>{title}</p>

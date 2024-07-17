@@ -41,8 +41,8 @@ export default function Nav({ isDarkMode, toggleTheme }) {
       if (storedTheme !== null && JSON.parse(storedTheme) !== isDarkMode) {
         toggleTheme();
       }
-    }catch{
-      console.log("Failed to read localstorage")
+    } catch {
+      console.log("Failed to read localstorage");
     }
   }, []);
   const togglePanel = () => {

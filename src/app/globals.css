@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @media screen and (max-width: 1024px) {
   .custom-color-picker .react-colorful {
     width: 270px;
@@ -49,7 +47,3 @@ body {
   background-color: #ffffff;
   color: #000000;
 } */
-
-
-
-

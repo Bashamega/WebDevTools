@@ -76,13 +76,19 @@ export default function MarkdownEditor() {
   };
 
   return (
-    <main className={`h-screen ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}>
-      <nav className={`py-4 px-6 flex items-center justify-between h-[69px] ${isDarkMode ? "bg-gray-800" : "bg-blue-500"}`}>
+    <main
+      className={`h-screen ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}
+    >
+      <nav
+        className={`py-4 px-6 flex items-center justify-between h-[69px] ${isDarkMode ? "bg-gray-800" : "bg-blue-500"}`}
+      >
         <Link
           href="/"
           className={`mr-2 flex border items-center p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg ${isDarkMode ? "border-gray-600" : ""}`}
         >
-          <h1 className="text-sm md:text-2xl font-bold mr-4 ml-1">Web Dev Tools</h1>
+          <h1 className="text-sm md:text-2xl font-bold mr-4 ml-1">
+            Web Dev Tools
+          </h1>
           <p className="mr-2 text-sm">MD Editor</p>
         </Link>
         <div className="flex items-center">
@@ -102,8 +108,10 @@ export default function MarkdownEditor() {
           </div>
 
           <button onClick={searchToggle} className="lg:hidden">
-            <SearchIcon className={`${isDarkMode ? "text-gray-400" : "text-gray-800"}`} onClick={searchToggle} />
-
+            <SearchIcon
+              className={`${isDarkMode ? "text-gray-400" : "text-gray-800"}`}
+              onClick={searchToggle}
+            />
           </button>
           <div
             className={`absolute w-full h-[69px] flex items-center ${isDarkMode ? "bg-gray-800" : "bg-blue-500"} ${

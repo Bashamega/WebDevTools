@@ -49,8 +49,12 @@ const GradientGenerator = () => {
   const [colorsList, setColorsList] = useState([]);
   const [gradient, setGradient] = useState("");
   const [gradientType, setGradientType] = useState(gradientTypes[0]);
-  const [gradientPosition, setGradientPosition] = useState(gradientPositions[0]);
-  const [gradientRotation, setGradientRotation] = useState(gradientRotations[0]);
+  const [gradientPosition, setGradientPosition] = useState(
+    gradientPositions[0],
+  );
+  const [gradientRotation, setGradientRotation] = useState(
+    gradientRotations[0],
+  );
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [copyCSSModal, setCopyCSSModal] = useState(false);
@@ -77,10 +81,14 @@ const GradientGenerator = () => {
         gradientRef.current = `${colorsListRef.current[0].color}`;
       } else {
         if (gradientType.value === "linear-gradient") {
-          setGradient(`${gradientType.value}(${gradientRotation.value}deg, ${newGrad})`);
+          setGradient(
+            `${gradientType.value}(${gradientRotation.value}deg, ${newGrad})`,
+          );
           gradientRef.current = `${gradientType.value}(${gradientRotation.value}deg, ${newGrad})`;
         } else if (gradientType.value === "conic-gradient") {
-          setGradient(`${gradientType.value}(from ${gradientRotation.value}deg, ${newGrad})`);
+          setGradient(
+            `${gradientType.value}(from ${gradientRotation.value}deg, ${newGrad})`,
+          );
           gradientRef.current = `${gradientType.value}(from ${gradientRotation.value}deg, ${newGrad})`;
         } else {
           setGradient(`${gradientType.value}(${newGrad})`);
@@ -96,7 +104,9 @@ const GradientGenerator = () => {
       var hexValues1 = "0123456789abcdef";
 
       for (var i = 0; i < 6; i++) {
-        hexCode1 += hexValues1.charAt(Math.floor(Math.random() * hexValues1.length));
+        hexCode1 += hexValues1.charAt(
+          Math.floor(Math.random() * hexValues1.length),
+        );
       }
       return hexCode1;
     }
@@ -149,8 +159,14 @@ const GradientGenerator = () => {
   };
 
   return (
-    <main className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-w-80`}>
-      <NavBar title={"Gradient generator"} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+    <main
+      className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-w-80`}
+    >
+      <NavBar
+        title={"Gradient generator"}
+        isDarkMode={isDarkMode}
+        toggleTheme={toggleTheme}
+      />
       <div class="flex justify-center flex-col items-center w-full">
         <div className="flex flex-col gap-3 mt-10 items-center">
           <h1 className="text-5xl font-extrabold text-center">
@@ -172,7 +188,9 @@ const GradientGenerator = () => {
 
         <div className="flex justify-between flex-col md:flex-row mb-[100px] mt-[50px] w-full max-w-6xl mx-auto gap-8 px-4">
           {/* Generator maker */}
-          <div className={`${isDarkMode ? "bg-gray-800" : "bg-gray-200"} md:w-1/2 w-full p-5 rounded-xl shadow-lg md:order-1 order-2`}>
+          <div
+            className={`${isDarkMode ? "bg-gray-800" : "bg-gray-200"} md:w-1/2 w-full p-5 rounded-xl shadow-lg md:order-1 order-2`}
+          >
             <div className="mb-4">
               <ColorsList
                 colorsList={colorsList}
@@ -217,12 +235,17 @@ const GradientGenerator = () => {
           <div
             className={`md:w-1/2 w-full md:h-auto h-[250px] rounded-xl md:order-2 order-1 relative ${isDarkMode ? "bg-gray-800" : "bg-gray-200"}`}
             style={{
-              background: colorsListRef.current.length > 0 && gradientRef.current,
-              backgroundImage: colorsListRef.current.length > 0 && gradientRef.current,
+              background:
+                colorsListRef.current.length > 0 && gradientRef.current,
+              backgroundImage:
+                colorsListRef.current.length > 0 && gradientRef.current,
             }}
           >
             {colorsListRef.current.length > 0 && (
-              <button className="absolute right-2 top-2" onClick={() => setIsFullScreen(!isFullScreen)}>
+              <button
+                className="absolute right-2 top-2"
+                onClick={() => setIsFullScreen(!isFullScreen)}
+              >
                 <FaExpandArrowsAlt className="text-white text-base font-normal" />
               </button>
             )}
@@ -247,4 +270,3 @@ const GradientGenerator = () => {
 };
 
 export default GradientGenerator;
-

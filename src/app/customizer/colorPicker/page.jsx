@@ -82,7 +82,6 @@
 //   );
 // }
 
-
 "use client";
 import React, { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
@@ -127,8 +126,14 @@ export default function ColorPicker() {
   };
 
   return (
-    <main className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-w-80`}>
-      <Nav title={"Color Picker"} isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+    <main
+      className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-w-80`}
+    >
+      <Nav
+        title={"Color Picker"}
+        isDarkMode={isDarkMode}
+        toggleTheme={toggleTheme}
+      />
       <div className="grid grid-rows-2 grid-cols-1 sm:grid-cols-2 sm:grid-rows-1 sm:gap-x-8 h-[100vh] w-[100vw] items-center overflow-hidden">
         <div className="flex justify-center items-center sm:flex sm:justify-end sm:items-center">
           <span className="custom-color-picker">
