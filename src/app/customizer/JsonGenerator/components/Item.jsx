@@ -25,13 +25,13 @@ const Item = ({ field, handleChange, removeField, controls, categoryData}) => {
           onFocus={(e) => e.target.select()}
           onBlur={(e) => e.target.setSelectionRange(0, 0)}
           autoComplete="off"
-          className="p-2 mb-2 mr-2 text-gray-500 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:border-gray-500 focus:bg-gray-800"
+          className="p-2 mb-2 mr-2 text-zinc-300 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:border-gray-500 focus:bg-gray-800"
         />
         <select
           name="fieldType"
           value={field.fieldType}
           onChange={(e) => handleChange(field.id, e)}
-          className="p-2 mr-3 text-gray-500 bg-black border border-gray-700 rounded-md focus:outline-none focus:border-gray-500 focus:bg-gray-800 scrollbar"
+          className="p-2 mr-3 text-zinc-300 bg-black border border-gray-700 rounded-md focus:outline-none focus:border-gray-500 focus:bg-gray-800 scrollbar"
         >
           <option value="defualt">Select field type</option>
           {categoryData.getECategoriesArr().map((category, index) => (

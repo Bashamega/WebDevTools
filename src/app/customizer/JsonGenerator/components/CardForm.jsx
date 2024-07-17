@@ -121,9 +121,9 @@ export default function CardForm({ isDarkMode }) {
           ))}
           <button
             onClick={addField}
-            className="flex p-1 pl-3 pr-3 mt-2 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800"
+            className="flex p-1 pl-3 pr-3 mt-2 text-zinc-300 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800"
           >
-            <span className="pt-1 pr-2">
+            <span className="pt-1 pr-2 text-zinc-300">
               <GrAdd />
             </span>{" "}
             ADD ANOTHER FIELD
@@ -134,25 +134,25 @@ export default function CardForm({ isDarkMode }) {
                 setIsLoading(true);
                 setPreviewClicked(true);
               }}
-              className="flex p-1 pl-3 pr-3 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800  hover:text-white dark:text-gray-400"
+              className="flex p-1 pl-3 pr-3 bg-black border border-gray-700 rounded-md ml-0 w-fit hover:bg-gray-800  hover:text-white dark:text-gray-400"
             >
-              <span className="p-1">Preview</span>
+              <span className="p-1 text-zinc-300">Preview</span>
             </button>
             <button
               onClick={() => {
                 setIsLoading(true);
                 setSubmitClicked(true);
               }}
-              className="flex p-1 pl-3 pr-3 bg-black border border-gray-700 rounded-md ml-7 w-fit hover:bg-gray-800 hover:text-white dark:text-gray-400"
+              className="flex p-1 pl-3 pr-3 bg-black border border-gray-700 rounded-md ml-2 w-fit hover:bg-gray-800 hover:text-white dark:text-gray-400"
             >
-              <span className="p-1">Export</span>
+              <span className="p-1 text-zinc-300">Export</span>
             </button>
           </div>
           <div>
-            <span className="border-b "># rows</span>
+            <span className="border-b text-lg"># rows</span>
             <input
               type="text"
-              className="w-40 p-2 mt-2 bg-black border border-gray-700 rounded-md focus:outline-none focus:border-gray-500 focus:bg-gray-800 ml-7"
+              className="w-40 p-2 mt-2 bg-black border border-gray-700 rounded-md focus:outline-none focus:border-gray-500 text-zinc-300 focus:bg-gray-800 ml-7"
               placeholder="# Rows"
               value={numRows}
               label="Number of Rows"
