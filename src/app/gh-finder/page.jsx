@@ -79,7 +79,7 @@ export default function GhFinder() {
           data.map((item, index) => (
             <div
               key={item.id}
-              className="bg-slate-500 rounded mb-5 pl-5 flex w-full"
+              className="bg-slate-500 rounded mb-5 pl-5 pb-5 flex w-full"
             >
               <div className="w-2/3 overflow-hidden">
                 <Link
@@ -121,6 +121,35 @@ export default function GhFinder() {
                     />
                     <p className="text-white">{item.user.login}</p>
                   </Link>
+                </div>
+                <div className="text-white w-full">
+                  <p>Reactions: </p>
+                  <div className="flex flex-wrap gap-2">
+                    <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
+                      👍 <p className="ml-1">{item.reactions["+1"]}</p>
+                    </div>
+                    <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
+                      👎 <p className="ml-1">{item.reactions["-1"]}</p>
+                    </div>
+                    <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
+                      😄 <p className="ml-1">{item.reactions.laugh}</p>
+                    </div>
+                    <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
+                      🎉 <p className="ml-1">{item.reactions.hooray}</p>
+                    </div>
+                    <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
+                      😕 <p className="ml-1">{item.reactions.confused}</p>
+                    </div>
+                    <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
+                      ❤️ <p className="ml-1">{item.reactions.heart}</p>
+                    </div>
+                    <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
+                      🚀 <p className="ml-1">{item.reactions.rocket}</p>
+                    </div>
+                    <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
+                      👀 <p className="ml-1">{item.reactions.eyes}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="w-1/3 p-5">
