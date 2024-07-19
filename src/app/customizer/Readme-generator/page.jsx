@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import ReactMarkdown from 'react-markdown';
+import snarkdown from "snarkdown";
 import Nav from "@/app/components/nav";
 
 export default function ButtonCustomizer() {
