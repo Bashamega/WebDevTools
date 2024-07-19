@@ -52,6 +52,7 @@ ${license}
           id="title"
           type="text"
           className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-900 border-gray-400"} w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
@@ -98,7 +99,7 @@ ${license}
       </div>
       <button
         onClick={downloadReadme}
-        className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+        className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 mb-4"
       >
         Download README
       </button>
