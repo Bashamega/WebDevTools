@@ -1,15 +1,39 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavBar } from "../components/navbar";
+import Link from "next/link";
+
 export default function GhFinder() {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [selected, setSelected] = useState(1)
+  const [selected, setSelected] = useState(1);
+  const [data, setData] = useState();
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
+  useEffect(() => {
+    setData(undefined);
+    const url = selected == 1 ? "https://api.github.com/repos/bashamega/webdevtools/issues" : "https://api.github.com/search/issues?q=state:open+is:issue";
+    fetch(url)
+      .then((res) => res.json())
+      .then((d) => selected== 1? setData(d.filter((item) =>!item.node_id.includes("PR_"))):setData(d.items))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, [selected]);
+  function isDarkColor(color) {
+    // Convert the color to RGB
+    const hexColor = color.replace("#", "");
+    const r = parseInt(hexColor.substr(0, 2), 16);
+    const g = parseInt(hexColor.substr(2, 2), 16);
+    const b = parseInt(hexColor.substr(4, 2), 16);
+
+    // Calculate the luminance
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+    // Return true if luminance is less than 0.5 (considered dark)
+    return luminance < 0.5;
+  }
   return (
     <div
-      className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-500"} min-h-screen`}
+      className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-500"} min-h-screen w-full pb-2`}
     >
       <NavBar
         title={"GitHub Issue Finder"}
@@ -22,10 +46,90 @@ export default function GhFinder() {
             Github Issue Finder
           </h1>
           <div className=" flex justify-between w-full lg:w-1/2 lg:mx-[25%] my-5">
-            <button className={"hover:bg-blue-800 transition-colors min-w-1/3 duration-100 p-5 rounded-full hover:text-white " + (selected == 1&& "bg-blue-600  text-white")} onClick={()=>setSelected(1)}>Web Dev Tools Issues</button>
-            <button className={"hover:bg-blue-800 transition-colors w-1/3 duration-100 p-5 rounded-full hover:text-white " + (selected == 2&& "bg-blue-600  text-white")} onClick={()=>setSelected(2)}>Github</button>
+            <button
+              className={
+                "hover:bg-blue-800 transition-colors min-w-1/3 duration-100 p-5 rounded-full hover:text-white " +
+                (selected == 1 && "bg-blue-600  text-white")
+              }
+              onClick={() => setSelected(1)}
+            >
+              Web Dev Tools Issues
+            </button>
+            <button
+              className={
+                "hover:bg-blue-800 transition-colors w-1/3 duration-100 p-5 rounded-full hover:text-white " +
+                (selected == 2 && "bg-blue-600  text-white")
+              }
+              onClick={() => setSelected(2)}
+            >
+              Github
+            </button>
           </div>
         </header>
+      </div>
+      <div className=" ml-[25%] w-1/2">
+        {data ? (
+          data.map((item, index) => (
+            <div
+              key={item.id}
+              className="bg-slate-500 flex flex-col justify-center items-center rounded mb-5 pl-5"
+            >
+              <Link
+                href={item.html_url}
+                className="text-white font-bold text-3xl hover:underline text-center"
+              >
+                {item.title}
+              </Link>
+              <div className="flex flex-wrap mt-2 items-center justify-center">
+                {item.labels && item.labels.length > 0 ? (
+                  item.labels.map((label) => {
+                    const isDark = isDarkColor(label.color);
+                    const textColor = isDark ? "text-white" : "text-gray-800";
+
+                    return (
+                      <p
+                        key={label.id}
+                        className={`bg-gray-300 ${textColor} px-2 py-1 rounded mr-2 mb-2 cursor-pointer`}
+                        style={{ backgroundColor: `#${label.color}` }}
+                      >
+                        {label.name}
+                      </p>
+                    );
+                  })
+                ) : (
+                  <p className="text-white">No labels</p>
+                )}
+              </div>
+              <div className="flex items-center">
+                <p className="text-white">Created by:</p>
+                <Link
+                  href={item.user.html_url}
+                  className="flex items-center text-white ml-5"
+                >
+                  <img
+                    src={item.user.avatar_url}
+                    className="rounded-full w-6 h-6 mr-2"
+                    alt="User Avatar"
+                  />
+                  <p className="text-white">{item.user.login}</p>
+                </Link>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div class="flex items-center justify-center">
+            <div class="relative">
+              <div
+                className={
+                  "h-24 w-24 rounded-full border-t-8 border-b-8 " +
+                  (isDarkMode ? "border-gray-900" : "border-gray-100")
+                }
+              ></div>
+              <div className="absolute top-0 left-0 h-24 w-24 rounded-full border-t-8 border-b-8 border-blue-500 animate-spin"></div>
+              <p className=" mt-2 text-center">Loading ...</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
