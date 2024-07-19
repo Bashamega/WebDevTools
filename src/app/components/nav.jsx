@@ -181,6 +181,13 @@ export default function Nav({ isDarkMode, toggleTheme }) {
             >
               Json Generator
             </Link>
+
+            <Link
+              href="/customizer/Readme-generator"
+              className={`block px-4 py-2 hover:${
+                isDarkMode ? "bg-gray-800 text-gray-500" : "bg-gray-200"
+              }`}
+            >Readme Generator</Link>
           </div>
         )}
       </div>
