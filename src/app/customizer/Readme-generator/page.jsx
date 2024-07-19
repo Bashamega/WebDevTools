@@ -43,7 +43,7 @@ ${license}
   };
 
   return (
-    <div className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} min-h-screen`}>
+    <div className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} min-h-screen flex-col justify-center w-screen`}>
       <Nav isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
 <div className="w-2/3">
       <h1 className="text-4xl font-bold mb-6">
