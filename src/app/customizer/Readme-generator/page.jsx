@@ -114,7 +114,7 @@ ${license}
             className={`w-full h-full ${isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"}`}
             title="Parsed Markdown"
             srcDoc={`<!DOCTYPE html><html><head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css"><style>body { margin: 0; padding: 16px; background-color: ${isDarkMode ? "#1a202c" : "white"}; color: ${isDarkMode ? "white" : "black"}; }</style></head><body class="markdown-body">${snarkdown(
-              markdown,
+              markdown(),
             )}</body></html>`}
           />
       </div>
