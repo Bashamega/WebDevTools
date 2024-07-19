@@ -12,10 +12,17 @@ export default function GhFinder() {
   };
   useEffect(() => {
     setData(undefined);
-    const url = selected == 1 ? "https://api.github.com/repos/bashamega/webdevtools/issues" : "https://api.github.com/search/issues?q=state:open+is:issue";
+    const url =
+      selected == 1
+        ? "https://api.github.com/repos/bashamega/webdevtools/issues"
+        : "https://api.github.com/search/issues?q=state:open+is:issue";
     fetch(url)
       .then((res) => res.json())
-      .then((d) => selected== 1? setData(d.filter((item) =>!item.node_id.includes("PR_"))):setData(d.items))
+      .then((d) =>
+        selected == 1
+          ? setData(d.filter((item) => !item.node_id.includes("PR_")))
+          : setData(d.items),
+      )
       .catch((error) => console.error("Error fetching data:", error));
   }, [selected]);
   function isDarkColor(color) {
