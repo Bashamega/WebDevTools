@@ -88,6 +88,20 @@ export default function GhFinder() {
                 >
                   {item.title}
                 </Link>
+                <Link
+                  className=" text-slate-300"
+                  href={item.repository_url.replace(
+                    "https://api.github.com/repos",
+                    "https://github.com",
+                  )}
+                >
+                  {item.repository_url.replace(
+                    "https://api.github.com/repos/",
+                    "",
+                  )}
+                </Link>
+
+                <br></br>
                 <div className="flex flex-wrap mt-2 items-center w-2/3 gap-1 max-h-[50px] overflow-auto">
                   {item.labels && item.labels.length > 0 ? (
                     item.labels.map((label) => {
