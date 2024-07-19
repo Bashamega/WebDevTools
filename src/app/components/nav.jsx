@@ -181,11 +181,19 @@ export default function Nav({ isDarkMode, toggleTheme }) {
             >
               Json Generator
             </Link>
+            <hr />
+      
+            <Link
+              href="/customizer/Readme-generator"
+              className={`block px-4 py-2 hover:${
+                isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
+              }`}
+            >Readme Generator</Link>
           </div>
         )}
       </div>
 
-      <div className="flex ml-1 justify-center gap-2 md:gap-4 items-center hidden lg:flex">
+      <div className="flex ml-1 justify-center gap-2 md:gap-4 items-center lg:flex">
         <Link
           href="/codeedit"
           className={`text-[0.57rem] font-bold sm:text-sm p-2 hover:${
@@ -263,3 +271,5 @@ export default function Nav({ isDarkMode, toggleTheme }) {
     </nav>
   );
 }
+
+

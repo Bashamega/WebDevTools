@@ -53,5 +53,10 @@
     "id": 9,
     "name": "Image color picker",
     "link": "/customizer/image-color-picker"
+  },
+  {
+    "id": 10,
+    "name": "Readme generator",
+    "link": "/customizer/Readme-generator"
   }
 ]
