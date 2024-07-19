@@ -77,7 +77,10 @@ export default function GhFinder() {
       <div className=" ml-[25%] w-1/2">
         {data ? (
           data.map((item, index) => (
-            <div key={item.id} className="bg-slate-500 rounded mb-5 pl-5 flex w-full">
+            <div
+              key={item.id}
+              className="bg-slate-500 rounded mb-5 pl-5 flex w-full"
+            >
               <div className="w-2/3 overflow-hidden">
                 <Link
                   href={item.html_url}
@@ -125,8 +128,14 @@ export default function GhFinder() {
                   <p>Assignees: </p>
                   {item.assignees.length > 0 ? (
                     <div className="flex -space-x-4">
-                      {item.assignees.map(assignee=>(
-                        <img alt={assignee.login} src={assignee.avatar_url} className=" rounded-full w-5 h-5 border border-white"/>
+                      {item.assignees.map((assignee) => (
+                        <Link href={assignee.html_url}>
+                          <img
+                            alt={assignee.login}
+                            src={assignee.avatar_url}
+                            className=" rounded-full w-5 h-5 border border-white"
+                          />
+                        </Link>
                       ))}
                     </div>
                   ) : (
