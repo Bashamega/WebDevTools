@@ -127,6 +127,7 @@ ${license}
             )}</body></html>`}
           />
       </div>
+      </div>
     </div>
   );
 }
