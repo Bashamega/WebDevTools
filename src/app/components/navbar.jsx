@@ -14,7 +14,7 @@ export function NavBar({ title, isDarkMode, toggleTheme }) {
     } catch {
       console.log("Failed to read localstorage");
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const handletoggleTheme = () => {
     localStorage.setItem("theme", !isDarkMode);

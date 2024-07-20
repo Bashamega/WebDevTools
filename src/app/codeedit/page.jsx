@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Editor from "./components/Editor";
 import Nav from "../components/nav";
 
-export default function CodeEditor(){
+export default function CodeEditor() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -20,4 +20,4 @@ export default function CodeEditor(){
       <Editor isDarkMode={isDarkMode} />
     </div>
   );
-};
+}
