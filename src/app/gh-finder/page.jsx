@@ -133,6 +133,8 @@ export default function GhFinder() {
                       src={item.user.avatar_url}
                       className="rounded-full w-6 h-6 mr-2"
                       alt="User Avatar"
+                      width={0}
+                      height={0}
                     />
                     <p className="text-white">{item.user.login}</p>
                   </Link>
@@ -178,6 +180,8 @@ export default function GhFinder() {
                             alt={assignee.login}
                             src={assignee.avatar_url}
                             className=" rounded-full w-5 h-5 border border-white"
+                            width={0}
+                            height={0}
                           />
                         </Link>
                       ))}
