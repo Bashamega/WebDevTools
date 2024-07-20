@@ -53,7 +53,7 @@ export default function Home({ state }) {
             
           </div>
           {!toolList.length&&(
-              <p className="text-center">No match for <strong>"{searchValue}"</strong></p>
+              <p className="text-center">No match for <strong>&quot;{searchValue}&quot;</strong></p>
             )}
         </div>
         <div className="flex justify-center">

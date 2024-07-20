@@ -67,6 +67,7 @@ export default function CardForm({ isDarkMode }) {
     setIsLoading(false);
     setPreviewClicked(false);
     setSubmitClicked(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [previewClicked, submitClicked]);
 
   const addField = () => {

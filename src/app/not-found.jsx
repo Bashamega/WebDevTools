@@ -18,7 +18,7 @@ export default function NotFound() {
             404 Not Found
           </h5>
           <p className="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">
-            We couldn't find this page, use the button below to go back.
+            We couldn&apos;t find this page, use the button below to go back.
           </p>
           <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4 ">
             <Link

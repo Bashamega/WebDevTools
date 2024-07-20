@@ -1,11 +1,9 @@
 "use client";
 import React, { useState } from "react";
-// import { NavBar } from "../components/navbar";
 import Editor from "./components/Editor";
 import Nav from "../components/nav";
-// import { Nav } from "@/app/components/nav";
 
-const page = () => {
+export default function CodeEditor(){
   const [isDarkMode, setIsDarkMode] = useState(false);
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -23,5 +21,3 @@ const page = () => {
     </div>
   );
 };
-
-export default page;

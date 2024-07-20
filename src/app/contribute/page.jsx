@@ -4,6 +4,7 @@ import Nav from "../components/nav";
 // import { Nav } from "@/app/components/nav";
 import Footer from "../components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ContributePage() {
   const [contributors, setContributors] = useState([]);
@@ -63,7 +64,7 @@ export default function ContributePage() {
                         rel="noopener noreferrer"
                         className="flex items-center justify-center flex-col hover:scale-105 transition-all duration-500 ease"
                       >
-                        <img
+                        <Image
                           src={item.avatar_url}
                           alt={item.login}
                           width={48}
