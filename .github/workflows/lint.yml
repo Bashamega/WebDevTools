@@ -1,4 +1,4 @@
-name: Run Formatter
+name: Run Linter
 
 on: [push]
 
