@@ -17,6 +17,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0  # Ensure full history is fetched to avoid issues with commits
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -24,7 +26,7 @@ jobs:
         node-version: '14'
 
     - name: Install dependencies
-      run: npm i
+      run: npm install
 
     - name: Run formatter
       run: npm run format
@@ -38,6 +40,6 @@ jobs:
       run: |
         git add .
         git commit -m "Format code" || echo "No changes to commit"
-        git push
+        git push origin HEAD:refs/heads/${{ github.ref }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
