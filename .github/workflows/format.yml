@@ -2,6 +2,8 @@ name: Run Formatter
 permissions:
   contents: read
   pull-requests: write  
+  contents: write
+
 on:
   push:
     branches:
