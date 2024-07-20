@@ -19,7 +19,7 @@ export default function ButtonCustomizer() {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const handleCopyCode = () => {
+  const handleCopyCssCode = () => {
     const code = `
 <button style="
   background-color: ${backgroundColor};
@@ -33,6 +33,29 @@ export default function ButtonCustomizer() {
   cursor: ${cursor};
   width: ${width}px;
   height: ${height}px;
+">
+  Customized Button
+</button>
+`;
+    navigator.clipboard.writeText(code);
+    setShowCode(false);
+    setShowSuccessMessage(true);
+    setTimeout(() => setShowSuccessMessage(false), 2000);
+  };
+  const handleCopyTailwindCode = () => {
+    const code = `
+<button class="
+  ${backgroundColor ? `bg-[${backgroundColor}]` : ""}
+  ${textColor ? `text-[${textColor}]` : ""}
+  ${borderRadius ? `rounded-[${borderRadius}px]` : ""}
+  p-2
+  ${fontSize ? `text-[${fontSize}px]` : ""}
+  ${fontWeight ? `font-[${fontWeight}]` : ""}
+  ${fontFamily ? `font-[${fontFamily}]` : ""}
+  border-none
+  ${cursor ? `cursor-[${cursor}]` : ""}
+  ${width ? `w-[${width}px]` : ""}
+  ${height ? `h-[${height}px]` : ""}
 ">
   Customized Button
 </button>
@@ -426,21 +449,55 @@ export default function ButtonCustomizer() {
 
       {showCode && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-slate-500 p-8 rounded-lg">
-            <p className="text-white font-mono">
-              &lt;button style=&quot; background-color: {backgroundColor};
-              color:
-              {textColor}; border-radius: {borderRadius}px; padding: 10px 20px;
-              font-size: {fontSize}px; font-weight: {fontWeight}; font-family:
-              {fontFamily}; border: none; cursor: {cursor}; width: {width}px;
-              height: {height}px; &quot;&gt; Customized Button &lt;/button&gt;
-            </p>
-            <button
-              className="bg-blue-500 text-white px-4 py-2 mt-4 mr-2 rounded"
-              onClick={handleCopyCode}
-            >
-              Copy Code
-            </button>
+          <div className="bg-slate-500 p-8 rounded-lgv lg:w-1/2">
+            <Tabs>
+              <TabList>
+                <Tab>CSS</Tab>
+                <Tab>Tailwind</Tab>
+              </TabList>
+              <TabPanel>
+                <p className="text-white font-mono">
+                  &lt;button style=&quot; background-color: {backgroundColor};
+                  color:
+                  {textColor}; border-radius: {borderRadius}px; padding: 10px
+                  20px; font-size: {fontSize}px; font-weight: {fontWeight};
+                  font-family:
+                  {fontFamily}; border: none; cursor: {cursor}; width: {width}
+                  px; height: {height}px; &quot;&gt; Customized Button
+                  &lt;/button&gt;
+                </p>
+                <button
+                  className="bg-blue-500 text-white px-4 py-2 mt-4 mr-2 rounded"
+                  onClick={handleCopyCssCode}
+                >
+                  Copy Code
+                </button>
+              </TabPanel>
+              <TabPanel>
+                <p className="text-white font-mono">
+                  &lt;button class=&quot;
+                  {backgroundColor ? `bg-[${backgroundColor}]` : ""}
+                  {textColor ? `text-[${textColor}]` : ""}
+                  {borderRadius ? `rounded-[${borderRadius}px]` : ""}
+                  p-2
+                  {fontSize ? `text-[${fontSize}px]` : ""}
+                  {fontWeight ? `font-[${fontWeight}]` : ""}
+                  {fontFamily ? `font-[${fontFamily}]` : ""}
+                  border-none
+                  {cursor ? `cursor-[${cursor}]` : ""}
+                  {width ? `w-[${width}px]` : ""}
+                  {height ? `h-[${height}px]` : ""}
+                  &quot;&gt; Customized Button &lt;/button&gt;
+                </p>
+                <button
+                  className="bg-blue-500 text-white px-4 py-2 mt-4 mr-2 rounded"
+                  onClick={handleCopyTailwindCode}
+                >
+                  Copy Code
+                </button>
+              </TabPanel>
+            </Tabs>
+
             <button
               className="bg-blue-500 text-white px-4 py-2 mt-4 rounded"
               onClick={() => setShowCode(false)}
