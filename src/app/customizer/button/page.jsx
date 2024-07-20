@@ -428,11 +428,11 @@ export default function ButtonCustomizer() {
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-slate-500 p-8 rounded-lg">
             <p className="text-white font-mono">
-              &lt;button style=" background-color: {backgroundColor}; color:
+              &lt;button style=&quot; background-color: {backgroundColor}; color:
               {textColor}; border-radius: {borderRadius}px; padding: 10px 20px;
               font-size: {fontSize}px; font-weight: {fontWeight}; font-family:
               {fontFamily}; border: none; cursor: {cursor}; width: {width}px;
-              height: {height}px; "&gt; Customized Button &lt;/button&gt;
+              height: {height}px; &quot;&gt; Customized Button &lt;/button&gt;
             </p>
             <button
               className="bg-blue-500 text-white px-4 py-2 mt-4 mr-2 rounded"
