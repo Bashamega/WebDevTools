@@ -1,50 +1,24 @@
-name: Run Formatter
-permissions:
-  contents: read
-  pull-requests: write  
-  contents: write
+name: Prettier Styling
 
 on:
-  push:
-    branches:
-      - '**'
   pull_request:
+  push:
     branches:
       - '**'
 
 jobs:
-  format:
+  prettier:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0  # Ensure full history is fetched to avoid issues with commits
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.head_ref }}
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '14'
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run formatter
-      run: npm run format
-
-    - name: Configure Git user
-      run: |
-        git config --global user.name "github-actions"
-        git config --global user.email "github-actions@github.com"
-
-    - name: Commit formatted code
-      run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git add .
-        git commit -m "prettier"
-        git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GHP_SECRET }}
-
+      - name: Prettify code
+        uses: creyD/prettier_action@v4.3
+        with:
+          # This will prettify all files in the repository
+          prettier_options: --write "**/*"
