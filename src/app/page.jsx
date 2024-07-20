@@ -46,7 +46,6 @@ export default function Home({ state }) {
                 key={index}
                 title={item.name}
                 link={item.link}
-                desc={""}
                 isDarkMode={isDarkMode}
               />
             ))}
