@@ -1,5 +1,7 @@
 name: Run Formatter
-
+permissions:
+  contents: read
+  pull-requests: write  
 on:
   push:
     branches:
@@ -22,7 +24,7 @@ jobs:
         node-version: '14'
 
     - name: Install dependencies
-      run: npm ci
+      run: npm i
 
     - name: Run formatter
       run: npm run format
