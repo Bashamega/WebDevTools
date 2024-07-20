@@ -1,8 +1,13 @@
 [
   {
     "id": 1,
-    "name": "Code Snippets",
-    "link": "/snippet"
+    "name": "Github Issue Finder",
+    "link": "/gh-finder"
+  },
+  {
+    "id": 1,
+    "name": "JSON GENERATOR",
+    "link": "/customizer/JsonGenerator"
   },
   {
     "id": 1,
@@ -43,5 +48,15 @@
     "id": 8,
     "name": "Box shadow generator",
     "link": "/customizer/box-shadow-generator"
+  },
+  {
+    "id": 9,
+    "name": "Image color picker",
+    "link": "/customizer/image-color-picker"
+  },
+  {
+    "id": 10,
+    "name": "Readme generator",
+    "link": "/customizer/Readme-generator"
   }
 ]

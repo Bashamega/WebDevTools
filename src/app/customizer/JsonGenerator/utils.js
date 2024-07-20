@@ -47,6 +47,7 @@ export default class Categories {
       { name: "buildingNumber", func: faker.location.buildingNumber },
       { name: "cardinalDirection", func: faker.location.cardinalDirection },
     ],
+    Internet: [{ name: "email", func: faker.internet.email }],
   };
 
   getECategoriesArr() {

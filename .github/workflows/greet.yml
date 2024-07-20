@@ -1,7 +1,9 @@
-name: Greet New PRs
+name: Greet New PRs and Issues
 
 on:
   pull_request:
+    types: [opened]
+  issues:
     types: [opened]
 
 permissions:
@@ -12,16 +14,19 @@ jobs:
   greet:
     runs-on: ubuntu-latest
     steps:
-      - name: Greet the user
-        uses: actions/github-script@v6
+      - name: Greet on PRs and Issues
+        uses: actions/github-script@v7
         with:
           script: |
-            const pr = context.payload.pull_request;
-            const commentBody = `Hey there! 👋 Thanks for taking the time to send in this pull request. We are happy to have your contribution! If you have any questions or need any help, feel free to ask.`;
+            const isPR = context.payload.pull_request !== undefined;
+            const number = isPR ? context.payload.pull_request.number : context.payload.issue.number;
+            const commentBody = isPR
+              ? `Hey there! 👋 Thanks for taking the time to send in this pull request. We are happy to have your contribution! If you have any questions or need any help, feel free to ask.`
+              : `Hello! 👋 Thanks for opening this issue. We appreciate your feedback and will look into it as soon as possible. Feel free to add more details if necessary.`;
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: pr.number,
+              issue_number: number,
               body: commentBody
             });

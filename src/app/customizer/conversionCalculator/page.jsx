@@ -1,5 +1,5 @@
 "use client";
-import { NavBar } from "@/app/components/navbar";
+import Nav from "@/app/components/nav";
 import React, { useState } from "react";
 const convert = require("convert-units");
 
@@ -8,6 +8,7 @@ export default function ButtonCustomizer() {
   const [to, setTo] = useState("10");
   const [opTo, setOpTo] = useState("cm");
   const [opFrom, setOpFrom] = useState("cm");
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const options = convert()
     .possibilities("length")
     .filter((unit) => unit !== "px");
@@ -30,10 +31,20 @@ export default function ButtonCustomizer() {
     setOpFrom(event.target.value);
     calc();
   };
+  
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   return (
-    <main>
-      <NavBar title={"Button customizer"} />
+    <main
+      className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-h-screen`}
+    >
+      <Nav
+        title={"Button customizer"}
+        isDarkMode={isDarkMode}
+        toggleTheme={toggleTheme}
+      />
       <div
         style={{
           display: "flex",

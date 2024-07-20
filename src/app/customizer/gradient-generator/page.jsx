@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import { FaGithub, FaHome, FaExpandArrowsAlt } from "react-icons/fa";
+import { FaExpandArrowsAlt } from "react-icons/fa";
 import ColorsList from "./components/ColorsList";
 import "./gradient-generator.css";
 import CopyCSSModal from "./components/CopyCSSModal";
@@ -10,6 +10,7 @@ import GradientFullScreen from "./components/GradientFullScreen";
 import Swal from "sweetalert2";
 import { NavBar } from "@/app/components/navbar";
 import Footer from "@/app/components/Footer";
+import { Nav } from "@/app/components/nav";
 
 const gradientTypes = [
   { id: 1, name: "Linear", value: "linear-gradient" },
@@ -54,30 +55,28 @@ const GradientGenerator = () => {
   const [gradientRotation, setGradientRotation] = useState(
     gradientRotations[0],
   );
-  const colorsListRef = useRef(colorsList);
-  const gradientRef = useRef(gradient);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [copyCSSModal, setCopyCSSModal] = useState(false);
 
-  // update the colorsListRef whenever colorsList changes
+  const colorsListRef = useRef(colorsList);
+  const gradientRef = useRef(gradient);
+
   useEffect(() => {
     colorsListRef.current = colorsList;
   }, [colorsList]);
 
-  // update the gradientRef whenever gradient changes
   useEffect(() => {
     gradientRef.current = gradient;
   }, [gradient]);
 
   useEffect(() => {
     let newGrad = colorsListRef.current
-      .map((color, index) => {
-        return `${color.color} ${color.position}%`;
-      })
+      .map((color, index) => `${color.color} ${color.position}%`)
       .join(", ");
 
     if (colorsListRef.current.length > 0) {
-      if (colorsListRef.current.length == 1) {
+      if (colorsListRef.current.length === 1) {
         setGradient(`${colorsListRef.current[0].color}`);
         gradientRef.current = `${colorsListRef.current[0].color}`;
       } else {
@@ -113,7 +112,7 @@ const GradientGenerator = () => {
     }
 
     var deg = Math.floor(Math.random() * 360);
-    const randomNoOfColors = Math.floor(Math.random() * 4) + 2; // generate random number of colors between 1 and 4
+    const randomNoOfColors = Math.floor(Math.random() * 4) + 2;
     var gradient = "";
     var colors = [];
 
@@ -128,9 +127,7 @@ const GradientGenerator = () => {
     colors.sort((a, b) => a.position - b.position);
 
     colors.forEach((color, index) => {
-      gradient += `${color.color} ${color.position}%${
-        index < colors.length - 1 ? ", " : ""
-      }`;
+      gradient += `${color.color} ${color.position}%${index < colors.length - 1 ? ", " : ""}`;
     });
 
     setGradient(`linear-gradient(${deg}deg, ${gradient})`);
@@ -141,21 +138,6 @@ const GradientGenerator = () => {
       name: `${deg}°`,
       value: deg,
     });
-
-    // setGradient(gradient);
-    // gradientRef.current = gradient;
-    // setColorsList([
-    //   {
-    //     id: 1,
-    //     color: "#" + createHex(),
-    //     position: 0,
-    //   },
-    //   {
-    //     id: 2,
-    //     color: "#" + createHex(),
-    //     position: 100,
-    //   },
-    // ]);
   };
 
   const handleCopyCSSClick = () => {
@@ -172,9 +154,19 @@ const GradientGenerator = () => {
     setCopyCSSModal(true);
   };
 
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <main className="" class="bg-gray-900">
-      <NavBar title={"Gradient generator"} />
+    <main
+      className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-w-80`}
+    >
+      <NavBar
+        title={"Gradient generator"}
+        isDarkMode={isDarkMode}
+        toggleTheme={toggleTheme}
+      />
       <div class="flex justify-center flex-col items-center w-full">
         <div className="flex flex-col gap-3 mt-10 items-center">
           <h1 className="text-5xl font-extrabold text-center">
@@ -195,8 +187,10 @@ const GradientGenerator = () => {
         )}
 
         <div className="flex justify-between flex-col md:flex-row mb-[100px] mt-[50px] w-full max-w-6xl mx-auto gap-8 px-4">
-          {/* generator maker */}
-          <div className="md:w-1/2 w-full p-5 rounded-xl bg-gray-800 shadow-lg md:order-1 order-2">
+          {/* Generator maker */}
+          <div
+            className={`${isDarkMode ? "bg-gray-800" : "bg-gray-200"} md:w-1/2 w-full p-5 rounded-xl shadow-lg md:order-1 order-2`}
+          >
             <div className="mb-4">
               <ColorsList
                 colorsList={colorsList}
@@ -212,7 +206,7 @@ const GradientGenerator = () => {
               />
               <GradientRotation
                 gradientRotation={gradientRotation}
-                gradientRotations={gradientRotations}
+                gradientRotations={gradientRotations} // Corrected prop name here
                 setGradientRotation={setGradientRotation}
               />
             </div>
@@ -220,7 +214,7 @@ const GradientGenerator = () => {
             <div className="flex justify-between items-center gap-4 mt-12">
               <div className="w-full relative">
                 <button
-                  className="rounded-lg bg-gray-700 p-3 text-md font-semibold text-white w-full text-center border outline-none border-gray-600 active:scale-95 transition-transform duration-200"
+                  className={`rounded-lg ${isDarkMode ? "bg-gray-700 text-white" : "bg-gray-300 text-gray-800"} p-3 text-md font-semibold w-full text-center border outline-none border-gray-600 active:scale-95 transition-transform duration-200`}
                   onClick={generateRandomGradient}
                 >
                   Random
@@ -229,16 +223,17 @@ const GradientGenerator = () => {
 
               <div className="w-full relative">
                 <button
-                  className="rounded-lg bg-blue-600 p-3 text-md font-semibold text-white w-full text-center border outline-none border-blue-600 active:scale-95 transition-transform duration-200"
-                  onClick={() => handleCopyCSSClick()}
+                  className={`rounded-lg ${isDarkMode ? "bg-blue-600" : "bg-blue-500"} p-3 text-md font-semibold text-white w-full text-center border outline-none border-blue-600 active:scale-95 transition-transform duration-200`}
+                  onClick={handleCopyCSSClick}
                 >
                   Copy CSS
                 </button>
               </div>
             </div>
           </div>
+
           <div
-            className={`md:w-1/2 w-full md:h-auto h-[250px] rounded-xl md:order-2 order-1 relative`}
+            className={`md:w-1/2 w-full md:h-auto h-[250px] rounded-xl md:order-2 order-1 relative ${isDarkMode ? "bg-gray-800" : "bg-gray-200"}`}
             style={{
               background:
                 colorsListRef.current.length > 0 && gradientRef.current,
@@ -266,7 +261,9 @@ const GradientGenerator = () => {
           />
         )}
 
-        <Footer />
+        <div className="flex justify-center">
+          <Footer isDarkMode={isDarkMode} />
+        </div>
       </div>
     </main>
   );

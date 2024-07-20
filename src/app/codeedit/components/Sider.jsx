@@ -30,9 +30,9 @@ export default function Sider({ files, newfile, activateFile }) {
       <nav className="h-[10vh] bg-slate-900 shadow-2xl">
         <div className="h-full w-full flex justify-center items-center flex-col">
           <h1 className="text-white text-2xl">Code Editor</h1>
-          <div className="flex justify-center items-center bg-black h-full w-full">
+          <div className="flex justify-center items-center bg-black h-full w-full text-slate-400">
             <NoteAdd
-              className="cursor-pointer hover:text-slate-500"
+              className="cursor-pointer hover:text-slate-100"
               onClick={() => setNewFile(true)}
             />
           </div>
@@ -48,7 +48,7 @@ export default function Sider({ files, newfile, activateFile }) {
               placeholder="File Name"
               required
               minLength={1}
-              className="w-full h-full bg-slate-900 p-2 rounded-lg text-white"
+              className="w-full h-full bg-slate-900 p-2 rounded-lg text-white "
             />
           </form>
         ) : null}

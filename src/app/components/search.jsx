@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import toolList from "@/db/tools.json";
-export default function Search() {
+import Link from "next/link";
+export default function Search({ isDarkMode }) {
   const [searchValue, setSearchValue] = useState(""); // State to store the value of search input
   const [searchResults, setSearchResults] = useState([]); // State to store the filtered search results
   const [showDropdown, setShowDropdown] = useState(false); // State to control the visibility of the dropdown
@@ -36,6 +37,7 @@ export default function Search() {
     setSearchResults(filteredData); // Update the filtered search results
     setShowDropdown(searchValue !== "" && filteredData.length > 0); // Show the dropdown if search value is not empty and there are filtered results
   }, [searchValue]);
+
   const handleInputChange = (event) => {
     setSearchValue(event.target.value); // Update the search value when the input changes
   };
@@ -47,18 +49,21 @@ export default function Search() {
   }, [showDropdown]);
 
   return (
-    <div>
+    <div className="relative">
       <div
         ref={inputRef}
-        className="flex items-center justify-center w-full rounded p-1 px-2   dark:bg-gray-700 border-gray-300 dark:border-gray-600"
+        className={`flex items-center w-full rounded p-1 px-2 border ${isDarkMode ? "bg-gray-700 border-gray-600" : "bg-white border-gray-300"}`}
       >
-        <FaSearch className="" />
+        <FaSearch
+          className={`mr-2 ${isDarkMode ? "text-gray-400" : "text-gray-800"}`}
+        />
+
         <input
           value={searchValue}
           onChange={handleInputChange}
           type="search"
           id="search"
-          class="grow bg-gray-50 border outline-none border-none  dark:bg-gray-700 text-gray-900 text-sm block w-full p-1.5 px-2   dark:placeholder-gray-400 dark:text-white"
+          className={`grow border outline-none border-none ${isDarkMode ? "bg-gray-700 text-white" : "bg-white text-gray-900"} text-sm block w-full p-1.5 px-2   dark:placeholder-gray-400`}
           placeholder="Search"
           required
         />
@@ -66,17 +71,14 @@ export default function Search() {
       {showDropdown && (
         <ul
           ref={dropdownRef}
-          className="bg-white border border-gray-300 shadow absolute  rounded-sm z-10"
+          className={`absolute z-10 w-full border border-gray-300 shadow rounded-sm ${isDarkMode ? "bg-gray-700 text-white" : "bg-white text-black"}`}
         >
           {searchResults.map((item) => (
-            <Link href={item.link}>
+            <Link key={item.id} href={item.link}>
               <li
-                key={item.id}
-                className="px-2 py-2 text-black hover:bg-gray-100 cursor-pointer flex gap-[10px] border-b border-slate-500"
+                className={`px-2 py-2 hover:bg-gray-100 cursor-pointer flex gap-[10px] border-b ${isDarkMode ? "border-gray-600 text-white" : "border-gray-300 text-black"}`}
               >
-                <span className="flex items-center justify-between text-slate-700">
-                  <FaSearch />
-                </span>
+                <FaSearch className="mr-2" />
                 {item.name}
               </li>
             </Link>
