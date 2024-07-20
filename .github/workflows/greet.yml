@@ -18,15 +18,22 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const isPR = context.payload.pull_request !== undefined;
-            const number = isPR ? context.payload.pull_request.number : context.payload.issue.number;
-            const commentBody = isPR
-              ? `Hey there! 👋 Thanks for taking the time to send in this pull request. We are happy to have your contribution! If you have any questions or need any help, feel free to ask.`
-              : `Hello! 👋 Thanks for opening this issue. We appreciate your feedback and will look into it as soon as possible. Feel free to add more details if necessary.`;
+            try {
+              const isPR = context.payload.pull_request !== undefined;
+              const number = isPR ? context.payload.pull_request.number : context.payload.issue.number;
+              const commentBody = isPR
+                ? `Hey there! 👋 Thanks for taking the time to send in this pull request. We are happy to have your contribution! If you have any questions or need any help, feel free to ask.`
+                : `Hello! 👋 Thanks for opening this issue. We appreciate your feedback and will look into it as soon as possible. Feel free to add more details if necessary.`;
 
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: number,
-              body: commentBody
-            });
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: number,
+                body: commentBody
+              });
+
+              console.log('Comment successfully created.');
+            } catch (error) {
+              console.error('Error creating comment:', error);
+              // Do not mark the step as failed; continue with the workflow.
+            }
