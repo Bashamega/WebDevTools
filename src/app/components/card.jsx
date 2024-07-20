@@ -1,30 +1,20 @@
 import Link from "next/link";
 
-export function Card({ link, title, desc, isDarkMode }) {
+export function Card({ link, title, isDarkMode }) {
   return (
-    <Link href={link} className="group relative block h-64 sm:h-80 lg:h-96">
-      <span
-        className={`absolute inset-0 border-2 border-dashed border-transparent rounded transition-all duration-300 group-hover:border-yellow-500 ${isDarkMode ? "border-white" : "border-black"}`}
-      ></span>
-
+    <Link
+      href={link}
+      className="group relative block p-10 overflow-hidden rounded-lg shadow-lg transition-transform transform hover:scale-105"
+    >
       <div
-        className={`relative flex h-full transform rounded-lg items-end border-2 border-transparent bg-gradient-to-br ${isDarkMode ? "from-gray-500 via-slate-500 to-black" : "from-gray-100 via-slate-100 to-white"} transition-transform group-hover:-translate-x-2 group-hover:-translate-y-2 group-hover:shadow-xl`}
+        className={`absolute inset-0 ${isDarkMode ? "bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700" : "bg-gradient-to-r from-blue-300 via-blue-400 to-blue-500"}`}
       >
-        <div
-          className={`p-4 !pt-0 transition-opacity group-hover:absolute group-hover:opacity-0 sm:p-6 lg:p-8 text-center absolute top-0 left-0 w-full h-full flex items-center justify-center ${isDarkMode ? "text-white" : "text-black"}`}
-        >
-          <h2 className="mt-4 text-2xl font-bold sm:text-3xl">{title}</h2>
-        </div>
-
-        <div
-          className={`absolute p-4 opacity-0 transition-opacity group-hover:relative group-hover:opacity-100 sm:p-6 lg:p-8 ${isDarkMode ? "text-white" : "text-black"}`}
-        >
-          <h3 className="mt-4 text-2xl font-bold sm:text-3xl">{title}</h3>
-
-          <p className="mt-4 text-sm sm:text-base">{desc}</p>
-
-          <p className="mt-8 font-extrabold">Try out</p>
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70 group-hover:opacity-90 transition-opacity"></div>
+      </div>
+      <div className="relative z-10 flex items-center justify-center h-full">
+        <h1 className="text-white text-2xl font-bold transition-colors group-hover:text-yellow-300 text-center">
+          {title}
+        </h1>
       </div>
     </Link>
   );
