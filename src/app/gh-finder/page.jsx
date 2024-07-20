@@ -174,7 +174,7 @@ export default function GhFinder() {
                   <p>Assignees: </p>
                   {item.assignees.length > 0 ? (
                     <div className="flex -space-x-4">
-                      {item.assignees.map((assignee ,key) => (
+                      {item.assignees.map((assignee, key) => (
                         <Link href={assignee.html_url} key={key}>
                           <Image
                             alt={assignee.login}

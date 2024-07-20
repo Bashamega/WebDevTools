@@ -31,7 +31,7 @@ export default function ButtonCustomizer() {
     setOpFrom(event.target.value);
     calc();
   };
-  
+
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
