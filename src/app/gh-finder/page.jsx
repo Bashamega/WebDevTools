@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { NavBar } from "../components/navbar";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function GhFinder() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -128,7 +129,7 @@ export default function GhFinder() {
                     href={item.user.html_url}
                     className="flex items-center text-white ml-5"
                   >
-                    <img
+                    <Image
                       src={item.user.avatar_url}
                       className="rounded-full w-6 h-6 mr-2"
                       alt="User Avatar"
@@ -171,9 +172,9 @@ export default function GhFinder() {
                   <p>Assignees: </p>
                   {item.assignees.length > 0 ? (
                     <div className="flex -space-x-4">
-                      {item.assignees.map((assignee) => (
-                        <Link href={assignee.html_url}>
-                          <img
+                      {item.assignees.map((assignee ,key) => (
+                        <Link href={assignee.html_url} key={key}>
+                          <Image
                             alt={assignee.login}
                             src={assignee.avatar_url}
                             className=" rounded-full w-5 h-5 border border-white"
