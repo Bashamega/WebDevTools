@@ -42,6 +42,29 @@ export default function ButtonCustomizer() {
     setShowSuccessMessage(true);
     setTimeout(() => setShowSuccessMessage(false), 2000);
   };
+  const handleCopyTailwindCode = () => {
+    const code = `
+<button class="
+  ${backgroundColor ? `bg-[${backgroundColor}]` : ''}
+  ${textColor ? `text-[${textColor}]` : ''}
+  ${borderRadius ? `rounded-[${borderRadius}px]` : ''}
+  p-2
+  ${fontSize ? `text-[${fontSize}px]` : ''}
+  ${fontWeight ? `font-[${fontWeight}]` : ''}
+  ${fontFamily ? `font-[${fontFamily}]` : ''}
+  border-none
+  ${cursor ? `cursor-[${cursor}]` : ''}
+  ${width ? `w-[${width}px]` : ''}
+  ${height ? `h-[${height}px]` : ''}
+">
+  Customized Button
+</button>
+`;
+    navigator.clipboard.writeText(code);
+    setShowCode(false);
+    setShowSuccessMessage(true);
+    setTimeout(() => setShowSuccessMessage(false), 2000);
+  };
 
   const handleBackgroundColorChange = (event) => {
     setBackgroundColor(event.target.value);
@@ -426,7 +449,7 @@ export default function ButtonCustomizer() {
 
       {showCode && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-slate-500 p-8 rounded-lg">
+          <div className="bg-slate-500 p-8 rounded-lgv lg:w-1/2">
             <Tabs>
               <TabList>
                 <Tab>CSS</Tab>
@@ -450,7 +473,29 @@ export default function ButtonCustomizer() {
                   Copy Code
                 </button>
               </TabPanel>
-              <TabPanel></TabPanel>
+              <TabPanel><p className="text-white font-mono">
+              &lt;button class=&quot;
+  {backgroundColor ? `bg-[${backgroundColor}]` : ''}
+  {textColor ? `text-[${textColor}]` : ''}
+  {borderRadius ? `rounded-[${borderRadius}px]` : ''}
+  p-2
+  {fontSize ? `text-[${fontSize}px]` : ''}
+  {fontWeight ? `font-[${fontWeight}]` : ''}
+  {fontFamily ? `font-[${fontFamily}]` : ''}
+  border-none
+  {cursor ? `cursor-[${cursor}]` : ''}
+  {width ? `w-[${width}px]` : ''}
+  {height ? `h-[${height}px]` : ''}
+  &quot;&gt;
+  Customized Button
+  &lt;/button&gt;
+                </p>
+                <button
+                  className="bg-blue-500 text-white px-4 py-2 mt-4 mr-2 rounded"
+                  onClick={handleCopyTailwindCode}
+                >
+                  Copy Code
+                </button></TabPanel>
             </Tabs>
 
             <button
