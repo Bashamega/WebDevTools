@@ -34,8 +34,7 @@ ${installation}
 ${usage}
 
 ## License
-${license}
-    `;
+${license}`;
   };
 
   const downloadReadme = () => {
