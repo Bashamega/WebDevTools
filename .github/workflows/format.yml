@@ -3,7 +3,11 @@ name: Run Formatter
 on:
   push:
     branches:
-      - '**' # This pattern matches all branches
+      - '**'
+
+permissions:
+  contents: write
+  workflows: write
 
 jobs:
   format:
