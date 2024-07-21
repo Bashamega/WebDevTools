@@ -1,82 +1,83 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://wdt.adambashaahmednaji.com/</loc>
-  <lastmod>2024-07-17T10:55:21+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://wdt.adambashaahmednaji.com/codeedit</loc>
-  <lastmod>2024-07-17T10:55:21+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://wdt.adambashaahmednaji.com/MD</loc>
-  <lastmod>2024-07-17T10:55:21+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://wdt.adambashaahmednaji.com/about</loc>
-  <lastmod>2024-07-17T10:55:21+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://wdt.adambashaahmednaji.com/contribute</loc>
-  <lastmod>2024-07-17T10:55:21+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://wdt.adambashaahmednaji.com/snippet</loc>
-  <lastmod>2024-07-17T10:55:21+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://wdt.adambashaahmednaji.com/customizer/JsonGenerator</loc>
-  <lastmod>2024-07-17T10:55:21+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://wdt.adambashaahmednaji.com/customizer/button</loc>
-  <lastmod>2024-07-17T10:55:21+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://wdt.adambashaahmednaji.com/customizer/LoremIpsumGenerator</loc>
-  <lastmod>2024-07-17T10:55:21+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://wdt.adambashaahmednaji.com/customizer/conversionCalculator</loc>
-  <lastmod>2024-07-17T10:55:21+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://wdt.adambashaahmednaji.com/customizer/CupcakeIpsumGenerator</loc>
-  <lastmod>2024-07-17T10:55:21+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://wdt.adambashaahmednaji.com/customizer/colorPicker</loc>
-  <lastmod>2024-07-17T10:55:21+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://wdt.adambashaahmednaji.com/customizer/box-shadow-generator</loc>
-  <lastmod>2024-07-17T10:55:21+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://wdt.adambashaahmednaji.com/customizer/image-color-picker</loc>
-  <lastmod>2024-07-17T10:55:21+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-
-
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9&#xA;            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/</loc>
+    <lastmod>2024-07-17T10:55:21+00:00</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/codeedit</loc>
+    <lastmod>2024-07-17T10:55:21+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/MD</loc>
+    <lastmod>2024-07-17T10:55:21+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/about</loc>
+    <lastmod>2024-07-17T10:55:21+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/contribute</loc>
+    <lastmod>2024-07-17T10:55:21+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/snippet</loc>
+    <lastmod>2024-07-17T10:55:21+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/customizer/JsonGenerator</loc>
+    <lastmod>2024-07-17T10:55:21+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/customizer/button</loc>
+    <lastmod>2024-07-17T10:55:21+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/customizer/LoremIpsumGenerator</loc>
+    <lastmod>2024-07-17T10:55:21+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/customizer/conversionCalculator</loc>
+    <lastmod>2024-07-17T10:55:21+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/customizer/CupcakeIpsumGenerator</loc>
+    <lastmod>2024-07-17T10:55:21+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/customizer/colorPicker</loc>
+    <lastmod>2024-07-17T10:55:21+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/customizer/box-shadow-generator</loc>
+    <lastmod>2024-07-17T10:55:21+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/customizer/image-color-picker</loc>
+    <lastmod>2024-07-17T10:55:21+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/gh-finder</loc>
+    <lastmod>2024-07-21T14:30:31.569Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/customizer/Readme-generator</loc>
+    <lastmod>2024-07-21T14:30:31.569Z</lastmod>
+    <priority>0.80</priority>
+  </url>
 </urlset>
