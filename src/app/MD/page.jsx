@@ -8,6 +8,49 @@ import Search from "../components/search";
 import Link from "next/link";
 import Switch from "@mui/material/Switch";
 
+const SunIcon = ({ className = "" }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <circle cx="12" cy="12" r="5" />
+    <line x1="12" y1="1" x2="12" y2="3" />
+    <line x1="12" y1="21" x2="12" y2="23" />
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+    <line x1="1" y1="12" x2="3" y2="12" />
+    <line x1="21" y1="12" x2="23" y2="12" />
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+  </svg>
+);
+
+// Moon icon component
+const MoonIcon = ({ className = "" }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+  </svg>
+);
+
 export default function MarkdownEditor() {
   const [markdown, setMarkdown] = useState("# hey");
   const [name, setName] = useState("untitled");
@@ -82,8 +125,9 @@ export default function MarkdownEditor() {
   console.log(toggle);
 
   const toggleTheme = () => {
-    localStorage.setItem("theme", !isDarkMode);
-    setIsDarkMode(!isDarkMode);
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+    localStorage.setItem("theme", JSON.stringify(newTheme));
   };
 
   return (
@@ -141,13 +185,17 @@ export default function MarkdownEditor() {
           </div>
         </div>
         <div className="flex items-center">
-          <Switch
-            checked={isDarkMode}
-            onChange={toggleTheme}
-            color="default"
-            inputProps={{ "aria-label": "toggle dark mode" }}
-          />
-          {/* <span className="ml-2">{isDarkMode ? "Dark Mode" : "Light Mode"}</span> */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full hover:bg-opacity-20 hover:bg-gray-200 transition-colors duration-200"
+            aria-label="Toggle dark mode"
+          >
+            {isDarkMode ? (
+              <SunIcon className="text-white" />
+            ) : (
+              <MoonIcon className="text-black" />
+            )}
+          </button>
         </div>
       </nav>
       <div className="flex justify-between">
