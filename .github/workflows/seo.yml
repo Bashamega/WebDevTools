@@ -1,38 +1,43 @@
-name: Update Sitemap on PR
+name: Run SEO script
 
 on:
+  push:
+    branches:
+      - '**'
   pull_request:
-    types: [opened, synchronize, reopened]
+    branches:
+      - '**'
 
 jobs:
-  update-sitemap:
+  run-script:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18' # Specify the Node.js version
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14' # You can specify the Node.js version here
 
-      - name: Clean cache
-        run: npm cache clean --force
-      
-      - name: Install dependencies
-        run: npm install
-      
+    - name: Install dependencies
+      run: npm install
 
-      - name: Run the sitemap update script
-        run: npm run check-tools
+    - name: Run script
+      run: node scripts/seo.js # Replace with the path to your script
 
-      - name: Commit updated sitemap
-        run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
-          git add sitemap.xml
-          git commit -m 'Update sitemap with new tools'
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Configure git
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+    - name: Commit changes
+      run: |
+        git add .
+        git commit -m "Automated changes by GitHub Actions"
+        git push origin HEAD:${{ github.ref }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
