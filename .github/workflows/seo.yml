@@ -9,8 +9,7 @@ on:
   pull_request:
     branches:
       - '**'
-    branches-ignore:
-      - 'main'
+
 
 jobs:
   run-script:
