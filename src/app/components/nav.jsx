@@ -8,7 +8,6 @@ import { FaTools, FaCode, FaMarkdown, FaInfo } from "react-icons/fa";
 import { IoMdGitPullRequest } from "react-icons/io";
 import Link from "next/link";
 import Switch from "@mui/material/Switch";
-import tools from "@/db/tools.json";
 
 export default function Nav({ isDarkMode, toggleTheme }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -103,38 +102,24 @@ export default function Nav({ isDarkMode, toggleTheme }) {
             ></path>
           </svg>
         </button>
-
         {isDropdownOpen && (
           <div
             ref={dropdownRef}
             className={`absolute right-0 mt-2 py-2 ${
               isDarkMode ? "bg-gray-700 text-white" : "bg-white text-black"
-            } rounded shadow-lg w-48 overflow-y-scroll max-h-[500px]`}
+            } rounded shadow-lg w-40`}
             style={{ zIndex: 100 }}
           >
-            {tools.map((tool) => (
-              <>
-                <Link
-                  key={tool.id}
-                  href={tool.link}
-                  className={`block px-4 py-2 hover:${
-                    isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
-                  }`}
-                >
-                  {tool.name}
-                </Link>
-                <hr />
-              </>
-            ))}
-            {/* <Link
+            <Link
               href="/customizer/box-shadow-generator"
               className={`block px-4 py-2 hover:${
                 isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
               }`}
             >
               Box Shadow Generator
-            </Link> */}
-            {/* <Link
+            </Link>
+            <hr />
+            <Link
               href="/customizer/gradient-generator"
               className={`block px-4 py-2 hover:${
                 isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
@@ -206,18 +191,9 @@ export default function Nav({ isDarkMode, toggleTheme }) {
             >
               Readme Generator
             </Link>
-            <Link
-              href="/asciiDoc"
-              className={`block px-4 py-2 hover:${
-                isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
-              }`}
-            >
-              AsciiDoc Editor
-            </Link> */}
           </div>
         )}
       </div>
-
       <div className="flex ml-1 justify-center gap-2 md:gap-4 items-center lg:flex">
         <Link
           href="/codeedit"
