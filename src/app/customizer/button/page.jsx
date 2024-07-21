@@ -45,17 +45,17 @@ export default function ButtonCustomizer() {
   const handleCopyTailwindCode = () => {
     const code = `
 <button class="
-  ${backgroundColor ? `bg-[${backgroundColor}]` : ''}
-  ${textColor ? `text-[${textColor}]` : ''}
-  ${borderRadius ? `rounded-[${borderRadius}px]` : ''}
+  ${backgroundColor ? `bg-[${backgroundColor}]` : ""}
+  ${textColor ? `text-[${textColor}]` : ""}
+  ${borderRadius ? `rounded-[${borderRadius}px]` : ""}
   p-2
-  ${fontSize ? `text-[${fontSize}px]` : ''}
-  ${fontWeight ? `font-[${fontWeight}]` : ''}
-  ${fontFamily ? `font-[${fontFamily}]` : ''}
+  ${fontSize ? `text-[${fontSize}px]` : ""}
+  ${fontWeight ? `font-[${fontWeight}]` : ""}
+  ${fontFamily ? `font-[${fontFamily}]` : ""}
   border-none
-  ${cursor ? `cursor-[${cursor}]` : ''}
-  ${width ? `w-[${width}px]` : ''}
-  ${height ? `h-[${height}px]` : ''}
+  ${cursor ? `cursor-[${cursor}]` : ""}
+  ${width ? `w-[${width}px]` : ""}
+  ${height ? `h-[${height}px]` : ""}
 ">
   Customized Button
 </button>
@@ -473,29 +473,29 @@ export default function ButtonCustomizer() {
                   Copy Code
                 </button>
               </TabPanel>
-              <TabPanel><p className="text-white font-mono">
-              &lt;button class=&quot;
-  {backgroundColor ? `bg-[${backgroundColor}]` : ''}
-  {textColor ? `text-[${textColor}]` : ''}
-  {borderRadius ? `rounded-[${borderRadius}px]` : ''}
-  p-2
-  {fontSize ? `text-[${fontSize}px]` : ''}
-  {fontWeight ? `font-[${fontWeight}]` : ''}
-  {fontFamily ? `font-[${fontFamily}]` : ''}
-  border-none
-  {cursor ? `cursor-[${cursor}]` : ''}
-  {width ? `w-[${width}px]` : ''}
-  {height ? `h-[${height}px]` : ''}
-  &quot;&gt;
-  Customized Button
-  &lt;/button&gt;
+              <TabPanel>
+                <p className="text-white font-mono">
+                  &lt;button class=&quot;
+                  {backgroundColor ? `bg-[${backgroundColor}]` : ""}
+                  {textColor ? `text-[${textColor}]` : ""}
+                  {borderRadius ? `rounded-[${borderRadius}px]` : ""}
+                  p-2
+                  {fontSize ? `text-[${fontSize}px]` : ""}
+                  {fontWeight ? `font-[${fontWeight}]` : ""}
+                  {fontFamily ? `font-[${fontFamily}]` : ""}
+                  border-none
+                  {cursor ? `cursor-[${cursor}]` : ""}
+                  {width ? `w-[${width}px]` : ""}
+                  {height ? `h-[${height}px]` : ""}
+                  &quot;&gt; Customized Button &lt;/button&gt;
                 </p>
                 <button
                   className="bg-blue-500 text-white px-4 py-2 mt-4 mr-2 rounded"
                   onClick={handleCopyTailwindCode}
                 >
                   Copy Code
-                </button></TabPanel>
+                </button>
+              </TabPanel>
             </Tabs>
 
             <button
