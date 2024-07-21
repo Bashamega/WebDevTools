@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18' # Specify the Node.js version
+          node-version: '19' # Specify the Node.js version
 
       - name: Install dependencies
         run: npm install xml2js
