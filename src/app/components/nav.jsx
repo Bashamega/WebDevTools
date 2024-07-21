@@ -102,6 +102,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
             ></path>
           </svg>
         </button>
+
         {isDropdownOpen && (
           <div
             ref={dropdownRef}
@@ -182,6 +183,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
               Json Generator
             </Link>
             <hr />
+
             <Link
               href="/customizer/Readme-generator"
               className={`block px-4 py-2 hover:${
@@ -193,6 +195,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
           </div>
         )}
       </div>
+
       <div className="flex ml-1 justify-center gap-2 md:gap-4 items-center lg:flex">
         <Link
           href="/codeedit"
