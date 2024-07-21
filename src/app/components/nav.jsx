@@ -112,22 +112,20 @@ export default function Nav({ isDarkMode, toggleTheme }) {
             } rounded shadow-lg w-48 overflow-y-scroll max-h-[500px]`}
             style={{ zIndex: 100 }}
           >
-            {
-              tools.map((tool) => (
-                <>
+            {tools.map((tool) => (
+              <>
                 <Link
-                key={tool.id}
-                href={tool.link}
-                className={`block px-4 py-2 hover:${
-                  isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
-                }`}
-              >
-               {tool.name}
-              </Link>
-              <hr />
+                  key={tool.id}
+                  href={tool.link}
+                  className={`block px-4 py-2 hover:${
+                    isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
+                  }`}
+                >
+                  {tool.name}
+                </Link>
+                <hr />
               </>
-              ))
-            }
+            ))}
             {/* <Link
               href="/customizer/box-shadow-generator"
               className={`block px-4 py-2 hover:${
