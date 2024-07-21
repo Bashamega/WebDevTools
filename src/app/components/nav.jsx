@@ -8,6 +8,7 @@ import { FaTools, FaCode, FaMarkdown, FaInfo } from "react-icons/fa";
 import { IoMdGitPullRequest } from "react-icons/io";
 import Link from "next/link";
 import Switch from "@mui/material/Switch";
+import tools from "@/db/tools.json";
 
 export default function Nav({ isDarkMode, toggleTheme }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -108,19 +109,32 @@ export default function Nav({ isDarkMode, toggleTheme }) {
             ref={dropdownRef}
             className={`absolute right-0 mt-2 py-2 ${
               isDarkMode ? "bg-gray-700 text-white" : "bg-white text-black"
-            } rounded shadow-lg w-40`}
+            } rounded shadow-lg w-48 overflow-y-scroll max-h-[500px]`}
             style={{ zIndex: 100 }}
           >
-            <Link
+            {tools.map((tool) => (
+              <>
+                <Link
+                  key={tool.id}
+                  href={tool.link}
+                  className={`block px-4 py-2 hover:${
+                    isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
+                  }`}
+                >
+                  {tool.name}
+                </Link>
+                <hr />
+              </>
+            ))}
+            {/* <Link
               href="/customizer/box-shadow-generator"
               className={`block px-4 py-2 hover:${
                 isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
               }`}
             >
               Box Shadow Generator
-            </Link>
-            <hr />
-            <Link
+            </Link> */}
+            {/* <Link
               href="/customizer/gradient-generator"
               className={`block px-4 py-2 hover:${
                 isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
@@ -192,6 +206,14 @@ export default function Nav({ isDarkMode, toggleTheme }) {
             >
               Readme Generator
             </Link>
+            <Link
+              href="/asciiDoc"
+              className={`block px-4 py-2 hover:${
+                isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200"
+              }`}
+            >
+              AsciiDoc Editor
+            </Link> */}
           </div>
         )}
       </div>
