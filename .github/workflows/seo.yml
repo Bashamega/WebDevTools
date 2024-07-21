@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - '**'
-    branches-ignore:
-      - 'main'
   pull_request:
     branches:
       - '**'
@@ -44,3 +42,4 @@ jobs:
         git push origin HEAD:${{ github.ref }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      continue-on-error: true
