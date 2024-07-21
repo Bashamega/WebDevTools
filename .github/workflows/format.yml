@@ -14,11 +14,31 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          # Make sure the actual branch is checked out when running on pull requests
           ref: ${{ github.head_ref }}
 
       - name: Prettify code
         uses: creyD/prettier_action@v4.3
         with:
-          # This will prettify all files in the repository
           prettier_options: --write src/.
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git diff --exit-code || echo "changes detected"
+
+      - name: Commit changes
+        if: steps.changes.outputs.changes == 'changes detected'
+        run: |
+          git add .
+          git commit -m "Apply Prettier fixes"
+
+      - name: Push changes
+        if: steps.changes.outputs.changes == 'changes detected'
+        run: git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
