@@ -17,11 +17,12 @@ jobs:
         with:
           node-version: '18' # Specify the Node.js version
 
+      - name: Clean cache
+        run: npm cache clean --force
+      
       - name: Install dependencies
         run: npm install
       
-      - name: Update rimraf (Optional)
-        run: npm update rimraf  # Add this line to update globally
 
       - name: Run the sitemap update script
         run: npm run check-tools
