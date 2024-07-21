@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import snarkdown from "snarkdown";
 import { saveAs } from "file-saver";
 import SearchIcon from "@mui/icons-material/Search";
@@ -14,7 +14,17 @@ export default function MarkdownEditor() {
   const [toggle, setToggle] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const textareaRef = useRef(null);
-
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    try {
+      if (storedTheme !== null && JSON.parse(storedTheme) !== isDarkMode) {
+        toggleTheme();
+      }
+    } catch {
+      console.log("Failed to read localstorage");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -72,6 +82,7 @@ export default function MarkdownEditor() {
   console.log(toggle);
 
   const toggleTheme = () => {
+    localStorage.setItem("theme", !isDarkMode);
     setIsDarkMode(!isDarkMode);
   };
 
