@@ -1,10 +1,9 @@
-name: SEO
+name: Update Sitemap on PR
 
 on:
   pull_request:
-  push:
-    branches:
-      - '**'
+    types: [opened, synchronize, reopened]
+
 jobs:
   update-sitemap:
     runs-on: ubuntu-latest
@@ -12,17 +11,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          # Make sure the actual branch is checked out when running on pull requests
-          ref: ${{ github.head_ref }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '19' # Specify the Node.js version
+          node-version: '18' # Specify the Node.js version
 
       - name: Install dependencies
-        run: npm install xml2js
+        run: npm install
 
       - name: Run the sitemap update script
         run: npm run check-tools
@@ -32,8 +28,7 @@ jobs:
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
           git add sitemap.xml
-          git commit -m 'Update sitemap'
+          git commit -m 'Update sitemap with new tools'
           git push
-        # This step requires that you have a token with write access to the repo
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
