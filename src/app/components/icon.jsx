@@ -47,4 +47,3 @@ const Icons = {
   MoonIcon
 };
 
-export default Icons;
