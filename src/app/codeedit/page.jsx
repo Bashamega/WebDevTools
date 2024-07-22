@@ -13,7 +13,7 @@ export default function CodeEditor() {
       className={`max-h-[100vh] overflow-hidden ${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-black text-gray-800"}`}
     >
       <NavBar
-        title={"Box Shadow generator"}
+        title={"Code Editor"}
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
       />
