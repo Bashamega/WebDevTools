@@ -3,11 +3,16 @@ import { useEffect, useState } from "react";
 import { NavBar } from "../components/navbar";
 import Link from "next/link";
 import Image from "next/image";
+import BasicModal from "./modal";
 
 export default function GhFinder() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selected, setSelected] = useState(1);
   const [data, setData] = useState();
+  // const [open, setOpen] = useState(false);
+  // const handleOpen = () => setOpen(true);
+  // const handleClose = () => setOpen(false);
+
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
@@ -72,6 +77,8 @@ export default function GhFinder() {
             >
               Github
             </button>
+
+            <BasicModal />
           </div>
         </header>
       </div>
