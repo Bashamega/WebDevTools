@@ -38,6 +38,24 @@ const Page = () => {
         console.error("Failed to copy text: ", err);
       });
   };
+  const handleCopyTailwindClick = () => {
+    navigator.clipboard
+      .writeText(
+        `shadow-[${shadow.inset ? "inset_" : ""}${shadow.hOffset}px_${shadow.vOffset}px_${shadow.blur}px_${shadow.spread}px_${shadow.color}]`
+
+      )
+      .then(() => {
+        Swal.fire({
+          title: "Operation is complete!",
+          text: "TailwindCSS code copied to clipboard!",
+          icon: "success",
+          confirmButtonColor: "#2563EB",
+        });
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
+      });
+  };
 
   return (
     <div
@@ -48,7 +66,7 @@ const Page = () => {
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
       />
-      <main className=" max-w-6xl m-auto min-w-80">
+      <main className=" h-[100vh] max-w-6xl m-auto min-w-80">
         <div className="flex flex-col gap-3 mt-10 items-center">
           <h1 className="text-5xl font-extrabold text-center">
             Box Shadow Generator
@@ -69,7 +87,7 @@ const Page = () => {
             ></div>
           </div>
           <div
-            className={`w-full flex flex-col justify-between rounded-2xl px-14 py-8 ${isDarkMode ? "bg-slate-800" : "bg-slate-500"} h-full`}
+            className={`w-full h-max flex flex-col justify-between rounded-2xl px-14 py-8 ${isDarkMode ? "bg-slate-800" : "bg-slate-500"} h-full`}
           >
             <div className="grid grid-cols-2 gap-2">
               <InputRange
@@ -127,12 +145,23 @@ const Page = () => {
               <h3 className="my-2 py-4 px-3 bg-gray-700 rounded-lg text-white">
                 {`box-shadow: ${shadow.hOffset}px ${shadow.vOffset}px ${shadow.blur}px ${shadow.spread}px ${shadow.color} ${shadow.inset ? "inset" : ""};`}
               </h3>
+              <h3 className="my-2 py-4 px-3 bg-gray-700 rounded-lg text-white">
+                {`shadow-[${shadow.inset ? "inset_" : ""}${shadow.hOffset}px_${shadow.vOffset}px_${shadow.blur}px_${shadow.spread}px_${shadow.color}]`}
+              </h3>
               <div className="w-full relative py-2">
                 <button
                   className="rounded-lg bg-blue-600 p-3 text-md font-semibold text-white w-full text-center border outline-none border-blue-600 active:scale-95 transition-transform duration-200 hover:bg-blue-700 hover:border-blue-700"
                   onClick={handleCopyCSSClick}
                 >
                   Copy CSS
+                </button>
+              </div>
+              <div className="w-full relative py-2">
+                <button
+                  className="rounded-lg bg-blue-600 p-3 text-md font-semibold text-white w-full text-center border outline-none border-blue-600 active:scale-95 transition-transform duration-200 hover:bg-blue-700 hover:border-blue-700"
+                  onClick={handleCopyTailwindClick}
+                >
+                  Copy TailwindCSS
                 </button>
               </div>
             </div>
