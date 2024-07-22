@@ -37,7 +37,7 @@ export default function GhFinder() {
         return issue.labels.includes(selectedLabel);
       });
     });
-    setFilteredIssue(newFilterIssues);
+    setFilteredIssue([...filteredIssue, newFilterIssues]);
     console.log({ newFilterIssues, selectedLabels, filteredIssue, data });
   }, [selectedLabels]);
 

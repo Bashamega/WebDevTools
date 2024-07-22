@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
-import { Cancel } from "@mui/icons-material";
+import { Delete } from "@mui/icons-material";
 
 const style = {
   position: "absolute",
@@ -77,6 +77,11 @@ export default function BasicModal({ selectedLabels, setSelectedLabels }) {
     setSelectedLabels(newSelectedLabels);
   };
 
+  const handleClear = () => {
+    setSelectedLabels([]);
+    setOpen(false);
+  };
+
   return (
     <div>
       <Button onClick={handleOpen}>Filter</Button>
@@ -102,10 +107,10 @@ export default function BasicModal({ selectedLabels, setSelectedLabels }) {
             ))}
           </FormGroup>
           <Button
-            onClick={handleClose}
+            onClick={handleClear}
             className="w-[20px] p-0 m-0 absolute right-0 rounded-full"
           >
-            <Cancel />
+            <Delete />
           </Button>
         </Box>
       </Modal>
