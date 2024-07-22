@@ -8,7 +8,8 @@ import { FaTools, FaCode, FaMarkdown, FaInfo } from "react-icons/fa";
 import { IoMdGitPullRequest } from "react-icons/io";
 import Link from "next/link";
 import Switch from "@mui/material/Switch";
-import Icons from "./icon";
+import SunIcon from "./sunicon.js";
+import MoonIcon from "./moonicon.js";
 
 export default function Nav({ isDarkMode, toggleTheme }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -271,9 +272,9 @@ export default function Nav({ isDarkMode, toggleTheme }) {
           aria-label="Toggle dark mode"
         >
           {isDarkMode ? (
-            <Icons.SunIcon className="text-white" />
+            <SunIcon className="text-white" />
           ) : (
-            <Icons.MoonIcon className="text-black" />
+            <MoonIcon className="text-black" />
           )}
         </button>
       </div>
