@@ -1,24 +1,45 @@
-name: Prettier Styling
+name: Run SEO script
 
 on:
-  pull_request:
   push:
     branches:
       - '**'
+  pull_request:
+    branches:
+      - '**'
+
 
 jobs:
-  prettier:
+  run-script:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          # Make sure the actual branch is checked out when running on pull requests
-          ref: ${{ github.head_ref }}
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Prettify code
-        uses: creyD/prettier_action@v4.3
-        with:
-          # This will prettify all files in the repository
-          prettier_options: --write src/.
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14' # You can specify the Node.js version here
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run script
+      run: npx prettier src/. --write
+
+    - name: Configure git
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+    - name: Commit changes
+      run: |
+        git add .
+        git commit -m "Format"
+        git push origin HEAD:${{ github.ref }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      continue-on-error: true
