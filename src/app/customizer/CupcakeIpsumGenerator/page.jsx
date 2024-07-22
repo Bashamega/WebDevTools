@@ -52,7 +52,7 @@ export default function ButtonCustomizer() {
       />
       <section className="flex items-center justify-center h-screen">
         <div
-          className={`${isDarkMode ? "bg-gray-700 text-gray-400" : "bg-slate-800 text-gray-500"} p-10 w-full max-w-5xl overflow-y-scroll max-h-96`}
+          className={`${isDarkMode ? "bg-gray-700 text-gray-400" : "bg-slate-100 text-gray-500"} p-10 w-full max-w-5xl overflow-y-scroll max-h-96`}
         >
           <label htmlFor="cupcakes">Number of cupcakes:</label>
           <br />
