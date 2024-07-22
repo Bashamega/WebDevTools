@@ -11,16 +11,15 @@ export default function ButtonCustomizer() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setIsDarkMode(savedTheme === "dark");
+    const storedTheme = localStorage.getItem("theme");
+    try {
+      if (storedTheme !== null && JSON.parse(storedTheme) !== isDarkMode) {
+        toggleTheme();
+      }
+    } catch {
+      console.log("Failed to read localstorage");
     }
   }, []);
-
-  useEffect(() => {
-    // Save theme preference to local storage
-    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-  }, [isDarkMode]);
 
   const generate = () => {
     let text = "";
@@ -37,7 +36,9 @@ export default function ButtonCustomizer() {
   };
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+    localStorage.setItem("theme", JSON.stringify(newTheme));
   };
 
   return (
