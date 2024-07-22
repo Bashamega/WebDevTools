@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Search from "./search";
 import Link from "next/link";
 import Switch from "@mui/material/Switch";
-import { SunIcon, MoonIcon } from "./icon";
+import Icons from "./icon";
 
 export function NavBar({ title, isDarkMode, toggleTheme }) {
   useEffect(() => {
@@ -43,9 +43,9 @@ export function NavBar({ title, isDarkMode, toggleTheme }) {
           aria-label="Toggle dark mode"
         >
           {isDarkMode ? (
-            <SunIcon className="text-white" />
+            <Icons.SunIcon className="text-white" />
           ) : (
-            <MoonIcon className="text-black" />
+            <Icons.MoonIcon className="text-black" />
           )}
         </button>
       </div>

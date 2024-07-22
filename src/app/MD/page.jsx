@@ -7,7 +7,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Search from "../components/search";
 import Link from "next/link";
 import Switch from "@mui/material/Switch";
-import { SunIcon, MoonIcon } from "../components/icon";
+import Icons from "../components/icon";
 
 export default function MarkdownEditor() {
   const [markdown, setMarkdown] = useState("# hey");
@@ -149,9 +149,9 @@ export default function MarkdownEditor() {
             aria-label="Toggle dark mode"
           >
             {isDarkMode ? (
-              <SunIcon className="text-white" />
+              <Icons.SunIcon className="text-white" />
             ) : (
-              <MoonIcon className="text-black" />
+              <Icons.MoonIcon className="text-black" />
             )}
           </button>
         </div>
