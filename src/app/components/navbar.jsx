@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Search from "./search";
 import Link from "next/link";
 import Switch from "@mui/material/Switch";
+import SunIcon from "./icons/sunicon";
+import MoonIcon from "./icons/moonicon";
 
 export function NavBar({ title, isDarkMode, toggleTheme }) {
   useEffect(() => {
@@ -16,7 +18,7 @@ export function NavBar({ title, isDarkMode, toggleTheme }) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const handletoggleTheme = () => {
+  const handleToggleTheme = () => {
     localStorage.setItem("theme", !isDarkMode);
     toggleTheme();
   };
@@ -36,13 +38,17 @@ export function NavBar({ title, isDarkMode, toggleTheme }) {
         <p>{title}</p>
       </Link>
       <div className="flex items-center">
-        <Search isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-        <Switch
-          checked={isDarkMode}
-          onChange={handletoggleTheme}
-          color="default"
-          inputProps={{ "aria-label": "toggle dark mode" }}
-        />
+        <button
+          onClick={handleToggleTheme}
+          className="p-2 rounded-full hover:bg-opacity-20 hover:bg-gray-200 transition-colors duration-200"
+          aria-label="Toggle dark mode"
+        >
+          {isDarkMode ? (
+            <SunIcon className="text-white" />
+          ) : (
+            <MoonIcon className="text-black" />
+          )}
+        </button>
       </div>
     </nav>
   );

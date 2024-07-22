@@ -7,6 +7,8 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Search from "../components/search";
 import Link from "next/link";
 import Switch from "@mui/material/Switch";
+import SunIcon from "../components/icons/sunicon";
+import MoonIcon from "../components/icons/moonicon";
 
 export default function MarkdownEditor() {
   const [markdown, setMarkdown] = useState("# hey");
@@ -82,8 +84,9 @@ export default function MarkdownEditor() {
   console.log(toggle);
 
   const toggleTheme = () => {
-    localStorage.setItem("theme", !isDarkMode);
-    setIsDarkMode(!isDarkMode);
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+    localStorage.setItem("theme", JSON.stringify(newTheme));
   };
 
   return (
@@ -141,13 +144,17 @@ export default function MarkdownEditor() {
           </div>
         </div>
         <div className="flex items-center">
-          <Switch
-            checked={isDarkMode}
-            onChange={toggleTheme}
-            color="default"
-            inputProps={{ "aria-label": "toggle dark mode" }}
-          />
-          {/* <span className="ml-2">{isDarkMode ? "Dark Mode" : "Light Mode"}</span> */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full hover:bg-opacity-20 hover:bg-gray-200 transition-colors duration-200"
+            aria-label="Toggle dark mode"
+          >
+            {isDarkMode ? (
+              <SunIcon className="text-white" />
+            ) : (
+              <MoonIcon className="text-black" />
+            )}
+          </button>
         </div>
       </nav>
       <div className="flex justify-between">

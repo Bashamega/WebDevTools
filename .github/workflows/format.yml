@@ -1,4 +1,4 @@
-name: Run SEO script
+name: Format Documents
 
 on:
   push:
