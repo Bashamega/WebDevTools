@@ -31,6 +31,10 @@ export default function GhFinder() {
       )
       .catch((error) => console.error("Error fetching data:", error));
   }, [selected]);
+
+  // console.log(
+  //   data?.map((d) => d.labels.filter((f) => f.name === "enhancement")),
+  // );
   function isDarkColor(color) {
     // Convert the color to RGB
     const hexColor = color.replace("#", "");
