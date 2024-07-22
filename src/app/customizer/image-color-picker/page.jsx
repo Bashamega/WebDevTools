@@ -5,10 +5,16 @@ import React, { useRef, useState } from "react";
 import Nav from "@/app/components/nav";
 import toast, { Toaster } from "react-hot-toast";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { NavBar } from "@/app/components/navbar";
 
 const ColorPicker = () => {
   const [image, setImage] = useState(null);
   const [color, setColor] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
   const canvasRef = useRef(null);
 
   const handleImageUpload = (event) => {
@@ -94,9 +100,11 @@ const ColorPicker = () => {
   };
 
   return (
-    <>
-      <Nav />
-      <main className="bg-gray-700 mx-8 min-w-80">
+    <main
+    className={`${isDarkMode ? "bg-gray-900 " : "bg-white text-black"} min-w-80 h-screen`}
+  >
+      <NavBar title={"Image Color Picker"}  toggleTheme={toggleTheme} isDarkMode={isDarkMode}/>
+      <section className={`${isDarkMode?"bg-gray-700": "bg-gray-300"} mx-8 min-w-80`}>
         <div className="color-picker px-8 py-20 my-10 flex flex-col gap-14 justify-center items-center h-150">
           <div className="flex items-center justify-center w-full">
             <label
@@ -165,14 +173,14 @@ const ColorPicker = () => {
                   }}
                 ></div>
               )}
-              <h1 className="text-3xl font-extrabold dark:text-white">
+              <h1 className="text-3xl font-extrabold ">
                 Hex:
                 <small className="ms-2 font-semibold text-gray-500 dark:text-gray-400">
                   {rgbToHex(color)}
                 </small>
               </h1>
 
-              <h1 className="text-3xl font-extrabold dark:text-white">
+              <h1 className="text-3xl font-extrabold ">
                 RGB:
                 <small className="ms-2 font-semibold text-gray-500 dark:text-gray-400">
                   {color}
@@ -198,9 +206,9 @@ const ColorPicker = () => {
             </div>
           </div>
         </div>
-      </main>
+      </section>
       <Toaster />
-    </>
+    </main>
   );
 };
 

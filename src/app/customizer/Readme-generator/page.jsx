@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import snarkdown from "snarkdown";
-import Nav from "@/app/components/nav";
+import { NavBar } from "@/app/components/navbar";
 
 export default function ButtonCustomizer() {
   const [title, setTitle] = useState("");
@@ -54,7 +54,7 @@ ${license}`;
     <div
       className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} min-h-screen flex-col justify-center w-screen`}
     >
-      <Nav isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+      <NavBar isDarkMode={isDarkMode} toggleTheme={toggleTheme} title={"Github Readme Generator"} />
       <div className="w-2/3 mx-auto">
         <h1 className="text-4xl font-bold mb-6">GitHub README Generator</h1>
         <div className="mb-4">
