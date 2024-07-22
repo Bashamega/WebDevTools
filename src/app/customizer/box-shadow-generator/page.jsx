@@ -41,7 +41,7 @@ const Page = () => {
   const handleCopyTailwindClick = () => {
     navigator.clipboard
       .writeText(
-          `shadow-[${shadow.inset ? "inset_" : ""}${shadow.hOffset}px_${shadow.vOffset}px_${shadow.blur}px_${shadow.spread}px_${shadow.color}]`
+        `shadow-[${shadow.inset ? "inset_" : ""}${shadow.hOffset}px_${shadow.vOffset}px_${shadow.blur}px_${shadow.spread}px_${shadow.color}]`
 
       )
       .then(() => {
@@ -66,7 +66,7 @@ const Page = () => {
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
       />
-      <main className=" max-w-6xl m-auto min-w-80">
+      <main className=" h-[100vh] max-w-6xl m-auto min-w-80">
         <div className="flex flex-col gap-3 mt-10 items-center">
           <h1 className="text-5xl font-extrabold text-center">
             Box Shadow Generator
