@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 
 import Nav from "@/app/components/nav";
+import { NavBar } from "@/app/components/navbar";
 // import { Navbar } from "react-bootstrap";
 
 export default function ButtonCustomizer() {
@@ -44,7 +45,7 @@ export default function ButtonCustomizer() {
     <main
       className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"}min-w-80 `}
     >
-      <Nav
+      <NavBar
         title={"Cupcake Ipsum Generator"}
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}

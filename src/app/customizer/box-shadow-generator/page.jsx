@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import InputRange from "@/app/components/Input/InputRange";
 import Footer from "@/app/components/Footer";
 import Swal from "sweetalert2";
-import Nav from "@/app/components/nav";
+import { NavBar } from "@/app/components/navbar";
 
 const Page = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -61,7 +61,7 @@ const Page = () => {
     <div
       className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"}`}
     >
-      <Nav
+      <NavBar
         title={"Box Shadow generator"}
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
