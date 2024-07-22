@@ -9,9 +9,8 @@ export default function GhFinder() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selected, setSelected] = useState(1);
   const [data, setData] = useState();
-  // const [open, setOpen] = useState(false);
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
+  const [selectedLabels, setSelectedLabels] = useState([]);
+  const [filteredIssue, setFilteredIssue] = useState([]);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -32,9 +31,16 @@ export default function GhFinder() {
       .catch((error) => console.error("Error fetching data:", error));
   }, [selected]);
 
-  // console.log(
-  //   data?.map((d) => d.labels.filter((f) => f.name === "enhancement")),
-  // );
+  useEffect(() => {
+    const newFilterIssues = data?.filter((issue) => {
+      return selectedLabels.every((selectedLabel) => {
+        return issue.labels.includes(selectedLabel);
+      });
+    });
+    setFilteredIssue(newFilterIssues);
+    console.log({ newFilterIssues, selectedLabels, filteredIssue, data });
+  }, [selectedLabels]);
+
   function isDarkColor(color) {
     // Convert the color to RGB
     const hexColor = color.replace("#", "");
@@ -62,7 +68,7 @@ export default function GhFinder() {
           <h1 className="relative z-10 font-sans text-lg font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600">
             Github Issue Finder
           </h1>
-          <div className=" flex justify-between w-full lg:w-1/2 lg:mx-[25%] my-5">
+          <div className=" flex justify-between w-full lg:w-1/2 lg:mx-[25%] my-5 items-center">
             <button
               className={
                 "hover:bg-blue-800 transition-colors min-w-1/3 duration-100 p-5 rounded-full hover:text-white " +
@@ -82,7 +88,10 @@ export default function GhFinder() {
               Github
             </button>
 
-            <BasicModal />
+            <BasicModal
+              selectedLabels={selectedLabels}
+              setSelectedLabels={setSelectedLabels}
+            />
           </div>
         </header>
       </div>
