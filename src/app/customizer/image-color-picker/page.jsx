@@ -101,10 +101,16 @@ const ColorPicker = () => {
 
   return (
     <main
-    className={`${isDarkMode ? "bg-gray-900 " : "bg-white text-black"} min-w-80 h-screen`}
-  >
-      <NavBar title={"Image Color Picker"}  toggleTheme={toggleTheme} isDarkMode={isDarkMode}/>
-      <section className={`${isDarkMode?"bg-gray-700": "bg-gray-300"} mx-8 min-w-80`}>
+      className={`${isDarkMode ? "bg-gray-900 " : "bg-white text-black"} min-w-80 h-screen`}
+    >
+      <NavBar
+        title={"Image Color Picker"}
+        toggleTheme={toggleTheme}
+        isDarkMode={isDarkMode}
+      />
+      <section
+        className={`${isDarkMode ? "bg-gray-700" : "bg-gray-300"} mx-8 min-w-80`}
+      >
         <div className="color-picker px-8 py-20 my-10 flex flex-col gap-14 justify-center items-center h-150">
           <div className="flex items-center justify-center w-full">
             <label
