@@ -42,5 +42,4 @@ export const MoonIcon = ({ className = "" }) => (
   </svg>
 );
 
-};
 
