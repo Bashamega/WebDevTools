@@ -1,8 +1,8 @@
 "use client";
 import Footer from "../components/Footer";
-import Nav from "../components/nav";
+import { NavBar } from "../components/navbar";
 import React, { useState } from "react";
-import Link from "next/link";
+
 
 export default function Endpoints() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -17,7 +17,7 @@ export default function Endpoints() {
     <main
       className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} min-h-screen pb-10`}
     >
-      <Nav toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
+      <NavBar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
       <div className="flex justify-center flex-col items-center w-full">
         <div
           id="about"
