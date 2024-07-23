@@ -8,6 +8,8 @@ import { FaTools, FaCode, FaMarkdown, FaInfo } from "react-icons/fa";
 import { IoMdGitPullRequest } from "react-icons/io";
 import Link from "next/link";
 import Switch from "@mui/material/Switch";
+import SunIcon from "./icons/sunicon";
+import MoonIcon from "./icons/moonicon";
 
 export default function Nav({ isDarkMode, toggleTheme }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -49,7 +51,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
   const togglePanel = () => {
     setOpen((prev) => !prev);
   };
-  const handletoggleTheme = () => {
+  const handleToggleTheme = () => {
     localStorage.setItem("theme", !isDarkMode);
     toggleTheme();
   };
@@ -264,12 +266,17 @@ export default function Nav({ isDarkMode, toggleTheme }) {
       <HamburgerMenu open={open} togglePanel={togglePanel} />
 
       <div className="flex items-center">
-        <Switch
-          checked={isDarkMode}
-          onChange={handletoggleTheme}
-          color="default"
-          inputProps={{ "aria-label": "theme toggle switch" }}
-        />
+        <button
+          onClick={handleToggleTheme}
+          className="p-2 rounded-full hover:bg-opacity-20 hover:bg-gray-200 transition-colors duration-200"
+          aria-label="Toggle dark mode"
+        >
+          {isDarkMode ? (
+            <SunIcon className="text-white" />
+          ) : (
+            <MoonIcon className="text-black" />
+          )}
+        </button>
       </div>
     </nav>
   );

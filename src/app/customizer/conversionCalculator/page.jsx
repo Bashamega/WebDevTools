@@ -1,5 +1,5 @@
 "use client";
-import Nav from "@/app/components/nav";
+import { NavBar } from "@/app/components/navbar";
 import React, { useState } from "react";
 const convert = require("convert-units");
 
@@ -40,7 +40,7 @@ export default function ButtonCustomizer() {
     <main
       className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-h-screen`}
     >
-      <Nav
+      <NavBar
         title={"Button customizer"}
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
@@ -53,7 +53,9 @@ export default function ButtonCustomizer() {
           minHeight: "calc(100vh - 15rem)",
         }}
       >
-        <section className="flex flex-col gap-4 bg-slate-600 p-4 rounded md:flex-row">
+        <section
+          className={`${isDarkMode ? "bg-slate-600" : "bg-slate-100"} flex flex-col gap-4 p-4 rounded md:flex-row`}
+        >
           <section className="">
             <input
               type="number"

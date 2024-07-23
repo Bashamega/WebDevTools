@@ -1,0 +1,411 @@
+repo_name: Bashamega/WebDevTools
+report_id: dbd098ccd9bcd3bffaf7696677bbc64c
+version: 0.1
+repo_type: Public
+timestamp: '2024-07-23T04:22:26+00:00'
+requested_by: Bashamega
+provider: github
+branch: main
+detected_tools_count: 32
+tools:
+- name: CSS 3
+  description: The latest evolution of the Cascading Style Sheets language
+  website_url: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/6727/css.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools
+  detection_source: Repo Metadata
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/Bashamega/WebDevTools
+  detection_source: Repo Metadata
+- name: Autoprefixer
+  description: PostCSS plugin to parse CSS and add vendor prefixes to CSS rules
+  website_url: https://github.com/postcss/autoprefixer
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: CSS Pre-processors / Extensions
+  image_url: https://img.stackshare.io/service/2202/72d087642cfce6fef6f2dabec5bf49e8_400x400.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Bashamega
+  last_updated_on: 2024-06-02 09:37:29.000000000 Z
+- name: Bootstrap
+  description: Simple and flexible HTML, CSS, and JS for popular UI components and
+    interactions
+  website_url: http://getbootstrap.com/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Front-End Frameworks
+  image_url: https://img.stackshare.io/service/1101/C9QJ7V3X.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Bashamega
+  last_updated_on: 2024-06-02 09:37:29.000000000 Z
+- name: Next.js
+  description: A small framework for server-rendered universal JavaScript apps
+  website_url: https://nextjs.org/
+  version: 14.2.5
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Frameworks (Full Stack)
+  image_url: https://img.stackshare.io/service/5936/nextjs.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Bashamega
+  last_updated_on: 2023-06-18 14:43:01.000000000 Z
+- name: PostCSS
+  description: Transform CSS with JS plugins
+  website_url: https://github.com/postcss/postcss
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: CSS Pre-processors / Extensions
+  image_url: https://img.stackshare.io/service/3339/rlFcjEdI.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Bashamega
+  last_updated_on: 2023-06-18 14:43:01.000000000 Z
+- name: React
+  description: A JavaScript library for building user interfaces
+  website_url: https://reactjs.org/
+  version: 16.14.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript UI Libraries
+  image_url: https://img.stackshare.io/service/1020/OYIaJ1KK.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Jitendra
+  last_updated_on: 2024-07-09 11:54:19.000000000 Z
+- name: Tailwind CSS
+  description: A utility-first CSS framework for rapid UI development
+  website_url: https://tailwindcss.com
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Front-End Frameworks
+  image_url: https://img.stackshare.io/service/8158/default_660b7c41c3ba489cb581eec89c04655404258c19.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: renovate[bot]
+  last_updated_on: 2024-07-05 02:38:26.000000000 Z
+- name: react-beautiful-dnd
+  description: Beautiful and accessible drag and drop for lists with React (by Atlassian)
+  website_url: https://github.com/atlassian/react-beautiful-dnd
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: JavaScript Framework Components
+  image_url: https://img.stackshare.io/service/9878/react-beautiful-dnd-logo.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Jitendra
+  last_updated_on: 2024-07-09 11:54:19.000000000 Z
+- name: CodeMirror
+  description: A versatile text editor implemented in JavaScript for the browser
+  website_url: http://codemirror.net/
+  version: 6.0.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Text Editor
+  image_url: https://img.stackshare.io/service/2490/E_fCaAi6.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Bashamega
+  last_updated_on: 2023-06-20 03:30:00.000000000 Z
+- name: ESLint
+  description: The fully pluggable JavaScript code quality tool
+  website_url: http://eslint.org/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/3337/Q4L7Jncy.jpg
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Bashamega
+  last_updated_on: 2023-06-18 14:43:01.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools
+  detection_source: Repo Metadata
+- name: GitHub Actions
+  description: Automate your workflow from idea to production
+  website_url: https://github.com/features/actions
+  open_source: false
+  hosted_saas: true
+  category: Build, Test, Deploy
+  sub_category: Continuous Integration
+  image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/.github/workflows/format.yml
+  detection_source: ".github/workflows/format.yml"
+  last_updated_by: Bashamega
+  last_updated_on: 2024-07-22 13:34:28.000000000 Z
+- name: Prettier
+  description: Prettier is an opinionated code formatter.
+  website_url: https://prettier.io/
+  version: 3.3.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/7035/default_66f265943abed56bcdbfca1c866a4261b1fbb063.jpg
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Bashamega
+  last_updated_on: 2024-07-21 11:18:38.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Bashamega
+  last_updated_on: 2023-06-18 14:43:01.000000000 Z
+- name: SweetAlert
+  description: A beautiful replacement for JavaScript's "alert"
+  website_url: https://sweetalert.js.org/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://ucarecdn.com/c4c55828-7bcf-4661-8f4f-52745636aafd/
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Jitendra
+  last_updated_on: 2024-07-08 08:45:32.000000000 Z
+- name: sweetalert2
+  description: A beautiful
+  package_url: https://www.npmjs.com/sweetalert2
+  version: 11.12.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/18093/image.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Jitendra
+  last_updated_on: 2024-07-08 08:45:32.000000000 Z
+  vulnerabilities:
+  - name: sweetalert2 v11.6.14 and above contains potentially undesirable behavior
+    cve_id:
+    cve_url: https://github.com/advisories/GHSA-mrr8-v49w-3333
+    detected_date: Jul 11
+    severity: low
+    first_patched:
+- name: "@emotion/styled"
+  description: Styled API for emotion
+  package_url: https://www.npmjs.com/@emotion/styled
+  version: 11.13.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16702/default_4b738bf1758d38dddd276589bbea47fca5a990df.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Bashamega
+  last_updated_on: 2024-06-05 09:02:12.000000000 Z
+- name: eslint-config-next
+  description: ESLint configuration used by Next.js
+  package_url: https://www.npmjs.com/eslint-config-next
+  version: 14.2.5
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/npm/image.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Bashamega
+  last_updated_on: 2024-07-21 11:18:38.000000000 Z
+- name: file-saver
+  description: An HTML5 saveAs
+  package_url: https://www.npmjs.com/file-saver
+  version: 2.0.5
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16795/default_6e51a44775c61dcb2888547ad406a2f0cf2c344e.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Bashamega
+  last_updated_on: 2023-06-19 08:58:19.000000000 Z
+- name: fuse.js
+  description: Lightweight fuzzy-search
+  package_url: https://www.npmjs.com/fuse.js
+  version: 7.0.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17405/default_c11ea7d401c11f11d89301d0302509ab7d72e5ac.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: renovate[bot]
+  last_updated_on: 2024-07-04 16:27:35.000000000 Z
+- name: jszip
+  description: Create
+  package_url: https://www.npmjs.com/jszip
+  version: 3.10.1
+  license: MIT,GPL-3.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16628/default_4b738bf1758d38dddd276589bbea47fca5a990df.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Bashamega
+  last_updated_on: 2023-06-19 08:58:19.000000000 Z
+- name: react-bootstrap
+  description: Bootstrap 3 components built with React
+  package_url: https://www.npmjs.com/react-bootstrap
+  version: 2.10.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16383/default_92302d1bbf4c0f67b862869662b4f69002c94aad.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Jitendra
+  last_updated_on: 2024-07-09 11:54:19.000000000 Z
+- name: react-color
+  description: A Collection of Color Pickers from Sketch
+  package_url: https://www.npmjs.com/react-color
+  version: 2.19.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16955/default_665377899254fe85c1cf6bf7f15e24c4180a76ac.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Jitendra
+  last_updated_on: 2024-07-09 11:54:19.000000000 Z
+- name: react-dom
+  description: React package for working with the DOM
+  package_url: https://www.npmjs.com/react-dom
+  version: 18.3.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15808/default_14fd11531839d935f920b6d55bd6f3528c890ad7.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Jitendra
+  last_updated_on: 2024-07-09 11:54:19.000000000 Z
+- name: react-icons
+  description: SVG React icons of popular icon packs using ES6 imports
+  package_url: https://www.npmjs.com/react-icons
+  version: 5.2.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16909/default_7b9968788548874538c601457e8dcd9c74bd2051.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Jitendra
+  last_updated_on: 2024-07-09 11:54:19.000000000 Z
+- name: react-tabs
+  description: An accessible and easy tab component for ReactJS
+  package_url: https://www.npmjs.com/react-tabs
+  version: 6.0.2
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/npm/image.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Jitendra
+  last_updated_on: 2024-07-09 11:54:19.000000000 Z
+- name: tailwindcss
+  description: A utility-first CSS framework for rapidly building custom user interfaces
+  package_url: https://www.npmjs.com/tailwindcss
+  version: 3.4.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17398/default_2cd7ed1c123f2fca074a6f4b16c4e73d5bfe82be.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: renovate[bot]
+  last_updated_on: 2024-07-05 02:38:26.000000000 Z
+- name: uuid
+  description: RFC4122
+  package_url: https://www.npmjs.com/uuid
+  version: 10.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15916/default_e0a4fb1126d7400f419f0931cf1669947a5bc552.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: renovate[bot]
+  last_updated_on: 2024-07-04 16:27:45.000000000 Z
+- name: xml2js
+  description: Simple XML to JavaScript object converter
+  package_url: https://www.npmjs.com/xml2js
+  version: 0.6.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16122/default_efe4f0184d007a28e793d89a59e058b742bc9177.png
+  detection_source_url: https://github.com/Bashamega/WebDevTools/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Bashamega
+  last_updated_on: 2024-07-21 11:18:38.000000000 Z
