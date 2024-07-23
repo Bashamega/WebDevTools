@@ -18,38 +18,6 @@ const style = {
   p: 4,
   display: "flex",
 };
-//   {
-//     id: 1,
-//     name: "john",
-//     gender: "m",
-//   },
-//   {
-//     id: 2,
-//     name: "mary",
-//     gender: "f",
-//   },
-// ]);
-
-// const updateFieldChanged = (index) => (e) => {
-//   console.log("index: " + index);
-
-//   console.log("property name: " + e.target.name);
-//   let newArr = [...data];
-//   newArr[index] = e.target.value;
-
-//   setData(newArr);
-// };
-
-// return data.map((datum, index) => {
-//   <li key={datum.name}>
-//     <input
-//       type="text"
-//       name="name"
-//       value={datum.name}
-//       onChange={updateFieldChanged(index)}
-//     />
-//   </li>;
-// });
 
 export default function BasicModal({ selectedLabels, setSelectedLabels }) {
   const handleClose = () => setOpen(false);
@@ -92,8 +60,9 @@ export default function BasicModal({ selectedLabels, setSelectedLabels }) {
       >
         <Box sx={style} className="bg-gray-800">
           <FormGroup>
-            {labelsList.map((label) => (
+            {labelsList.map((label, idx) => (
               <FormControlLabel
+                key={idx}
                 control={
                   <Checkbox
                     name={label}
