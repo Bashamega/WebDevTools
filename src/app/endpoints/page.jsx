@@ -17,7 +17,7 @@ export default function Endpoints() {
     <main
       className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} min-h-screen pb-10`}
     >
-      <NavBar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
+      <NavBar toggleTheme={toggleTheme} isDarkMode={isDarkMode} title="Endpoints" />
       <div className="flex justify-center flex-col items-center w-full">
         <div
           id="about"
