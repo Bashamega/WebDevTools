@@ -14,7 +14,7 @@ export default function HTML_JSX() {
     <main
       className={`h-screen overflow-auto ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}
     >
-      <NavBar title={"HTML to JSX"} />
+      <NavBar title={"HTML to JSX"} toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
     </main>
   );
 }
