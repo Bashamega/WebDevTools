@@ -13,7 +13,6 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 600,
   height: 300,
-  bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
@@ -108,7 +107,14 @@ export default function BasicModal({ selectedLabels, setSelectedLabels }) {
           </FormGroup>
           <Button
             onClick={handleClear}
-            className="w-[20px] p-0 m-0 absolute right-0 rounded-full"
+            sx={{
+              position: "absolute",
+              right: 0,
+              padding: 0,
+              margin: 0,
+              width: "10px",
+              borderRadius: "10000px",
+            }}
           >
             <Delete />
           </Button>
