@@ -91,7 +91,7 @@ export default function MarkdownEditor() {
 
   return (
     <main
-      className={`h-screen ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}
+      className={`h-screen overflow-auto ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}
     >
       <nav
         className={`py-4 px-6 flex items-center justify-between h-[69px] ${isDarkMode ? "bg-gray-800" : "bg-blue-500"}`}
