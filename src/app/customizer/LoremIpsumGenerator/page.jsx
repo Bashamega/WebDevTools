@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import CloseIcon from "@mui/icons-material/Close";
 import Nav from "@/app/components/nav";
+import { NavBar } from "@/app/components/navbar";
 
 export default function ButtonCustomizer() {
   const [paragraphs, setParagraphs] = useState(1);
@@ -35,7 +36,7 @@ export default function ButtonCustomizer() {
     <main
       className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} h-screen flex flex-col gap-10 min-w-80`}
     >
-      <Nav
+      <NavBar
         title={"Lorem Ipsum generator"}
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}

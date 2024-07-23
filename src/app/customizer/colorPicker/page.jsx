@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { HexColorPicker } from "react-colorful";
-import Nav from "@/app/components/nav"; // Correct import path
+import { NavBar } from "@/app/components/navbar";
 
 export default function ColorPicker() {
   const [hexColor, setHexColor] = useState("#ffffff");
@@ -45,7 +45,7 @@ export default function ColorPicker() {
     <main
       className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-w-80`}
     >
-      <Nav
+      <NavBar
         title={"Color Picker"}
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
