@@ -53,7 +53,9 @@ export default function ButtonCustomizer() {
           minHeight: "calc(100vh - 15rem)",
         }}
       >
-        <section className={`${isDarkMode ? "bg-slate-600":"bg-slate-100"} flex flex-col gap-4 p-4 rounded md:flex-row`}>
+        <section
+          className={`${isDarkMode ? "bg-slate-600" : "bg-slate-100"} flex flex-col gap-4 p-4 rounded md:flex-row`}
+        >
           <section className="">
             <input
               type="number"

@@ -41,8 +41,7 @@ const Page = () => {
   const handleCopyTailwindClick = () => {
     navigator.clipboard
       .writeText(
-        `shadow-[${shadow.inset ? "inset_" : ""}${shadow.hOffset}px_${shadow.vOffset}px_${shadow.blur}px_${shadow.spread}px_${shadow.color}]`
-
+        `shadow-[${shadow.inset ? "inset_" : ""}${shadow.hOffset}px_${shadow.vOffset}px_${shadow.blur}px_${shadow.spread}px_${shadow.color}]`,
       )
       .then(() => {
         Swal.fire({
