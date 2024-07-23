@@ -1,50 +1,4 @@
-<!--
-&lt;--- Readme.md Snippet without images Start ---&gt;
-## Tech Stack
-Bashamega/WebDevTools is built on the following main stack:
 
-- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
-- [Ruby](https://www.ruby-lang.org) – Languages
-- [Autoprefixer](https://github.com/postcss/autoprefixer) – CSS Pre-processors / Extensions
-- [Bootstrap](http://getbootstrap.com/) – Front-End Frameworks
-- [Next.js](https://nextjs.org/) – Frameworks (Full Stack)
-- [PostCSS](https://github.com/postcss/postcss) – CSS Pre-processors / Extensions
-- [React](https://reactjs.org/) – Javascript UI Libraries
-- [Tailwind CSS](https://tailwindcss.com) – Front-End Frameworks
-- [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd) – JavaScript Framework Components
-- [CodeMirror](http://codemirror.net/) – Text Editor
-- [ESLint](http://eslint.org/) – Code Review
-- [GitHub Actions](https://github.com/features/actions) – Continuous Integration
-- [Prettier](https://prettier.io/) – Code Review
-- [SweetAlert](https://sweetalert.js.org/) – Javascript Utilities & Libraries
-
-Full tech stack [here](/techstack.md)
-
-&lt;--- Readme.md Snippet without images End ---&gt;
-
-&lt;--- Readme.md Snippet with images Start ---&gt;
-## Tech Stack
-Bashamega/WebDevTools is built on the following main stack:
-
-- <img width='25' height='25' src='https://img.stackshare.io/service/1209/javascript.jpeg' alt='JavaScript'/> [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
-- <img width='25' height='25' src='https://img.stackshare.io/service/989/ruby.png' alt='Ruby'/> [Ruby](https://www.ruby-lang.org) – Languages
-- <img width='25' height='25' src='https://img.stackshare.io/service/2202/72d087642cfce6fef6f2dabec5bf49e8_400x400.png' alt='Autoprefixer'/> [Autoprefixer](https://github.com/postcss/autoprefixer) – CSS Pre-processors / Extensions
-- <img width='25' height='25' src='https://img.stackshare.io/service/1101/C9QJ7V3X.png' alt='Bootstrap'/> [Bootstrap](http://getbootstrap.com/) – Front-End Frameworks
-- <img width='25' height='25' src='https://img.stackshare.io/service/5936/nextjs.png' alt='Next.js'/> [Next.js](https://nextjs.org/) – Frameworks (Full Stack)
-- <img width='25' height='25' src='https://img.stackshare.io/service/3339/rlFcjEdI.png' alt='PostCSS'/> [PostCSS](https://github.com/postcss/postcss) – CSS Pre-processors / Extensions
-- <img width='25' height='25' src='https://img.stackshare.io/service/1020/OYIaJ1KK.png' alt='React'/> [React](https://reactjs.org/) – Javascript UI Libraries
-- <img width='25' height='25' src='https://img.stackshare.io/service/8158/default_660b7c41c3ba489cb581eec89c04655404258c19.png' alt='Tailwind CSS'/> [Tailwind CSS](https://tailwindcss.com) – Front-End Frameworks
-- <img width='25' height='25' src='https://img.stackshare.io/service/9878/react-beautiful-dnd-logo.png' alt='react-beautiful-dnd'/> [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd) – JavaScript Framework Components
-- <img width='25' height='25' src='https://img.stackshare.io/service/2490/E_fCaAi6.png' alt='CodeMirror'/> [CodeMirror](http://codemirror.net/) – Text Editor
-- <img width='25' height='25' src='https://img.stackshare.io/service/3337/Q4L7Jncy.jpg' alt='ESLint'/> [ESLint](http://eslint.org/) – Code Review
-- <img width='25' height='25' src='https://img.stackshare.io/service/11563/actions.png' alt='GitHub Actions'/> [GitHub Actions](https://github.com/features/actions) – Continuous Integration
-- <img width='25' height='25' src='https://img.stackshare.io/service/7035/default_66f265943abed56bcdbfca1c866a4261b1fbb063.jpg' alt='Prettier'/> [Prettier](https://prettier.io/) – Code Review
-- <img width='25' height='25' src='https://ucarecdn.com/c4c55828-7bcf-4661-8f4f-52745636aafd/' alt='SweetAlert'/> [SweetAlert](https://sweetalert.js.org/) – Javascript Utilities & Libraries
-
-Full tech stack [here](/techstack.md)
-
-&lt;--- Readme.md Snippet with images End ---&gt;
--->
 <div align="center">
 
 # Tech Stack File
@@ -72,13 +26,7 @@ Full tech stack [here](/techstack.md)
   <sub></sub>
 </td>
 
-<td align='center'>
-  <img width='36' height='36' src='https://img.stackshare.io/service/989/ruby.png' alt='Ruby'>
-  <br>
-  <sub><a href="https://www.ruby-lang.org">Ruby</a></sub>
-  <br>
-  <sub></sub>
-</td>
+
 
 </tr>
 </table>
@@ -186,13 +134,7 @@ Full tech stack [here](/techstack.md)
   <sub>v3.3.3</sub>
 </td>
 
-<td align='center'>
-  <img width='36' height='36' src='https://img.stackshare.io/service/12795/5jL6-BA5_400x400.jpeg' alt='RubyGems'>
-  <br>
-  <sub><a href="https://rubygems.org/">RubyGems</a></sub>
-  <br>
-  <sub></sub>
-</td>
+
 
 <td align='center'>
   <img width='36' height='36' src='https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png' alt='npm'>
