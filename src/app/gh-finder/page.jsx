@@ -50,7 +50,7 @@ export default function GhFinder() {
       />
       <div className=" mt-10 flex w-screen justify-center">
         <header className=" lg:w-2/3">
-          <h1 className="relative z-10 font-sans text-lg font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600">
+          <h1 className="relative z-10 font-sans text-xl sm:text-4xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600">
             Github Issue Finder
           </h1>
           <div className=" flex justify-between w-full lg:w-1/2 lg:mx-[25%] my-5">
@@ -75,138 +75,142 @@ export default function GhFinder() {
           </div>
         </header>
       </div>
-      <div className=" ml-[25%] w-1/2">
-        {data ? (
-          data.map((item, index) => (
-            <div
-              key={item.id}
-              className="bg-slate-500 rounded mb-5 pl-5 pb-5 flex w-full"
-            >
-              <div className="w-2/3 overflow-hidden">
-                <Link
-                  href={item.html_url}
-                  className="text-white font-bold text-3xl hover:underline truncate block"
-                >
-                  {item.title}
-                </Link>
-                <Link
-                  className=" text-slate-300"
-                  href={item.repository_url.replace(
-                    "https://api.github.com/repos",
-                    "https://github.com",
-                  )}
-                >
-                  {item.repository_url.replace(
-                    "https://api.github.com/repos/",
-                    "",
-                  )}
-                </Link>
-
-                <br></br>
-                <div className="flex flex-wrap mt-2 items-center w-2/3 gap-1 max-h-[50px] overflow-auto">
-                  {item.labels && item.labels.length > 0 ? (
-                    item.labels.map((label) => {
-                      const isDark = isDarkColor(label.color);
-                      const textColor = isDark ? "text-white" : "text-gray-800";
-
-                      return (
-                        <p
-                          key={label.id}
-                          className={`bg-gray-300 ${textColor}   px-2 py-1 rounded mr-2 mb-2 cursor-pointer truncate w-[calc(30%)]`}
-                          style={{ backgroundColor: `#${label.color}` }}
-                        >
-                          {label.name}
-                        </p>
-                      );
-                    })
-                  ) : (
-                    <p className="text-white">No labels</p>
-                  )}
-                </div>
-                <div className="flex items-center">
-                  <p className="text-white">Created by:</p>
+      <div className="flex flex-col items-center">
+        <div className="w-11/12 md:w-8/12 xl:w-1/2">
+          {data ? (
+            data.map((item, index) => (
+              <div
+                key={item.id}
+                className="bg-slate-500 rounded p-4 mb-4 flex flex-col md:flex-row w-full"
+              >
+                <div className="md:w-2/3 overflow-hidden w-full">
                   <Link
-                    href={item.user.html_url}
-                    className="flex items-center text-white ml-5"
+                    href={item.html_url}
+                    className="text-white font-bold text-3xl hover:underline truncate block"
                   >
-                    <Image
-                      src={item.user.avatar_url}
-                      className="rounded-full w-6 h-6 mr-2"
-                      alt="User Avatar"
-                      width={0}
-                      height={0}
-                    />
-                    <p className="text-white">{item.user.login}</p>
+                    {item.title}
                   </Link>
-                </div>
-                <div className="text-white w-full">
-                  <p>Reactions: </p>
-                  <div className="flex flex-wrap gap-2">
-                    <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
-                      👍 <p className="ml-1">{item.reactions["+1"]}</p>
-                    </div>
-                    <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
-                      👎 <p className="ml-1">{item.reactions["-1"]}</p>
-                    </div>
-                    <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
-                      😄 <p className="ml-1">{item.reactions.laugh}</p>
-                    </div>
-                    <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
-                      🎉 <p className="ml-1">{item.reactions.hooray}</p>
-                    </div>
-                    <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
-                      😕 <p className="ml-1">{item.reactions.confused}</p>
-                    </div>
-                    <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
-                      ❤️ <p className="ml-1">{item.reactions.heart}</p>
-                    </div>
-                    <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
-                      🚀 <p className="ml-1">{item.reactions.rocket}</p>
-                    </div>
-                    <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
-                      👀 <p className="ml-1">{item.reactions.eyes}</p>
+                  <Link
+                    className=" text-slate-300"
+                    href={item.repository_url.replace(
+                      "https://api.github.com/repos",
+                      "https://github.com",
+                    )}
+                  >
+                    {item.repository_url.replace(
+                      "https://api.github.com/repos/",
+                      "",
+                    )}
+                  </Link>
+
+                  <br></br>
+                  <div className="flex flex-wrap my-2 items-center w-full gap-2 overflow-auto select-none">
+                    {item.labels && item.labels.length > 0 ? (
+                      item.labels.map((label) => {
+                        const isDark = isDarkColor(label.color);
+                        const textColor = isDark
+                          ? "text-white"
+                          : "text-gray-800";
+
+                        return (
+                          <p
+                            key={label.id}
+                            className={`bg-gray-300 ${textColor} px-2 text-sm py-1 rounded truncate w-[calc(30%)]`}
+                            style={{ backgroundColor: `#${label.color}` }}
+                          >
+                            {label.name}
+                          </p>
+                        );
+                      })
+                    ) : (
+                      <p className="text-white">No labels</p>
+                    )}
+                  </div>
+                  <div className="flex items-center">
+                    <p className="text-white">Created by:</p>
+                    <Link
+                      href={item.user.html_url}
+                      className="flex items-center text-white ml-2"
+                    >
+                      <Image
+                        src={item.user.avatar_url}
+                        className="rounded-full w-6 h-6 mr-2"
+                        alt="User Avatar"
+                        width={0}
+                        height={0}
+                      />
+                      <p className="text-white">{item.user.login}</p>
+                    </Link>
+                  </div>
+                  <div className="text-white w-full">
+                    <p>Reactions: </p>
+                    <div className="flex flex-wrap gap-2">
+                      <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
+                        👍 <p className="ml-1">{item.reactions["+1"]}</p>
+                      </div>
+                      <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
+                        👎 <p className="ml-1">{item.reactions["-1"]}</p>
+                      </div>
+                      <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
+                        😄 <p className="ml-1">{item.reactions.laugh}</p>
+                      </div>
+                      <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
+                        🎉 <p className="ml-1">{item.reactions.hooray}</p>
+                      </div>
+                      <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
+                        😕 <p className="ml-1">{item.reactions.confused}</p>
+                      </div>
+                      <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
+                        ❤️ <p className="ml-1">{item.reactions.heart}</p>
+                      </div>
+                      <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
+                        🚀 <p className="ml-1">{item.reactions.rocket}</p>
+                      </div>
+                      <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
+                        👀 <p className="ml-1">{item.reactions.eyes}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="w-1/3 p-5">
-                <div className="text-white flex overflow-hidden items-center justify-between">
-                  <p>Assignees: </p>
-                  {item.assignees.length > 0 ? (
-                    <div className="flex -space-x-4">
-                      {item.assignees.map((assignee, key) => (
-                        <Link href={assignee.html_url} key={key}>
-                          <Image
-                            alt={assignee.login}
-                            src={assignee.avatar_url}
-                            className=" rounded-full w-5 h-5 border border-white"
-                            width={0}
-                            height={0}
-                          />
-                        </Link>
-                      ))}
-                    </div>
-                  ) : (
-                    <p>0</p>
-                  )}
+                <div className="md:w-1/3 md:p-5">
+                  <div className="text-white flex overflow-hidden mt-1 items-center justify-between">
+                    <p>Assignees: </p>
+                    {item.assignees.length > 0 ? (
+                      <div className="flex -space-x-4">
+                        {item.assignees.map((assignee, key) => (
+                          <Link href={assignee.html_url} key={key}>
+                            <Image
+                              alt={assignee.login}
+                              src={assignee.avatar_url}
+                              className=" rounded-full w-5 h-5 border border-white"
+                              width={0}
+                              height={0}
+                            />
+                          </Link>
+                        ))}
+                      </div>
+                    ) : (
+                      <p>0</p>
+                    )}
+                  </div>
                 </div>
               </div>
+            ))
+          ) : (
+            <div class="flex items-center justify-center">
+              <div class="relative">
+                <div
+                  className={
+                    "h-24 w-24 rounded-full border-t-8 border-b-8 " +
+                    (isDarkMode ? "border-gray-900" : "border-gray-100")
+                  }
+                ></div>
+                <div className="absolute top-0 left-0 h-24 w-24 rounded-full border-t-8 border-b-8 border-blue-500 animate-spin"></div>
+                <p className=" mt-2 text-center">Loading ...</p>
+              </div>
             </div>
-          ))
-        ) : (
-          <div class="flex items-center justify-center">
-            <div class="relative">
-              <div
-                className={
-                  "h-24 w-24 rounded-full border-t-8 border-b-8 " +
-                  (isDarkMode ? "border-gray-900" : "border-gray-100")
-                }
-              ></div>
-              <div className="absolute top-0 left-0 h-24 w-24 rounded-full border-t-8 border-b-8 border-blue-500 animate-spin"></div>
-              <p className=" mt-2 text-center">Loading ...</p>
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
