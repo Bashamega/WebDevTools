@@ -4,9 +4,9 @@ import { NextResponse } from 'next/server';
 
 export async function GET(req) {
     const { searchParams } = new URL(req.url);
-    const page = parseInt(searchParams.get('page'));
+    let page = parseInt(searchParams.get('page'));
     if(isNaN(page) || page < 1) {
-        return NextResponse.json({ error: "Invalid page number" }, { status: 400 });
+        page = 1;
     }
     const usersPerPage = 10;
     const startIndex = (page - 1) * usersPerPage;
