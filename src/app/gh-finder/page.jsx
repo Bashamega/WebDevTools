@@ -37,7 +37,7 @@ export default function GhFinder() {
         return issue.labels.includes(selectedLabel);
       });
     });
-    setFilteredIssue([...filteredIssue, newFilterIssues]);
+    setFilteredIssue([,newFilterIssues]);
     console.log({ newFilterIssues, selectedLabels, filteredIssue, data });
   }, [selectedLabels]);
 
@@ -66,7 +66,7 @@ export default function GhFinder() {
             }
           ></div>
           <div className="absolute top-0 left-0 h-24 w-24 rounded-full border-t-8 border-b-8 border-blue-500 animate-spin"></div>
-          <p className=" mt-2 text-center">Loading ...</p>
+          <p className=" mt-2 text-center">Loading...</p>
         </div>
       </div>
     );
