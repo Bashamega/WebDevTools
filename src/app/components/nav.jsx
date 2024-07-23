@@ -83,7 +83,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
           onClick={toggleDropdown}
           className={`focus:outline-none text-[0.58rem] font-bold sm:font-bold items-center sm:text-sm flex md:text-sm flex-1 p-2 hover:${
             isDarkMode ? "bg-gray-700" : "bg-blue-700"
-          } transition-all duration-700 rounded-lg`}
+          } transition-all duration-200 rounded-lg`}
         >
           <FaTools fontSize={20} className="mr-2" />
           Customizer tools
@@ -108,7 +108,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
         {isDropdownOpen && (
           <div
             ref={dropdownRef}
-            className={`absolute right-0 mt-2 py-2 ${
+            className={`absolute right-0 mt-2 overflow-hidden ${
               isDarkMode ? "bg-gray-700 text-white" : "bg-white text-black"
             } rounded shadow-lg w-40`}
             style={{ zIndex: 100 }}
@@ -203,7 +203,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
           href="/codeedit"
           className={`text-[0.57rem] font-bold sm:text-sm p-2 hover:${
             isDarkMode ? "bg-gray-700" : "bg-blue-700"
-          } transition-all duration-700 rounded-lg`}
+          } transition-all duration-200 rounded-lg`}
         >
           <p className="flex items-center justify-center gap-2">
             <FaCode fontSize={20} />
@@ -214,7 +214,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
           href="/MD"
           className={`text-[0.57rem] font-bold sm:text-sm p-2 hover:${
             isDarkMode ? "bg-gray-700" : "bg-blue-700"
-          } transition-all duration-700 rounded-lg`}
+          } transition-all duration-200 rounded-lg`}
         >
           <p className="flex items-center justify-center gap-2">
             <FaMarkdown fontSize={20} />
@@ -225,7 +225,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
           href="/about"
           className={`font-bold text-[0.6rem] sm:text-sm p-2 hover:${
             isDarkMode ? "bg-gray-700" : "bg-blue-700"
-          } transition-all duration-700 rounded-lg flex items-center justify-center gap-2`}
+          } transition-all duration-200 rounded-lg flex items-center justify-center gap-2`}
         >
           <FaInfo fontSize={15} />
           About
@@ -234,7 +234,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
           href="/contribute"
           className={`font-bold text-[0.6rem] sm:text-sm p-2 hover:${
             isDarkMode ? "bg-gray-700" : "bg-blue-700"
-          } transition-all duration-700 rounded-lg flex items-center justify-center gap-2`}
+          } transition-all duration-200 rounded-lg flex items-center justify-center gap-2`}
         >
           <IoMdGitPullRequest fontSize={20} />
           Contribute
