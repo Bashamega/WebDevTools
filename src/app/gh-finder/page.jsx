@@ -40,7 +40,7 @@ export default function GhFinder() {
         });
       });
       setFilteredIssue(newFilterIssues);
-      console.log({ newFilterIssues, selectedLabels, filteredIssue, data });
+      // console.log({ newFilterIssues, selectedLabels, filteredIssue, data });
     }
   };
 
@@ -151,7 +151,7 @@ export default function GhFinder() {
               </Link>
 
               <br />
-              <div className="flex flex-wrap mt-2 items-center w-2/3 gap-1 max-h-[50px] overflow-auto">
+              <div className="flex flex-wrap mt-2 items-center sm:w-2/3 gap-1 max-h-[50px] overflow-auto w-full">
                 {item.labels && item.labels.length > 0 ? (
                   item.labels.map((label) => {
                     const isDark = isDarkColor(label.color);
@@ -160,7 +160,7 @@ export default function GhFinder() {
                     return (
                       <p
                         key={label.id}
-                        className={`bg-gray-300 ${textColor} px-2 py-1 rounded mr-2 mb-2 cursor-pointer truncate w-[calc(30%)]`}
+                        className={`bg-gray-300 text-center ${textColor} px-2 py-1 rounded mr-2 mb-2 cursor-pointer truncate w-[calc(30%)]`}
                         style={{ backgroundColor: `#${label.color}` }}
                       >
                         {label.name}
