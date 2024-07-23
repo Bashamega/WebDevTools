@@ -63,5 +63,15 @@
     "id": 11,
     "name": "AsciiDoc Editor",
     "link": "/asciiDoc"
+  },
+  {
+    "id": 12,
+    "name": "Dummy JSON API",
+    "link": "/endpoints"
+  },
+  {
+    "id": 13,
+    "name": "HTML to jsx",
+    "link": "/convert/html-jsx"
   }
 ]
