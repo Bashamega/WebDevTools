@@ -1,13 +1,13 @@
 "use client";
 import { NavBar } from "@/app/components/navbar";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 const convert = require("convert-units");
 
 export default function ButtonCustomizer() {
   const [from, setFrom] = useState("10");
-  const [to, setTo] = useState("10");
-  const [opTo, setOpTo] = useState("cm");
-  const [opFrom, setOpFrom] = useState("cm");
+  const [to, setTo] = useState("10000");
+  const [opTo, setOpTo] = useState("m");
+  const [opFrom, setOpFrom] = useState("km");
   const [isDarkMode, setIsDarkMode] = useState(false);
   const options = convert()
     .possibilities("length")
@@ -35,6 +35,10 @@ export default function ButtonCustomizer() {
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
+
+  useEffect(() => {
+    calc();
+  }, [calc, to, from, opFrom, opTo]);
 
   return (
     <main
@@ -68,7 +72,7 @@ export default function ButtonCustomizer() {
               id="dropdown"
               value={opFrom}
               onChange={handleOpFromChange}
-              className="bg-slate-500 text-center p-2 border border-gray-300 rounded w-full mt-2"
+              className="bg-slate-500 text-center p-2 border border-gray-300 rounded w-full mt-2 text-black font-bold"
             >
               {options.map((option, index) => (
                 <option key={index} value={option}>
@@ -88,7 +92,7 @@ export default function ButtonCustomizer() {
               id="dropdown"
               value={opTo}
               onChange={handleToChange}
-              className="bg-slate-500 text-center p-2 border border-gray-300 rounded "
+              className="bg-slate-500 text-center p-2 border border-gray-300 rounded  text-black font-bold"
             >
               {options.map((option, index) => (
                 <option key={index} value={option}>
