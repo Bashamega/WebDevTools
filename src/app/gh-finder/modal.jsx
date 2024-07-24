@@ -18,7 +18,11 @@ const style = {
   display: "flex",
 };
 
-export default function BasicModal({ selectedLabels, setSelectedLabels }) {
+export default function BasicModal({
+  selectedLabels,
+  setSelectedLabels,
+  isDarkMode,
+}) {
   const handleClose = () => setOpen(false);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -57,7 +61,10 @@ export default function BasicModal({ selectedLabels, setSelectedLabels }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style} className="bg-gray-800">
+        <Box
+          sx={style}
+          className={`${isDarkMode ? "bg-slate-800 text-white" : "bg-slate-200 text-black"}`}
+        >
           <FormGroup>
             {labelsList.map((label, idx) => (
               <FormControlLabel

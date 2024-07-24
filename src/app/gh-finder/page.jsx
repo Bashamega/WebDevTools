@@ -4,13 +4,15 @@ import { NavBar } from "../components/navbar";
 import Link from "next/link";
 import Image from "next/image";
 import BasicModal from "./modal";
-
 export default function GhFinder() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selected, setSelected] = useState(1);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
   const [selectedLabels, setSelectedLabels] = useState([]);
   const [filteredIssue, setFilteredIssue] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isAssigned, setIsAssigned] = useState(false);
+  const [isFork, setIsFork] = useState(false);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -32,6 +34,7 @@ export default function GhFinder() {
       .catch((error) => console.error("Error fetching data:", error));
   }, [selected]);
 
+  // Filter issues by label
   const issuesByLabel = () => {
     if (data?.length) {
       const newFilterIssues = data.filter((issue) => {
@@ -40,13 +43,22 @@ export default function GhFinder() {
         });
       });
       setFilteredIssue(newFilterIssues);
-      // console.log({ newFilterIssues, selectedLabels, filteredIssue, data });
     }
   };
 
   useEffect(() => {
     issuesByLabel();
   }, [selectedLabels]);
+
+  //  Filter function for search, assign and fork
+  const filteredData = data?.filter((issue) => {
+    const matchesSearch = issue.title
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    const matchesAssignment = isAssigned ? issue.assignees.length > 0 : true;
+    const matchesFork = isFork ? issue.repository.fork : true;
+    return matchesSearch && matchesAssignment && matchesFork;
+  });
 
   function isDarkColor(color) {
     // Convert the color to RGB
@@ -62,9 +74,10 @@ export default function GhFinder() {
     return luminance < 0.5;
   }
 
-  const issuesToDisplay = filteredIssue.length > 0 ? filteredIssue : data;
+  const issuesToDisplay =
+    filteredIssue.length > 0 ? filteredIssue : filteredData;
 
-  if (!issuesToDisplay.length) {
+  if (!issuesToDisplay?.length) {
     return (
       <div className="flex items-center justify-center h-screen">
         <div className="relative">
@@ -97,6 +110,37 @@ export default function GhFinder() {
           <h1 className="relative z-10 font-sans text-lg font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600">
             Github Issue Finder
           </h1>
+
+          <div className="flex justify-between w-full lg:w-1/2 lg:mx-[25%] my-5 items-center">
+            <input
+              type="text"
+              className="p-2 rounded border border-gray-400"
+              placeholder="Search issues"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="isAssigned"
+                checked={isAssigned}
+                onChange={() => setIsAssigned(!isAssigned)}
+                className="mr-2"
+              />
+              <label htmlFor="isAssigned">Is assigned</label>
+            </div>
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="isFork"
+                checked={isFork}
+                onChange={() => setIsFork(!isFork)}
+                className="mr-2"
+              />
+              <label htmlFor="isFork">Is fork</label>
+            </div>
+          </div>
+
           <div className="flex justify-between w-full lg:w-1/2 lg:mx-[25%] my-5 items-center">
             <button
               className={
@@ -116,8 +160,8 @@ export default function GhFinder() {
             >
               Github
             </button>
-
             <BasicModal
+              isDarkMode={isDarkMode}
               selectedLabels={selectedLabels}
               setSelectedLabels={setSelectedLabels}
             />
