@@ -28,6 +28,7 @@
     "framer-motion": "^11.2.10",
     "fuse.js": "^7.0.0",
     "html-to-jsx-transform": "^1.1.0",
+    "imagetracerjs": "^1.2.6",
     "jszip": "^3.10.1",
     "next": "^14.2.3",
     "next-navigation": "^1.0.6",
