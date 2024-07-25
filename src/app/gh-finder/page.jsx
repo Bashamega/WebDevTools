@@ -89,7 +89,7 @@ export default function GhFinder() {
     return linkedPRs.map((pr) => pr.source.issue.pull_request.html_url);
   };
 
-  //TODO
+  //TODO add if statement
   // New useEffect to add PRs linked to issues
   useEffect(() => {
     const fetchPRsInfo = async () => {
@@ -102,8 +102,9 @@ export default function GhFinder() {
       setData(issuesWithPRsInfo);
     };
 
-    //&& !data?.linkedPRs
+    //&&
 
+    // also add (!data?.linkedPRs)
     if (data?.length > 0) {
       fetchPRsInfo();
     }
@@ -122,12 +123,6 @@ export default function GhFinder() {
     // Return true if luminance is less than 0.5 (considered dark)
     return luminance < 0.5;
   }
-
-  // useEffect(() => {
-  //   if (filteredIssue.length > 0) {
-  //     setDisplayData(filteredIssue);
-  //   }
-  // }, [filteredIssue]);
 
   if (!issuesToDisplay?.length) {
     return (
