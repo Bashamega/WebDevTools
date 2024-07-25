@@ -445,7 +445,7 @@ export default function ButtonCustomizer() {
       )}
 
       <button
-        className="m-3 flex items-center gap-2 right-1 fixed border-gray-950 border text-gray-950 py-2 px-3 rounded hover:bg-gray-950 duration-150 hover:text-gray-50 hover:border-gray-50 font-semibold"
+        className={` border  m-3 flex items-center gap-2 right-1 fixed py-2 px-3 rounded hover:bg-gray-950 duration-150 hover:text-gray-50 hover:border-gray-50 font-semibold ${isDarkMode? " text-white border-white ":" border-gray-950 text-gray-950"}`}
         onClick={handleCodeButtonClick}
       >
         <FaCode /> Show Code
