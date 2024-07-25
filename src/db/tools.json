@@ -2,81 +2,91 @@
   {
     "id": 1,
     "name": "Github Issue Finder",
-    "link": "/gh-finder"
+    "link": "/gh-finder",
+    "ctg": "other"
   },
   {
     "id": 1,
     "name": "JSON GENERATOR",
-    "link": "/customizer/JsonGenerator"
+    "link": "/customizer/JsonGenerator",
+    "ctg": "generator"
   },
   {
     "id": 1,
     "name": "Code editor",
-    "link": "/codeedit"
+    "link": "/codeedit",
+    "ctg": "editor"
   },
   {
     "id": 2,
     "name": "Button customizer",
-    "link": "/customizer/button"
+    "link": "/customizer/button",
+    "ctg": "other"
   },
   {
     "id": 3,
     "name": "Lorem Ipsum Generator",
-    "link": "/customizer/LoremIpsumGenerator"
+    "link": "/customizer/LoremIpsumGenerator",
+    "ctg": "generator"
   },
   {
     "id": 4,
     "name": "Conversion Calculator",
-    "link": "/customizer/conversionCalculator"
+    "link": "/customizer/conversionCalculator",
+    "ctg": "other"
   },
   {
     "id": 5,
     "name": "Cupcake Ipsum Generator",
-    "link": "/customizer/CupcakeIpsumGenerator"
+    "link": "/customizer/CupcakeIpsumGenerator",
+    "ctg": "generator"
   },
   {
     "id": 6,
     "name": "Color Picker",
-    "link": "/customizer/colorPicker"
+    "link": "/customizer/colorPicker",
+    "ctg": "other"
   },
   {
     "id": 7,
     "name": "Mark down Editor",
-    "link": "/MD"
+    "link": "/MD",
+    "ctg": "editor"
   },
   {
     "id": 8,
     "name": "Box shadow generator",
-    "link": "/customizer/box-shadow-generator"
+    "link": "/customizer/box-shadow-generator",
+    "ctg": "generator"
   },
   {
     "id": 9,
     "name": "Image color picker",
-    "link": "/customizer/image-color-picker"
+    "link": "/customizer/image-color-picker",
+    "ctg": "other"
   },
   {
     "id": 10,
     "name": "Readme generator",
-    "link": "/customizer/Readme-generator"
+    "link": "/customizer/Readme-generator",
+    "ctg": "generator"
   },
   {
     "id": 11,
     "name": "AsciiDoc Editor",
-    "link": "/asciiDoc"
+    "link": "/asciiDoc",
+    "ctg": "editor"
   },
   {
     "id": 12,
     "name": "Dummy JSON API",
-    "link": "/endpoints"
+    "link": "/endpoints",
+    "ctg": "other"
   },
   {
     "id": 13,
     "name": "HTML to jsx",
-    "link": "/convert/html-jsx"
-  },
-  {
-    "id": 14,
-    "name": "Image to svg",
-    "link": "/convert/img-svg"
+    "link": "/convert/html-jsx",
+    "ctg":"other"
   }
 ]
