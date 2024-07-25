@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect } from "react";
+
+import { useEffect } from "react";
 import Link from "next/link";
 import SunIcon from "./icons/sunicon";
 import MoonIcon from "./icons/moonicon";

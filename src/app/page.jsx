@@ -1,6 +1,7 @@
 "use client";
+
 import Nav from "@/app/components/nav";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Footer from "./components/Footer";
 import tools from "@/db/tools.json";
 import { Card } from "./components/card";

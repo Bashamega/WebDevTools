@@ -1,7 +1,7 @@
-"use client"; // Add this line to ensure client-side rendering
+"use client";
 
 import { NavBar } from "@/app/components/navbar";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 

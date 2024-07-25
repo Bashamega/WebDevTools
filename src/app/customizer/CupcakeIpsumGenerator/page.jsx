@@ -1,10 +1,7 @@
 "use client";
-// import React, { useState } from "react";
-import React, { useEffect, useState } from "react";
 
-import Nav from "@/app/components/nav";
+import { useEffect, useState } from "react";
 import { NavBar } from "@/app/components/navbar";
-// import { Navbar } from "react-bootstrap";
 
 export default function ButtonCustomizer() {
   const [cupcakes, setCupcakes] = useState(1);
