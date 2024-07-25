@@ -11,7 +11,6 @@ export default function GhFinder() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selected, setSelected] = useState(1);
   const [data, setData] = useState();
-  const [displayData, setDisplayData] = useState();
   const [selectedLabels, setSelectedLabels] = useState([]);
   const [filteredIssue, setFilteredIssue] = useState([]);
 
@@ -70,9 +69,6 @@ export default function GhFinder() {
   const issuesToDisplay =
     filteredIssue.length > 0 ? filteredIssue : filteredData;
 
-  // setDisplayData(filteredData);
-  // }, [searchQuery, isAssigned]);
-
   // New function to fetch PRs linked to issues
   const fetchPRsForIssue = async (issue) => {
     const timelineUrl = `${issue.url}/timeline`;
@@ -105,7 +101,7 @@ export default function GhFinder() {
     //&&
 
     // also add (!data?.linkedPRs)
-    if (data?.length > 0) {
+    if (data?.length > 0 && !data?.linkedPRs?.length) {
       fetchPRsInfo();
     }
   }, [data]);
