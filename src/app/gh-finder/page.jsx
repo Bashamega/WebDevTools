@@ -4,15 +4,20 @@ import { NavBar } from "../components/navbar";
 import Link from "next/link";
 import Image from "next/image";
 import BasicModal from "./modal";
+import { InsertLink, LinkOff } from "@mui/icons-material";
+// import InsertLinkIcon from '@mui/icons-material/InsertLink';
+
 export default function GhFinder() {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [selected, setSelected] = useState(2);
+  const [selected, setSelected] = useState(1);
   const [data, setData] = useState();
+  const [displayData, setDisplayData] = useState();
   const [selectedLabels, setSelectedLabels] = useState([]);
   const [filteredIssue, setFilteredIssue] = useState([]);
+
+  // New states
   const [searchQuery, setSearchQuery] = useState("");
   const [isAssigned, setIsAssigned] = useState(false);
-  const [isFork, setIsFork] = useState(false);
   const [maxResults, setMaxResults] = useState(10); //   TODO FEATURE => Add Pages
 
   const toggleTheme = () => {
@@ -35,13 +40,6 @@ export default function GhFinder() {
       .catch((error) => console.error("Error fetching data:", error));
   }, [selected]);
 
-  const fetchRepositoryDetails = async (issue) => {
-    const repoUrl = issue.repository_url;
-    const response = await fetch(repoUrl);
-    const repoDetails = await response.json();
-    return repoDetails.fork;
-  };
-
   // Filter issues by label
   const issuesByLabel = () => {
     if (data?.length) {
@@ -58,32 +56,22 @@ export default function GhFinder() {
     issuesByLabel();
   }, [selectedLabels]);
 
-  useEffect(() => {
-    const fetchForkInfo = async () => {
-      const issuesWithForkInfo = await Promise.all(
-        data.map(async (issue) => {
-          const fork = await fetchRepositoryDetails(issue);
-          return { ...issue, fork };
-        }),
-      );
-      // setData(issuesWithForkInfo);
-      console.log(issuesWithForkInfo);
-    };
-
-    if (data?.length > 0) {
-      fetchForkInfo();
-    }
-  }, [data]);
-
   //  Filter function for search, assign and fork
+  // useEffect(() => {
   const filteredData = data?.filter((issue) => {
     const matchesSearch = issue.title
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
     const matchesAssignment = isAssigned ? issue.assignees.length > 0 : true;
-    const matchesFork = isFork ? issue.repository.fork : true;
-    return matchesSearch && matchesAssignment && matchesFork;
+    // console.log({ matchesAssignment, matchesSearch });
+    return matchesSearch && matchesAssignment;
   });
+
+  const issuesToDisplay =
+    filteredIssue.length > 0 ? filteredIssue : filteredData;
+
+  // setDisplayData(filteredData);
+  // }, [searchQuery, isAssigned]);
 
   // New function to fetch PRs linked to issues
   const fetchPRsForIssue = async (issue) => {
@@ -94,13 +82,14 @@ export default function GhFinder() {
       },
     });
     const events = await response.json();
-    const linkedPRs = events.filter(
+    const linkedPRs = events?.filter(
       (event) =>
         event.event === "cross-referenced" && event.source?.issue?.pull_request,
     );
     return linkedPRs.map((pr) => pr.source.issue.pull_request.html_url);
   };
 
+  //TODO
   // New useEffect to add PRs linked to issues
   useEffect(() => {
     const fetchPRsInfo = async () => {
@@ -112,6 +101,8 @@ export default function GhFinder() {
       );
       setData(issuesWithPRsInfo);
     };
+
+    //&& !data?.linkedPRs
 
     if (data?.length > 0) {
       fetchPRsInfo();
@@ -132,8 +123,11 @@ export default function GhFinder() {
     return luminance < 0.5;
   }
 
-  const issuesToDisplay =
-    filteredIssue.length > 0 ? filteredIssue : filteredData;
+  // useEffect(() => {
+  //   if (filteredIssue.length > 0) {
+  //     setDisplayData(filteredIssue);
+  //   }
+  // }, [filteredIssue]);
 
   if (!issuesToDisplay?.length) {
     return (
@@ -186,16 +180,6 @@ export default function GhFinder() {
                 className="mr-2"
               />
               <label htmlFor="isAssigned">Is assigned</label>
-            </div>
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="isFork"
-                checked={isFork}
-                onChange={() => setIsFork(!isFork)}
-                className="mr-2"
-              />
-              <label htmlFor="isFork">Is fork</label>
             </div>
           </div>
 
@@ -273,17 +257,19 @@ export default function GhFinder() {
                   <p className="text-white">No labels</p>
                 )}
               </div>
-              {/* New section to display linked PRs */}
               <div className="mt-2">
                 {item.linkedPRs && item.linkedPRs.length > 0 ? (
                   <>
-                    <p className="text-white">Linked PRs:</p>
-                    <ul className="list-disc ml-5">
+                    <p className="text-green-500">
+                      {" "}
+                      <InsertLink /> Linked PRs:
+                    </p>
+                    <ul className="list-disc ml-5 text-blue-500">
                       {item.linkedPRs.map((prUrl, index) => (
                         <li key={index}>
                           <Link
                             href={prUrl}
-                            className="text-blue-300 hover:underline"
+                            className="text-blue-500 hover:underline"
                           >
                             {prUrl}
                           </Link>
@@ -292,7 +278,9 @@ export default function GhFinder() {
                     </ul>
                   </>
                 ) : (
-                  <p className="text-white">No linked PRs</p>
+                  <p className="text-red-800">
+                    <LinkOff /> No linked PRs
+                  </p>
                 )}
               </div>
               <div className="flex items-center">
