@@ -41,7 +41,7 @@ export default function ButtonCustomizer() {
       className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-h-screen`}
     >
       <NavBar
-        title={"Button customizer"}
+        title={"Conversion Calculator"}
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
       />
