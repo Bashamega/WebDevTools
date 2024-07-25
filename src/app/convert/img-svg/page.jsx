@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { NavBar } from "@/app/components/navbar";
-import CodeEditor from "./components/svg-converter";
+import SvgConverter from "./components/svg-converter";
 import ImageUpload from './components/image-upload'
-import { htmlToJsx } from "html-to-jsx-transform";
+
 import {ImageProvider} from './ImageContextApi'
 export default function HTML_JSX() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -38,7 +38,7 @@ export default function HTML_JSX() {
         </div>
         <div>
           <h1 className="text-center p-2 ">Svg Format</h1>
-          <CodeEditor
+          <SvgConverter
           
           />
         </div>
