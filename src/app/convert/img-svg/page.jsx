@@ -4,7 +4,7 @@ import { useState } from "react";
 import { NavBar } from "@/app/components/navbar";
 import SvgConverter from "./components/svg-converter";
 import ImageUpload from './components/image-upload'
-
+import './page.css'
 import {ImageProvider} from './ImageContextApi'
 export default function HTML_JSX() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -29,14 +29,14 @@ export default function HTML_JSX() {
         toggleTheme={toggleTheme}
         isDarkMode={isDarkMode}
       />
-      <div className="flex h-full">
+      <div className="flex h-full img-svg-container-500">
         <div>
           <h1 className="text-center p-2">Upload Image</h1>
           <ImageUpload
         
           />
         </div>
-        <div>
+        <div className="image-svg-converter-500" style={{width:"50%"}}>
           <h1 className="text-center p-2 ">Svg Format</h1>
           <SvgConverter
           

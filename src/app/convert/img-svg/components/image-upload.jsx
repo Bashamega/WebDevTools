@@ -36,7 +36,7 @@ const handleCancel = () =>{
     setImageData(null)
 }
   return (
-    <div style={{ height: "100vh", width: "50vw", textAlign: 'center', padding: '20px' }}>
+    <div className='img-svg-image-uploader-500' style={{ height: "100vh", width: "50vw", textAlign: 'center', padding: '20px' }}>
      
      {selectedImage && (
         <div style={{ marginTop: '20px' ,marginBottom:"20px", display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

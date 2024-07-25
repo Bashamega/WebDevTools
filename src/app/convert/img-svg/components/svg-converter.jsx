@@ -1,44 +1,43 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useImage } from '../ImageContextApi';
 import Button from '@mui/material/Button';
 import DownloadIcon from '@mui/icons-material/Download';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function CodeEditor() {
   const { imageData } = useImage();
   const [svgData, setSvgData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const loadImageTracer = () => {
-      console.log("image data", imageData);
-      return new Promise((resolve) => {
-        const script = document.createElement('script');
-        script.src = "https://cdn.jsdelivr.net/npm/imagetracerjs@1.2.6/imagetracer_v1.2.6.min.js";
-        script.onload = () => resolve(window.ImageTracer);
-        document.body.appendChild(script);
-      });
-    };
-
     if (imageData) {
-      loadImageTracer().then((ImageTracer) => {
-        convertToSVG(imageData, ImageTracer);
-      });
+      setLoading(true);
+      convertToInlineSVG(imageData);
     }
   }, [imageData]);
 
-  const convertToSVG = (imageData, ImageTracer) => {
-    const img = new window.Image();
-    img.src = imageData;
-    img.onload = () => {
-      console.log(img, 'this is img');
-      ImageTracer.imageToSVG(
-        img.src,
-        (svgstr) => {
-          console.log(svgstr, 'svgstr');
-          setSvgData(svgstr);
-        },
-        'posterized2'
-      );
-    };
+  const convertToInlineSVG = async (imageData) => {
+    try {
+      const response = await fetch(imageData);
+      const blob = await response.blob();
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        const base64 = reader.result.split(',')[1];
+        const svgContent = `
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" >
+            <image href="data:image/png;base64,${base64}" x="0" y="0" width="100%"  height="300px" />
+          </svg>
+        `;
+        setSvgData(svgContent);
+        setLoading(false);
+      };
+
+      reader.readAsDataURL(blob);
+    } catch (error) {
+      console.error('Error converting image to SVG:', error);
+      setLoading(false);
+    }
   };
 
   const downloadSVG = () => {
@@ -54,33 +53,49 @@ export default function CodeEditor() {
   };
 
   return (
-    <div style={{ height: "100vh", textAlign: 'center', padding: '20px' }}>
-      {
-        svgData ? (
-          <div
-            style={{
-              marginTop: '20px',
-              marginBottom: '20px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexDirection: 'column' // Add this line to stack the SVG and button vertically
-            }}
+    <div className='image-svg-converter-svgImage-500' style={{height:"58vh",width:"48vw",textAlign:"center",padding:"8px"}}>
+      {loading && (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <CircularProgress />
+        </div>
+      )}
+      {svgData && !loading ? (
+        <div className='image-svg-converter-svgImage-height-500'
+          style={{
+     
+            marginTop: '33px',
+           
+            display: 'flex',
+            
+            
+            flexDirection: 'column',
+          }}
+        >
+          <object className='image-svg-converter-500-object'
+            data={`data:image/svg+xml;base64,${btoa(svgData)}`}
+            type="image/svg+xml"
+            style={{height:"42vh"}}
+           
           >
-            <object
-              data={`data:image/svg+xml;base64,${btoa(svgData)}`}
-              type="image/svg+xml"
-              style={{ maxWidth: '100%', maxHeight: '300px' }}
-            >
-              Your browser does not support SVG
-            </object>
-            <Button component="label"
-        variant="contained" startIcon={<DownloadIcon/>} onClick={downloadSVG} style={{ marginTop: '20px' }}>Download SVG</Button> 
+            Your browser does not support SVG
+          </object>
+          <div style={{display:'flex',justifyContent:"center"}}>
+<Button
+            component="label"
+            variant="contained"
+            startIcon={<DownloadIcon />}
+            onClick={downloadSVG}
+            style={{ marginTop: '7px' ,width:"40%"}}
+          >
+            Download SVG
+          </Button>
+
           </div>
-        ) : (
-          <p>No SVG data available. Upload an image to convert it to SVG.</p>
-        )
-      }
+          
+        </div>
+      ) : (
+        !loading && <p>No SVG data available. Upload an image to convert it to SVG.</p>
+      )}
     </div>
   );
 }
