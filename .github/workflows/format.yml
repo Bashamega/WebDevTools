@@ -38,7 +38,7 @@ jobs:
     - name: Commit changes
       run: |
         git add .
-        git commit -m "Format"
+        git commit -m "Automated changes by GitHub Actions"
         git push origin HEAD:${{ github.ref }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
