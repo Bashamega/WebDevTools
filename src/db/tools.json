@@ -88,5 +88,11 @@
     "name": "HTML to jsx",
     "link": "/convert/html-jsx",
     "ctg": "other"
+  },
+  {
+    "id": 14,
+    "name": "JSON to YAML",
+    "link": "/convert/json-yaml",
+    "ctg": "other"
   }
 ]

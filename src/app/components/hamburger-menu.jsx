@@ -34,7 +34,10 @@ export default function HamburgerMenu({ open, togglePanel, isDarkMode }) {
     } else {
       // Check each dropdown individually
       Object.keys(dropdownRefs).forEach((key) => {
-        if (dropdownRefs[key].current && !dropdownRefs[key].current.contains(event.target)) {
+        if (
+          dropdownRefs[key].current &&
+          !dropdownRefs[key].current.contains(event.target)
+        ) {
           if (openDropdown === key) {
             setOpenDropdown(null); // Close the dropdown if clicked outside of it
           }
@@ -132,7 +135,9 @@ export default function HamburgerMenu({ open, togglePanel, isDarkMode }) {
                         Editor Tools
                         <svg
                           className={`${
-                            openDropdown === "editor" ? "transform rotate-180" : ""
+                            openDropdown === "editor"
+                              ? "transform rotate-180"
+                              : ""
                           } inline-block ml-1 w-4 h-4`}
                           fill="none"
                           stroke="currentColor"
@@ -161,7 +166,9 @@ export default function HamburgerMenu({ open, togglePanel, isDarkMode }) {
                         Other Tools
                         <svg
                           className={`${
-                            openDropdown === "other" ? "transform rotate-180" : ""
+                            openDropdown === "other"
+                              ? "transform rotate-180"
+                              : ""
                           } inline-block ml-1 w-4 h-4`}
                           fill="none"
                           stroke="currentColor"
