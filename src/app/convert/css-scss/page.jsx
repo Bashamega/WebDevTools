@@ -261,7 +261,7 @@ export default function CSS_TO_SCSS() {
 
   return (
     <main
-      className={`${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}
+      className={` min-h-screen ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}
     >
       <Nav isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <div className="flex justify-center flex-col items-center w-full">
