@@ -7,7 +7,6 @@ import { NavBar } from "@/app/components/navbar";
 
 export default function ColorPicker() {
   const [hexColor, setHexColor] = useState("#ffffff");
-  const [textColor, setTextColor] = useState();
   const [RGBColor, setRGBColor] = useState();
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -35,13 +34,8 @@ export default function ColorPicker() {
   };
 
   useEffect(() => {
-    if (hexColor === "#ffffff" && !isDarkMode) {
-      setTextColor("#666666");
-    } else {
-      setTextColor(hexColor);
-    }
     setRGBColor(toRGB(hexColor));
-  }, [hexColor, isDarkMode]);
+  }, [hexColor]);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -63,16 +57,10 @@ export default function ColorPicker() {
           </span>
         </div>
         <div className="flex flex-col justify-center items-center mb-8 xl:pr-36">
-          <h1
-            className="font-bold text-[3rem] sm:text-[3.2rem] lg:text-7xl xl:text-8xl pb-3 text-slate-800"
-            style={{ color: textColor }}
-          >
+          <h1 className="font-bold text-[3rem] sm:text-[3.2rem] lg:text-7xl xl:text-8xl pb-3">
             {hexColor}
           </h1>
-          <h1
-            className="font-bold text-4xl sm:text-4xl lg:text-4xl xl:text-5xl pb-8"
-            style={{ color: textColor }}
-          >
+          <h1 className="font-bold text-4xl sm:text-4xl lg:text-4xl xl:text-5xl pb-8">
             {RGBColor}
           </h1>
           <div className="buttons flex gap-2 sm:flex-col">
