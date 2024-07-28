@@ -33,7 +33,11 @@ export function NavBar({ title, isDarkMode, toggleTheme }) {
             Web Dev Tools
           </h1>
         </Link>
-        <p className={`text-sm pb-1 ${isDarkMode ? "text-gray-300" : "text-gray-800"}`}>/ {title}</p>
+        <p
+          className={`text-sm pb-1 ${isDarkMode ? "text-gray-300" : "text-gray-800"}`}
+        >
+          / {title}
+        </p>
       </span>
       <div className="flex items-center">
         <button
