@@ -9,6 +9,7 @@ export default function ResultBox({
       placeholder={`Your ${to} will be here`}
       rows="10"
       defaultValue={resultSnippet}
+      readonly={true}
     ></textarea>
   );
 }
