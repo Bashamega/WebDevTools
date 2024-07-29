@@ -1,72 +1,142 @@
-"use client";
+import React, { useState } from "react";
 
-import { useForm } from "react-hook-form";
+const ResumeForm = ({ onSubmit }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    workExperience: [{ title: "", company: "", description: "" }],
+    education: [{ degree: "", institution: "", description: "" }],
+    skills: [""],
+  });
 
-const Form = ({ onSubmit }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleArrayChange = (e, index, field, arrayName) => {
+    const newArray = [...formData[arrayName]];
+    newArray[index][field] = e.target.value;
+    setFormData({ ...formData, [arrayName]: newArray });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(formData);
+  };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      <div>
-        <label className="block">Name</label>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        value={formData.name}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        value={formData.email}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Phone"
+        value={formData.phone}
+        onChange={handleChange}
+        required
+      />
+      <h3>Work Experience</h3>
+      {formData.workExperience.map((job, index) => (
+        <div key={index}>
+          <input
+            type="text"
+            name="title"
+            placeholder="Job Title"
+            value={job.title}
+            onChange={(e) =>
+              handleArrayChange(e, index, "title", "workExperience")
+            }
+            required
+          />
+          <input
+            type="text"
+            name="company"
+            placeholder="Company"
+            value={job.company}
+            onChange={(e) =>
+              handleArrayChange(e, index, "company", "workExperience")
+            }
+            required
+          />
+          <textarea
+            name="description"
+            placeholder="Description"
+            value={job.description}
+            onChange={(e) =>
+              handleArrayChange(e, index, "description", "workExperience")
+            }
+            required
+          />
+        </div>
+      ))}
+      <h3>Education</h3>
+      {formData.education.map((edu, index) => (
+        <div key={index}>
+          <input
+            type="text"
+            name="degree"
+            placeholder="Degree"
+            value={edu.degree}
+            onChange={(e) => handleArrayChange(e, index, "degree", "education")}
+            required
+          />
+          <input
+            type="text"
+            name="institution"
+            placeholder="Institution"
+            value={edu.institution}
+            onChange={(e) =>
+              handleArrayChange(e, index, "institution", "education")
+            }
+            required
+          />
+          <textarea
+            name="description"
+            placeholder="Description"
+            value={edu.description}
+            onChange={(e) =>
+              handleArrayChange(e, index, "description", "education")
+            }
+            required
+          />
+        </div>
+      ))}
+      <h3>Skills</h3>
+      {formData.skills.map((skill, index) => (
         <input
-          className="border p-2 w-full"
-          {...register("name", { required: true })}
+          key={index}
+          type="text"
+          name={`skill-${index}`}
+          placeholder="Skill"
+          value={skill}
+          onChange={(e) => {
+            const newSkills = [...formData.skills];
+            newSkills[index] = e.target.value;
+            setFormData({ ...formData, skills: newSkills });
+          }}
+          required
         />
-        {errors.name && (
-          <span className="text-red-500">This field is required</span>
-        )}
-      </div>
-      <div>
-        <label className="block">Email</label>
-        <input
-          className="border p-2 w-full"
-          type="email"
-          {...register("email", { required: true })}
-        />
-        {errors.email && (
-          <span className="text-red-500">This field is required</span>
-        )}
-      </div>
-      <div>
-        <label className="block">Education</label>
-        <textarea
-          className="border p-2 w-full"
-          {...register("education", { required: true })}
-        ></textarea>
-        {errors.education && (
-          <span className="text-red-500">This field is required</span>
-        )}
-      </div>
-      <div>
-        <label className="block">Experience</label>
-        <textarea
-          className="border p-2 w-full"
-          {...register("experience", { required: true })}
-        ></textarea>
-        {errors.experience && (
-          <span className="text-red-500">This field is required</span>
-        )}
-      </div>
-      <div>
-        <label className="block">Skills</label>
-        <textarea
-          className="border p-2 w-full"
-          {...register("skills", { required: true })}
-        ></textarea>
-        {errors.skills && (
-          <span className="text-red-500">This field is required</span>
-        )}
-      </div>
-      <button type="submit" className="bg-blue-500 text-white py-2 px-4">
-        Generate Resume
-      </button>
+      ))}
+      <button type="submit">Generate Resume</button>
     </form>
   );
 };
 
-export default Form;
+export default ResumeForm;

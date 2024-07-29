@@ -1,20 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import Form from "./Form";
+// import Form from "./Form";
 import Preview from "./Preview";
 import { NavBar } from "../components/navbar";
+import ResumePDFDownloadLink from "./ResumePDF";
+import ResumeForm from "./Form";
 
 const Home = () => {
+  const [resumeData, setResumeData] = useState(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [formData, setFormData] = useState(null);
+
+  const handleFormSubmit = (data) => {
+    setResumeData(data);
+  };
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-  };
-
-  const handleFormSubmit = (data) => {
-    setFormData(data);
   };
 
   return (
@@ -24,7 +26,7 @@ const Home = () => {
       } min-h-screen w-full pb-2`}
     >
       <NavBar
-        title={"GitHub Issue Finder"}
+        title={"Resume Builder"}
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
       />
@@ -33,8 +35,9 @@ const Home = () => {
           Resume Builder
         </h1>
         <div className="w-full mt-4">
-          <Form onSubmit={handleFormSubmit} />
-          {formData && <Preview data={formData} />}
+          <ResumeForm isDarkMode={isDarkMode} onSubmit={handleFormSubmit} />
+          {/* {resumeData && <Preview isDarkMode={isDarkMode} data={resumeData} />} */}
+          {resumeData && <ResumePDFDownloadLink data={resumeData} />}
         </div>
       </div>
     </main>
