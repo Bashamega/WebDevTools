@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import * as sass from "sass"
+import * as sass from "sass";
 import SnippetBox from "./components/SnippetBox";
 import ResultBox from "./components/ResultBox";
 import Footer from "@/app/components/Footer";
@@ -56,7 +56,7 @@ export default function CSS_TO_SCSS() {
   //   const {cssNoImports, storedImports} = storeAndRemoveImports(css)
 
   //   function storeAndRemoveKeyFrames(cssSnippet) {
-  //     //Store Key Frames for later inyection 
+  //     //Store Key Frames for later inyection
   //     //This is done to not mess with the regexSpliter that will accept @ as a selector
   //     const keyFramesRegex = /@keyframes\s+[^{]+\{(?:[^{}]*\{[^{}]*\})*[^{}]*\}/g;
   //     let storeKeyFrames = [];
@@ -65,7 +65,7 @@ export default function CSS_TO_SCSS() {
   //     while ((match = keyFramesRegex.exec(cssSnippet)) !== null) {
   //       storeKeyFrames.push(match[0]);
   //     }
-    
+
   //     let removeKeyFramesCss = cssSnippet.replace(keyFramesRegex, "");
   //     const result = {
   //       cssNoImportsNoKeyFrames: removeKeyFramesCss,
@@ -76,7 +76,7 @@ export default function CSS_TO_SCSS() {
 
   //   const {cssNoImportsNoKeyFrames, storeKeyFrames} = storeAndRemoveKeyFrames(cssNoImports)
 
-  //   //Create nested dictionary to store all with proper "key:values" 
+  //   //Create nested dictionary to store all with proper "key:values"
   //   function cssToDictionary(cssSnippet) {
   //     const dict = {};
   //     //Match 2 groups, first group will be the selector and second group will be declaration block of said selector
@@ -115,9 +115,9 @@ export default function CSS_TO_SCSS() {
   //         .split(";")
   //         .filter(Boolean) //Remove all falsy values (Empty strings mostly)
   //         .map((prop) => prop.trim());
-        
+
   //       let currentDict = dict;
-        
+
   //       parts.forEach((part, index) => {
   //         // Regular expression to capture selector and pseudo-class (No other way to check for selector :root)
   //         const pseudoClassRegex = /^(:root|[^:]+)(:{1,2}[a-zA-Z0-9_-]+)?$/;
@@ -138,7 +138,7 @@ export default function CSS_TO_SCSS() {
   //           } else {
   //             currentDict = currentDict[mainSelector];
   //           }
-          
+
   //           // When it gets to the last selector, add the declaration block (styles) to the selector
   //           if (index === parts.length - 1) {
   //             declarationBlockArray.forEach((prop) => {
@@ -154,7 +154,7 @@ export default function CSS_TO_SCSS() {
   //   }
 
   //   const cssDictionary = cssToDictionary(cssNoImportsNoKeyFrames);
-    
+
   //   //This can be modified to match SCSS and SASS
   //   function dictionaryToScss(dict, indentLevel = 0) {
   //     let Scss = "";
@@ -182,13 +182,13 @@ export default function CSS_TO_SCSS() {
   //   let finalScssSnippet
 
   //   //If there is nothing to change it will return the same snippet
-  //   if (!rootMatch){ 
+  //   if (!rootMatch){
   //     finalScssSnippet = scssSnippet
   //   }else {
   //     const rootContent = rootMatch[1];
   //     let variables = '';
   //     let newRootContent = rootContent;
-    
+
   //     // Extract variables from :root
   //     let match;
   //     while ((match = varRegex.exec(rootContent)) !== null) {
@@ -197,13 +197,13 @@ export default function CSS_TO_SCSS() {
   //       variables += `$${variableName}: ${variableValue};\n`;
   //       newRootContent = newRootContent.replace(match[0], '');
   //     }
-    
+
   //     // Remove :root if empty, otherwise update its content
   //     let newScss = scssSnippet.replace(rootVarRegex, newRootContent.trim() ? `:root {${newRootContent}}` : '');
-    
+
   //     // Add the extracted variables at the beginning
   //     newScss = variables + '\n' + newScss;
-    
+
   //     //Replace var(*) to $* in classnames
   //     const cssVarRegex = /var\(--([a-zA-Z0-9\-]+)\)/g;
   //     const finishedSnippetScss = newScss.replace(
@@ -215,7 +215,6 @@ export default function CSS_TO_SCSS() {
   //     finalScssSnippet = finishedSnippetScss
   //   }
 
-
   //   //At the end add all the imports that were remove at the start
   //   let importsString = ""
   //   storedImports.forEach((atImport) => {
@@ -224,7 +223,6 @@ export default function CSS_TO_SCSS() {
   //   //Add the string at the start
   //   finalScssSnippet = importsString + finalScssSnippet
 
-    
   //   let keyFramesString = ""
   //   storeKeyFrames.forEach((keyFrame) => {
   //     keyFramesString += `${keyFrame}\n`
@@ -239,15 +237,15 @@ export default function CSS_TO_SCSS() {
   //SCSStoCSS convert function
   const scssToCss = (scss) => {
     try {
-      const result = sass.compileString(scss)
-      return result.css
+      const result = sass.compileString(scss);
+      return result.css;
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
 
   const handleConvert = () => {
-    return setResultSnippet(scssToCss(snippet))
+    return setResultSnippet(scssToCss(snippet));
   };
 
   // const handleSwitchConvertMode = () => {
@@ -262,13 +260,17 @@ export default function CSS_TO_SCSS() {
     <main
       className={`min-h-screen ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}
     >
-      <NavBar title={"scss to css converter"} isDarkMode={isDarkMode} toggleTheme={toggleTheme}/>
+      <NavBar
+        title={"scss to css converter"}
+        isDarkMode={isDarkMode}
+        toggleTheme={toggleTheme}
+      />
       <div className="flex justify-center flex-col items-center w-full py-10">
         <h1 className="text-sm md:text-2xl font-bold mr-4 ml-1">
           Scss to css converter
         </h1>
         <div
-        //Responsive
+          //Responsive
           className={`h-auto p-4 m-4 w-5/6 break-words border rounded-lg shadow ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"} flex flex-col items-center gap-4 sm:w-100 md:flex-row `}
         >
           <SnippetBox
