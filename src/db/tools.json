@@ -94,12 +94,11 @@
     "name": "JSON to YAML",
     "link": "/convert/json-yaml",
     "ctg": "other"
-  }
+  },
   {
     "id": 15,
-    "name": "css to scss",
-    "link": "/convert/css-scss",
+    "name": "scss to css",
+    "link": "/convert/scss-css",
     "ctg": "other"
-   },
-
+   }
 ]
