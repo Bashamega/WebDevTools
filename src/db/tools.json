@@ -94,5 +94,11 @@
     "name": "JSON to YAML",
     "link": "/convert/json-yaml",
     "ctg": "other"
+  },
+  {
+    "id": 15,
+    "name": "Resume Builder",
+    "link": "/resume-builder",
+    "ctg": "other"
   }
 ]
