@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect } from "react";
+
+import { useEffect } from "react";
 import { FaGithub, FaHome } from "react-icons/fa";
 import Link from "next/link";
 
