@@ -8,11 +8,22 @@ import ResumePDFDownloadLink from "./ResumePDF";
 import ResumeForm from "./Form";
 
 const Home = () => {
-  const [resumeData, setResumeData] = useState(null);
+  const [resumeData, setResumeData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    photo: "",
+    workExperience: [{ title: "", company: "", description: "" }],
+    education: [{ degree: "", institution: "", description: "" }],
+    skills: [""],
+    links: { linkedin: "", website: "", github: "" },
+    template: "template1",
+  });
+
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const handleFormSubmit = (data) => {
-    setResumeData(data);
+  const handleFormChange = (updatedData) => {
+    setResumeData(updatedData);
   };
 
   const toggleTheme = () => {
@@ -35,7 +46,7 @@ const Home = () => {
           Resume Builder
         </h1>
         <div className="w-full mt-4 ">
-          <ResumeForm isDarkMode={isDarkMode} onSubmit={handleFormSubmit} />
+          <ResumeForm isDarkMode={isDarkMode} onFormChange={handleFormChange} />
           {resumeData && <Preview isDarkMode={isDarkMode} data={resumeData} />}
           {resumeData && <ResumePDFDownloadLink data={resumeData} />}
         </div>

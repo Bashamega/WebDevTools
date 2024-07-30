@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ResumeForm = ({ onSubmit, isDarkMode }) => {
+const ResumeForm = ({ onFormChange, isDarkMode }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,36 +16,38 @@ const ResumeForm = ({ onSubmit, isDarkMode }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    onchange({ ...formData, [name]: value });
+    onFormChange({ ...formData, [name]: value });
   };
 
   const handleArrayChange = (e, index, field, arrayName) => {
     const newArray = [...formData[arrayName]];
     newArray[index][field] = e.target.value;
     setFormData({ ...formData, [arrayName]: newArray });
-    onChange({ ...formData, [arrayName]: newArray });
+    onFormChange({ ...formData, [arrayName]: newArray });
   };
 
   const handleSkillsChange = (e, index) => {
     const newSkills = [...formData.skills];
     newSkills[index] = e.target.value;
     setFormData({ ...formData, skills: newSkills });
-    onChange({ ...formData, skills: newSkills });
+    onFormChange({ ...formData, skills: newSkills });
   };
 
   const handleLinksChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, links: { ...formData.links, name: value } });
-    onChange({ ...formData, links: { ...formData.links, [name]: value } });
+    // console.log(name, value);
+    setFormData({ ...formData, links: { ...formData.links, [name]: value } });
+    onFormChange({ ...formData, links: { ...formData.links, [name]: value } });
   };
 
   const handlePhotoChange = (e) => {
-    const file = e.target.file[0];
+    console.log(e);
+    const file = e.target.files[0];
     const reader = new FileReader();
 
     reader.onload = () => {
       setFormData({ ...formData, image: reader.result });
-      onchange({ ...formData, image: reader.result });
+      onFormChange({ ...formData, image: reader.result });
     };
 
     if (file) {
@@ -121,7 +123,7 @@ const ResumeForm = ({ onSubmit, isDarkMode }) => {
             name="linkedIn"
             placeholder="Your LinkedIn"
             value={formData.links.linkedIn}
-            onChange={handleLinksChange}
+            onChange={(e) => handleLinksChange(e)}
           />
           <input
             className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
@@ -129,7 +131,7 @@ const ResumeForm = ({ onSubmit, isDarkMode }) => {
             name="website"
             placeholder="Your Personal Website"
             value={formData.links.website}
-            onChange={handleLinksChange}
+            onChange={(e) => handleLinksChange(e)}
           />
           <input
             className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
@@ -137,7 +139,7 @@ const ResumeForm = ({ onSubmit, isDarkMode }) => {
             name="github"
             placeholder="Your Github"
             value={formData.links.github}
-            onChange={handleLinksChange}
+            onChange={(e) => handleLinksChange(e)}
           />
         </div>
         <div className="w-full">
@@ -147,7 +149,7 @@ const ResumeForm = ({ onSubmit, isDarkMode }) => {
             name="image"
             placeholder="Your Photo"
             value={formData.image}
-            onChange={handlePhotoChange}
+            onChange={(e) => handlePhotoChange(e)}
           />
         </div>
       </div>
