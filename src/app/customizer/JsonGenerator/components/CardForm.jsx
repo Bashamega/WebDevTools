@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from "react";
-=======
 import { useState, useEffect } from "react";
->>>>>>> main
 import { v4 as uuidv4 } from "uuid";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";

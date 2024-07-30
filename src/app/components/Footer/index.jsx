@@ -1,10 +1,6 @@
 "use client";
-<<<<<<< HEAD
-import React, { useEffect } from "react";
-=======
 
 import { useEffect } from "react";
->>>>>>> main
 import { FaGithub, FaHome } from "react-icons/fa";
 import Link from "next/link";
 
@@ -19,11 +15,7 @@ const Footer = ({ isDarkMode }) => {
 
   return (
     <footer
-<<<<<<< HEAD
-      className={`w-[26rem] md:w-[40rem] max-w-full rounded-lg shadow-lg m-4 ${isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"} fixed bottom-0`}
-=======
       className={`w-[26rem] md:w-[40rem] max-w-full rounded-lg shadow-md m-4 ${isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"} fixed bottom-0`}
->>>>>>> main
     >
       <div className="w-full mx-auto max-w-screen-xl p-4 flex justify-center flex-col items-center md:flex-row md:justify-between">
         <span
@@ -35,10 +27,6 @@ const Footer = ({ isDarkMode }) => {
           </Link>
           . All Rights Reserved.
         </span>{" "}
-<<<<<<< HEAD
-        &emsp;
-=======
->>>>>>> main
         <ul
           className={`flex flex-wrap items-center mt-3 text-sm font-medium ${isDarkMode ? "text-gray-400" : "text-gray-500"} sm:mt-0`}
         >
