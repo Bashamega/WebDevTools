@@ -1,7 +1,12 @@
 "use client";
+<<<<<<< HEAD
+import Nav from "@/app/components/nav";
+import React, { useState, useEffect } from "react";
+=======
 
 import Nav from "@/app/components/nav";
 import { useState, useEffect } from "react";
+>>>>>>> main
 import Footer from "./components/Footer";
 import tools from "@/db/tools.json";
 import { Card } from "./components/card";
@@ -40,14 +45,22 @@ export default function Home({ state }) {
       <Nav isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <div className="flex justify-center flex-col items-center w-full">
         <div
+<<<<<<< HEAD
+          className={`mr-4 p-5 my-9 w-4/5 break-words py-6 md:p-6 border rounded-lg shadow ${isDarkMode ? "bg-gray-800 border-gray-700 text-white" : "bg-white border-gray-200 text-black"}`}
+=======
           className={`mr-4 p-5 my-9 mb-28 w-4/5 break-words py-6 md:p-6 rounded-lg shadow-md ${isDarkMode ? "bg-gray-800 text-white" : "bg-white border-gray-200 text-black"}`}
+>>>>>>> main
         >
           <input
             type="text"
             placeholder="search"
             value={searchValue}
             onChange={handleSeach}
+<<<<<<< HEAD
+            className={`w-full p-2 my-5 border rounded-lg shadow ${isDarkMode ? "bg-gray-800 border-gray-700 text-white" : "bg-white border-gray-200 text-black"}`}
+=======
             className={`w-full p-2 mb-5 border rounded-lg shadow ${isDarkMode ? "bg-gray-800 border-gray-700 text-white" : "bg-white border-gray-200 text-black"}`}
+>>>>>>> main
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {toolList.map((item, index) => (
@@ -65,9 +78,15 @@ export default function Home({ state }) {
             </p>
           )}
         </div>
+<<<<<<< HEAD
+        <div className="flex justify-center">
+          <Footer isDarkMode={isDarkMode} />
+        </div>
+=======
       </div>
       <div className="flex justify-center">
         <Footer isDarkMode={isDarkMode} />
+>>>>>>> main
       </div>
     </main>
   );

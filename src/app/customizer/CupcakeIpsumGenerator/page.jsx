@@ -1,7 +1,16 @@
 "use client";
+<<<<<<< HEAD
+// import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+import Nav from "@/app/components/nav";
+import { NavBar } from "@/app/components/navbar";
+// import { Navbar } from "react-bootstrap";
+=======
 
 import { useEffect, useState } from "react";
 import { NavBar } from "@/app/components/navbar";
+>>>>>>> main
 
 export default function ButtonCustomizer() {
   const [cupcakes, setCupcakes] = useState(1);
@@ -48,12 +57,18 @@ export default function ButtonCustomizer() {
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
       />
+<<<<<<< HEAD
+      <section className="flex items-center justify-center h-screen">
+        <div
+          className={`${isDarkMode ? "bg-gray-700 text-gray-400" : "bg-slate-100 text-gray-500"} p-10 w-full max-w-5xl overflow-y-scroll max-h-96`}
+=======
       <section className="flex flex-col gap-10 items-center justify-center h-screen">
         <h1 className="relative p-2 z-10 font-sans text-xl sm:text-4xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600">
           Cupcake Ipsum Generator
         </h1>
         <div
           className={`${isDarkMode ? "bg-gray-700 text-gray-400" : "bg-slate-100 text-gray-500"} p-10 w-full max-w-5xl rounded-lg shadow-md overflow-y-scroll max-h-96`}
+>>>>>>> main
         >
           <label htmlFor="cupcakes">Number of cupcakes:</label>
           <br />
@@ -84,7 +99,11 @@ export default function ButtonCustomizer() {
             <button
               type="button"
               onClick={copy}
+<<<<<<< HEAD
+              className="text-gray-900 bg-white hover:bg-gray-200 border border-gray-200 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center transition duration-200 ease-in-out transform hover:scale-105 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-600 mr-2 mb-2"
+=======
               className="text-gray-900 bg-white hover:bg-gray-200 border border-gray-200 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center transition duration-200 ease-in-out dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-600 mr-2 mb-2"
+>>>>>>> main
             >
               Copy
             </button>

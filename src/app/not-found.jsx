@@ -1,6 +1,17 @@
 import { NavBar } from "@/app/components/navbar";
+<<<<<<< HEAD
+import React from "react";
+import Link from "next/link";
+import { Nav } from "@/app/components/nav";
+const styles = {
+  h1: {
+    fontSize: "1000",
+  },
+};
+=======
 import Link from "next/link";
 
+>>>>>>> main
 export default function NotFound() {
   return (
     <main className="h-screen flex flex-col gap-10">

@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+import React from "react";
+=======
+>>>>>>> main
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const reorder = (list, startIndex, endIndex) => {

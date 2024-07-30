@@ -1,6 +1,10 @@
 "use client";
+<<<<<<< HEAD
+import React, { useState, useEffect } from "react";
+=======
 
 import { useState, useEffect } from "react";
+>>>>>>> main
 import toast, { Toaster } from "react-hot-toast";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { HexColorPicker } from "react-colorful";

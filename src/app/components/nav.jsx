@@ -47,7 +47,6 @@ export default function Nav({ isDarkMode, toggleTheme }) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
     try {
@@ -68,7 +67,6 @@ export default function Nav({ isDarkMode, toggleTheme }) {
     localStorage.setItem("theme", !isDarkMode);
     toggleTheme();
   };
-
   return (
     <nav
       className={`${

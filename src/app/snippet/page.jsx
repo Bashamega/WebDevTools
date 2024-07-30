@@ -1,5 +1,10 @@
 "use client";
+<<<<<<< HEAD
+import React from "react";
+// import Nav from "../components/nav";
+=======
 
+>>>>>>> main
 import Nav from "@/app/components/nav";
 
 export default function ButtonCustomizer() {

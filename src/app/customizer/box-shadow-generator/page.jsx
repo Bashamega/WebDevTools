@@ -1,6 +1,10 @@
 "use client";
+<<<<<<< HEAD
+import React, { useState } from "react";
+=======
 
 import { useState } from "react";
+>>>>>>> main
 import InputRange from "@/app/components/Input/InputRange";
 import Footer from "@/app/components/Footer";
 import Swal from "sweetalert2";

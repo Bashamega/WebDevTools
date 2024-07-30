@@ -1,4 +1,10 @@
 "use client";
+<<<<<<< HEAD
+import React, { useEffect, useRef, useState } from "react";
+import { FaExpandArrowsAlt } from "react-icons/fa";
+import ColorsList from "./components/ColorsList";
+import "./gradient-generator.css";
+=======
 
 import { useEffect, useRef, useState } from "react";
 import { FaExpandArrowsAlt } from "react-icons/fa";
@@ -7,12 +13,20 @@ import "./gradient-generator.css";
 
 import { NavBar } from "@/app/components/navbar";
 import ColorsList from "./components/ColorsList";
+>>>>>>> main
 import CopyCSSModal from "./components/CopyCSSModal";
 import GradientType from "./components/GradientType";
 import GradientRotation from "./components/GradientRotation";
 import GradientFullScreen from "./components/GradientFullScreen";
+<<<<<<< HEAD
+import Swal from "sweetalert2";
+import { NavBar } from "@/app/components/navbar";
+import Footer from "@/app/components/Footer";
+import { Nav } from "@/app/components/nav";
+=======
 import Footer from "@/app/components/Footer";
 
+>>>>>>> main
 
 const gradientTypes = [
   { id: 1, name: "Linear", value: "linear-gradient" },

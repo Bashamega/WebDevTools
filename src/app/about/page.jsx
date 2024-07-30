@@ -1,7 +1,11 @@
 "use client";
 import Footer from "../components/Footer";
 import Nav from "../components/nav";
+<<<<<<< HEAD
+import React, { useState } from "react";
+=======
 import { useState } from "react";
+>>>>>>> main
 import Link from "next/link";
 
 export default function Home() {

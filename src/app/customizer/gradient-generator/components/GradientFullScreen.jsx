@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+import React from "react";
+=======
+>>>>>>> main
 import { FaExpandArrowsAlt } from "react-icons/fa";
 
 const GradientFullScreen = ({

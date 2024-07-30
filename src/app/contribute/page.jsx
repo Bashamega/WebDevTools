@@ -1,7 +1,13 @@
 "use client";
+<<<<<<< HEAD
+import React, { useState, useEffect } from "react";
+import Nav from "../components/nav";
+// import { Nav } from "@/app/components/nav";
+=======
 
 import React, { useState, useEffect } from "react";
 import Nav from "../components/nav";
+>>>>>>> main
 import Footer from "../components/Footer";
 import Link from "next/link";
 import Image from "next/image";
