@@ -36,7 +36,7 @@ const Home = () => {
         </h1>
         <div className="w-full mt-4">
           <ResumeForm isDarkMode={isDarkMode} onSubmit={handleFormSubmit} />
-          {/* {resumeData && <Preview isDarkMode={isDarkMode} data={resumeData} />} */}
+          {resumeData && <Preview isDarkMode={isDarkMode} data={resumeData} />}
           {resumeData && <ResumePDFDownloadLink data={resumeData} />}
         </div>
       </div>

@@ -1,45 +1,54 @@
 "use client";
 
 const Preview = ({ data, isDarkMode }) => {
-  // const generatePDF = () => {
-  //   const doc = new jsPDF();
-  //   doc.text(data.name, 20, 20);
-  //   doc.text(data.email, 20, 25);
-  //   doc.autoTable({
-  //     startY: 30,
-  //     head: [["Education"]],
-  //     body: [[data.education]],
-  //   });
-  //   doc.autoTable({
-  //     startY: 60,
-  //     head: [["Experience"]],
-  //     body: [[data.experience]],
-  //   });
-  //   doc.autoTable({ startY: 90, head: [["Skills"]], body: [[data.skills]] });
-  //   doc.save("resume.pdf");
-  // };
-
   return (
     <div>
       <h2 className="text-xl font-semibold mt-4">Preview Details</h2>
       <div
         className={`flex flex-col items-start flex-wrap w-full overflow-none border p-4 mt-4 ${isDarkMode ? "bg-slate-800" : "bg-blue-50"}`}
       >
-        <p className="mt-3 mb-1">
-          <strong>Name:</strong> {data.name}
-        </p>
-        <p className="mt-3 mb-1">
-          <strong>Email:</strong> {data.email}
-        </p>
-        <p className="mt-3 mb-1">
-          <strong>Education:</strong> {data.education}
-        </p>
-        <p className="mt-3 mb-1">
-          <strong>Experience:</strong> {data.experience}
-        </p>
-        <p className="mt-3 mb-1">
-          <strong>Skills:</strong> {data.skills}
-        </p>
+        <div className="w-full mx-4">
+          <p className="mt-3 mb-1 text-2xl font-semibold">
+            <strong>Name:</strong> {data.name}
+          </p>
+          <p className="mt-3 mb-1 text-sm">
+            <strong>Email:</strong> {data.email}
+          </p>
+
+          {data.phone && (
+            <p className="mt-3 mb-1 text-sm">
+              <strong>Number:</strong> {data.phone}
+            </p>
+          )}
+        </div>
+
+        <div className="w-full mx-6 ">
+          <p className="mt-3 text-xl mb-4">
+            <strong>Work Experience:</strong>
+            <ul className="mx-4 mt-4">
+              <li>{data.workExperience[0].title},</li>
+
+              <li>{data.workExperience[0].company},</li>
+
+              <li>{data.workExperience[0].description},</li>
+            </ul>
+          </p>
+          <p className="mt-3 mb4 text-xl">
+            <strong>Education:</strong>
+            <ul className="mx-4 mt-4">
+              <li>{data.education[0].degree},</li>
+
+              <li>{data.education[0].institution},</li>
+
+              <li>{data.education[0].description},</li>
+            </ul>
+          </p>
+          <p className="mt-3 mb-4">
+            <strong>Skills:</strong>
+
+            <p className="mx-4 mt-4">{data.skills}</p>
+          </p>
+        </div>
       </div>
       {/* <button
         onClick={generatePDF}
