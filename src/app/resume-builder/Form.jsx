@@ -5,32 +5,88 @@ const ResumeForm = ({ onSubmit, isDarkMode }) => {
     name: "",
     email: "",
     phone: "",
+    image: "",
     workExperience: [{ title: "", company: "", description: "" }],
     education: [{ degree: "", institution: "", description: "" }],
     skills: [""],
+    links: { linkedIn: "", website: "", github: "" },
+    template: "template1",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    onchange({ ...formData, [name]: value });
   };
 
   const handleArrayChange = (e, index, field, arrayName) => {
     const newArray = [...formData[arrayName]];
     newArray[index][field] = e.target.value;
     setFormData({ ...formData, [arrayName]: newArray });
+    onChange({ ...formData, [arrayName]: newArray });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit(formData);
+  const handleSkillsChange = (e, index) => {
+    const newSkills = [...formData.skills];
+    newSkills[index] = e.target.value;
+    setFormData({ ...formData, skills: newSkills });
+    onChange({ ...formData, skills: newSkills });
   };
+
+  const handleLinksChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, links: { ...formData.links, name: value } });
+    onChange({ ...formData, links: { ...formData.links, [name]: value } });
+  };
+
+  const handlePhotoChange = (e) => {
+    const file = e.target.file[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      setFormData({ ...formData, image: reader.result });
+      onchange({ ...formData, image: reader.result });
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const addWorkExperience = () => {
+    setFormData({
+      ...formData,
+      workExperience: [
+        ...formData.workExperience,
+        { title: "", company: "", description: "" },
+      ],
+    });
+  };
+
+  const addEducation = () => {
+    setFormData({
+      ...formData,
+      education: [
+        ...formData.education,
+        { degree: "", institution: "", description: "" },
+      ],
+    });
+  };
+
+  const addSkill = () => {
+    setFormData({ ...formData, skills: [...formData.skills, ""] });
+  };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   onSubmit(formData);
+  // };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full">
+    <form className="w-full">
       <div className="w-full my-6">
         <h3 className="text-xl font-semibold">Personal Info</h3>
-        <div className="flex flex-row items-start justify-between">
+        <div className="flex flex-row items-start justify-between my-6">
           <input
             className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
             type="text"
@@ -56,7 +112,42 @@ const ResumeForm = ({ onSubmit, isDarkMode }) => {
             placeholder="Phone"
             value={formData.phone}
             onChange={handleChange}
-            required
+          />
+        </div>
+        <div className="flex flex-row items-start justify-between my-6">
+          <input
+            className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+            type="url"
+            name="linkedIn"
+            placeholder="Your LinkedIn"
+            value={formData.links.linkedIn}
+            onChange={handleLinksChange}
+          />
+          <input
+            className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+            type="url"
+            name="website"
+            placeholder="Your Personal Website"
+            value={formData.links.website}
+            onChange={handleLinksChange}
+          />
+          <input
+            className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+            type="url"
+            name="github"
+            placeholder="Your Github"
+            value={formData.links.github}
+            onChange={handleLinksChange}
+          />
+        </div>
+        <div className="w-full">
+          <input
+            className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+            type="file"
+            name="image"
+            placeholder="Your Photo"
+            value={formData.image}
+            onChange={handlePhotoChange}
           />
         </div>
       </div>
@@ -101,6 +192,9 @@ const ResumeForm = ({ onSubmit, isDarkMode }) => {
             />
           </div>
         ))}
+        <button type="button" onClick={addWorkExperience}>
+          Add Another Experience
+        </button>
       </div>
       <div className="w-full mt-6">
         <h3 className="text-xl font-semibold">Education</h3>
@@ -143,26 +237,46 @@ const ResumeForm = ({ onSubmit, isDarkMode }) => {
             />
           </div>
         ))}
+        <button type="button" onClick={addEducation}>
+          Add Another Education
+        </button>
       </div>
-      <div className="w-full">
+
+      <div className="w-full mt-6">
         <h3 className="text-xl font-semibold">Skills</h3>
         {formData.skills.map((skill, index) => (
-          <input
-            className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
-            key={index}
-            type="text"
-            name={`skill-${index}`}
-            placeholder="Skill"
-            value={skill}
-            onChange={(e) => {
-              const newSkills = [...formData.skills];
-              newSkills[index] = e.target.value;
-              setFormData({ ...formData, skills: newSkills });
-            }}
-            required
-          />
+          <div key={index}>
+            <input
+              className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+              type="text"
+              name={`skill-${index}`}
+              placeholder="Add Skills"
+              value={skill}
+              onChange={(e) => handleSkillsChange(e, index)}
+              required
+            />
+          </div>
         ))}
+        <button type="button" onClick={addSkill}>
+          Add Another Skills
+        </button>
       </div>
+
+      <div className="w-full mt-6">
+        <h3 className="text-xl font-semibold">Template</h3>
+
+        <div className="flex flex-row items-start justify-between">
+          <select
+            name="template"
+            value={formData.template}
+            onChange={handleChange}
+          >
+            <option value="template1">Template 1</option>
+            <option value="template2">Template 2</option>
+          </select>
+        </div>
+      </div>
+
       <button
         className="p-3 w-[180px] bg-blue-500 border-none rounded-lg text-white my-6 hover:bg-blue-400 transition-all duration-300"
         type="submit"
