@@ -44,12 +44,10 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
     console.log(e);
     const file = e.target.files[0];
     const reader = new FileReader();
-
-    reader.onload = () => {
+    reader.onloadend = () => {
       setFormData({ ...formData, image: reader.result });
       onFormChange({ ...formData, image: reader.result });
     };
-
     if (file) {
       reader.readAsDataURL(file);
     }
@@ -148,7 +146,8 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             type="file"
             name="image"
             placeholder="Your Photo"
-            value={formData.image}
+            // value={formData.image}
+            accept="image/*"
             onChange={(e) => handlePhotoChange(e)}
           />
         </div>
