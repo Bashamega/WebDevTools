@@ -1,5 +1,8 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
+<<<<<<< HEAD
 import React from "react";
+=======
+>>>>>>> main
 import Swal from "sweetalert2";
 
 const CopyCSSModal = ({ gradientRef, colorsListRef, setCopyCSSModal }) => {

@@ -1,13 +1,26 @@
 "use client";
+<<<<<<< HEAD
 import { NavBar } from "@/app/components/navbar";
 import React, { useState } from "react";
+=======
+
+import { NavBar } from "@/app/components/navbar";
+
+import React, { useEffect, useState } from "react";
+>>>>>>> main
 const convert = require("convert-units");
 
 export default function ButtonCustomizer() {
   const [from, setFrom] = useState("10");
+<<<<<<< HEAD
   const [to, setTo] = useState("10");
   const [opTo, setOpTo] = useState("cm");
   const [opFrom, setOpFrom] = useState("cm");
+=======
+  const [to, setTo] = useState("10000");
+  const [opTo, setOpTo] = useState("m");
+  const [opFrom, setOpFrom] = useState("km");
+>>>>>>> main
   const [isDarkMode, setIsDarkMode] = useState(false);
   const options = convert()
     .possibilities("length")
@@ -36,12 +49,23 @@ export default function ButtonCustomizer() {
     setIsDarkMode(!isDarkMode);
   };
 
+<<<<<<< HEAD
+=======
+  useEffect(() => {
+    calc();
+  }, [calc, to, from, opFrom, opTo]);
+
+>>>>>>> main
   return (
     <main
       className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-h-screen`}
     >
       <NavBar
+<<<<<<< HEAD
         title={"Button customizer"}
+=======
+        title={"Conversion Calculator"}
+>>>>>>> main
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
       />
@@ -68,7 +92,11 @@ export default function ButtonCustomizer() {
               id="dropdown"
               value={opFrom}
               onChange={handleOpFromChange}
+<<<<<<< HEAD
               className="bg-slate-500 text-center p-2 border border-gray-300 rounded w-full mt-2"
+=======
+              className="bg-slate-500 text-center p-2 border border-gray-300 rounded w-full mt-2 text-black font-bold"
+>>>>>>> main
             >
               {options.map((option, index) => (
                 <option key={index} value={option}>
@@ -88,7 +116,11 @@ export default function ButtonCustomizer() {
               id="dropdown"
               value={opTo}
               onChange={handleToChange}
+<<<<<<< HEAD
               className="bg-slate-500 text-center p-2 border border-gray-300 rounded "
+=======
+              className="bg-slate-500 text-center p-2 border border-gray-300 rounded  text-black font-bold"
+>>>>>>> main
             >
               {options.map((option, index) => (
                 <option key={index} value={option}>

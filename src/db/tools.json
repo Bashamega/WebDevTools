@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "Github Issue Finder",
+<<<<<<< HEAD
     "link": "/gh-finder"
   },
   {
@@ -79,4 +80,105 @@
     "name": "Image to SVG",
     "link": "/convert/img-svg"
   }
+=======
+    "link": "/gh-finder",
+    "ctg": "other"
+  },
+  {
+    "id": 2,
+    "name": "JSON GENERATOR",
+    "link": "/customizer/JsonGenerator",
+    "ctg": "generator"
+  },
+  {
+    "id": 3,
+    "name": "Code editor",
+    "link": "/codeedit",
+    "ctg": "editor"
+  },
+  {
+    "id": 4,
+    "name": "Button customizer",
+    "link": "/customizer/button",
+    "ctg": "other"
+  },
+  {
+    "id": 5,
+    "name": "Lorem Ipsum Generator",
+    "link": "/customizer/LoremIpsumGenerator",
+    "ctg": "generator"
+  },
+  {
+    "id": 6,
+    "name": "Conversion Calculator",
+    "link": "/customizer/conversionCalculator",
+    "ctg": "other"
+  },
+  {
+    "id": 7,
+    "name": "Cupcake Ipsum Generator",
+    "link": "/customizer/CupcakeIpsumGenerator",
+    "ctg": "generator"
+  },
+  {
+    "id": 8,
+    "name": "Color Picker",
+    "link": "/customizer/colorPicker",
+    "ctg": "other"
+  },
+  {
+    "id": 9,
+    "name": "Mark down Editor",
+    "link": "/MD",
+    "ctg": "editor"
+  },
+  {
+    "id": 10,
+    "name": "Box shadow generator",
+    "link": "/customizer/box-shadow-generator",
+    "ctg": "generator"
+  },
+  {
+    "id": 11,
+    "name": "Image color picker",
+    "link": "/customizer/image-color-picker",
+    "ctg": "other"
+  },
+  {
+    "id": 12,
+    "name": "Readme generator",
+    "link": "/customizer/Readme-generator",
+    "ctg": "generator"
+  },
+  {
+    "id": 13,
+    "name": "AsciiDoc Editor",
+    "link": "/asciiDoc",
+    "ctg": "editor"
+  },
+  {
+    "id": 14,
+    "name": "Dummy JSON API",
+    "link": "/endpoints",
+    "ctg": "other"
+  },
+  {
+    "id": 15,
+    "name": "HTML to jsx",
+    "link": "/convert/html-jsx",
+    "ctg": "other"
+  },
+  {
+    "id": 16,
+    "name": "JSON to YAML",
+    "link": "/convert/json-yaml",
+    "ctg": "other"
+  },
+  {
+    "id": 15,
+    "name": "scss to css",
+    "link": "/convert/css-scss",
+    "ctg": "other"
+   }
+>>>>>>> main
 ]

@@ -1,6 +1,10 @@
 "use client";
 
+<<<<<<< HEAD
 import React, { useState } from "react";
+=======
+import { useState } from "react";
+>>>>>>> main
 import snarkdown from "snarkdown";
 import { NavBar } from "@/app/components/navbar";
 

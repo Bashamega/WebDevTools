@@ -1,7 +1,14 @@
 "use client";
+<<<<<<< HEAD
 import Footer from "../components/Footer";
 import { NavBar } from "../components/navbar";
 import React, { useState } from "react";
+=======
+
+import { useState } from "react";
+import Footer from "../components/Footer";
+import { NavBar } from "../components/navbar";
+>>>>>>> main
 
 export default function Endpoints() {
   const [isDarkMode, setIsDarkMode] = useState(false);

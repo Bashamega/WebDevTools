@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client"; // Add this line to ensure client-side rendering
 
 import { NavBar } from "@/app/components/navbar";
@@ -11,6 +12,23 @@ export default function ButtonCustomizer() {
   const [borderRadius, setBorderRadius] = useState(4);
   const [width, setWidth] = useState(400);
   const [height, setHeight] = useState(200);
+=======
+"use client";
+
+import { NavBar } from "@/app/components/navbar";
+import { useState } from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { FaRegCopy } from "react-icons/fa6";
+import { FaCode } from "react-icons/fa6";
+import "react-tabs/style/react-tabs.css";
+
+export default function ButtonCustomizer() {
+  const [backgroundColor, setBackgroundColor] = useState("#3B82F6");
+  const [textColor, setTextColor] = useState("#FFFFFF");
+  const [borderRadius, setBorderRadius] = useState(4);
+  const [width, setWidth] = useState(300);
+  const [height, setHeight] = useState(100);
+>>>>>>> main
   const [cursor, setCursor] = useState("pointer");
   const [fontSize, setFontSize] = useState(16);
   const [fontWeight, setFontWeight] = useState("bold");
@@ -224,7 +242,11 @@ export default function ButtonCustomizer() {
         toggleTheme={toggleTheme}
       />
 
+<<<<<<< HEAD
       <section className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+=======
+      <section className="fixed top-1/3 md:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+>>>>>>> main
         <button style={buttonStyles} className="text-4xl ">
           Customized Button
         </button>
@@ -250,12 +272,20 @@ export default function ButtonCustomizer() {
 
         <TabPanel className="bg-slate-700">
           <div
+<<<<<<< HEAD
             className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} my-8 p-5 w-full rounded-md shadow-md flex flex-col items-center `}
+=======
+            className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
+>>>>>>> main
           >
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
             </h2>
+<<<<<<< HEAD
             <div className="mb-4">
+=======
+            <div className="mb-4 flex items-center">
+>>>>>>> main
               <label className="mr-2 font-mono">Background Color:</label>
               <input
                 type="color"
@@ -268,12 +298,20 @@ export default function ButtonCustomizer() {
 
         <TabPanel>
           <div
+<<<<<<< HEAD
             className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} my-8 p-5 w-full rounded-md shadow-md flex flex-col items-center `}
+=======
+            className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
+>>>>>>> main
           >
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
             </h2>
+<<<<<<< HEAD
             <div className="mb-4">
+=======
+            <div className="mb-4 flex items-center">
+>>>>>>> main
               <label className="mr-2 font-mono">Text Color:</label>
               <input
                 type="color"
@@ -286,7 +324,11 @@ export default function ButtonCustomizer() {
 
         <TabPanel>
           <div
+<<<<<<< HEAD
             className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} my-8 p-5 w-full rounded-md shadow-md flex flex-col items-center `}
+=======
+            className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
+>>>>>>> main
           >
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
@@ -307,7 +349,11 @@ export default function ButtonCustomizer() {
 
         <TabPanel>
           <div
+<<<<<<< HEAD
             className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} my-8 p-5 w-full rounded-md shadow-md flex flex-col items-center `}
+=======
+            className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
+>>>>>>> main
           >
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
@@ -339,7 +385,11 @@ export default function ButtonCustomizer() {
 
         <TabPanel>
           <div
+<<<<<<< HEAD
             className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} my-8 p-5 w-full rounded-md shadow-md flex flex-col items-center `}
+=======
+            className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
+>>>>>>> main
           >
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
@@ -365,11 +415,16 @@ export default function ButtonCustomizer() {
 
         <TabPanel>
           <div
+<<<<<<< HEAD
             className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} my-8 p-5 w-full rounded-md shadow-md flex flex-col items-center `}
+=======
+            className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
+>>>>>>> main
           >
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
             </h2>
+<<<<<<< HEAD
             <div className="mb-4">
               <label className="mr-2 font-mono">Font Size:</label>
               <input
@@ -411,13 +466,62 @@ export default function ButtonCustomizer() {
                   </option>
                 ))}
               </select>
+=======
+            <div className="flex flex-col">
+              <div className="mb-4">
+                <label className="mr-2 font-mono">Font Size:</label>
+                <input
+                  type="number"
+                  min="0"
+                  className="text-white bg-gray-700 p-1 rounded-md font-mono"
+                  value={fontSize}
+                  onChange={handleFontSizeChange}
+                />
+              </div>
+              <div className="mb-4">
+                <label className="mr-2 font-mono">Font Weight:</label>
+                <select
+                  name="weight-options"
+                  id="weight-options"
+                  onChange={handleFontWeightChange}
+                  value={fontWeight}
+                  className="text-white bg-gray-700 p-1 rounded-md font-mono"
+                >
+                  {fontWeights.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="mb-4">
+                <label className="mr-2 font-mono">Font Family:</label>
+                <select
+                  name="family-options"
+                  id="family-options"
+                  onChange={handleFontFamilyChange}
+                  value={fontFamily}
+                  className="text-white bg-gray-700 p-1 rounded-md font-mono"
+                >
+                  {fontFamilies.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+>>>>>>> main
             </div>
           </div>
         </TabPanel>
       </Tabs>
 
       {showSuccessMessage && (
+<<<<<<< HEAD
         <div className="fixed inset-0 flex items-center justify-center">
+=======
+        <div className="absolute left-1/2 transform -translate-x-1/2 top-20">
+>>>>>>> main
           <div className="bg-green-500 text-white px-4 py-2 rounded flex items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -434,29 +538,48 @@ export default function ButtonCustomizer() {
               />
             </svg>
             <span className="inline-block align-middle">
+<<<<<<< HEAD
               Action successfully completed!
+=======
+              Code copied successfully !
+>>>>>>> main
             </span>
           </div>
         </div>
       )}
 
       <button
+<<<<<<< HEAD
         className="m-3 bg-red-700 p-5 rounded text-white font-bold"
         onClick={handleCodeButtonClick}
       >
         Show Code
+=======
+        className={` border  m-3 flex items-center gap-2 right-1 fixed py-2 px-3 rounded hover:bg-gray-950 duration-150 hover:text-gray-50 hover:border-gray-50 font-semibold ${isDarkMode? " text-white border-white ":" border-gray-950 text-gray-950"}`}
+        onClick={handleCodeButtonClick}
+      >
+        <FaCode /> Show Code
+>>>>>>> main
       </button>
 
       {showCode && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+<<<<<<< HEAD
           <div className="bg-slate-500 p-8 rounded-lgv lg:w-1/2">
+=======
+          <div className="bg-slate-200 p-8 rounded-lg lg:w-1/2">
+>>>>>>> main
             <Tabs>
               <TabList>
                 <Tab>CSS</Tab>
                 <Tab>Tailwind</Tab>
               </TabList>
               <TabPanel>
+<<<<<<< HEAD
                 <p className="text-white font-mono">
+=======
+                <p className="text-white font-mono bg-slate-950 rounded-md p-3">
+>>>>>>> main
                   &lt;button style=&quot; background-color: {backgroundColor};
                   color:
                   {textColor}; border-radius: {borderRadius}px; padding: 10px
@@ -466,6 +589,7 @@ export default function ButtonCustomizer() {
                   px; height: {height}px; &quot;&gt; Customized Button
                   &lt;/button&gt;
                 </p>
+<<<<<<< HEAD
                 <button
                   className="bg-blue-500 text-white px-4 py-2 mt-4 mr-2 rounded"
                   onClick={handleCopyCssCode}
@@ -475,6 +599,25 @@ export default function ButtonCustomizer() {
               </TabPanel>
               <TabPanel>
                 <p className="text-white font-mono">
+=======
+                <div className="flex">
+                  <button
+                    className="bg-blue-500 flex gap-2 items-center text-white px-4 py-2 mt-4 mr-2 rounded"
+                    onClick={handleCopyCssCode}
+                  >
+                    <FaRegCopy /> Copy Code
+                  </button>
+                  <button
+                    className="bg-blue-500 text-white px-4 py-2 mt-4 rounded"
+                    onClick={() => setShowCode(false)}
+                  >
+                    Close
+                  </button>
+                </div>
+              </TabPanel>
+              <TabPanel>
+                <p className="text-white font-mono bg-slate-950 rounded-md p-3">
+>>>>>>> main
                   &lt;button class=&quot;
                   {backgroundColor ? `bg-[${backgroundColor}]` : ""}
                   {textColor ? `text-[${textColor}]` : ""}
@@ -489,6 +632,7 @@ export default function ButtonCustomizer() {
                   {height ? `h-[${height}px]` : ""}
                   &quot;&gt; Customized Button &lt;/button&gt;
                 </p>
+<<<<<<< HEAD
                 <button
                   className="bg-blue-500 text-white px-4 py-2 mt-4 mr-2 rounded"
                   onClick={handleCopyTailwindCode}
@@ -504,6 +648,24 @@ export default function ButtonCustomizer() {
             >
               Close
             </button>
+=======
+                <div className="flex">
+                  <button
+                    className="bg-blue-500 flex gap-2 items-center text-white px-4 py-2 mt-4 mr-2 rounded"
+                    onClick={handleCopyTailwindCode}
+                  >
+                    <FaRegCopy /> Copy Code
+                  </button>
+                  <button
+                    className="bg-blue-500 text-white px-4 py-2 mt-4 rounded"
+                    onClick={() => setShowCode(false)}
+                  >
+                    Close
+                  </button>
+                </div>
+              </TabPanel>
+            </Tabs>
+>>>>>>> main
           </div>
         </div>
       )}

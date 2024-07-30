@@ -1,8 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+<<<<<<< HEAD
 import React, { useRef, useState } from "react";
 import Nav from "@/app/components/nav";
+=======
+import { useRef, useState } from "react";
+>>>>>>> main
 import toast, { Toaster } from "react-hot-toast";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { NavBar } from "@/app/components/navbar";
@@ -115,7 +119,11 @@ const ColorPicker = () => {
           <div className="flex items-center justify-center w-full">
             <label
               htmlFor="dropzone-file"
+<<<<<<< HEAD
               className="flex flex-col items-center justify-center w-full border-2 border-gray-400 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+=======
+              className="flex flex-col items-center justify-center w-full border-2 border-gray-400 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+>>>>>>> main
             >
               <div className="flex flex-col items-center justify-center pt-5 pb-6">
                 <svg
