@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media screen and (max-width: 1024px) {
+  .custom-color-picker .react-colorful {
+    width: 270px;
+    height: 270px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .custom-color-picker .react-colorful {
+    width: 270px;
+    height: 270px;
+  }
+}
+
+@layer components {
+  .custom-color-picker .react-colorful {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  overflow-x: hidden;
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* globals.css */
+
+/* Light mode styles (default) */
+/* body {
+  background-color: #ffffff;
+  color: #000000;
+} */

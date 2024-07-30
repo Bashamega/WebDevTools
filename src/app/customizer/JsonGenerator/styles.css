@@ -1,0 +1,14 @@
+/* Style the scrollbar track */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Style the scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Style the scrollbar handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
