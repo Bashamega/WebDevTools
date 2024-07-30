@@ -1,12 +1,12 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+
+import { useState, useRef, useEffect } from "react";
 import snarkdown from "snarkdown";
 import { saveAs } from "file-saver";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Search from "../components/search";
 import Link from "next/link";
-import Switch from "@mui/material/Switch";
 import SunIcon from "../components/icons/sunicon";
 import MoonIcon from "../components/icons/moonicon";
 
