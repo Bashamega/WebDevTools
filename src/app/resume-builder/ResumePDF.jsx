@@ -35,15 +35,16 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 18,
-    marginBottom: 10,
+    marginBottom: 5,
     color: "#333",
   },
   jobTitle: {
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: "bold",
+    marginBottom: 2,
   },
   company: {
-    fontSize: 12,
+    fontSize: 10,
     fontStyle: "italic",
     marginBottom: 5,
   },
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
   skill: {
     fontSize: 12,
     marginBottom: 5,
+    fontWeight: "bold",
   },
 });
 
