@@ -5,7 +5,7 @@ import DownloadIcon from '@mui/icons-material/Download';
 import CircularProgress from '@mui/material/CircularProgress';
 
 export default function CodeEditor() {
-  const { imageData } = useImage();
+  const { imageData, fileName } = useImage(); // Get file name from context
   const [svgData, setSvgData] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -41,19 +41,21 @@ export default function CodeEditor() {
   };
 
   const downloadSVG = () => {
-    const blob = new Blob([svgData], { type: 'image/svg+xml' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'image.svg';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    if (svgData) {
+      const blob = new Blob([svgData], { type: 'image/svg+xml' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = fileName.replace(/\.[^/.]+$/, '') + '.svg'; // Use file name from context
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
   };
 
   return (
-    <div className='image-svg-converter-svgImage-500' style={{height:"58vh",width:"48vw",textAlign:"center",padding:"8px"}}>
+    <div className='image-svg-converter-svgImage-500' style={{ height: "58vh", width: "48vw", textAlign: "center", padding: "8px" }}>
       {loading && (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <CircularProgress />
@@ -62,36 +64,29 @@ export default function CodeEditor() {
       {svgData && !loading ? (
         <div className='image-svg-converter-svgImage-height-500'
           style={{
-     
             marginTop: '33px',
-           
             display: 'flex',
-            
-            
             flexDirection: 'column',
           }}
         >
           <object className='image-svg-converter-500-object'
             data={`data:image/svg+xml;base64,${btoa(svgData)}`}
             type="image/svg+xml"
-            style={{height:"42vh"}}
-           
+            style={{ height: "42vh" }}
           >
             Your browser does not support SVG
           </object>
-          <div style={{display:'flex',justifyContent:"center"}}>
-<Button
-            component="label"
-            variant="contained"
-            startIcon={<DownloadIcon />}
-            onClick={downloadSVG}
-            style={{ marginTop: '7px' ,width:"40%"}}
-          >
-            Download SVG
-          </Button>
-
+          <div style={{ display: 'flex', justifyContent: "center" }}>
+            <Button
+              component="label"
+              variant="contained"
+              startIcon={<DownloadIcon />}
+              onClick={downloadSVG}
+              style={{ marginTop: '7px', width: "40%" }}
+            >
+              Download SVG
+            </Button>
           </div>
-          
         </div>
       ) : (
         !loading && <p>No SVG data available. Upload an image to convert it to SVG.</p>
