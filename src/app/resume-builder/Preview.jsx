@@ -2,7 +2,7 @@
 
 const Preview = ({ data, isDarkMode }) => {
   return (
-    <div>
+    <div className="w-full my-5">
       <h2 className="text-xl font-semibold mt-4">Preview Details</h2>
       <div
         className={`flex flex-col items-start flex-wrap w-full overflow-none border p-4 mt-4 ${isDarkMode ? "bg-slate-800" : "bg-blue-50"}`}
@@ -50,12 +50,6 @@ const Preview = ({ data, isDarkMode }) => {
           </p>
         </div>
       </div>
-      {/* <button
-        onClick={generatePDF}
-        className="bg-green-500 text-white py-2 px-4 mt-4"
-      >
-        Download PDF
-      </button> */}
     </div>
   );
 };

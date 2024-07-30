@@ -98,7 +98,11 @@ const ResumePDF = ({ data }) => (
 );
 
 const ResumePDFDownloadLink = ({ data }) => (
-  <PDFDownloadLink document={<ResumePDF data={data} />} fileName="resume.pdf">
+  <PDFDownloadLink
+    className="p-3  w-[180px] bg-blue-500 border-none rounded-lg text-white  hover:bg-blue-400 transition-all duration-300 mt-10"
+    document={<ResumePDF data={data} />}
+    fileName="resume.pdf"
+  >
     {({ blob, url, loading, error }) =>
       loading ? "Loading document..." : "Download PDF"
     }
