@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { NavBar } from "@/app/components/navbar";
 import CodeEditor from "../components/editor";
-const YAML = require('json-to-pretty-yaml');
+const YAML = require("json-to-pretty-yaml");
 
 export default function HTML_JSX() {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [value, setValue] = useState(`{"name": "Alice", "age": 25, "email": "alice@example.com", "isStudent": false, "courses": ["Math", "Science", "History"]}`);
+  const [value, setValue] = useState(
+    `{"name": "Alice", "age": 25, "email": "alice@example.com", "isStudent": false, "courses": ["Math", "Science", "History"]}`,
+  );
   const handleChange = (val) => {
     setValue(val);
   };
@@ -19,14 +21,14 @@ export default function HTML_JSX() {
   };
 
   const generateYAML = () => {
-    let  yaml=''
-    try{
-     yaml = YAML.stringify(JSON.parse(value));
-    }catch(error){
-     yaml =error
+    let yaml = "";
+    try {
+      yaml = YAML.stringify(JSON.parse(value));
+    } catch (error) {
+      yaml = error;
     }
-    if(value=== ''){
-      yaml =''
+    if (value === "") {
+      yaml = "";
     }
     return `${yaml}`;
   };
