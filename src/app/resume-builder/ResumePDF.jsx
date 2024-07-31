@@ -62,12 +62,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "blue",
     textDecoration: "underline",
-  },
-  photo: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    marginBottom: 20,
+    marginTop: 5,
   },
 });
 
@@ -75,9 +70,19 @@ const ResumePDF = ({ data }) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.header}>
+        {data.image && <Image style={styles.image} src={data.image} />}
         <Text style={styles.name}>{data.name}</Text>
         <Text style={styles.contact}>{data.email}</Text>
         <Text style={styles.contact}>{data.phone}</Text>
+        {data.links.linkedin && (
+          <Text style={styles.link}>LinkedIn: {data.links.linkedin}</Text>
+        )}
+        {data.links.website && (
+          <Text style={styles.link}>Website: {data.links.website}</Text>
+        )}
+        {data.links.github && (
+          <Text style={styles.link}>GitHub: {data.links.github}</Text>
+        )}
       </View>
       <View style={styles.section}>
         <Text style={styles.heading}>Work Experience</Text>

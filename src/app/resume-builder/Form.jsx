@@ -278,12 +278,12 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
         </div>
       </div>
 
-      <button
+      {/* <button
         className="p-3 w-[180px] bg-blue-500 border-none rounded-lg text-white my-6 hover:bg-blue-400 transition-all duration-300"
         type="submit"
       >
         Generate Resume
-      </button>
+      </button> */}
     </form>
   );
 };
