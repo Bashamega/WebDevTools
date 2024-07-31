@@ -1,11 +1,4 @@
-
-export default function SnippetBox({
-  setSnippet,
-  snippet,
-  isDarkMode,
-  from,
-}) {
-
+export default function SnippetBox({ setSnippet, snippet, isDarkMode, from }) {
   return (
     <textarea
       onChange={(e) => setSnippet(e.target.value)}

@@ -13,7 +13,6 @@ import GradientRotation from "./components/GradientRotation";
 import GradientFullScreen from "./components/GradientFullScreen";
 import Footer from "@/app/components/Footer";
 
-
 const gradientTypes = [
   { id: 1, name: "Linear", value: "linear-gradient" },
   { id: 2, name: "Radial", value: "radial-gradient" },
