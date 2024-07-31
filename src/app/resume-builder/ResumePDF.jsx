@@ -6,6 +6,7 @@ import {
   Document,
   StyleSheet,
   PDFDownloadLink,
+  Image,
 } from "@react-pdf/renderer";
 
 // Define styles
@@ -56,6 +57,17 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginBottom: 5,
     fontWeight: "bold",
+  },
+  link: {
+    fontSize: 12,
+    color: "blue",
+    textDecoration: "underline",
+  },
+  photo: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 20,
   },
 });
 
