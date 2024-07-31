@@ -77,11 +77,6 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
     setFormData({ ...formData, skills: [...formData.skills, ""] });
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   onSubmit(formData);
-  // };
-
   return (
     <form className="w-full">
       <div className="w-full my-6">
