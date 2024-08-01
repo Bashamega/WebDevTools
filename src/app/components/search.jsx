@@ -2,6 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import toolList from "@/db/tools.json";
 import Link from "next/link";
+
+const CACHE_KEY = "searchResultsCache";
+
 export default function Search({ isDarkMode }) {
   const [searchValue, setSearchValue] = useState(""); // State to store the value of search input
   const [searchResults, setSearchResults] = useState([]); // State to store the filtered search results
@@ -31,11 +34,22 @@ export default function Search({ isDarkMode }) {
   }, []);
 
   useEffect(() => {
+    // Check if search results are cached and update state
+    const cachedResults = localStorage.getItem(CACHE_KEY);
+    if (cachedResults) {
+      setSearchResults(JSON.parse(cachedResults));
+    }
+  }, []);
+
+  useEffect(() => {
     const filteredData = toolList.filter(
-      (item) => item.name.toLowerCase().includes(searchValue.toLowerCase()), // Filter the JSON data based on the search value
+      (item) => item.name.toLowerCase().includes(searchValue.toLowerCase()) // Filter the JSON data based on the search value
     );
     setSearchResults(filteredData); // Update the filtered search results
     setShowDropdown(searchValue !== "" && filteredData.length > 0); // Show the dropdown if search value is not empty and there are filtered results
+    
+    // Cache the filtered results
+    localStorage.setItem(CACHE_KEY, JSON.stringify(filteredData));
   }, [searchValue]);
 
   const handleInputChange = (event) => {
@@ -57,13 +71,12 @@ export default function Search({ isDarkMode }) {
         <FaSearch
           className={`mr-2 ${isDarkMode ? "text-gray-400" : "text-gray-800"}`}
         />
-
         <input
           value={searchValue}
           onChange={handleInputChange}
           type="search"
           id="search"
-          className={`grow border outline-none border-none ${isDarkMode ? "bg-gray-700 text-white" : "bg-white text-gray-900"} text-sm block w-full p-1.5 px-2   dark:placeholder-gray-400`}
+          className={`grow border outline-none border-none ${isDarkMode ? "bg-gray-700 text-white" : "bg-white text-gray-900"} text-sm block w-full p-1.5 px-2 dark:placeholder-gray-400`}
           placeholder="Search"
           required
         />

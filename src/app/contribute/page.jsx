@@ -10,15 +10,35 @@ export default function ContributePage() {
   const [contributors, setContributors] = useState([]);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  // Function to fetch data with caching
   const fetchData = async () => {
-    try {
-      const response = await fetch(
-        "https://api.github.com/repos/bashamega/webdevtools/contributors",
-      );
-      const data = await response.json();
-      setContributors(data);
-    } catch (error) {
-      console.error("Error fetching contributors:", error);
+    const cacheKey = "github_contributors";
+    const cacheExpiration = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+    // Retrieve cached data
+    const cachedData = localStorage.getItem(cacheKey);
+    const cacheTimestamp = localStorage.getItem(`${cacheKey}_timestamp`);
+
+    const now = new Date().getTime();
+
+    if (cachedData && cacheTimestamp && now - cacheTimestamp < cacheExpiration) {
+      // Use cached data if available and not expired
+      setContributors(JSON.parse(cachedData));
+    } else {
+      // Fetch new data and update cache
+      try {
+        const response = await fetch(
+          "https://api.github.com/repos/bashamega/webdevtools/contributors"
+        );
+        const data = await response.json();
+        setContributors(data);
+
+        // Store data and timestamp in local storage
+        localStorage.setItem(cacheKey, JSON.stringify(data));
+        localStorage.setItem(`${cacheKey}_timestamp`, now.toString());
+      } catch (error) {
+        console.error("Error fetching contributors:", error);
+      }
     }
   };
 
