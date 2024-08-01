@@ -15,5 +15,8 @@ export async function GET(req) {
   }
 
   const paginatedPosts = posts.slice(startIndex, startIndex + postsPerPage);
-  return NextResponse.json(paginatedPosts, { status: 200 });
+  
+  const response = NextResponse.json(paginatedPosts, { status: 200 });
+  response.headers.set("Cache-Control", "public, max-age=3600"); // Cache for 1 hour
+  return response;
 }

@@ -5,39 +5,64 @@ import Link from "next/link";
 import Image from "next/image";
 import BasicModal from "./modal";
 import { InsertLink, LinkOff } from "@mui/icons-material";
-// import InsertLinkIcon from '@mui/icons-material/InsertLink';
 
 export default function GhFinder() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selected, setSelected] = useState(1);
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   const [selectedLabels, setSelectedLabels] = useState([]);
   const [filteredIssue, setFilteredIssue] = useState([]);
 
   // New states
   const [searchQuery, setSearchQuery] = useState("");
   const [isAssigned, setIsAssigned] = useState(false);
-  const [maxResults, setMaxResults] = useState(10); //   TODO FEATURE => Add Pages
+  const [maxResults, setMaxResults] = useState(10); // TODO FEATURE => Add Pages
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
 
+  const cacheKey = selected === 1 ? "webdevtools-issues" : `github-issues-${maxResults}`;
+  const cacheExpirationKey = `${cacheKey}-timestamp`;
+  const cacheExpirationTime = 1000 * 60 * 30; // Cache expiration time (e.g., 30 minutes)
+
+  const fetchData = async (url) => {
+    const cachedData = localStorage.getItem(cacheKey);
+    const cacheTimestamp = localStorage.getItem(cacheExpirationKey);
+    const now = new Date().getTime();
+
+    if (cachedData && cacheTimestamp && (now - cacheTimestamp) < cacheExpirationTime) {
+      return JSON.parse(cachedData);
+    } else {
+      try {
+        const response = await fetch(url);
+        const result = await response.json();
+        localStorage.setItem(cacheKey, JSON.stringify(result));
+        localStorage.setItem(cacheExpirationKey, now.toString());
+        return result;
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        return [];
+      }
+    }
+  };
+
   useEffect(() => {
-    setData([]);
     const url =
       selected === 1
         ? "https://api.github.com/repos/bashamega/webdevtools/issues"
         : `https://api.github.com/search/issues?q=state:open+is:issue&per_page=${maxResults}&page=1`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((d) =>
-        selected === 1
-          ? setData(d.filter((item) => !item.node_id.includes("PR_")))
-          : setData(d.items),
-      )
-      .catch((error) => console.error("Error fetching data:", error));
-  }, [selected]);
+
+    const fetchDataAndSet = async () => {
+      const result = await fetchData(url);
+      const filteredData = selected === 1
+        ? result.filter((item) => !item.node_id.includes("PR_"))
+        : result.items;
+      setData(filteredData);
+    };
+
+    fetchDataAndSet();
+  }, [selected, maxResults]);
 
   // Filter issues by label
   const issuesByLabel = () => {
@@ -55,14 +80,12 @@ export default function GhFinder() {
     issuesByLabel();
   }, [selectedLabels]);
 
-  //  Filter function for search, assign and fork
-  // useEffect(() => {
+  // Filter function for search, assign and fork
   const filteredData = data?.filter((issue) => {
     const matchesSearch = issue.title
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
     const matchesAssignment = isAssigned ? issue.assignees.length > 0 : true;
-    // console.log({ matchesAssignment, matchesSearch });
     return matchesSearch && matchesAssignment;
   });
 
@@ -85,7 +108,6 @@ export default function GhFinder() {
     return linkedPRs.map((pr) => pr.source.issue.pull_request.html_url);
   };
 
-  //TODO add if statement
   // New useEffect to add PRs linked to issues
   useEffect(() => {
     const fetchPRsInfo = async () => {
@@ -98,10 +120,7 @@ export default function GhFinder() {
       setData(issuesWithPRsInfo);
     };
 
-    //&&
-
-    // also add (!data?.linkedPRs)
-    if (data?.length > 0 && !data?.linkedPRs?.length) {
+    if (data?.length > 0 && !data.some(issue => issue.linkedPRs)) {
       fetchPRsInfo();
     }
   }, [data]);
@@ -221,126 +240,39 @@ export default function GhFinder() {
                   "https://github.com",
                 )}
               >
-                {item.repository_url.replace(
-                  "https://api.github.com/repos/",
-                  "",
-                )}
+                {item.repository_url.replace("https://api.github.com/repos/", "")}
               </Link>
-
-              <br />
-              <div className="flex flex-wrap mt-2 items-center sm:w-2/3 gap-1 max-h-[50px] overflow-auto w-full">
-                {item.labels && item.labels.length > 0 ? (
-                  item.labels.map((label) => {
-                    const isDark = isDarkColor(label.color);
-                    const textColor = isDark ? "text-white" : "text-gray-800";
-
-                    return (
-                      <p
-                        key={label.id}
-                        className={`bg-gray-300 text-center ${textColor} px-2 py-1 rounded mr-2 mb-2 cursor-pointer truncate w-[calc(30%)]`}
-                        style={{ backgroundColor: `#${label.color}` }}
-                      >
-                        {label.name}
-                      </p>
-                    );
-                  })
-                ) : (
-                  <p className="text-white">No labels</p>
-                )}
-              </div>
-              <div className="mt-2">
-                {item.linkedPRs && item.linkedPRs.length > 0 ? (
-                  <>
-                    <p className="text-green-500">
-                      {" "}
-                      <InsertLink /> Linked PRs:
-                    </p>
-                    <ul className="list-disc ml-5 text-blue-500">
-                      {item.linkedPRs.map((prUrl, index) => (
-                        <li key={index}>
-                          <Link
-                            href={prUrl}
-                            className="text-blue-500 hover:underline"
-                          >
-                            {prUrl}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                ) : (
-                  <p className="text-red-800">
-                    <LinkOff /> No linked PRs
-                  </p>
-                )}
-              </div>
-              <div className="flex items-center">
-                <p className="text-white">Created by:</p>
-                <Link
-                  href={item.user.html_url}
-                  className="flex items-center text-white ml-5"
-                >
-                  <Image
-                    src={item.user.avatar_url}
-                    className="rounded-full w-6 h-6 mr-2"
-                    alt="User Avatar"
-                    width={0}
-                    height={0}
-                  />
-                  <p className="text-white">{item.user.login}</p>
-                </Link>
-              </div>
-              <div className="text-white w-full">
-                <p>Reactions: </p>
-                <div className="flex flex-wrap gap-2">
-                  <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
-                    👍 <p className="ml-1">{item.reactions["+1"]}</p>
-                  </div>
-                  <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
-                    👎 <p className="ml-1">{item.reactions["-1"]}</p>
-                  </div>
-                  <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
-                    😄 <p className="ml-1">{item.reactions.laugh}</p>
-                  </div>
-                  <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
-                    🎉 <p className="ml-1">{item.reactions.hooray}</p>
-                  </div>
-                  <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
-                    😕 <p className="ml-1">{item.reactions.confused}</p>
-                  </div>
-                  <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
-                    ❤️ <p className="ml-1">{item.reactions.heart}</p>
-                  </div>
-                  <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
-                    🚀 <p className="ml-1">{item.reactions.rocket}</p>
-                  </div>
-                  <div className="flex items-center bg-[#292e36] p-1 rounded-lg">
-                    👀 <p className="ml-1">{item.reactions.eyes}</p>
-                  </div>
-                </div>
+              <div
+                className={
+                  "flex flex-wrap items-center mt-1 " +
+                  (isDarkMode ? "text-gray-300" : "text-gray-600")
+                }
+              >
+                {item.labels?.map((label) => (
+                  <span
+                    key={label.id}
+                    className="inline-block px-2 py-1 mr-2 text-xs font-semibold text-white bg-green-500 rounded-full"
+                    style={{
+                      backgroundColor: `#${label.color}`,
+                      color: isDarkColor(`#${label.color}`) ? 'white' : 'black',
+                    }}
+                  >
+                    {label.name}
+                  </span>
+                ))}
               </div>
             </div>
-            <div className="w-1/3 p-5">
-              <div className="text-white flex overflow-hidden items-center justify-between">
-                <p>Assignees: </p>
-                {item.assignees.length > 0 ? (
-                  <div className="flex -space-x-4">
-                    {item.assignees.map((assignee, key) => (
-                      <Link href={assignee.html_url} key={key}>
-                        <Image
-                          alt={assignee.login}
-                          src={assignee.avatar_url}
-                          className=" rounded-full w-5 h-5 border border-white"
-                          width={0}
-                          height={0}
-                        />
-                      </Link>
-                    ))}
-                  </div>
-                ) : (
-                  <p>0</p>
-                )}
-              </div>
+            <div className="w-1/3 flex flex-col items-center justify-center">
+              <div className="text-sm mt-3">{item.comments} Comments</div>
+              {item.linkedPRs?.length > 0 && (
+                <div className="mt-2">
+                  {item.linkedPRs.map((prUrl, index) => (
+                    <a key={index} href={prUrl} className="text-blue-500 hover:underline">
+                      PR #{index + 1}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         ))}
