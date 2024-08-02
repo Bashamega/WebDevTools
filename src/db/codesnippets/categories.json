@@ -1,0 +1,106 @@
+{
+  "languages": [
+    {
+      "name": "JavaScript",
+      "icon": "https://example.com/javascript-icon.png",
+      "description": "JavaScript is a versatile, high-level programming language primarily used for web development.",
+      "librariesFrameworks": [
+        "React",
+        "Angular",
+        "Vue.js",
+        "Node.js",
+        "Express"
+      ]
+    },
+    {
+      "name": "Python",
+      "icon": "https://example.com/python-icon.png",
+      "description": "Python is a high-level, interpreted programming language known for its readability and versatility.",
+      "librariesFrameworks": [
+        "Django",
+        "Flask",
+        "Pandas",
+        "NumPy",
+        "TensorFlow"
+      ]
+    },
+    {
+      "name": "Java",
+      "icon": "https://example.com/java-icon.png",
+      "description": "Java is a high-level, class-based programming language designed for portability and cross-platform compatibility.",
+      "librariesFrameworks": ["Spring", "Hibernate", "Maven", "JUnit", "Struts"]
+    },
+    {
+      "name": "C#",
+      "icon": "https://example.com/csharp-icon.png",
+      "description": "C# is a modern, object-oriented programming language developed by Microsoft, widely used for developing Windows applications.",
+      "librariesFrameworks": [
+        "ASP.NET",
+        "Entity Framework",
+        "Xamarin",
+        "Unity",
+        "NUnit"
+      ]
+    },
+    {
+      "name": "Ruby",
+      "icon": "https://example.com/ruby-icon.png",
+      "description": "Ruby is a dynamic, open-source programming language with a focus on simplicity and productivity.",
+      "librariesFrameworks": [
+        "Ruby on Rails",
+        "Sinatra",
+        "RSpec",
+        "Capybara",
+        "Puma"
+      ]
+    },
+    {
+      "name": "PHP",
+      "icon": "https://example.com/php-icon.png",
+      "description": "PHP is a widely-used open-source scripting language that is especially suited for web development and can be embedded into HTML.",
+      "librariesFrameworks": [
+        "Laravel",
+        "Symfony",
+        "CodeIgniter",
+        "Zend Framework",
+        "Phalcon"
+      ]
+    },
+    {
+      "name": "TypeScript",
+      "icon": "https://example.com/typescript-icon.png",
+      "description": "TypeScript is a strongly typed, open-source programming language that builds on JavaScript, giving you better tooling at any scale.",
+      "librariesFrameworks": ["Angular", "NestJS", "TypeORM", "RxJS", "ts-node"]
+    },
+    {
+      "name": "Swift",
+      "icon": "https://example.com/swift-icon.png",
+      "description": "Swift is a powerful and intuitive programming language for iOS, iPadOS, macOS, watchOS, and tvOS.",
+      "librariesFrameworks": [
+        "SwiftUI",
+        "Combine",
+        "Vapor",
+        "Kitura",
+        "RxSwift"
+      ]
+    },
+    {
+      "name": "Go",
+      "icon": "https://example.com/go-icon.png",
+      "description": "Go is an open-source programming language designed for simplicity, reliability, and efficiency.",
+      "librariesFrameworks": ["Gin", "Echo", "Beego", "Buffalo", "Gorm"]
+    },
+    {
+      "name": "Kotlin",
+      "icon": "https://example.com/kotlin-icon.png",
+      "description": "Kotlin is a modern, statically typed programming language that boosts productivity and is fully interoperable with Java.",
+      "librariesFrameworks": [
+        "Spring",
+        "Ktor",
+        "Exposed",
+        "Koin",
+        "Jetpack Compose"
+      ]
+    }
+  ]
+}
