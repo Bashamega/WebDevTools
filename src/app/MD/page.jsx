@@ -16,17 +16,51 @@ export default function MarkdownEditor() {
   const [toggle, setToggle] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const textareaRef = useRef(null);
+  const iframeRef = useRef(null);
+
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
-    try {
-      if (storedTheme !== null && JSON.parse(storedTheme) !== isDarkMode) {
+    if (storedTheme) {
+      const parsedTheme = JSON.parse(storedTheme);
+      if (parsedTheme !== isDarkMode) {
         toggleTheme();
       }
-    } catch {
-      console.log("Failed to read localstorage");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Use a ref to store the previous markdown to avoid unnecessary updates
+  const previousMarkdownRef = useRef(markdown);
+
+  useEffect(() => {
+    if (iframeRef.current && markdown !== previousMarkdownRef.current) {
+      const iframeDoc = iframeRef.current.contentDocument;
+      if (iframeDoc) {
+        iframeDoc.open();
+        iframeDoc.write(`
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
+              <style>
+                body {
+                  margin: 0;
+                  padding: 16px;
+                  background-color: ${isDarkMode ? "#1a202c" : "white"};
+                  color: ${isDarkMode ? "white" : "black"};
+                }
+              </style>
+            </head>
+            <body class="markdown-body">
+              ${snarkdown(markdown)}
+            </body>
+          </html>
+        `);
+        iframeDoc.close();
+      }
+      previousMarkdownRef.current = markdown;
+    }
+  }, [markdown, isDarkMode]);
+
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -51,37 +85,25 @@ export default function MarkdownEditor() {
   };
 
   const markdownButtons = [
-    // Headers
     { label: "H1", data: "# " },
     { label: "H2", data: "## " },
     { label: "H3", data: "### " },
-    // Text Formatting
     { label: "Bold", data: "**bold text**" },
     { label: "Italic", data: "*italic text*" },
     { label: "Strikethrough", data: "~~strikethrough text~~" },
-    // Lists
     { label: "Bullet List", data: "- " },
     { label: "Numbered List", data: "1. " },
-    // Links and Images
     { label: "Link", data: "[link text](https://example.com)" },
     { label: "Image", data: "![alt text](image-url)" },
-    // Quotes
     { label: "Block Quote", data: "> " },
-    // Code Blocks
     { label: "Inline Code", data: "`inline code`" },
     { label: "Code Block", data: "```\ncode block\n```" },
-    // Horizontal Rule
     { label: "Horizontal Rule", data: "\n---\n" },
-    // Add more buttons and their corresponding data strings here
   ];
 
-  // const searchToggle = () => {
-  //   setToggle(!toggle);
-  // };
   function searchToggle() {
     setToggle(!toggle);
   }
-  console.log(toggle);
 
   const toggleTheme = () => {
     const newTheme = !isDarkMode;
@@ -122,23 +144,15 @@ export default function MarkdownEditor() {
           </div>
 
           <button onClick={searchToggle} className="lg:hidden">
-            <SearchIcon
-              className={`${isDarkMode ? "text-gray-400" : "text-gray-800"}`}
-              onClick={searchToggle}
-            />
+            <SearchIcon className={`${isDarkMode ? "text-gray-400" : "text-gray-800"}`} />
           </button>
           <div
             className={`absolute w-full h-[69px] flex items-center ${isDarkMode ? "bg-gray-800" : "bg-blue-500"} ${
-              toggle
-                ? "left-0 duration-300 ease-in"
-                : "left-[100%] duration-300 ease-in"
+              toggle ? "left-0 duration-300 ease-in" : "left-[100%] duration-300 ease-in"
             } `}
           >
             <div className="flex flex-1 items-center justify-center relative">
-              <ArrowBackIcon
-                className="mr-4 absolute left-2 cursor-pointer"
-                onClick={searchToggle}
-              />
+              <ArrowBackIcon className="mr-4 absolute left-2 cursor-pointer" onClick={searchToggle} />
               <Search />
             </div>
           </div>
@@ -181,14 +195,13 @@ export default function MarkdownEditor() {
             ref={textareaRef}
           />
         </section>
-        <section className=" w-[96%] md:w-1/2 h-full ml-2 mr-2 mt-6 md:mt-0 ">
+        <section className="w-[96%] md:w-1/2 h-full ml-2 mr-2 mt-6 md:mt-0 ">
           <h1>Output</h1>
           <iframe
+            ref={iframeRef}
             className={`w-full h-full ${isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"}`}
             title="Parsed Markdown"
-            srcDoc={`<!DOCTYPE html><html><head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css"><style>body { margin: 0; padding: 16px; background-color: ${isDarkMode ? "#1a202c" : "white"}; color: ${isDarkMode ? "white" : "black"}; }</style></head><body class="markdown-body">${snarkdown(
-              markdown,
-            )}</body></html>`}
+            style={{ border: 'none' }}  // Ensure no border styling affects the iframe's appearance
           />
         </section>
       </section>

@@ -4,6 +4,8 @@ import Button from "@mui/material/Button";
 import DownloadIcon from "@mui/icons-material/Download";
 import CircularProgress from "@mui/material/CircularProgress";
 
+const cache = new Map(); // In-memory cache
+
 export default function CodeEditor() {
   const { imageData, fileName } = useImage(); // Get file name from context
   const [svgData, setSvgData] = useState(null);
@@ -17,6 +19,13 @@ export default function CodeEditor() {
   }, [imageData]);
 
   const convertToInlineSVG = async (imageData) => {
+    // Check cache first
+    if (cache.has(imageData)) {
+      setSvgData(cache.get(imageData));
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await fetch(imageData);
       const blob = await response.blob();
@@ -29,6 +38,7 @@ export default function CodeEditor() {
             <image href="data:image/png;base64,${base64}" x="0" y="0" width="100%"  height="300px" />
           </svg>
         `;
+        cache.set(imageData, svgContent); // Cache the result
         setSvgData(svgContent);
         setLoading(false);
       };

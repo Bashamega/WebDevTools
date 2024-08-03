@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import InputRange from "@/app/components/Input/InputRange";
 import Footer from "@/app/components/Footer";
 import Swal from "sweetalert2";
@@ -24,9 +24,7 @@ const Page = () => {
 
   const handleCopyCSSClick = () => {
     navigator.clipboard
-      .writeText(
-        `box-shadow: ${shadow.hOffset}px ${shadow.vOffset}px ${shadow.blur}px ${shadow.spread}px ${shadow.color} ${shadow.inset ? "inset" : ""};`,
-      )
+      .writeText(cssShadowStyle)
       .then(() => {
         Swal.fire({
           title: "Operation is complete!",
@@ -39,11 +37,10 @@ const Page = () => {
         console.error("Failed to copy text: ", err);
       });
   };
+
   const handleCopyTailwindClick = () => {
     navigator.clipboard
-      .writeText(
-        `shadow-[${shadow.inset ? "inset_" : ""}${shadow.hOffset}px_${shadow.vOffset}px_${shadow.blur}px_${shadow.spread}px_${shadow.color}]`,
-      )
+      .writeText(tailwindShadowStyle)
       .then(() => {
         Swal.fire({
           title: "Operation is complete!",
@@ -57,6 +54,17 @@ const Page = () => {
       });
   };
 
+  // Memoize shadow styles to avoid recomputation on every render
+  const cssShadowStyle = useMemo(() => 
+    `box-shadow: ${shadow.hOffset}px ${shadow.vOffset}px ${shadow.blur}px ${shadow.spread}px ${shadow.color} ${shadow.inset ? "inset" : ""};`, 
+    [shadow]
+  );
+
+  const tailwindShadowStyle = useMemo(() => 
+    `shadow-[${shadow.inset ? "inset_" : ""}${shadow.hOffset}px_${shadow.vOffset}px_${shadow.blur}px_${shadow.spread}px_${shadow.color}]`, 
+    [shadow]
+  );
+
   return (
     <div
       className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"}`}
@@ -66,7 +74,7 @@ const Page = () => {
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
       />
-      <main className=" h-[100vh] max-w-6xl m-auto min-w-80">
+      <main className="h-[100vh] max-w-6xl m-auto min-w-80">
         <div className="flex flex-col gap-3 mt-10 items-center">
           <h1 className="text-5xl font-extrabold text-center">
             Box Shadow Generator
@@ -143,10 +151,10 @@ const Page = () => {
             </div>
             <div>
               <h3 className="my-2 py-4 px-3 bg-gray-700 rounded-lg text-white">
-                {`box-shadow: ${shadow.hOffset}px ${shadow.vOffset}px ${shadow.blur}px ${shadow.spread}px ${shadow.color} ${shadow.inset ? "inset" : ""};`}
+                {cssShadowStyle}
               </h3>
               <h3 className="my-2 py-4 px-3 bg-gray-700 rounded-lg text-white">
-                {`shadow-[${shadow.inset ? "inset_" : ""}${shadow.hOffset}px_${shadow.vOffset}px_${shadow.blur}px_${shadow.spread}px_${shadow.color}]`}
+                {tailwindShadowStyle}
               </h3>
               <div className="w-full relative py-2">
                 <button
