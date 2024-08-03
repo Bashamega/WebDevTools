@@ -1,7 +1,7 @@
 "use client";
-import data from "./sample.json";
+// import data from "./sample.json";
 
-const Preview = ({ isDarkMode }) => {
+const Preview = ({ isDarkMode, data }) => {
   const {
     name,
     email,
@@ -31,8 +31,8 @@ const Preview = ({ isDarkMode }) => {
     },
 
     profileImage: {
-      width: 100,
-      height: 100,
+      width: "40%",
+      height: "40%",
       borderRadius: "50%",
     },
 
@@ -124,12 +124,12 @@ const Preview = ({ isDarkMode }) => {
               style={styles.header}
               className="flex items-start justify-between w-full"
             >
-              <div className="w-full rounded-full flex items-start justify-start">
+              <div className="flex items-center justify-start w-full">
                 {image && (
                   <img src={image} alt="Profile" style={styles.profileImage} />
                 )}
               </div>
-              <div className="w-full flex flex-col justify-end items-end">
+              <div className="w-full flex flex-col justify-end items-end py-4">
                 <p style={styles.name}>{name}</p>
                 <p style={styles.profession}>{data.workExperience[0].title}</p>
                 <p className="text-lg" style={styles.contactInfo}>
@@ -170,32 +170,33 @@ const Preview = ({ isDarkMode }) => {
             <div>
               <h3 style={styles.sectionTitle}>Work Experience</h3>
               {workExperience.map((job, index) => (
-                <div key={index} style={styles.section}>
-                  <h4 style={styles.jobTitle}>{job.title}</h4>
-                  <p style={styles.company}>{job.company}</p>
-                  <p style={styles.description}>{job.description}</p>
+                <div key={index} style={styles.view}>
+                  <h4 style={styles.title}>{job.title}</h4>
+                  <p style={styles.subtitle}>{job.company}</p>
+                  <p style={styles.desc}>{job.description}</p>
                 </div>
               ))}
             </div>
             <div>
               <h3 style={styles.sectionTitle}>Education</h3>
               {education.map((edu, index) => (
-                <div key={index} style={styles.section}>
-                  <h4 style={styles.degree}>{edu.degree}</h4>
-                  <p style={styles.institution}>{edu.institution}</p>
-                  <p style={styles.description}>{edu.description}</p>
+                <div key={index} style={styles.view}>
+                  <h4 style={styles.title}>{edu.degree}</h4>
+                  <p style={styles.subtitle}>{edu.institution}</p>
+                  <p style={styles.desc}>{edu.description}</p>
                 </div>
               ))}
             </div>
-            <div>
+
+            <div style={styles.view}>
               <h3 style={styles.sectionTitle}>Skills</h3>
-              <ul style={styles.skillsList}>
+              <div style={styles.skills}>
                 {skills.map((skill, index) => (
-                  <li key={index} style={styles.skill}>
-                    - {skill}
-                  </li>
+                  <span key={index} style={styles.skill}>
+                    {skill}
+                  </span>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         );
