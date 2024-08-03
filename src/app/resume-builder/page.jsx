@@ -11,7 +11,7 @@ const Home = () => {
     name: "",
     email: "",
     phone: "",
-    photo: "",
+    image: "",
     workExperience: [{ title: "", company: "", description: "" }],
     education: [{ degree: "", institution: "", description: "" }],
     skills: [""],

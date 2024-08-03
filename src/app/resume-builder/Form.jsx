@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AddBox } from "@mui/icons-material";
 
 const ResumeForm = ({ onFormChange, isDarkMode }) => {
   const [formData, setFormData] = useState({
@@ -81,7 +82,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
     <form className="w-full">
       <div className="w-full my-6">
         <h3 className="text-xl font-semibold">Personal Info</h3>
-        <div className="flex flex-row items-start justify-between my-6">
+        <div className="flex flex-row items-start justify-between my-4">
           <input
             className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
             type="text"
@@ -152,7 +153,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
         {formData.workExperience.map((job, index) => (
           <div
             key={index}
-            className="flex flex-row items-start justify-between"
+            className="flex flex-row items-start justify-between my-4"
           >
             <input
               className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
@@ -188,16 +189,24 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             />
           </div>
         ))}
-        <button type="button" onClick={addWorkExperience}>
-          Add Another Experience
+        <button
+          className=" text-blue-500 flex items-center justify-evenly gap-1"
+          type="button"
+          onClick={addWorkExperience}
+        >
+          <span className="text-xl">
+            <AddBox />
+          </span>
+          Another Experience
         </button>
       </div>
       <div className="w-full mt-6">
         <h3 className="text-xl font-semibold">Education</h3>
+
         {formData.education.map((edu, index) => (
           <div
             key={index}
-            className="flex flex-row items-start justify-between"
+            className="flex flex-row items-start justify-between my-4"
           >
             <input
               className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
@@ -233,15 +242,22 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             />
           </div>
         ))}
-        <button type="button" onClick={addEducation}>
-          Add Another Education
+        <button
+          className=" text-blue-500 flex items-center justify-evenly gap-1"
+          type="button"
+          onClick={addEducation}
+        >
+          <span className="text-xl">
+            <AddBox />
+          </span>
+          Another Education
         </button>
       </div>
 
       <div className="w-full mt-6">
         <h3 className="text-xl font-semibold">Skills</h3>
         {formData.skills.map((skill, index) => (
-          <div key={index}>
+          <div key={index} className="my-4">
             <input
               className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
               type="text"
@@ -253,32 +269,33 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             />
           </div>
         ))}
-        <button type="button" onClick={addSkill}>
-          Add Another Skills
+        <button
+          className=" text-blue-500 flex items-center justify-evenly gap-1 my-6"
+          type="button"
+          onClick={addSkill}
+        >
+          <span className="text-xl">
+            <AddBox />
+          </span>
+          Another Skills
         </button>
       </div>
 
-      <div className="w-full mt-6">
-        <h3 className="text-xl font-semibold">Template</h3>
+      <div className="w-full mt-6 flex items-center justify-start gap-2">
+        <h3 className="text-xl font-semibold">Choose Template</h3>
 
         <div className="flex flex-row items-start justify-between">
           <select
             name="template"
             value={formData.template}
             onChange={handleChange}
+            className="py-2 px-3 bg-blue-500 text-white cursor-pointer rounded-md"
           >
             <option value="template1">Template 1</option>
             <option value="template2">Template 2</option>
           </select>
         </div>
       </div>
-
-      {/* <button
-        className="p-3 w-[180px] bg-blue-500 border-none rounded-lg text-white my-6 hover:bg-blue-400 transition-all duration-300"
-        type="submit"
-      >
-        Generate Resume
-      </button> */}
     </form>
   );
 };
