@@ -211,7 +211,7 @@ const ResumePDF = ({ data }) => {
           <Page size="A4" style={styles1.page}>
             <View style={styles1.header}>
               <View>
-                {image && <Image style={styles.profileImage} src={image} />}
+                {image && <Image style={styles1.profileImage} src={image} />}
               </View>
               <View style={styles1.profileDetails}>
                 <Text style={styles1.name}>{name}</Text>
@@ -326,32 +326,40 @@ const ResumePDF = ({ data }) => {
                 <View style={styles2.experience}>
                   <Text style={styles2.sectionTitle}>Experience</Text>
 
-                  <View>
-                    <Text style={styles2.text}>
-                      <Text style={{ fontWeight: "bold" }}>Niggro</Text> at
-                      Suxxi
-                    </Text>
-                    <Text style={styles2.text}>
-                      Disco Diwane aaahahahahahaahahhahahahahaha
-                    </Text>
-                  </View>
+                  {workExperience.map((workExp, index) => (
+                    <View key={index}>
+                      <Text style={styles2.text}>
+                        <Text style={{ fontWeight: "bold" }}>
+                          {workExp.title}
+                        </Text>{" "}
+                        at
+                        {workExp.company}
+                      </Text>
+                      <Text style={styles2.text}>{workExp.description}</Text>
+                    </View>
+                  ))}
                 </View>
+
                 <View style={styles2.education}>
                   <Text style={styles2.sectionTitle}>Education</Text>
-
-                  <View>
-                    <Text style={styles2.text}>
-                      <Text style={{ fontWeight: "bold" }}>fufffkkkff</Text>{" "}
-                      from Nunnunu
-                    </Text>
-                    <Text style={styles2.text}>lalalalalalaaaa</Text>
-                  </View>
+                  {education.map((edu, index) => (
+                    <View key={index}>
+                      <Text style={styles2.text}>
+                        <Text style={{ fontWeight: "bold" }}>{edu.degree}</Text>{" "}
+                        {edu.institution}
+                      </Text>
+                      <Text style={styles2.text}>{edu.description}</Text>
+                    </View>
+                  ))}
                 </View>
 
                 <Text style={styles2.sectionTitle}>Skills</Text>
-                <View style={styles2.skills}>
-                  <Text style={styles2.skill}>Hukku, chukku, labddb</Text>
-                </View>
+
+                {skills.map((skill, index) => (
+                  <View key={index} style={styles2.skills}>
+                    <Text style={styles2.skill}>{skill}</Text>
+                  </View>
+                ))}
               </View>
             </View>
           </Page>

@@ -112,6 +112,86 @@ const Preview = ({ isDarkMode, data }) => {
     },
   };
 
+  const styles2 = {
+    page: {
+      backgroundColor: "#ffffff",
+      padding: 20,
+      fontFamily: "Helvetica",
+      color: "#333",
+    },
+    sidebar: {
+      width: "30%",
+      padding: 20,
+      backgroundColor: "#f7f7f7",
+      borderRight: "2px solid #3498db",
+      textAlign: "center",
+    },
+    main: {
+      width: "70%",
+      padding: 20,
+    },
+    profileImage: {
+      width: 100,
+      height: 100,
+      borderRadius: "50%",
+      border: "2px solid #3498db",
+      marginBottom: 20,
+      alignSelf: "center",
+    },
+    name: {
+      fontSize: 24,
+      color: "#2c3e50",
+      marginBottom: 5,
+      fontWeight: "bold",
+    },
+    profession: {
+      fontSize: 18,
+      color: "#7f8c8d",
+      marginBottom: 10,
+    },
+    contactInfo: {
+      fontSize: 12,
+      color: "#7f8c8d",
+      marginBottom: 10,
+    },
+    sectionTitle: {
+      fontSize: 18,
+      color: "#2c3e50",
+      marginBottom: 10,
+      borderBottom: "2px solid #3498db",
+      paddingBottom: 3,
+    },
+    text: {
+      fontSize: 12,
+      color: "#333",
+      marginBottom: 5,
+    },
+    link: {
+      color: "#3498db",
+    },
+    skills: {
+      display: "flex",
+      flexDirection: "row",
+      flexWrap: "wrap",
+      justifyContent: "start",
+    },
+    skill: {
+      backgroundColor: "#3498db",
+      color: "#fff",
+      padding: 5,
+      borderRadius: 5,
+      marginRight: 5,
+      marginBottom: 5,
+      fontSize: 10,
+    },
+    experience: {
+      marginBottom: 20,
+    },
+    education: {
+      marginBottom: 20,
+    },
+  };
+
   const renderTemplate = () => {
     switch (template) {
       case "template1":
@@ -202,44 +282,94 @@ const Preview = ({ isDarkMode, data }) => {
         );
       case "template2":
         return (
-          <div style={styles.template2}>
-            {image && <img src={image} alt="Profile" style={styles.image} />}
-            <h1 style={styles.name}>{name}</h1>
-            <p style={styles.contact}>{email}</p>
-            <p style={styles.contact}>{phone}</p>
-            <h3 style={styles.sectionTitle}>Work Experience</h3>
-            {workExperience.map((job, index) => (
-              <div key={index} style={styles.section}>
-                <h4 style={styles.jobTitle}>{job.title}</h4>
-                <p style={styles.company}>{job.company}</p>
-                <p style={styles.description}>{job.description}</p>
+          <main style={styles2.page} className="my-6">
+            {data && (
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <div style={styles2.sidebar}>
+                    {image && <img style={styles2.profileImage} src={image} />}
+
+                    {name && <p style={styles2.name}>{name}</p>}
+
+                    {workExperience && (
+                      <p style={styles2.profession}>
+                        {workExperience[0].title}
+                      </p>
+                    )}
+                    {email && <p style={styles2.contactInfo}>Email: {email}</p>}
+
+                    {phone && <p style={styles2.contactInfo}>Phone: {phone}</p>}
+                    {links.linkedIn && (
+                      <p style={styles2.contactInfo}>
+                        LinkedIn:{" "}
+                        <a src={links.linkedIn} style={styles2.link}>
+                          {links.linkedIn}
+                        </a>
+                      </p>
+                    )}
+                    {links.github && (
+                      <p style={styles2.contactInfo}>
+                        GitHub:{" "}
+                        <a src={links.github} style={styles2.link}>
+                          {" "}
+                          {links.github}
+                        </a>
+                      </p>
+                    )}
+
+                    {links.website && (
+                      <p style={styles2.contactInfo}>
+                        Website:{" "}
+                        <a src={links.website} style={styles2.link}>
+                          {" "}
+                          {links.website}
+                        </a>
+                      </p>
+                    )}
+                  </div>
+                  <div style={styles2.main}>
+                    <div style={styles2.experience}>
+                      <p style={styles2.sectionTitle}>Experience</p>
+
+                      {workExperience.map((workExp, index) => (
+                        <div key={index}>
+                          <div style={styles2.text}>
+                            <div style={{ fontWeight: "bold" }}>
+                              {workExp.title}
+                            </div>{" "}
+                            at
+                            {workExp.company}
+                          </div>
+                          <p style={styles2.text}>{workExp.description}</p>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div style={styles2.education}>
+                      <p style={styles2.sectionTitle}>Education</p>
+                      {education.map((edu, index) => (
+                        <div key={index}>
+                          <p style={styles2.text}>
+                            <p style={{ fontWeight: "bold" }}>{edu.degree}</p>{" "}
+                            {edu.institution}
+                          </p>
+                          <p style={styles2.text}>{edu.description}</p>
+                        </div>
+                      ))}
+                    </div>
+
+                    <p style={styles2.sectionTitle}>Skills</p>
+
+                    {skills.map((skill, index) => (
+                      <div key={index} style={styles2.skills}>
+                        <p style={styles2.skill}>{skill}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            ))}
-            <h3 style={styles.sectionTitle}>Education</h3>
-            {education.map((edu, index) => (
-              <div key={index} style={styles.section}>
-                <h4 style={styles.degree}>{edu.degree}</h4>
-                <p style={styles.institution}>{edu.institution}</p>
-                <p style={styles.description}>{edu.description}</p>
-              </div>
-            ))}
-            <h3 style={styles.sectionTitle}>Skills</h3>
-            <ul style={styles.skillsList}>
-              {skills.map((skill, index) => (
-                <li key={index} style={styles.skill}>
-                  {skill}
-                </li>
-              ))}
-            </ul>
-            <h3 style={styles.sectionTitle}>Links</h3>
-            {links.linkedin && (
-              <p style={styles.link}>LinkedIn: {links.linkedin}</p>
             )}
-            {links.website && (
-              <p style={styles.link}>Website: {links.website}</p>
-            )}
-            {links.github && <p style={styles.link}>GitHub: {links.github}</p>}
-          </div>
+          </main>
         );
       default:
         return null;
