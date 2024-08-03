@@ -1,5 +1,4 @@
 "use client";
-// import data from "./sample.json";
 
 const Preview = ({ isDarkMode, data }) => {
   const {
@@ -16,7 +15,7 @@ const Preview = ({ isDarkMode, data }) => {
 
   const styles = {
     template1: {
-      backgroundColor: "#f2f2f2",
+      // backgroundColor: "#f2f2f2",
       padding: 50,
       fontFamily: "Helvetica",
       color: "#333",
@@ -114,7 +113,7 @@ const Preview = ({ isDarkMode, data }) => {
 
   const styles2 = {
     page: {
-      backgroundColor: "#ffffff",
+      // backgroundColor: "#ffffff",
       padding: 20,
       fontFamily: "Helvetica",
       color: "#333",
@@ -198,7 +197,7 @@ const Preview = ({ isDarkMode, data }) => {
         return (
           <div
             style={styles.template1}
-            className={`w-full ${isDarkMode ? " bg-slate-800" : "bg-slate-50"} my-6`}
+            className={`w-full ${isDarkMode ? "bg-slate-100" : "bg-slate-50"} my-6`}
           >
             <div
               style={styles.header}
@@ -282,7 +281,10 @@ const Preview = ({ isDarkMode, data }) => {
         );
       case "template2":
         return (
-          <main style={styles2.page} className="my-6">
+          <main
+            style={styles2.page}
+            className={`${isDarkMode ? "bg-slate-100" : "bg-slate-50"} my-6`}
+          >
             {data && (
               <div style={{ display: "flex", flexDirection: "row" }}>
                 <div style={{ display: "flex", flexDirection: "row" }}>

@@ -1,5 +1,4 @@
 import React from "react";
-// import data from "./sample.json";
 
 import {
   Page,
@@ -12,7 +11,7 @@ import {
   Link,
 } from "@react-pdf/renderer";
 
-// Define styles
+// Some styles
 const styles1 = StyleSheet.create({
   page: {
     backgroundColor: "#f2f2f2",
