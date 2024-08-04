@@ -16,7 +16,9 @@ export default function Endpoints() {
 
   return (
     <main
-      className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} min-h-screen pb-10`}
+      className={`${
+        isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"
+      } min-h-screen pb-10`}
     >
       <NavBar
         toggleTheme={toggleTheme}

@@ -23,18 +23,24 @@ export function NavBar({ title, isDarkMode, toggleTheme }) {
   };
   return (
     <nav
-      className={`py-4 px-6 flex items-center justify-between ${isDarkMode ? "bg-gray-800" : "bg-blue-500"}`}
+      className={`py-4 px-6 flex items-center justify-between ${
+        isDarkMode ? "bg-gray-800" : "bg-blue-500"
+      }`}
     >
       <span className="flex items-end">
         <Link href="/">
           <h1
-            className={`text-lg md:text-2xl font-bold hover:underline mr-2 ${isDarkMode ? "text-white" : "text-black"}`}
+            className={`text-lg md:text-2xl font-bold hover:underline mr-2 ${
+              isDarkMode ? "text-white" : "text-black"
+            }`}
           >
             Web Dev Tools
           </h1>
         </Link>
         <p
-          className={`text-sm pb-1 ${isDarkMode ? "text-gray-300" : "text-gray-800"}`}
+          className={`text-sm pb-1 ${
+            isDarkMode ? "text-gray-300" : "text-gray-800"
+          }`}
         >
           / {title}
         </p>
