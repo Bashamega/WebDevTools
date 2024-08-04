@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { AddBox } from "@mui/icons-material";
 

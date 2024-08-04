@@ -1,10 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import Preview from "./Preview";
 import { NavBar } from "../components/navbar";
-import ResumePDFDownloadLink from "./ResumePDF";
-import ResumeForm from "./Form";
+// import ResumePDFDownloadLink from "./ResumePDF";
+import ResumeForm from "./ResumeForm";
+
+const ResumePDFDownloadLink = dynamic(() => import("./ResumePDF"), {
+  ssr: false,
+});
 
 const Home = () => {
   const [resumeData, setResumeData] = useState({
