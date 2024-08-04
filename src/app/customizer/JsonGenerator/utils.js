@@ -61,7 +61,7 @@ export default class Categories {
   getOptionFunc(category, optionName) {
     const categoryData = this.#categories[category];
     const option = categoryData?.find(
-      (specificOption) => specificOption.name === optionName,
+      (specificOption) => specificOption.name === optionName
     );
 
     return option?.func;

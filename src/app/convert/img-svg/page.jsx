@@ -22,7 +22,13 @@ export default function HTML_JSX() {
   return (
     <ImageProvider>
       <main
+<<<<<<< HEAD
         className={`h-screen overflow-auto ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}
+=======
+        className={`h-screen overflow-auto ${
+          isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
+        }`}
+>>>>>>> 009b05aba1769ca147ea0382b31e1c8d335df9e7
       >
         <NavBar
           title={"Image to svg"}

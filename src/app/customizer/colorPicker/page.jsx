@@ -14,7 +14,10 @@ export default function ColorPicker() {
   const toRGB = (hex) => {
     let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result
-      ? `(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)})`
+      ? `(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(
+          result[3],
+          16
+        )})`
       : null;
   };
 
@@ -44,7 +47,9 @@ export default function ColorPicker() {
 
   return (
     <main
-      className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-w-80`}
+      className={`${
+        isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"
+      } min-w-80`}
     >
       <NavBar
         title={"Color Picker"}

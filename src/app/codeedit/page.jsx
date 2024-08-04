@@ -10,7 +10,9 @@ export default function CodeEditor() {
   };
   return (
     <div
-      className={`max-h-[100vh] overflow-hidden ${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-black text-gray-800"}`}
+      className={`max-h-[100vh] overflow-hidden ${
+        isDarkMode ? "bg-gray-900 text-gray-400" : "bg-black text-gray-800"
+      }`}
     >
       <NavBar
         title={"Code Editor"}
