@@ -100,12 +100,11 @@
     "name": "scss to css",
     "link": "/convert/css-scss",
     "ctg": "other"
-   },
+  },
   {
     "id": 18,
     "name": "Image To SVG",
     "link": "/convert/img-svg",
     "ctg": "other"
-   }
-
+  }
 ]

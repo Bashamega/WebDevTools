@@ -22,7 +22,8 @@ export default function GhFinder() {
     setIsDarkMode(!isDarkMode);
   };
 
-  const cacheKey = selected === 1 ? "webdevtools-issues" : `github-issues-${maxResults}`;
+  const cacheKey =
+    selected === 1 ? "webdevtools-issues" : `github-issues-${maxResults}`;
   const cacheExpirationKey = `${cacheKey}-timestamp`;
   const cacheExpirationTime = 1000 * 60 * 30; // Cache expiration time (e.g., 30 minutes)
 
@@ -31,7 +32,11 @@ export default function GhFinder() {
     const cacheTimestamp = localStorage.getItem(cacheExpirationKey);
     const now = new Date().getTime();
 
-    if (cachedData && cacheTimestamp && (now - cacheTimestamp) < cacheExpirationTime) {
+    if (
+      cachedData &&
+      cacheTimestamp &&
+      now - cacheTimestamp < cacheExpirationTime
+    ) {
       return JSON.parse(cachedData);
     } else {
       try {
@@ -55,9 +60,10 @@ export default function GhFinder() {
 
     const fetchDataAndSet = async () => {
       const result = await fetchData(url);
-      const filteredData = selected === 1
-        ? result.filter((item) => !item.node_id.includes("PR_"))
-        : result.items;
+      const filteredData =
+        selected === 1
+          ? result.filter((item) => !item.node_id.includes("PR_"))
+          : result.items;
       setData(filteredData);
     };
 
@@ -103,7 +109,7 @@ export default function GhFinder() {
     const events = await response.json();
     const linkedPRs = events?.filter(
       (event) =>
-        event.event === "cross-referenced" && event.source?.issue?.pull_request,
+        event.event === "cross-referenced" && event.source?.issue?.pull_request
     );
     return linkedPRs.map((pr) => pr.source.issue.pull_request.html_url);
   };
@@ -115,12 +121,12 @@ export default function GhFinder() {
         data.map(async (issue) => {
           const linkedPRs = await fetchPRsForIssue(issue);
           return { ...issue, linkedPRs };
-        }),
+        })
       );
       setData(issuesWithPRsInfo);
     };
 
-    if (data?.length > 0 && !data.some(issue => issue.linkedPRs)) {
+    if (data?.length > 0 && !data.some((issue) => issue.linkedPRs)) {
       fetchPRsInfo();
     }
   }, [data]);
@@ -237,10 +243,13 @@ export default function GhFinder() {
                 className="text-slate-300"
                 href={item.repository_url.replace(
                   "https://api.github.com/repos",
-                  "https://github.com",
+                  "https://github.com"
                 )}
               >
-                {item.repository_url.replace("https://api.github.com/repos/", "")}
+                {item.repository_url.replace(
+                  "https://api.github.com/repos/",
+                  ""
+                )}
               </Link>
               <div
                 className={
@@ -254,7 +263,7 @@ export default function GhFinder() {
                     className="inline-block px-2 py-1 mr-2 text-xs font-semibold text-white bg-green-500 rounded-full"
                     style={{
                       backgroundColor: `#${label.color}`,
-                      color: isDarkColor(`#${label.color}`) ? 'white' : 'black',
+                      color: isDarkColor(`#${label.color}`) ? "white" : "black",
                     }}
                   >
                     {label.name}
@@ -267,7 +276,11 @@ export default function GhFinder() {
               {item.linkedPRs?.length > 0 && (
                 <div className="mt-2">
                   {item.linkedPRs.map((prUrl, index) => (
-                    <a key={index} href={prUrl} className="text-blue-500 hover:underline">
+                    <a
+                      key={index}
+                      href={prUrl}
+                      className="text-blue-500 hover:underline"
+                    >
                       PR #{index + 1}
                     </a>
                   ))}

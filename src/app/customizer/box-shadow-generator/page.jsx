@@ -55,19 +55,27 @@ const Page = () => {
   };
 
   // Memoize shadow styles to avoid recomputation on every render
-  const cssShadowStyle = useMemo(() => 
-    `box-shadow: ${shadow.hOffset}px ${shadow.vOffset}px ${shadow.blur}px ${shadow.spread}px ${shadow.color} ${shadow.inset ? "inset" : ""};`, 
+  const cssShadowStyle = useMemo(
+    () =>
+      `box-shadow: ${shadow.hOffset}px ${shadow.vOffset}px ${shadow.blur}px ${
+        shadow.spread
+      }px ${shadow.color} ${shadow.inset ? "inset" : ""};`,
     [shadow]
   );
 
-  const tailwindShadowStyle = useMemo(() => 
-    `shadow-[${shadow.inset ? "inset_" : ""}${shadow.hOffset}px_${shadow.vOffset}px_${shadow.blur}px_${shadow.spread}px_${shadow.color}]`, 
+  const tailwindShadowStyle = useMemo(
+    () =>
+      `shadow-[${shadow.inset ? "inset_" : ""}${shadow.hOffset}px_${
+        shadow.vOffset
+      }px_${shadow.blur}px_${shadow.spread}px_${shadow.color}]`,
     [shadow]
   );
 
   return (
     <div
-      className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"}`}
+      className={`${
+        isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"
+      }`}
     >
       <NavBar
         title={"Box Shadow generator"}
@@ -85,17 +93,25 @@ const Page = () => {
         </div>
         <div className="flex justify-between flex-col md:flex-row mb-[100px] mt-[50px] w-full md:h-[382px] max-w-6xl mx-auto gap-8 px-4">
           <div
-            className={`justify-center items-center rounded-2xl flex w-full h-full overflow-hidden py-[41px] ${isDarkMode ? "bg-gray-700" : "bg-white"}`}
+            className={`justify-center items-center rounded-2xl flex w-full h-full overflow-hidden py-[41px] ${
+              isDarkMode ? "bg-gray-700" : "bg-white"
+            }`}
           >
             <div
               className="h-[300px] w-[300px] border"
               style={{
-                boxShadow: `${shadow.hOffset}px ${shadow.vOffset}px ${shadow.blur}px ${shadow.spread}px ${shadow.color} ${shadow.inset ? "inset" : ""}`,
+                boxShadow: `${shadow.hOffset}px ${shadow.vOffset}px ${
+                  shadow.blur
+                }px ${shadow.spread}px ${shadow.color} ${
+                  shadow.inset ? "inset" : ""
+                }`,
               }}
             ></div>
           </div>
           <div
-            className={`w-full h-max flex flex-col justify-between rounded-2xl px-14 py-8 ${isDarkMode ? "bg-slate-800" : "bg-slate-500"} h-full`}
+            className={`w-full h-max flex flex-col justify-between rounded-2xl px-14 py-8 ${
+              isDarkMode ? "bg-slate-800" : "bg-slate-500"
+            } h-full`}
           >
             <div className="grid grid-cols-2 gap-2">
               <InputRange

@@ -41,7 +41,9 @@ export default function ButtonCustomizer() {
 
   return (
     <main
-      className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-w-80 `}
+      className={`${
+        isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"
+      } min-w-80 `}
     >
       <NavBar
         title={"Lorem Ipsum Generator"}
@@ -53,7 +55,11 @@ export default function ButtonCustomizer() {
           Lorem Ipsum Generator
         </h1>
         <div
-          className={`${isDarkMode ? "bg-gray-700 text-gray-400" : "bg-slate-100 text-gray-500"} p-10 w-full max-w-5xl rounded-lg shadow-md overflow-y-scroll max-h-96`}
+          className={`${
+            isDarkMode
+              ? "bg-gray-700 text-gray-400"
+              : "bg-slate-100 text-gray-500"
+          } p-10 w-full max-w-5xl rounded-lg shadow-md overflow-y-scroll max-h-96`}
         >
           <label htmlFor="lorem">Number of paragraphs:</label>
           <br />

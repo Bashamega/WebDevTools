@@ -218,7 +218,9 @@ export default function ButtonCustomizer() {
 
   return (
     <div
-      className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-500"} min-h-screen`}
+      className={`${
+        isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-500"
+      } min-h-screen`}
     >
       <NavBar
         title={"Button Customizer"}
@@ -252,7 +254,11 @@ export default function ButtonCustomizer() {
 
         <TabPanel className="bg-slate-700">
           <div
-            className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
+            className={`${
+              isDarkMode
+                ? "bg-gray-900 text-gray-400"
+                : "bg-gray-100 text-gray-800"
+            } md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
           >
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
@@ -270,7 +276,11 @@ export default function ButtonCustomizer() {
 
         <TabPanel>
           <div
-            className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
+            className={`${
+              isDarkMode
+                ? "bg-gray-900 text-gray-400"
+                : "bg-gray-100 text-gray-800"
+            } md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
           >
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
@@ -288,7 +298,11 @@ export default function ButtonCustomizer() {
 
         <TabPanel>
           <div
-            className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
+            className={`${
+              isDarkMode
+                ? "bg-gray-900 text-gray-400"
+                : "bg-gray-100 text-gray-800"
+            } md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
           >
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
@@ -309,7 +323,11 @@ export default function ButtonCustomizer() {
 
         <TabPanel>
           <div
-            className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
+            className={`${
+              isDarkMode
+                ? "bg-gray-900 text-gray-400"
+                : "bg-gray-100 text-gray-800"
+            } md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
           >
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
@@ -341,7 +359,11 @@ export default function ButtonCustomizer() {
 
         <TabPanel>
           <div
-            className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
+            className={`${
+              isDarkMode
+                ? "bg-gray-900 text-gray-400"
+                : "bg-gray-100 text-gray-800"
+            } md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
           >
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
@@ -367,7 +389,11 @@ export default function ButtonCustomizer() {
 
         <TabPanel>
           <div
-            className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
+            className={`${
+              isDarkMode
+                ? "bg-gray-900 text-gray-400"
+                : "bg-gray-100 text-gray-800"
+            } md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
           >
             <h2 className="text-2xl font-bold mb-4 font-mono">
               Button Customizer
@@ -445,7 +471,11 @@ export default function ButtonCustomizer() {
       )}
 
       <button
-        className={` border  m-3 flex items-center gap-2 right-1 fixed py-2 px-3 rounded hover:bg-gray-950 duration-150 hover:text-gray-50 hover:border-gray-50 font-semibold ${isDarkMode ? " text-white border-white " : " border-gray-950 text-gray-950"}`}
+        className={` border  m-3 flex items-center gap-2 right-1 fixed py-2 px-3 rounded hover:bg-gray-950 duration-150 hover:text-gray-50 hover:border-gray-50 font-semibold ${
+          isDarkMode
+            ? " text-white border-white "
+            : " border-gray-950 text-gray-950"
+        }`}
         onClick={handleCodeButtonClick}
       >
         <FaCode /> Show Code
