@@ -8,47 +8,35 @@ import { InsertLink, LinkOff } from "@mui/icons-material";
 
 export default function GhFinder() {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [selected, setSelected] = useState(1);
+  const [selected, setSelected] = useState(2);
   const [data, setData] = useState([]);
   const [selectedLabels, setSelectedLabels] = useState([]);
   const [filteredIssue, setFilteredIssue] = useState([]);
-
+    
   // New states
   const [searchQuery, setSearchQuery] = useState("");
   const [isAssigned, setIsAssigned] = useState(false);
   const [maxResults, setMaxResults] = useState(10); // TODO FEATURE => Add Pages
-
+  
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
-
+  
   const cacheKey =
-    selected === 1 ? "webdevtools-issues" : `github-issues-${maxResults}`;
+  selected === 1 ? "webdevtools-issues" : `github-issues-${maxResults}`;
   const cacheExpirationKey = `${cacheKey}-timestamp`;
   const cacheExpirationTime = 1000 * 60 * 30; // Cache expiration time (e.g., 30 minutes)
+  console.log("DATA IS HERE")
+  console.log(data)
 
   const fetchData = async (url) => {
-    const cachedData = localStorage.getItem(cacheKey);
-    const cacheTimestamp = localStorage.getItem(cacheExpirationKey);
-    const now = new Date().getTime();
-
-    if (
-      cachedData &&
-      cacheTimestamp &&
-      now - cacheTimestamp < cacheExpirationTime
-    ) {
-      return JSON.parse(cachedData);
-    } else {
-      try {
-        const response = await fetch(url);
-        const result = await response.json();
-        localStorage.setItem(cacheKey, JSON.stringify(result));
-        localStorage.setItem(cacheExpirationKey, now.toString());
-        return result;
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        return [];
-      }
+    try {
+      console.log("FETCHING REQUESTS")
+      const response = await fetch(url);
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
   };
 
@@ -57,7 +45,7 @@ export default function GhFinder() {
       selected === 1
         ? "https://api.github.com/repos/bashamega/webdevtools/issues"
         : `https://api.github.com/search/issues?q=state:open+is:issue&per_page=${maxResults}&page=1`;
-
+    
     const fetchDataAndSet = async () => {
       const result = await fetchData(url);
       const filteredData =
@@ -67,8 +55,29 @@ export default function GhFinder() {
       setData(filteredData);
     };
 
-    fetchDataAndSet();
+    const cachedData = localStorage.getItem(cacheKey);
+    const cacheTimestamp = localStorage.getItem(cacheExpirationKey);
+    const now = new Date().getTime();
+
+    if (
+      !(cachedData &&
+      cacheTimestamp &&
+      now - cacheTimestamp < cacheExpirationTime)
+    ) {
+      fetchDataAndSet();
+    } else {
+      setData(JSON.parse(cachedData));
+    }
+
   }, [selected, maxResults]);
+
+  useEffect(() => {
+    if (data.length > 0) {
+      const now = new Date().getTime();
+      localStorage.setItem(cacheKey, JSON.stringify(data));
+      localStorage.setItem(cacheExpirationKey, now.toString());
+    }
+  }), [data];
 
   // Filter issues by label
   const issuesByLabel = () => {
@@ -98,38 +107,44 @@ export default function GhFinder() {
   const issuesToDisplay =
     filteredIssue.length > 0 ? filteredIssue : filteredData;
 
-  // New function to fetch PRs linked to issues
-  const fetchPRsForIssue = async (issue) => {
-    const timelineUrl = `${issue.url}/timeline`;
-    const response = await fetch(timelineUrl, {
-      headers: {
-        Accept: "application/vnd.github.mockingbird-preview+json",
-      },
-    });
-    const events = await response.json();
-    const linkedPRs = events?.filter(
-      (event) =>
-        event.event === "cross-referenced" && event.source?.issue?.pull_request
-    );
-    return linkedPRs.map((pr) => pr.source.issue.pull_request.html_url);
-  };
+  // // New function to fetch PRs linked to issues
+  // const fetchPRsForIssue = async (issue) => {
+  //   const timelineUrl = `${issue.url}/timeline`;
+  //   try {
+  //     const response = await fetch(timelineUrl, {
+  //       headers: {
+  //         Accept: "application/vnd.github.mockingbird-preview+json",
+  //       },
+  //     });
+  //     const events = await response.json();
+  //     const linkedPRs = events?.filter(
+  //       (event) =>
+  //         event.event === "cross-referenced" && event.source?.issue?.pull_request
+  //     );
+  //     return linkedPRs.map((pr) => pr.source.issue.pull_request.html_url);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //     return []
+  //   }
+  // };
 
-  // New useEffect to add PRs linked to issues
-  useEffect(() => {
-    const fetchPRsInfo = async () => {
-      const issuesWithPRsInfo = await Promise.all(
-        data.map(async (issue) => {
-          const linkedPRs = await fetchPRsForIssue(issue);
-          return { ...issue, linkedPRs };
-        })
-      );
-      setData(issuesWithPRsInfo);
-    };
+  // // New useEffect to add PRs linked to issues
+  // useEffect(() => {
+  //   const fetchPRsInfo = async () => {
+  //     const issuesWithPRsInfo = await Promise.all(
+  //       data.map(async (issue) => {
+  //         const linkedPRs = await fetchPRsForIssue(issue);
+  //         return { ...issue, linkedPRs: linkedPRs };
+  //       })
+  //     );
+  //     setData(issuesWithPRsInfo);
+  //   };
 
-    if (data?.length > 0 && !data.some((issue) => issue.linkedPRs)) {
-      fetchPRsInfo();
-    }
-  }, [data]);
+  //   if (data?.length > 0 && data.some((issue) => issue.linkedPRs === undefined)) {
+  //     console.log("FETCHING FOR WHAT???")
+  //     fetchPRsInfo();
+  //   }
+  // }, [data]);
 
   function isDarkColor(color) {
     // Convert the color to RGB
