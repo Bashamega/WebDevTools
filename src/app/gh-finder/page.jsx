@@ -17,12 +17,14 @@ export default function GhFinder() {
   // New states
   const [searchQuery, setSearchQuery] = useState("");
   const [isAssigned, setIsAssigned] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(10);
   const [maxResults, setMaxResults] = useState(10); // TODO FEATURE => Add Pages
   
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
+
+  const resultPerPageChoices = [5, 10, 25, 50]
   
   const cacheKey =
   selected === 1 ? "webdevtools-issues" : `github-issues-100`;
@@ -198,12 +200,12 @@ export default function GhFinder() {
         toggleTheme={toggleTheme}
       />
       <div className="mt-10 flex w-screen justify-center">
-        <header className="lg:w-2/3">
-          <h1 className="relative z-10 font-sans text-lg font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600">
+        <header>
+          <h1 className="relative z-10 font-sans text-5xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600">
             Github Issue Finder
           </h1>
 
-          <div className="flex justify-between w-full lg:w-1/2 lg:mx-[25%] my-5 items-center">
+          <div className="flex flex-col md:flex-row justify-between w-full  lg:whitespace-nowrap my-5 items-center">
             <input
               type="text"
               className="p-2 rounded border border-gray-400"
@@ -211,7 +213,7 @@ export default function GhFinder() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <div className="flex items-center">
+            <div className="flex items-center mx-4 my-4">
               <input
                 type="checkbox"
                 id="isAssigned"
@@ -221,9 +223,19 @@ export default function GhFinder() {
               />
               <label htmlFor="isAssigned">Is assigned</label>
             </div>
+            <div>
+              <p>Results per page</p>
+              <div className="flex justify-between">
+                {resultPerPageChoices.map(num => (
+                  <button key={num}>
+                    <span className="underline mx-1">{num}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <div className="flex justify-between w-full lg:w-1/2 lg:mx-[25%] my-5 items-center">
+          <div className="flex justify-between w-full my-5 items-center">
             <button
               className={
                 "hover:bg-blue-800 transition-colors min-w-1/3 duration-100 p-5 rounded-full hover:text-white " +
