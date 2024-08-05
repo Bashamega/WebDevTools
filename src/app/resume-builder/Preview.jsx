@@ -200,7 +200,9 @@ const Preview = ({ isDarkMode, data }) => {
         return (
           <div
             style={styles.template1}
-            className={`w-full ${isDarkMode ? "bg-slate-100" : "bg-slate-50"} my-6`}
+            className={`w-full ${
+              isDarkMode ? "bg-slate-100" : "bg-slate-50"
+            } my-6`}
           >
             <div
               style={styles.header}

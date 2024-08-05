@@ -86,7 +86,11 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
         <h3 className="text-xl font-semibold">Personal Info</h3>
         <div className="flex flex-row items-start justify-between my-4">
           <input
-            className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+            className={` ${
+              isDarkMode
+                ? "bg-slate-800 text-slate-50 border-none"
+                : "bg-slate-50 text-slate-800 border-slate-500 border"
+            } w-[300px] py-2 px-2 outline-none  rounded-md`}
             type="text"
             name="name"
             placeholder="Name"
@@ -95,7 +99,11 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             required
           />
           <input
-            className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+            className={` ${
+              isDarkMode
+                ? "bg-slate-800 text-slate-50 border-none"
+                : "bg-slate-50 text-slate-800 border-slate-500 border"
+            } w-[300px] py-2 px-2 outline-none  rounded-md`}
             type="email"
             name="email"
             placeholder="Email"
@@ -104,7 +112,11 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             required
           />
           <input
-            className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+            className={` ${
+              isDarkMode
+                ? "bg-slate-800 text-slate-50 border-none"
+                : "bg-slate-50 text-slate-800 border-slate-500 border"
+            } w-[300px] py-2 px-2 outline-none  rounded-md`}
             type="tel"
             name="phone"
             placeholder="Phone"
@@ -114,7 +126,11 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
         </div>
         <div className="flex flex-row items-start justify-between my-6">
           <input
-            className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+            className={` ${
+              isDarkMode
+                ? "bg-slate-800 text-slate-50 border-none"
+                : "bg-slate-50 text-slate-800 border-slate-500 border"
+            } w-[300px] py-2 px-2 outline-none  rounded-md`}
             type="url"
             name="linkedIn"
             placeholder="Your LinkedIn"
@@ -122,7 +138,11 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             onChange={(e) => handleLinksChange(e)}
           />
           <input
-            className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+            className={` ${
+              isDarkMode
+                ? "bg-slate-800 text-slate-50 border-none"
+                : "bg-slate-50 text-slate-800 border-slate-500 border"
+            } w-[300px] py-2 px-2 outline-none  rounded-md`}
             type="url"
             name="website"
             placeholder="Your Personal Website"
@@ -130,7 +150,11 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             onChange={(e) => handleLinksChange(e)}
           />
           <input
-            className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+            className={` ${
+              isDarkMode
+                ? "bg-slate-800 text-slate-50 border-none"
+                : "bg-slate-50 text-slate-800 border-slate-500 border"
+            } w-[300px] py-2 px-2 outline-none  rounded-md`}
             type="url"
             name="github"
             placeholder="Your Github"
@@ -140,7 +164,11 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
         </div>
         <div className="w-full">
           <input
-            className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+            className={` ${
+              isDarkMode
+                ? "bg-slate-800 text-slate-50 border-none"
+                : "bg-slate-50 text-slate-800 border-slate-500 border"
+            } w-[300px] py-2 px-2 outline-none  rounded-md`}
             type="file"
             name="image"
             placeholder="Your Photo"
@@ -158,7 +186,11 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             className="flex flex-row items-start justify-between my-4"
           >
             <input
-              className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+              className={` ${
+                isDarkMode
+                  ? "bg-slate-800 text-slate-50 border-none"
+                  : "bg-slate-50 text-slate-800 border-slate-500 border"
+              } w-[300px] py-2 px-2 outline-none  rounded-md`}
               type="text"
               name="title"
               placeholder="Job Title"
@@ -169,7 +201,11 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
               required
             />
             <input
-              className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+              className={` ${
+                isDarkMode
+                  ? "bg-slate-800 text-slate-50 border-none"
+                  : "bg-slate-50 text-slate-800 border-slate-500 border"
+              } w-[300px] py-2 px-2 outline-none  rounded-md`}
               type="text"
               name="company"
               placeholder="Company"
@@ -180,7 +216,11 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
               required
             />
             <textarea
-              className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+              className={` ${
+                isDarkMode
+                  ? "bg-slate-800 text-slate-50 border-none"
+                  : "bg-slate-50 text-slate-800 border-slate-500 border"
+              } w-[300px] py-2 px-2 outline-none  rounded-md`}
               name="description"
               placeholder="Description"
               value={job.description}
@@ -211,7 +251,11 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             className="flex flex-row items-start justify-between my-4"
           >
             <input
-              className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+              className={` ${
+                isDarkMode
+                  ? "bg-slate-800 text-slate-50 border-none"
+                  : "bg-slate-50 text-slate-800 border-slate-500 border"
+              } w-[300px] py-2 px-2 outline-none  rounded-md`}
               type="text"
               name="degree"
               placeholder="Degree"
@@ -222,7 +266,11 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
               required
             />
             <input
-              className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+              className={` ${
+                isDarkMode
+                  ? "bg-slate-800 text-slate-50 border-none"
+                  : "bg-slate-50 text-slate-800 border-slate-500 border"
+              } w-[300px] py-2 px-2 outline-none  rounded-md`}
               type="text"
               name="institution"
               placeholder="Institution"
@@ -233,7 +281,11 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
               required
             />
             <textarea
-              className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+              className={` ${
+                isDarkMode
+                  ? "bg-slate-800 text-slate-50 border-none"
+                  : "bg-slate-50 text-slate-800 border-slate-500 border"
+              } w-[300px] py-2 px-2 outline-none  rounded-md`}
               name="description"
               placeholder="Description"
               value={edu.description}
@@ -261,7 +313,11 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
         {formData.skills.map((skill, index) => (
           <div key={index} className="my-4">
             <input
-              className={` ${isDarkMode ? "bg-slate-800 text-slate-50 border-none" : "bg-slate-50 text-slate-800 border-slate-500 border"} w-[300px] py-2 px-2 outline-none  rounded-md`}
+              className={` ${
+                isDarkMode
+                  ? "bg-slate-800 text-slate-50 border-none"
+                  : "bg-slate-50 text-slate-800 border-slate-500 border"
+              } w-[300px] py-2 px-2 outline-none  rounded-md`}
               type="text"
               name={`skill-${index}`}
               placeholder="Add Skills"
