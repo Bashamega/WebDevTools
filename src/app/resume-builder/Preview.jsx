@@ -288,7 +288,9 @@ const Preview = ({ isDarkMode, data }) => {
         return (
           <main
             style={styles2.page}
-            className={`${isDarkMode ? "bg-slate-100" : "bg-slate-50"} my-6 h-full`}
+            className={`${
+              isDarkMode ? "bg-slate-100" : "bg-slate-50"
+            } my-6 h-full`}
           >
             {data && (
               <div style={{ display: "flex", flexDirection: "row" }}>
