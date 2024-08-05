@@ -227,8 +227,8 @@ export default function GhFinder() {
               <p>Results per page</p>
               <div className="flex justify-between">
                 {resultPerPageChoices.map(num => (
-                  <button key={num}>
-                    <span className="underline mx-1">{num}</span>
+                  <button key={num} onClick={() => setMaxResults(num)}>
+                    <span className={`underline mx-1 ${num === maxResults && "text-cyan-600 font-bold"}`}>{num}</span>
                   </button>
                 ))}
               </div>
