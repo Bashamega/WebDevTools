@@ -1,6 +1,8 @@
 "use client";
 
-const Preview = ({ isDarkMode, data }) => {
+import data from "./sample.json";
+
+const Preview = ({ isDarkMode, data2 }) => {
   const {
     name,
     email,

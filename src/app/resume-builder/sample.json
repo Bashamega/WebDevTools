@@ -1,0 +1,30 @@
+{
+     "name": "Test Developer",
+     "email": "test@example.us",
+     "phone": "2222222222",
+     "image": "https://randomuser.me/api/portraits/women/50.jpg",
+     "workExperience": [
+       {
+         "title": "Software Developer Engineer",
+         "company": "Google",
+         "description": "I Worked At there for 6 months. From there i gained so much experience and there work culture was so nice. Now i can't write more description so here is a lorem ispum \"  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate quaerat facilis, odio magni doloribus molestiae laudantium rerum recusandae itaque consequuntur ab accusantium nobis.\""
+       }
+     ],
+     "education": [
+       {
+         "degree": "Legacy Frontend Developer ",
+         "institution": "FreeCodeCamp",
+         "description": "  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate quaerat facilis, odio magni doloribus molestiae laudantium rerum recusandae itaque consequuntur ab accusantium nobis.  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate quaerat facilis, odio magni doloribus molestiae laudantium rerum recusandae itaque consequuntur ab accusantium nobis."
+       }
+     ],
+     "skills": [
+       "HTML, CSS, Modelling, Acting",
+       "Acting, dancing, comedy"
+     ],
+     "links": {
+       "linkedIn": "https://linked.com",
+       "website": "https://website.com",
+       "github": "https://github.com"
+     },
+     "template": "template1"
+   }
