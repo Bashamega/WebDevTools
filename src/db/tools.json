@@ -107,5 +107,11 @@
     "link": "/convert/img-svg",
     "ctg": "other"
    }
-
+   ,
+   {
+     "id": 19,
+     "name": "Coding Snippets",
+     "link": "/cs",
+     "ctg": "other"
+    }
 ]
