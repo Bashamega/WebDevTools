@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { NavBar } from "../components/navbar";
 import Link from "next/link";
 import Image from "next/image";
@@ -105,7 +105,16 @@ export default function GhFinder() {
     };
 
     setFilteredIssues(issuesByLabel(issuesBySearch(data)));
+    setCurrentPage(1);
   }, [data, isAssigned, searchQuery, selectedLabels]);
+
+  const getIssuesByPage = useCallback(() => {
+    const startResult = (currentPage - 1) * maxResults + 1;
+    const endResult = Math.min(currentPage * maxResults, filteredIssues.length);
+    return filteredIssues.slice(startResult - 1, endResult);
+  }, [currentPage, filteredIssues, maxResults]);
+
+  const issuesByPage = getIssuesByPage();
 
   // // New function to fetch PRs linked to issues
   // const fetchPRsForIssue = async (issue) => {
@@ -249,7 +258,7 @@ export default function GhFinder() {
           </div>
           
           :
-          filteredIssues.map((item) => (
+          issuesByPage.map((item) => (
           <div
             key={item.id}
             className="bg-slate-500 rounded-lg mb-5 last:mb-0 pl-5 py-5 flex w-full"
