@@ -42,14 +42,46 @@ export default function GhFinder() {
     }
   };
 
-  console.log(data)
+  // New function to fetch PRs linked to issues
+  const fetchPRsForIssue = async (issue) => {
+    const timelineUrl = `${issue.url}/timeline`;
+    try {
+      const response = await fetch(timelineUrl, {
+        headers: {
+          Accept: "application/vnd.github.mockingbird-preview+json",
+        },
+      });
+      const events = await response.json();
+      const linkedPRs = events?.filter(
+        (event) =>
+          event.event === "cross-referenced" && event.source?.issue?.pull_request
+      );
+      return linkedPRs.map((pr) => pr.source.issue.pull_request.html_url);
+    } catch (error) {
+      console.log(error.message);
+      return []
+    }
+  };
+
+  const addPRsInfoToIssues = useCallback(async (issues) => {
+    const issuesWithPRsInfo = await Promise.all(
+      issues.map(async (issue) => {
+        const linkedPRs = await fetchPRsForIssue(issue);
+        return { ...issue, linkedPRs: linkedPRs };
+      })
+    );
+    return issuesWithPRsInfo;
+  }, []);
 
   // Fetch new data
   useEffect(() => {
+    const urlWebDevTools = "https://api.github.com/repos/bashamega/webdevtools/issues";
+    const urlGitHub = "https://api.github.com/search/issues?q=state:open+is:issue&per_page=100&page=1";
+
     const url =
       selected === 1
-        ? "https://api.github.com/repos/bashamega/webdevtools/issues"
-        : `https://api.github.com/search/issues?q=state:open+is:issue&per_page=100&page=1`;
+        ? urlWebDevTools
+        : urlGitHub;
     
     const updateData = (newData) => {
       const now = new Date().getTime();
@@ -61,10 +93,14 @@ export default function GhFinder() {
     
     const fetchDataAndSet = async () => {
       const result = await fetchData(url);
-      const filteredData =
+      let filteredData =
         selected === 1
           ? result.filter((item) => !item.node_id.includes("PR_"))
           : result.items;
+      
+      if (url === urlWebDevTools) {
+        filteredData = await addPRsInfoToIssues(filteredData);
+      }
       
       updateData(filteredData)
     };
@@ -83,7 +119,7 @@ export default function GhFinder() {
       setData(JSON.parse(cachedData));
     }
 
-  }, [selected, cacheKey, cacheExpirationKey, cacheExpirationTime]);
+  }, [selected, cacheKey, cacheExpirationKey, cacheExpirationTime, addPRsInfoToIssues]);
 
   // Filter issues by search keywords and assignment status
   useEffect(() => {
@@ -117,45 +153,6 @@ export default function GhFinder() {
   }, [currentPage, filteredIssues, maxResults]);
 
   const issuesByPage = getIssuesByPage();
-
-  // // New function to fetch PRs linked to issues
-  // const fetchPRsForIssue = async (issue) => {
-  //   const timelineUrl = `${issue.url}/timeline`;
-  //   try {
-  //     const response = await fetch(timelineUrl, {
-  //       headers: {
-  //         Accept: "application/vnd.github.mockingbird-preview+json",
-  //       },
-  //     });
-  //     const events = await response.json();
-  //     const linkedPRs = events?.filter(
-  //       (event) =>
-  //         event.event === "cross-referenced" && event.source?.issue?.pull_request
-  //     );
-  //     return linkedPRs.map((pr) => pr.source.issue.pull_request.html_url);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //     return []
-  //   }
-  // };
-
-  // // New useEffect to add PRs linked to issues
-  // useEffect(() => {
-  //   const fetchPRsInfo = async () => {
-  //     const issuesWithPRsInfo = await Promise.all(
-  //       data.map(async (issue) => {
-  //         const linkedPRs = await fetchPRsForIssue(issue);
-  //         return { ...issue, linkedPRs: linkedPRs };
-  //       })
-  //     );
-  //     setData(issuesWithPRsInfo);
-  //   };
-
-  //   if (data?.length > 0 && data.some((issue) => issue.linkedPRs === undefined)) {
-  //     console.log("FETCHING FOR WHAT???")
-  //     fetchPRsInfo();
-  //   }
-  // }, [data]);
 
   function isDarkColor(color) {
     // Convert the color to RGB
@@ -303,7 +300,7 @@ export default function GhFinder() {
                 {item.labels?.map((label) => (
                   <span
                     key={label.id}
-                    className="inline-block px-2 py-1 mr-2 text-xs font-semibold text-white bg-green-500 rounded-full"
+                    className="inline-block px-2 py-1 mx-2 my-1 text-xs font-semibold text-white bg-green-500 rounded-full"
                     style={{
                       backgroundColor: `#${label.color}`,
                       color: isDarkColor(`#${label.color}`) ? "white" : "black",

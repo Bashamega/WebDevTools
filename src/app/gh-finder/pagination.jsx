@@ -11,15 +11,13 @@ export default function Pagination ({ currentPage, setCurrentPage, resultsPerPag
 
     return (
         <nav className="flex justify-center mt-4">
-            <ul className="inline-flex -space-x-px">
+            <ul className="grid justify-center rounded-2xl grid-cols-10">
                 {pageNumbers.map(number => (
                     <li key={number}>
                         <button
                             onClick={() => setCurrentPage(number)}
                             className={`
-                                border-cyan-600 hover:border-cyan-500 border-2 border-collapse w-12 h-12
-                                ${number === 1 ? "rounded-l" : ""}
-                                ${number === totalPages ? "rounded-r" : ""}
+                                border-cyan-600 hover:border-cyan-500 border-2 w-12 h-12
                                 ${
                                 currentPage === number
                                     ? 'text-gray-800 bg-cyan-600 hover:bg-cyan-500'
