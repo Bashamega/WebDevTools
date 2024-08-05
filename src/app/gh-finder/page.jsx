@@ -27,14 +27,6 @@ export default function GhFinder() {
   const cacheExpirationKey = `${cacheKey}-timestamp`;
   const cacheExpirationTime = 1000 * 60 * 30; // Cache expiration time (e.g., 30 minutes)
 
-  const updateData = (newData) => {
-    const now = new Date().getTime();
-    localStorage.setItem(cacheKey, JSON.stringify(newData));
-    localStorage.setItem(cacheExpirationKey, now.toString());
-
-    setData(newData)
-  }
-
   const fetchData = async (url) => {
     try {
       console.log("FETCHING REQUESTS")
@@ -52,6 +44,14 @@ export default function GhFinder() {
       selected === 1
         ? "https://api.github.com/repos/bashamega/webdevtools/issues"
         : `https://api.github.com/search/issues?q=state:open+is:issue&per_page=${maxResults}&page=1`;
+    
+    const updateData = (newData) => {
+      const now = new Date().getTime();
+      localStorage.setItem(cacheKey, JSON.stringify(newData));
+      localStorage.setItem(cacheExpirationKey, now.toString());
+
+      setData(newData)
+    }
     
     const fetchDataAndSet = async () => {
       const result = await fetchData(url);
@@ -77,37 +77,31 @@ export default function GhFinder() {
       setData(JSON.parse(cachedData));
     }
 
-  }, [selected, maxResults]);
-
-  console.log(`Selected labels: ${selectedLabels}`)
+  }, [selected, maxResults, cacheKey, cacheExpirationKey, cacheExpirationTime]);
 
   // Filter issues by search keywords and assignment status
-  const issuesBySearch = (issues) => {
-    return issues.filter((issue) => {
-      const matchesSearch = issue.title
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase());
-      const matchesAssignment = isAssigned ? issue.assignees.length > 0 : true;
-      return matchesSearch && matchesAssignment;
-    })
-  }
-
-  // Filter issues by label
-  const issuesByLabel = (issues) => {
-    return issues.filter((issue) => {
-      return selectedLabels.every((selectedLabel) => {
-        return issue.labels.some((label) => label.name === selectedLabel);
-      });
-    });
-  };
-
-  const filterValues = [selected, searchQuery, ...selectedLabels];
-
-
   useEffect(() => {
-    const filteredIssues = issuesByLabel(issuesBySearch(data));
-    setFilteredIssues(filteredIssues);
-  }, [filterValues]);
+    const issuesBySearch = (issues) => {
+      return issues.filter((issue) => {
+        const matchesSearch = issue.title
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase());
+        const matchesAssignment = isAssigned ? issue.assignees.length > 0 : true;
+        return matchesSearch && matchesAssignment;
+      })
+    }
+
+    // Filter issues by label
+    const issuesByLabel = (issues) => {
+      return issues.filter((issue) => {
+        return selectedLabels.every((selectedLabel) => {
+          return issue.labels.some((label) => label.name === selectedLabel);
+        });
+      });
+    };
+
+    setFilteredIssues(issuesByLabel(issuesBySearch(data)));
+  }, [data, isAssigned, searchQuery, selectedLabels]);
 
   // // New function to fetch PRs linked to issues
   // const fetchPRsForIssue = async (issue) => {
