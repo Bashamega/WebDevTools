@@ -4,6 +4,7 @@ import { NavBar } from "../components/navbar";
 import Link from "next/link";
 import Image from "next/image";
 import BasicModal from "./modal";
+import Pagination from "./pagination";
 import { InsertLink, LinkOff } from "@mui/icons-material";
 
 export default function GhFinder() {
@@ -16,6 +17,7 @@ export default function GhFinder() {
   // New states
   const [searchQuery, setSearchQuery] = useState("");
   const [isAssigned, setIsAssigned] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
   const [maxResults, setMaxResults] = useState(10); // TODO FEATURE => Add Pages
   
   const toggleTheme = () => {
@@ -23,7 +25,7 @@ export default function GhFinder() {
   };
   
   const cacheKey =
-  selected === 1 ? "webdevtools-issues" : `github-issues-${maxResults}`;
+  selected === 1 ? "webdevtools-issues" : `github-issues-100`;
   const cacheExpirationKey = `${cacheKey}-timestamp`;
   const cacheExpirationTime = 1000 * 60 * 30; // Cache expiration time (e.g., 30 minutes)
 
@@ -38,12 +40,14 @@ export default function GhFinder() {
     }
   };
 
+  console.log(data)
+
   // Fetch new data
   useEffect(() => {
     const url =
       selected === 1
         ? "https://api.github.com/repos/bashamega/webdevtools/issues"
-        : `https://api.github.com/search/issues?q=state:open+is:issue&per_page=${maxResults}&page=1`;
+        : `https://api.github.com/search/issues?q=state:open+is:issue&per_page=100&page=1`;
     
     const updateData = (newData) => {
       const now = new Date().getTime();
@@ -77,7 +81,7 @@ export default function GhFinder() {
       setData(JSON.parse(cachedData));
     }
 
-  }, [selected, maxResults, cacheKey, cacheExpirationKey, cacheExpirationTime]);
+  }, [selected, cacheKey, cacheExpirationKey, cacheExpirationTime]);
 
   // Filter issues by search keywords and assignment status
   useEffect(() => {
@@ -308,6 +312,12 @@ export default function GhFinder() {
           </div>
         ))}
       </div>
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        resultsPerPage={maxResults}
+        totalResults={filteredIssues.length}
+      />
     </div>
   );
 }
