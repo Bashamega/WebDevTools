@@ -8,10 +8,10 @@ import { InsertLink, LinkOff } from "@mui/icons-material";
 
 export default function GhFinder() {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [selected, setSelected] = useState(2);
+  const [selected, setSelected] = useState(1);
   const [data, setData] = useState([]);
   const [selectedLabels, setSelectedLabels] = useState([]);
-  const [filteredIssue, setFilteredIssue] = useState([]);
+  const [filteredIssues, setFilteredIssues] = useState([]);
     
   // New states
   const [searchQuery, setSearchQuery] = useState("");
@@ -26,8 +26,14 @@ export default function GhFinder() {
   selected === 1 ? "webdevtools-issues" : `github-issues-${maxResults}`;
   const cacheExpirationKey = `${cacheKey}-timestamp`;
   const cacheExpirationTime = 1000 * 60 * 30; // Cache expiration time (e.g., 30 minutes)
-  console.log("DATA IS HERE")
-  console.log(data)
+
+  const updateData = (newData) => {
+    const now = new Date().getTime();
+    localStorage.setItem(cacheKey, JSON.stringify(newData));
+    localStorage.setItem(cacheExpirationKey, now.toString());
+
+    setData(newData)
+  }
 
   const fetchData = async (url) => {
     try {
@@ -40,6 +46,7 @@ export default function GhFinder() {
     }
   };
 
+  // Fetch new data
   useEffect(() => {
     const url =
       selected === 1
@@ -52,7 +59,8 @@ export default function GhFinder() {
         selected === 1
           ? result.filter((item) => !item.node_id.includes("PR_"))
           : result.items;
-      setData(filteredData);
+      
+      updateData(filteredData)
     };
 
     const cachedData = localStorage.getItem(cacheKey);
@@ -71,41 +79,35 @@ export default function GhFinder() {
 
   }, [selected, maxResults]);
 
-  useEffect(() => {
-    if (data.length > 0) {
-      const now = new Date().getTime();
-      localStorage.setItem(cacheKey, JSON.stringify(data));
-      localStorage.setItem(cacheExpirationKey, now.toString());
-    }
-  }), [data];
+  console.log(`Selected labels: ${selectedLabels}`)
+
+  // Filter issues by search keywords and assignment status
+  const issuesBySearch = (issues) => {
+    return issues.filter((issue) => {
+      const matchesSearch = issue.title
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
+      const matchesAssignment = isAssigned ? issue.assignees.length > 0 : true;
+      return matchesSearch && matchesAssignment;
+    })
+  }
 
   // Filter issues by label
-  const issuesByLabel = () => {
-    if (data?.length) {
-      const newFilterIssues = data.filter((issue) => {
-        return selectedLabels.every((selectedLabel) => {
-          return issue.labels.some((label) => label.name === selectedLabel);
-        });
+  const issuesByLabel = (issues) => {
+    return issues.filter((issue) => {
+      return selectedLabels.every((selectedLabel) => {
+        return issue.labels.some((label) => label.name === selectedLabel);
       });
-      setFilteredIssue(newFilterIssues);
-    }
+    });
   };
 
+  const filterValues = [selected, searchQuery, ...selectedLabels];
+
+
   useEffect(() => {
-    issuesByLabel();
-  }, [selectedLabels]);
-
-  // Filter function for search, assign and fork
-  const filteredData = data?.filter((issue) => {
-    const matchesSearch = issue.title
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
-    const matchesAssignment = isAssigned ? issue.assignees.length > 0 : true;
-    return matchesSearch && matchesAssignment;
-  });
-
-  const issuesToDisplay =
-    filteredIssue.length > 0 ? filteredIssue : filteredData;
+    const filteredIssues = issuesByLabel(issuesBySearch(data));
+    setFilteredIssues(filteredIssues);
+  }, [filterValues]);
 
   // // New function to fetch PRs linked to issues
   // const fetchPRsForIssue = async (issue) => {
@@ -160,7 +162,7 @@ export default function GhFinder() {
     return luminance < 0.5;
   }
 
-  if (!issuesToDisplay?.length) {
+  if (!data.length) {
     return (
       <div className="flex items-center justify-center h-screen">
         <div className="relative">
@@ -242,10 +244,17 @@ export default function GhFinder() {
         </header>
       </div>
       <div className="ml-[25%] w-1/2">
-        {issuesToDisplay.map((item) => (
+        {filteredIssues.length === 0
+          ?
+          <div className="bg-red-700 dark:bg-black rounded-lg pl-5 py-5 flex w-full">
+            <h3 className="text-white font-bold text-3xl">No issues satisfying the criteria</h3>
+          </div>
+          
+          :
+          filteredIssues.map((item) => (
           <div
             key={item.id}
-            className="bg-slate-500 rounded mb-5 pl-5 pb-5 flex w-full"
+            className="bg-slate-500 rounded-lg mb-5 last:mb-0 pl-5 py-5 flex w-full"
           >
             <div className="w-2/3 overflow-hidden">
               <Link
