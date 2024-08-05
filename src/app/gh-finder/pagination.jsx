@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from "@mui/material/Button"
 
 export default function Pagination ({ currentPage, setCurrentPage, resultsPerPage, totalResults }) {
     const totalPages = Math.ceil(totalResults / resultsPerPage);

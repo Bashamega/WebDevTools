@@ -2,10 +2,8 @@
 import { useEffect, useState, useCallback } from "react";
 import { NavBar } from "../components/navbar";
 import Link from "next/link";
-import Image from "next/image";
 import BasicModal from "./modal";
 import Pagination from "./pagination";
-import { InsertLink, LinkOff } from "@mui/icons-material";
 
 export default function GhFinder() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -18,7 +16,7 @@ export default function GhFinder() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isAssigned, setIsAssigned] = useState(false);
   const [currentPage, setCurrentPage] = useState(10);
-  const [maxResults, setMaxResults] = useState(10); // TODO FEATURE => Add Pages
+  const [maxResults, setMaxResults] = useState(10);
   
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -33,7 +31,6 @@ export default function GhFinder() {
 
   const fetchData = async (url) => {
     try {
-      console.log("FETCHING REQUESTS")
       const response = await fetch(url);
       const result = await response.json();
       return result;
