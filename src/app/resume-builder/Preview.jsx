@@ -124,6 +124,9 @@ const Preview = ({ isDarkMode, data }) => {
       backgroundColor: "#f7f7f7",
       borderRight: "2px solid #3498db",
       textAlign: "center",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
     },
     main: {
       width: "70%",
@@ -283,11 +286,17 @@ const Preview = ({ isDarkMode, data }) => {
         return (
           <main
             style={styles2.page}
-            className={`${isDarkMode ? "bg-slate-100" : "bg-slate-50"} my-6`}
+            className={`${isDarkMode ? "bg-slate-100" : "bg-slate-50"} my-6 h-full`}
           >
             {data && (
               <div style={{ display: "flex", flexDirection: "row" }}>
-                <div style={{ display: "flex", flexDirection: "row" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    width: "100%",
+                  }}
+                >
                   <div style={styles2.sidebar}>
                     {image && <img style={styles2.profileImage} src={image} />}
 
