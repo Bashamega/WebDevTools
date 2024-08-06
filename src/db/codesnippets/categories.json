@@ -2,95 +2,42 @@
   "languages": [
     {
       "name": "JavaScript",
-      "description": "JavaScript is a versatile, high-level programming language primarily used for web development.",
-      "librariesFrameworks": [
-        "React",
-        "Angular",
-        "Vue.js",
-        "Node.js",
-        "Express"
-      ]
+      "description": "JavaScript is a versatile, high-level programming language primarily used for web development."
     },
     {
       "name": "Python",
-      "description": "Python is a high-level, interpreted programming language known for its readability and versatility.",
-      "librariesFrameworks": [
-        "Django",
-        "Flask",
-        "Pandas",
-        "NumPy",
-        "TensorFlow"
-      ]
+      "description": "Python is a high-level, interpreted programming language known for its readability and versatility."
     },
     {
       "name": "Java",
-      "description": "Java is a high-level, class-based programming language designed for portability and cross-platform compatibility.",
-      "librariesFrameworks": ["Spring", "Hibernate", "Maven", "JUnit", "Struts"]
+      "description": "Java is a high-level, class-based programming language designed for portability and cross-platform compatibility."
     },
     {
       "name": "C#",
-      "description": "C# is a modern, object-oriented programming language developed by Microsoft, widely used for developing Windows applications.",
-      "librariesFrameworks": [
-        "ASP.NET",
-        "Entity Framework",
-        "Xamarin",
-        "Unity",
-        "NUnit"
-      ]
+      "description": "C# is a modern, object-oriented programming language developed by Microsoft, widely used for developing Windows applications."
     },
     {
       "name": "Ruby",
-      "description": "Ruby is a dynamic, open-source programming language with a focus on simplicity and productivity.",
-      "librariesFrameworks": [
-        "Ruby on Rails",
-        "Sinatra",
-        "RSpec",
-        "Capybara",
-        "Puma"
-      ]
+      "description": "Ruby is a dynamic, open-source programming language with a focus on simplicity and productivity."
     },
     {
       "name": "PHP",
-      "description": "PHP is a widely-used open-source scripting language that is especially suited for web development and can be embedded into HTML.",
-      "librariesFrameworks": [
-        "Laravel",
-        "Symfony",
-        "CodeIgniter",
-        "Zend Framework",
-        "Phalcon"
-      ]
+      "description": "PHP is a widely-used open-source scripting language that is especially suited for web development and can be embedded into HTML."
     },
     {
       "name": "TypeScript",
-      "description": "TypeScript is a strongly typed, open-source programming language that builds on JavaScript, giving you better tooling at any scale.",
-      "librariesFrameworks": ["Angular", "NestJS", "TypeORM", "RxJS", "ts-node"]
-    },
+      "description": "TypeScript is a strongly typed, open-source programming language that builds on JavaScript, giving you better tooling at any scale."    },
     {
       "name": "Swift",
-      "description": "Swift is a powerful and intuitive programming language for iOS, iPadOS, macOS, watchOS, and tvOS.",
-      "librariesFrameworks": [
-        "SwiftUI",
-        "Combine",
-        "Vapor",
-        "Kitura",
-        "RxSwift"
-      ]
+      "description": "Swift is a powerful and intuitive programming language for iOS, iPadOS, macOS, watchOS, and tvOS."
     },
     {
       "name": "Go",
-      "description": "Go is an open-source programming language designed for simplicity, reliability, and efficiency.",
-      "librariesFrameworks": ["Gin", "Echo", "Beego", "Buffalo", "Gorm"]
+      "description": "Go is an open-source programming language designed for simplicity, reliability, and efficiency."
     },
     {
       "name": "Kotlin",
-      "description": "Kotlin is a modern, statically typed programming language that boosts productivity and is fully interoperable with Java.",
-      "librariesFrameworks": [
-        "Spring",
-        "Ktor",
-        "Exposed",
-        "Koin",
-        "Jetpack Compose"
-      ]
+      "description": "Kotlin is a modern, statically typed programming language that boosts productivity and is fully interoperable with Java."
     }
   ]
 }
