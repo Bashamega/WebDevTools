@@ -21,15 +21,18 @@ Here're some of the project's best features:
 - Image Color Picker
 
 <h2>🛠️ Installation Steps:</h2>
+
 1. **Fork and Clone**:
    ```bash
    git clone https://github.com/Bashamega/WebDevTools.git
    cd WebDevTools
    ```
+
 2. **Install Dependencies**:
    ```bash
    npm install
    ```
+
 3. **Run Development Server**:
    ```bash
    npm run dev
