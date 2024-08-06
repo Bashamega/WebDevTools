@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { NavBar } from "../components/navbar";
 import languages from "@/db/codesnippets/categories.json";
+import Link from "next/link";
 
 export default function CodingSnippets() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -37,13 +38,14 @@ export default function CodingSnippets() {
           <p className=" mt-10 mb-5">Please choose a category:</p>
           <div className="grid gap-2 grid-cols-1 lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-3">
             {languages.languages.map((language, index) => (
-              <div
+              <Link
+              href={"/cs/" + language.name}
               key={index}
               className={`${isDarkMode ? "bg-gray-700 text-white" : "bg-gray-100 text-black"} rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-card-shadow cursor-pointer transition-all duration-500 ease-in`}
             >
                 <h1>{language.name}</h1>
                 <p>{language.description}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </section>
