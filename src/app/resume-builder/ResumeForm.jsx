@@ -8,11 +8,19 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
     name: "",
     email: "",
     phone: "",
+    address: "",
     image: "",
     workExperience: [{ title: "", company: "", description: "" }],
+    projects: [{ title: "", liveUrl: "", description: "" }],
     education: [{ degree: "", institution: "", description: "" }],
-    skills: [""],
+    skills: [
+      { category: "Frontend", skills: [""] },
+      { category: "Backend", skills: [""] },
+      { category: "Programming Languages", skills: [""] },
+      { category: "Tools", skills: [""] },
+    ],
     links: { linkedIn: "", website: "", github: "" },
+    achievements: [{ title: "", description: "" }],
     template: "template1",
   });
 
@@ -29,11 +37,15 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
     onFormChange({ ...formData, [arrayName]: newArray });
   };
 
-  const handleSkillsChange = (e, index) => {
-    const newSkills = [...formData.skills];
-    newSkills[index] = e.target.value;
-    setFormData({ ...formData, skills: newSkills });
-    onFormChange({ ...formData, skills: newSkills });
+  const handleSkillsChange = (e, categoryIndex, skillIndex) => {
+    const { value } = e.target;
+    const updatedSkills = [...formData.skills];
+    updatedSkills[categoryIndex].skills[skillIndex] = value;
+    setFormData((prevData) => ({
+      ...prevData,
+      skills: updatedSkills,
+    }));
+    onFormChange({ ...formData, skills: updatedSkills });
   };
 
   const handleLinksChange = (e) => {
@@ -56,12 +68,31 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
     }
   };
 
+  const handleAchievementsChange = (e, index) => {
+    const { value } = e.target;
+    const updatedAchievements = [...formData.achievements];
+    updatedAchievements[index] = value;
+    setFormData({ ...formData, achievements: updatedAchievements });
+    onFormChange({ ...formData, achievements: updatedAchievements });
+  };
+
+  // Add Function
   const addWorkExperience = () => {
     setFormData({
       ...formData,
       workExperience: [
         ...formData.workExperience,
         { title: "", company: "", description: "" },
+      ],
+    });
+  };
+
+  const addProjects = () => {
+    setFormData({
+      ...formData,
+      projects: [
+        ...formData.projects,
+        { title: "", liveUrl: "", description: "" },
       ],
     });
   };
@@ -78,6 +109,10 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
   const addSkill = () => {
     setFormData({ ...formData, skills: [...formData.skills, ""] });
+  };
+
+  const addAchievement = () => {
+    setFormData({ ...formData, achievements: [...formData.achievements, ""] });
   };
 
   return (
@@ -124,7 +159,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex flex-row items-start justify-between my-6">
+        <div className="flex flex-row items-start justify-between my-4">
           <input
             className={` ${
               isDarkMode
@@ -162,7 +197,20 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             onChange={(e) => handleLinksChange(e)}
           />
         </div>
-        <div className="w-full">
+
+        <div className="flex flex-row items-start gap-[2.2rem] my-4">
+          <input
+            className={` ${
+              isDarkMode
+                ? "bg-slate-800 text-slate-50 border-none"
+                : "bg-slate-50 text-slate-800 border-slate-500 border"
+            } w-[300px] py-2 px-2 outline-none  rounded-md`}
+            type="text"
+            name="address"
+            placeholder="Address"
+            value={formData.address}
+            onChange={handleChange}
+          />
           <input
             className={` ${
               isDarkMode
@@ -242,6 +290,68 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
           Another Experience
         </button>
       </div>
+      <div className="w-full my-6">
+        <h3 className="text-xl font-semibold">Your Projects</h3>
+        {formData.projects.map((project, index) => (
+          <div
+            key={index}
+            className="flex flex-row items-start justify-between my-4"
+          >
+            <input
+              className={` ${
+                isDarkMode
+                  ? "bg-slate-800 text-slate-50 border-none"
+                  : "bg-slate-50 text-slate-800 border-slate-500 border"
+              } w-[300px] py-2 px-2 outline-none  rounded-md`}
+              type="text"
+              name="title"
+              placeholder="Project Name"
+              value={project.title}
+              onChange={(e) => handleArrayChange(e, index, "title", "projects")}
+              required
+            />
+            <input
+              className={` ${
+                isDarkMode
+                  ? "bg-slate-800 text-slate-50 border-none"
+                  : "bg-slate-50 text-slate-800 border-slate-500 border"
+              } w-[300px] py-2 px-2 outline-none  rounded-md`}
+              type="url"
+              name="liveUrl"
+              placeholder="Live URl"
+              value={project.liveUrl}
+              onChange={(e) =>
+                handleArrayChange(e, index, "liveUrl", "projects")
+              }
+              required
+            />
+            <textarea
+              className={` ${
+                isDarkMode
+                  ? "bg-slate-800 text-slate-50 border-none"
+                  : "bg-slate-50 text-slate-800 border-slate-500 border"
+              } w-[300px] py-2 px-2 outline-none  rounded-md`}
+              name="description"
+              placeholder="Description"
+              value={project.description}
+              onChange={(e) =>
+                handleArrayChange(e, index, "description", "projects")
+              }
+              required
+            />
+          </div>
+        ))}
+        <button
+          className=" text-blue-500 flex items-center justify-evenly gap-1"
+          type="button"
+          onClick={addProjects}
+        >
+          <span className="text-xl">
+            <AddBox />
+          </span>
+          Another Project
+        </button>
+      </div>
       <div className="w-full mt-6">
         <h3 className="text-xl font-semibold">Education</h3>
 
@@ -310,23 +420,28 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
       <div className="w-full mt-6">
         <h3 className="text-xl font-semibold">Skills</h3>
-        {formData.skills.map((skill, index) => (
-          <div key={index} className="my-4">
-            <input
-              className={` ${
-                isDarkMode
-                  ? "bg-slate-800 text-slate-50 border-none"
-                  : "bg-slate-50 text-slate-800 border-slate-500 border"
-              } w-[300px] py-2 px-2 outline-none  rounded-md`}
-              type="text"
-              name={`skill-${index}`}
-              placeholder="Add Skills"
-              value={skill}
-              onChange={(e) => handleSkillsChange(e, index)}
-              required
-            />
-          </div>
-        ))}
+        <div className="flex flex-row items-start justify-between my-4 flex-wrap w-full">
+          {formData.skills.map((skillCategory, index) => (
+            <div key={index} className="mb-4">
+              {skillCategory.skills.map((s, id) => (
+                <input
+                  className={` ${
+                    isDarkMode
+                      ? "bg-slate-800 text-slate-50 border-none"
+                      : "bg-slate-50 text-slate-800 border-slate-500 border"
+                  } w-[300px] py-2 px-2 outline-none  rounded-md mb-2`}
+                  type="text"
+                  name={skillCategory.category}
+                  placeholder={`${skillCategory.category}`}
+                  value={s}
+                  onChange={(e) => handleSkillsChange(e, index, id)}
+                  key={id}
+                  required
+                />
+              ))}
+            </div>
+          ))}
+        </div>
         <button
           className=" text-blue-500 flex items-center justify-evenly gap-1 my-6"
           type="button"
@@ -336,6 +451,50 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             <AddBox />
           </span>
           Another Skills
+        </button>
+      </div>
+      <div className="w-full my-6">
+        <h3 className="text-xl font-semibold">Achievements</h3>
+        {formData.achievements.map((achievement, index) => (
+          <div key={index} className="flex items-start my-4 w-full">
+            <input
+              className={` ${
+                isDarkMode
+                  ? "bg-slate-800 text-slate-50 border-none"
+                  : "bg-slate-50 text-slate-800 border-slate-500 border"
+              } w-[300px] py-2 px-2 outline-none rounded-md`}
+              type="text"
+              name="title"
+              placeholder="Achievement Title"
+              value={achievement.title}
+              onChange={(e) =>
+                handleArrayChange(e, index, "title", "achievements")
+              }
+            />
+            <textarea
+              className={` ${
+                isDarkMode
+                  ? "bg-slate-800 text-slate-50 border-none"
+                  : "bg-slate-50 text-slate-800 border-slate-500 border"
+              } w-[300px] py-2 px-2 outline-none rounded-md ml-4`}
+              name="description"
+              placeholder="Achievement Description"
+              value={achievement.description}
+              onChange={(e) =>
+                handleArrayChange(e, index, "description", "achievements")
+              }
+            />
+          </div>
+        ))}
+        <button
+          className="text-blue-500 flex items-center justify-evenly gap-1"
+          type="button"
+          onClick={addAchievement}
+        >
+          <span className="text-xl">
+            <AddBox />
+          </span>
+          Another Achievement
         </button>
       </div>
 

@@ -1,7 +1,8 @@
 {
-     "name": "Test Developer",
+     "name": "Vimla Devi Kumari",
      "email": "test@example.us",
      "phone": "2222222222",
+     "address":"5 mg street, kepler452b, space",
      "image": "https://randomuser.me/api/portraits/women/50.jpg",
      "workExperience": [
        {
@@ -10,6 +11,18 @@
          "description": "I Worked At there for 6 months. From there i gained so much experience and there work culture was so nice. Now i can't write more description so here is a lorem ispum \"  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate quaerat facilis, odio magni doloribus molestiae laudantium rerum recusandae itaque consequuntur ab accusantium nobis.\""
        }
      ],
+     "projects":  [
+      {
+        "title": "Google clone",
+        "liveUrl": "https://google.com",
+        "description": "I Built a Google clone with HTML and CSS in just 2 days. It was very nice and enjoyable but sometimes it felt like i couldn't do this. But I believed in HTML and tried again and again and one fine day I finally built a Google clone. \nIf you guys think I am joking then check my project URL."
+      },
+      {
+        "title": "Amazon ",
+        "liveUrl": "amazon.in",
+        "description": "Yes, the Amazon shopping website was built by me but he(you know whom) stole my code."
+      }
+    ],
      "education": [
        {
          "degree": "Legacy Frontend Developer ",
@@ -17,10 +30,32 @@
          "description": "  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate quaerat facilis, odio magni doloribus molestiae laudantium rerum recusandae itaque consequuntur ab accusantium nobis.  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate quaerat facilis, odio magni doloribus molestiae laudantium rerum recusandae itaque consequuntur ab accusantium nobis."
        }
      ],
-     "skills": [
-       "HTML, CSS, Modelling, Acting",
-       "Acting, dancing, comedy"
-     ],
+     "skills" :[
+      {
+        "category": "Frontend",
+        "skills": [
+          "HTML, CSS, Javascript, typescript, tailwindcss, css, css3, Nextjs, Reactjs"
+        ]
+      },
+      {
+        "category": "Backend",
+        "skills": [
+          "nodejs, php, appwrite, prismaDB, mongoDB"
+        ]
+      },
+      {
+        "category": "Programming Languages",
+        "skills": [
+          "php, Rust"
+        ]
+      },
+      {
+        "category": "Tools",
+        "skills": [
+          "figma, chatGPT"
+        ]
+      }
+    ],
      "links": {
        "linkedIn": "https://linked.com",
        "website": "https://website.com",
@@ -28,3 +63,4 @@
      },
      "template": "template1"
    }
+

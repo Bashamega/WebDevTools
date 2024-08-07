@@ -275,11 +275,11 @@ const ResumePDF = ({ data }) => {
             <View style={styles1.view}>
               <Text style={styles1.sectionTitle}>Skills</Text>
               <View style={styles1.skills}>
-                {skills.map((skill) => (
-                  <Text key={skill.skill} style={styles1.skill}>
+                {/* {skills.map((skill, index) => (
+                  <Text key={index} style={styles1.skill}>
                     {skill}
                   </Text>
-                ))}
+                ))} */}
               </View>
             </View>
           </Page>
