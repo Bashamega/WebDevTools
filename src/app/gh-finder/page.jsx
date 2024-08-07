@@ -309,14 +309,14 @@ export default function GhFinder() {
               </div>
             </div>
             <div className="w-1/3 flex flex-col items-center justify-center">
-              <div className="text-sm mt-3">{item.comments} Comments</div>
+              <div className="text-sm mt-3 text-white">{item.comments} Comments</div>
               {item.linkedPRs?.length > 0 && (
                 <div className="mt-2">
                   {item.linkedPRs.map((prUrl, index) => (
                     <a
                       key={index}
                       href={prUrl}
-                      className="text-blue-500 hover:underline"
+                      className="text-white hover:underline"
                     >
                       PR #{index + 1}
                     </a>
