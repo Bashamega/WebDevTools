@@ -323,7 +323,6 @@ export default function GhFinder() {
                     </span>
                   ))}
                 </div>
-          
               </div>
               <div className="w-1/3 flex flex-col items-center justify-center">
                 <div className="text-sm mt-3 text-white">
