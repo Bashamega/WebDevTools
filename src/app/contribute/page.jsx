@@ -32,7 +32,7 @@ export default function ContributePage() {
       // Fetch new data and update cache
       try {
         const response = await fetch(
-          "https://api.github.com/repos/bashamega/webdevtools/contributors",
+          "https://api.github.com/repos/bashamega/webdevtools/contributors"
         );
         const data = await response.json();
         setContributors(data);
