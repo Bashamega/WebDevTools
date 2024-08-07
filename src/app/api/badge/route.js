@@ -38,7 +38,7 @@ export async function GET(req) {
     console.log("Generated SVG:", svg);
 
     const uniqueFileName = `badge_${Date.now()}_${randomBytes(4).toString(
-      "hex"
+      "hex",
     )}.svg`;
     console.log("Unique file name:", uniqueFileName);
 
