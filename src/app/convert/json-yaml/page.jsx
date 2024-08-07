@@ -8,7 +8,7 @@ const YAML = require("json-to-pretty-yaml");
 export default function HTML_JSX() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [value, setValue] = useState(
-    `{"name": "Alice", "age": 25, "email": "alice@example.com", "isStudent": false, "courses": ["Math", "Science", "History"]}`
+    `{"name": "Alice", "age": 25, "email": "alice@example.com", "isStudent": false, "courses": ["Math", "Science", "History"]}`,
   );
   const handleChange = (val) => {
     setValue(val);
