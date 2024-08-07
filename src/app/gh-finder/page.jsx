@@ -331,13 +331,13 @@ export default function GhFinder() {
                 {item.linkedPRs?.length > 0 && (
                   <div className="mt-2">
                     {item.linkedPRs.map((prUrl, index) => (
-                      <a
+                      <Link
                         key={index}
                         href={prUrl}
                         className="text-white hover:underline"
                       >
                         PR #{index + 1}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 )}
