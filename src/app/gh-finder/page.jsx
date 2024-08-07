@@ -210,7 +210,7 @@ export default function GhFinder() {
           <div className="flex flex-col md:flex-row justify-between w-full  lg:whitespace-nowrap my-5 items-center">
             <input
               type="text"
-              className="p-2 rounded border border-gray-400"
+              className="p-2 rounded border border-gray-400 text-black"
               placeholder="Search issues"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
