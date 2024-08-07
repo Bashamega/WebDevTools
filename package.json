@@ -21,6 +21,7 @@
     "@mui/material": "^5.15.19",
     "asciidoctor": "^3.0.4",
     "autoprefixer": "10.4.19",
+    "badge-maker": "^4.0.0",
     "codemirror": "^6.0.1",
     "convert-units": "^2.3.4",
     "eslint-config-next": "^14.2.3",
