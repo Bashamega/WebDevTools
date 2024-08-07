@@ -26,8 +26,8 @@ export default function Home({ state }) {
     if (e.target.value) {
       setToolList(
         tools.filter((tool) =>
-          tool.name.toLowerCase().includes(e.target.value.toLowerCase()),
-        ),
+          tool.name.toLowerCase().includes(e.target.value.toLowerCase())
+        )
       );
     } else {
       setToolList(tools);

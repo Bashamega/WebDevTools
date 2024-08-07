@@ -31,7 +31,9 @@ export default function BadgeForm({ onSubmit, isDarkMode }) {
 
   return (
     <div
-      className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"} min-h-screen flex-col justify-center w-screen mt-2.5 `}
+      className={`${
+        isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"
+      } min-h-screen flex-col justify-center w-screen mt-2.5 `}
     >
       <div className="w-2/3 mx-auto">
         <h1 className="text-4xl font-bold mb-6 text-center">
@@ -46,7 +48,11 @@ export default function BadgeForm({ onSubmit, isDarkMode }) {
             <input
               id="label"
               type="text"
-              className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-900 border-gray-400"} w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`${
+                isDarkMode
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-white text-gray-900 border-gray-400"
+              } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
               value={label}
               onChange={(e) => setLabel(e.target.value)}
             />
@@ -58,7 +64,11 @@ export default function BadgeForm({ onSubmit, isDarkMode }) {
             <input
               id="message"
               type="text"
-              className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-900 border-gray-400"} w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`${
+                isDarkMode
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-white text-gray-900 border-gray-400"
+              } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
@@ -73,7 +83,11 @@ export default function BadgeForm({ onSubmit, isDarkMode }) {
             <input
               id="labelColor"
               type="text"
-              className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-900 border-gray-400"} w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`${
+                isDarkMode
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-white text-gray-900 border-gray-400"
+              } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
               value={labelColor}
               onChange={(e) => setLabelColor(e.target.value)}
             />
@@ -85,7 +99,11 @@ export default function BadgeForm({ onSubmit, isDarkMode }) {
             <input
               id="color"
               type="text"
-              className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-900 border-gray-400"} w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`${
+                isDarkMode
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-white text-gray-900 border-gray-400"
+              } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
               value={color}
               onChange={(e) => setColor(e.target.value)}
             />
@@ -100,7 +118,11 @@ export default function BadgeForm({ onSubmit, isDarkMode }) {
             <input
               id="logoBase64"
               type="text"
-              className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-900 border-gray-400"} w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`${
+                isDarkMode
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-white text-gray-900 border-gray-400"
+              } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
               value={logoBase64}
               onChange={(e) => setLogoBase64(e.target.value)}
             />
@@ -112,7 +134,11 @@ export default function BadgeForm({ onSubmit, isDarkMode }) {
             <textarea
               id="links"
               rows="4"
-              className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-900 border-gray-400"} w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`${
+                isDarkMode
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-white text-gray-900 border-gray-400"
+              } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
               value={links}
               onChange={(e) => setLinks(e.target.value)}
             />
@@ -123,7 +149,11 @@ export default function BadgeForm({ onSubmit, isDarkMode }) {
             </label>
             <select
               id="style"
-              className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-900 border-gray-400"} w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`${
+                isDarkMode
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-white text-gray-900 border-gray-400"
+              } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
               value={style}
               onChange={(e) => setStyle(e.target.value)}
             >

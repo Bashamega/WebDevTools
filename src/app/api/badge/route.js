@@ -37,7 +37,9 @@ export async function GET(req) {
     const svg = makeBadge(badgeData);
     console.log("Generated SVG:", svg);
 
-    const uniqueFileName = `badge_${Date.now()}_${randomBytes(4).toString("hex")}.svg`;
+    const uniqueFileName = `badge_${Date.now()}_${randomBytes(4).toString(
+      "hex"
+    )}.svg`;
     console.log("Unique file name:", uniqueFileName);
 
     const publicDir = path.join(process.cwd(), "public");

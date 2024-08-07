@@ -43,7 +43,7 @@ export default function Search({ isDarkMode }) {
 
   useEffect(() => {
     const filteredData = toolList.filter(
-      (item) => item.name.toLowerCase().includes(searchValue.toLowerCase()), // Filter the JSON data based on the search value
+      (item) => item.name.toLowerCase().includes(searchValue.toLowerCase()) // Filter the JSON data based on the search value
     );
     setSearchResults(filteredData); // Update the filtered search results
     setShowDropdown(searchValue !== "" && filteredData.length > 0); // Show the dropdown if search value is not empty and there are filtered results

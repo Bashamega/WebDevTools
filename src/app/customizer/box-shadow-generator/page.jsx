@@ -60,7 +60,7 @@ const Page = () => {
       `box-shadow: ${shadow.hOffset}px ${shadow.vOffset}px ${shadow.blur}px ${
         shadow.spread
       }px ${shadow.color} ${shadow.inset ? "inset" : ""};`,
-    [shadow],
+    [shadow]
   );
 
   const tailwindShadowStyle = useMemo(
@@ -68,7 +68,7 @@ const Page = () => {
       `shadow-[${shadow.inset ? "inset_" : ""}${shadow.hOffset}px_${
         shadow.vOffset
       }px_${shadow.blur}px_${shadow.spread}px_${shadow.color}]`,
-    [shadow],
+    [shadow]
   );
 
   return (
