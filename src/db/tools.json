@@ -107,4 +107,11 @@
     "link": "/convert/img-svg",
     "ctg": "other"
   }
+  ,
+  {
+    "id": 19,
+    "name": "Badge Generator for Readme",
+    "link": "/badge-maker",
+    "ctg": "generator"
+  }
 ]
