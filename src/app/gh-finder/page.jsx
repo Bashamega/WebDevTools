@@ -11,21 +11,20 @@ export default function GhFinder() {
   const [data, setData] = useState([]);
   const [selectedLabels, setSelectedLabels] = useState([]);
   const [filteredIssues, setFilteredIssues] = useState([]);
-    
+
   // New states
   const [searchQuery, setSearchQuery] = useState("");
   const [isAssigned, setIsAssigned] = useState(false);
   const [currentPage, setCurrentPage] = useState(10);
   const [maxResults, setMaxResults] = useState(10);
-  
+
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
 
-  const resultPerPageChoices = [5, 10, 25, 50]
-  
-  const cacheKey =
-  selected === 1 ? "webdevtools-issues" : `github-issues-100`;
+  const resultPerPageChoices = [5, 10, 25, 50];
+
+  const cacheKey = selected === 1 ? "webdevtools-issues" : `github-issues-100`;
   const cacheExpirationKey = `${cacheKey}-timestamp`;
   const cacheExpirationTime = 1000 * 60 * 30; // Cache expiration time (e.g., 30 minutes)
 
@@ -51,12 +50,13 @@ export default function GhFinder() {
       const events = await response.json();
       const linkedPRs = events?.filter(
         (event) =>
-          event.event === "cross-referenced" && event.source?.issue?.pull_request
+          event.event === "cross-referenced" &&
+          event.source?.issue?.pull_request
       );
       return linkedPRs.map((pr) => pr.source.issue.pull_request.html_url);
     } catch (error) {
       console.log(error.message);
-      return []
+      return [];
     }
   };
 
@@ -72,34 +72,33 @@ export default function GhFinder() {
 
   // Fetch new data
   useEffect(() => {
-    const urlWebDevTools = "https://api.github.com/repos/bashamega/webdevtools/issues";
-    const urlGitHub = "https://api.github.com/search/issues?q=state:open+is:issue&per_page=100&page=1";
+    const urlWebDevTools =
+      "https://api.github.com/repos/bashamega/webdevtools/issues";
+    const urlGitHub =
+      "https://api.github.com/search/issues?q=state:open+is:issue&per_page=100&page=1";
 
-    const url =
-      selected === 1
-        ? urlWebDevTools
-        : urlGitHub;
-    
+    const url = selected === 1 ? urlWebDevTools : urlGitHub;
+
     const updateData = (newData) => {
       const now = new Date().getTime();
       localStorage.setItem(cacheKey, JSON.stringify(newData));
       localStorage.setItem(cacheExpirationKey, now.toString());
 
-      setData(newData)
-    }
-    
+      setData(newData);
+    };
+
     const fetchDataAndSet = async () => {
       const result = await fetchData(url);
       let filteredData =
         selected === 1
           ? result.filter((item) => !item.node_id.includes("PR_"))
           : result.items;
-      
+
       if (url === urlWebDevTools) {
         filteredData = await addPRsInfoToIssues(filteredData);
       }
-      
-      updateData(filteredData)
+
+      updateData(filteredData);
     };
 
     const cachedData = localStorage.getItem(cacheKey);
@@ -107,16 +106,23 @@ export default function GhFinder() {
     const now = new Date().getTime();
 
     if (
-      !(cachedData &&
-      cacheTimestamp &&
-      now - cacheTimestamp < cacheExpirationTime)
+      !(
+        cachedData &&
+        cacheTimestamp &&
+        now - cacheTimestamp < cacheExpirationTime
+      )
     ) {
       fetchDataAndSet();
     } else {
       setData(JSON.parse(cachedData));
     }
-
-  }, [selected, cacheKey, cacheExpirationKey, cacheExpirationTime, addPRsInfoToIssues]);
+  }, [
+    selected,
+    cacheKey,
+    cacheExpirationKey,
+    cacheExpirationTime,
+    addPRsInfoToIssues,
+  ]);
 
   // Filter issues by search keywords and assignment status
   useEffect(() => {
@@ -125,10 +131,12 @@ export default function GhFinder() {
         const matchesSearch = issue.title
           .toLowerCase()
           .includes(searchQuery.toLowerCase());
-        const matchesAssignment = isAssigned ? issue.assignees.length > 0 : true;
+        const matchesAssignment = isAssigned
+          ? issue.assignees.length > 0
+          : true;
         return matchesSearch && matchesAssignment;
-      })
-    }
+      });
+    };
 
     // Filter issues by label
     const issuesByLabel = (issues) => {
@@ -220,9 +228,15 @@ export default function GhFinder() {
             <div>
               <p>Results per page</p>
               <div className="flex justify-between">
-                {resultPerPageChoices.map(num => (
+                {resultPerPageChoices.map((num) => (
                   <button key={num} onClick={() => setMaxResults(num)}>
-                    <span className={`underline mx-1 ${num === maxResults && "text-cyan-600 font-bold"}`}>{num}</span>
+                    <span
+                      className={`underline mx-1 ${
+                        num === maxResults && "text-cyan-600 font-bold"
+                      }`}
+                    >
+                      {num}
+                    </span>
                   </button>
                 ))}
               </div>
@@ -257,75 +271,80 @@ export default function GhFinder() {
         </header>
       </div>
       <div className="ml-[25%] w-1/2">
-        {filteredIssues.length === 0
-          ?
+        {filteredIssues.length === 0 ? (
           <div className="bg-red-700 dark:bg-black rounded-lg pl-5 py-5 flex w-full">
-            <h3 className="text-white font-bold text-3xl">No issues satisfying the criteria</h3>
+            <h3 className="text-white font-bold text-3xl">
+              No issues satisfying the criteria
+            </h3>
           </div>
-          
-          :
+        ) : (
           issuesByPage.map((item) => (
-          <div
-            key={item.id}
-            className="bg-slate-500 rounded-lg mb-5 last:mb-0 pl-5 py-5 flex w-full"
-          >
-            <div className="w-2/3 overflow-hidden">
-              <Link
-                href={item.html_url}
-                className="text-white font-bold text-3xl hover:underline truncate block"
-              >
-                {item.title}
-              </Link>
-              <Link
-                className="text-slate-300"
-                href={item.repository_url.replace(
-                  "https://api.github.com/repos",
-                  "https://github.com"
-                )}
-              >
-                {item.repository_url.replace(
-                  "https://api.github.com/repos/",
-                  ""
-                )}
-              </Link>
-              <div
-                className={
-                  "flex flex-wrap items-center mt-1 " +
-                  (isDarkMode ? "text-gray-300" : "text-gray-600")
-                }
-              >
-                {item.labels?.map((label) => (
-                  <span
-                    key={label.id}
-                    className="inline-block px-2 py-1 mx-2 my-1 text-xs font-semibold text-white bg-green-500 rounded-full"
-                    style={{
-                      backgroundColor: `#${label.color}`,
-                      color: isDarkColor(`#${label.color}`) ? "white" : "black",
-                    }}
-                  >
-                    {label.name}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="w-1/3 flex flex-col items-center justify-center">
-              <div className="text-sm mt-3 text-white">{item.comments} Comments</div>
-              {item.linkedPRs?.length > 0 && (
-                <div className="mt-2">
-                  {item.linkedPRs.map((prUrl, index) => (
-                    <a
-                      key={index}
-                      href={prUrl}
-                      className="text-white hover:underline"
+            <div
+              key={item.id}
+              className="bg-slate-500 rounded-lg mb-5 last:mb-0 pl-5 py-5 flex w-full"
+            >
+              <div className="w-2/3 overflow-hidden">
+                <Link
+                  href={item.html_url}
+                  className="text-white font-bold text-3xl hover:underline truncate block"
+                >
+                  {item.title}
+                </Link>
+                <Link
+                  className="text-slate-300"
+                  href={item.repository_url.replace(
+                    "https://api.github.com/repos",
+                    "https://github.com"
+                  )}
+                >
+                  {item.repository_url.replace(
+                    "https://api.github.com/repos/",
+                    ""
+                  )}
+                </Link>
+                <div
+                  className={
+                    "flex flex-wrap items-center mt-1 " +
+                    (isDarkMode ? "text-gray-300" : "text-gray-600")
+                  }
+                >
+                  {item.labels?.map((label) => (
+                    <span
+                      key={label.id}
+                      className="inline-block px-2 py-1 mx-2 my-1 text-xs font-semibold text-white bg-green-500 rounded-full"
+                      style={{
+                        backgroundColor: `#${label.color}`,
+                        color: isDarkColor(`#${label.color}`)
+                          ? "white"
+                          : "black",
+                      }}
                     >
-                      PR #{index + 1}
-                    </a>
+                      {label.name}
+                    </span>
                   ))}
                 </div>
-              )}
+              </div>
+              <div className="w-1/3 flex flex-col items-center justify-center">
+                <div className="text-sm mt-3 text-white">
+                  {item.comments} Comments
+                </div>
+                {item.linkedPRs?.length > 0 && (
+                  <div className="mt-2">
+                    {item.linkedPRs.map((prUrl, index) => (
+                      <a
+                        key={index}
+                        href={prUrl}
+                        className="text-white hover:underline"
+                      >
+                        PR #{index + 1}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
       <Pagination
         currentPage={currentPage}
