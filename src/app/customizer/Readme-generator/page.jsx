@@ -183,7 +183,7 @@ ${license}`;
             }; color: ${
               isDarkMode ? "white" : "black"
             }; }</style></head><body class="markdown-body">${snarkdown(
-              generateMarkdown(),
+              generateMarkdown()
             )}</body></html>`}
           />
         </div>
