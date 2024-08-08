@@ -61,7 +61,9 @@ export default function Editor({ isDarkMode }) {
         </div>
       ) : (
         <div
-          className={`w-[80vw] h-[90vh] flex justify-center items-center ${isDarkMode ? "bg-gray-700" : "bg-gray-100"}`}
+          className={`w-[80vw] h-[90vh] flex justify-center items-center ${
+            isDarkMode ? "bg-gray-700" : "bg-gray-100"
+          }`}
         >
           <h1
             className={`text-2xl ${isDarkMode ? "text-white" : "text-black"}`}
