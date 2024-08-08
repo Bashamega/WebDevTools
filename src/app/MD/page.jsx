@@ -144,15 +144,22 @@ export default function MarkdownEditor() {
           </div>
 
           <button onClick={searchToggle} className="lg:hidden">
-            <SearchIcon className={`${isDarkMode ? "text-gray-400" : "text-gray-800"}`} />
+            <SearchIcon
+              className={`${isDarkMode ? "text-gray-400" : "text-gray-800"}`}
+            />
           </button>
           <div
             className={`absolute w-full h-[69px] flex items-center ${isDarkMode ? "bg-gray-800" : "bg-blue-500"} ${
-              toggle ? "left-0 duration-300 ease-in" : "left-[100%] duration-300 ease-in"
+              toggle
+                ? "left-0 duration-300 ease-in"
+                : "left-[100%] duration-300 ease-in"
             } `}
           >
             <div className="flex flex-1 items-center justify-center relative">
-              <ArrowBackIcon className="mr-4 absolute left-2 cursor-pointer" onClick={searchToggle} />
+              <ArrowBackIcon
+                className="mr-4 absolute left-2 cursor-pointer"
+                onClick={searchToggle}
+              />
               <Search />
             </div>
           </div>
@@ -201,7 +208,7 @@ export default function MarkdownEditor() {
             ref={iframeRef}
             className={`w-full h-full ${isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"}`}
             title="Parsed Markdown"
-            style={{ border: 'none' }}  // Ensure no border styling affects the iframe's appearance
+            style={{ border: "none" }} // Ensure no border styling affects the iframe's appearance
           />
         </section>
       </section>

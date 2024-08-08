@@ -30,7 +30,7 @@ export default function HTML_JSX() {
 
     const jsx = htmlToJsx(value);
     const jsxCode = `function component() { return (${jsx}) }`;
-    setCache(prevCache => ({ ...prevCache, [value]: jsxCode }));
+    setCache((prevCache) => ({ ...prevCache, [value]: jsxCode }));
     return jsxCode;
   };
 

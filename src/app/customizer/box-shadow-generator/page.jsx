@@ -55,14 +55,16 @@ const Page = () => {
   };
 
   // Memoize shadow styles to avoid recomputation on every render
-  const cssShadowStyle = useMemo(() => 
-    `box-shadow: ${shadow.hOffset}px ${shadow.vOffset}px ${shadow.blur}px ${shadow.spread}px ${shadow.color} ${shadow.inset ? "inset" : ""};`, 
-    [shadow]
+  const cssShadowStyle = useMemo(
+    () =>
+      `box-shadow: ${shadow.hOffset}px ${shadow.vOffset}px ${shadow.blur}px ${shadow.spread}px ${shadow.color} ${shadow.inset ? "inset" : ""};`,
+    [shadow],
   );
 
-  const tailwindShadowStyle = useMemo(() => 
-    `shadow-[${shadow.inset ? "inset_" : ""}${shadow.hOffset}px_${shadow.vOffset}px_${shadow.blur}px_${shadow.spread}px_${shadow.color}]`, 
-    [shadow]
+  const tailwindShadowStyle = useMemo(
+    () =>
+      `shadow-[${shadow.inset ? "inset_" : ""}${shadow.hOffset}px_${shadow.vOffset}px_${shadow.blur}px_${shadow.spread}px_${shadow.color}]`,
+    [shadow],
   );
 
   return (

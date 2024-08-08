@@ -21,14 +21,18 @@ export default function ContributePage() {
 
     const now = new Date().getTime();
 
-    if (cachedData && cacheTimestamp && now - cacheTimestamp < cacheExpiration) {
+    if (
+      cachedData &&
+      cacheTimestamp &&
+      now - cacheTimestamp < cacheExpiration
+    ) {
       // Use cached data if available and not expired
       setContributors(JSON.parse(cachedData));
     } else {
       // Fetch new data and update cache
       try {
         const response = await fetch(
-          "https://api.github.com/repos/bashamega/webdevtools/contributors"
+          "https://api.github.com/repos/bashamega/webdevtools/contributors",
         );
         const data = await response.json();
         setContributors(data);

@@ -20,4 +20,3 @@ Fixes #(issue)
 - [ ] Any dependent changes have been merged and published in downstream modules
 
 ## Screenshots (if applicable):
-
