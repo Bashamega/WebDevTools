@@ -7,7 +7,11 @@ export function Card({ link, title, isDarkMode }) {
       className="group relative block p-10 overflow-hidden rounded-lg shadow-lg transition-transform transform hover:scale-105"
     >
       <div
-        className={`absolute inset-0 ${isDarkMode ? "bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700" : "bg-gradient-to-r from-blue-300 via-blue-400 to-blue-500"}`}
+        className={`absolute inset-0 ${
+          isDarkMode
+            ? "bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700"
+            : "bg-gradient-to-r from-blue-300 via-blue-400 to-blue-500"
+        }`}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70 group-hover:opacity-90 transition-opacity"></div>
       </div>

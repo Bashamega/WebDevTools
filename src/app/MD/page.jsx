@@ -113,14 +113,20 @@ export default function MarkdownEditor() {
 
   return (
     <main
-      className={`h-screen overflow-auto ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}
+      className={`h-screen overflow-auto ${
+        isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
+      }`}
     >
       <nav
-        className={`py-4 px-6 flex items-center justify-between h-[69px] ${isDarkMode ? "bg-gray-800" : "bg-blue-500"}`}
+        className={`py-4 px-6 flex items-center justify-between h-[69px] ${
+          isDarkMode ? "bg-gray-800" : "bg-blue-500"
+        }`}
       >
         <Link
           href="/"
-          className={`mr-2 flex border items-center p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg ${isDarkMode ? "border-gray-600" : ""}`}
+          className={`mr-2 flex border items-center p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg ${
+            isDarkMode ? "border-gray-600" : ""
+          }`}
         >
           <h1 className="text-sm md:text-2xl font-bold mr-4 ml-1">
             Web Dev Tools
@@ -131,11 +137,19 @@ export default function MarkdownEditor() {
           <input
             value={name}
             onChange={handleNameChange}
-            className={`outline-none border text-sm rounded p-1.5 px-2 ${isDarkMode ? "bg-gray-700 border-gray-600 text-white" : "bg-gray-50 border-gray-300 text-gray-900"}`}
+            className={`outline-none border text-sm rounded p-1.5 px-2 ${
+              isDarkMode
+                ? "bg-gray-700 border-gray-600 text-white"
+                : "bg-gray-50 border-gray-300 text-gray-900"
+            }`}
           />
           <button
             onClick={handleDownload}
-            className={`ml-2 mr-2 text-sm rounded p-1.5 px-2 hover:bg-gray-600 ${isDarkMode ? "bg-gray-700 border-gray-600 text-white" : "bg-gray-300 border-gray-200 text-black"}`}
+            className={`ml-2 mr-2 text-sm rounded p-1.5 px-2 hover:bg-gray-600 ${
+              isDarkMode
+                ? "bg-gray-700 border-gray-600 text-white"
+                : "bg-gray-300 border-gray-200 text-black"
+            }`}
           >
             Download
           </button>
@@ -149,7 +163,9 @@ export default function MarkdownEditor() {
             />
           </button>
           <div
-            className={`absolute w-full h-[69px] flex items-center ${isDarkMode ? "bg-gray-800" : "bg-blue-500"} ${
+            className={`absolute w-full h-[69px] flex items-center ${
+              isDarkMode ? "bg-gray-800" : "bg-blue-500"
+            } ${
               toggle
                 ? "left-0 duration-300 ease-in"
                 : "left-[100%] duration-300 ease-in"
@@ -184,7 +200,11 @@ export default function MarkdownEditor() {
             <button
               key={index}
               onClick={() => insertMarkdown(button.data)}
-              className={`text-sm rounded px-2 py-2 hover:bg-gray-600 m-2 ${isDarkMode ? "bg-gray-700 border-gray-600 text-white" : "bg-gray-300 border-gray-200 text-black"}`}
+              className={`text-sm rounded px-2 py-2 hover:bg-gray-600 m-2 ${
+                isDarkMode
+                  ? "bg-gray-700 border-gray-600 text-white"
+                  : "bg-gray-300 border-gray-200 text-black"
+              }`}
             >
               {button.label}
             </button>
@@ -196,7 +216,11 @@ export default function MarkdownEditor() {
         <section className="w-[96%] h-full  md:w-1/2 ml-2 mr-2 ">
           <h1>Markdown</h1>
           <textarea
-            className={`border p-2 h-full w-full resize-none ${isDarkMode ? "bg-gray-700 text-white border-gray-600" : "bg-white text-black border-gray-300"}`}
+            className={`border p-2 h-full w-full resize-none ${
+              isDarkMode
+                ? "bg-gray-700 text-white border-gray-600"
+                : "bg-white text-black border-gray-300"
+            }`}
             value={markdown}
             onChange={handleMarkdownChange}
             ref={textareaRef}
@@ -206,7 +230,9 @@ export default function MarkdownEditor() {
           <h1>Output</h1>
           <iframe
             ref={iframeRef}
-            className={`w-full h-full ${isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"}`}
+            className={`w-full h-full ${
+              isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
+            }`}
             title="Parsed Markdown"
             style={{ border: "none" }} // Ensure no border styling affects the iframe's appearance
           />

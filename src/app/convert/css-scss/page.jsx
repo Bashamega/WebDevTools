@@ -258,7 +258,9 @@ export default function CSS_TO_SCSS() {
 
   return (
     <main
-      className={`min-h-screen ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}
+      className={`min-h-screen ${
+        isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
+      }`}
     >
       <NavBar
         title={"scss to css converter"}
@@ -271,7 +273,9 @@ export default function CSS_TO_SCSS() {
         </h1>
         <div
           //Responsive
-          className={`h-auto p-4 m-4 w-5/6 break-words border rounded-lg shadow ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"} flex flex-col items-center gap-4 sm:w-100 md:flex-row `}
+          className={`h-auto p-4 m-4 w-5/6 break-words border rounded-lg shadow ${
+            isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
+          } flex flex-col items-center gap-4 sm:w-100 md:flex-row `}
         >
           <SnippetBox
             from={mode.from}

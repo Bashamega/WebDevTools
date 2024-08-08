@@ -8,7 +8,7 @@ const YAML = require("json-to-pretty-yaml");
 export default function HTML_JSX() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [value, setValue] = useState(
-    `{"name": "Alice", "age": 25, "email": "alice@example.com", "isStudent": false, "courses": ["Math", "Science", "History"]}`,
+    `{"name": "Alice", "age": 25, "email": "alice@example.com", "isStudent": false, "courses": ["Math", "Science", "History"]}`
   );
   const handleChange = (val) => {
     setValue(val);
@@ -35,7 +35,9 @@ export default function HTML_JSX() {
 
   return (
     <main
-      className={`h-screen overflow-auto ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}
+      className={`h-screen overflow-auto ${
+        isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
+      }`}
     >
       <NavBar
         title={"JSON to YAML"}

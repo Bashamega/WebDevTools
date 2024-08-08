@@ -1,12 +1,11 @@
 name: Run Format
 
 on:
+  push:
   pull_request:
-    branches:
-      - "**"
 
 jobs:
-  run-script:
+  prettier:
     runs-on: ubuntu-latest
 
     steps:

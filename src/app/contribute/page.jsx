@@ -64,12 +64,16 @@ export default function ContributePage() {
 
   return (
     <main
-      className={`${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}
+      className={`${
+        isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
+      }`}
     >
       <Nav isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <div className="flex justify-center flex-col items-center w-full">
         <div
-          className={`my-9 max-w-[26rem] md:max-w-[40rem] break-words block py-6 md:p-6 ${isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"} border border-gray-200 rounded-lg shadow`}
+          className={`my-9 max-w-[26rem] md:max-w-[40rem] break-words block py-6 md:p-6 ${
+            isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
+          } border border-gray-200 rounded-lg shadow`}
         >
           <h5 className="mb-2 text-3xl font-bold text-center">Contributors</h5>
           <div className="flex justify-center items-center">
@@ -80,7 +84,11 @@ export default function ContributePage() {
                   .map((item, index) => (
                     <div
                       key={index}
-                      className={`${isDarkMode ? "bg-gray-700 text-white" : "bg-gray-100 text-black"} rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-card-shadow transition-all duration-500 ease-in`}
+                      className={`${
+                        isDarkMode
+                          ? "bg-gray-700 text-white"
+                          : "bg-gray-100 text-black"
+                      } rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-card-shadow transition-all duration-500 ease-in`}
                     >
                       <Link
                         href={item.html_url}
@@ -106,7 +114,9 @@ export default function ContributePage() {
           </div>
         </div>
         <div
-          className={`p-4 mb-24 text-center max-w-[26rem] md:max-w-[40rem] ${isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"} border border-gray-200 rounded-lg shadow sm:p-8`}
+          className={`p-4 mb-24 text-center max-w-[26rem] md:max-w-[40rem] ${
+            isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
+          } border border-gray-200 rounded-lg shadow sm:p-8`}
         >
           <h5 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
             Want to contribute?

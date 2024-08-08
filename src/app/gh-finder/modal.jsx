@@ -63,7 +63,9 @@ export default function BasicModal({
       >
         <Box
           sx={style}
-          className={`${isDarkMode ? "bg-slate-800 text-white" : "bg-slate-200 text-black"}`}
+          className={`${
+            isDarkMode ? "bg-slate-800 text-white" : "bg-slate-200 text-black"
+          }`}
         >
           <FormGroup>
             {labelsList.map((label, idx) => (
