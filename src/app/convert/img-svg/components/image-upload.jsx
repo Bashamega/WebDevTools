@@ -1,26 +1,26 @@
-import * as React from 'react';
-import { useState } from 'react';
-import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import CancelIcon from '@mui/icons-material/Cancel';
-import { useImage } from '../ImageContextApi';
+import * as React from "react";
+import { useState } from "react";
+import { styled } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import CancelIcon from "@mui/icons-material/Cancel";
+import { useImage } from "../ImageContextApi";
 
-const VisuallyHiddenInput = styled('input')({
-  clip: 'rect(0 0 0 0)',
-  clipPath: 'inset(50%)',
+const VisuallyHiddenInput = styled("input")({
+  clip: "rect(0 0 0 0)",
+  clipPath: "inset(50%)",
   height: 1,
-  overflow: 'hidden',
-  position: 'absolute',
+  overflow: "hidden",
+  position: "absolute",
   bottom: 0,
   left: 0,
-  whiteSpace: 'nowrap',
+  whiteSpace: "nowrap",
   width: 1,
 });
 
 export default function InputFileUpload() {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [fileName, setFileName] = useState('');
+  const [fileName, setFileName] = useState("");
   const { setImageData, setFileName: setImageFileName } = useImage();
 
   const handleFileChange = (event) => {
@@ -40,15 +40,35 @@ export default function InputFileUpload() {
   const handleCancel = () => {
     setSelectedImage(null);
     setImageData(null);
-    setFileName(''); // Clear file name
-    setImageFileName(''); // Clear context file name
+    setFileName(""); // Clear file name
+    setImageFileName(""); // Clear context file name
   };
 
   return (
-    <div className='img-svg-image-uploader-500' style={{ height: "100vh", width: "50vw", textAlign: 'center', padding: '20px' }}>
+    <div
+      className="img-svg-image-uploader-500"
+      style={{
+        height: "100vh",
+        width: "50vw",
+        textAlign: "center",
+        padding: "20px",
+      }}
+    >
       {selectedImage && (
-        <div style={{ marginTop: '20px', marginBottom: "20px", display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <img src={selectedImage} alt="Selected" style={{ maxWidth: '100%', maxHeight: '300px' }} />
+        <div
+          style={{
+            marginTop: "20px",
+            marginBottom: "20px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img
+            src={selectedImage}
+            alt="Selected"
+            style={{ maxWidth: "100%", maxHeight: "300px" }}
+          />
         </div>
       )}
       <Button
@@ -68,7 +88,7 @@ export default function InputFileUpload() {
         color="secondary"
         startIcon={<CancelIcon />}
         onClick={handleCancel}
-        style={{ marginLeft: '10px' }}
+        style={{ marginLeft: "10px" }}
       >
         Cancel
       </Button>

@@ -44,7 +44,9 @@ export default function ButtonCustomizer() {
 
   return (
     <main
-      className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-h-screen`}
+      className={`${
+        isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"
+      } min-h-screen`}
     >
       <NavBar
         title={"Conversion Calculator"}
@@ -60,7 +62,9 @@ export default function ButtonCustomizer() {
         }}
       >
         <section
-          className={`${isDarkMode ? "bg-slate-600" : "bg-slate-100"} flex flex-col gap-4 p-4 rounded md:flex-row`}
+          className={`${
+            isDarkMode ? "bg-slate-600" : "bg-slate-100"
+          } flex flex-col gap-4 p-4 rounded md:flex-row`}
         >
           <section className="">
             <input

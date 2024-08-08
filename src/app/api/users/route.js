@@ -24,6 +24,9 @@ export async function GET(req) {
   }
 
   // Get paginated users from cache
-  const paginatedUsers = cachedUsers.slice(startIndex, startIndex + usersPerPage);
+  const paginatedUsers = cachedUsers.slice(
+    startIndex,
+    startIndex + usersPerPage,
+  );
   return NextResponse.json(paginatedUsers, { status: 200 });
 }
