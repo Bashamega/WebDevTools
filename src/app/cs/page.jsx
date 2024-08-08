@@ -39,10 +39,10 @@ export default function CodingSnippets() {
           <div className="grid gap-2 grid-cols-1 lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-3">
             {languages.languages.map((language, index) => (
               <Link
-              href={"/cs/" + language.name}
-              key={index}
-              className={`${isDarkMode ? "bg-gray-700 text-white" : "bg-gray-100 text-black"} rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-card-shadow cursor-pointer transition-all duration-500 ease-in`}
-            >
+                href={"/cs/" + language.name}
+                key={index}
+                className={`${isDarkMode ? "bg-gray-700 text-white" : "bg-gray-100 text-black"} rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-card-shadow cursor-pointer transition-all duration-500 ease-in`}
+              >
                 <h1>{language.name}</h1>
                 <p>{language.description}</p>
               </Link>

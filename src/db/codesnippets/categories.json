@@ -26,7 +26,8 @@
     },
     {
       "name": "TypeScript",
-      "description": "TypeScript is a strongly typed, open-source programming language that builds on JavaScript, giving you better tooling at any scale."    },
+      "description": "TypeScript is a strongly typed, open-source programming language that builds on JavaScript, giving you better tooling at any scale."
+    },
     {
       "name": "Swift",
       "description": "Swift is a powerful and intuitive programming language for iOS, iPadOS, macOS, watchOS, and tvOS."
