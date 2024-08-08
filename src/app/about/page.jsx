@@ -13,9 +13,8 @@ export default function Home() {
 
   return (
     <main
-      className={`${
-        isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"
-      } min-h-screen`}
+      className={`h-screen overflow-auto ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}
+
     >
       <Nav toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
       <div className="flex justify-center flex-col items-center w-full">
