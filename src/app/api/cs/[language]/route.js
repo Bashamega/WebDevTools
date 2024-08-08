@@ -19,8 +19,13 @@ export async function GET(request, { params }) {
     return response;
   } else {
     try {
-      const filePath = path.join(process.cwd(), '/src/db/codesnippets/posts', language, 'content.json');
-      const content = await fs.readFile(filePath, 'utf-8');
+      const filePath = path.join(
+        process.cwd(),
+        "/src/db/codesnippets/posts",
+        language,
+        "content.json",
+      );
+      const content = await fs.readFile(filePath, "utf-8");
       const parsedContent = JSON.parse(content);
 
       // If the language exists, return a success response

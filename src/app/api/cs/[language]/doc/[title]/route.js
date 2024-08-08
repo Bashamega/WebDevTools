@@ -14,13 +14,21 @@ export async function GET(request, { params }) {
 
   // If the language does not exist, return a 404 response
   if (!languageExists) {
-    const response = NextResponse.json({ error: "Language not found" }, { status: 404 });
+    const response = NextResponse.json(
+      { error: "Language not found" },
+      { status: 404 },
+    );
     response.headers.set("Cache-Control", "public, max-age=3600"); // Cache for 1 hour
     return response;
   } else {
     try {
-      const filePath = path.join(process.cwd(), '/src/db/codesnippets/posts', language, `${title}.md`);
-      const content = await fs.readFile(filePath, 'utf-8');
+      const filePath = path.join(
+        process.cwd(),
+        "/src/db/codesnippets/posts",
+        language,
+        `${title}.md`,
+      );
+      const content = await fs.readFile(filePath, "utf-8");
 
       // If the language exists, return a success response
       const response = NextResponse.json(
