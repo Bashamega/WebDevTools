@@ -15,6 +15,9 @@ export async function GET(req) {
     page = 1;
   }
 
+
+  
+
   const usersPerPage = 10;
   const startIndex = (page - 1) * usersPerPage;
 
