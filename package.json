@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "prettier . --write",
+    "format:write": "prettier . --write",
+    "format:check": "prettier . --check",
     "lint": "next lint",
     "seo": "node scripts/seo.js"
   },
