@@ -17,17 +17,22 @@ export async function GET(request, { params }) {
     return response;
   } else {
     try {
-      const content = require(`@/db/codesnippets/posts/${language}/content.json`);
+      const content = require(
+        `@/db/codesnippets/posts/${language}/content.json`,
+      );
       // If the language exists, return a success response
       const response = NextResponse.json(
         { category: language, content: content },
-        { status: 200 }
+        { status: 200 },
       );
       response.headers.set("Cache-Control", "public, max-age=3600"); // Cache for 1 hour
       return response;
     } catch (error) {
       console.error(`Error loading content for language: ${language}`, error);
-      const response = NextResponse.json({ error: "Internal Server Error", message:error }, { status: 500 });
+      const response = NextResponse.json(
+        { error: "Internal Server Error", message: error },
+        { status: 500 },
+      );
       return response;
     }
   }
