@@ -98,7 +98,7 @@ export default function BadgeForm({ onSubmit, isDarkMode }) {
             </label>
             <input
               id="color"
-              type="text"
+              type="color"
               className={`${
                 isDarkMode
                   ? "bg-gray-800 text-gray-200"
