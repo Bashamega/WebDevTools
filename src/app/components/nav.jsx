@@ -26,7 +26,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
 
   const toggleDropdown = (category) => {
     setIsDropdownOpen((prevState) =>
-      prevState === category ? null : category
+      prevState === category ? null : category,
     );
   };
 

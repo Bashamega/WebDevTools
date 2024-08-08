@@ -1,4 +1,4 @@
-name: Check & fix styling (prettier)
+name: Run Format
 
 on:
   push:
@@ -9,18 +9,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run prettier
-        uses: permafrost-dev/prettier-docker-ga@main
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          args: --config prettier.config.js ./src
+          node-version: "14" # You can specify the Node.js version here
 
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Fix styling
-        continue-on-error: true
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run script
+        run: npm run format:check # Replace with the path to your script

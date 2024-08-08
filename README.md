@@ -23,12 +23,14 @@ Here're some of the project's best features:
 <h2>🛠️ Installation Steps:</h2>
 
 1. **Fork and Clone**:
+
    ```bash
    git clone https://github.com/Bashamega/WebDevTools.git
    cd WebDevTools
    ```
 
 2. **Install Dependencies**:
+
    ```bash
    npm install
    ```
@@ -37,7 +39,7 @@ Here're some of the project's best features:
    ```bash
    npm run dev
    ```
-<h2>💻 Built with</h2>
+   <h2>💻 Built with</h2>
 
 Technologies used in the project:
 

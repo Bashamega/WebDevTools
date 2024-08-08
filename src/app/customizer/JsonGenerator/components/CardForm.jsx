@@ -56,10 +56,10 @@ export default function CardForm({ isDarkMode }) {
               responseData,
               (_, value) =>
                 typeof value === "bigint" ? value.toString() : value,
-              2
+              2,
             ),
           ],
-          { type: "application/json" }
+          { type: "application/json" },
         );
         saveAs(blob, "WebDevTools.json");
       }
@@ -188,7 +188,7 @@ export default function CardForm({ isDarkMode }) {
                       responseData,
                       (_, value) =>
                         typeof value === "bigint" ? value.toString() : value,
-                      2
+                      2,
                     )}
                   </pre>
                 )}
