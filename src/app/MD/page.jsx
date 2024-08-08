@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useRef, useEffect } from "react";
 import snarkdown from "snarkdown";
 import { saveAs } from "file-saver";
@@ -9,7 +8,6 @@ import Search from "../components/search";
 import Link from "next/link";
 import SunIcon from "../components/icons/sunicon";
 import MoonIcon from "../components/icons/moonicon";
-
 export default function MarkdownEditor() {
   const [markdown, setMarkdown] = useState("# hey");
   const [name, setName] = useState("untitled");
