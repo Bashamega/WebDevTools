@@ -1,14 +1,16 @@
 {
   "name": "web",
-  "version": "0.1.0",
+  "version": "2.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "prettier . --write",
+    "format:write": "prettier . --write",
+    "format:check": "prettier . --check",
     "lint": "next lint",
-    "seo": "node scripts/seo.js"
+    "seo": "node scripts/seo.js",
+    "prepare": "husky"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -21,6 +23,7 @@
     "@mui/material": "^5.15.19",
     "asciidoctor": "^3.0.4",
     "autoprefixer": "10.4.19",
+    "badge-maker": "^4.0.0",
     "codemirror": "^6.0.1",
     "convert-units": "^2.3.4",
     "eslint-config-next": "^14.2.3",
@@ -53,7 +56,14 @@
   "devDependencies": {
     "eslint": "^8",
     "eslint-config-next": "14.2.2",
-    "prettier": "^3.3.1",
+
+
+    "prettier": "^3.3.3",
+
+    "husky": "^9.1.4",
+    
+
+
     "xml2js": "^0.6.2"
   }
 }
