@@ -64,7 +64,7 @@ export default function CodingSnippetsTopic({ params }) {
                 A free collection of {title(params.language)} snippets
               </p>
               <section>
-                {content ? (
+                {(content && content.length > 0) ?(
                   content.map((article, index) => (
                     <div key={index}>
                       <h1>{article.title}</h1>
