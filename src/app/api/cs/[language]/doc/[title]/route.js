@@ -25,7 +25,7 @@ export async function GET(request, { params }) {
       const filePath = path.join(
         process.cwd(),
         "/src/db/codesnippets/posts",
-        language,
+        language.toLowerCase(),
         `${title}.md`,
       );
       const content = await fs.readFile(filePath, "utf-8");

@@ -16,8 +16,6 @@ export function BlogContent({ doc, title, language, isDarkMode }) {
         }
         const data = await response.json();
         setArticleContent(data.content);
-        console.log(data);
-        console.log(data.content);
       } catch (error) {
         console.error("Failed to fetch content:", error);
       } finally {
