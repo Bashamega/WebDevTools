@@ -1,4 +1,13 @@
-# 2.1.0 (2024-08-09)
+## [2.1.1](https://github.com/Bashamega/WebDevTools/compare/v2.1.0...v2.1.1) (2024-08-09)
+
+
+### Bug Fixes
+
+* added prettier ignore file ([fd83b08](https://github.com/Bashamega/WebDevTools/commit/fd83b082f85273147253adb568c82161b7c8aafa))
+
+
+
+# [2.1.0](https://github.com/Bashamega/WebDevTools/compare/9b5f9546e5c5e0dc738410c4fe47c8eb9290c5d2...v2.1.0) (2024-08-09)
 
 
 ### Bug Fixes
