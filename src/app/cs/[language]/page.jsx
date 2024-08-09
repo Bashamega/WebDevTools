@@ -2,12 +2,12 @@
 import { useState, useEffect } from "react";
 import { NavBar } from "../../components/navbar";
 import languages from "@/db/codesnippets/categories.json";
-import Link from "next/link";
 import NotFound from "@/app/not-found";
 
 export default function CodingSnippetsTopic({ params }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [notfound, setNotfound] = useState(false);
+  const [content, setContent] = useState();
 
   // Toggle theme and save preference in localStorage
   const toggleTheme = () => {
@@ -27,7 +27,13 @@ export default function CodingSnippetsTopic({ params }) {
     const languageExists = languages.languages.some((language) => {
       return language.name.toLowerCase() === params.language.toLowerCase();
     });
-    if (!languageExists) {
+    if (languageExists) {
+      setContent(
+        require(
+          `@/db/codesnippets/posts/${params.language.toLowerCase()}/content.json`,
+        ),
+      );
+    } else {
       setNotfound(true);
     }
   }, [languages.languages, params.language]);
@@ -57,6 +63,17 @@ export default function CodingSnippetsTopic({ params }) {
               <p className="text-lg">
                 A free collection of {title(params.language)} snippets
               </p>
+              <section>
+                {content ? (
+                  content.map((article, index) => (
+                    <div key={index}>
+                      <h1>{article.title}</h1>
+                    </div>
+                  ))
+                ) : (
+                  <p>No data</p>
+                )}
+              </section>
             </section>
           </div>
         </main>
