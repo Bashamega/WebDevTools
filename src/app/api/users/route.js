@@ -15,9 +15,6 @@ export async function GET(req) {
     page = 1;
   }
 
-
-  
-
   const usersPerPage = 10;
   const startIndex = (page - 1) * usersPerPage;
 
@@ -29,7 +26,7 @@ export async function GET(req) {
   // Get paginated users from cache
   const paginatedUsers = cachedUsers.slice(
     startIndex,
-    startIndex + usersPerPage
+    startIndex + usersPerPage,
   );
   return NextResponse.json(paginatedUsers, { status: 200 });
 }
