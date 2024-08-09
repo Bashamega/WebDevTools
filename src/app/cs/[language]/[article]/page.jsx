@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 import { NavBar } from "@/app/components/navbar";
 import languages from "@/db/codesnippets/categories.json";
 import NotFound from "@/app/not-found";
+import { Sidebar } from "../../components/siodebar";
 
 export default function CodingSnippets({ params }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [articleExists, setArticleExists] = useState(true);
-
+  const [data, setData] = useState();
   // Toggle theme and save preference in localStorage
   const toggleTheme = () => {
     const newTheme = !isDarkMode;
@@ -39,6 +40,11 @@ export default function CodingSnippets({ params }) {
         return title(article.title) === title(params.article);
       });
       setArticleExists(article);
+      data.map((art) => {
+        if (title(art.title) === title(params.article)) {
+          setData(art);
+        }
+      });
     } else {
       setArticleExists(false);
     }
@@ -54,6 +60,9 @@ export default function CodingSnippets({ params }) {
             isDarkMode={isDarkMode}
             toggleTheme={toggleTheme}
           />
+          <section className="h-[calc(100vh-70px)] w-full lg:grid gap-6">
+            <Sidebar darkmode={isDarkMode} author={data?.author} />
+          </section>
         </main>
       ) : (
         <NotFound />
