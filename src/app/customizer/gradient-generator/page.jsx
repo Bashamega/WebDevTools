@@ -128,7 +128,9 @@ const GradientGenerator = () => {
     colors.sort((a, b) => a.position - b.position);
 
     colors.forEach((color, index) => {
-      gradient += `${color.color} ${color.position}%${index < colors.length - 1 ? ", " : ""}`;
+      gradient += `${color.color} ${color.position}%${
+        index < colors.length - 1 ? ", " : ""
+      }`;
     });
 
     setGradient(`linear-gradient(${deg}deg, ${gradient})`);
@@ -161,7 +163,9 @@ const GradientGenerator = () => {
 
   return (
     <main
-      className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-w-80`}
+      className={`${
+        isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"
+      } min-w-80`}
     >
       <NavBar
         title={"Gradient generator"}
@@ -190,7 +194,9 @@ const GradientGenerator = () => {
         <div className="flex justify-between flex-col md:flex-row mb-[100px] mt-[50px] w-full max-w-6xl mx-auto gap-8 px-4">
           {/* Generator maker */}
           <div
-            className={`${isDarkMode ? "bg-gray-800" : "bg-gray-200"} md:w-1/2 w-full p-5 rounded-xl shadow-lg md:order-1 order-2`}
+            className={`${
+              isDarkMode ? "bg-gray-800" : "bg-gray-200"
+            } md:w-1/2 w-full p-5 rounded-xl shadow-lg md:order-1 order-2`}
           >
             <div className="mb-4">
               <ColorsList
@@ -215,7 +221,11 @@ const GradientGenerator = () => {
             <div className="flex justify-between items-center gap-4 mt-12">
               <div className="w-full relative">
                 <button
-                  className={`rounded-lg ${isDarkMode ? "bg-gray-700 text-white" : "bg-gray-300 text-gray-800"} p-3 text-md font-semibold w-full text-center border outline-none border-gray-600 active:scale-95 transition-transform duration-200`}
+                  className={`rounded-lg ${
+                    isDarkMode
+                      ? "bg-gray-700 text-white"
+                      : "bg-gray-300 text-gray-800"
+                  } p-3 text-md font-semibold w-full text-center border outline-none border-gray-600 active:scale-95 transition-transform duration-200`}
                   onClick={generateRandomGradient}
                 >
                   Random
@@ -224,7 +234,9 @@ const GradientGenerator = () => {
 
               <div className="w-full relative">
                 <button
-                  className={`rounded-lg ${isDarkMode ? "bg-blue-600" : "bg-blue-500"} p-3 text-md font-semibold text-white w-full text-center border outline-none border-blue-600 active:scale-95 transition-transform duration-200`}
+                  className={`rounded-lg ${
+                    isDarkMode ? "bg-blue-600" : "bg-blue-500"
+                  } p-3 text-md font-semibold text-white w-full text-center border outline-none border-blue-600 active:scale-95 transition-transform duration-200`}
                   onClick={handleCopyCSSClick}
                 >
                   Copy CSS
@@ -234,7 +246,9 @@ const GradientGenerator = () => {
           </div>
 
           <div
-            className={`md:w-1/2 w-full md:h-auto h-[250px] rounded-xl md:order-2 order-1 relative ${isDarkMode ? "bg-gray-800" : "bg-gray-200"}`}
+            className={`md:w-1/2 w-full md:h-auto h-[250px] rounded-xl md:order-2 order-1 relative ${
+              isDarkMode ? "bg-gray-800" : "bg-gray-200"
+            }`}
             style={{
               background:
                 colorsListRef.current.length > 0 && gradientRef.current,

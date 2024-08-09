@@ -35,19 +35,29 @@ export default function Home({ state }) {
   };
   return (
     <main
-      className={`${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"} min-w-80 min-h-screen `}
+      className={`${
+        isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
+      } min-w-80 min-h-screen `}
     >
       <Nav isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <div className="flex justify-center flex-col items-center w-full">
         <div
-          className={`mr-4 p-5 my-9 mb-28 w-4/5 break-words py-6 md:p-6 rounded-lg shadow-md ${isDarkMode ? "bg-gray-800 text-white" : "bg-white border-gray-200 text-black"}`}
+          className={`mr-4 p-5 my-9 mb-28 w-4/5 break-words py-6 md:p-6 rounded-lg shadow-md ${
+            isDarkMode
+              ? "bg-gray-800 text-white"
+              : "bg-white border-gray-200 text-black"
+          }`}
         >
           <input
             type="text"
             placeholder="search"
             value={searchValue}
             onChange={handleSeach}
-            className={`w-full p-2 mb-5 border rounded-lg shadow ${isDarkMode ? "bg-gray-800 border-gray-700 text-white" : "bg-white border-gray-200 text-black"}`}
+            className={`w-full p-2 mb-5 border rounded-lg shadow ${
+              isDarkMode
+                ? "bg-gray-800 border-gray-700 text-white"
+                : "bg-white border-gray-200 text-black"
+            }`}
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {toolList.map((item, index) => (

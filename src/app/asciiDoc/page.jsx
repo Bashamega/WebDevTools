@@ -23,7 +23,9 @@ export default function AsciiDocEditor() {
 
   return (
     <div
-      className={`h-screen overflow-hidden ${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"}`}
+      className={`h-screen overflow-hidden ${
+        isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"
+      }`}
     >
       <NavBar
         title={"Ascii Doc Editor"}

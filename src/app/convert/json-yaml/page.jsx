@@ -35,7 +35,9 @@ export default function HTML_JSX() {
 
   return (
     <main
-      className={`h-screen overflow-auto ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}
+      className={`h-screen overflow-auto ${
+        isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
+      }`}
     >
       <NavBar
         title={"JSON to YAML"}

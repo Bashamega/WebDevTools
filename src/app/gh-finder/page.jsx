@@ -1,129 +1,163 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { NavBar } from "../components/navbar";
 import Link from "next/link";
-import Image from "next/image";
 import BasicModal from "./modal";
-import { InsertLink, LinkOff } from "@mui/icons-material";
+import Pagination from "./pagination";
 
 export default function GhFinder() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selected, setSelected] = useState(1);
   const [data, setData] = useState([]);
   const [selectedLabels, setSelectedLabels] = useState([]);
-  const [filteredIssue, setFilteredIssue] = useState([]);
+  const [filteredIssues, setFilteredIssues] = useState([]);
 
   // New states
   const [searchQuery, setSearchQuery] = useState("");
   const [isAssigned, setIsAssigned] = useState(false);
-  const [maxResults, setMaxResults] = useState(10); // TODO FEATURE => Add Pages
+  const [currentPage, setCurrentPage] = useState(10);
+  const [maxResults, setMaxResults] = useState(10);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
 
-  const cacheKey = selected === 1 ? "webdevtools-issues" : `github-issues-${maxResults}`;
+  const resultPerPageChoices = [5, 10, 25, 50];
+
+  const cacheKey = selected === 1 ? "webdevtools-issues" : `github-issues-100`;
   const cacheExpirationKey = `${cacheKey}-timestamp`;
   const cacheExpirationTime = 1000 * 60 * 30; // Cache expiration time (e.g., 30 minutes)
 
   const fetchData = async (url) => {
-    const cachedData = localStorage.getItem(cacheKey);
-    const cacheTimestamp = localStorage.getItem(cacheExpirationKey);
-    const now = new Date().getTime();
-
-    if (cachedData && cacheTimestamp && (now - cacheTimestamp) < cacheExpirationTime) {
-      return JSON.parse(cachedData);
-    } else {
-      try {
-        const response = await fetch(url);
-        const result = await response.json();
-        localStorage.setItem(cacheKey, JSON.stringify(result));
-        localStorage.setItem(cacheExpirationKey, now.toString());
-        return result;
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        return [];
-      }
+    try {
+      const response = await fetch(url);
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
   };
-
-  useEffect(() => {
-    const url =
-      selected === 1
-        ? "https://api.github.com/repos/bashamega/webdevtools/issues"
-        : `https://api.github.com/search/issues?q=state:open+is:issue&per_page=${maxResults}&page=1`;
-
-    const fetchDataAndSet = async () => {
-      const result = await fetchData(url);
-      const filteredData = selected === 1
-        ? result.filter((item) => !item.node_id.includes("PR_"))
-        : result.items;
-      setData(filteredData);
-    };
-
-    fetchDataAndSet();
-  }, [selected, maxResults]);
-
-  // Filter issues by label
-  const issuesByLabel = () => {
-    if (data?.length) {
-      const newFilterIssues = data.filter((issue) => {
-        return selectedLabels.every((selectedLabel) => {
-          return issue.labels.some((label) => label.name === selectedLabel);
-        });
-      });
-      setFilteredIssue(newFilterIssues);
-    }
-  };
-
-  useEffect(() => {
-    issuesByLabel();
-  }, [selectedLabels]);
-
-  // Filter function for search, assign and fork
-  const filteredData = data?.filter((issue) => {
-    const matchesSearch = issue.title
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
-    const matchesAssignment = isAssigned ? issue.assignees.length > 0 : true;
-    return matchesSearch && matchesAssignment;
-  });
-
-  const issuesToDisplay =
-    filteredIssue.length > 0 ? filteredIssue : filteredData;
 
   // New function to fetch PRs linked to issues
   const fetchPRsForIssue = async (issue) => {
     const timelineUrl = `${issue.url}/timeline`;
-    const response = await fetch(timelineUrl, {
-      headers: {
-        Accept: "application/vnd.github.mockingbird-preview+json",
-      },
-    });
-    const events = await response.json();
-    const linkedPRs = events?.filter(
-      (event) =>
-        event.event === "cross-referenced" && event.source?.issue?.pull_request,
-    );
-    return linkedPRs.map((pr) => pr.source.issue.pull_request.html_url);
+    try {
+      const response = await fetch(timelineUrl, {
+        headers: {
+          Accept: "application/vnd.github.mockingbird-preview+json",
+        },
+      });
+      const events = await response.json();
+      const linkedPRs = events?.filter(
+        (event) =>
+          event.event === "cross-referenced" &&
+          event.source?.issue?.pull_request,
+      );
+      return linkedPRs.map((pr) => pr.source.issue.pull_request.html_url);
+    } catch (error) {
+      console.log(error.message);
+      return [];
+    }
   };
 
-  // New useEffect to add PRs linked to issues
+  const addPRsInfoToIssues = useCallback(async (issues) => {
+    const issuesWithPRsInfo = await Promise.all(
+      issues.map(async (issue) => {
+        const linkedPRs = await fetchPRsForIssue(issue);
+        return { ...issue, linkedPRs: linkedPRs };
+      }),
+    );
+    return issuesWithPRsInfo;
+  }, []);
+
+  // Fetch new data
   useEffect(() => {
-    const fetchPRsInfo = async () => {
-      const issuesWithPRsInfo = await Promise.all(
-        data.map(async (issue) => {
-          const linkedPRs = await fetchPRsForIssue(issue);
-          return { ...issue, linkedPRs };
-        }),
-      );
-      setData(issuesWithPRsInfo);
+    const urlWebDevTools =
+      "https://api.github.com/repos/bashamega/webdevtools/issues";
+    const urlGitHub =
+      "https://api.github.com/search/issues?q=state:open+is:issue&per_page=100&page=1";
+
+    const url = selected === 1 ? urlWebDevTools : urlGitHub;
+
+    const updateData = (newData) => {
+      const now = new Date().getTime();
+      localStorage.setItem(cacheKey, JSON.stringify(newData));
+      localStorage.setItem(cacheExpirationKey, now.toString());
+
+      setData(newData);
     };
 
-    if (data?.length > 0 && !data.some(issue => issue.linkedPRs)) {
-      fetchPRsInfo();
+    const fetchDataAndSet = async () => {
+      const result = await fetchData(url);
+      let filteredData =
+        selected === 1
+          ? result.filter((item) => !item.node_id.includes("PR_"))
+          : result.items;
+
+      if (url === urlWebDevTools) {
+        filteredData = await addPRsInfoToIssues(filteredData);
+      }
+
+      updateData(filteredData);
+    };
+
+    const cachedData = localStorage.getItem(cacheKey);
+    const cacheTimestamp = localStorage.getItem(cacheExpirationKey);
+    const now = new Date().getTime();
+
+    if (
+      !(
+        cachedData &&
+        cacheTimestamp &&
+        now - cacheTimestamp < cacheExpirationTime
+      )
+    ) {
+      fetchDataAndSet();
+    } else {
+      setData(JSON.parse(cachedData));
     }
-  }, [data]);
+  }, [
+    selected,
+    cacheKey,
+    cacheExpirationKey,
+    cacheExpirationTime,
+    addPRsInfoToIssues,
+  ]);
+
+  // Filter issues by search keywords and assignment status
+  useEffect(() => {
+    const issuesBySearch = (issues) => {
+      return issues.filter((issue) => {
+        const matchesSearch = issue.title
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase());
+        const matchesAssignment = isAssigned
+          ? issue.assignees.length > 0
+          : true;
+        return matchesSearch && matchesAssignment;
+      });
+    };
+
+    // Filter issues by label
+    const issuesByLabel = (issues) => {
+      return issues.filter((issue) => {
+        return selectedLabels.every((selectedLabel) => {
+          return issue.labels.some((label) => label.name === selectedLabel);
+        });
+      });
+    };
+
+    setFilteredIssues(issuesByLabel(issuesBySearch(data)));
+    setCurrentPage(1);
+  }, [data, isAssigned, searchQuery, selectedLabels]);
+
+  const getIssuesByPage = useCallback(() => {
+    const startResult = (currentPage - 1) * maxResults + 1;
+    const endResult = Math.min(currentPage * maxResults, filteredIssues.length);
+    return filteredIssues.slice(startResult - 1, endResult);
+  }, [currentPage, filteredIssues, maxResults]);
+
+  const issuesByPage = getIssuesByPage();
 
   function isDarkColor(color) {
     // Convert the color to RGB
@@ -139,7 +173,7 @@ export default function GhFinder() {
     return luminance < 0.5;
   }
 
-  if (!issuesToDisplay?.length) {
+  if (!data.length) {
     return (
       <div className="flex items-center justify-center h-screen">
         <div className="relative">
@@ -168,20 +202,20 @@ export default function GhFinder() {
         toggleTheme={toggleTheme}
       />
       <div className="mt-10 flex w-screen justify-center">
-        <header className="lg:w-2/3">
-          <h1 className="relative z-10 font-sans text-lg font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600">
+        <header>
+          <h1 className="relative z-10 font-sans text-5xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600">
             Github Issue Finder
           </h1>
 
-          <div className="flex justify-between w-full lg:w-1/2 lg:mx-[25%] my-5 items-center">
+          <div className="flex flex-col md:flex-row justify-between w-full  lg:whitespace-nowrap my-5 items-center">
             <input
               type="text"
-              className="p-2 rounded border border-gray-400"
+              className="p-2 rounded border border-gray-400 text-black"
               placeholder="Search issues"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <div className="flex items-center">
+            <div className="flex items-center mx-4 my-4">
               <input
                 type="checkbox"
                 id="isAssigned"
@@ -191,9 +225,25 @@ export default function GhFinder() {
               />
               <label htmlFor="isAssigned">Is assigned</label>
             </div>
+            <div>
+              <p>Results per page</p>
+              <div className="flex justify-between">
+                {resultPerPageChoices.map((num) => (
+                  <button key={num} onClick={() => setMaxResults(num)}>
+                    <span
+                      className={`underline mx-1 ${
+                        num === maxResults && "text-cyan-600 font-bold"
+                      }`}
+                    >
+                      {num}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <div className="flex justify-between w-full lg:w-1/2 lg:mx-[25%] my-5 items-center">
+          <div className="flex justify-between w-full my-5 items-center">
             <button
               className={
                 "hover:bg-blue-800 transition-colors min-w-1/3 duration-100 p-5 rounded-full hover:text-white " +
@@ -221,62 +271,87 @@ export default function GhFinder() {
         </header>
       </div>
       <div className="ml-[25%] w-1/2">
-        {issuesToDisplay.map((item) => (
-          <div
-            key={item.id}
-            className="bg-slate-500 rounded mb-5 pl-5 pb-5 flex w-full"
-          >
-            <div className="w-2/3 overflow-hidden">
-              <Link
-                href={item.html_url}
-                className="text-white font-bold text-3xl hover:underline truncate block"
-              >
-                {item.title}
-              </Link>
-              <Link
-                className="text-slate-300"
-                href={item.repository_url.replace(
-                  "https://api.github.com/repos",
-                  "https://github.com",
-                )}
-              >
-                {item.repository_url.replace("https://api.github.com/repos/", "")}
-              </Link>
-              <div
-                className={
-                  "flex flex-wrap items-center mt-1 " +
-                  (isDarkMode ? "text-gray-300" : "text-gray-600")
-                }
-              >
-                {item.labels?.map((label) => (
-                  <span
-                    key={label.id}
-                    className="inline-block px-2 py-1 mr-2 text-xs font-semibold text-white bg-green-500 rounded-full"
-                    style={{
-                      backgroundColor: `#${label.color}`,
-                      color: isDarkColor(`#${label.color}`) ? 'white' : 'black',
-                    }}
-                  >
-                    {label.name}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="w-1/3 flex flex-col items-center justify-center">
-              <div className="text-sm mt-3">{item.comments} Comments</div>
-              {item.linkedPRs?.length > 0 && (
-                <div className="mt-2">
-                  {item.linkedPRs.map((prUrl, index) => (
-                    <a key={index} href={prUrl} className="text-blue-500 hover:underline">
-                      PR #{index + 1}
-                    </a>
+        {filteredIssues.length === 0 ? (
+          <div className="bg-red-700 dark:bg-black rounded-lg pl-5 py-5 flex w-full">
+            <h3 className="text-white font-bold text-3xl">
+              No issues satisfying the criteria
+            </h3>
+          </div>
+        ) : (
+          issuesByPage.map((item) => (
+            <div
+              key={item.id}
+              className="bg-slate-500 rounded-lg mb-5 last:mb-0 pl-5 py-5 flex w-full"
+            >
+              <div className="w-2/3 overflow-hidden">
+                <Link
+                  href={item.html_url}
+                  className="text-white font-bold text-3xl hover:underline truncate block"
+                >
+                  {item.title}
+                </Link>
+                <Link
+                  className="text-slate-300"
+                  href={item.repository_url.replace(
+                    "https://api.github.com/repos",
+                    "https://github.com",
+                  )}
+                >
+                  {item.repository_url.replace(
+                    "https://api.github.com/repos/",
+                    "",
+                  )}
+                </Link>
+                <div
+                  className={
+                    "flex flex-wrap items-center mt-1 " +
+                    (isDarkMode ? "text-gray-300" : "text-gray-600")
+                  }
+                >
+                  {item.labels?.map((label) => (
+                    <span
+                      key={label.id}
+                      className="inline-block px-2 py-1 mx-2 my-1 text-xs font-semibold text-white bg-green-500 rounded-full"
+                      style={{
+                        backgroundColor: `#${label.color}`,
+                        color: isDarkColor(`#${label.color}`)
+                          ? "white"
+                          : "black",
+                      }}
+                    >
+                      {label.name}
+                    </span>
                   ))}
                 </div>
-              )}
+              </div>
+              <div className="w-1/3 flex flex-col items-center justify-center">
+                <div className="text-sm mt-3 text-white">
+                  {item.comments} Comments
+                </div>
+                {item.linkedPRs?.length > 0 && (
+                  <div className="mt-2">
+                    {item.linkedPRs.map((prUrl, index) => (
+                      <Link
+                        key={index}
+                        href={prUrl}
+                        className="text-white hover:underline"
+                      >
+                        PR #{index + 1}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        resultsPerPage={maxResults}
+        totalResults={filteredIssues.length}
+      />
     </div>
   );
 }
