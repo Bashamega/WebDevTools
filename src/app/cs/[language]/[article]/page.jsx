@@ -4,6 +4,7 @@ import { NavBar } from "@/app/components/navbar";
 import languages from "@/db/codesnippets/categories.json";
 import NotFound from "@/app/not-found";
 import { Sidebar } from "../../components/siodebar";
+import { BlogContent } from "../../components/blogContent";
 
 export default function CodingSnippets({ params }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -60,7 +61,13 @@ export default function CodingSnippets({ params }) {
             isDarkMode={isDarkMode}
             toggleTheme={toggleTheme}
           />
-          <section className="h-[calc(100vh-70px)] w-full lg:grid gap-6">
+          <section className="h-[calc(100vh-70px)] w-full lg:grid lg:grid-cols-[2fr_1fr]  lg:gap-6">
+            <BlogContent
+              title={title(data?.title)}
+              doc={data?.doc}
+              language={params.language}
+              isDarkMode={isDarkMode}
+            />
             <Sidebar darkmode={isDarkMode} author={data?.author} />
           </section>
         </main>

@@ -2,7 +2,7 @@ import { FaGithub } from "react-icons/fa";
 
 export function Sidebar({ author, darkmode }) {
   return (
-    <aside className=" lg:w-1/4 w-full flex items-center h-full p-5">
+    <aside className="w-full flex items-center lg:h-full p-5">
       <div
         className={`p-4 rounded-lg ${darkmode ? "bg-gray-700" : "bg-gray-100"}`}
       >
