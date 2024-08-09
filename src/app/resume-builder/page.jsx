@@ -16,18 +16,30 @@ const Home = () => {
     name: "",
     email: "",
     phone: "",
+    address: "",
     image: "",
     workExperience: [{ title: "", company: "", description: "" }],
+    projects: [{ title: "", liveUrl: "", description: "" }],
     education: [{ degree: "", institution: "", description: "" }],
-    skills: [""],
+    skills: [
+      { category: "frontend", skills: [""] },
+      { category: "backend", skills: [""] },
+      { category: "languages", skills: [""] },
+      { category: "other", skills: [""] },
+    ],
     links: { linkedin: "", website: "", github: "" },
+    achievements: [{ title: "", description: "" }],
+
     template: "template1",
   });
 
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleFormChange = (updatedData) => {
-    setResumeData(updatedData);
+    setResumeData((prevFormData) => ({
+      ...prevFormData,
+      ...updatedData,
+    }));
   };
 
   const toggleTheme = () => {

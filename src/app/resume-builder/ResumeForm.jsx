@@ -220,7 +220,6 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             type="file"
             name="image"
             placeholder="Your Photo"
-            // value={formData.image}
             accept="image/*"
             onChange={(e) => handlePhotoChange(e)}
           />
@@ -353,7 +352,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
         </button>
       </div>
       <div className="w-full mt-6">
-        <h3 className="text-xl font-semibold">Education</h3>
+        <h3 className="text-xl font-semibold">Education or Certificates</h3>
 
         {formData.education.map((edu, index) => (
           <div
@@ -456,7 +455,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
       <div className="w-full my-6">
         <h3 className="text-xl font-semibold">Achievements</h3>
         {formData.achievements.map((achievement, index) => (
-          <div key={index} className="flex items-start my-4 w-full">
+          <div key={index} className="flex items-start my-4 w-full gap-[2rem]">
             <input
               className={` ${
                 isDarkMode

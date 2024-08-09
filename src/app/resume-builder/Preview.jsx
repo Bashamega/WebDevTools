@@ -15,6 +15,7 @@ const Preview = ({ isDarkMode, data2 }) => {
     links,
     template,
     projects,
+    achievements,
   } = data;
 
   const styles = {
@@ -117,7 +118,6 @@ const Preview = ({ isDarkMode, data2 }) => {
 
   const styles2 = {
     page: {
-      // backgroundColor: "#ffffff",
       padding: 20,
       fontFamily: "Helvetica",
       color: "#1e293b",
@@ -133,19 +133,12 @@ const Preview = ({ isDarkMode, data2 }) => {
 
     name: {
       fontSize: 28,
-      // color: "#12131a", //dark-slate
-      // marginBottom: 2,
+
       fontWeight: "bold",
     },
-    // profession: {
-    //   fontSize: 18,
-    // color: "020617",
-    //   marginBottom: 10,
-    // },
+
     contactInfo: {
       fontSize: 13,
-      // color: "blue",
-      // marginBottom: 10,
     },
     sectionTitle: {
       fontSize: 18,
@@ -153,33 +146,18 @@ const Preview = ({ isDarkMode, data2 }) => {
       marginBottom: 10,
       borderBottom: "2px solid #000",
       borderTop: "2px solid #000",
-      paddingBottom: 3,
-      fontWeight: "500",
+      fontWeight: "600",
     },
     text: {
       fontSize: 14,
-      // color: "#333",
       marginBottom: 5,
       color: "#020617", // light-slate
     },
-    // link: {
-    //   color: "#3498db",
-    // },
-    // skills: {
-    //   display: "flex",
-    //   flexDirection: "row",
-    //   flexWrap: "wrap",
-    //   justifyContent: "start",
-    // },
-    // skill: {
-    //   backgroundColor: "#3498db",
-    //   color: "#fff",
-    //   padding: 5,
-    //   borderRadius: 5,
-    //   marginRight: 5,
-    //   marginBottom: 5,
-    //   fontSize: 10,
-    // },
+    subtitle: {
+      fontWeight: "600",
+      // fontStyle: "italic",
+      color: "#020617", // light-slate
+    },
     section: {
       marginBottom: 20,
       width: "100%",
@@ -284,14 +262,14 @@ const Preview = ({ isDarkMode, data2 }) => {
           >
             {data && (
               <div className="w-full p-8">
-                <header className="flex items-center justify-center flex-col my-4 ">
+                <header className="flex items-center justify-center flex-col mb-1">
                   {name && (
                     <h4 className="text-slate-950" style={styles2.name}>
                       {name}
                     </h4>
                   )}
 
-                  <div className="flex flex-row gap-2 items-center flex-wrap text-slate-800 justify-center">
+                  <div className="flex flex-row gap-1 items-center flex-wrap text-slate-800 justify-center">
                     {email && (
                       <span style={styles2.contactInfo}>
                         <a src={links.website} style={styles2.link}>
@@ -300,7 +278,7 @@ const Preview = ({ isDarkMode, data2 }) => {
                         </a>
                       </span>
                     )}
-                    ||
+
                     {phone && (
                       <span style={styles2.contactInfo}>
                         <a src={links.website} style={styles2.link}>
@@ -309,11 +287,11 @@ const Preview = ({ isDarkMode, data2 }) => {
                         </a>
                       </span>
                     )}
-                    ||
+
                     {address && (
                       <span style={styles2.contactInfo}>{address}</span>
                     )}
-                    ||
+
                     {links.linkedIn && (
                       <span style={styles2.contactInfo}>
                         <a src={links.linkedIn} style={styles2.link}>
@@ -321,7 +299,7 @@ const Preview = ({ isDarkMode, data2 }) => {
                         </a>
                       </span>
                     )}
-                    ||
+
                     {links.github && (
                       <span style={styles2.contactInfo}>
                         <a src={links.github} style={styles2.link}>
@@ -330,7 +308,7 @@ const Preview = ({ isDarkMode, data2 }) => {
                         </a>
                       </span>
                     )}
-                    ||
+
                     {links.website && (
                       <span style={styles2.contactInfo}>
                         <a src={links.website} style={styles2.link}>
@@ -349,12 +327,17 @@ const Preview = ({ isDarkMode, data2 }) => {
                       <div key={index}>
                         <div style={styles2.text}>
                           <div style={{ fontWeight: "bold" }}>
-                            {workExp.title}
+                            <h6>{workExp.title}</h6>
+                            <span
+                              style={styles2.subtitle}
+                              className="text-slate-600"
+                            >
+                              {" "}
+                              {workExp.company}
+                            </span>
                           </div>{" "}
-                          at
-                          {workExp.company}
                         </div>
-                        <p className="pl-2" style={styles2.text}>
+                        <p className="pl-4" style={styles2.text}>
                           • {workExp.description}
                         </p>
                       </div>
@@ -369,9 +352,11 @@ const Preview = ({ isDarkMode, data2 }) => {
                           <div style={{ fontWeight: "bold" }}>
                             {project.title}
                           </div>{" "}
-                          <span>{project.liveUrl}</span>
+                          <span style={styles2.subtitle}>
+                            {project.liveUrl}
+                          </span>
                         </div>
-                        <p className="pl-2" style={styles2.text}>
+                        <p className="pl-4" style={styles2.text}>
                           • {project.description}
                         </p>
                       </div>
@@ -383,8 +368,11 @@ const Preview = ({ isDarkMode, data2 }) => {
                     {education.map((edu, index) => (
                       <div key={index}>
                         <div style={styles2.text}>
-                          <p style={{ fontWeight: "bold" }}>{edu.degree}</p>{" "}
-                          {edu.institution}
+                          <h6>{edu.degree}</h6>
+                          <span style={styles2.subtitle}>
+                            {" "}
+                            {edu.institution}
+                          </span>
                         </div>
                         <p style={styles2.text}>• {edu.description}</p>
                       </div>
@@ -398,13 +386,26 @@ const Preview = ({ isDarkMode, data2 }) => {
                         <>
                           {skillCategory.skills.map((skill, index) => (
                             <div key={index} className="flex items-start  ">
-                              <span className="font-bold ">
+                              <span style={styles2.text} className="font-bold ">
                                 {skillCategory.category}:
                               </span>
                               <p className="pl-2">{skill}</p>
                             </div>
                           ))}
                         </>
+                      ))}
+                    </div>
+                  </div>
+                  <div style={styles2.section} className="text-sm">
+                    <p style={styles2.sectionTitle}>Achievements</p>
+                    <div className="w-full flex items-start justify-start flex-wrap gap-2 flex-col">
+                      {achievements.map((achievement, index) => (
+                        <div key={index} className="flex items-start  ">
+                          <span style={styles2.text} className="font-bold ">
+                            {achievement.title}:
+                          </span>
+                          <p className="pl-2">{achievement.description}</p>
+                        </div>
                       ))}
                     </div>
                   </div>

@@ -61,6 +61,11 @@
        "website": "https://website.com",
        "github": "https://github.com"
      },
+     "achievements":[
+      {
+        "title": "Kepler's Hackathon",
+        "description": "I won a hackathon at my planet Kepler's hacker event. We secured 3rd rank."
+      }
+    ],
      "template": "template1"
    }
-
