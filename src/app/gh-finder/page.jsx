@@ -51,7 +51,7 @@ export default function GhFinder() {
       const linkedPRs = events?.filter(
         (event) =>
           event.event === "cross-referenced" &&
-          event.source?.issue?.pull_request
+          event.source?.issue?.pull_request,
       );
       return linkedPRs.map((pr) => pr.source.issue.pull_request.html_url);
     } catch (error) {
@@ -65,7 +65,7 @@ export default function GhFinder() {
       issues.map(async (issue) => {
         const linkedPRs = await fetchPRsForIssue(issue);
         return { ...issue, linkedPRs: linkedPRs };
-      })
+      }),
     );
     return issuesWithPRsInfo;
   }, []);
@@ -294,12 +294,12 @@ export default function GhFinder() {
                   className="text-slate-300"
                   href={item.repository_url.replace(
                     "https://api.github.com/repos",
-                    "https://github.com"
+                    "https://github.com",
                   )}
                 >
                   {item.repository_url.replace(
                     "https://api.github.com/repos/",
-                    ""
+                    "",
                   )}
                 </Link>
                 <div
