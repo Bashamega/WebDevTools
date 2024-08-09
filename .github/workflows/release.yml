@@ -29,8 +29,6 @@ jobs:
         run: |
           LF_VERSION=$(cat package.json | jq -r '.version')
           echo "current-version=$LF_VERSION" >> "$GITHUB_OUTPUT"
-      - name: update app config
-        run: sed -i 's/0.0.0/${{ steps.package-version.outputs.current-version}}/g' src/config/app.json
 
       # create release info and push it upstream
       - name: conventional Changelog Action
