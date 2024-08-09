@@ -2,20 +2,22 @@ import { useEffect, useState } from "react";
 import snarkdown from "snarkdown";
 
 export function BlogContent({ doc, title, language, isDarkMode }) {
-  const [content, setContent] = useState("");
+  const [content, setArticleContent] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchContent() {
       setLoading(true);
       try {
+        if (!doc) return;
         const response = await fetch(`/api/cs/${language}/doc/${doc}`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setContent(data.content);
+        setArticleContent(data.content);
         console.log(data);
+        console.log(data.content);
       } catch (error) {
         console.error("Failed to fetch content:", error);
       } finally {
