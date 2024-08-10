@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "title": "How to get process uptime",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "howtogetprocessuptime"
+  }
+]
