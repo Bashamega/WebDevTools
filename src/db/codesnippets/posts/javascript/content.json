@@ -25,5 +25,14 @@
       "about": "I like stuff... 🤨"
     },
     "doc": "getcurrentdateandtime"
+  },
+  {
+    "title": "Convert string to uppercase",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "convertstringtouppercase"
   }
 ]
