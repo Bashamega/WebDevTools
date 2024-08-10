@@ -52,5 +52,14 @@
       "about": "I like stuff... 🤨"
     },
     "doc": "checkforsubstring"
+  },
+  {
+    "title": "Remove duplicates from an array",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "removeduplicatesfromanarray"
   }
 ]
