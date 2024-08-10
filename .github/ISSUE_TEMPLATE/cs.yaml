@@ -1,6 +1,8 @@
 name: New code snippet
 description: Add a new code snippet
 title: '[New Code Snippet]: '
+labels: 
+  - Code snippet
 body:
   - type: checkboxes
   
