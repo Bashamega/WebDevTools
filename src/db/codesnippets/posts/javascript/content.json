@@ -34,5 +34,14 @@
       "about": "I like stuff... 🤨"
     },
     "doc": "convertstringtouppercase"
+  },
+  {
+    "title": "Merge two arrays",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "mergetwoarrays"
   }
 ]
