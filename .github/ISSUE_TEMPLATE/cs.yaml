@@ -60,5 +60,4 @@ body:
     attributes:
       label: "Do you want your GitHub link to appear?"
       options:
-        - label: Yes
-          required: true
+        - label: "Yes"
