@@ -3,8 +3,10 @@ description: Add a new code snippet
 title: '[New Code Snippet]: '
 body:
   - type: checkboxes
+  
     id: check
     attributes:
+      label: "Confirmation"
       options:
         - label: This code snippet is not a duplicate
           required: true
