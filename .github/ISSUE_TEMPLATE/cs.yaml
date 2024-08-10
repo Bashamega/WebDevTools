@@ -5,7 +5,6 @@ labels:
   - Code snippet
 body:
   - type: checkboxes
-
     id: check
     attributes:
       label: "Confirmation"
@@ -43,3 +42,23 @@ body:
         - Other
     validations:
       required: true
+  - type: input
+    id: username
+    attributes:
+      label: "Your Name"
+    validations:
+      required: true
+  - type: textarea
+    id: user_description
+    attributes:
+      label: "About You"
+      description: "Provide a description about yourself"
+    validations:
+      required: true
+  - type: checkboxes
+    id: github_link
+    attributes:
+      label: "Do you want your GitHub link to appear?"
+      options:
+        - label: Yes
+          required: true
