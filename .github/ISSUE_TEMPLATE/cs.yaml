@@ -1,0 +1,41 @@
+name: New code snippet
+description: Add a new code snippet
+title: '[New Code Snippet]: '
+body:
+  - type: checkboxes
+    id: check
+    attributes:
+      options:
+        - label: This code snippet tools is not a duplicate
+          required: true
+  - type: input
+    id: title
+    attributes:
+      label: Code Snippet Title
+    validations:
+      required: true
+  - type: textarea
+    id: article
+    attributes:
+      label: 'Your code snippet:'
+      description: write your code snippet in yaml
+    validations:
+      required: true
+  - type: dropdown
+    id: cat
+    attributes:
+      label: Choose a category
+      options:
+        - JavaScript
+        - Python
+        - Java
+        - C#
+        - Ruby
+        - PHP
+        - TypeScript
+        - Swift
+        - Go
+        - Kotlin
+        - Other
+    validations:
+      required: true
