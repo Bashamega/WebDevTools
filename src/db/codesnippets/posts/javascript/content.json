@@ -16,5 +16,14 @@
       "about": "I like stuff... 🤨"
     },
     "doc": "checkifvariableisanarray"
+  },
+  {
+    "title": "Get current date and time",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "getcurrentdateandtime"
   }
 ]
