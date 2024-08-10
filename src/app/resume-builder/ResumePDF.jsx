@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import data from "./sample.json";
+// import data from "./sample.json";
 
 import {
   Page,
@@ -39,6 +39,8 @@ const styles1 = StyleSheet.create({
 
   profileDetails: {
     marginLeft: 0,
+    display: "flex",
+    alignItems: "start",
   },
   name: {
     fontSize: 28,
@@ -47,7 +49,7 @@ const styles1 = StyleSheet.create({
     fontWeight: "bold",
   },
   profession: {
-    fontSize: 20,
+    fontSize: 14,
     color: "#7f8c8d",
     marginBottom: 10,
   },
@@ -72,8 +74,16 @@ const styles1 = StyleSheet.create({
     marginBottom: 6,
   },
   subtitle: {
-    fontSize: 15,
-    color: "#333",
+    fontSize: 12,
+    color: "#7f8c8d",
+    fontWeight: "bold",
+    marginBottom: 5,
+    paddingLeft: 10,
+  },
+
+  subLink: {
+    fontSize: 12,
+    color: "#7f8c8d",
     fontWeight: "bold",
     marginBottom: 5,
     paddingLeft: 10,
@@ -85,10 +95,15 @@ const styles1 = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 5,
     paddingLeft: 10,
+    // lineHeight:"1.2px"
   },
 
   link: {
     color: "#3498db",
+    fontSize: 12,
+    textDecoration: "none",
+    fontStyle: "italic",
+    textTransform: "none",
   },
 
   skills: {
@@ -102,7 +117,6 @@ const styles1 = StyleSheet.create({
     color: "#fff",
     padding: 8,
     borderRadius: 5,
-    marginRight: 20,
     marginBottom: 5,
     fontSize: 10,
   },
@@ -187,7 +201,7 @@ const styles1 = StyleSheet.create({
 //   },
 // });
 
-const ResumePDF = ({ data2 }) => {
+const ResumePDF = ({ data }) => {
   const {
     name,
     email,
@@ -210,43 +224,42 @@ const ResumePDF = ({ data2 }) => {
           <Page size="A4" style={styles1.page}>
             <View style={styles1.header}>
               <View>
-                {image && <Image style={styles1.profileImage} src={image} />}
+                <Image
+                  style={styles1.profileImage}
+                  src="https://randomuser.me/api/portraits/women/16.jpg"
+                />
               </View>
               <View style={styles1.profileDetails}>
                 <Text style={styles1.name}>{name}</Text>
                 <Text style={styles1.profession}>
                   {workExperience[0].title}
                 </Text>
-                <Text style={styles1.contactInfo}>Email: {email}</Text>
+                <Text style={styles1.contactInfo}>
+                  Email: <Text style={styles1.link}>{email}</Text>{" "}
+                </Text>
                 <Text style={styles1.contactInfo}>Phone: {phone}</Text>
                 <Text style={styles1.contactInfo}>Address: {address}</Text>
 
-                {links.linkedIn && (
-                  <Text style={styles1.contactInfo}>
-                    LinkedIn:{" "}
-                    <Link src={links.linkedIn} style={styles1.link}>
-                      {links.linkedIn}
-                    </Link>
-                  </Text>
-                )}
+                <Text style={styles1.contactInfo}>
+                  LinkedIn:
+                  <Link src={links.linkedIn} style={styles1.link}>
+                    {links.linkedIn}
+                  </Link>
+                </Text>
 
-                {links.github && (
-                  <Text style={styles1.contactInfo}>
-                    GitHub:{" "}
-                    <Link src={links.github} style={styles1.link}>
-                      {links.github}
-                    </Link>
-                  </Text>
-                )}
+                <Text style={styles1.contactInfo}>
+                  GitHub:
+                  <Link src={links.github} style={styles1.link}>
+                    {links.github}
+                  </Link>
+                </Text>
 
-                {links.website && (
-                  <Text style={styles1.contactInfo}>
-                    Website:{" "}
-                    <Link src={links.website} style={styles1.link}>
-                      {links.website}
-                    </Link>
-                  </Text>
-                )}
+                <Text style={styles1.contactInfo}>
+                  Website:
+                  <Link src={links.website} style={styles1.link}>
+                    {links.website}
+                  </Link>
+                </Text>
               </View>
             </View>
             <View style={styles1.view}>
@@ -270,13 +283,14 @@ const ResumePDF = ({ data2 }) => {
                 </View>
               ))}
             </View>
+
             <View style={styles1.view}>
               <Text style={styles1.sectionTitle}>Projects</Text>
               {projects.map((project, index) => (
                 <View key={index}>
                   <Text style={styles1.title}>{project.title}</Text>
-                  <Text style={styles1.subtitle}>
-                    <Link src={projects.liveUrl}>{project.institution}</Link>
+                  <Text style={styles1.subLink}>
+                    <Link style={styles1.link}>{project.liveUrl}</Link>
                   </Text>
                   <Text style={styles1.desc}>• {project.description}</Text>
                 </View>
@@ -286,18 +300,26 @@ const ResumePDF = ({ data2 }) => {
             <View style={styles1.view}>
               <Text style={styles1.sectionTitle}>Skills</Text>
               <View style={styles1.skills}>
-                {skills.map((skillCategory, index) => (
-                  <View key={index}>
-                    {skillCategory.map((skill, idx) => (
-                      <View
-                        key={idx}
-                        style={{ display: "flex", alignItems: "center" }}
-                      >
-                        <Text style={styles1.skill}>
-                          {skillCategory.category}
-                        </Text>
-                        <Text style={styles1.skill}>{skill}</Text>
-                      </View>
+                {skills.map((skillsCategory, index) => (
+                  <View
+                    key={index}
+                    style={{
+                      display: "flex",
+                      alignItems: "start",
+                      justifyContent: "start",
+                      flexDirection: "row",
+                      gap: "2px",
+                      width: "100%",
+                      textTransform: "capitalize",
+                    }}
+                  >
+                    <Text style={styles1.title}>
+                      {skillsCategory.category}:
+                    </Text>
+                    {skillsCategory.skills.map((skill, id) => (
+                      <Text key={id} style={styles1.subtitle}>
+                        {skill}
+                      </Text>
                     ))}
                   </View>
                 ))}
@@ -320,10 +342,25 @@ const ResumePDF = ({ data2 }) => {
                 {achievements.map((achievement, index) => (
                   <View
                     key={index}
-                    style={{ display: "flex", alignItems: "start" }}
+                    style={{
+                      display: "flex",
+                      gap: "2px",
+                      flexDirection: "row",
+                      // flexWrap: "wrap",
+                    }}
                   >
-                    <Text style={styles1.title}>{achievement.title}:</Text>
-                    <Text style={styles1.desc}>{achievement.description}</Text>
+                    <View
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <Text style={styles1.title}>{achievement.title}:</Text>
+                      <Text style={styles1.subtitle}>
+                        {achievement.description}
+                      </Text>
+                    </View>
                   </View>
                 ))}
               </View>
@@ -501,12 +538,72 @@ const ResumePDF = ({ data2 }) => {
                             fontSize: 12,
                             marginBottom: 5,
                             fontWeight: 500,
+                            color: "#020617",
+                            lineHeight: "1.5px",
+                          }}
+                        >
+                          • {workExp.description}
+                        </Text>
+                      </View>
+                    </View>
+                  ))}
+                </View>
+
+                <View style={{ marginBottom: 20, width: "100%" }}>
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      color: "#020617", // light-slate
+                      marginBottom: 10,
+                      borderBottom: "2px solid #000",
+                      borderTop: "2px solid #000",
+                      fontWeight: 600,
+                      paddingTop: 3,
+                      fontStyle: "italic",
+                      // fontFamily: "Times-Bold",
+                    }}
+                  >
+                    Education
+                  </Text>
+                  {education.map((edu, index) => (
+                    <View
+                      key={index}
+                      style={{ marginBottom: "5px", width: "100%" }}
+                    >
+                      <Text
+                        style={{
+                          fontSize: 14,
+                          fontWeight: "bold",
+                          marginBottom: 5,
+                          color: "#1e293b",
+                          // fontFamily: "Times-Bold",
+                        }}
+                      >
+                        {edu.degree}
+                      </Text>
+                      <Text
+                        style={{
+                          color: "#334155",
+                          fontSize: 12,
+                          marginBottom: 10,
+                          fontStyle: "italic",
+                          fontFamily: "Times-BoldItalic",
+                        }}
+                      >
+                        {edu.institution}
+                      </Text>
+                      <View style={{ paddingLeft: "8px" }}>
+                        <Text
+                          style={{
+                            fontSize: 12,
+                            marginBottom: 5,
+                            fontWeight: 500,
                             color: "#020617", // light-slate
                             // fontFamily: "Times-Roman",
                             lineHeight: "1.5px",
                           }}
                         >
-                          • {workExp.description}
+                          • {edu.description}
                         </Text>
                       </View>
                     </View>
@@ -582,67 +679,6 @@ const ResumePDF = ({ data2 }) => {
                   ))}
                 </View>
 
-                <View style={{ marginBottom: 20, width: "100%" }}>
-                  <Text
-                    style={{
-                      fontSize: 18,
-                      color: "#020617", // light-slate
-                      marginBottom: 10,
-                      borderBottom: "2px solid #000",
-                      borderTop: "2px solid #000",
-                      fontWeight: 600,
-                      paddingTop: 3,
-                      fontStyle: "italic",
-                      // fontFamily: "Times-Bold",
-                    }}
-                  >
-                    Education
-                  </Text>
-                  {education.map((edu, index) => (
-                    <View
-                      key={index}
-                      style={{ marginBottom: "5px", width: "100%" }}
-                    >
-                      <Text
-                        style={{
-                          fontSize: 14,
-                          fontWeight: "bold",
-                          marginBottom: 5,
-                          color: "#1e293b",
-                          // fontFamily: "Times-Bold",
-                        }}
-                      >
-                        {edu.degree}
-                      </Text>
-                      <Text
-                        style={{
-                          color: "#334155",
-                          fontSize: 12,
-                          marginBottom: 10,
-                          fontStyle: "italic",
-                          fontFamily: "Times-BoldItalic",
-                        }}
-                      >
-                        {edu.institution}
-                      </Text>
-                      <View style={{ paddingLeft: "8px" }}>
-                        <Text
-                          style={{
-                            fontSize: 12,
-                            marginBottom: 5,
-                            fontWeight: 500,
-                            color: "#020617", // light-slate
-                            // fontFamily: "Times-Roman",
-                            lineHeight: "1.5px",
-                          }}
-                        >
-                          • {edu.description}
-                        </Text>
-                      </View>
-                    </View>
-                  ))}
-                </View>
-
                 <View style={{ width: "100%" }}>
                   <Text
                     style={{
@@ -670,7 +706,7 @@ const ResumePDF = ({ data2 }) => {
                       // gap:"5px"
                     }}
                   >
-                    {skills.map((SkillsCategory, index) => (
+                    {skills.map((skillsCategory, index) => (
                       <View
                         key={index}
                         style={{
@@ -691,9 +727,9 @@ const ResumePDF = ({ data2 }) => {
                             // fontFamily: "Times-Bold",
                           }}
                         >
-                          {SkillsCategory.category}:
+                          {skillsCategory.category}:
                         </Text>
-                        {SkillsCategory.skills.map((skill, id) => (
+                        {skillsCategory.skills.map((skill, id) => (
                           <Text
                             key={id}
                             style={{

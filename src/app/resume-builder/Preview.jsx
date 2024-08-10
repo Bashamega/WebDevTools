@@ -1,8 +1,8 @@
 "use client";
 
-import data from "./sample.json";
+// import data from "./sample.json";
 
-const Preview = ({ isDarkMode, data2 }) => {
+const Preview = ({ isDarkMode, data }) => {
   const {
     name,
     email,
@@ -35,8 +35,7 @@ const Preview = ({ isDarkMode, data2 }) => {
     },
 
     profileImage: {
-      width: "40%",
-      height: "40%",
+      width: "35%",
       borderRadius: "50%",
     },
 
@@ -44,21 +43,20 @@ const Preview = ({ isDarkMode, data2 }) => {
       marginLeft: 0,
     },
     name: {
-      fontSize: 28,
+      fontSize: 30,
       color: "#2c3e50",
-      marginBottom: 5,
-      fontWeight: "bold",
+      // marginBottom: 5,
     },
     profession: {
-      fontSize: 20,
+      fontSize: 14,
       color: "#7f8c8d",
-      marginBottom: 10,
+      // marginBottom: 10,
     },
 
     contactInfo: {
       fontSize: 12,
       color: "#7f8c8d",
-      marginBottom: 2,
+      // marginBottom: 2,
     },
 
     sectionTitle: {
@@ -75,9 +73,16 @@ const Preview = ({ isDarkMode, data2 }) => {
       marginBottom: 6,
     },
     subtitle: {
-      fontSize: 15,
-      color: "#333",
-      fontWeight: "bold",
+      fontSize: 14,
+      color: "#7f8c8d",
+
+      marginBottom: 5,
+      paddingLeft: 10,
+    },
+    subLink: {
+      fontSize: 12,
+      color: "#7f8c8d",
+
       marginBottom: 5,
       paddingLeft: 10,
     },
@@ -85,13 +90,15 @@ const Preview = ({ isDarkMode, data2 }) => {
     desc: {
       fontSize: 14,
       color: "#000",
-      fontWeight: "bold",
       marginBottom: 5,
       paddingLeft: 10,
     },
 
     link: {
       color: "#3498db",
+      fontSize: 12,
+      textDecoration: "none",
+      textTransform: "none",
     },
 
     skills: {
@@ -105,7 +112,6 @@ const Preview = ({ isDarkMode, data2 }) => {
       color: "#fff",
       padding: 8,
       borderRadius: 5,
-      marginRight: 20,
       marginBottom: 5,
       fontSize: 10,
     },
@@ -133,7 +139,6 @@ const Preview = ({ isDarkMode, data2 }) => {
 
     name: {
       fontSize: 28,
-
       fontWeight: "bold",
     },
 
@@ -153,10 +158,15 @@ const Preview = ({ isDarkMode, data2 }) => {
       marginBottom: 5,
       color: "#020617", // light-slate
     },
+    title: {
+      fontSize: 14,
+      fontWeight: "bold",
+      marginBottom: 5,
+      color: "#1e293b",
+    },
+
     subtitle: {
-      fontWeight: "600",
-      // fontStyle: "italic",
-      color: "#020617", // light-slate
+      color: "#334155",
     },
     section: {
       marginBottom: 20,
@@ -166,95 +176,166 @@ const Preview = ({ isDarkMode, data2 }) => {
 
   const renderTemplate = () => {
     switch (template) {
-      // case "template1":
-      // return (
-      //   <div
-      //     style={styles.template1}
-      //     className={`w-full ${
-      //       isDarkMode ? "bg-slate-100" : "bg-slate-50"
-      //     } my-6`}
-      //   >
-      //     <div
-      //       style={styles.header}
-      //       className="flex items-start justify-between w-full"
-      //     >
-      //       <div className="flex items-center justify-start w-full">
-      //         {image && (
-      //           <img src={image} alt="Profile" style={styles.profileImage} />
-      //         )}
-      //       </div>
-      //       <div className="w-full flex flex-col justify-end items-end py-4">
-      //         <p style={styles.name}>{name}</p>
-      //         <p style={styles.profession}>{data.workExperience[0].title}</p>
-      //         <p className="text-lg" style={styles.contactInfo}>
-      //           {email}
-      //         </p>
-      //         <p className="text-base" style={styles.contactInfo}>
-      //           {phone}
-      //         </p>
-
-      //         <div className=" ">
-      //           {links.linkedIn && (
-      //             <p style={styles.contactInfo}>
-      //               LinkedIn:{" "}
-      //               <span className="text-blue-500 cursor-pointer">
-      //                 {links.linkedIn}
-      //               </span>
-      //             </p>
-      //           )}
-      //           {links.website && (
-      //             <p style={styles.contactInfo}>
-      //               Website:{" "}
-      //               <span className="text-blue-500 cursor-pointer">
-      //                 {links.website}
-      //               </span>
-      //             </p>
-      //           )}
-      //           {links.github && (
-      //             <p style={styles.contactInfo}>
-      //               GitHub:{" "}
-      //               <span className="text-blue-500 cursor-pointer">
-      //                 {links.github}
-      //               </span>
-      //             </p>
-      //           )}
-      //         </div>
-      //       </div>
-      //     </div>
-      //     <div>
-      //       <h3 style={styles.sectionTitle}>Work Experience</h3>
-      //       {workExperience.map((job, index) => (
-      //         <div key={index} style={styles.view}>
-      //           <h4 style={styles.title}>{job.title}</h4>
-      //           <p style={styles.subtitle}>{job.company}</p>
-      //           <p style={styles.desc}>{job.description}</p>
-      //         </div>
-      //       ))}
-      //     </div>
-      //     <div>
-      //       <h3 style={styles.sectionTitle}>Education</h3>
-      //       {education.map((edu, index) => (
-      //         <div key={index} style={styles.view}>
-      //           <h4 style={styles.title}>{edu.degree}</h4>
-      //           <p style={styles.subtitle}>{edu.institution}</p>
-      //           <p style={styles.desc}>{edu.description}</p>
-      //         </div>
-      //       ))}
-      //     </div>
-
-      //     <div style={styles.view}>
-      //       <h3 style={styles.sectionTitle}>Skills</h3>
-      //       <div style={styles.skills}>
-      //         {skills.map((skill, index) => (
-      //           <span key={index} style={styles.skill}>
-      //             {skill}
-      //           </span>
-      //         ))}
-      //       </div>
-      //     </div>
-      //   </div>
-      // );
       case "template1":
+        return (
+          <div
+            style={styles.template1}
+            className={`w-full ${
+              isDarkMode ? "bg-slate-100" : "bg-slate-50"
+            } my-6`}
+          >
+            <div
+              style={styles.header}
+              className="flex items-start justify-between w-full"
+            >
+              <div className="flex items-center justify-start w-full">
+                {image && (
+                  <img src={image} alt="Profile" style={styles.profileImage} />
+                )}
+              </div>
+              <div className=" flex flex-col justify-start items-start w-2/4 py-4">
+                <p style={styles.name}>{name}</p>
+                <p style={styles.profession}>{data.workExperience[0].title}</p>
+                <p className="text-lg" style={styles.contactInfo}>
+                  {email}
+                </p>
+                <p className="text-base" style={styles.contactInfo}>
+                  {phone}
+                </p>
+
+                <div className=" ">
+                  {links.linkedIn && (
+                    <p style={styles.contactInfo}>
+                      LinkedIn:{" "}
+                      <span className="text-blue-500 cursor-pointer">
+                        {links.linkedIn}
+                      </span>
+                    </p>
+                  )}
+                  {links.website && (
+                    <p style={styles.contactInfo}>
+                      Website:{" "}
+                      <span className="text-blue-500 cursor-pointer">
+                        {links.website}
+                      </span>
+                    </p>
+                  )}
+                  {links.github && (
+                    <p style={styles.contactInfo}>
+                      GitHub:{" "}
+                      <span className="text-blue-500 cursor-pointer">
+                        {links.github}
+                      </span>
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 style={styles.sectionTitle}>Work Experience</h3>
+              {workExperience.map((job, index) => (
+                <div key={index} style={styles.view}>
+                  <h4 style={styles.title}>{job.title}</h4>
+                  <p style={styles.subtitle}>{job.company}</p>
+                  <p style={styles.desc}>{job.description}</p>
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <h3 style={styles.sectionTitle}>Education</h3>
+              {education.map((edu, index) => (
+                <div key={index} style={styles.view}>
+                  <h4 style={styles.title}>{edu.degree}</h4>
+                  <p style={styles.subtitle}>{edu.institution}</p>
+                  <p style={styles.desc}>{edu.description}</p>
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <h3 style={styles.sectionTitle}>Projects</h3>
+              {projects.map((project, index) => (
+                <div key={index} style={styles.view}>
+                  <h4 style={styles.title}>{project.title}</h4>
+                  <p style={styles.subLink}>
+                    <span style={styles.link}>{project.liveUrl}</span>
+                  </p>
+                  <p style={styles.desc}>• {project.description}</p>
+                </div>
+              ))}
+            </div>
+
+            <div style={styles.view}>
+              <h3 style={styles.sectionTitle}>Skills</h3>
+              <div style={styles.skills}>
+                {skills.map((skillsCategory, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      display: "flex",
+                      alignItems: "start",
+                      justifyContent: "start",
+                      flexDirection: "row",
+                      gap: "2px",
+                      width: "100%",
+                      textTransform: "capitalize",
+                    }}
+                  >
+                    <span style={styles.title}>{skillsCategory.category}:</span>
+                    {skillsCategory.skills.map((skill, id) => (
+                      <span key={id} style={styles.subtitle}>
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div style={styles.view}>
+              <span style={styles.sectionTitle}>Achievements</span>
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "start",
+                  justifyContent: "start",
+                  flexWrap: "wrap",
+                  gap: "5px",
+                  flexDirection: "column",
+                }}
+              >
+                {achievements.map((achievement, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      display: "flex",
+                      gap: "2px",
+                      flexDirection: "row",
+                      // flexWrap: "wrap",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <span style={styles.title}>{achievement.title}:</span>
+                      <span style={styles.subtitle}>
+                        {achievement.description}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      case "template2":
         return (
           <main
             style={styles2.page}
@@ -326,12 +407,9 @@ const Preview = ({ isDarkMode, data2 }) => {
                     {workExperience.map((workExp, index) => (
                       <div key={index}>
                         <div style={styles2.text}>
-                          <div style={{ fontWeight: "bold" }}>
-                            <h6>{workExp.title}</h6>
-                            <span
-                              style={styles2.subtitle}
-                              className="text-slate-600"
-                            >
+                          <div>
+                            <h6 style={styles2.title}>{workExp.title}</h6>
+                            <span style={styles2.subtitle}>
                               {" "}
                               {workExp.company}
                             </span>
@@ -382,8 +460,8 @@ const Preview = ({ isDarkMode, data2 }) => {
                   <div style={styles2.section} className="text-sm">
                     <p style={styles2.sectionTitle}>Skills</p>
                     <div className="w-full flex items-start justify-start flex-wrap gap-2 flex-col">
-                      {skills.map((skillCategory) => (
-                        <>
+                      {skills.map((skillCategory, idx) => (
+                        <div key={idx}>
                           {skillCategory.skills.map((skill, index) => (
                             <div key={index} className="flex items-start  ">
                               <span style={styles2.text} className="font-bold ">
@@ -392,7 +470,7 @@ const Preview = ({ isDarkMode, data2 }) => {
                               <p className="pl-2">{skill}</p>
                             </div>
                           ))}
-                        </>
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -418,8 +496,6 @@ const Preview = ({ isDarkMode, data2 }) => {
         return null;
     }
   };
-
-  // return (
 
   return <div>{renderTemplate()}</div>;
 };

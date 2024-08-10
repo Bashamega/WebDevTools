@@ -10,6 +10,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
     phone: "",
     address: "",
     image: "",
+    imageShape: "circle",
     workExperience: [{ title: "", company: "", description: "" }],
     projects: [{ title: "", liveUrl: "", description: "" }],
     education: [{ degree: "", institution: "", description: "" }],
@@ -26,6 +27,8 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log({ e, name, value });
+
     setFormData({ ...formData, [name]: value });
     onFormChange({ ...formData, [name]: value });
   };
@@ -66,14 +69,6 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
     if (file) {
       reader.readAsDataURL(file);
     }
-  };
-
-  const handleAchievementsChange = (e, index) => {
-    const { value } = e.target;
-    const updatedAchievements = [...formData.achievements];
-    updatedAchievements[index] = value;
-    setFormData({ ...formData, achievements: updatedAchievements });
-    onFormChange({ ...formData, achievements: updatedAchievements });
   };
 
   // Add Function
@@ -510,6 +505,30 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             <option value="template1">Template 1</option>
             <option value="template2">Template 2</option>
           </select>
+
+          <div className="my-4 w-full mx-4">
+            <label className="mr-4">Select Image Shape:</label>
+            <label className="mr-2">
+              <input
+                type="radio"
+                name="imageShape"
+                value={formData.imageShape}
+                checked={formData.imageShape === "circle"}
+                onChange={handleChange}
+              />
+              Circle
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="imageShape"
+                value={formData.imageShape}
+                checked={formData.imageShape === "rectangle"}
+                onChange={handleChange}
+              />
+              Rectangle
+            </label>
+          </div>
         </div>
       </div>
     </form>
