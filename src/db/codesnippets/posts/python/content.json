@@ -16,5 +16,14 @@
       "about": "I am a front end developer, and i am the owner of this website"
     },
     "doc": "article2"
+  },
+  {
+    "title": "Django REST Framework Pagination Snippet",
+    "author": {
+      "name": "Smnthjm08",
+      "githubLink": "https://github.com/Smnthjm08",
+      "about": "Junior Software Developer! 😁"
+    },
+    "doc": "article3"
   }
 ]
