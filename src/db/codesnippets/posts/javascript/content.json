@@ -7,5 +7,14 @@
       "about": "I like stuff... 🤨"
     },
     "doc": "howtogetprocessuptime"
+  },
+  {
+    "title": "Check if variable is an array",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "checkifvariableisanarray"
   }
 ]
