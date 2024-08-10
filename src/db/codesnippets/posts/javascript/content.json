@@ -61,5 +61,14 @@
       "about": "I like stuff... 🤨"
     },
     "doc": "removeduplicatesfromanarray"
+  },
+  {
+    "title": "Get random integer from range",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "getrandomintegerfromrange"
   }
 ]
