@@ -1,11 +1,11 @@
 name: New code snippet
 description: Add a new code snippet
-title: '[New Code Snippet]: '
-labels: 
+title: "[New Code Snippet]: "
+labels:
   - Code snippet
 body:
   - type: checkboxes
-  
+
     id: check
     attributes:
       label: "Confirmation"
@@ -21,7 +21,7 @@ body:
   - type: textarea
     id: article
     attributes:
-      label: 'Your code snippet:'
+      label: "Your code snippet:"
       description: Write your code snippet in Markdown
     validations:
       required: true
