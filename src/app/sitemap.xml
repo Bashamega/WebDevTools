@@ -101,18 +101,18 @@
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://wdt.adambashaahmednaji.com/resume-builder</loc>
-    <lastmod>2024-07-29T06:28:19.998Z</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
     <loc>https://wdt.adambashaahmednaji.com/convert/css-scss</loc>
-    <lastmod>2024-07-31T15:49:57.158Z</lastmod>
+    <lastmod>2024-08-10T07:32:22.808Z</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://wdt.adambashaahmednaji.com/convert/img-svg</loc>
-    <lastmod>2024-07-31T15:49:57.158Z</lastmod>
+    <lastmod>2024-08-10T07:32:22.808Z</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://wdt.adambashaahmednaji.com/cs</loc>
+    <lastmod>2024-08-10T07:32:22.808Z</lastmod>
     <priority>0.80</priority>
   </url>
 </urlset>

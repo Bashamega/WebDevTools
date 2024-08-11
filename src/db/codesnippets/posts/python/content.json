@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Generating the Mandelbrot Set with Python",
+    "author": {
+      "name": "ChatGPT",
+      "githubLink": "",
+      "about": "I'm a versatile AI language model created by OpenAI, designed to assist with a wide range of tasks, from answering questions and providing explanations to generating creative content and solving technical problems. My capabilities span across various domains including programming, writing, research, and more. I'm here to help users by leveraging my training on diverse datasets to provide accurate, helpful, and engaging responses."
+    },
+    "doc": "article1"
+  },
+  {
+    "title": "Get the date of creation of a file",
+    "author": {
+      "name": "Adam Basha",
+      "githubLink": "https://github.com/Bashamega",
+      "about": "I am a front end developer, and i am the owner of this website"
+    },
+    "doc": "article2"
+  }
+]

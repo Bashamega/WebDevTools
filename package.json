@@ -1,14 +1,16 @@
 {
   "name": "web",
-  "version": "0.1.0",
+  "version": "2.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "format": "prettier . --write",
+    "format:write": "prettier . --write",
+    "format:check": "prettier . --check",
     "lint": "next lint",
-    "seo": "node scripts/seo.js"
+    "seo": "node scripts/seo.js",
+    "prepare": "husky"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -55,6 +57,7 @@
   "devDependencies": {
     "eslint": "^8",
     "eslint-config-next": "14.2.2",
+    "husky": "^9.1.4",
     "prettier": "3.3.1",
     "xml2js": "^0.6.2"
   }
