@@ -210,7 +210,11 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
               isDarkMode
                 ? "bg-slate-800 text-slate-50 border-none"
                 : "bg-slate-50 text-slate-800 border-slate-500 border"
-            } w-[300px] py-2 px-2 outline-none  rounded-md ${formData.template === "template2" ? "cursor-not-allowed" : "cursor-pointer"}`}
+            } w-[300px] py-2 px-2 outline-none  rounded-md ${
+              formData.template === "template2"
+                ? "cursor-not-allowed"
+                : "cursor-pointer"
+            }`}
             type="file"
             name="image"
             placeholder="Your Photo"
