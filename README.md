@@ -10,6 +10,7 @@
 
 Here're some of the project's best features:
 
+- Code Snippets
 - Simple Code Editor
 - Markdown Editor
 - Button Customizer
