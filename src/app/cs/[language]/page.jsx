@@ -10,6 +10,21 @@ export default function CodingSnippetsTopic({ params }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [notfound, setNotfound] = useState(false);
   const [content, setContent] = useState();
+  const [filteredContent, setFilteredContent] = useState();
+  const [searchValue, setSearchValue] = useState();
+
+  const handleSearch = (e) => {
+    setSearchValue(e.target.value);
+    if (e.target.value) {
+      setFilteredContent(
+        content.filter((art) =>
+          art.title.toLowerCase().includes(e.target.value.toLowerCase()),
+        ),
+      );
+    } else {
+      setFilteredContent(content);
+    }
+  };
 
   // Toggle theme and save preference in localStorage
   const toggleTheme = () => {
@@ -31,6 +46,11 @@ export default function CodingSnippetsTopic({ params }) {
     });
     if (languageExists) {
       setContent(
+        require(
+          `@/db/codesnippets/posts/${params.language.toLowerCase()}/content.json`,
+        ),
+      );
+      setFilteredContent(
         require(
           `@/db/codesnippets/posts/${params.language.toLowerCase()}/content.json`,
         ),
@@ -66,10 +86,21 @@ export default function CodingSnippetsTopic({ params }) {
                 A free collection of {title(params.language)} snippets
               </p>
               <section>
-                {content && content.length > 0 ? (
+                <input
+                  type="text"
+                  placeholder="search"
+                  value={searchValue}
+                  onChange={handleSearch}
+                  className={`w-full p-2 my-5 border rounded-lg shadow ${
+                    isDarkMode
+                      ? "bg-gray-800 border-gray-700 text-white"
+                      : "bg-white border-gray-200 text-black"
+                  } ${content && content.length > 0 ? "block" : "hidden"}`}
+                />
+                {filteredContent && filteredContent.length > 0 ? (
                   <div className="container mx-auto p-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                      {content.map((article, index) => (
+                      {filteredContent.map((article, index) => (
                         <BlogCard
                           key={index}
                           data={article}
