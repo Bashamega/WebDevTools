@@ -1,1 +1,74 @@
-[]
+[
+  {
+    "title": "How to get process uptime",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "howtogetprocessuptime"
+  },
+  {
+    "title": "Check if variable is an array",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "checkifvariableisanarray"
+  },
+  {
+    "title": "Get current date and time",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "getcurrentdateandtime"
+  },
+  {
+    "title": "Convert string to uppercase",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "convertstringtouppercase"
+  },
+  {
+    "title": "Merge two arrays",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "mergetwoarrays"
+  },
+  {
+    "title": "Check for substring",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "checkforsubstring"
+  },
+  {
+    "title": "Remove duplicates from an array",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "removeduplicatesfromanarray"
+  },
+  {
+    "title": "Get random integer from range",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "getrandomintegerfromrange"
+  }
+]
