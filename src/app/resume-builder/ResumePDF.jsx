@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-// import data from "./sample.json";
 
 import {
   Page,
@@ -30,11 +29,15 @@ const styles1 = StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: 20,
   },
-
-  profileImage: {
+  circleImage: {
     width: 100,
     height: 100,
     borderRadius: "50%",
+  },
+  rectangleImage: {
+    width: 100,
+    height: 100,
+    borderRadius: "0%",
   },
 
   profileDetails: {
@@ -95,6 +98,8 @@ const styles1 = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 5,
     paddingLeft: 10,
+    lineHeight: "1.5px",
+
     // lineHeight:"1.2px"
   },
 
@@ -208,6 +213,7 @@ const ResumePDF = ({ data }) => {
     phone,
     address,
     image,
+    imageShape,
     workExperience,
     projects,
     education,
@@ -225,41 +231,62 @@ const ResumePDF = ({ data }) => {
             <View style={styles1.header}>
               <View>
                 <Image
-                  style={styles1.profileImage}
-                  src="https://randomuser.me/api/portraits/women/16.jpg"
+                  style={
+                    imageShape === "circle"
+                      ? styles1.circleImage
+                      : styles1.rectangleImage
+                  }
+                  src={image}
                 />
               </View>
               <View style={styles1.profileDetails}>
                 <Text style={styles1.name}>{name}</Text>
-                <Text style={styles1.profession}>
-                  {workExperience[0].title}
-                </Text>
-                <Text style={styles1.contactInfo}>
-                  Email: <Text style={styles1.link}>{email}</Text>{" "}
-                </Text>
-                <Text style={styles1.contactInfo}>Phone: {phone}</Text>
-                <Text style={styles1.contactInfo}>Address: {address}</Text>
+                {workExperience[0].title && (
+                  <Text style={styles1.profession}>
+                    {workExperience[0].title}
+                  </Text>
+                )}
 
-                <Text style={styles1.contactInfo}>
-                  LinkedIn:
-                  <Link src={links.linkedIn} style={styles1.link}>
-                    {links.linkedIn}
-                  </Link>
-                </Text>
+                {email && (
+                  <Text style={styles1.contactInfo}>
+                    Email: <Text style={styles1.link}>{email}</Text>{" "}
+                  </Text>
+                )}
 
-                <Text style={styles1.contactInfo}>
-                  GitHub:
-                  <Link src={links.github} style={styles1.link}>
-                    {links.github}
-                  </Link>
-                </Text>
+                {phone && (
+                  <Text style={styles1.contactInfo}>Phone: {phone}</Text>
+                )}
 
-                <Text style={styles1.contactInfo}>
-                  Website:
-                  <Link src={links.website} style={styles1.link}>
-                    {links.website}
-                  </Link>
-                </Text>
+                {address && (
+                  <Text style={styles1.contactInfo}>Address: {address}</Text>
+                )}
+
+                {links.linkedIn && (
+                  <Text style={styles1.contactInfo}>
+                    LinkedIn:
+                    <Link src={links.linkedIn} style={styles1.link}>
+                      {links.linkedIn}
+                    </Link>
+                  </Text>
+                )}
+
+                {links.github && (
+                  <Text style={styles1.contactInfo}>
+                    GitHub:
+                    <Link src={links.github} style={styles1.link}>
+                      {links.github}
+                    </Link>
+                  </Text>
+                )}
+
+                {links.website && (
+                  <Text style={styles1.contactInfo}>
+                    Website:
+                    <Link src={links.website} style={styles1.link}>
+                      {links.website}
+                    </Link>
+                  </Text>
+                )}
               </View>
             </View>
             <View style={styles1.view}>
@@ -313,58 +340,64 @@ const ResumePDF = ({ data }) => {
                       textTransform: "capitalize",
                     }}
                   >
-                    <Text style={styles1.title}>
-                      {skillsCategory.category}:
-                    </Text>
-                    {skillsCategory.skills.map((skill, id) => (
-                      <Text key={id} style={styles1.subtitle}>
-                        {skill}
+                    {skillsCategory.category && (
+                      <Text style={styles1.title}>
+                        {skillsCategory.category}:
                       </Text>
-                    ))}
+                    )}
+
+                    {skillsCategory.skills &&
+                      skillsCategory.skills.map((skill, id) => (
+                        <Text key={id} style={styles1.subtitle}>
+                          {skill}
+                        </Text>
+                      ))}
                   </View>
                 ))}
               </View>
             </View>
 
-            <View style={styles1.view}>
-              <Text style={styles1.sectionTitle}>Achievements</Text>
-              <View
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "start",
-                  justifyContent: "start",
-                  flexWrap: "wrap",
-                  gap: "5px",
-                  flexDirection: "column",
-                }}
-              >
-                {achievements.map((achievement, index) => (
-                  <View
-                    key={index}
-                    style={{
-                      display: "flex",
-                      gap: "2px",
-                      flexDirection: "row",
-                      // flexWrap: "wrap",
-                    }}
-                  >
+            {achievements && (
+              <View style={styles1.view}>
+                <Text style={styles1.sectionTitle}>Achievements</Text>
+                <View
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    alignItems: "start",
+                    justifyContent: "start",
+                    flexWrap: "wrap",
+                    gap: "5px",
+                    flexDirection: "column",
+                  }}
+                >
+                  {achievements.map((achievement, index) => (
                     <View
+                      key={index}
                       style={{
                         display: "flex",
+                        gap: "2px",
                         flexDirection: "row",
-                        flexWrap: "wrap",
+                        // flexWrap: "wrap",
                       }}
                     >
-                      <Text style={styles1.title}>{achievement.title}:</Text>
-                      <Text style={styles1.subtitle}>
-                        {achievement.description}
-                      </Text>
+                      <View
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          flexWrap: "wrap",
+                        }}
+                      >
+                        <Text style={styles1.title}>{achievement.title}:</Text>
+                        <Text style={styles1.desc}>
+                          • {achievement.description}
+                        </Text>
+                      </View>
                     </View>
-                  </View>
-                ))}
+                  ))}
+                </View>
               </View>
-            </View>
+            )}
           </Page>
         </Document>
       );
@@ -679,7 +712,7 @@ const ResumePDF = ({ data }) => {
                   ))}
                 </View>
 
-                <View style={{ width: "100%" }}>
+                <View style={{ width: "100%", marginBottom: 20 }}>
                   <Text
                     style={{
                       fontSize: 18,
@@ -764,57 +797,40 @@ const ResumePDF = ({ data }) => {
                   >
                     Achievements
                   </Text>
-                  <View
-                    style={{
-                      display: "flex",
-                      width: "100%",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexWrap: "wrap",
-                      width: "100%",
-                      gap: "5px",
-                    }}
-                  >
-                    {achievements.map((achievement, index) => (
-                      <View
-                        key={index}
+
+                  {achievements.map((achievement, index) => (
+                    <View
+                      key={index}
+                      style={{ marginBottom: "5px", width: "100%" }}
+                    >
+                      <Text
                         style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "start",
-                          flexDirection: "row",
-                          gap: "5px",
-                          // width: "100%",
-                          // flexWrap:"wrap"
+                          fontSize: 14,
+                          fontWeight: "bold",
+                          marginBottom: 5,
+                          color: "#1e293b",
+                          // fontFamily: "Times-Bold",
                         }}
                       >
-                        <Text
-                          style={{
-                            fontSize: 14,
-                            fontWeight: "bold",
-                            marginBottom: 5,
-                            color: "#1e293b",
-                            // fontFamily: "Times-Bold",
-                          }}
-                        >
-                          {achievement.title}:
-                        </Text>
+                        {achievement.title}:
+                      </Text>
+
+                      <View style={{ paddingLeft: "8px" }}>
                         <Text
                           style={{
                             //text
                             fontSize: 12,
                             marginBottom: 5,
                             fontWeight: 500,
-                            color: "#020617", // light-slate
-                            // fontFamily: "Times-Roman",
+                            color: "#020617",
+                            lineHeight: "1.5px",
                           }}
                         >
-                          {achievement.description}
+                          • {achievement.description}
                         </Text>
                       </View>
-                    ))}
-                  </View>
+                    </View>
+                  ))}
                 </View>
               </View>
             </View>

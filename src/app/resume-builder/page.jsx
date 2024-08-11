@@ -4,7 +4,6 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import Preview from "./Preview";
 import { NavBar } from "../components/navbar";
-// import ResumePDFDownloadLink from "./ResumePDF";
 import ResumeForm from "./ResumeForm";
 
 const ResumePDFDownloadLink = dynamic(() => import("./ResumePDF"), {
@@ -18,6 +17,7 @@ const Home = () => {
     phone: "",
     address: "",
     image: "",
+    imageShape: "circle",
     workExperience: [{ title: "", company: "", description: "" }],
     projects: [{ title: "", liveUrl: "", description: "" }],
     education: [{ degree: "", institution: "", description: "" }],

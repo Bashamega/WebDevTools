@@ -27,7 +27,6 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log({ e, name, value });
 
     setFormData({ ...formData, [name]: value });
     onFormChange({ ...formData, [name]: value });
@@ -202,7 +201,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             } w-[300px] py-2 px-2 outline-none  rounded-md`}
             type="text"
             name="address"
-            placeholder="Address"
+            placeholder="Your Address"
             value={formData.address}
             onChange={handleChange}
           />
@@ -211,12 +210,13 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
               isDarkMode
                 ? "bg-slate-800 text-slate-50 border-none"
                 : "bg-slate-50 text-slate-800 border-slate-500 border"
-            } w-[300px] py-2 px-2 outline-none  rounded-md`}
+            } w-[300px] py-2 px-2 outline-none  rounded-md ${formData.template === "template2" ? "cursor-not-allowed" : "cursor-pointer"}`}
             type="file"
             name="image"
             placeholder="Your Photo"
             accept="image/*"
             onChange={(e) => handlePhotoChange(e)}
+            disabled={formData.template === "template2"}
           />
         </div>
       </div>
@@ -232,10 +232,10 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                 isDarkMode
                   ? "bg-slate-800 text-slate-50 border-none"
                   : "bg-slate-50 text-slate-800 border-slate-500 border"
-              } w-[300px] py-2 px-2 outline-none  rounded-md`}
+              } w-[300px] py-2 px-2 outline-none  rounded-md `}
               type="text"
               name="title"
-              placeholder="Job Title"
+              placeholder="Work Experience Title"
               value={job.title}
               onChange={(e) =>
                 handleArrayChange(e, index, "title", "workExperience")
@@ -312,7 +312,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
               } w-[300px] py-2 px-2 outline-none  rounded-md`}
               type="url"
               name="liveUrl"
-              placeholder="Live URl"
+              placeholder="Project Link"
               value={project.liveUrl}
               onChange={(e) =>
                 handleArrayChange(e, index, "liveUrl", "projects")
@@ -326,7 +326,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                   : "bg-slate-50 text-slate-800 border-slate-500 border"
               } w-[300px] py-2 px-2 outline-none  rounded-md`}
               name="description"
-              placeholder="Description"
+              placeholder="About Project"
               value={project.description}
               onChange={(e) =>
                 handleArrayChange(e, index, "description", "projects")
@@ -362,7 +362,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
               } w-[300px] py-2 px-2 outline-none  rounded-md`}
               type="text"
               name="degree"
-              placeholder="Degree"
+              placeholder="Title"
               value={edu.degree}
               onChange={(e) =>
                 handleArrayChange(e, index, "degree", "education")
@@ -430,7 +430,6 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                   value={s}
                   onChange={(e) => handleSkillsChange(e, index, id)}
                   key={id}
-                  required
                 />
               ))}
             </div>
@@ -492,42 +491,36 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
         </button>
       </div>
 
-      <div className="w-full mt-6 flex items-center justify-start gap-2">
-        <h3 className="text-xl font-semibold">Choose Template</h3>
+      <div className=" mt-6 flex items-center justify-start gap-12">
+        <div className="w-fit flex items-center justify-center flex-row gap-2">
+          <h3 className="text-xl font-semibold">Choose Template</h3>
 
-        <div className="flex flex-row items-start justify-between">
-          <select
-            name="template"
-            value={formData.template}
-            onChange={handleChange}
-            className="py-2 px-3 bg-blue-500 text-white cursor-pointer rounded-md"
-          >
-            <option value="template1">Template 1</option>
-            <option value="template2">Template 2</option>
-          </select>
+          <div className="flex flex-row items-start justify-between">
+            <select
+              name="template"
+              value={formData.template}
+              onChange={handleChange}
+              className="py-2 px-3 bg-blue-500 text-white cursor-pointer rounded-md"
+            >
+              <option value="template1">Template 1</option>
+              <option value="template2">Template 2</option>
+            </select>
+          </div>
+        </div>
 
-          <div className="my-4 w-full mx-4">
-            <label className="mr-4">Select Image Shape:</label>
-            <label className="mr-2">
-              <input
-                type="radio"
-                name="imageShape"
-                value={formData.imageShape}
-                checked={formData.imageShape === "circle"}
-                onChange={handleChange}
-              />
-              Circle
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="imageShape"
-                value={formData.imageShape}
-                checked={formData.imageShape === "rectangle"}
-                onChange={handleChange}
-              />
-              Rectangle
-            </label>
+        <div className="w-fit flex items-center justify-center flex-row gap-2">
+          <h3 className="text-xl font-semibold">Choose Image shape</h3>
+
+          <div className="flex flex-row items-start justify-between">
+            <select
+              name="imageShape"
+              value={formData.imageShape}
+              onChange={handleChange}
+              className="py-2 px-3 bg-blue-500 text-white cursor-pointer rounded-md"
+            >
+              <option value="circle">Circle</option>
+              <option value="rectangle">Rectangle</option>
+            </select>
           </div>
         </div>
       </div>

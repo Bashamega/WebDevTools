@@ -1,12 +1,11 @@
 "use client";
 
-// import data from "./sample.json";
-
 const Preview = ({ isDarkMode, data }) => {
   const {
     name,
     email,
     phone,
+    imageShape,
     address,
     image,
     workExperience,
@@ -20,8 +19,8 @@ const Preview = ({ isDarkMode, data }) => {
 
   const styles = {
     template1: {
-      // backgroundColor: "#f2f2f2",
-      padding: 50,
+      backgroundColor: "#f2f2f2",
+      padding: "50px 80px",
       fontFamily: "Helvetica",
       color: "#333",
     },
@@ -34,9 +33,13 @@ const Preview = ({ isDarkMode, data }) => {
       marginBottom: 20,
     },
 
-    profileImage: {
+    circleImage: {
       width: "35%",
       borderRadius: "50%",
+    },
+    rectangleImage: {
+      width: "35%",
+      borderRadius: "0",
     },
 
     profileDetails: {
@@ -190,18 +193,29 @@ const Preview = ({ isDarkMode, data }) => {
             >
               <div className="flex items-center justify-start w-full">
                 {image && (
-                  <img src={image} alt="Profile" style={styles.profileImage} />
+                  <img
+                    src={image}
+                    alt="Profile Image"
+                    style={
+                      imageShape === "circle"
+                        ? styles.circleImage
+                        : styles.rectangleImage
+                    }
+                  />
                 )}
               </div>
               <div className=" flex flex-col justify-start items-start w-2/4 py-4">
                 <p style={styles.name}>{name}</p>
                 <p style={styles.profession}>{data.workExperience[0].title}</p>
+
                 <p className="text-lg" style={styles.contactInfo}>
                   {email}
                 </p>
-                <p className="text-base" style={styles.contactInfo}>
-                  {phone}
-                </p>
+                {phone && (
+                  <p className="text-base" style={styles.contactInfo}>
+                    {phone}
+                  </p>
+                )}
 
                 <div className=" ">
                   {links.linkedIn && (
@@ -283,7 +297,12 @@ const Preview = ({ isDarkMode, data }) => {
                       textTransform: "capitalize",
                     }}
                   >
-                    <span style={styles.title}>{skillsCategory.category}:</span>
+                    {skillsCategory.category && (
+                      <span style={styles.title}>
+                        {skillsCategory.category}:
+                      </span>
+                    )}
+
                     {skillsCategory.skills.map((skill, id) => (
                       <span key={id} style={styles.subtitle}>
                         {skill}
@@ -294,45 +313,49 @@ const Preview = ({ isDarkMode, data }) => {
               </div>
             </div>
 
-            <div style={styles.view}>
-              <span style={styles.sectionTitle}>Achievements</span>
-              <div
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "start",
-                  justifyContent: "start",
-                  flexWrap: "wrap",
-                  gap: "5px",
-                  flexDirection: "column",
-                }}
-              >
-                {achievements.map((achievement, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      display: "flex",
-                      gap: "2px",
-                      flexDirection: "row",
-                      // flexWrap: "wrap",
-                    }}
-                  >
+            {achievements && (
+              <div style={styles.view}>
+                {achievements && (
+                  <span style={styles.sectionTitle}>Achievements</span>
+                )}
+                <div
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    alignItems: "start",
+                    justifyContent: "start",
+                    flexWrap: "wrap",
+                    gap: "5px",
+                    flexDirection: "column",
+                  }}
+                >
+                  {achievements.map((achievement, index) => (
                     <div
+                      key={index}
                       style={{
                         display: "flex",
+                        gap: "2px",
                         flexDirection: "row",
-                        flexWrap: "wrap",
+                        // flexWrap: "wrap",
                       }}
                     >
-                      <span style={styles.title}>{achievement.title}:</span>
-                      <span style={styles.subtitle}>
-                        {achievement.description}
-                      </span>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          flexWrap: "wrap",
+                        }}
+                      >
+                        <span style={styles.title}>{achievement.title}:</span>
+                        <span style={styles.subtitle}>
+                          {achievement.description}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         );
       case "template2":
@@ -464,9 +487,14 @@ const Preview = ({ isDarkMode, data }) => {
                         <div key={idx}>
                           {skillCategory.skills.map((skill, index) => (
                             <div key={index} className="flex items-start  ">
-                              <span style={styles2.text} className="font-bold ">
-                                {skillCategory.category}:
-                              </span>
+                              {skillCategory.category && (
+                                <span
+                                  style={styles2.text}
+                                  className="font-bold "
+                                >
+                                  {skillCategory.category}:
+                                </span>
+                              )}
                               <p className="pl-2">{skill}</p>
                             </div>
                           ))}
@@ -474,19 +502,22 @@ const Preview = ({ isDarkMode, data }) => {
                       ))}
                     </div>
                   </div>
-                  <div style={styles2.section} className="text-sm">
-                    <p style={styles2.sectionTitle}>Achievements</p>
-                    <div className="w-full flex items-start justify-start flex-wrap gap-2 flex-col">
-                      {achievements.map((achievement, index) => (
-                        <div key={index} className="flex items-start  ">
-                          <span style={styles2.text} className="font-bold ">
-                            {achievement.title}:
-                          </span>
-                          <p className="pl-2">{achievement.description}</p>
-                        </div>
-                      ))}
+
+                  {achievements && (
+                    <div style={styles2.section} className="text-sm">
+                      <p style={styles2.sectionTitle}>Achievements</p>
+                      <div className="w-full flex items-start justify-start flex-wrap gap-2 flex-col">
+                        {achievements.map((achievement, index) => (
+                          <div key={index} className="flex items-start  ">
+                            <span style={styles2.text} className="font-bold ">
+                              {achievement.title}:
+                            </span>
+                            <p className="pl-2">{achievement.description}</p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             )}
