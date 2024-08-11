@@ -50,9 +50,11 @@ export default function CodingSnippetsTopic({ params }) {
           `@/db/codesnippets/posts/${params.language.toLowerCase()}/content.json`,
         ),
       );
-      setFilteredContent(require(
-        `@/db/codesnippets/posts/${params.language.toLowerCase()}/content.json`,
-      ),)
+      setFilteredContent(
+        require(
+          `@/db/codesnippets/posts/${params.language.toLowerCase()}/content.json`,
+        ),
+      );
     } else {
       setNotfound(true);
     }
@@ -84,17 +86,17 @@ export default function CodingSnippetsTopic({ params }) {
                 A free collection of {title(params.language)} snippets
               </p>
               <section>
-              <input
-            type="text"
-            placeholder="search"
-            value={searchValue}
-            onChange={handleSearch}
-            className={`w-full p-2 my-5 border rounded-lg shadow ${
-              isDarkMode
-                ? "bg-gray-800 border-gray-700 text-white"
-                : "bg-white border-gray-200 text-black"
-            }`}
-          />
+                <input
+                  type="text"
+                  placeholder="search"
+                  value={searchValue}
+                  onChange={handleSearch}
+                  className={`w-full p-2 my-5 border rounded-lg shadow ${
+                    isDarkMode
+                      ? "bg-gray-800 border-gray-700 text-white"
+                      : "bg-white border-gray-200 text-black"
+                  } ${content && content.length > 0 ? "block" : "hidden"}`}
+                />
                 {filteredContent && filteredContent.length > 0 ? (
                   <div className="container mx-auto p-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
