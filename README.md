@@ -4,12 +4,13 @@
   <img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open WDT in Gitpod">
 </a>
 
-<p id="description">WebDev Tools is a comprehensive online platform designed to empower web developers with a wide array of code samples and snippets. Whether you are a seasoned professional or just starting your journey in web development our website provides you with a vast collection of code examples to streamline your workflow enhance productivity and create exceptional websites and web applications.</p>
+<p id="description">Web Dev Tools is a comprehensive online platform designed to empower web developers with a wide array of code samples and snippets. Whether you are a seasoned professional or just starting your journey in web development our website provides you with a vast collection of code examples to streamline your workflow enhance productivity and create exceptional websites and web applications.</p>
 
 <h2>🧐 Features</h2>
 
 Here're some of the project's best features:
 
+- Code Snippets
 - Simple Code Editor
 - Markdown Editor
 - Button Customizer

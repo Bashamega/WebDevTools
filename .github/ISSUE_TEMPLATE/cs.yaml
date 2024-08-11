@@ -1,0 +1,63 @@
+name: New code snippet
+description: Add a new code snippet
+title: "[New Code Snippet]: "
+labels:
+  - Code snippet
+body:
+  - type: checkboxes
+    id: check
+    attributes:
+      label: "Confirmation"
+      options:
+        - label: This code snippet is not a duplicate
+          required: true
+  - type: input
+    id: title
+    attributes:
+      label: Code Snippet Title
+    validations:
+      required: true
+  - type: textarea
+    id: article
+    attributes:
+      label: "Your code snippet:"
+      description: Write your code snippet in Markdown
+    validations:
+      required: true
+  - type: dropdown
+    id: cat
+    attributes:
+      label: Choose a category
+      options:
+        - JavaScript
+        - Python
+        - Java
+        - C#
+        - Ruby
+        - PHP
+        - TypeScript
+        - Swift
+        - Go
+        - Kotlin
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: username
+    attributes:
+      label: "Your Name"
+    validations:
+      required: true
+  - type: textarea
+    id: user_description
+    attributes:
+      label: "About You"
+      description: "Provide a description about yourself"
+    validations:
+      required: true
+  - type: checkboxes
+    id: github_link
+    attributes:
+      label: "Do you want your GitHub link to appear?"
+      options:
+        - label: "Yes"
