@@ -52,7 +52,6 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
   const handleLinksChange = (e) => {
     const { name, value } = e.target;
-    // console.log(name, value);
     setFormData({ ...formData, links: { ...formData.links, [name]: value } });
     onFormChange({ ...formData, links: { ...formData.links, [name]: value } });
   };
@@ -70,7 +69,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
     }
   };
 
-  // Add Function
+  // Adding Function
   const addWorkExperience = () => {
     setFormData({
       ...formData,

@@ -37,6 +37,7 @@ const Preview = ({ isDarkMode, data }) => {
       width: "35%",
       borderRadius: "50%",
     },
+
     rectangleImage: {
       width: "35%",
       borderRadius: "0",
@@ -45,21 +46,20 @@ const Preview = ({ isDarkMode, data }) => {
     profileDetails: {
       marginLeft: 0,
     },
+
     name: {
       fontSize: 30,
       color: "#2c3e50",
-      // marginBottom: 5,
     },
+
     profession: {
       fontSize: 14,
       color: "#7f8c8d",
-      // marginBottom: 10,
     },
 
     contactInfo: {
       fontSize: 12,
       color: "#7f8c8d",
-      // marginBottom: 2,
     },
 
     sectionTitle: {
@@ -75,17 +75,17 @@ const Preview = ({ isDarkMode, data }) => {
       color: "#333",
       marginBottom: 6,
     },
+
     subtitle: {
       fontSize: 14,
       color: "#7f8c8d",
-
       marginBottom: 5,
       paddingLeft: 10,
     },
+
     subLink: {
       fontSize: 12,
       color: "#7f8c8d",
-
       marginBottom: 5,
       paddingLeft: 10,
     },
@@ -148,6 +148,7 @@ const Preview = ({ isDarkMode, data }) => {
     contactInfo: {
       fontSize: 13,
     },
+
     sectionTitle: {
       fontSize: 18,
       color: "#020617", // light-slate
@@ -156,11 +157,13 @@ const Preview = ({ isDarkMode, data }) => {
       borderTop: "2px solid #000",
       fontWeight: "600",
     },
+
     text: {
       fontSize: 14,
       marginBottom: 5,
       color: "#020617", // light-slate
     },
+
     title: {
       fontSize: 14,
       fontWeight: "bold",
@@ -171,6 +174,7 @@ const Preview = ({ isDarkMode, data }) => {
     subtitle: {
       color: "#334155",
     },
+
     section: {
       marginBottom: 20,
       width: "100%",
@@ -207,7 +211,6 @@ const Preview = ({ isDarkMode, data }) => {
               <div className=" flex flex-col justify-start items-start w-2/4 py-4">
                 <p style={styles.name}>{name}</p>
                 <p style={styles.profession}>{data.workExperience[0].title}</p>
-
                 <p className="text-lg" style={styles.contactInfo}>
                   {email}
                 </p>
@@ -216,7 +219,6 @@ const Preview = ({ isDarkMode, data }) => {
                     {phone}
                   </p>
                 )}
-
                 <div className=" ">
                   {links.linkedIn && (
                     <p style={styles.contactInfo}>
@@ -245,7 +247,6 @@ const Preview = ({ isDarkMode, data }) => {
                 </div>
               </div>
             </div>
-
             <div>
               <h3 style={styles.sectionTitle}>Work Experience</h3>
               {workExperience.map((job, index) => (
@@ -256,7 +257,6 @@ const Preview = ({ isDarkMode, data }) => {
                 </div>
               ))}
             </div>
-
             <div>
               <h3 style={styles.sectionTitle}>Education</h3>
               {education.map((edu, index) => (
@@ -267,7 +267,6 @@ const Preview = ({ isDarkMode, data }) => {
                 </div>
               ))}
             </div>
-
             <div>
               <h3 style={styles.sectionTitle}>Projects</h3>
               {projects.map((project, index) => (
@@ -280,7 +279,6 @@ const Preview = ({ isDarkMode, data }) => {
                 </div>
               ))}
             </div>
-
             <div style={styles.view}>
               <h3 style={styles.sectionTitle}>Skills</h3>
               <div style={styles.skills}>
@@ -302,7 +300,6 @@ const Preview = ({ isDarkMode, data }) => {
                         {skillsCategory.category}:
                       </span>
                     )}
-
                     {skillsCategory.skills.map((skill, id) => (
                       <span key={id} style={styles.subtitle}>
                         {skill}
@@ -312,7 +309,6 @@ const Preview = ({ isDarkMode, data }) => {
                 ))}
               </div>
             </div>
-
             {achievements && (
               <div style={styles.view}>
                 {achievements && (
@@ -374,7 +370,6 @@ const Preview = ({ isDarkMode, data }) => {
                       {name}
                     </h4>
                   )}
-
                   <div className="flex flex-row gap-1 items-center flex-wrap text-slate-800 justify-center">
                     {email && (
                       <span style={styles2.contactInfo}>
@@ -384,7 +379,6 @@ const Preview = ({ isDarkMode, data }) => {
                         </a>
                       </span>
                     )}
-
                     {phone && (
                       <span style={styles2.contactInfo}>
                         <a src={links.website} style={styles2.link}>
@@ -393,11 +387,9 @@ const Preview = ({ isDarkMode, data }) => {
                         </a>
                       </span>
                     )}
-
                     {address && (
                       <span style={styles2.contactInfo}>{address}</span>
                     )}
-
                     {links.linkedIn && (
                       <span style={styles2.contactInfo}>
                         <a src={links.linkedIn} style={styles2.link}>
@@ -405,7 +397,6 @@ const Preview = ({ isDarkMode, data }) => {
                         </a>
                       </span>
                     )}
-
                     {links.github && (
                       <span style={styles2.contactInfo}>
                         <a src={links.github} style={styles2.link}>
@@ -414,7 +405,6 @@ const Preview = ({ isDarkMode, data }) => {
                         </a>
                       </span>
                     )}
-
                     {links.website && (
                       <span style={styles2.contactInfo}>
                         <a src={links.website} style={styles2.link}>
@@ -428,7 +418,6 @@ const Preview = ({ isDarkMode, data }) => {
                 <div style={styles2.main}>
                   <div style={styles2.section}>
                     <h6 style={styles2.sectionTitle}>Experience</h6>
-
                     {workExperience.map((workExp, index) => (
                       <div key={index}>
                         <div style={styles2.text}>
@@ -448,7 +437,6 @@ const Preview = ({ isDarkMode, data }) => {
                   </div>
                   <div style={styles2.section}>
                     <h6 style={styles2.sectionTitle}>Projects</h6>
-
                     {projects.map((project, index) => (
                       <div key={index}>
                         <div style={styles2.text}>
@@ -465,7 +453,6 @@ const Preview = ({ isDarkMode, data }) => {
                       </div>
                     ))}
                   </div>
-
                   <div style={styles2.section} className="w-full">
                     <p style={styles2.sectionTitle}>Education</p>
                     {education.map((edu, index) => (
@@ -481,7 +468,6 @@ const Preview = ({ isDarkMode, data }) => {
                       </div>
                     ))}
                   </div>
-
                   <div style={styles2.section} className="text-sm">
                     <p style={styles2.sectionTitle}>Skills</p>
                     <div className="w-full flex items-start justify-start flex-wrap gap-2 flex-col">
@@ -504,7 +490,6 @@ const Preview = ({ isDarkMode, data }) => {
                       ))}
                     </div>
                   </div>
-
                   {achievements && (
                     <div style={styles2.section} className="text-sm">
                       <p style={styles2.sectionTitle}>Achievements</p>

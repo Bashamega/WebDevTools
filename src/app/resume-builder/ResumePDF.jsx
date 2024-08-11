@@ -29,11 +29,13 @@ const styles1 = StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: 20,
   },
+
   circleImage: {
     width: 100,
     height: 100,
     borderRadius: "50%",
   },
+
   rectangleImage: {
     width: 100,
     height: 100,
@@ -45,12 +47,14 @@ const styles1 = StyleSheet.create({
     display: "flex",
     alignItems: "start",
   },
+
   name: {
     fontSize: 28,
     color: "#2c3e50",
     marginBottom: 5,
     fontWeight: "bold",
   },
+
   profession: {
     fontSize: 14,
     color: "#7f8c8d",
@@ -76,6 +80,7 @@ const styles1 = StyleSheet.create({
     color: "#333",
     marginBottom: 6,
   },
+
   subtitle: {
     fontSize: 12,
     color: "#7f8c8d",
@@ -99,8 +104,6 @@ const styles1 = StyleSheet.create({
     marginBottom: 5,
     paddingLeft: 10,
     lineHeight: "1.5px",
-
-    // lineHeight:"1.2px"
   },
 
   link: {
@@ -131,80 +134,6 @@ const styles1 = StyleSheet.create({
     textTransform: "capitalize",
   },
 });
-
-// const styles2 = StyleSheet.create({
-//   page: {
-//     padding: 20,
-//     color: "#1e293b",
-//     fontFamily: "Times-Roman",
-//   },
-
-//   main: {
-//     width: "100%",
-//     display: "flex",
-//     flexDirection: "column",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-
-//   name: {
-//     fontSize: 28,
-//     fontWeight: "bold",
-
-//     // fontFamily: "Lora",
-//     fontFamily: "Times-Roman",
-//   },
-
-//   contactInfo: {
-//     fontSize: 12,
-//   },
-
-//   link: {
-//     color: "#020617", // light-slate
-//     textDecoration: "dotted",
-//   },
-
-//   sectionTitle: {
-//     fontSize: 18,
-//     color: "#020617", // light-slate
-//     marginBottom: 10,
-//     borderBottom: "2px solid #000",
-//     borderTop: "2px solid #000",
-//     fontWeight: 600,
-//     paddingTop: 3,
-//     fontStyle: "italic",
-//     fontFamily: "Times-Bold",
-//   },
-
-//   text: {
-//     fontSize: 14,
-//     marginBottom: 5,
-//     fontWeight: 500,
-//     color: "#020617", // light-slate
-//     fontFamily: "Times-Roman",
-//   },
-
-//   title: {
-//     fontSize: 16,
-//     fontWeight: "bold",
-//     marginBottom: 5,
-//     color: "#1e293b",
-//     fontFamily: "Times-Bold",
-//   },
-
-//   subtitle: {
-//     // fontWeight: 600,
-//     color: "#020617", // light-slate
-//     fontSize: 14,
-//     marginBottom: 5,
-//     fontFamily: "Times-BoldItalic",
-//   },
-
-//   section: {
-//     marginBottom: 20,
-//     width: "100%",
-//   },
-// });
 
 const ResumePDF = ({ data }) => {
   const {
@@ -246,21 +175,17 @@ const ResumePDF = ({ data }) => {
                     {workExperience[0].title}
                   </Text>
                 )}
-
                 {email && (
                   <Text style={styles1.contactInfo}>
                     Email: <Text style={styles1.link}>{email}</Text>{" "}
                   </Text>
                 )}
-
                 {phone && (
                   <Text style={styles1.contactInfo}>Phone: {phone}</Text>
                 )}
-
                 {address && (
                   <Text style={styles1.contactInfo}>Address: {address}</Text>
                 )}
-
                 {links.linkedIn && (
                   <Text style={styles1.contactInfo}>
                     LinkedIn:
@@ -269,7 +194,6 @@ const ResumePDF = ({ data }) => {
                     </Link>
                   </Text>
                 )}
-
                 {links.github && (
                   <Text style={styles1.contactInfo}>
                     GitHub:
@@ -278,7 +202,6 @@ const ResumePDF = ({ data }) => {
                     </Link>
                   </Text>
                 )}
-
                 {links.website && (
                   <Text style={styles1.contactInfo}>
                     Website:
@@ -299,7 +222,6 @@ const ResumePDF = ({ data }) => {
                 </View>
               ))}
             </View>
-
             <View style={styles1.view}>
               <Text style={styles1.sectionTitle}>Education</Text>
               {education.map((edu, index) => (
@@ -310,7 +232,6 @@ const ResumePDF = ({ data }) => {
                 </View>
               ))}
             </View>
-
             <View style={styles1.view}>
               <Text style={styles1.sectionTitle}>Projects</Text>
               {projects.map((project, index) => (
@@ -323,7 +244,6 @@ const ResumePDF = ({ data }) => {
                 </View>
               ))}
             </View>
-
             <View style={styles1.view}>
               <Text style={styles1.sectionTitle}>Skills</Text>
               <View style={styles1.skills}>
@@ -356,7 +276,6 @@ const ResumePDF = ({ data }) => {
                 ))}
               </View>
             </View>
-
             {achievements && (
               <View style={styles1.view}>
                 <Text style={styles1.sectionTitle}>Achievements</Text>
@@ -449,7 +368,6 @@ const ResumePDF = ({ data }) => {
                       {email}
                     </Link>
                   </Text>
-
                   <Text style={{ fontSize: 12 }}>
                     <Link
                       style={{
@@ -461,9 +379,7 @@ const ResumePDF = ({ data }) => {
                       {phone}
                     </Link>
                   </Text>
-
                   <Text style={{ fontSize: 12 }}>{address}</Text>
-
                   <Text style={{ fontSize: 12 }}>
                     <Link
                       style={{
@@ -475,7 +391,6 @@ const ResumePDF = ({ data }) => {
                       {links.linkedIn}
                     </Link>
                   </Text>
-
                   <Text style={{ fontSize: 12 }}>
                     <Link
                       style={{
@@ -487,7 +402,6 @@ const ResumePDF = ({ data }) => {
                       {links.github}
                     </Link>
                   </Text>
-
                   <Text style={{ fontSize: 12 }}>
                     <Link
                       style={{
@@ -501,7 +415,6 @@ const ResumePDF = ({ data }) => {
                   </Text>
                 </View>
               </View>
-
               <View
                 //main
                 style={{
@@ -581,7 +494,6 @@ const ResumePDF = ({ data }) => {
                     </View>
                   ))}
                 </View>
-
                 <View style={{ marginBottom: 20, width: "100%" }}>
                   <Text
                     style={{
@@ -642,7 +554,6 @@ const ResumePDF = ({ data }) => {
                     </View>
                   ))}
                 </View>
-
                 <View style={{ marginBottom: 20, width: "100%" }}>
                   <Text
                     style={{
@@ -711,7 +622,6 @@ const ResumePDF = ({ data }) => {
                     </View>
                   ))}
                 </View>
-
                 <View style={{ width: "100%", marginBottom: 20 }}>
                   <Text
                     style={{
@@ -722,8 +632,6 @@ const ResumePDF = ({ data }) => {
                       borderTop: "2px solid #000",
                       fontWeight: 600,
                       paddingTop: 3,
-
-                      // fontFamily: "Times-Bold",
                     }}
                   >
                     Skills
@@ -781,7 +689,6 @@ const ResumePDF = ({ data }) => {
                     ))}
                   </View>
                 </View>
-
                 <View style={{ marginBottom: 20, width: "100%" }}>
                   <Text
                     style={{
@@ -797,7 +704,6 @@ const ResumePDF = ({ data }) => {
                   >
                     Achievements
                   </Text>
-
                   {achievements.map((achievement, index) => (
                     <View
                       key={index}
