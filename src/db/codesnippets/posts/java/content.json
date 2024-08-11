@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "title": "Log text to console",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "logtexttoconsole"
+  }
+]
