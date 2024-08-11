@@ -112,5 +112,11 @@
     "name": "Coding Snippets",
     "link": "/cs",
     "ctg": "other"
+  },
+  {
+    "id": 20,
+    "name": "Fetcher",
+    "link": "/fetcher",
+    "ctg": "other"
   }
 ]
