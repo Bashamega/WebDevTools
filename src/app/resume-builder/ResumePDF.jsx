@@ -159,14 +159,16 @@ const ResumePDF = ({ data }) => {
           <Page size="A4" style={styles1.page}>
             <View style={styles1.header}>
               <View>
-                <Image
-                  style={
-                    imageShape === "circle"
-                      ? styles1.circleImage
-                      : styles1.rectangleImage
-                  }
-                  src={image}
-                />
+                {image && (
+                  <Image
+                    style={
+                      imageShape === "circle"
+                        ? styles1.circleImage
+                        : styles1.rectangleImage
+                    }
+                    src={image || ""}
+                  />
+                )}
               </View>
               <View style={styles1.profileDetails}>
                 <Text style={styles1.name}>{name}</Text>
@@ -177,7 +179,7 @@ const ResumePDF = ({ data }) => {
                 )}
                 {email && (
                   <Text style={styles1.contactInfo}>
-                    Email: <Text style={styles1.link}>{email}</Text>{" "}
+                    Email: <Text style={styles1.link}>{email}</Text>
                   </Text>
                 )}
                 {phone && (
@@ -333,34 +335,53 @@ const ResumePDF = ({ data }) => {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  flexDirection: "row",
                   marginBottom: 10,
+                  width: "100%",
                 }}
               >
-                <Text
-                  style={{
-                    fontSize: 28,
-                    fontWeight: 800,
-                    // fontFamily: "Times-Roman",
-                  }}
-                >
-                  {name}
-                </Text>
                 <View
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    flexWrap: "wrap",
                     justifyContent: "center",
-                    flexDirection: "row",
+                    flexDirection: "column",
                     gap: "5px",
+                    width: "70%",
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontSize: 25,
+                      fontWeight: 800,
+                    }}
+                  >
+                    {name}
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      color: "#334155",
+                    }}
+                  >
+                    {workExperience[0].title}
+                  </Text>
+                </View>
+
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-start",
+                    gap: "5px",
+                    width: "30%",
                   }}
                 >
                   <Text style={{ fontSize: 12, fontStyle: "italic" }}>
                     <Link
                       style={{
-                        color: "#020617",
+                        color: "#334155",
                         textDecoration: "dotted",
                       }}
                       src={`mailto:${email}`}
@@ -371,7 +392,7 @@ const ResumePDF = ({ data }) => {
                   <Text style={{ fontSize: 12 }}>
                     <Link
                       style={{
-                        color: "#020617",
+                        color: "#334155",
                         textDecoration: "dotted",
                       }}
                       src={`tel:${phone}`}
@@ -379,11 +400,13 @@ const ResumePDF = ({ data }) => {
                       {phone}
                     </Link>
                   </Text>
-                  <Text style={{ fontSize: 12 }}>{address}</Text>
+                  <Text style={{ fontSize: 12, color: "#334155" }}>
+                    {address}
+                  </Text>
                   <Text style={{ fontSize: 12 }}>
                     <Link
                       style={{
-                        color: "#020617",
+                        color: "#334155",
                         textDecoration: "dotted",
                       }}
                       src={links.linkedIn}
@@ -394,7 +417,7 @@ const ResumePDF = ({ data }) => {
                   <Text style={{ fontSize: 12 }}>
                     <Link
                       style={{
-                        color: "#020617",
+                        color: "#334155",
                         textDecoration: "dotted",
                       }}
                       src={links.github}
@@ -405,8 +428,8 @@ const ResumePDF = ({ data }) => {
                   <Text style={{ fontSize: 12 }}>
                     <Link
                       style={{
-                        color: "#020617",
-                        textDecoration: "dotted",
+                        color: "#334155",
+                        textDecoration: "none",
                       }}
                       src={links.website}
                     >
@@ -415,6 +438,7 @@ const ResumePDF = ({ data }) => {
                   </Text>
                 </View>
               </View>
+
               <View
                 //main
                 style={{

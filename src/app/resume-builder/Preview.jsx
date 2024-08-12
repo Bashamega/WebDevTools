@@ -19,7 +19,7 @@ const Preview = ({ isDarkMode, data }) => {
 
   const styles = {
     template1: {
-      backgroundColor: "#f2f2f2",
+      // backgroundColor: "#",
       padding: "50px 80px",
       fontFamily: "Helvetica",
       color: "#333",
@@ -188,7 +188,7 @@ const Preview = ({ isDarkMode, data }) => {
           <div
             style={styles.template1}
             className={`w-full ${
-              isDarkMode ? "bg-slate-100" : "bg-slate-50"
+              isDarkMode ? "bg-[#f2f2f2]" : "bg-white"
             } my-6`}
           >
             <div
@@ -198,7 +198,7 @@ const Preview = ({ isDarkMode, data }) => {
               <div className="flex items-center justify-start w-full">
                 {image && (
                   <img
-                    src={image}
+                    src={image || "https://via.placeholder.com/150"}
                     alt="Profile Image"
                     style={
                       imageShape === "circle"
@@ -208,7 +208,7 @@ const Preview = ({ isDarkMode, data }) => {
                   />
                 )}
               </div>
-              <div className=" flex flex-col justify-start items-start w-2/4 py-4">
+              <div className=" flex flex-col justify-start items-start w-2/4 py-4 pl-9">
                 <p style={styles.name}>{name}</p>
                 <p style={styles.profession}>{data.workExperience[0].title}</p>
                 <p className="text-lg" style={styles.contactInfo}>
@@ -358,63 +358,66 @@ const Preview = ({ isDarkMode, data }) => {
         return (
           <main
             style={styles2.page}
-            className={`${
-              isDarkMode ? "bg-slate-100" : "bg-slate-50"
+            className={`w-full ${
+              isDarkMode ? "bg-[#f2f2f2]" : "bg-white"
             } my-6 h-full`}
           >
             {data && (
               <div className="w-full p-8">
-                <header className="flex items-center justify-center flex-col mb-1">
-                  {name && (
-                    <h4 className="text-slate-950" style={styles2.name}>
-                      {name}
-                    </h4>
-                  )}
-                  <div className="flex flex-row gap-1 items-center flex-wrap text-slate-800 justify-center">
+                <header className="mb-1 w-full flex flex-row">
+                  <div className="flex items-center justify-center flex-col w-[70%]">
+                    {name && (
+                      <h4 className="text-slate-950 text-4xl font-bold">
+                        {name}
+                      </h4>
+                    )}
+                    {workExperience[0].title && (
+                      <h4 className="text-slate-950 text-2xl">
+                        {workExperience[0].title}
+                      </h4>
+                    )}
+                  </div>
+
+                  <div className="flex flex-col items-start  text-slate-800 justify-start w-[30%] gap-1">
                     {email && (
-                      <span style={styles2.contactInfo}>
-                        <a src={links.website} style={styles2.link}>
-                          {" "}
+                      <span className="text-sm ml-2">
+                        <a href={`mailto:${email}`} className="text-slate-800 ">
                           {email}
                         </a>
                       </span>
                     )}
                     {phone && (
-                      <span style={styles2.contactInfo}>
-                        <a src={links.website} style={styles2.link}>
-                          {" "}
+                      <span className="text-sm ml-2">
+                        <a href={`tel:${phone}`} className="text-slate-800 ">
                           {phone}
                         </a>
                       </span>
                     )}
-                    {address && (
-                      <span style={styles2.contactInfo}>{address}</span>
-                    )}
+                    {address && <span className="text-sm ml-2">{address}</span>}
                     {links.linkedIn && (
-                      <span style={styles2.contactInfo}>
-                        <a src={links.linkedIn} style={styles2.link}>
+                      <span className="text-sm ml-2">
+                        <a href={links.linkedIn} className="text-slate-800 ">
                           {links.linkedIn}
                         </a>
                       </span>
                     )}
                     {links.github && (
-                      <span style={styles2.contactInfo}>
-                        <a src={links.github} style={styles2.link}>
-                          {" "}
+                      <span className="text-sm ml-2">
+                        <a href={links.github} className="text-slate-800 ">
                           {links.github}
                         </a>
                       </span>
                     )}
                     {links.website && (
-                      <span style={styles2.contactInfo}>
-                        <a src={links.website} style={styles2.link}>
-                          {" "}
+                      <span className="text-sm ml-2">
+                        <a href={links.website} className="text-slate-800 ">
                           {links.website}
                         </a>
                       </span>
                     )}
                   </div>
                 </header>
+
                 <div style={styles2.main}>
                   <div style={styles2.section}>
                     <h6 style={styles2.sectionTitle}>Experience</h6>
