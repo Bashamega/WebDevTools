@@ -112,10 +112,9 @@
     "name": "Badge Maker for Readme",
     "link": "/badge-maker",
     "ctg": "generator"
-  }
-  ,
+  },
   {
-"id":20,
+    "id": 20,
     "name": "Coding Snippets",
     "link": "/cs",
     "ctg": "other"

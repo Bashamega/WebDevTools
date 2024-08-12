@@ -56,14 +56,8 @@
   "devDependencies": {
     "eslint": "^8",
     "eslint-config-next": "14.2.2",
-
-
     "prettier": "^3.3.3",
-
     "husky": "^9.1.4",
-    
-
-
     "xml2js": "^0.6.2"
   }
 }
