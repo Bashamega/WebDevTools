@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "title": "Log text to console",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "logtexttoconsole"
+  },
+  {
+    "title": "Get current time",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "getcurrenttime"
+  },
+  {
+    "title": "Check if variable is an array",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "I like stuff... 🤨"
+    },
+    "doc": "checkifvariableisanarray"
+  }
+]
