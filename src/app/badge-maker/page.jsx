@@ -13,18 +13,15 @@ const BadgeMakerPage = () => {
   const handleGenerateBadge = async (data) => {
     console.log("Generating badge with data:", data);
     const queryString = new URLSearchParams(data).toString();
-    console.log(`/api/badge?${queryString}`);
+    //console.log(`/api/badge?${queryString}`);
 
     try {
-      const response = await fetch(`/api/badge?${queryString}`);
-      const result = await response.json();
-      console.log("API response:", result);
+      const result = `${window.location.origin}/api/badge?${queryString}`;
+      //console.log("API response:", result);
 
-      if (result.badgeUrl) {
-        setBadgeImage(result.badgeUrl); // Set image source
-        setBadgeMarkdown(result.badgeUrl); // Store file URL for copying
-      } else {
-        console.error("Failed to generate badge:", result.error);
+      if (result) {
+        setBadgeImage(result); // Set image source
+        setBadgeMarkdown(result); // Store file URL for copying
       }
     } catch (error) {
       console.error("Error fetching badge:", error);
