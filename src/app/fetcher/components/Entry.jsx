@@ -44,7 +44,6 @@ export function Entry({ onSubmit, isDarkMode }) {
         name="web"
       />
       <select
-      
         onChange={(e) => setValue({ ...value, method: e.target.value })}
         className={`ml-2 p-5 border rounded-lg ${
           isDarkMode
@@ -54,7 +53,12 @@ export function Entry({ onSubmit, isDarkMode }) {
         name="method"
       >
         {methods.map((method) => (
-          <option key={method.text} value={method.text} className=" font-bold" style={{ color: method.color }}>
+          <option
+            key={method.text}
+            value={method.text}
+            className=" font-bold"
+            style={{ color: method.color }}
+          >
             {method.text}
           </option>
         ))}

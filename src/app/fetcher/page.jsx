@@ -28,7 +28,6 @@ export default function CodingSnippets() {
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
       />
-      
     </main>
   );
 }
