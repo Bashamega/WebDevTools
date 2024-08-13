@@ -13,6 +13,7 @@ export default function HTML_JSX() {
   const handleChange = (val) => {
     setValue(val);
   };
+
   const toggleTheme = () => {
     const newTheme = !isDarkMode;
     setIsDarkMode(newTheme);

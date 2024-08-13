@@ -118,5 +118,11 @@
     "name": "Coding Snippets",
     "link": "/cs",
     "ctg": "other"
+  },
+  {
+    "id": 21,
+    "name": "Resume Builder",
+    "link": "/resume-builder",
+    "ctg": "other"
   }
 ]

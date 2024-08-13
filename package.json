@@ -21,6 +21,7 @@
     "@monaco-editor/react": "^4.6.0",
     "@mui/icons-material": "^5.15.19",
     "@mui/material": "^5.15.19",
+    "@react-pdf/renderer": "^3.4.4",
     "asciidoctor": "^3.0.4",
     "autoprefixer": "10.4.19",
     "badge-maker": "^4.0.0",
