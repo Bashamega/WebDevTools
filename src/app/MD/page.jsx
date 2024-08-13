@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import snarkdown from "snarkdown";
 import { saveAs } from "file-saver";
 import SearchIcon from "@mui/icons-material/Search";
@@ -115,6 +116,10 @@ export default function MarkdownEditor() {
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(markdown);
+      toast("Markdown Copied!!", {
+        duration: 1500,
+        icon: "✅",
+      });
     } catch (err) {
       console.error("Failed to copy: ", err);
     }
@@ -254,6 +259,7 @@ export default function MarkdownEditor() {
           />
         </section>
       </section>
+      <Toaster />
     </main>
   );
 }
