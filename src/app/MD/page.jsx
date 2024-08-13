@@ -5,6 +5,7 @@ import snarkdown from "snarkdown";
 import { saveAs } from "file-saver";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import Search from "../components/search";
 import Link from "next/link";
 import SunIcon from "../components/icons/sunicon";
@@ -111,6 +112,14 @@ export default function MarkdownEditor() {
     localStorage.setItem("theme", JSON.stringify(newTheme));
   };
 
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(markdown);
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+    }
+  };
+
   return (
     <main
       className={`h-screen overflow-auto ${
@@ -213,7 +222,14 @@ export default function MarkdownEditor() {
       </div>
 
       <section className="flex flex-col md:flex-row w-full h-[100%] gap-3">
-        <section className="w-[96%] h-full  md:w-1/2 ml-2 mr-2 ">
+        <section className="w-[96%] h-full  md:w-1/2 ml-2 mr-2 relative">
+          <button
+            onClick={copyToClipboard}
+            className="absolute top-9 right-2 p-1 rounded hover:bg-opacity-20 hover:bg-gray-200 transition-colors duration-200"
+            aria-label="Copy to clipboard"
+          >
+            <ContentCopyIcon />
+          </button>
           <h1>Markdown</h1>
           <textarea
             className={`border p-2 h-full w-full resize-none ${
