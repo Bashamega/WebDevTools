@@ -462,7 +462,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             isDarkMode
               ? "bg-slate-800 text-slate-50 border-none"
               : "bg-slate-50 text-slate-800 border border-slate-500"
-          } rounded-md shadow-sm hover:bg-blue-800 transition-colors duration-500 ease-in-out`}
+          } rounded-md shadow-sm hover:bg-blue-800 hover:text-white transition-colors duration-500 ease-in-out`}
         >
           <AddBox />
           Add Education
@@ -547,7 +547,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             isDarkMode
               ? "bg-slate-800 text-slate-50 border-none"
               : "bg-slate-50 text-slate-800 border border-slate-500"
-          } rounded-md shadow-sm  hover:bg-blue-800 transition-colors duration-500 ease-in-out`}
+          } rounded-md shadow-sm  hover:bg-blue-800 hover:text-white transition-colors duration-500 ease-in-out`}
         >
           <AddBox />
           Add Project
@@ -647,7 +647,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             isDarkMode
               ? "bg-slate-800 text-slate-50 border-none"
               : "bg-slate-50 text-slate-800 border border-slate-500"
-          } rounded-md shadow-sm hover:bg-blue-800 transition-colors duration-500 ease-in-out`}
+          } rounded-md shadow-sm hover:bg-blue-800 hover:text-white transition-colors duration-500 ease-in-out`}
         >
           <AddBox />
           Add Achievement
