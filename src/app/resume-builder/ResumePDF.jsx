@@ -11,7 +11,11 @@ import {
   PDFDownloadLink,
   Image,
   Link,
+  Svg,
+  Path,
 } from "@react-pdf/renderer";
+import { FaCloud, FaGithub, FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
+import { FaLocationCrosshairs } from "react-icons/fa6";
 
 // Some styles
 const styles1 = StyleSheet.create({
@@ -135,6 +139,90 @@ const styles1 = StyleSheet.create({
   },
 });
 
+const EmailIcon = () => (
+  <Svg width="12" height="12" viewBox="0 0 24 24">
+    <Path fill="none" d="M0 0h24v24H0z" />
+    <Path
+      d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
+      fill="black"
+    />
+  </Svg>
+);
+
+const PhoneIcon = () => (
+  <Svg
+    width="12"
+    height="12"
+    viewBox="0 0 512 512"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <Path
+      d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"
+      fill="#000"
+    />
+  </Svg>
+);
+
+const LinkedInIcon = (props) => (
+  <Svg
+    width={props.width || "12"}
+    height={props.height || "12"}
+    viewBox="0 0 448 512"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <Path
+      d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"
+      fill="#000"
+    />
+  </Svg>
+);
+
+const GithubIcon = (props) => (
+  <Svg
+    width={props.width || "12"}
+    height={props.height || "12"}
+    viewBox="0 0 448 512"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <Path
+      d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z"
+      fill="#000"
+    />
+  </Svg>
+);
+
+const WebsiteIcon = (props) => (
+  <Svg
+    width="12"
+    height="12"
+    viewBox="0 0 640 512"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <Path
+      d="M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4z"
+      fill={props.color || "#000"}
+    />
+  </Svg>
+);
+
+const AddIcon = (props) => (
+  <Svg
+    width="12"
+    height="12"
+    viewBox="0 0 384 512"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <Path
+      d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"
+      fill={props.color || "#000"}
+    />
+  </Svg>
+);
+
 const ResumePDF = ({ data }) => {
   const {
     name,
@@ -178,39 +266,134 @@ const ResumePDF = ({ data }) => {
                   </Text>
                 )}
                 {email && (
-                  <Text style={styles1.contactInfo}>
-                    Email: <Text style={styles1.link}>{email}</Text>
-                  </Text>
-                )}
-                {phone && (
-                  <Text style={styles1.contactInfo}>Phone: {phone}</Text>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      marginBottom: 2,
+                    }}
+                  >
+                    <EmailIcon />
+                    <Link
+                      style={{
+                        marginLeft: 4,
+                        fontSize: 12,
+                        color: "#000",
+                        textDecoration: "none",
+                      }}
+                      src={`mailto:${email}`}
+                    >
+                      {email}
+                    </Link>
+                  </View>
                 )}
                 {address && (
-                  <Text style={styles1.contactInfo}>Address: {address}</Text>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      marginBottom: 2,
+                    }}
+                  >
+                    <AddIcon />
+                    <Text
+                      style={{
+                        marginLeft: 4,
+                        fontSize: 12,
+                        color: "#000",
+                      }}
+                    >
+                      {address}
+                    </Text>
+                  </View>
+                )}
+                {phone && (
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      marginBottom: 2,
+                    }}
+                  >
+                    <PhoneIcon />
+                    <Link
+                      style={{
+                        marginLeft: 4,
+                        fontSize: 12,
+                        color: "#000",
+                        textDecoration: "none",
+                      }}
+                      src={`tel:${phone}`}
+                    >
+                      {phone}
+                    </Link>
+                  </View>
                 )}
                 {links.linkedIn && (
-                  <Text style={styles1.contactInfo}>
-                    LinkedIn:
-                    <Link src={links.linkedIn} style={styles1.link}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      marginBottom: 2,
+                    }}
+                  >
+                    <LinkedInIcon />
+                    <Link
+                      style={{
+                        marginLeft: 4,
+                        fontSize: 12,
+                        color: "blue",
+                        textDecoration: "none",
+                      }}
+                      src={links.linkedIn}
+                    >
                       {links.linkedIn}
                     </Link>
-                  </Text>
+                  </View>
                 )}
                 {links.github && (
-                  <Text style={styles1.contactInfo}>
-                    GitHub:
-                    <Link src={links.github} style={styles1.link}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      marginBottom: 2,
+                    }}
+                  >
+                    <GithubIcon />
+                    <Link
+                      style={{
+                        marginLeft: 4,
+                        fontSize: 12,
+                        color: "#000",
+                        textDecoration: "none",
+                      }}
+                      src={links.github}
+                    >
                       {links.github}
                     </Link>
-                  </Text>
+                  </View>
                 )}
                 {links.website && (
-                  <Text style={styles1.contactInfo}>
-                    Website:
-                    <Link src={links.website} style={styles1.link}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      marginBottom: 2,
+                    }}
+                  >
+                    <WebsiteIcon />
+                    <Link
+                      style={{
+                        marginLeft: 4,
+                        fontSize: 12,
+                        color: "#000",
+                        textDecoration: "none",
+                      }}
+                      src={links.website}
+                    >
                       {links.website}
                     </Link>
-                  </Text>
+                  </View>
                 )}
               </View>
             </View>
@@ -375,67 +558,139 @@ const ResumePDF = ({ data }) => {
                     flexDirection: "column",
                     alignItems: "flex-start",
                     gap: "5px",
-                    width: "30%",
+                    width: "55%",
                   }}
                 >
-                  <Text style={{ fontSize: 12, fontStyle: "italic" }}>
-                    <Link
+                  {email && (
+                    <View
                       style={{
-                        color: "#334155",
-                        textDecoration: "dotted",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginBottom: 2,
                       }}
-                      src={`mailto:${email}`}
                     >
-                      {email}
-                    </Link>
-                  </Text>
-                  <Text style={{ fontSize: 12 }}>
-                    <Link
+                      <EmailIcon />
+                      <Link
+                        style={{
+                          marginLeft: 4,
+                          fontSize: 12,
+                          color: "#000",
+                          textDecoration: "none",
+                        }}
+                        href={`mailto:${email}`}
+                      >
+                        {email}
+                      </Link>
+                    </View>
+                  )}
+                  {phone && (
+                    <View
                       style={{
-                        color: "#334155",
-                        textDecoration: "dotted",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginBottom: 2,
                       }}
-                      src={`tel:${phone}`}
                     >
-                      {phone}
-                    </Link>
-                  </Text>
-                  <Text style={{ fontSize: 12, color: "#334155" }}>
-                    {address}
-                  </Text>
-                  <Text style={{ fontSize: 12 }}>
-                    <Link
+                      <PhoneIcon />
+                      <Link
+                        style={{
+                          marginLeft: 4,
+                          fontSize: 12,
+                          color: "#000",
+                          textDecoration: "none",
+                        }}
+                        href={`tel:${phone}`}
+                      >
+                        {phone}
+                      </Link>
+                    </View>
+                  )}
+                  {address && (
+                    <View
                       style={{
-                        color: "#334155",
-                        textDecoration: "dotted",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginBottom: 2,
                       }}
-                      src={links.linkedIn}
                     >
-                      {links.linkedIn}
-                    </Link>
-                  </Text>
-                  <Text style={{ fontSize: 12 }}>
-                    <Link
+                      <AddIcon />
+                      <Text
+                        style={{
+                          marginLeft: 4,
+                          fontSize: 12,
+                          color: "#000",
+                        }}
+                      >
+                        {address}
+                      </Text>
+                    </View>
+                  )}
+                  {links.linkedIn && (
+                    <View
                       style={{
-                        color: "#334155",
-                        textDecoration: "dotted",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginBottom: 2,
                       }}
-                      src={links.github}
                     >
-                      {links.github}
-                    </Link>
-                  </Text>
-                  <Text style={{ fontSize: 12 }}>
-                    <Link
+                      <LinkedInIcon />
+                      <Link
+                        style={{
+                          marginLeft: 4,
+                          fontSize: 12,
+                          color: "blue",
+                          textDecoration: "none",
+                        }}
+                        href={links.linkedIn}
+                      >
+                        {links.linkedIn}
+                      </Link>
+                    </View>
+                  )}
+                  {links.github && (
+                    <View
                       style={{
-                        color: "#334155",
-                        textDecoration: "none",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginBottom: 2,
                       }}
-                      src={links.website}
                     >
-                      {links.website}
-                    </Link>
-                  </Text>
+                      <GithubIcon />
+                      <Link
+                        style={{
+                          marginLeft: 4,
+                          fontSize: 12,
+                          color: "blue",
+                          textDecoration: "none",
+                        }}
+                        href={links.github}
+                      >
+                        {links.github}
+                      </Link>
+                    </View>
+                  )}
+                  {links.website && (
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginBottom: 2,
+                      }}
+                    >
+                      <WebsiteIcon />
+                      <Link
+                        style={{
+                          marginLeft: 4,
+                          fontSize: 12,
+                          color: "blue",
+                          textDecoration: "none",
+                        }}
+                        href={links.website}
+                      >
+                        {links.website}
+                      </Link>
+                    </View>
+                  )}
                 </View>
               </View>
 
