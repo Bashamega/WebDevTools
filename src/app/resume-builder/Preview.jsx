@@ -1,4 +1,7 @@
 "use client";
+import { MdEmail } from "react-icons/md";
+import { FaCloud, FaGithub, FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
+import { FaLocationCrosshairs } from "react-icons/fa6";
 
 const Preview = ({ isDarkMode, data }) => {
   const {
@@ -34,7 +37,7 @@ const Preview = ({ isDarkMode, data }) => {
     },
 
     circleImage: {
-      width: "35%",
+      width: "32%",
       borderRadius: "50%",
     },
 
@@ -208,38 +211,94 @@ const Preview = ({ isDarkMode, data }) => {
                   />
                 )}
               </div>
-              <div className=" flex flex-col justify-start items-start w-2/4 py-4 pl-9">
+              <div className="flex flex-col justify-start items-start w-2/4 py-4 pl-9">
                 <p style={styles.name}>{name}</p>
                 <p style={styles.profession}>{data.workExperience[0].title}</p>
-                <p className="text-lg" style={styles.contactInfo}>
-                  {email}
-                </p>
-                {phone && (
-                  <p className="text-base" style={styles.contactInfo}>
-                    {phone}
+                {email && (
+                  <p
+                    className="text-base"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      ...styles.contactInfo,
+                    }}
+                  >
+                    <MdEmail />
+                    <span className="text-sm ml-2">
+                      <a href={`mailto:${email}`} className="">
+                        {email}
+                      </a>
+                    </span>
                   </p>
                 )}
-                <div className=" ">
+                {phone && (
+                  <p
+                    className="text-base"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      ...styles.contactInfo,
+                    }}
+                  >
+                    <FaPhoneAlt />
+                    <span style={{ marginLeft: "8px" }}>
+                      <a href={`tel:${phone}`} className="">
+                        {phone}
+                      </a>
+                    </span>
+                  </p>
+                )}
+
+                <div>
                   {links.linkedIn && (
-                    <p style={styles.contactInfo}>
-                      LinkedIn:{" "}
-                      <span className="text-blue-500 cursor-pointer">
+                    <p
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        ...styles.contactInfo,
+                      }}
+                    >
+                      <FaLinkedinIn />
+                      <span
+                        className="text-blue-500 cursor-pointer"
+                        style={{ marginLeft: "8px" }}
+                      >
                         {links.linkedIn}
                       </span>
                     </p>
                   )}
+
                   {links.website && (
-                    <p style={styles.contactInfo}>
-                      Website:{" "}
-                      <span className="text-blue-500 cursor-pointer">
+                    <p
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        ...styles.contactInfo,
+                      }}
+                    >
+                      <FaCloud />
+                      <span
+                        className="text-blue-500 cursor-pointer"
+                        style={{ marginLeft: "8px" }}
+                      >
                         {links.website}
                       </span>
                     </p>
                   )}
+
                   {links.github && (
-                    <p style={styles.contactInfo}>
-                      GitHub:{" "}
-                      <span className="text-blue-500 cursor-pointer">
+                    <p
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        ...styles.contactInfo,
+                      }}
+                    >
+                      <FaGithub />
+                      <span
+                        className="text-blue-500 cursor-pointer"
+                        style={{ marginLeft: "8px" }}
+                      >
                         {links.github}
                       </span>
                     </p>
@@ -378,42 +437,65 @@ const Preview = ({ isDarkMode, data }) => {
                     )}
                   </div>
 
-                  <div className="flex flex-col items-start  text-slate-800 justify-start w-[30%] gap-1">
+                  <div className="flex flex-col items-start text-slate-800 justify-start w-2/4 gap-1">
                     {email && (
-                      <span className="text-sm ml-2">
-                        <a href={`mailto:${email}`} className="text-slate-800 ">
-                          {email}
-                        </a>
-                      </span>
+                      <p style={{ display: "flex", alignItems: "center" }}>
+                        <MdEmail />
+                        <span className="text-sm ml-2">
+                          <a
+                            href={`mailto:${email}`}
+                            className="text-slate-800"
+                          >
+                            {email}
+                          </a>
+                        </span>
+                      </p>
                     )}
                     {phone && (
-                      <span className="text-sm ml-2">
-                        <a href={`tel:${phone}`} className="text-slate-800 ">
-                          {phone}
-                        </a>
-                      </span>
+                      <p style={{ display: "flex", alignItems: "center" }}>
+                        <FaPhoneAlt />
+                        <span className="text-sm ml-2">
+                          <a href={`tel:${phone}`} className="text-slate-800 ">
+                            {phone}
+                          </a>
+                        </span>
+                      </p>
                     )}
-                    {address && <span className="text-sm ml-2">{address}</span>}
+                    {address && (
+                      <p style={{ display: "flex", alignItems: "center" }}>
+                        <FaLocationCrosshairs />
+                        <span className="text-sm ml-2">{address}</span>
+                      </p>
+                    )}
                     {links.linkedIn && (
-                      <span className="text-sm ml-2">
-                        <a href={links.linkedIn} className="text-slate-800 ">
-                          {links.linkedIn}
-                        </a>
-                      </span>
+                      <p style={{ display: "flex", alignItems: "center" }}>
+                        <FaLinkedinIn />
+                        <span className="text-sm ml-2">
+                          <a href={links.linkedIn} className="text-slate-800 ">
+                            {links.linkedIn}
+                          </a>
+                        </span>
+                      </p>
                     )}
                     {links.github && (
-                      <span className="text-sm ml-2">
-                        <a href={links.github} className="text-slate-800 ">
-                          {links.github}
-                        </a>
-                      </span>
+                      <p style={{ display: "flex", alignItems: "center" }}>
+                        <FaGithub />
+                        <span className="text-sm ml-2">
+                          <a href={links.github} className="text-slate-800 ">
+                            {links.github}
+                          </a>
+                        </span>
+                      </p>
                     )}
                     {links.website && (
-                      <span className="text-sm ml-2">
-                        <a href={links.website} className="text-slate-800 ">
-                          {links.website}
-                        </a>
-                      </span>
+                      <p style={{ display: "flex", alignItems: "center" }}>
+                        <FaCloud />
+                        <span className="text-sm ml-2">
+                          <a href={links.website} className="text-slate-800 ">
+                            {links.website}
+                          </a>
+                        </span>
+                      </p>
                     )}
                   </div>
                 </header>
