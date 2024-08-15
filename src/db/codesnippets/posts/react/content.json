@@ -1,0 +1,29 @@
+[
+  {
+    "title": "React Forms",
+    "author": {
+      "name": "Smnthjm08",
+      "githubLink": "",
+      "about": "Web dev.🫣"
+    },
+    "doc": "article1"
+  },
+  {
+    "title": "Lazy Load an Image",
+    "author": {
+      "name": "Smnthjm08",
+      "githubLink": "",
+      "about": "Web dev.🫣"
+    },
+    "doc": "article2"
+  },
+  {
+    "title": "Drag Drop a File",
+    "author": {
+      "name": "Smnthjm08",
+      "githubLink": "",
+      "about": "Web dev.🫣"
+    },
+    "doc": "article3"
+  }
+]
