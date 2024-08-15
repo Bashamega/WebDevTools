@@ -39,6 +39,10 @@
     {
       "name": "Kotlin",
       "description": "Kotlin is a modern, statically typed programming language that boosts productivity and is fully interoperable with Java."
+    },
+    {
+      "name": "React",
+      "description": "React is a popular JavaScript library for building user interfaces, particularly single-page applications."
     }
   ]
 }
