@@ -70,5 +70,14 @@
       "about": "your local coffee addict ☕"
     },
     "doc": "charactercount"
+  },
+  {
+    "title": "Simple clock",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "your local coffee addict ☕"
+    },
+    "doc": "clock"
   }
 ]
