@@ -25,5 +25,77 @@
       "about": "Web dev.🫣"
     },
     "doc": "article3"
+  },
+  {
+    "title": "Simple todo app",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "your local coffee addict ☕"
+    },
+    "doc": "todo"
+  },
+  {
+    "title": "Toggle Theme",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "your local coffee addict ☕"
+    },
+    "doc": "toggletheme"
+  },
+  {
+    "title": "Simple counter",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "your local coffee addict ☕"
+    },
+    "doc": "counter"
+  },
+  {
+    "title": "Simple accordion",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "your local coffee addict ☕"
+    },
+    "doc": "simpleaccordion"
+  },
+  {
+    "title": "Character count",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "your local coffee addict ☕"
+    },
+    "doc": "charactercount"
+  },
+  {
+    "title": "Simple clock",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "your local coffee addict ☕"
+    },
+    "doc": "clock"
+  },
+  {
+    "title": "Simple tabs",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "your local coffee addict ☕"
+    },
+    "doc": "simpletabs"
+  },
+  {
+    "title": "Scroll to top",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "your local coffee addict ☕"
+    },
+    "doc": "scrolltotop"
   }
 ]
