@@ -79,5 +79,14 @@
       "about": "your local coffee addict ☕"
     },
     "doc": "clock"
+  },
+  {
+    "title": "Simple tabs",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "your local coffee addict ☕"
+    },
+    "doc": "simpletabs"
   }
 ]
