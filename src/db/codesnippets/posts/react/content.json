@@ -25,5 +25,14 @@
       "about": "Web dev.🫣"
     },
     "doc": "article3"
+  },
+  {
+    "title": "Simple todo app",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "your local coffee addict ☕"
+    },
+    "doc": "todo"
   }
 ]
