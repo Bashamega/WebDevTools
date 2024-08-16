@@ -88,5 +88,14 @@
       "about": "your local coffee addict ☕"
     },
     "doc": "simpletabs"
+  },
+  {
+    "title": "Scroll to top",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "your local coffee addict ☕"
+    },
+    "doc": "scrolltotop"
   }
 ]
