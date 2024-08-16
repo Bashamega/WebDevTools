@@ -43,5 +43,14 @@
       "about": "your local coffee addict ☕"
     },
     "doc": "toggletheme"
+  },
+  {
+    "title": "Simple counter",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "your local coffee addict ☕"
+    },
+    "doc": "counter"
   }
 ]
