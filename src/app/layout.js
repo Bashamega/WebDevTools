@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 
 const inTer = Inter({ subsets: ["latin"] });
 
@@ -14,8 +14,9 @@ export default function RoOTLAyOut({ children }) {
   return (
     <html lang="en" className="overflow-x-hidden">
       <head></head>
-      <body className={inTer.className}>{children}
-        <Analytics/>
+      <body className={inTer.className}>
+        {children}
+        <Analytics />
       </body>
     </html>
   );
