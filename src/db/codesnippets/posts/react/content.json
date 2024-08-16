@@ -61,5 +61,14 @@
       "about": "your local coffee addict ☕"
     },
     "doc": "simpleaccordion"
+  },
+  {
+    "title": "Character count",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "your local coffee addict ☕"
+    },
+    "doc": "charactercount"
   }
 ]
