@@ -34,5 +34,14 @@
       "about": "your local coffee addict ☕"
     },
     "doc": "todo"
+  },
+  {
+    "title": "Toggle Theme",
+    "author": {
+      "name": "Axorax",
+      "githubLink": "https://github.com/Axorax",
+      "about": "your local coffee addict ☕"
+    },
+    "doc": "toggletheme"
   }
 ]
