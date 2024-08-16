@@ -47,3 +47,27 @@ body {
   background-color: #ffffff;
   color: #000000;
 } */
+
+/* Customized Scrollbar */
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #1f2937;
+    height: 10px;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #eff4ff;
+    border-radius: 100vh;
+    border: 1px solid #0b61ff;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #000000;
+  }
+}
