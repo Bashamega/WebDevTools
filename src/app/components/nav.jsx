@@ -148,7 +148,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
           )}
         </div>
 
-        <div className="relative hidden lg:block" ref={dropdownRefs.other}>
+        <div className="relative hidden lg:block " ref={dropdownRefs.other}>
           <button
             onClick={() => toggleDropdown("other")}
             className={`focus:outline-none text-[0.58rem] font-semibold items-center sm:text-sm flex md:text-sm flex-1 p-2 hover:${

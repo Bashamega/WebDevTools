@@ -12,7 +12,7 @@ export const mETADatA = {
 
 export default function RoOTLAyOut({ children }) {
   return (
-    <html lang="en" className="overflow-x-hidden">
+    <html lang="en" className="overflow-x-hidden scrollbar">
       <head></head>
       <body className={inTer.className}>
         {children}
