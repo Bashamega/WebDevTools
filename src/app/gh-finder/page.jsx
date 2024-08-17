@@ -246,7 +246,7 @@ export default function GhFinder() {
           <div className="flex justify-between w-full my-5 items-center">
             <button
               className={
-                "hover:bg-blue-800 transition-colors min-w-1/3 duration-100 p-5 rounded-full hover:text-white " +
+                "hover:bg-blue-800 transition-colors md:min-w-1/3 duration-100 px-3 py-2 md:p-5 text-sm rounded-full hover:text-white " +
                 (selected === 1 && "bg-blue-600  text-white")
               }
               onClick={() => setSelected(1)}
@@ -255,7 +255,7 @@ export default function GhFinder() {
             </button>
             <button
               className={
-                "hover:bg-blue-800 transition-colors w-1/3 duration-100 p-5 rounded-full hover:text-white " +
+                "hover:bg-blue-800 transition-colors md:w-1/3 duration-100 px-3 py-2 md:p-5 text-sm rounded-full hover:text-white " +
                 (selected === 2 && "bg-blue-600  text-white")
               }
               onClick={() => setSelected(2)}
@@ -270,7 +270,7 @@ export default function GhFinder() {
           </div>
         </header>
       </div>
-      <div className="ml-[25%] w-1/2">
+      <div className=" mx-auto w-[80%] md:w-1/2">
         {filteredIssues.length === 0 ? (
           <div className="bg-red-700 dark:bg-black rounded-lg pl-5 py-5 flex w-full">
             <h3 className="text-white font-bold text-3xl">
@@ -281,9 +281,9 @@ export default function GhFinder() {
           issuesByPage.map((item) => (
             <div
               key={item.id}
-              className="bg-slate-500 rounded-lg mb-5 last:mb-0 pl-5 py-5 flex w-full"
+              className="bg-slate-500 rounded-lg mb-5 last:mb-0 pl-5 py-5 flex justify-between items-end w-full"
             >
-              <div className="w-2/3 overflow-hidden">
+              <div className=" overflow-hidden">
                 <Link
                   href={item.html_url}
                   className="text-white font-bold text-3xl hover:underline truncate block"
@@ -304,14 +304,14 @@ export default function GhFinder() {
                 </Link>
                 <div
                   className={
-                    "flex flex-wrap items-center mt-1 " +
+                    "flex flex-wrap items-center mt-3 gap-2 " +
                     (isDarkMode ? "text-gray-300" : "text-gray-600")
                   }
                 >
                   {item.labels?.map((label) => (
                     <span
                       key={label.id}
-                      className="inline-block px-2 py-1 mx-2 my-1 text-xs font-semibold text-white bg-green-500 rounded-full"
+                      className="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full truncate"
                       style={{
                         backgroundColor: `#${label.color}`,
                         color: isDarkColor(`#${label.color}`)
@@ -324,8 +324,8 @@ export default function GhFinder() {
                   ))}
                 </div>
               </div>
-              <div className="w-1/3 flex flex-col items-center justify-center">
-                <div className="text-sm mt-3 text-white">
+              <div className="flex flex-col items-center justify-center">
+                <div className="text-sm truncate text-white mx-3">
                   {item.comments} Comments
                 </div>
                 {item.linkedPRs?.length > 0 && (
