@@ -131,23 +131,86 @@ export default function MarkdownEditor() {
         isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
       }`}
     >
-      <nav
-        className={`py-4 px-6 flex items-center justify-between h-[69px] ${
-          isDarkMode ? "bg-gray-800" : "bg-blue-500"
-        }`}
-      >
-        <Link
-          href="/"
-          className={`mr-2 flex border items-center p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg ${
-            isDarkMode ? "border-gray-600" : ""
+      <nav>
+        <div
+          className={`py-4 px-6 flex items-center justify-between h-[69px] ${
+            isDarkMode ? "bg-gray-800" : "bg-blue-500"
           }`}
         >
-          <h1 className="text-sm md:text-2xl font-bold mr-4 ml-1">
-            Web Dev Tools
-          </h1>
-          <p className="mr-2 text-sm">MD Editor</p>
-        </Link>
-        <div className="flex items-center">
+          <Link
+            href="/"
+            className={`mr-2 flex border items-center p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg ${
+              isDarkMode ? "border-gray-600" : ""
+            }`}
+          >
+            <h1 className="text-sm md:text-2xl font-bold mr-4 ml-1">
+              Web Dev Tools
+            </h1>
+            <p className="mr-2 text-sm">MD Editor</p>
+          </Link>
+          <div className="hidden  md:flex md:items-center">
+            <input
+              value={name}
+              onChange={handleNameChange}
+              className={`outline-none border text-sm rounded p-1.5 px-2 ${
+                isDarkMode
+                  ? "bg-gray-700 border-gray-600 text-white"
+                  : "bg-gray-50 border-gray-300 text-gray-900"
+              }`}
+            />
+            <button
+              onClick={handleDownload}
+              className={`ml-2 mr-2 text-sm rounded p-1.5 px-2 hover:bg-gray-600 ${
+                isDarkMode
+                  ? "bg-gray-700 border-gray-600 text-white"
+                  : "bg-gray-300 border-gray-200 text-black"
+              }`}
+            >
+              Download
+            </button>
+            <div className="hidden lg:block ml-6">
+              <Search />
+            </div>
+          </div>
+
+          {/* 
+          <button onClick={searchToggle} className="hidden">
+            <SearchIcon
+              className={`${isDarkMode ? "text-gray-400" : "text-gray-800"}`}
+            />
+          </button> */}
+          {/* <div
+            className={`absolute w-full h-[69px] flex items-center ${
+              isDarkMode ? "bg-gray-800" : "bg-blue-500"
+            } ${
+              toggle
+                ? "left-0 duration-300 ease-in"
+                : "left-[100%] duration-300 ease-in"
+            } `}
+          >
+            <div className="flex flex-1 items-center justify-center relative">
+              <ArrowBackIcon
+                className="mr-4 absolute left-2 cursor-pointer"
+                onClick={searchToggle}
+              />
+              <Search />
+            </div>
+          </div> */}
+          <div className="flex items-center">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full hover:bg-opacity-20 hover:bg-gray-200 transition-colors duration-200"
+              aria-label="Toggle dark mode"
+            >
+              {isDarkMode ? (
+                <SunIcon className="text-white" />
+              ) : (
+                <MoonIcon className="text-black" />
+              )}
+            </button>
+          </div>
+        </div>
+        <div className=" my-3 w-full flex justify-center items-center md:hidden ">
           <input
             value={name}
             onChange={handleNameChange}
@@ -170,42 +233,6 @@ export default function MarkdownEditor() {
           <div className="hidden lg:block ml-6">
             <Search />
           </div>
-
-          <button onClick={searchToggle} className="lg:hidden">
-            <SearchIcon
-              className={`${isDarkMode ? "text-gray-400" : "text-gray-800"}`}
-            />
-          </button>
-          <div
-            className={`absolute w-full h-[69px] flex items-center ${
-              isDarkMode ? "bg-gray-800" : "bg-blue-500"
-            } ${
-              toggle
-                ? "left-0 duration-300 ease-in"
-                : "left-[100%] duration-300 ease-in"
-            } `}
-          >
-            <div className="flex flex-1 items-center justify-center relative">
-              <ArrowBackIcon
-                className="mr-4 absolute left-2 cursor-pointer"
-                onClick={searchToggle}
-              />
-              <Search />
-            </div>
-          </div>
-        </div>
-        <div className="flex items-center">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-opacity-20 hover:bg-gray-200 transition-colors duration-200"
-            aria-label="Toggle dark mode"
-          >
-            {isDarkMode ? (
-              <SunIcon className="text-white" />
-            ) : (
-              <MoonIcon className="text-black" />
-            )}
-          </button>
         </div>
       </nav>
       <div className="flex justify-between">

@@ -72,14 +72,14 @@ export default function ColorPicker() {
           <div className="buttons flex gap-2 sm:flex-col">
             <button
               onClick={handleHex}
-              className="bg-blue-500 hover:bg-white hover:text-black hover:border-4 border-blue-700 font-bold p-4 mb-6 transition-all rounded-lg flex items-center"
+              className=" text-white bg-blue-500 hover:bg-white hover:text-blue-600  border-4 border-blue-700 font-bold p-4 mb-6 transition-all rounded-lg flex items-center"
             >
               Copy Hex Code
               <ContentCopyIcon fontSize="small" className="ml-2" />
             </button>
             <button
               onClick={handleRGB}
-              className="bg-blue-500 hover:bg-white hover:text-black hover:border-4 border-blue-700 font-bold p-4 mb-6 transition-all rounded-lg flex items-center"
+              className="text-white bg-blue-500 hover:bg-white hover:text-blue-600 border-4 border-blue-700 font-bold p-4 mb-6 transition-all rounded-lg flex items-center"
             >
               Copy RGB Code
               <ContentCopyIcon fontSize="small" className="ml-2" />
