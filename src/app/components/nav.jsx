@@ -73,7 +73,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
     <nav
       className={`${
         isDarkMode ? "bg-gray-800 text-white" : "bg-blue-500 text-black"
-      } py-2 px-4 flex items-center justify-between lg:justify-around gap-1 w-full relative mb-10 max-h-[10vh] min-w-80`}
+      } py-2 px-4 flex items-center justify-between lg:justify-around gap-1 w-full relative mb-8 max-h-[10vh] min-w-80`}
     >
       <div className="flex flex-0 items-center flex-shrink">
         <Link href="/" className="group">
