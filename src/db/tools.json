@@ -124,5 +124,11 @@
     "name": "Resume Builder",
     "link": "/resume-builder",
     "ctg": "other"
+  },
+  {
+    "id": 22,
+    "name": "Github Readme Profile Generator",
+    "link": "/customizer/GitHub-Profile-generator",
+    "ctg": "generator"
   }
 ]
