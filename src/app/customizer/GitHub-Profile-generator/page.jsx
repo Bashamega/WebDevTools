@@ -438,7 +438,7 @@ const InputForm = () => {
             <input
               type="text"
               name="portfolioTitle"
-              value= {formValues.portfolioTitle}
+              value={formValues.portfolioTitle}
               onChange={handleChange}
               className={`${
                 isDarkMode
@@ -447,21 +447,19 @@ const InputForm = () => {
               } w-full p-2 border rounded-lg
                 focus:outline-none focus:ring-2 focus:ring-blue-500`}
               placeholder="Portfolio Title"
-               
             />
 
-
             <input
-                type="text"
-                name="portfolio"
-                placeholder="Portfolio URL"
-                value={formValues.portfolio}
-                onChange={handleChange}
-                className={`${
-                    isDarkMode
-                    ? "bg-gray-800 text-gray-200"
-                    : "bg-white text-gray-900 border-gray-400"
-                } w-full p-2 border rounded-lg
+              type="text"
+              name="portfolio"
+              placeholder="Portfolio URL"
+              value={formValues.portfolio}
+              onChange={handleChange}
+              className={`${
+                isDarkMode
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-white text-gray-900 border-gray-400"
+              } w-full p-2 border rounded-lg
                     focus:outline-none focus:ring-2 focus:ring-blue-500`}
             />
           </div>
