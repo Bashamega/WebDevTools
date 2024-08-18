@@ -14,8 +14,7 @@ import MoonIcon from "../components/icons/moonicon";
 
 export default function MarkdownEditor() {
   const [markdown, setMarkdown] = useState("# hey");
-
-  const [name, setName] = useState(`Md-file-1`);
+  const [name, setName] = useState("untitled");
   const [toggle, setToggle] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const textareaRef = useRef(null);
@@ -161,10 +160,10 @@ export default function MarkdownEditor() {
             />
             <button
               onClick={handleDownload}
-              className={` ml-2 mr-2 text-sm rounded p-1.5 px-2 hover:bg-green-500 ${
+              className={`ml-2 mr-2 text-sm rounded p-1.5 px-2 hover:bg-gray-600 ${
                 isDarkMode
-                  ? "bg-green-700 border-green-600 text-white"
-                  : "bg-green-400 border-green-700 text-black"
+                  ? "bg-gray-700 border-gray-600 text-white"
+                  : "bg-gray-300 border-gray-200 text-black"
               }`}
             >
               Download
@@ -223,10 +222,10 @@ export default function MarkdownEditor() {
           />
           <button
             onClick={handleDownload}
-            className={` ml-2 mr-2 text-sm rounded p-1.5 px-2 hover:bg-green-500 ${
+            className={`ml-2 mr-2 text-sm rounded p-1.5 px-2 hover:bg-gray-600 ${
               isDarkMode
-                ? "bg-green-700 border-green-600 text-white"
-                : "bg-green-400 border-green-200 text-black"
+                ? "bg-gray-700 border-gray-600 text-white"
+                : "bg-gray-300 border-gray-200 text-black"
             }`}
           >
             Download
