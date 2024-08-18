@@ -11,6 +11,7 @@ const InputForm = () => {
     linkedin: "",
     twitter: "",
     portfolio: "",
+    website: "",
     buyMeACoffee: "",
     kofi: "",
     skills: "",
@@ -186,12 +187,6 @@ const InputForm = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [copySuccess, setCopySuccess] = useState("");
 
-  // const handleCopyClick = () => {
-  //     navigator.clipboard.writeText(markdownPreview)
-  //         .then(() => setCopySuccess('Copied!'))
-  //         .catch(err => setCopySuccess('Failed to copy!'));
-  // };
-
   const handleCopyClick = () => {
     navigator.clipboard
       .writeText(markdownPreview)
@@ -283,7 +278,7 @@ const InputForm = () => {
       }
       if (formValues.portfolioTitle) {
         markdown += '<div align="center">\n\n';
-        markdown += `🖥️ See my portfolio: [${formValues.portfolioTitle}](${formValues.portfolio})\n\n`;
+        markdown += `🖥️ See my portfolio: [${formValues.portfolioTitle}](${formValues.website})\n\n`;
       }
       if (formValues.workingOnTitle) {
         markdown += '<div align="center">\n\n';
@@ -446,14 +441,14 @@ const InputForm = () => {
                   : "bg-white text-gray-900 border-gray-400"
               } w-full p-2 border rounded-lg
                 focus:outline-none focus:ring-2 focus:ring-blue-500`}
-              placeholder="Portfolio Title"
+              placeholder="Portfolio/Website Title"
             />
 
             <input
               type="text"
-              name="portfolio"
-              placeholder="Portfolio URL"
-              value={formValues.portfolio}
+              name="website"
+              placeholder="Portfolio/Website URL"
+              value={formValues.website}
               onChange={handleChange}
               className={`${
                 isDarkMode
@@ -888,7 +883,7 @@ const InputForm = () => {
                   <p className="text-lg">
                     <span className="mr-2">🖥️</span> See my portfolio{" "}
                     <a
-                      href={formValues.portfolio}
+                      href={formValues.website}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-600 underline ml-1"
