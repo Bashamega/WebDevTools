@@ -109,7 +109,7 @@ const Page = () => {
             ></div>
           </div>
           <div
-            className={`w-full h-max flex flex-col justify-between rounded-2xl px-14 py-8 ${
+            className={`w-full h-max mb-36 flex flex-col justify-between rounded-2xl px-14 py-8 ${
               isDarkMode ? "bg-slate-800" : "bg-slate-500"
             } h-full`}
           >
@@ -169,7 +169,7 @@ const Page = () => {
               <h3 className="my-2 py-4 px-3 bg-gray-700 rounded-lg text-white">
                 {cssShadowStyle}
               </h3>
-              <h3 className="my-2 py-4 px-3 bg-gray-700 rounded-lg text-white">
+              <h3 className="my-2 py-4 px-3 bg-gray-700 rounded-lg text-white overflow-auto">
                 {tailwindShadowStyle}
               </h3>
               <div className="w-full relative py-2">
