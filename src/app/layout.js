@@ -13,7 +13,9 @@ export const mETADatA = {
 export default function RoOTLAyOut({ children }) {
   return (
     <html lang="en" className="overflow-x-hidden scrollbar">
-      <head></head>
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body className={inTer.className}>
         {children}
         <Analytics />
