@@ -52,7 +52,7 @@ width: ${width}px;
   const handleCopyTailwindCode = () => {
     const code = `
 <button class="
-  ${backgroundColor ? `bg-[${backgroundColor}]` : ""} 
+  ${backgroundColor ? `bg-[${backgroundColor}] ` : ""} 
   ${textColor ? `text-[${textColor}]` : ""} 
   ${borderRadius ? `rounded-[${borderRadius}px]` : ""} 
   p-2 
