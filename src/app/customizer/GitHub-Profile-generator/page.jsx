@@ -1009,7 +1009,7 @@ export default function ButtonCustomizer() {
             )}
           </div>
         ) : (
-          <div className="mt-6 p-4 bg-gray-700 rounded-lg">
+          <div className="mt-6 p-4 bg-gray-700 rounded-lg text-white">
             <h3 className="text-lg font-semibold mb-2">Markdown Preview:</h3>
 
             <div className="markdown-preview" />
