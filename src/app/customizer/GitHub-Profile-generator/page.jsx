@@ -410,7 +410,7 @@ export default function ButtonCustomizer() {
           <div className="mt-4">
             <label className="form-label flex items-center">
               <span className="mr-2 text-lg">🌍</span>
-              <p>I'm Living in:</p>
+              <p>I am Living in:</p>
             </label>
             <input
               type="text"
@@ -463,7 +463,7 @@ export default function ButtonCustomizer() {
           <div className="mt-4">
             <label className="form-label flex items-center">
               <span className="mr-2 text-lg">🚀</span>
-              <p>I'm currently working on:</p>
+              <p>I am currently working on:</p>
             </label>
             <input
               type="text"
@@ -483,7 +483,7 @@ export default function ButtonCustomizer() {
           <div className="mt-4">
             <label className="form-label flex items-center">
               <span className="mr-2 text-lg">🧠</span>
-              <p>I'm currently learning:</p>
+              <p>I am currently learning:</p>
             </label>
             <input
               type="text"
@@ -503,7 +503,7 @@ export default function ButtonCustomizer() {
           <div className="mt-4">
             <label className="form-label flex items-center">
               <span className="mr-2 text-lg">🤝</span>
-              <p>I'm open to collaborating on:</p>
+              <p>I am open to collaborating on:</p>
             </label>
             <input
               type="text"
@@ -875,7 +875,7 @@ export default function ButtonCustomizer() {
               {formValues.location && (
                 <div className="mt-4">
                   <p className="text-lg">
-                    <span className="mr-2">🌍</span> I'm living in{" "}
+                    <span className="mr-2">🌍</span> I am living in{" "}
                     <strong>{formValues.location}</strong>
                   </p>
                 </div>
@@ -900,7 +900,7 @@ export default function ButtonCustomizer() {
               {formValues.workingOnTitle && (
                 <div className="mt-4">
                   <p className="text-lg">
-                    <span className="mr-2">🚀</span> I'm currently working on{" "}
+                    <span className="mr-2">🚀</span> I am currently working on{" "}
                     <strong>{formValues.workingOnTitle}</strong>
                   </p>
                 </div>
@@ -909,7 +909,7 @@ export default function ButtonCustomizer() {
               {formValues.learning && (
                 <div className="mt-4">
                   <p className="text-lg">
-                    <span className="mr-2">🧠</span> I'm currently learning{" "}
+                    <span className="mr-2">🧠</span> I am currently learning{" "}
                     <strong>{formValues.learning}</strong>
                   </p>
                 </div>
@@ -918,7 +918,7 @@ export default function ButtonCustomizer() {
               {formValues.collaborateOn && (
                 <div className="mt-4">
                   <p className="text-lg">
-                    <span className="mr-2">🤝</span> I'm open to collaborating
+                    <span className="mr-2">🤝</span> I am open to collaborating
                     on <strong>{formValues.collaborateOn}</strong>
                   </p>
                 </div>
