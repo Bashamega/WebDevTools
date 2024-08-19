@@ -409,7 +409,8 @@ export default function ButtonCustomizer() {
 
           <div className="mt-4">
             <label className="form-label flex items-center">
-              <span className="mr-2 text-lg">🌍</span><p>I'm Living in:</p> 
+              <span className="mr-2 text-lg">🌍</span>
+              <p>I'm Living in:</p>
             </label>
             <input
               type="text"
@@ -461,7 +462,8 @@ export default function ButtonCustomizer() {
 
           <div className="mt-4">
             <label className="form-label flex items-center">
-              <span className="mr-2 text-lg">🚀</span><p>I'm currently working on:</p> 
+              <span className="mr-2 text-lg">🚀</span>
+              <p>I'm currently working on:</p>
             </label>
             <input
               type="text"
@@ -480,7 +482,8 @@ export default function ButtonCustomizer() {
 
           <div className="mt-4">
             <label className="form-label flex items-center">
-              <span className="mr-2 text-lg">🧠</span><p>I'm currently learning:</p> 
+              <span className="mr-2 text-lg">🧠</span>
+              <p>I'm currently learning:</p>
             </label>
             <input
               type="text"
@@ -499,8 +502,8 @@ export default function ButtonCustomizer() {
 
           <div className="mt-4">
             <label className="form-label flex items-center">
-              <span className="mr-2 text-lg">🤝</span><p>I'm open to collaborating
-              on:</p>
+              <span className="mr-2 text-lg">🤝</span>
+              <p>I'm open to collaborating on:</p>
             </label>
             <input
               type="text"
@@ -947,7 +950,9 @@ export default function ButtonCustomizer() {
             {/* GitHub Stats */}
             {formValues.githubUsername && (
               <div className="mt-4">
-                <h1 className="text-2xl font-bold mt-8 mb-4">📊 GitHub Stats</h1>
+                <h1 className="text-2xl font-bold mt-8 mb-4">
+                  📊 GitHub Stats
+                </h1>
                 <div className="flex flex-col items-center">
                   <img
                     src={`http://github-readme-streak-stats.herokuapp.com?user=${formValues.githubUsername}&theme=blue-green`}
