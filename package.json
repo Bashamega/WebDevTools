@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "format": "prettier --write .",
     "format:write": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "next lint",
@@ -48,7 +49,9 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.2.1",
     "react-image": "^4.1.0",
+    "react-markdown": "^9.0.1",
     "react-tabs": "^6.0.2",
+    "remark-gfm": "^4.0.0",
     "sass": "^1.77.8",
     "snarkdown": "^2.0.0",
     "sweetalert2": "^11.6.13",
@@ -58,6 +61,8 @@
   "devDependencies": {
     "eslint": "^8",
     "eslint-config-next": "14.2.2",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.4",
     "prettier": "^3.3.3",
     "xml2js": "^0.6.2"

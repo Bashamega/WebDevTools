@@ -1,5 +1,4 @@
 "use client";
-
 import Nav from "@/app/components/nav";
 import { useState, useEffect } from "react";
 import Footer from "./components/Footer";
