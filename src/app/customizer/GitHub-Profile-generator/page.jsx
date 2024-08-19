@@ -192,11 +192,11 @@ export default function ButtonCustomizer() {
       .writeText(markdownPreview)
       .then(() => {
         setCopySuccess("Copied!");
-        setTimeout(() => setCopySuccess(""), 2000); // Clear success message after 2 seconds
+        setTimeout(() => setCopySuccess(""), 2000);
       })
       .catch((err) => {
         setCopySuccess("Failed to copy!");
-        setTimeout(() => setCopySuccess(""), 2000); // Clear error message after 2 seconds
+        setTimeout(() => setCopySuccess(""), 2000);
       });
   };
 
@@ -210,6 +210,18 @@ export default function ButtonCustomizer() {
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
+  };
+
+  const handleDownloadClick = () => {
+    const blob = new Blob([markdownPreview], { type: "text/markdown" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "README.md";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   //Markdown Preview starts here
@@ -1026,6 +1038,12 @@ export default function ButtonCustomizer() {
                 className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
               >
                 Copy Markdown
+              </button>
+              <button
+                onClick={handleDownloadClick}
+                className="px-4 py-2 ml-4 bg-green-500 text-white rounded-lg hover:bg-green-600"
+              >
+                Download Markdown
               </button>
               {copySuccess && (
                 <p className="mt-2 text-green-500">{copySuccess}</p>
