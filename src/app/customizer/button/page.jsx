@@ -52,19 +52,19 @@ width: ${width}px;
   const handleCopyTailwindCode = () => {
     const code = `
 <button class="
-  ${backgroundColor ? `bg-[${backgroundColor}]` : ""}
-  ${textColor ? `text-[${textColor}]` : ""}
-  ${borderRadius ? `rounded-[${borderRadius}px]` : ""}
-  p-2
-  ${fontSize ? `text-[${fontSize}px]` : ""}
-  ${fontWeight ? `font-[${fontWeight}]` : ""}
-  ${fontFamily ? `font-[${fontFamily}]` : ""}
-  ${borderWidth ? `border-[${borderWidth}px]` : ""}
-  ${borderColor ? `border-[${borderColor}]` : ""}
-  ${borderStyle ? `border-[${borderStyle}]` : ""}
-  ${cursor ? `cursor-[${cursor}]` : ""}
-  ${width ? `w-[${width}px]` : ""}
-  ${height ? `h-[${height}px]` : ""}
+  ${backgroundColor ? `bg-[${backgroundColor}]` : ""} 
+  ${textColor ? `text-[${textColor}]` : ""} 
+  ${borderRadius ? `rounded-[${borderRadius}px]` : ""} 
+  p-2 
+  ${fontSize ? `text-[${fontSize}px]` : ""} 
+  ${fontWeight ? `font-[${fontWeight}]` : ""} 
+  ${fontFamily ? `font-[${fontFamily}]` : ""} 
+  ${borderWidth ? `border-[${borderWidth}px]` : ""} 
+  ${borderColor ? `border-[${borderColor}]` : ""} 
+  ${borderStyle ? `border-[${borderStyle}]` : ""} 
+  ${cursor ? `cursor-[${cursor}]` : ""} 
+  ${width ? `w-[${width}px]` : ""} 
+  ${height ? `h-[${height}px]` : ""} 
 ">
   Customized Button
 </button>
