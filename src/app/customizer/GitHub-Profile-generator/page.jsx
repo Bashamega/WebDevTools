@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { NavBar } from "@/app/components/navbar";
 
-const InputForm = () => {
+// const InputForm = () => {
+export default function ButtonCustomizer() {
   const [formValues, setFormValues] = useState({
     name: "",
     subtitles: "",
@@ -157,7 +158,6 @@ const InputForm = () => {
     iot: "iot",
     rest: "rest",
     graphql: "graphql",
-    // Add more mappings here
   };
 
   const SkillIcon = ({ skill }) => {
@@ -278,7 +278,7 @@ const InputForm = () => {
       }
       if (formValues.portfolioTitle) {
         markdown += '<div align="center">\n\n';
-        markdown += `🖥️ See my portfolio: [${formValues.portfolioTitle}](${formValues.website})\n\n`;
+        markdown += `🖥️ You can Connect with me [${formValues.portfolioTitle}](${formValues.website})\n\n`;
       }
       if (formValues.workingOnTitle) {
         markdown += '<div align="center">\n\n';
@@ -881,7 +881,7 @@ const InputForm = () => {
               {formValues.portfolioTitle && (
                 <div className="mt-4">
                   <p className="text-lg">
-                    <span className="mr-2">🖥️</span> See my portfolio{" "}
+                    <span className="mr-2">🖥️</span>You can Connect with me{" "}
                     <a
                       href={formValues.website}
                       target="_blank"
@@ -1044,6 +1044,4 @@ const InputForm = () => {
       {/* </div> */}
     </div>
   );
-};
-
-export default InputForm;
+}
