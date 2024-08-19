@@ -267,7 +267,7 @@ export default function ButtonCustomizer() {
       formValues.additionalInfo
     ) {
       markdown += '<div align="center">\n\n';
-      markdown += `<h2>About Me</h2>\n\n`;
+      markdown += `<h2>👨‍💻 About Me</h2>\n\n`;
       if (formValues.bio) {
         markdown += '<div align="center">\n\n';
         markdown += `✏️ **${formValues.bio}**\n\n`;
@@ -352,7 +352,7 @@ export default function ButtonCustomizer() {
       </h1>
 
       <div className="w-2/3 mx-auto">
-        <h1 className="text-2xl font-bold mb-6">Introduction</h1>
+        <h1 className="text-2xl font-bold mb-6">👨‍💻 Introduction</h1>
         <label className="form-label flex items-center">
           <span className="mr-2 text-lg">👋</span> Hi! My name is:
         </label>
@@ -389,7 +389,7 @@ export default function ButtonCustomizer() {
 
         <div>
           <div className="mt-4">
-            <h1 className="text-2xl font-bold mt-8 mb-4">About Me</h1>
+            <h1 className="text-2xl font-bold mt-8 mb-4">👨‍💻 About Me</h1>
             <label className="form-label flex items-center">
               <span className="mr-2 text-lg">✏️</span> Long Description:
             </label>
@@ -409,7 +409,7 @@ export default function ButtonCustomizer() {
 
           <div className="mt-4">
             <label className="form-label flex items-center">
-              <span className="mr-2 text-lg">🌍</span> I'm Living in:
+              <span className="mr-2 text-lg">🌍</span><p>I'm Living in:</p> 
             </label>
             <input
               type="text"
@@ -461,7 +461,7 @@ export default function ButtonCustomizer() {
 
           <div className="mt-4">
             <label className="form-label flex items-center">
-              <span className="mr-2 text-lg">🚀</span> I'm currently working on
+              <span className="mr-2 text-lg">🚀</span><p>I'm currently working on:</p> 
             </label>
             <input
               type="text"
@@ -480,7 +480,7 @@ export default function ButtonCustomizer() {
 
           <div className="mt-4">
             <label className="form-label flex items-center">
-              <span className="mr-2 text-lg">🧠</span> I'm currently learning
+              <span className="mr-2 text-lg">🧠</span><p>I'm currently learning:</p> 
             </label>
             <input
               type="text"
@@ -499,8 +499,8 @@ export default function ButtonCustomizer() {
 
           <div className="mt-4">
             <label className="form-label flex items-center">
-              <span className="mr-2 text-lg">🤝</span> I'm open to collaborating
-              on
+              <span className="mr-2 text-lg">🤝</span><p>I'm open to collaborating
+              on:</p>
             </label>
             <input
               type="text"
@@ -519,7 +519,7 @@ export default function ButtonCustomizer() {
 
           <div className="mt-4">
             <label className="form-label flex items-center">
-              <span className="mr-2 text-lg">⚡</span> Anything else
+              <span className="mr-2 text-lg">⚡</span> Anything else:
             </label>
             <input
               type="text"
@@ -692,7 +692,7 @@ export default function ButtonCustomizer() {
           </div>
 
           <div>
-            <h1 className="text-2xl font-bold mt-8 mb-4">GitHub Stats</h1>
+            <h1 className="text-2xl font-bold mt-8 mb-4">📊 GitHub Stats</h1>
 
             <div className="mt-4">
               <label className="form-label flex items-center">
@@ -794,7 +794,7 @@ export default function ButtonCustomizer() {
             {formValues.subtitles && (
               <div className="mt-4">
                 <p className="text-lg">
-                  <span className="mr-2">💡</span> {formValues.subtitles}
+                  <span className="mr-2"></span> {formValues.subtitles}
                 </p>
               </div>
             )}
@@ -862,7 +862,7 @@ export default function ButtonCustomizer() {
             <div className="mt-4">
               {formValues.bio && (
                 <div className="mt-4">
-                  <h1 className="text-2xl font-bold mt-8 mb-4">About Me</h1>
+                  <h1 className="text-2xl font-bold mt-8 mb-4">👨‍💻 About Me</h1>
                   <p className="text-lg">
                     <span className="mr-2">✏️</span> {formValues.bio}
                   </p>
@@ -947,7 +947,7 @@ export default function ButtonCustomizer() {
             {/* GitHub Stats */}
             {formValues.githubUsername && (
               <div className="mt-4">
-                <h1 className="text-2xl font-bold mt-8 mb-4">GitHub Stats</h1>
+                <h1 className="text-2xl font-bold mt-8 mb-4">📊 GitHub Stats</h1>
                 <div className="flex flex-col items-center">
                   <img
                     src={`http://github-readme-streak-stats.herokuapp.com?user=${formValues.githubUsername}&theme=blue-green`}
