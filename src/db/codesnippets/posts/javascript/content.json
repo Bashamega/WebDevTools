@@ -70,5 +70,14 @@
       "about": "I like stuff... 🤨"
     },
     "doc": "getrandomintegerfromrange"
+  },
+  {
+    "title": "Limit Function Execution Rate",
+    "author": {
+      "name": "Praisejah",
+      "githubLink": "https://github.com/praisejahuzoma",
+      "about": "Passionate about coding and exploring efficient ways to solve problems."
+    },
+    "doc": "limitfunctionexecutionrate"
   }
 ]
