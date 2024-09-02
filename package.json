@@ -31,7 +31,7 @@
     "convert-units": "^2.3.4",
     "eslint-config-next": "^14.2.7",
     "file-saver": "^2.0.5",
-    "framer-motion": "^11.2.10",
+    "framer-motion": "^11.3.31",
     "free-ps-banner": "^0.0.2",
     "fuse.js": "^7.0.0",
     "html-to-jsx-transform": "^1.2.0",
