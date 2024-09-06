@@ -10,6 +10,7 @@ export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [apiList, setapiList] = useState(apis);
   const [searchValue, setSearch] = useState();
+  const [selectedTag, setSelectedTag] = useState("all");
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
@@ -23,12 +24,29 @@ export default function Home() {
   };
   const handleSeach = (e) => {
     setSearch(e.target.value);
-    if (e.target.value) {
+    filterApis(e.target.value, selectedTag);
+  };
+  const handleTagChange = (e) => {
+    setSelectedTag(e.target.value);
+    filterApis(searchValue, e.target.value);
+  };
+  const filterApis = (search, tag) => {
+    if (search && tag !== "all") {
       setapiList(
-        apis.filter((api) =>
-          api.name.toLowerCase().includes(e.target.value.toLowerCase()),
+        apis.filter(
+          (api) =>
+            api.name.toLowerCase().includes(search.toLowerCase()) &&
+            api.ctg === tag,
         ),
       );
+    } else if (search && tag === "all") {
+      setapiList(
+        apis.filter((api) =>
+          api.name.toLowerCase().includes(search.toLowerCase()),
+        ),
+      );
+    } else if (!search && tag !== "all") {
+      setapiList(apis.filter((api) => api.ctg === tag));
     } else {
       setapiList(apis);
     }
@@ -53,6 +71,20 @@ export default function Home() {
           }`}
         >
           <h1 className="text-center text-3xl pb-2">Popular APIs</h1>
+          <div className="flex justify-center mb-5">
+            <select
+              value={selectedTag}
+              onChange={handleTagChange}
+              className="p-2 border rounded-lg shadow"
+            >
+              <option value="all">All</option>
+              {Array.from(new Set(apis.map((api) => api.ctg))).map((tag) => (
+                <option key={tag} value={tag}>
+                  {tag}
+                </option>
+              ))}
+            </select>
+          </div>
           <input
             type="text"
             placeholder="search"
