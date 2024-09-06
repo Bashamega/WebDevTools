@@ -58,5 +58,35 @@
     "name": "Flickr API",
     "link": "https://www.flickr.com/services/api",
     "ctg": "images"
+  },
+  {
+    "id": 11,
+    "name": "Twitch API",
+    "link": "https://dev.twitch.tv/docs/api",
+    "ctg": "video"
+  },
+  {
+    "id": 12,
+    "name": "Discord API",
+    "link": "https://discord.com/developers/docs/intro",
+    "ctg": "social media"
+  },
+  {
+    "id": 13,
+    "name": "Giphy API",
+    "link": "https://developers.giphy.com/docs/api",
+    "ctg": "images"
+  },
+  {
+    "id": 14,
+    "name": "SoundCloud API",
+    "link": "https://developers.soundcloud.com/docs/api",
+    "ctg": "music"
+  },
+  {
+    "id": 15,
+    "name": "Yelp API",
+    "link": "https://www.yelp.com/developers/documentation/v3",
+    "ctg": "other"
   }
 ]
