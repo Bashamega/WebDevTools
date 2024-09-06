@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "OpenWeatherMap API",
+    "link": "https://openweathermap.org/api",
+    "ctg": "weather"
+  },
+  {
+    "id": 2,
+    "name": "Google Maps API",
+    "link": "https://developers.google.com/maps",
+    "ctg": "mapping"
+  },
+  {
+    "id": 3,
+    "name": "Twitter API",
+    "link": "https://developer.twitter.com/en/docs/twitter-api",
+    "ctg": "social media"
+  },
+  {
+    "id": 4,
+    "name": "YouTube API",
+    "link": "https://developers.google.com/youtube/v3",
+    "ctg": "video"
+  },
+  {
+    "id": 5,
+    "name": "Reddit API",
+    "link": "https://www.reddit.com/dev/api",
+    "ctg": "social media"
+  },
+  {
+    "id": 6,
+    "name": "Spotify API",
+    "link": "https://developer.spotify.com/documentation/web-api",
+    "ctg": "music"
+  },
+  {
+    "id": 7,
+    "name": "Instagram API",
+    "link": "https://developers.facebook.com/docs/instagram-basic-display-api",
+    "ctg": "social media"
+  },
+  {
+    "id": 8,
+    "name": "Facebook API",
+    "link": "https://developers.facebook.com/docs",
+    "ctg": "social media"
+  },
+  {
+    "id": 9,
+    "name": "Pinterest API",
+    "link": "https://developers.pinterest.com/docs/getting-started/introduction",
+    "ctg": "social media"
+  },
+  {
+    "id": 10,
+    "name": "Flickr API",
+    "link": "https://www.flickr.com/services/api",
+    "ctg": "images"
+  }
+]

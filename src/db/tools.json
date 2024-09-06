@@ -130,5 +130,11 @@
     "name": "Github Readme Profile Generator",
     "link": "/customizer/GitHub-Profile-generator",
     "ctg": "generator"
+  },
+  {
+    "id": 23,
+    "name": "Public Apis",
+    "link": "/apis",
+    "ctg": "other"
   }
 ]
