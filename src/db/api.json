@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "OpenWeatherMap API",
+    "link": "https://openweathermap.org/api",
+    "ctg": "Weather"
+  },
+  {
+    "id": 2,
+    "name": "Google Maps API",
+    "link": "https://developers.google.com/maps",
+    "ctg": "Mapping"
+  },
+  {
+    "id": 3,
+    "name": "Twitter API",
+    "link": "https://developer.twitter.com/en/docs/twitter-api",
+    "ctg": "Social Media"
+  },
+  {
+    "id": 4,
+    "name": "YouTube API",
+    "link": "https://developers.google.com/youtube/v3",
+    "ctg": "Video"
+  },
+  {
+    "id": 5,
+    "name": "Reddit API",
+    "link": "https://www.reddit.com/dev/api",
+    "ctg": "Social Media"
+  },
+  {
+    "id": 6,
+    "name": "Spotify API",
+    "link": "https://developer.spotify.com/documentation/web-api",
+    "ctg": "Music"
+  },
+  {
+    "id": 7,
+    "name": "Instagram API",
+    "link": "https://developers.facebook.com/docs/instagram-basic-display-api",
+    "ctg": "Social Media"
+  },
+  {
+    "id": 8,
+    "name": "Facebook API",
+    "link": "https://developers.facebook.com/docs",
+    "ctg": "Social Media"
+  },
+  {
+    "id": 9,
+    "name": "Pinterest API",
+    "link": "https://developers.pinterest.com/docs/getting-started/introduction",
+    "ctg": "Social Media"
+  },
+  {
+    "id": 10,
+    "name": "Flickr API",
+    "link": "https://www.flickr.com/services/api",
+    "ctg": "Images"
+  },
+  {
+    "id": 11,
+    "name": "Twitch API",
+    "link": "https://dev.twitch.tv/docs/api",
+    "ctg": "Video"
+  },
+  {
+    "id": 12,
+    "name": "Discord API",
+    "link": "https://discord.com/developers/docs/intro",
+    "ctg": "Social Media"
+  },
+  {
+    "id": 13,
+    "name": "Giphy API",
+    "link": "https://developers.giphy.com/docs/api",
+    "ctg": "Images"
+  },
+  {
+    "id": 14,
+    "name": "SoundCloud API",
+    "link": "https://developers.soundcloud.com/docs/api",
+    "ctg": "Music"
+  },
+  {
+    "id": 15,
+    "name": "Yelp API",
+    "link": "https://www.yelp.com/developers/documentation/v3",
+    "ctg": "Other"
+  }
+]
