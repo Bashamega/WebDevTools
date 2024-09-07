@@ -80,6 +80,17 @@ export default function Home() {
         >
           <h1 className="text-center text-3xl pb-2">Popular APIs</h1>
           <div className="flex justify-center mb-5">
+            <input
+              type="text"
+              placeholder="search"
+              value={searchValue}
+              onChange={handleSearch}
+              className={`w-full p-2 mb-5 mr-5 border rounded-lg shadow ${
+                isDarkMode
+                  ? "bg-gray-800 border-gray-700 text-white"
+                  : "bg-white border-gray-200 text-black"
+              }`}
+            />
             <Select
               value={selectedTag}
               onValueChange={handleTagChange}
@@ -101,17 +112,6 @@ export default function Home() {
               </SelectContent>
             </Select>
           </div>
-          <input
-            type="text"
-            placeholder="search"
-            value={searchValue}
-            onChange={handleSearch}
-            className={`w-full p-2 mb-5 border rounded-lg shadow ${
-              isDarkMode
-                ? "bg-gray-800 border-gray-700 text-white"
-                : "bg-white border-gray-200 text-black"
-            }`}
-          />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {apiList.map((item, index) => (
               <Card
