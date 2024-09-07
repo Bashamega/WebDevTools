@@ -37,9 +37,8 @@ export default function Home() {
     setSelectedTag(e);
     filterApis(searchValue, e);
   };
-  const filterApis = (search, tagTitle) => {
-    const tag = tagTitle.toLowerCase();
-    if (search && tag !== "all") {
+  const filterApis = (search, tag) => {
+    if (search && tag !== "All") {
       setApiList(
         apis.filter(
           (api) =>
@@ -47,13 +46,13 @@ export default function Home() {
             api.ctg === tag,
         ),
       );
-    } else if (search && tag === "all") {
+    } else if (search && tag === "All") {
       setApiList(
         apis.filter((api) =>
           api.name.toLowerCase().includes(search.toLowerCase()),
         ),
       );
-    } else if (!search && tag !== "all") {
+    } else if (!search && tag !== "All") {
       setApiList(apis.filter((api) => api.ctg === tag));
     } else {
       setApiList(apis);
