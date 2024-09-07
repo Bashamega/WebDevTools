@@ -3,90 +3,90 @@
     "id": 1,
     "name": "OpenWeatherMap API",
     "link": "https://openweathermap.org/api",
-    "ctg": "weather"
+    "ctg": "Weather"
   },
   {
     "id": 2,
     "name": "Google Maps API",
     "link": "https://developers.google.com/maps",
-    "ctg": "mapping"
+    "ctg": "Mapping"
   },
   {
     "id": 3,
     "name": "Twitter API",
     "link": "https://developer.twitter.com/en/docs/twitter-api",
-    "ctg": "social media"
+    "ctg": "Social Media"
   },
   {
     "id": 4,
     "name": "YouTube API",
     "link": "https://developers.google.com/youtube/v3",
-    "ctg": "video"
+    "ctg": "Video"
   },
   {
     "id": 5,
     "name": "Reddit API",
     "link": "https://www.reddit.com/dev/api",
-    "ctg": "social media"
+    "ctg": "Social Media"
   },
   {
     "id": 6,
     "name": "Spotify API",
     "link": "https://developer.spotify.com/documentation/web-api",
-    "ctg": "music"
+    "ctg": "Music"
   },
   {
     "id": 7,
     "name": "Instagram API",
     "link": "https://developers.facebook.com/docs/instagram-basic-display-api",
-    "ctg": "social media"
+    "ctg": "Social Media"
   },
   {
     "id": 8,
     "name": "Facebook API",
     "link": "https://developers.facebook.com/docs",
-    "ctg": "social media"
+    "ctg": "Social Media"
   },
   {
     "id": 9,
     "name": "Pinterest API",
     "link": "https://developers.pinterest.com/docs/getting-started/introduction",
-    "ctg": "social media"
+    "ctg": "Social Media"
   },
   {
     "id": 10,
     "name": "Flickr API",
     "link": "https://www.flickr.com/services/api",
-    "ctg": "images"
+    "ctg": "Images"
   },
   {
     "id": 11,
     "name": "Twitch API",
     "link": "https://dev.twitch.tv/docs/api",
-    "ctg": "video"
+    "ctg": "Video"
   },
   {
     "id": 12,
     "name": "Discord API",
     "link": "https://discord.com/developers/docs/intro",
-    "ctg": "social media"
+    "ctg": "Social Media"
   },
   {
     "id": 13,
     "name": "Giphy API",
     "link": "https://developers.giphy.com/docs/api",
-    "ctg": "images"
+    "ctg": "Images"
   },
   {
     "id": 14,
     "name": "SoundCloud API",
     "link": "https://developers.soundcloud.com/docs/api",
-    "ctg": "music"
+    "ctg": "Music"
   },
   {
     "id": 15,
     "name": "Yelp API",
     "link": "https://www.yelp.com/developers/documentation/v3",
-    "ctg": "other"
+    "ctg": "Other"
   }
 ]
