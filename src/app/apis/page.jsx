@@ -5,11 +5,18 @@ import Footer from "../components/Footer";
 import apis from "@/db/api.json";
 import { Card } from "../components/card";
 import { NavBar } from "../components/navbar";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../components/ui/select";
 
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [apiList, setapiList] = useState(apis);
-  const [searchValue, setSearch] = useState();
+  const [apiList, setApiList] = useState(apis);
+  const [searchValue, setSearchValue] = useState("");
   const [selectedTag, setSelectedTag] = useState("all");
   useEffect(() => {
     if (isDarkMode) {
@@ -22,17 +29,18 @@ export default function Home() {
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
-  const handleSeach = (e) => {
-    setSearch(e.target.value);
+  const handleSearch = (e) => {
+    setSearchValue(e.target.value);
     filterApis(e.target.value, selectedTag);
   };
   const handleTagChange = (e) => {
-    setSelectedTag(e.target.value);
-    filterApis(searchValue, e.target.value);
+    setSelectedTag(e);
+    filterApis(searchValue, e);
   };
-  const filterApis = (search, tag) => {
+  const filterApis = (search, tagTitle) => {
+    const tag = tagTitle.toLowerCase();
     if (search && tag !== "all") {
-      setapiList(
+      setApiList(
         apis.filter(
           (api) =>
             api.name.toLowerCase().includes(search.toLowerCase()) &&
@@ -40,15 +48,15 @@ export default function Home() {
         ),
       );
     } else if (search && tag === "all") {
-      setapiList(
+      setApiList(
         apis.filter((api) =>
           api.name.toLowerCase().includes(search.toLowerCase()),
         ),
       );
     } else if (!search && tag !== "all") {
-      setapiList(apis.filter((api) => api.ctg === tag));
+      setApiList(apis.filter((api) => api.ctg === tag));
     } else {
-      setapiList(apis);
+      setApiList(apis);
     }
   };
   return (
@@ -72,24 +80,32 @@ export default function Home() {
         >
           <h1 className="text-center text-3xl pb-2">Popular APIs</h1>
           <div className="flex justify-center mb-5">
-            <select
+            <Select
               value={selectedTag}
-              onChange={handleTagChange}
+              onValueChange={handleTagChange}
               className="p-2 border rounded-lg shadow"
             >
-              <option value="all">All</option>
-              {Array.from(new Set(apis.map((api) => api.ctg))).map((tag) => (
-                <option key={tag} value={tag}>
-                  {tag}
-                </option>
-              ))}
-            </select>
+              <SelectTrigger className="w-[280px]">
+                <SelectValue placeholder="Filter by Tags" />
+                {selectedTag == "all" && "All"}
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem key={"All"} value={"All"}>
+                  All
+                </SelectItem>
+                {Array.from(new Set(apis.map((api) => api.ctg))).map((tag) => (
+                  <SelectItem key={tag} value={tag}>
+                    {tag}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
           <input
             type="text"
             placeholder="search"
             value={searchValue}
-            onChange={handleSeach}
+            onChange={handleSearch}
             className={`w-full p-2 mb-5 border rounded-lg shadow ${
               isDarkMode
                 ? "bg-gray-800 border-gray-700 text-white"
