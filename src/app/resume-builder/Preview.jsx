@@ -446,7 +446,7 @@ const Preview = ({ isDarkMode, data }) => {
                         <MdEmail />
                         <span className="text-sm ml-2">
                           <a
-                            href={`mailto:${email}`}
+                            href={`mailto:${encodeURIComponent(email)}`}
                             className="text-slate-800"
                           >
                             {email}
@@ -458,7 +458,10 @@ const Preview = ({ isDarkMode, data }) => {
                       <p style={{ display: "flex", alignItems: "center" }}>
                         <FaPhoneAlt />
                         <span className="text-sm ml-2">
-                          <a href={`tel:${phone}`} className="text-slate-800 ">
+                          <a
+                            href={`tel:${encodeURIComponent(phone)}`}
+                            className="text-slate-800 "
+                          >
                             {phone}
                           </a>
                         </span>
