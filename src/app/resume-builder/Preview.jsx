@@ -225,7 +225,10 @@ const Preview = ({ isDarkMode, data }) => {
                   >
                     <MdEmail />
                     <span className="text-sm ml-2">
-                      <a href={`mailto:${email}`} className="">
+                      <a
+                        href={`mailto:${encodeURIComponent(email)}`}
+                        className=""
+                      >
                         {email}
                       </a>
                     </span>
