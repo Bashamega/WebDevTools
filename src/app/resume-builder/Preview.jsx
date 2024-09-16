@@ -245,7 +245,7 @@ const Preview = ({ isDarkMode, data }) => {
                   >
                     <FaPhoneAlt />
                     <span style={{ marginLeft: "8px" }}>
-                      <a href={`tel:${phone}`} className="">
+                      <a href={`tel:${encodeURIComponent(phone)}`} className="">
                         {phone}
                       </a>
                     </span>
