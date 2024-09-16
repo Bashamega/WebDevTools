@@ -576,7 +576,7 @@ export default function ButtonCustomizer() {
             />
             {/* Gmail Badge */}
             <a
-              href={`mailto:${formValues.email}`}
+              href={`mailto:${encodeURIComponent(formValues.email)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6"
