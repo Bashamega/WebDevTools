@@ -632,7 +632,7 @@ export default function ButtonCustomizer() {
             />
 
             <a
-              href={formValues.twitter}
+              href={encodeURIComponent(formValues.twitter)}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -659,7 +659,7 @@ export default function ButtonCustomizer() {
                     focus:ring-2 focus:ring-blue-500`}
             />
             <a
-              href={formValues.portfolio}
+              href={encodeURIComponent(formValues.portfolio)}
               target="_blank"
               rel="noopener noreferrer"
             >
