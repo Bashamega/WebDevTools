@@ -593,7 +593,7 @@ export default function ButtonCustomizer() {
               type="text"
               name="linkedin"
               placeholder="LinkedIn URL"
-              value={encodeURIComponent(formValues.linkedin)}
+              value={formValues.linkedin}
               onChange={handleChange}
               className={`${
                 isDarkMode
@@ -604,7 +604,7 @@ export default function ButtonCustomizer() {
             />
 
             <a
-              href={formValues.linkedin}
+              href={encodeURIComponent(formValues.linkedin)}
               target="_blank"
               rel="noopener noreferrer"
             >
