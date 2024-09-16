@@ -201,7 +201,10 @@ const Preview = ({ isDarkMode, data }) => {
               <div className="flex items-center justify-start w-full">
                 {image && (
                   <img
-                    src={image || "https://via.placeholder.com/150"}
+                    src={
+                      encodeURIComponent(image) ||
+                      "https://via.placeholder.com/150"
+                    }
                     alt="Profile Image"
                     style={
                       imageShape === "circle"

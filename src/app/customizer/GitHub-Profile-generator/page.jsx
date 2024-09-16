@@ -744,7 +744,7 @@ export default function ButtonCustomizer() {
                 focus:ring-2 focus:ring-blue-500`}
           />
           <a
-            href={formValues.buyMeACoffee}
+            href={encodeURIComponent(formValues.buyMeACoffee)}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -768,7 +768,11 @@ export default function ButtonCustomizer() {
             className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-900 border-gray-400"}
                 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
           />
-          <a href={formValues.kofi} target="_blank" rel="noopener noreferrer">
+          <a
+            href={encodeURIComponent(formValues.kofi)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
               src="https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=kofi&logoColor=white"
               alt="Ko-fi Badge"
@@ -818,7 +822,7 @@ export default function ButtonCustomizer() {
             <div className="mt-4 flex justify-center flex-wrap space-x-4">
               {formValues.email && (
                 <a
-                  href={`mailto:${formValues.email}`}
+                  href={`mailto:${encodeURIComponent(formValues.email)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -832,7 +836,7 @@ export default function ButtonCustomizer() {
 
               {formValues.linkedin && (
                 <a
-                  href={formValues.linkedin}
+                  href={encodeURIComponent(formValues.linkedin)}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
