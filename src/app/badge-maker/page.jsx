@@ -3,8 +3,8 @@
 
 import React, { useState, useEffect } from "react";
 import BadgeForm from "./BadgeForm.jsx";
-import { NavBar } from "../components/navbar";
-import Footer from "../components/Footer/index.jsx";
+import { NavBar } from "../../components/navbar.jsx";
+import Footer from "../../components/Footer/index.jsx";
 const BadgeMakerPage = () => {
   const [badgeMarkdown, setBadgeMarkdown] = useState("");
   const [badgeImage, setBadgeImage] = useState(""); // For preview image

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import { NavBar } from "@/app/components/navbar";
+import { NavBar } from "@/components/navbar";
 import CodeEditor from "./components/editor";
 import { htmlToJsx } from "html-to-jsx-transform";
 

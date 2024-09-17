@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { NavBar } from "@/app/components/navbar";
+import { NavBar } from "@/components/navbar";
 
 // const InputForm = () => {
 export default function ButtonCustomizer() {

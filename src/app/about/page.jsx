@@ -1,6 +1,6 @@
 "use client";
-import Footer from "../components/Footer";
-import Nav from "../components/nav";
+import Footer from "../../components/Footer";
+import Nav from "../../components/nav";
 import { useState } from "react";
 import Link from "next/link";
 

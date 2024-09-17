@@ -1,6 +1,6 @@
 "use client";
 
-import { NavBar } from "@/app/components/navbar";
+import { NavBar } from "@/components/navbar";
 import { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { FaRegCopy } from "react-icons/fa6";

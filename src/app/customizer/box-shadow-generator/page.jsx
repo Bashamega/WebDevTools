@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import InputRange from "@/app/components/Input/InputRange";
-import Footer from "@/app/components/Footer";
+import InputRange from "@/components/Input/InputRange";
+import Footer from "@/components/Footer";
 import Swal from "sweetalert2";
-import { NavBar } from "@/app/components/navbar";
+import { NavBar } from "@/components/navbar";
 
 const Page = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);

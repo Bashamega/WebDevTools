@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { HexColorPicker } from "react-colorful";
-import { NavBar } from "@/app/components/navbar";
+import { NavBar } from "@/components/navbar";
 
 export default function ColorPicker() {
   const [hexColor, setHexColor] = useState("#ffffff");
