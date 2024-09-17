@@ -6,7 +6,7 @@ import Categories from "../utils";
 import { FieldsSection } from "./FieldsSection";
 import { ActionButtons } from "./ActionButtons";
 import { PreviewSection } from "./PreviewSection";
-import { initialFields } from "./init";
+import { initialFields } from "./Init";
 
 export default function CardForm({ isDarkMode }) {
   const [fields, setFields] = useState(initialFields());
