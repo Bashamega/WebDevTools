@@ -113,6 +113,7 @@ export default function CardForm({ isDarkMode }) {
           showPreview={showPreview}
           setShowPreview={setShowPreview}
           isLoading={isLoading}
+          isDarkMode={isDarkMode}
         />
       </div>
     </Reorder.Group>

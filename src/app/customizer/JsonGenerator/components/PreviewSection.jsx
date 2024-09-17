@@ -6,8 +6,14 @@ export const PreviewSection = ({
   showPreview,
   setShowPreview,
   isLoading,
+  isDarkMode,
 }) => (
-  <div className="bg-white text-black absolute top-1/2 shadow-lg rounded-md -translate-y-1/2 z-10 flex flex-col flex-shrink-0 h-[50vh] dark:bg-gray-800">
+  <div
+    className={
+      " absolute top-1/2 shadow-lg rounded-md -translate-y-1/2 z-10 flex flex-col flex-shrink-0 h-[50vh]" +
+      (isDarkMode ? " bg-gray-700 text-white" : " bg-white text-black")
+    }
+  >
     {responseData.length > 0 && showPreview && (
       <div className="flex flex-col max-h-[50vh] max-w-[40vw] min-w-[45vw] overflow-auto mr-2 p-2 ">
         <PreviewHeader setShowPreview={setShowPreview} />
