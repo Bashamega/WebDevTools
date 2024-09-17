@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { NavBar } from "@/app/components/navbar";
+import { NavBar } from "@/components/navbar";
 import SvgConverter from "./components/svg-converter";
 import ImageUpload from "./components/image-upload";
 import "./page.css";

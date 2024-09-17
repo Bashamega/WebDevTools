@@ -4,7 +4,7 @@
 import { useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import { NavBar } from "@/app/components/navbar";
+import { NavBar } from "@/components/navbar";
 
 const ColorPicker = () => {
   const [image, setImage] = useState(null);

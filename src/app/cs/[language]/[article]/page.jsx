@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { NavBar } from "@/app/components/navbar";
+import { NavBar } from "@/components/navbar";
 import languages from "@/db/codesnippets/categories.json";
 import NotFound from "@/app/not-found";
 import { Sidebar } from "../../components/siodebar";

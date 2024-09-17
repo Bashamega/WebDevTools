@@ -1,4 +1,4 @@
-import { NavBar } from "@/app/components/navbar";
+import { NavBar } from "@/components/navbar";
 import Link from "next/link";
 
 export default function NotFound() {

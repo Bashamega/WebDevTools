@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import snarkdown from "snarkdown";
-import { NavBar } from "@/app/components/navbar";
+import { NavBar } from "@/components/navbar";
 
 export default function ButtonCustomizer() {
   const [title, setTitle] = useState("");

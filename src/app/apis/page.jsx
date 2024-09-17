@@ -1,17 +1,17 @@
 "use client";
-import Nav from "@/app/components/nav";
+import Nav from "@/components/nav";
 import { useState, useEffect } from "react";
-import Footer from "../components/Footer";
+import Footer from "../../components/Footer";
 import apis from "@/db/api.json";
-import { Card } from "../components/card";
-import { NavBar } from "../components/navbar";
+import { Card } from "../../components/card";
+import { NavBar } from "../../components/navbar";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../components/ui/select";
+} from "../../components/ui/select";
 
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);

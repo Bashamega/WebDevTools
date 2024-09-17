@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
-import { NavBar } from "../components/navbar";
+import { NavBar } from "../../components/navbar";
 import Link from "next/link";
 import BasicModal from "./modal";
 import Pagination from "./pagination";

@@ -7,10 +7,10 @@ import { saveAs } from "file-saver";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import Search from "../components/search";
+import Search from "../../components/search";
 import Link from "next/link";
-import SunIcon from "../components/icons/sunicon";
-import MoonIcon from "../components/icons/moonicon";
+import SunIcon from "../../components/icons/sunicon";
+import MoonIcon from "../../components/icons/moonicon";
 
 export default function MarkdownEditor() {
   const [markdown, setMarkdown] = useState("# hey");
