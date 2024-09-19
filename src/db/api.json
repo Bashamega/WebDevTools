@@ -88,5 +88,35 @@
     "name": "Yelp API",
     "link": "https://www.yelp.com/developers/documentation/v3",
     "ctg": "Other"
+  },
+  {
+    "id": 16,
+    "name": "GitHub API",
+    "link": "https://docs.github.com/en/rest",
+    "ctg": "Development"
+  },
+  {
+    "id": 17,
+    "name": "Unsplash API",
+    "link": "https://unsplash.com/documentation",
+    "ctg": "Images"
+  },
+  {
+    "id": 18,
+    "name": "NASA API",
+    "link": "https://api.nasa.gov/",
+    "ctg": "Science"
+  },
+  {
+    "id": 19,
+    "name": "Mailchimp API",
+    "link": "https://mailchimp.com/developer/marketing/api/",
+    "ctg": "Email"
+  },
+  {
+    "id": 20,
+    "name": "Stripe API",
+    "link": "https://docs.stripe.com/api",
+    "ctg": "Payments"
   }
 ]
