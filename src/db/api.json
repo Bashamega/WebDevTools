@@ -88,5 +88,35 @@
     "name": "Yelp API",
     "link": "https://www.yelp.com/developers/documentation/v3",
     "ctg": "Other"
+  },
+  {
+    "id": 16,
+    "name": "OpenAI API",
+    "link": "https://platform.openai.com/docs/overview",
+    "ctg": "AI"
+  },
+  {
+    "id": 17,
+    "name": "Zoom API",
+    "link": "https://developers.zoom.us/docs/api/",
+    "ctg": "Communication"
+  },
+  {
+    "id": 18,
+    "name": "NewsAPI",
+    "link": "https://newsapi.org/docs/get-started",
+    "ctg": "News"
+  },
+  {
+    "id": 19,
+    "name": "Marvel API",
+    "link": "https://developer.marvel.com/",
+    "ctg": "Entertainment"
+  },
+  {
+    "id": 20,
+    "name": "Twilio API",
+    "link": "https://www.twilio.com/docs/usage/api",
+    "ctg": "Communication"
   }
 ]
