@@ -13,7 +13,9 @@ export function BlogCard({ data, darkmode }) {
       <article>
         <h1 className="text-2xl font-bold mb-4 line-clamp-2">{data.title}</h1>
         <div
-          className={`p-4 rounded-lg ${darkmode ? "bg-gray-700" : "bg-gray-100"}`}
+          className={`p-4 rounded-lg ${
+            darkmode ? "bg-gray-700" : "bg-gray-100"
+          }`}
         >
           <h2 className="text-2xl font-semibold">About the author</h2>
           <h3 className="text-lg font-semibold">{data?.author?.name}</h3>

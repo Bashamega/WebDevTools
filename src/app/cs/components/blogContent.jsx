@@ -40,8 +40,12 @@ export function BlogContent({ doc, title, language, isDarkMode }) {
                 body {
                   margin: 0;
                   padding: 16px;
-                  --color-canvas-default: ${isDarkMode ? "rgb(17 24 39 / 1)" : "white"}!important;
-                  --color-fg-default: ${isDarkMode ? "white" : "black"}!important;
+                  --color-canvas-default: ${
+                    isDarkMode ? "rgb(17 24 39 / 1)" : "white"
+                  }!important;
+                  --color-fg-default: ${
+                    isDarkMode ? "white" : "black"
+                  }!important;
                 }
                   .markdown-body .highlight pre, .markdown-body pre{color:white!important;background-color:#161b22!important;}
               </style>

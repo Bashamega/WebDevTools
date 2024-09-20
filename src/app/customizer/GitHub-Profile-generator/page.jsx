@@ -230,13 +230,17 @@ export default function ButtonCustomizer() {
 
     // Visitor Badge
     if (formValues.githubUsername) {
-      markdown += `![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=${encodeURIComponent(formValues.githubUsername)})\n\n`;
+      markdown += `![Visitor Badge](https://visitor-badge.laobi.icu/badge?page_id=${encodeURIComponent(
+        formValues.githubUsername,
+      )})\n\n`;
     }
 
     // Typing SVG
     if (formValues.name) {
       markdown += '<div align="center">\n\n';
-      markdown += `![Typing SVG](https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=Hi+There!+...+👋;+I'm+${encodeURIComponent(formValues.name)};)\n\n`;
+      markdown += `![Typing SVG](https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=Hi+There!+...+👋;+I'm+${encodeURIComponent(
+        formValues.name,
+      )};)\n\n`;
     }
 
     // Subtitles
@@ -351,7 +355,9 @@ export default function ButtonCustomizer() {
 
   return (
     <div
-      className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"} min-h-screen `}
+      className={`${
+        isDarkMode ? "bg-gray-900 text-gray-400" : "bg-white text-gray-800"
+      } min-h-screen `}
     >
       <NavBar
         title={"GitHub Profile Generator"}
@@ -375,7 +381,11 @@ export default function ButtonCustomizer() {
             placeholder="John Doe"
             value={formValues.name}
             onChange={handleChange}
-            className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-900 border-gray-400"} w-full
+            className={`${
+              isDarkMode
+                ? "bg-gray-800 text-gray-200"
+                : "bg-white text-gray-900 border-gray-400"
+            } w-full
             p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
           />
 
@@ -692,7 +702,11 @@ export default function ButtonCustomizer() {
             />
             <button
               onClick={handleAddSkill}
-              className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-blue-600 text-white"} p-3 rounded-lg mt-4 transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105`}
+              className={`${
+                isDarkMode
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-blue-600 text-white"
+              } p-3 rounded-lg mt-4 transition duration-300 ease-in-out transform hover:bg-blue-700 hover:scale-105`}
             >
               Add Skill
             </button>
@@ -719,7 +733,11 @@ export default function ButtonCustomizer() {
                 placeholder="GitHub Username"
                 value={formValues.githubUsername}
                 onChange={handleChange}
-                className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-900 border-gray-400"} w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                className={`${
+                  isDarkMode
+                    ? "bg-gray-800 text-gray-200"
+                    : "bg-white text-gray-900 border-gray-400"
+                } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
               />
             </div>
           </div>
@@ -765,7 +783,11 @@ export default function ButtonCustomizer() {
             placeholder="Ko-fi URL"
             value={formValues.kofi}
             onChange={handleChange}
-            className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-900 border-gray-400"}
+            className={`${
+              isDarkMode
+                ? "bg-gray-800 text-gray-200"
+                : "bg-white text-gray-900 border-gray-400"
+            }
                 w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
           />
           <a
@@ -791,7 +813,9 @@ export default function ButtonCustomizer() {
             {formValues.githubUsername && (
               <div className="mt-4">
                 <img
-                  src={`https://visitor-badge.laobi.icu/badge?page_id=${encodeURIComponent(formValues.githubUsername)}`}
+                  src={`https://visitor-badge.laobi.icu/badge?page_id=${encodeURIComponent(
+                    formValues.githubUsername,
+                  )}`}
                   alt="Visitor Badge"
                   className="mx-auto"
                 />
@@ -802,7 +826,9 @@ export default function ButtonCustomizer() {
             {formValues.name && (
               <div className="mt-4">
                 <img
-                  src={`https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=Hi+There!+...+👋;+I'm+${encodeURIComponent(formValues.name)};`}
+                  src={`https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=Hi+There!+...+👋;+I'm+${encodeURIComponent(
+                    formValues.name,
+                  )};`}
                   alt="Typing SVG"
                   className="mx-auto"
                 />
@@ -1061,7 +1087,9 @@ export default function ButtonCustomizer() {
       <div className="flex justify-center mt-8">
         <button
           onClick={() => setView(view === "Preview" ? "Markdown" : "Preview")}
-          className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-blue-600 text-white"} p-3 rounded-lg`}
+          className={`${
+            isDarkMode ? "bg-gray-800 text-gray-200" : "bg-blue-600 text-white"
+          } p-3 rounded-lg`}
         >
           {view === "Preview"
             ? "Switch to Markdown View"

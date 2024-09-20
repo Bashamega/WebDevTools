@@ -13,7 +13,9 @@ const Dropdown = ({ tools, isDarkMode }) => {
 
   return (
     <div
-      className={`absolute max-h-[66vh] scrollbar h-auto right-0 mt-2 ${height >= 490 ? "overflow-y-scroll" : "overflow-hidden"}  ${
+      className={`absolute max-h-[66vh] scrollbar h-auto right-0 mt-2 ${
+        height >= 490 ? "overflow-y-scroll" : "overflow-hidden"
+      }  ${
         isDarkMode ? "bg-gray-700 text-white" : "bg-white text-black"
       } rounded shadow-lg w-full lg:w-40`}
       style={{ zIndex: 100 }}

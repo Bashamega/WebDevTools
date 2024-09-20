@@ -125,7 +125,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
         <div className="grid grid-cols-3 gap-6">
           <div>
             <h4
-              className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+              className={`text-base font-medium my-2 ${
+                isDarkMode ? "text-slate-300" : "text-slate-500"
+              } `}
             >
               Your Name
             </h4>
@@ -146,7 +148,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
           <div>
             <h4
-              className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+              className={`text-base font-medium my-2 ${
+                isDarkMode ? "text-slate-300" : "text-slate-500"
+              } `}
             >
               Email Address
             </h4>
@@ -168,7 +172,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
           <div>
             <h4
-              className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+              className={`text-base font-medium my-2 ${
+                isDarkMode ? "text-slate-300" : "text-slate-500"
+              } `}
             >
               Phone Number
             </h4>
@@ -190,7 +196,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
         <div className="grid grid-cols-3 gap-6">
           <div>
             <h4
-              className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+              className={`text-base font-medium my-2 ${
+                isDarkMode ? "text-slate-300" : "text-slate-500"
+              } `}
             >
               LinkedIn Profile
             </h4>
@@ -211,7 +219,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
           <div>
             <h4
-              className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+              className={`text-base font-medium my-2 ${
+                isDarkMode ? "text-slate-300" : "text-slate-500"
+              } `}
             >
               Personal Website
             </h4>
@@ -231,7 +241,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
           <div>
             <h4
-              className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+              className={`text-base font-medium my-2 ${
+                isDarkMode ? "text-slate-300" : "text-slate-500"
+              } `}
             >
               Github Account
             </h4>
@@ -253,7 +265,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
         <div className="grid grid-cols-3 gap-6">
           <div>
             <h4
-              className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+              className={`text-base font-medium my-2 ${
+                isDarkMode ? "text-slate-300" : "text-slate-500"
+              } `}
             >
               Your Address
             </h4>
@@ -273,7 +287,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
           <div>
             <h4
-              className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+              className={`text-base font-medium my-2 ${
+                isDarkMode ? "text-slate-300" : "text-slate-500"
+              } `}
             >
               Profile Picture
             </h4>
@@ -306,7 +322,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
           <div key={index} className="grid grid-cols-3 gap-6 items-start mb-4">
             <div>
               <h4
-                className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+                className={`text-base font-medium my-2 ${
+                  isDarkMode ? "text-slate-300" : "text-slate-500"
+                } `}
               >
                 Work Title
               </h4>
@@ -328,7 +346,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
             <div>
               <h4
-                className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+                className={`text-base font-medium my-2 ${
+                  isDarkMode ? "text-slate-300" : "text-slate-500"
+                } `}
               >
                 Company Name
               </h4>
@@ -350,7 +370,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
             <div>
               <h4
-                className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+                className={`text-base font-medium my-2 ${
+                  isDarkMode ? "text-slate-300" : "text-slate-500"
+                } `}
               >
                 Job Description
               </h4>
@@ -391,7 +413,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
           <div key={index} className="grid grid-cols-3 gap-6 items-start mb-4">
             <div>
               <h4
-                className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+                className={`text-base font-medium my-2 ${
+                  isDarkMode ? "text-slate-300" : "text-slate-500"
+                } `}
               >
                 Degree / Certificate
               </h4>
@@ -413,7 +437,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
             <div>
               <h4
-                className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+                className={`text-base font-medium my-2 ${
+                  isDarkMode ? "text-slate-300" : "text-slate-500"
+                } `}
               >
                 Institution Name
               </h4>
@@ -435,7 +461,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
             <div>
               <h4
-                className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+                className={`text-base font-medium my-2 ${
+                  isDarkMode ? "text-slate-300" : "text-slate-500"
+                } `}
               >
                 Education Description
               </h4>
@@ -476,7 +504,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
           <div key={index} className="grid grid-cols-3 gap-6 items-start mb-4">
             <div>
               <h4
-                className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+                className={`text-base font-medium my-2 ${
+                  isDarkMode ? "text-slate-300" : "text-slate-500"
+                } `}
               >
                 Project Title
               </h4>
@@ -498,7 +528,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
             <div>
               <h4
-                className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+                className={`text-base font-medium my-2 ${
+                  isDarkMode ? "text-slate-300" : "text-slate-500"
+                } `}
               >
                 Project URL
               </h4>
@@ -520,7 +552,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
             <div>
               <h4
-                className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+                className={`text-base font-medium my-2 ${
+                  isDarkMode ? "text-slate-300" : "text-slate-500"
+                } `}
               >
                 About Project
               </h4>
@@ -570,7 +604,11 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                   } w-[309px] py-3 px-4 outline-none rounded-md shadow-sm my-2`}
                   type="text"
                   name={skillCategory.category}
-                  placeholder={`${skillCategory.category === "Languages" ? "Add Programming languages" : "Add" + " " + skillCategory.category} `}
+                  placeholder={`${
+                    skillCategory.category === "Languages"
+                      ? "Add Programming languages"
+                      : "Add" + " " + skillCategory.category
+                  } `}
                   value={s}
                   onChange={(e) => handleSkillsChange(e, index, id)}
                   key={id}
@@ -598,7 +636,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
           <div key={index} className="grid grid-cols-2 gap-6 items-start mb-4">
             <div>
               <h4
-                className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+                className={`text-base font-medium my-2 ${
+                  isDarkMode ? "text-slate-300" : "text-slate-500"
+                } `}
               >
                 Achievement Title
               </h4>
@@ -620,7 +660,9 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
 
             <div>
               <h4
-                className={`text-base font-medium my-2 ${isDarkMode ? "text-slate-300" : "text-slate-500"} `}
+                className={`text-base font-medium my-2 ${
+                  isDarkMode ? "text-slate-300" : "text-slate-500"
+                } `}
               >
                 About Achievement
               </h4>
