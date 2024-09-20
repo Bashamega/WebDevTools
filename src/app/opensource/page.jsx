@@ -1,60 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import repos from "../../db/repos.json";
-
-const Navbar = ({ isDarkMode, toggleDarkMode, searchTerm, setSearchTerm }) => {
-  return (
-    <nav
-      className={`flex flex-col md:flex-row justify-between items-center p-4 ${
-        isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200 text-black"
-      }`}
-    >
-      <div className="flex items-center mb-4 md:mb-0">
-        <h1 className="text-3xl font-bold">Open Source Projects</h1>
-      </div>
-
-      {/* Search Box */}
-      <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search by repo or owner..."
-          className="px-4 py-2 rounded-lg border border-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-600 text-gray-700"
-        />
-
-        {/* Dark Mode Toggle */}
-        <button
-          onClick={toggleDarkMode}
-          className="px-4 py-2 bg-gray-600 text-white font-semibold rounded-lg shadow-lg hover:bg-gray-800 transition-transform duration-300 transform hover:scale-105"
-        >
-          {isDarkMode ? "Light Mode" : "Dark Mode"}
-        </button>
-
-        {/* Contribute Button */}
-        <a
-          href="https://github.com/Bashamega/WebDevTools"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-4 py-2 bg-[#00FF00] text-black font-semibold rounded-lg shadow-lg hover:bg-[#00CC00] transition-transform duration-300 transform hover:scale-105"
-          style={{ boxShadow: "0 0 10px rgba(0, 255, 0, 0.8)" }}
-        >
-          Contribute Repo
-        </a>
-
-        {/* Download Guide Button */}
-        <a
-          href="/readme.md"
-          download="readme.md"
-          className="px-4 py-2 bg-[#FF00FF] text-black font-semibold rounded-lg shadow-lg hover:bg-[#CC00CC] transition-transform duration-300 transform hover:scale-105"
-          style={{ boxShadow: "0 0 10px rgba(255, 0, 255, 0.8)" }}
-        >
-          Download Guide
-        </a>
-      </div>
-    </nav>
-  );
-};
+import { NavBar } from "../../components/NavBar";
 
 const MainPage = () => {
   const [repoDetails, setRepoDetails] = useState([]);
@@ -112,13 +59,51 @@ const MainPage = () => {
         isDarkMode ? "bg-black-900 text-white-900" : "bg-white text-black"
       } min-h-screen transition-colors duration-500`}
     >
-      {/* Navbar with Dark Mode Toggle, Search, and Buttons */}
-      <Navbar
+      {/* Navbar with Dark Mode Toggle */}
+      <NavBar
+        title="Open Source Projects"
         isDarkMode={isDarkMode}
-        toggleDarkMode={() => setIsDarkMode(!isDarkMode)}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
+        toggleTheme={() => setIsDarkMode(!isDarkMode)}
       />
+
+      {/* Heading and Buttons */}
+      <div className="flex flex-col items-center py-4">
+        <h1 className="text-3xl font-bold mb-4">Open Source Projects</h1>
+
+        <div className="flex space-x-4 mb-4">
+          {/* Contribute Button */}
+          <a
+            href="https://github.com/Bashamega/WebDevTools"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-2 py-1 bg-[#00FF00] text-black font-semibold rounded-lg shadow-lg hover:bg-[#00CC00] transition-transform duration-300 transform hover:scale-105"
+            style={{ boxShadow: "0 0 10px rgba(0, 255, 0, 0.8)" }}
+          >
+            Contribute Repo
+          </a>
+
+          {/* Download Guide Button */}
+          <a
+            href="/readme.md"
+            download="readme.md"
+            className="px-2 py-1 bg-[#FF00FF] text-black font-semibold rounded-lg shadow-lg hover:bg-[#CC00CC] transition-transform duration-300 transform hover:scale-105"
+            style={{ boxShadow: "0 0 10px rgba(255, 0, 255, 0.8)" }}
+          >
+            Download Guide
+          </a>
+        </div>
+      </div>
+
+      {/* Search Box */}
+      <div className="flex justify-center py-4">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search by repo or owner..."
+          className="px-4 py-2 rounded-lg border border-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-600 text-gray-700"
+        />
+      </div>
 
       {/* Grid of Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-6 py-12">
