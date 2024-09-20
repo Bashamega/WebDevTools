@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import repos from "../../db/repos.json";
-import { NavBar } from "../../components/NavBar";
+import { NavBar } from "../../components/navbar.jsx";
 
 const MainPage = () => {
   const [repoDetails, setRepoDetails] = useState([]);
