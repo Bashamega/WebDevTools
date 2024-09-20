@@ -6,7 +6,7 @@ Thank you for your interest in contributing! Follow the steps below to add your 
 
 2. **Clone your fork to your local machine.**
 
-3. **Open `repos.json` in src/app/opensource.**
+3. **Open `repos.json` in src/db/repos.json.**
 
 4. **Add your repository details in the following format:**
 
