@@ -118,7 +118,7 @@
     "name": "Stripe API",
     "link": "https://docs.stripe.com/api",
     "ctg": "Payments"
-  }, 
+  },
   {
     "id": 21,
     "name": "OpenAI API",
