@@ -56,7 +56,7 @@ const MainPage = () => {
   return (
     <div
       className={`${
-        isDarkMode ? "bg-black-900 text-white-900" : "bg-white text-black"
+        isDarkMode ? "bg-black text-white" : "bg-white text-black"
       } min-h-screen transition-colors duration-500`}
     >
       {/* Navbar with Dark Mode Toggle */}
@@ -110,7 +110,16 @@ const MainPage = () => {
         {filteredRepos.map((repo) => (
           <div
             key={repo.id}
-            className="p-5 rounded-xl shadow-lg overflow-hidden bg-amber border border-gray-300 hover:shadow-xl transition-all"
+            className={`p-5 rounded-xl overflow-hidden transition-all duration-300 transform hover:scale-105 ${
+              isDarkMode
+                ? "bg-gray-800 text-white border border-gray-600 shadow-lg "
+                : "bg-gray-100 text-black border border-gray-300 shadow-lg "
+            }`}
+            style={
+              isDarkMode
+                ? { boxShadow: "0 0 10px rgba(255, 255, 255, 0.2)" }
+                : {}
+            }
           >
             <a
               href={`https://github.com/${repo.owner?.login}/${repo.name}`}
@@ -118,14 +127,22 @@ const MainPage = () => {
               rel="noopener noreferrer"
               className="block"
             >
-              <h2 className="text-xl font-bold mb-2 text-blue-800">
+              <h2
+                className={`text-xl font-bold mb-2 ${
+                  isDarkMode ? "text-teal-400" : "text-blue-800"
+                }`}
+              >
                 {repo.name}
               </h2>
 
               {/* Display Owner Name */}
-              <p className="mb-1 text-green-800">
+              <p className="mb-1">
                 👤 Owner:{" "}
-                <span className="font-bold text-red-800">
+                <span
+                  className={`font-bold ${
+                    isDarkMode ? "text-pink-400" : "text-red-800"
+                  }`}
+                >
                   {repo.owner?.login || "Unknown"}
                 </span>
               </p>
