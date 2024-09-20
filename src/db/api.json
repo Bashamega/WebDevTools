@@ -118,5 +118,172 @@
     "name": "Stripe API",
     "link": "https://docs.stripe.com/api",
     "ctg": "Payments"
+  },{
+    "id": 21,
+    "name": "PayPal API",
+    "link": "https://developer.paypal.com/api/rest/",
+    "ctg": "Payments"
+  },
+  {
+    "id": 22,
+    "name": "SendGrid API",
+    "link": "https://docs.sendgrid.com/",
+    "ctg": "Email"
+  },
+  {
+    "id": 23,
+    "name": "Twilio API",
+    "link": "https://www.twilio.com/docs/usage/api",
+    "ctg": "Communication"
+  },
+  {
+    "id": 24,
+    "name": "OpenAI API",
+    "link": "https://beta.openai.com/docs/",
+    "ctg": "AI"
+  },
+  {
+    "id": 25,
+    "name": "Google Cloud Vision API",
+    "link": "https://cloud.google.com/vision/docs",
+    "ctg": "AI"
+  },
+  {
+    "id": 26,
+    "name": "Firebase API",
+    "link": "https://firebase.google.com/docs",
+    "ctg": "Development"
+  },
+  {
+    "id": 27,
+    "name": "Slack API",
+    "link": "https://api.slack.com/",
+    "ctg": "Communication"
+  },
+  {
+    "id": 28,
+    "name": "Zoom API",
+    "link": "https://marketplace.zoom.us/docs/api-reference/zoom-api",
+    "ctg": "Communication"
+  },
+  {
+    "id": 29,
+    "name": "Dropbox API",
+    "link": "https://www.dropbox.com/developers/documentation",
+    "ctg": "Storage"
+  },
+  {
+    "id": 30,
+    "name": "Imgur API",
+    "link": "https://apidocs.imgur.com/",
+    "ctg": "Images"
+  },
+  {
+    "id": 31,
+    "name": "Clarifai API",
+    "link": "https://docs.clarifai.com/",
+    "ctg": "AI"
+  },
+  {
+    "id": 32,
+    "name": "News API",
+    "link": "https://newsapi.org/docs/get-started",
+    "ctg": "News"
+  },
+  {
+    "id": 33,
+    "name": "Eventbrite API",
+    "link": "https://www.eventbrite.com/platform/api",
+    "ctg": "Events"
+  },
+  {
+    "id": 34,
+    "name": "Last.fm API",
+    "link": "https://www.last.fm/api",
+    "ctg": "Music"
+  },
+  {
+    "id": 35,
+    "name": "TMDb API",
+    "link": "https://developers.themoviedb.org/3/getting-started/introduction",
+    "ctg": "Video"
+  },
+  {
+    "id": 36,
+    "name": "Marvel API",
+    "link": "https://developer.marvel.com/",
+    "ctg": "Entertainment"
+  },
+  {
+    "id": 37,
+    "name": "OpenCage Geocoding API",
+    "link": "https://opencagedata.com/api",
+    "ctg": "Mapping"
+  },
+  {
+    "id": 38,
+    "name": "OpenLibrary API",
+    "link": "https://openlibrary.org/developers/api",
+    "ctg": "Books"
+  },
+  {
+    "id": 39,
+    "name": "Jikan API",
+    "link": "https://jikan.moe/",
+    "ctg": "Anime"
+  },
+  {
+    "id": 40,
+    "name": "Weather API",
+    "link": "https://www.weatherapi.com/",
+    "ctg": "Weather"
+  },
+  {
+    "id": 41,
+    "name": "IPinfo API",
+    "link": "https://ipinfo.io/developers",
+    "ctg": "IP/Location"
+  },
+  {
+    "id": 42,
+    "name": "IEX Cloud API",
+    "link": "https://iexcloud.io/docs/api/",
+    "ctg": "Financial"
+  },
+  {
+    "id": 43,
+    "name": "Alpha Vantage API",
+    "link": "https://www.alphavantage.co/documentation/",
+    "ctg": "Financial"
+  },
+  {
+    "id": 44,
+    "name": "Bored API",
+    "link": "https://www.boredapi.com/",
+    "ctg": "Fun"
+  },
+  {
+    "id": 45,
+    "name": "Agify API",
+    "link": "https://agify.io/",
+    "ctg": "Demographics"
+  },
+  {
+    "id": 46,
+    "name": "Genderize API",
+    "link": "https://genderize.io/",
+    "ctg": "Demographics"
+  },
+  {
+    "id": 47,
+    "name": "Nationalize API",
+    "link": "https://nationalize.io/",
+    "ctg": "Demographics"
+  },
+  {
+    "id": 48,
+    "name": "NumbersAPI",
+    "link": "http://numbersapi.com/",
+    "ctg": "Trivia"
   }
 ]
