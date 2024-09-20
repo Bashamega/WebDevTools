@@ -2,12 +2,7 @@
 import React, { useEffect, useState } from "react";
 import repos from "../../db/repos.json";
 
-const Navbar = ({
-  isDarkMode,
-  toggleDarkMode,
-  searchTerm,
-  setSearchTerm,
-}) => {
+const Navbar = ({ isDarkMode, toggleDarkMode, searchTerm, setSearchTerm }) => {
   return (
     <nav
       className={`flex flex-col md:flex-row justify-between items-center p-4 ${
@@ -26,7 +21,6 @@ const Navbar = ({
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search by repo or owner..."
           className="px-4 py-2 rounded-lg border border-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-600 text-gray-700"
-
         />
 
         {/* Dark Mode Toggle */}
@@ -73,11 +67,11 @@ const MainPage = () => {
         repos.map(async (repo) => {
           try {
             const response = await fetch(
-              `https://api.github.com/repos/${repo.repoOwner}/${repo.repoName}`
+              `https://api.github.com/repos/${repo.repoOwner}/${repo.repoName}`,
             );
             if (!response.ok) {
               throw new Error(
-                `Failed to fetch repo: ${repo.repoOwner}/${repo.repoName}`
+                `Failed to fetch repo: ${repo.repoOwner}/${repo.repoName}`,
               );
             }
             const data = await response.json();
@@ -85,11 +79,11 @@ const MainPage = () => {
           } catch (error) {
             console.error(
               `Error fetching repo: ${repo.repoOwner}/${repo.repoName}`,
-              error
+              error,
             );
             return null; // If there's an error, return null for that repo
           }
-        })
+        }),
       );
 
       // Filter out any null values (repos that failed to fetch)
@@ -97,7 +91,7 @@ const MainPage = () => {
 
       // Sort the valid repos by stars
       const sortedData = validRepoData.sort(
-        (a, b) => b.stargazers_count - a.stargazers_count
+        (a, b) => b.stargazers_count - a.stargazers_count,
       );
       setRepoDetails(sortedData);
     };
@@ -109,7 +103,7 @@ const MainPage = () => {
   const filteredRepos = repoDetails.filter(
     (repo) =>
       repo.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      repo.owner?.login.toLowerCase().includes(searchTerm.toLowerCase())
+      repo.owner?.login.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   return (
@@ -162,9 +156,7 @@ const MainPage = () => {
               <p className="mb-1">
                 📌 Tags:{" "}
                 <span className="font-bold">
-                  {repo.topics?.length > 0
-                    ? repo.topics.join(", ")
-                    : "No Tags"}
+                  {repo.topics?.length > 0 ? repo.topics.join(", ") : "No Tags"}
                 </span>
               </p>
 
