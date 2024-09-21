@@ -54,7 +54,23 @@ export default function BasicModal({
 
   return (
     <div>
-      <Button onClick={handleOpen}>Filter</Button>
+      <Button className="p-2rounded-full">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="2"
+          stroke="currentColor"
+          className="h-6 w-6 text-gray-500"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L14 12.414V18a1 1 0 01-.553.894l-4 2A1 1 0 018 20v-7.586L3.293 6.707A1 1 0 013 6V4z"
+          />
+        </svg>
+        <Button onClick={handleOpen}>Filter</Button>
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}

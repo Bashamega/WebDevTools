@@ -208,9 +208,30 @@ export default function GhFinder() {
           </h1>
 
           <div className="flex flex-col md:flex-row justify-between w-full  lg:whitespace-nowrap my-5 items-center">
-            <input
+            {/* <input
               type="text"
               className="p-2 rounded border border-gray-400 text-black"
+              placeholder="Search issues"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            /> */}
+            <input
+              type="text"
+              className={`
+      w-full md:w-auto 
+      p-3 
+      rounded-lg 
+      border border-gray-300 
+      focus:ring-2 focus:ring-blue-500 
+      focus:outline-none 
+      transition duration-200 ease-in-out 
+      text-gray-700 
+      placeholder-gray-400 
+      shadow-sm 
+      hover:shadow-md
+      ${
+        isDarkMode ? "bg-gray-800 text-gray-400" : "bg-gray-200 text-gray-500"
+      } `}
               placeholder="Search issues"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -245,22 +266,32 @@ export default function GhFinder() {
 
           <div className="flex justify-between w-full my-5 items-center">
             <button
-              className={
-                "hover:bg-blue-800 transition-colors md:min-w-1/3 duration-100 px-3 py-2 md:p-5 text-sm rounded-full hover:text-white " +
-                (selected === 1 && "bg-blue-600  text-white")
-              }
+              className={`w-full md:w-1/3 px-5 py-3 md:py-4 
+      text-sm font-medium rounded-full transition-all duration-200 ease-in-out
+      border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+      ${
+        selected === 1
+          ? "bg-blue-600 text-white shadow-lg"
+          : "bg-gray-200 text-gray-700 hover:bg-blue-700 hover:text-white"
+      }
+    `}
               onClick={() => setSelected(1)}
             >
               Web Dev Tools Issues
             </button>
             <button
-              className={
-                "hover:bg-blue-800 transition-colors md:w-1/3 duration-100 px-3 py-2 md:p-5 text-sm rounded-full hover:text-white " +
-                (selected === 2 && "bg-blue-600  text-white")
-              }
+              className={`w-full md:w-1/3 px-5 py-3 md:py-4 
+    text-sm font-medium rounded-full transition-all duration-200 ease-in-out
+    border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+    ${
+      selected === 2
+        ? "bg-blue-600 text-white shadow-lg"
+        : "bg-gray-200 text-gray-700 hover:bg-blue-700 hover:text-white"
+    }
+  `}
               onClick={() => setSelected(2)}
             >
-              Github
+              GitHub
             </button>
             <BasicModal
               isDarkMode={isDarkMode}
@@ -281,7 +312,15 @@ export default function GhFinder() {
           issuesByPage.map((item) => (
             <div
               key={item.id}
-              className="bg-slate-500 rounded-lg mb-5 last:mb-0 pl-5 py-5 flex justify-between items-end w-full"
+              // className="bg-slate-500 rounded-lg mb-5 last:mb-0 pl-5 py-5 flex justify-between items-end w-full"
+              className={` ${
+                isDarkMode
+                  ? "bg-gray-800 text-gray-400"
+                  : "bg-gray-400 text-gray-500"
+              }
+              rounded-lg mb-5 last:mb-0 pl-5 py-5 flex justify-between items-end w-full
+              transition-transform transform hover:scale-105 hover:shadow-lg
+            `}
             >
               <div className=" overflow-hidden">
                 <Link
