@@ -99,7 +99,7 @@ const Converter = () => {
       } min-h-screen w-full pb-2`}
     >
       <NavBar
-        title={"GitHub Issue Finder"}
+        title={"JS to TS Converter"}
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
       />
