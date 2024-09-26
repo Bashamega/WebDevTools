@@ -6,6 +6,16 @@ const Converter = () => {
   const [inputCode, setInputCode] = useState("");
   const [outputCode, setOutputCode] = useState("");
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [copySuccess, setCopySuccess] = useState(false);
+
+  const handleCopy = () => {
+    if (outputCode) {
+      navigator.clipboard.writeText(outputCode);
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 3000);
+    }
+  };
+
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
   };
@@ -103,7 +113,6 @@ const Converter = () => {
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
       />
-      {/* <h1 className="text-2xl font-bold text-center mb-4">JS to TS Converter</h1> */}
       <h1 className="relative z-10 font-sans text-5xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600 mb-7 mt-4">
         JS to TS Converter
       </h1>
@@ -120,13 +129,13 @@ const Converter = () => {
             focus:ring-2 focus:ring-blue-500 
             focus:outline-none 
             transition duration-200 ease-in-out 
-            text-gray-700 
             placeholder-gray-400 
             shadow-sm 
             hover:shadow-md
+            resize-none
             ${
               isDarkMode
-                ? "bg-gray-800 text-gray-400"
+                ? "bg-gray-800 text-gray-200"
                 : "bg-gray-200 text-gray-500"
             } `}
           rows="10"
@@ -135,29 +144,70 @@ const Converter = () => {
           onChange={(e) => setInputCode(e.target.value)}
         ></textarea>
 
-        <textarea
-          className={`
+        <div className="relative w-full mr-7">
+          <textarea
+            className={`
             w-full 
-            mr-7
             p-2
             rounded-lg 
             border border-gray-300 
             focus:ring-2 focus:ring-blue-500 
             focus:outline-none 
             transition duration-200 ease-in-out 
-            text-gray-700 
             placeholder-gray-400 
             shadow-sm 
             hover:shadow-md
+            resize-none
             ${
               isDarkMode
-                ? "bg-gray-800 text-gray-400"
+                ? "bg-gray-800 text-gray-200"
                 : "bg-gray-200 text-gray-500"
             } `}
-          rows="10"
-          readOnly
-          value={outputCode}
-        ></textarea>
+            rows="10"
+            readOnly
+            value={outputCode}
+          ></textarea>
+
+          {copySuccess ? (
+            <button
+              className="absolute top-2 right-2 bg-blue-400 text-white rounded px-4 py-2 flex items-center"
+              onClick={handleCopy}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="white"
+                className="w-6 h-6 mr-1"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.707 7.707a1 1 0 00-1.414-1.414L9 12.586l-2.293-2.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l7-7z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          ) : (
+            <button
+              className="absolute top-2 right-2 bg-gray-200 hover:bg-gray-300 rounded p-2 focus:outline-none"
+              onClick={handleCopy}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-6 h-6 text-gray-700"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 16h8m0 0l-3 3m3-3l-3-3m5-2V6a2 2 0 00-2-2H7a2 2 0 00-2 2v6a2 2 0 002 2h3"
+                />
+              </svg>
+            </button>
+          )}
+        </div>
       </div>
 
       <button
