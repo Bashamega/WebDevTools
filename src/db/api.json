@@ -118,5 +118,35 @@
     "name": "Stripe API",
     "link": "https://docs.stripe.com/api",
     "ctg": "Payments"
+  },
+  {
+    "id": 21,
+    "name": "OpenAI API",
+    "link": "https://platform.openai.com/docs/overview",
+    "ctg": "AI"
+  },
+  {
+    "id": 22,
+    "name": "Zoom API",
+    "link": "https://developers.zoom.us/docs/api/",
+    "ctg": "Communication"
+  },
+  {
+    "id": 23,
+    "name": "NewsAPI",
+    "link": "https://newsapi.org/docs/get-started",
+    "ctg": "News"
+  },
+  {
+    "id": 24,
+    "name": "Marvel API",
+    "link": "https://developer.marvel.com/",
+    "ctg": "Entertainment"
+  },
+  {
+    "id": 25,
+    "name": "Twilio API",
+    "link": "https://www.twilio.com/docs/usage/api",
+    "ctg": "Communication"
   }
 ]
