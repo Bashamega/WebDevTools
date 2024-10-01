@@ -148,5 +148,35 @@
     "name": "Twilio API",
     "link": "https://www.twilio.com/docs/usage/api",
     "ctg": "Communication"
+  },
+  {
+    "id": 26,
+    "name": "PayPal API",
+    "link": "https://developer.paypal.com/api/rest/",
+    "ctg": "Payments"
+  },
+  {
+    "id": 27,
+    "name": "SendGrid API",
+    "link": "https://www.twilio.com/docs/sendgrid",
+    "ctg": "Email"
+  },
+  {
+    "id": 28,
+    "name": "Google Cloud Vision API",
+    "link": "https://cloud.google.com/vision/docs",
+    "ctg": "AI"
+  },
+  {
+    "id": 29,
+    "name": "Firebase API",
+    "link": "https://firebase.google.com/docs",
+    "ctg": "Development"
+  },
+  {
+    "id": 30,
+    "name": "Slack API",
+    "link": "https://api.slack.com/",
+    "ctg": "Communication"
   }
 ]
