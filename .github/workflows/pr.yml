@@ -8,7 +8,7 @@ on:
 
 jobs:
   request_review:
-    if: github.repository == 'Bashamega/TrendTrack'
+    if: github.repository == 'Bashamega/WebDevTools'
     runs-on: ubuntu-latest
     steps:
       - name: Request review from bashamega
