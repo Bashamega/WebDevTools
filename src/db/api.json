@@ -178,5 +178,35 @@
     "name": "Slack API",
     "link": "https://api.slack.com/",
     "ctg": "Communication"
+  },
+  {
+    "id": 31,
+    "name": "Imgur API",
+    "link": "https://apidocs.imgur.com/",
+    "ctg": "Images"
+  },
+  {
+    "id": 32,
+    "name": "NumbersAPI",
+    "link": "https://numbersapi.com/",
+    "ctg": "Trivia"
+  },
+  {
+    "id": 33,
+    "name": "WeatherAPI",
+    "link": "https://www.weatherapi.com/",
+    "ctg": "Weather"
+  },
+  {
+    "id": 34,
+    "name": "Dropbox API",
+    "link": "https://www.dropbox.com/developers/documentation",
+    "ctg": "Storage"
+  },
+  {
+    "id": 35,
+    "name": "Agify API",
+    "link": "https://agify.io/",
+    "ctg": "Demographics"
   }
 ]
