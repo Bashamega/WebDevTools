@@ -178,5 +178,35 @@
     "name": "Slack API",
     "link": "https://api.slack.com/",
     "ctg": "Communication"
+  },
+  {
+    "id": 31,
+    "name": "Dropbox API",
+    "link": "https://www.dropbox.com/developers/documentation",
+    "ctg": "Storage"
+  },
+  {
+    "id": 32,
+    "name": "Imgur API",
+    "link": "https://apidocs.imgur.com/",
+    "ctg": "Images"
+  },
+  {
+    "id": 33,
+    "name": "Clarifai API",
+    "link": "https://docs.clarifai.com/",
+    "ctg": "AI"
+  },
+  {
+    "id": 34,
+    "name": "Eventbrite API",
+    "link": "https://www.eventbrite.com/platform/api",
+    "ctg": "Events"
+  },
+  {
+    "id": 35,
+    "name": "Last.fm API",
+    "link": "https://www.last.fm/api",
+    "ctg": "Music"
   }
 ]
