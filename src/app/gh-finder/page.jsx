@@ -264,10 +264,9 @@ export default function GhFinder() {
             </div>
           </div>
 
-          <div className="flex justify-between w-full my-5 items-center">
+          <div className="flex gap-1.5 md:gap-3 w-full my-5 items-center justify-center">
             <button
-              className={`w-full md:w-1/3 px-5 py-3 md:py-4 
-      text-sm font-medium rounded-full transition-all duration-200 ease-in-out
+              className={`md:w-1/3 px-2.5 md:px-5 py-3 md:py-4 sm:text-sm text-[12px] font-medium rounded-full transition-all duration-200 ease-in-out
       border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
       ${
         selected === 1
@@ -280,8 +279,7 @@ export default function GhFinder() {
               Web Dev Tools Issues
             </button>
             <button
-              className={`w-full md:w-1/3 px-5 py-3 md:py-4 
-    text-sm font-medium rounded-full transition-all duration-200 ease-in-out
+              className={`md:w-1/3 px-4 py-3 md:py-4 sm:text-sm text-[12px] font-medium rounded-full transition-all duration-200 ease-in-out
     border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
     ${
       selected === 2
