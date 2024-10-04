@@ -208,5 +208,35 @@
     "name": "Agify API",
     "link": "https://agify.io/",
     "ctg": "Demographics"
+  },
+  {
+    "id": 36,
+    "name": "Clarifai API",
+    "link": "https://docs.clarifai.com/",
+    "ctg": "AI"
+  },
+  {
+    "id": 37,
+    "name": "Eventbrite API",
+    "link": "https://www.eventbrite.com/platform/api",
+    "ctg": "Events"
+  },
+  {
+    "id": 38,
+    "name": "Last.fm API",
+    "link": "https://www.last.fm/api",
+    "ctg": "Music"
+  },
+  {
+    "id": 39,
+    "name": "TMDb API",
+    "link": "https://developers.themoviedb.org/3/getting-started/introduction",
+    "ctg": "Video"
+  },
+  {
+    "id": 40,
+    "name": "OpenLibrary API",
+    "link": "https://openlibrary.org/developers/api",
+    "ctg": "Books"
   }
 ]
