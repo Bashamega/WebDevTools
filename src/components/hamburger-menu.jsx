@@ -65,7 +65,9 @@ export default function HamburgerMenu({ open, togglePanel, isDarkMode }) {
     >
       <DialogBackdrop
         transition
-        className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity duration-500 ease-in-out data-[closed]:opacity-0"
+        className={`fixed inset-0 ${
+          isDarkMode ? "bg-opacity-75 bg-gray-900" : "bg-opacity-75 bg-gray-500"
+        } transition-opacity duration-500 ease-in-out data-[closed]:opacity-0`}
       />
 
       <div className="fixed inset-0 overflow-hidden">
@@ -98,7 +100,7 @@ export default function HamburgerMenu({ open, togglePanel, isDarkMode }) {
                     <div className="flex flex-col gap-3">
                       <button
                         onClick={() => toggleDropdown("generator")}
-                        className="text-white font-bold p-4 text-sm sm:text-base bg-blue-500 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
+                        className={`text-white font-bold p-4 text-sm sm:text-base bg-blue-500 dark:bg-gray-600 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2`}
                       >
                         <FaGears fontSize={20} className="mr-2" />
                         Generator Tools
@@ -129,16 +131,16 @@ export default function HamburgerMenu({ open, togglePanel, isDarkMode }) {
 
                       <button
                         onClick={() => toggleDropdown("editor")}
-                        className="text-white font-bold text-sm sm:text-base p-4 bg-blue-500 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
+                        className="text-white font-bold text-sm sm:text-base p-4 bg-blue-500 dark:bg-gray-600 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
                       >
-                        <RiEdit2Fill fontSize={20} className="mr-2" />
+                        <RiEdit2Fill fontSize={20} className="mr-2 " />
                         Editor Tools
                         <svg
                           className={`${
                             openDropdown === "editor"
                               ? "transform rotate-180"
                               : ""
-                          } inline-block ml-1 w-4 h-4`}
+                          } inline-block ml-1 w-4 h-4 `}
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -152,7 +154,10 @@ export default function HamburgerMenu({ open, togglePanel, isDarkMode }) {
                           ></path>
                         </svg>
                       </button>
-                      <div ref={dropdownRefs.editor}>
+                      <div
+                        ref={dropdownRefs.editor}
+                        className="bg-blue-500 dark:bg-gray-600"
+                      >
                         {openDropdown === "editor" && (
                           <EditorDropdown isDarkMode={isDarkMode} />
                         )}
@@ -160,7 +165,7 @@ export default function HamburgerMenu({ open, togglePanel, isDarkMode }) {
 
                       <button
                         onClick={() => toggleDropdown("other")}
-                        className="text-white font-bold text-sm sm:text-base p-4 bg-blue-500 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
+                        className="text-white font-bold text-sm sm:text-base p-4 bg-blue-500 dark:bg-gray-600 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
                       >
                         <FaTools fontSize={20} className="mr-2" />
                         Other Tools
@@ -194,14 +199,14 @@ export default function HamburgerMenu({ open, togglePanel, isDarkMode }) {
                   <div className="flex flex-col gap-3">
                     <Link
                       href="/about"
-                      className="text-white font-bold text-[0.6rem]  sm:text-sm p-4 bg-blue-500 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
+                      className="text-white font-bold text-[0.6rem]  sm:text-sm p-4 bg-blue-500 dark:bg-gray-600 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
                     >
                       <FaInfo fontSize={15} />
                       About
                     </Link>
                     <Link
                       href="/contribute"
-                      className="text-white font-bold text-[0.6rem]  sm:text-sm  p-4 bg-blue-500 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
+                      className="text-white font-bold text-[0.6rem]  sm:text-sm  p-4 bg-blue-500 dark:bg-gray-600 hover:bg-blue-700 hover:text-white transition-all duration-700 rounded-lg flex items-center justify-center gap-2"
                     >
                       <IoMdGitPullRequest fontSize={20} />
                       Contribute
