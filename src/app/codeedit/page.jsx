@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Editor from "./components/Editor";
-import { NavBar } from "../components/navbar";
+import { NavBar } from "../../components/navbar";
 
 export default function CodeEditor() {
   const [isDarkMode, setIsDarkMode] = useState(false);

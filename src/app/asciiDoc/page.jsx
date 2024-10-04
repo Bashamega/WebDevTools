@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import CodeEditor from "./components/Editor";
-import { NavBar } from "../components/navbar";
+import { NavBar } from "../../components/navbar";
 import Asciidoctor from "asciidoctor";
 
 const asciidoctor = Asciidoctor();

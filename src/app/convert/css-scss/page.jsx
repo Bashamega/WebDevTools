@@ -4,10 +4,10 @@ import React, { useState, useEffect } from "react";
 import * as sass from "sass";
 import SnippetBox from "./components/SnippetBox";
 import ResultBox from "./components/ResultBox";
-import Footer from "@/app/components/Footer";
+import Footer from "@/components/Footer";
 // import Image from "next/image";
 // import icon from "./switch_icon.png";
-import { NavBar } from "@/app/components/navbar";
+import { NavBar } from "@/components/navbar";
 
 export default function CSS_TO_SCSS() {
   //only nav content

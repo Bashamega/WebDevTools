@@ -1,10 +1,9 @@
 "use client";
-
-import Nav from "@/app/components/nav";
+import Nav from "@/components/nav";
 import { useState, useEffect } from "react";
-import Footer from "./components/Footer";
+import Footer from "../components/Footer";
 import tools from "@/db/tools.json";
-import { Card } from "./components/card";
+import { Card } from "../components/card";
 
 export default function Home({ state }) {
   const [isDarkMode, setIsDarkMode] = useState(false);

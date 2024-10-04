@@ -201,7 +201,10 @@ const Preview = ({ isDarkMode, data }) => {
               <div className="flex items-center justify-start w-full">
                 {image && (
                   <img
-                    src={image || "https://via.placeholder.com/150"}
+                    src={
+                      encodeURIComponent(image) ||
+                      "https://via.placeholder.com/150"
+                    }
                     alt="Profile Image"
                     style={
                       imageShape === "circle"
@@ -225,7 +228,10 @@ const Preview = ({ isDarkMode, data }) => {
                   >
                     <MdEmail />
                     <span className="text-sm ml-2">
-                      <a href={`mailto:${email}`} className="">
+                      <a
+                        href={`mailto:${encodeURIComponent(email)}`}
+                        className=""
+                      >
                         {email}
                       </a>
                     </span>
@@ -242,7 +248,7 @@ const Preview = ({ isDarkMode, data }) => {
                   >
                     <FaPhoneAlt />
                     <span style={{ marginLeft: "8px" }}>
-                      <a href={`tel:${phone}`} className="">
+                      <a href={`tel:${encodeURIComponent(phone)}`} className="">
                         {phone}
                       </a>
                     </span>
@@ -443,7 +449,7 @@ const Preview = ({ isDarkMode, data }) => {
                         <MdEmail />
                         <span className="text-sm ml-2">
                           <a
-                            href={`mailto:${email}`}
+                            href={`mailto:${encodeURIComponent(email)}`}
                             className="text-slate-800"
                           >
                             {email}
@@ -455,7 +461,10 @@ const Preview = ({ isDarkMode, data }) => {
                       <p style={{ display: "flex", alignItems: "center" }}>
                         <FaPhoneAlt />
                         <span className="text-sm ml-2">
-                          <a href={`tel:${phone}`} className="text-slate-800 ">
+                          <a
+                            href={`tel:${encodeURIComponent(phone)}`}
+                            className="text-slate-800 "
+                          >
                             {phone}
                           </a>
                         </span>

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import Preview from "./Preview";
-import { NavBar } from "../components/navbar";
+import { NavBar } from "../../components/navbar";
 import ResumeForm from "./ResumeForm";
 
 const ResumePDFDownloadLink = dynamic(() => import("./ResumePDF"), {

@@ -1,6 +1,6 @@
 "use client";
 
-import { NavBar } from "@/app/components/navbar";
+import { NavBar } from "@/components/navbar";
 import { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { FaRegCopy } from "react-icons/fa6";
@@ -17,6 +17,9 @@ export default function ButtonCustomizer() {
   const [fontSize, setFontSize] = useState(16);
   const [fontWeight, setFontWeight] = useState("bold");
   const [fontFamily, setFontFamily] = useState("tahoma");
+  const [borderWidth, setBorderWidth] = useState(2);
+  const [borderColor, setBorderColor] = useState("#000");
+  const [borderStyle, setBorderStyle] = useState("solid");
   const [showCode, setShowCode] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -31,9 +34,11 @@ export default function ButtonCustomizer() {
   font-size: ${fontSize}px;
   font-weight: ${fontWeight};
   font-family: ${fontFamily};
-  border: none;
+border-width: ${borderWidth}px;
+  border-color: ${borderColor};
+  border-style: ${borderColor};  
   cursor: ${cursor};
-  width: ${width}px;
+width: ${width}px;
   height: ${height}px;
 ">
   Customized Button
@@ -54,7 +59,9 @@ export default function ButtonCustomizer() {
   ${fontSize ? `text-[${fontSize}px]` : ""}
   ${fontWeight ? `font-[${fontWeight}]` : ""}
   ${fontFamily ? `font-[${fontFamily}]` : ""}
-  border-none
+  ${borderWidth ? `border-[${borderWidth}px]` : ""}
+  ${borderColor ? `border-[${borderColor}]` : ""}
+  ${borderStyle ? `border-[${borderStyle}]` : ""}
   ${cursor ? `cursor-[${cursor}]` : ""}
   ${width ? `w-[${width}px]` : ""}
   ${height ? `h-[${height}px]` : ""}
@@ -104,6 +111,18 @@ export default function ButtonCustomizer() {
     setFontFamily(event.target.value);
   };
 
+  const handleBorderColorChange = (event) => {
+    setBorderColor(event.target.value);
+  };
+
+  const handleBorderWidthChange = (event) => {
+    setBorderWidth(event.target.value);
+  };
+
+  const handleBorderStyleChange = (event) => {
+    setBorderStyle(event.target.value);
+  };
+
   const handleCodeButtonClick = () => {
     setShowCode(true);
   };
@@ -118,9 +137,11 @@ export default function ButtonCustomizer() {
     borderRadius: `${borderRadius}px`,
     padding: "10px 20px",
     fontSize: `${fontSize}px`,
+    borderColor: borderColor,
+    borderWidth: `${borderWidth}px`,
+    borderStyle: borderStyle,
     fontWeight: fontWeight,
     fontFamily: fontFamily,
-    border: "none",
     cursor: cursor,
     width: `${width}px`,
     height: `${height}px`,
@@ -216,6 +237,21 @@ export default function ButtonCustomizer() {
     "Quicksand, sans-serif",
   ];
 
+  const borderStyles = [
+    "none",
+    "hidden",
+    "dotted",
+    "dashed",
+    "solid",
+    "double",
+    "groove",
+    "ridge",
+    "inset",
+    "outset",
+    "initial",
+    "inherit",
+  ];
+
   return (
     <div
       className={`${
@@ -250,6 +286,7 @@ export default function ButtonCustomizer() {
           </Tab>
           <Tab className="font-mono cursor-pointer p-1 text-white">Cursor</Tab>
           <Tab className="font-mono cursor-pointer p-1 text-white">Font</Tab>
+          <Tab className="font-mono cursor-pointer p-1 text-white">Border</Tab>
         </TabList>
 
         <TabPanel className="bg-slate-700">
@@ -444,6 +481,56 @@ export default function ButtonCustomizer() {
             </div>
           </div>
         </TabPanel>
+
+        <TabPanel>
+          <div
+            className={`${
+              isDarkMode
+                ? "bg-gray-900 text-gray-400"
+                : "bg-gray-100 text-gray-800"
+            } md:my-8 p-2 md:p-5 w-full flex flex-col items-center `}
+          >
+            <h2 className="text-2xl font-bold mb-4 font-mono">
+              Button Customizer
+            </h2>
+            <div className="flex flex-col">
+              <div className="mb-4">
+                <label className="mr-2 font-mono">Border Width:</label>
+                <input
+                  type="number"
+                  min="0"
+                  className="text-white bg-gray-700 p-1 rounded-md font-mono"
+                  value={borderWidth}
+                  onChange={handleBorderWidthChange}
+                />
+              </div>
+              <div className="mb-4">
+                <label className="mr-2 font-mono">Border Style:</label>
+                <select
+                  name="weight-options"
+                  id="weight-options"
+                  onChange={handleBorderStyleChange}
+                  value={borderStyle}
+                  className="text-white bg-gray-700 p-1 rounded-md font-mono"
+                >
+                  {borderStyles.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="mb-4">
+                <label className="mr-2 font-mono">Border Color:</label>
+                <input
+                  type="color"
+                  value={borderColor}
+                  onChange={handleBorderColorChange}
+                />
+              </div>
+            </div>
+          </div>
+        </TabPanel>
       </Tabs>
 
       {showSuccessMessage && (
@@ -496,7 +583,9 @@ export default function ButtonCustomizer() {
                   {textColor}; border-radius: {borderRadius}px; padding: 10px
                   20px; font-size: {fontSize}px; font-weight: {fontWeight};
                   font-family:
-                  {fontFamily}; border: none; cursor: {cursor}; width: {width}
+                  {fontFamily}; border-width: {borderWidth}px; border-color:{" "}
+                  {borderColor}; border-style: {borderStyle}; cursor: {cursor};
+                  width: {width}
                   px; height: {height}px; &quot;&gt; Customized Button
                   &lt;/button&gt;
                 </p>

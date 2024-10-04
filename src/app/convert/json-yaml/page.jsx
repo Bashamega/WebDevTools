@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { NavBar } from "@/app/components/navbar";
+import { NavBar } from "@/components/navbar";
 import CodeEditor from "../components/editor";
 const YAML = require("json-to-pretty-yaml");
 

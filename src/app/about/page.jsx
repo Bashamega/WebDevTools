@@ -1,6 +1,6 @@
 "use client";
-import Footer from "../components/Footer";
-import Nav from "../components/nav";
+import Footer from "../../components/Footer";
+import Nav from "../../components/nav";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -14,19 +14,19 @@ export default function Home() {
   return (
     <main
       className={`${
-        isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-800"
+        isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
       } min-h-screen`}
     >
       <Nav toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
       <div className="flex justify-center flex-col items-center w-full gap-3">
         <div
           id="about"
-          className=" break-words block max-w-[26rem] md:max-w-[40rem] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+          className={`break-words block max-w-[26rem] md:max-w-[40rem] p-6 ${
+            isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
+          } border border-gray-200 rounded-lg shadow`}
         >
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            About
-          </h5>
-          <p className="font-normal text-gray-700 dark:text-gray-400">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight">About</h5>
+          <p className="font-normal">
             WebDev Tools is a comprehensive online platform designed to empower
             web developers with a wide array of code samples and snippets.
             Whether you are a seasoned professional or just starting your
@@ -36,18 +36,20 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="p-4 text-center max-w-[26rem] md:max-w-[40rem] bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-          <h5 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
-            Want to contribute?
-          </h5>
-          <p className="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">
+        <div
+          className={`p-4 text-center max-w-[26rem] md:max-w-[40rem] ${
+            isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
+          } border border-gray-200 rounded-lg shadow sm:p-8`}
+        >
+          <h5 className="mb-2 text-3xl font-bold">Want to contribute?</h5>
+          <p className="mb-5 text-base sm:text-lg">
             Visit the Github repo, make sure to follow the guidelines and
             contribute!
           </p>
           <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
             <Link
               href="https://github.com/Bashamega/WebDevTools"
-              className="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 hover:shadow-card-shadow  transition-all duration-500 ease-in"
+              className="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 transition-all duration-500 ease-in"
             >
               <svg
                 className="mr-3 w-7 h-7"

@@ -124,5 +124,29 @@
     "name": "Resume Builder",
     "link": "/resume-builder",
     "ctg": "other"
+  },
+  {
+    "id": 22,
+    "name": "Github Readme Profile Generator",
+    "link": "/customizer/GitHub-Profile-generator",
+    "ctg": "generator"
+  },
+  {
+    "id": 23,
+    "name": "Public Apis",
+    "link": "/apis",
+    "ctg": "other"
+  },
+  {
+    "id": 24,
+    "name": "Opensource Collection",
+    "link": "/opensource",
+    "ctg": "other"
+  },
+  {
+    "id": 25,
+    "name": "Js To Ts Converter",
+    "link": "/Js-to-Ts-Converter",
+    "ctg": "other"
   }
 ]

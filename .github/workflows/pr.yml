@@ -1,0 +1,18 @@
+name: Auto Review Request
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened]
+
+jobs:
+  request_review:
+    if: github.repository == 'Bashamega/WebDevTools'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request review from bashamega
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          event-type: review-request
+          client-payload: '{"reviewer": "bashamega"}'

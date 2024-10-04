@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Footer from "../components/Footer";
-import { NavBar } from "../components/navbar";
+import Footer from "../../components/Footer";
+import { NavBar } from "../../components/navbar";
 
 export default function Endpoints() {
   const [isDarkMode, setIsDarkMode] = useState(false);
