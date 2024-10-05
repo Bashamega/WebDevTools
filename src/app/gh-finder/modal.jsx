@@ -10,8 +10,9 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 600,
-  height: 300,
+  width: "90%",
+  maxWidth: 600,
+  height: 400,
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
@@ -61,7 +62,7 @@ export default function BasicModal({
           viewBox="0 0 24 24"
           strokeWidth="2"
           stroke="currentColor"
-          className="h-6 w-6 text-gray-500"
+          className="h-4 w-4 md:w-6 md:h-6 text-gray-500"
         >
           <path
             strokeLinecap="round"
@@ -69,7 +70,9 @@ export default function BasicModal({
             d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L14 12.414V18a1 1 0 01-.553.894l-4 2A1 1 0 018 20v-7.586L3.293 6.707A1 1 0 013 6V4z"
           />
         </svg>
-        <Button onClick={handleOpen}>Filter</Button>
+        <Button onClick={handleOpen} className="sm:!text-sm !text-[12px]">
+          Filter
+        </Button>
       </Button>
       <Modal
         open={open}
@@ -79,11 +82,11 @@ export default function BasicModal({
       >
         <Box
           sx={style}
-          className={`${
+          className={`sm:!h-[300px] ${
             isDarkMode ? "bg-slate-800 text-white" : "bg-slate-200 text-black"
           }`}
         >
-          <FormGroup>
+          <FormGroup className="!grid sm:grid-cols-2">
             {labelsList.map((label, idx) => (
               <FormControlLabel
                 key={idx}
