@@ -328,7 +328,7 @@ export default function GhFinder() {
                   {item.title}
                 </Link>
                 <Link
-                  className={isDarkMode?"text-slate-300":"text-black"}
+                  className={isDarkMode ? "text-slate-300" : "text-black"}
                   href={item.repository_url.replace(
                     "https://api.github.com/repos",
                     "https://github.com",
