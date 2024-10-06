@@ -4,17 +4,20 @@ import { NavBar } from "../../components/navbar";
 import Link from "next/link";
 import BasicModal from "./modal";
 import Pagination from "./pagination";
+import LabelButton from "@/app/gh-finder/label";
 
 export default function GhFinder() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selected, setSelected] = useState(1);
   const [data, setData] = useState([]);
   const [selectedLabels, setSelectedLabels] = useState([]);
+  const [selectedLabelsData, setSelectedLabelsData] = useState([]);
   const [filteredIssues, setFilteredIssues] = useState([]);
 
   // New states
   const [searchQuery, setSearchQuery] = useState("");
   const [isAssigned, setIsAssigned] = useState(false);
+  const [showFilteredLabels, setShowFilteredLabels] = useState(false);
   const [currentPage, setCurrentPage] = useState(10);
   const [maxResults, setMaxResults] = useState(10);
 
@@ -173,6 +176,33 @@ export default function GhFinder() {
     return luminance < 0.5;
   }
 
+  function handleSelectedLabel(inputLabel) {
+    //console.log(selectedLabelsData)
+
+    // add label in filter lists
+    if (!selectedLabels.includes(inputLabel.name)) {
+      setSelectedLabels((prevSelectedLabels) => {
+        return [...prevSelectedLabels, inputLabel.name];
+      });
+
+      setSelectedLabelsData((prevSelectedLabelsData) => {
+        return [...prevSelectedLabelsData, inputLabel];
+      });
+    }
+    // remove label from filter lists
+    else {
+      setSelectedLabels((prevSelectedLabels) => {
+        return prevSelectedLabels.filter((label) => label !== inputLabel.name);
+      });
+
+      setSelectedLabelsData((prevSelectedLabelsData) => {
+        return prevSelectedLabelsData.filter(
+          (label) => label.name !== inputLabel.name,
+        );
+      });
+    }
+  }
+
   if (!data.length) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -218,33 +248,47 @@ export default function GhFinder() {
             <input
               type="text"
               className={`
-      w-full md:w-auto 
-      p-3 
-      rounded-lg 
-      border border-gray-300 
-      focus:ring-2 focus:ring-blue-500 
-      focus:outline-none 
-      transition duration-200 ease-in-out 
-      text-gray-700 
-      placeholder-gray-400 
-      shadow-sm 
-      hover:shadow-md
-      ${
-        isDarkMode ? "bg-gray-800 text-gray-400" : "bg-gray-200 text-gray-500"
-      } `}
+                w-full md:w-auto 
+                p-3 
+                rounded-lg 
+                border border-gray-300 
+                focus:ring-2 focus:ring-blue-500 
+                focus:outline-none 
+                transition duration-200 ease-in-out 
+                text-gray-700 
+                placeholder-gray-400 
+                shadow-sm 
+                hover:shadow-md
+                ${
+                  isDarkMode
+                    ? "bg-gray-800 text-gray-400"
+                    : "bg-gray-200 text-gray-500"
+                } `}
               placeholder="Search issues"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <div className="flex items-center mx-4 my-4">
-              <input
-                type="checkbox"
-                id="isAssigned"
-                checked={isAssigned}
-                onChange={() => setIsAssigned(!isAssigned)}
-                className="mr-2"
-              />
-              <label htmlFor="isAssigned">Is assigned</label>
+            <div className="flex-row items-center mx-4 my-2">
+              <div>
+                <input
+                  type="checkbox"
+                  id="isAssigned"
+                  checked={isAssigned}
+                  onChange={() => setIsAssigned(!isAssigned)}
+                  className="mr-2"
+                />
+                <label htmlFor="isAssigned">Is assigned</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="showFilteredLabels"
+                  checked={showFilteredLabels}
+                  onChange={() => setShowFilteredLabels(!showFilteredLabels)}
+                  className="mr-2"
+                />
+                <label htmlFor="showFilteredLabels">Show labels</label>
+              </div>
             </div>
             <div>
               <p>Results per page</p>
@@ -263,6 +307,31 @@ export default function GhFinder() {
               </div>
             </div>
           </div>
+
+          {showFilteredLabels && selectedLabels.length > 0 && (
+            <div className="flex w-full my-5 items-center justify-center">
+              {selectedLabels?.map((labelName) => {
+                const labelData = selectedLabelsData.find(
+                  (item) => item.name === labelName,
+                );
+                const id = labelData
+                  ? labelData.id
+                  : Math.random().toString(36).substr(2, 9);
+                const bgColor = labelData ? labelData.color : "C0C0C0";
+
+                return (
+                  <LabelButton
+                    key={id}
+                    labelId={id}
+                    name={labelName}
+                    bgColor={bgColor}
+                    isDarkColor={isDarkColor}
+                    handleSelectedLabel={handleSelectedLabel}
+                  />
+                );
+              })}
+            </div>
+          )}
 
           <div className="flex gap-1.5 md:gap-3 w-full my-5 items-center justify-center">
             <button
@@ -341,23 +410,19 @@ export default function GhFinder() {
                 </Link>
                 <div
                   className={
-                    "flex flex-wrap items-center mt-3 gap-2 " +
+                    "flex flex-wrap items-center mt-3 mx-1 gap-2 " +
                     (isDarkMode ? "text-gray-300" : "text-gray-600")
                   }
                 >
                   {item.labels?.map((label) => (
-                    <span
+                    <LabelButton
                       key={label.id}
-                      className="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full truncate"
-                      style={{
-                        backgroundColor: `#${label.color}`,
-                        color: isDarkColor(`#${label.color}`)
-                          ? "white"
-                          : "black",
-                      }}
-                    >
-                      {label.name}
-                    </span>
+                      labelId={label.id}
+                      name={label.name}
+                      bgColor={label.color}
+                      isDarkColor={isDarkColor}
+                      handleSelectedLabel={handleSelectedLabel}
+                    />
                   ))}
                 </div>
               </div>
