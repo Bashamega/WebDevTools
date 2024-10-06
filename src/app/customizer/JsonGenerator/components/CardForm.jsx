@@ -86,7 +86,7 @@ export default function CardForm({ isDarkMode }) {
 
   return (
     <Reorder.Group
-      className={`mt-10 ${isDarkMode ? "dark" : ""}`}
+      className={`mt-5 ${isDarkMode ? "dark" : ""}`}
       axis="y"
       values={fields}
       onReorder={setFields}
