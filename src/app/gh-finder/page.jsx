@@ -323,7 +323,8 @@ export default function GhFinder() {
               <div className=" overflow-hidden">
                 <Link
                   href={item.html_url}
-                  className="text-white font-bold text-3xl hover:underline truncate block"
+                  className={` ${isDarkMode ? "text-white" : "text-black"}
+                   font-bold text-3xl hover:underline truncate block`}
                 >
                   {item.title}
                 </Link>
