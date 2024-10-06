@@ -23,6 +23,7 @@ export default function BasicModal({
   isDarkMode,
   selectedLabels,
   setSelectedLabels,
+  handleParametersURL,
 }) {
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
@@ -41,11 +42,17 @@ export default function BasicModal({
   const handleChange = (inputLabel, event) => {
     if (!selectedLabels.includes(inputLabel)) {
       setSelectedLabels((prevSelectedLabels) => {
-        return [...prevSelectedLabels, inputLabel];
+        const newSelectedLabels = [...prevSelectedLabels, inputLabel];
+        handleParametersURL(newSelectedLabels, true);
+        return newSelectedLabels;
       });
     } else {
       setSelectedLabels((prevSelectedLabels) => {
-        return prevSelectedLabels.filter((label) => label !== inputLabel);
+        const newSelectedLabels = prevSelectedLabels.filter(
+          (label) => label !== inputLabel,
+        );
+        handleParametersURL(newSelectedLabels, false);
+        return newSelectedLabels;
       });
     }
   };
@@ -53,6 +60,7 @@ export default function BasicModal({
   const handleClear = () => {
     setSelectedLabels([]);
     setOpen(false);
+    handleParametersURL([], false);
   };
 
   const handleFilterInput = () => {

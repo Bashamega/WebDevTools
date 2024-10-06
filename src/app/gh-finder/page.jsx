@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
-import { NavBar } from "../../components/navbar";
+import { NavBar } from "@/components/navbar";
 import Link from "next/link";
 import BasicModal from "./modal";
 import Pagination from "./pagination";
@@ -20,6 +20,7 @@ export default function GhFinder() {
   const [showFilteredLabels, setShowFilteredLabels] = useState(false);
   const [currentPage, setCurrentPage] = useState(10);
   const [maxResults, setMaxResults] = useState(10);
+  const [url, setUrl] = useState({});
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -154,6 +155,18 @@ export default function GhFinder() {
     setCurrentPage(1);
   }, [data, isAssigned, searchQuery, selectedLabels]);
 
+  useEffect(() => {
+    // get URL and load parameters when page is refreshed
+    const newUrl = new URL(window.location);
+    setUrl(newUrl);
+    const labelsParam = newUrl.searchParams.get("labels");
+
+    if (labelsParam) {
+      const labelsArray = labelsParam.split(",");
+      setSelectedLabels(labelsArray);
+    }
+  }, []);
+
   const getIssuesByPage = useCallback(() => {
     const startResult = (currentPage - 1) * maxResults + 1;
     const endResult = Math.min(currentPage * maxResults, filteredIssues.length);
@@ -176,13 +189,27 @@ export default function GhFinder() {
     return luminance < 0.5;
   }
 
-  function handleSelectedLabel(inputLabel) {
-    //console.log(selectedLabelsData)
+  function handleParametersURL(parameters, isAddingNew) {
+    if (isAddingNew) {
+      url.searchParams.set("labels", parameters.join(","));
+      window.history.pushState({}, "", url); // update URL
+    } else {
+      if (parameters.length > 0) {
+        url.searchParams.set("labels", parameters.join(","));
+      } else {
+        url.searchParams.delete("labels");
+      }
+      window.history.pushState({}, "", url); // update URL
+    }
+  }
 
+  function handleSelectedLabel(inputLabel) {
     // add label in filter lists
     if (!selectedLabels.includes(inputLabel.name)) {
       setSelectedLabels((prevSelectedLabels) => {
-        return [...prevSelectedLabels, inputLabel.name];
+        const newSelectedLabels = [...prevSelectedLabels, inputLabel.name];
+        handleParametersURL(newSelectedLabels, true);
+        return newSelectedLabels;
       });
 
       setSelectedLabelsData((prevSelectedLabelsData) => {
@@ -192,7 +219,11 @@ export default function GhFinder() {
     // remove label from filter lists
     else {
       setSelectedLabels((prevSelectedLabels) => {
-        return prevSelectedLabels.filter((label) => label !== inputLabel.name);
+        const newSelectedLabels = prevSelectedLabels.filter(
+          (label) => label !== inputLabel.name,
+        );
+        handleParametersURL(newSelectedLabels, false);
+        return newSelectedLabels;
       });
 
       setSelectedLabelsData((prevSelectedLabelsData) => {
@@ -248,7 +279,7 @@ export default function GhFinder() {
             <input
               type="text"
               className={`
-                w-full md:w-auto 
+                w-fit md:w-auto 
                 p-3 
                 rounded-lg 
                 border border-gray-300 
@@ -364,6 +395,7 @@ export default function GhFinder() {
               isDarkMode={isDarkMode}
               selectedLabels={selectedLabels}
               setSelectedLabels={setSelectedLabels}
+              handleParametersURL={handleParametersURL}
             />
           </div>
         </header>
