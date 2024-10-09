@@ -26,18 +26,9 @@ jobs:
         run: echo "${{ github.event.pull_request.merged }}"
         continue-on-error: true
 
-      - name: Add Hacktoberfest label
-        if: success() # Proceed if the PR was created in October
-        uses: peter-evans/create-or-update-label@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: hacktoberfest
-          color: "ff5500"
-          description: "Pull request for Hacktoberfest"
-
       - name: Label pull request
         if: github.event.pull_request.merged == 'true' || github.event.action == 'opened'
         uses: actions-ecosystem/action-add-labels@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          labels: hacktoberfest
+          labels: hacktoberfest-accepted
