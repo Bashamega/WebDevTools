@@ -32,8 +32,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: hacktoberfest
-          color: 'ff5500'
-          description: 'Pull request for Hacktoberfest'
+          color: "ff5500"
+          description: "Pull request for Hacktoberfest"
 
       - name: Label pull request
         if: github.event.pull_request.merged == 'true' || github.event.action == 'opened'
