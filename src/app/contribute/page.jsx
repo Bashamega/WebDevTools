@@ -82,20 +82,18 @@ export default function ContributePage() {
                 contributors
                   .filter((contributor) => contributor.type === "User")
                   .map((item, index) => (
-                    <div
+                    <Link
                       key={index}
+                      href={item.html_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={`${
                         isDarkMode
                           ? "bg-gray-700 text-white"
                           : "bg-gray-100 text-black"
-                      } rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-card-shadow transition-all duration-500 ease-in`}
+                      } rounded-lg p-4 flex flex-col items-center justify-center hover:shadow-card-shadow hover:scale-105 transition-all duration-500 ease-in`}
                     >
-                      <Link
-                        href={item.html_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center flex-col hover:scale-105 transition-all duration-500 ease"
-                      >
+                      <div className="flex items-center justify-center flex-col  transition-all duration-500 ease">
                         <Image
                           src={item.avatar_url}
                           alt={item.login}
@@ -104,8 +102,8 @@ export default function ContributePage() {
                           className="w-12 h-12 mr-2 rounded-full self-center"
                         />
                         {item.login}
-                      </Link>
-                    </div>
+                      </div>
+                    </Link>
                   ))
               ) : (
                 <p>No data available</p>
