@@ -33,7 +33,7 @@ jobs:
         if: success() # Proceed if the PR was created in October
         uses: peter-evans/create-or-update-label@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.LABEL_PR }}
           name: hacktoberfest
           color: 'ff5500'
           description: 'Pull request for Hacktoberfest'
