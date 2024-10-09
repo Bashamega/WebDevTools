@@ -95,9 +95,12 @@ export default function GhFinder() {
       const result = await fetchData(url);
       let filteredData =
         selected === 1
-          ? result.filter((item) => !item.node_id.includes("PR_"))
-          : result.items;
-
+          ? result
+            ? result.filter((item) => !item.node_id.includes("PR_"))
+            : []
+          : result
+            ? result.items
+            : [];
       if (url === urlWebDevTools) {
         filteredData = await addPRsInfoToIssues(filteredData);
       }
@@ -340,7 +343,7 @@ export default function GhFinder() {
           </div>
 
           {showFilteredLabels && selectedLabels.length > 0 && (
-            <div className="flex w-full my-5 items-center justify-center">
+            <div className="flex w-full my-5 items-center justify-center gap-1.5">
               {selectedLabels?.map((labelName) => {
                 const labelData = selectedLabelsData.find(
                   (item) => item.name === labelName,
