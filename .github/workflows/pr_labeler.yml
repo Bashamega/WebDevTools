@@ -20,15 +20,27 @@ jobs:
           if [ "$pr_created_month" != "10" ]; then
             echo "PR was not created in October, skipping."
             exit 1
+          else
+            echo "PR was created in October, proceeding."
+          fi
 
       - name: Check if the PR is merged
         id: check-merged
         run: echo "${{ github.event.pull_request.merged }}"
         continue-on-error: true
 
+      - name: Add Hacktoberfest label
+        if: success() # Proceed if the PR was created in October
+        uses: peter-evans/create-or-update-label@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: hacktoberfest
+          color: 'ff5500'
+          description: 'Pull request for Hacktoberfest'
+
       - name: Label pull request
         if: github.event.pull_request.merged == 'true' || github.event.action == 'opened'
         uses: actions-ecosystem/action-add-labels@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          labels: hacktoberfest-accepted
+          labels: hacktoberfest
