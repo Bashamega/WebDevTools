@@ -1,0 +1,34 @@
+name: Add Hacktoberfest Label
+
+on:
+  pull_request_target:
+    types:
+      - opened
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  add-label:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check if PR was created in October
+        id: check-created-date
+        run: |
+          pr_created_month=$(date -d "${{ github.event.pull_request.created_at }}" +'%m')
+          if [ "$pr_created_month" != "10" ]; then
+            echo "PR was not created in October, skipping."
+            exit 1
+
+      - name: Check if the PR is merged
+        id: check-merged
+        run: echo "${{ github.event.pull_request.merged }}"
+        continue-on-error: true
+
+      - name: Label pull request
+        if: github.event.pull_request.merged == 'true' || github.event.action == 'opened'
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          labels: hacktoberfest-accepted
