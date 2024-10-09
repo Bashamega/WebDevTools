@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
@@ -38,6 +38,10 @@ export default function BasicModal({
     "help wanted",
   ]);
   const [filterInput, setFilterInput] = useState("");
+
+  useEffect(() => {
+    setLabelsList([...new Set([...labelsList, ...selectedLabels])]);
+  }, [open]);
 
   const handleChange = (inputLabel, event) => {
     if (!selectedLabels.includes(inputLabel)) {
