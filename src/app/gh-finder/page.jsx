@@ -354,14 +354,17 @@ export default function GhFinder() {
                 const bgColor = labelData ? labelData.color : "C0C0C0";
 
                 return (
-                  <LabelButton
-                    key={id}
-                    labelId={id}
-                    name={labelName}
-                    bgColor={bgColor}
-                    isDarkColor={isDarkColor}
-                    handleSelectedLabel={handleSelectedLabel}
-                  />
+                  <>
+                    <LabelButton
+                      key={id}
+                      labelId={id}
+                      name={labelName}
+                      bgColor={bgColor}
+                      isDarkColor={isDarkColor}
+                      handleSelectedLabel={handleSelectedLabel}
+                      isRemovable={true}
+                    />
+                  </>
                 );
               })}
             </div>
@@ -458,6 +461,7 @@ export default function GhFinder() {
                       bgColor={label.color}
                       isDarkColor={isDarkColor}
                       handleSelectedLabel={handleSelectedLabel}
+                      isRemovable={false}
                     />
                   ))}
                 </div>
