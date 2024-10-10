@@ -1479,7 +1479,7 @@ export default function Home() {
       </h1>
       <div className="flex flex-col items-center justify-center p-4">
         <textarea
-          className={`w-full max-w-2xl h-60 p-3 border border-gray-300 rounded-lg mb-4 ${isDarkMode ? "bg-gray-800 text-gray-400" : "bg-gray-200 text-gray-500"}hover:border-blue-400 focus:border-blue-500 focus:outline-none`}
+          className={`w-full max-w-2xl h-60 p-3 border border-gray-300 resize-none rounded-lg mb-4 ${isDarkMode ? "bg-gray-800 text-gray-400" : "bg-gray-200 text-gray-500"}hover:border-blue-400 focus:border-blue-500 focus:outline-none`}
           placeholder="Enter CSS here..."
           value={cssInput}
           onChange={(e) => setCssInput(e.target.value)}
