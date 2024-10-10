@@ -1479,7 +1479,7 @@ export default function Home() {
       </h1>
       <div className="flex flex-col items-center justify-center p-4">
         <textarea
-          className="w-full max-w-2xl h-60 p-3 border border-gray-300 rounded-lg mb-4"
+          className={`w-full max-w-2xl h-60 p-3 border border-gray-300 rounded-lg mb-4 ${isDarkMode ? "bg-gray-800 text-gray-400" : "bg-gray-200 text-gray-500"}hover:border-blue-400 focus:border-blue-500 focus:outline-none`}
           placeholder="Enter CSS here..."
           value={cssInput}
           onChange={(e) => setCssInput(e.target.value)}
@@ -1493,7 +1493,9 @@ export default function Home() {
         </button>
 
         {tailwindOutput && (
-          <div className="w-full max-w-2xl bg-white p-4 rounded-lg shadow-md mb-4 relative items-center justify-center">
+          <div
+            className={`w-full max-w-2xl p-4 rounded-lg shadow-md mb-4 relative items-center justify-center ${isDarkMode ? "bg-gray-800 border-gray-300  text-gray-400" : "bg-gray-200 border-gray-300  text-gray-500"}hover:border-blue-400 focus:border-blue-500 outline-none`}
+          >
             <h2 className="text-xl font-semibold mb-2">Tailwind Output:</h2>
             <p className="font-mono text-sm break-words">{tailwindOutput}</p>
 
