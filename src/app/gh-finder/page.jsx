@@ -1,22 +1,26 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
-import { NavBar } from "../../components/navbar";
+import { NavBar } from "@/components/navbar";
 import Link from "next/link";
 import BasicModal from "./modal";
 import Pagination from "./pagination";
+import LabelButton from "@/app/gh-finder/label";
 
 export default function GhFinder() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selected, setSelected] = useState(1);
   const [data, setData] = useState([]);
   const [selectedLabels, setSelectedLabels] = useState([]);
+  const [selectedLabelsData, setSelectedLabelsData] = useState([]);
   const [filteredIssues, setFilteredIssues] = useState([]);
 
   // New states
   const [searchQuery, setSearchQuery] = useState("");
   const [isAssigned, setIsAssigned] = useState(false);
+  const [showFilteredLabels, setShowFilteredLabels] = useState(false);
   const [currentPage, setCurrentPage] = useState(10);
   const [maxResults, setMaxResults] = useState(10);
+  const [url, setUrl] = useState({});
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -91,9 +95,12 @@ export default function GhFinder() {
       const result = await fetchData(url);
       let filteredData =
         selected === 1
-          ? result.filter((item) => !item.node_id.includes("PR_"))
-          : result.items;
-
+          ? result
+            ? result.filter((item) => !item.node_id.includes("PR_"))
+            : []
+          : result
+            ? result.items
+            : [];
       if (url === urlWebDevTools) {
         filteredData = await addPRsInfoToIssues(filteredData);
       }
@@ -151,6 +158,18 @@ export default function GhFinder() {
     setCurrentPage(1);
   }, [data, isAssigned, searchQuery, selectedLabels]);
 
+  useEffect(() => {
+    // get URL and load parameters when page is refreshed
+    const newUrl = new URL(window.location);
+    setUrl(newUrl);
+    const labelsParam = newUrl.searchParams.get("labels");
+
+    if (labelsParam) {
+      const labelsArray = labelsParam.split(",");
+      setSelectedLabels(labelsArray);
+    }
+  }, []);
+
   const getIssuesByPage = useCallback(() => {
     const startResult = (currentPage - 1) * maxResults + 1;
     const endResult = Math.min(currentPage * maxResults, filteredIssues.length);
@@ -171,6 +190,51 @@ export default function GhFinder() {
 
     // Return true if luminance is less than 0.5 (considered dark)
     return luminance < 0.5;
+  }
+
+  function handleParametersURL(parameters, isAddingNew) {
+    if (isAddingNew) {
+      url.searchParams.set("labels", parameters.join(","));
+      window.history.pushState({}, "", url); // update URL
+    } else {
+      if (parameters.length > 0) {
+        url.searchParams.set("labels", parameters.join(","));
+      } else {
+        url.searchParams.delete("labels");
+      }
+      window.history.pushState({}, "", url); // update URL
+    }
+  }
+
+  function handleSelectedLabel(inputLabel) {
+    // add label in filter lists
+    if (!selectedLabels.includes(inputLabel.name)) {
+      setSelectedLabels((prevSelectedLabels) => {
+        const newSelectedLabels = [...prevSelectedLabels, inputLabel.name];
+        handleParametersURL(newSelectedLabels, true);
+        return newSelectedLabels;
+      });
+
+      setSelectedLabelsData((prevSelectedLabelsData) => {
+        return [...prevSelectedLabelsData, inputLabel];
+      });
+    }
+    // remove label from filter lists
+    else {
+      setSelectedLabels((prevSelectedLabels) => {
+        const newSelectedLabels = prevSelectedLabels.filter(
+          (label) => label !== inputLabel.name,
+        );
+        handleParametersURL(newSelectedLabels, false);
+        return newSelectedLabels;
+      });
+
+      setSelectedLabelsData((prevSelectedLabelsData) => {
+        return prevSelectedLabelsData.filter(
+          (label) => label.name !== inputLabel.name,
+        );
+      });
+    }
   }
 
   if (!data.length) {
@@ -218,33 +282,47 @@ export default function GhFinder() {
             <input
               type="text"
               className={`
-      w-full md:w-auto 
-      p-3 
-      rounded-lg 
-      border border-gray-300 
-      focus:ring-2 focus:ring-blue-500 
-      focus:outline-none 
-      transition duration-200 ease-in-out 
-      text-gray-700 
-      placeholder-gray-400 
-      shadow-sm 
-      hover:shadow-md
-      ${
-        isDarkMode ? "bg-gray-800 text-gray-400" : "bg-gray-200 text-gray-500"
-      } `}
+                w-fit md:w-auto 
+                p-3 
+                rounded-lg 
+                border border-gray-300 
+                focus:ring-2 focus:ring-blue-500 
+                focus:outline-none 
+                transition duration-200 ease-in-out 
+                text-gray-700 
+                placeholder-gray-400 
+                shadow-sm 
+                hover:shadow-md
+                ${
+                  isDarkMode
+                    ? "bg-gray-800 text-gray-400"
+                    : "bg-gray-200 text-gray-500"
+                } `}
               placeholder="Search issues"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <div className="flex items-center mx-4 my-4">
-              <input
-                type="checkbox"
-                id="isAssigned"
-                checked={isAssigned}
-                onChange={() => setIsAssigned(!isAssigned)}
-                className="mr-2"
-              />
-              <label htmlFor="isAssigned">Is assigned</label>
+            <div className="flex-row items-center mx-4 my-2">
+              <div>
+                <input
+                  type="checkbox"
+                  id="isAssigned"
+                  checked={isAssigned}
+                  onChange={() => setIsAssigned(!isAssigned)}
+                  className="mr-2"
+                />
+                <label htmlFor="isAssigned">Is assigned</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="showFilteredLabels"
+                  checked={showFilteredLabels}
+                  onChange={() => setShowFilteredLabels(!showFilteredLabels)}
+                  className="mr-2"
+                />
+                <label htmlFor="showFilteredLabels">Show labels</label>
+              </div>
             </div>
             <div>
               <p>Results per page</p>
@@ -263,6 +341,34 @@ export default function GhFinder() {
               </div>
             </div>
           </div>
+
+          {showFilteredLabels && selectedLabels.length > 0 && (
+            <div className="flex w-full my-5 items-center justify-center gap-1.5">
+              {selectedLabels?.map((labelName) => {
+                const labelData = selectedLabelsData.find(
+                  (item) => item.name === labelName,
+                );
+                const id = labelData
+                  ? labelData.id
+                  : Math.random().toString(36).substr(2, 9);
+                const bgColor = labelData ? labelData.color : "C0C0C0";
+
+                return (
+                  <>
+                    <LabelButton
+                      key={id}
+                      labelId={id}
+                      name={labelName}
+                      bgColor={bgColor}
+                      isDarkColor={isDarkColor}
+                      handleSelectedLabel={handleSelectedLabel}
+                      isRemovable={true}
+                    />
+                  </>
+                );
+              })}
+            </div>
+          )}
 
           <div className="flex gap-1.5 md:gap-3 w-full my-5 items-center justify-center">
             <button
@@ -295,6 +401,7 @@ export default function GhFinder() {
               isDarkMode={isDarkMode}
               selectedLabels={selectedLabels}
               setSelectedLabels={setSelectedLabels}
+              handleParametersURL={handleParametersURL}
             />
           </div>
         </header>
@@ -342,23 +449,20 @@ export default function GhFinder() {
                 </Link>
                 <div
                   className={
-                    "flex flex-wrap items-center mt-3 gap-2 " +
+                    "flex flex-wrap items-center mt-3 mx-1 gap-2 " +
                     (isDarkMode ? "text-gray-300" : "text-gray-600")
                   }
                 >
                   {item.labels?.map((label) => (
-                    <span
+                    <LabelButton
                       key={label.id}
-                      className="inline-block px-2 py-1 text-xs font-semibold text-white bg-green-500 rounded-full truncate"
-                      style={{
-                        backgroundColor: `#${label.color}`,
-                        color: isDarkColor(`#${label.color}`)
-                          ? "white"
-                          : "black",
-                      }}
-                    >
-                      {label.name}
-                    </span>
+                      labelId={label.id}
+                      name={label.name}
+                      bgColor={label.color}
+                      isDarkColor={isDarkColor}
+                      handleSelectedLabel={handleSelectedLabel}
+                      isRemovable={false}
+                    />
                   ))}
                 </div>
               </div>
