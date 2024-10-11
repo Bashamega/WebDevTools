@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import CardForm from "../components/CardForm";
+import CardForm, { exportJsonData } from "../components/CardForm";
 import { saveAs } from "file-saver";
 
 // Mock external dependencies
@@ -88,5 +88,37 @@ describe("CardForm Component", () => {
       selector: "span:not(button span)",
     });
     expect(previewSectionHeader).toBeInTheDocument();
+  });
+
+  test("handles bigint values by converting them to strings", async () => {
+    // Arrange: Create a response data containing a bigint value
+    const responseData = [
+      {
+        id: "123",
+        largeNumber: BigInt(9007199254740991), // A sample bigint
+      },
+    ];
+
+    // Act: Call the exportJsonData function
+    exportJsonData(responseData);
+
+    // Extract the Blob passed to saveAs
+    const blob = saveAs.mock.calls[0][0];
+
+    // Use a FileReader to read the Blob content
+    const reader = new FileReader();
+    reader.readAsText(blob);
+
+    // Wait for the FileReader to load the contents
+    await new Promise((resolve) => {
+      reader.onloadend = resolve;
+    });
+
+    // Parse the Blob content as JSON
+    const jsonContent = JSON.parse(reader.result);
+
+    // Assert that the bigint was stringified correctly
+    expect(jsonContent[0].largeNumber).toBe("9007199254740991");
+    expect(saveAs).toHaveBeenCalledTimes(1);
   });
 });

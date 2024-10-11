@@ -8,6 +8,20 @@ import { ActionButtons } from "./ActionButtons";
 import { PreviewSection } from "./PreviewSection";
 import { initialFields } from "./Init";
 
+export const exportJsonData = (data) => {
+  const blob = new Blob(
+    [
+      JSON.stringify(
+        data,
+        (_, value) => (typeof value === "bigint" ? value.toString() : value),
+        2,
+      ),
+    ],
+    { type: "application/json" },
+  );
+  saveAs(blob, "WebDevTools.json");
+};
+
 export default function CardForm({ isDarkMode }) {
   const [fields, setFields] = useState(initialFields());
   const [numRows, setNumRows] = useState(5);
@@ -44,20 +58,6 @@ export default function CardForm({ isDarkMode }) {
       });
       return entry;
     }).filter((item) => Object.keys(item).length > 0);
-  };
-
-  const exportJsonData = (data) => {
-    const blob = new Blob(
-      [
-        JSON.stringify(
-          data,
-          (_, value) => (typeof value === "bigint" ? value.toString() : value),
-          2,
-        ),
-      ],
-      { type: "application/json" },
-    );
-    saveAs(blob, "WebDevTools.json");
   };
 
   const resetClicks = () => {
