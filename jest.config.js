@@ -11,6 +11,10 @@ const config = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   testEnvironment: "jest-environment-jsdom",
 
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/src/$1", // Maps '@/' to the 'src' folder
+  },
+
   // coverage init settings
   // collectCoverage: true,
   // coverageDirectory: "coverage",
