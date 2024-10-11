@@ -225,4 +225,83 @@ describe("CardForm Component", () => {
     );
     expect(generatedFirstNameValue).toBe(true);
   });
+
+  test("updates preview after adding a field and setting its type", async () => {
+    // Arrange: Render the CardForm component with 3 default fields and 5 entries in the preview
+    render(<CardForm isDarkMode={true} />);
+
+    // Ensure the initial fields have types (necessary for preview to be enabled)
+    const fieldTypeSelects = screen.getAllByRole("combobox");
+
+    // Set the initial types for the existing fields
+    fireEvent.change(fieldTypeSelects[0], { target: { value: "int" } });
+    fireEvent.change(fieldTypeSelects[1], { target: { value: "firstName" } });
+    fireEvent.change(fieldTypeSelects[2], { target: { value: "lastName" } });
+
+    // Simulate clicking the preview button to generate JSON with the initial fields
+    const previewButton = screen.getByRole("button", { name: /preview/i });
+    fireEvent.click(previewButton);
+
+    // Wait for the preview to be rendered
+    await waitFor(() =>
+      screen.getByText("Preview", {
+        selector: "span:not(button span)",
+      }),
+    );
+
+    // Find the previewed JSON
+    const previewOutput = screen.getByTestId("preview-json");
+
+    // Parse the JSON output and check the number of entries (rows)
+    const jsonContent = JSON.parse(previewOutput.textContent);
+    expect(jsonContent.length).toBe(5); // Expect 5 entries (rows)
+
+    // Check that each entry has 3 fields initially
+    jsonContent.forEach((entry) => {
+      expect(Object.keys(entry).length).toBe(3); // Each entry should have 3 fields
+    });
+
+    // Now, click the 'ADD ANOTHER FIELD' button to add a new field
+    const addFieldButton = screen.getByText(/add another field/i);
+    fireEvent.click(addFieldButton);
+
+    // The preview should NOT change because the new field has no type yet
+    fireEvent.click(previewButton);
+    const unchangedPreviewOutput = screen.getByTestId("preview-json");
+    const unchangedJsonContent = JSON.parse(unchangedPreviewOutput.textContent);
+    expect(unchangedJsonContent.length).toBe(5); // Still expect 5 entries
+
+    // Each entry should still have 3 fields (since new field doesn't have a type yet)
+    unchangedJsonContent.forEach((entry) => {
+      expect(Object.keys(entry).length).toBe(3); // Fields count remains 3
+    });
+
+    // Now, set the new field's type to "firstName"
+    const updatedFieldTypeSelects = screen.getAllByRole("combobox");
+    fireEvent.change(updatedFieldTypeSelects[3], {
+      target: { value: "firstName" },
+    }); // Select the new field type
+
+    // Simulate clicking the preview button again after setting the type
+    fireEvent.click(previewButton);
+
+    // Wait for the preview to be rendered again
+    await waitFor(() =>
+      screen.getByText("Preview", {
+        selector: "span:not(button span)",
+      }),
+    );
+
+    // Find the updated previewed JSON
+    const updatedPreviewOutput = screen.getByTestId("preview-json");
+
+    // Parse the updated JSON output and check the number of entries
+    const updatedJsonContent = JSON.parse(updatedPreviewOutput.textContent);
+    expect(updatedJsonContent.length).toBe(5); // Still 5 entries
+
+    // Check that each entry now has 4 fields (3 original fields + 1 new field)
+    updatedJsonContent.forEach((entry) => {
+      expect(Object.keys(entry).length).toBe(4); // Fields count should be 4 after adding the new field
+    });
+  });
 });
