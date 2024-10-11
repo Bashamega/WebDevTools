@@ -238,5 +238,35 @@
     "name": "OpenLibrary API",
     "link": "https://openlibrary.org/developers/api",
     "ctg": "Books"
+  },
+  {
+    "id": 41,
+    "name": "OpenCage Geocoding API",
+    "link": "https://opencagedata.com/api",
+    "ctg": "Mapping"
+  },
+  {
+    "id": 42,
+    "name": "Jikan API",
+    "link": "https://jikan.moe/",
+    "ctg": "Anime"
+  },
+  {
+    "id": 43,
+    "name": "IPinfo API",
+    "link": "https://ipinfo.io/developers",
+    "ctg": "IP/Location"
+  },
+  {
+    "id": 44,
+    "name": "IEX Cloud API",
+    "link": "https://iexcloud.io/docs/api/",
+    "ctg": "Financial"
+  },
+  {
+    "id": 45,
+    "name": "Alpha Vantage API",
+    "link": "https://www.alphavantage.co/documentation/",
+    "ctg": "Financial"
   }
 ]
