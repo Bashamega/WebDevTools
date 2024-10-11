@@ -121,4 +121,108 @@ describe("CardForm Component", () => {
     expect(jsonContent[0].largeNumber).toBe("9007199254740991");
     expect(saveAs).toHaveBeenCalledTimes(1);
   });
+
+  test("generates correct output in the preview after changing field type", async () => {
+    // Arrange: Render the CardForm component
+    render(<CardForm isDarkMode={false} />);
+
+    // Find the dropdown for field types (assuming it's a select element)
+    const fieldTypeSelects = screen.getAllByRole("combobox");
+
+    // Set initial field type to "int"
+    fireEvent.change(fieldTypeSelects[0], { target: { value: "int" } });
+
+    // Now, change the field type to "firstName"
+    fireEvent.change(fieldTypeSelects[0], { target: { value: "firstName" } });
+
+    // Simulate clicking the preview button to show the JSON output on the screen
+    const previewButton = screen.getByRole("button", { name: /preview/i });
+    fireEvent.click(previewButton);
+
+    // Wait for the JSON preview to be rendered
+    await waitFor(() =>
+      screen.getByText("Preview", {
+        selector: "span:not(button span)",
+      }),
+    );
+
+    // Find the previewed JSON (assuming it appears in a <pre> or <div> tag)
+    const previewOutput = screen.getByTestId("preview-json"); // Adjust this based on your DOM structure
+
+    // Parse the JSON output from the preview section
+    const jsonContent = JSON.parse(previewOutput.textContent);
+
+    // Assert: Check that one of the fields in the generated JSON has a "firstName" value
+    const generatedFieldValues = Object.values(jsonContent[0]);
+
+    // Check that one of the generated values is a string, since firstName should generate a string
+    const isFirstNameGenerated = generatedFieldValues.some(
+      (value) => typeof value === "string" && /^[A-Z][a-z]+$/.test(value), // Example regex for a name
+    );
+
+    expect(isFirstNameGenerated).toBe(true); // Expect that a firstName-like value was generated
+  });
+
+  test("updates the preview output after closing and changing field type", async () => {
+    // Arrange: Render the CardForm component
+    render(<CardForm isDarkMode={false} />);
+
+    // Find the dropdown for field types (assuming it's a select element)
+    const fieldTypeSelects = screen.getAllByRole("combobox");
+
+    // Set initial field type to "int"
+    fireEvent.change(fieldTypeSelects[0], { target: { value: "int" } });
+
+    // Simulate clicking the preview button to show the JSON output on the screen
+    const previewButton = screen.getByRole("button", { name: /preview/i });
+    fireEvent.click(previewButton);
+
+    // Wait for the preview to be rendered
+    await waitFor(() =>
+      screen.getByText("Preview", {
+        selector: "span:not(button span)",
+      }),
+    );
+
+    // Find the previewed JSON (assuming it appears in a <pre> or <div> tag)
+    const previewOutput = screen.getByTestId("preview-json"); // Adjust based on your DOM structure
+
+    // Parse the JSON output from the preview section
+    const jsonContent = JSON.parse(previewOutput.textContent);
+
+    // Assert: Check that the initial field type "int" generates a number
+    const generatedIntValue = Object.values(jsonContent[0]).some(
+      (value) => typeof value === "number",
+    );
+    expect(generatedIntValue).toBe(true);
+
+    // Close the preview by clicking the 'X' span (assuming the 'X' closes the preview)
+    const closeButton = screen.getByText("x"); // Adjust the selector if needed
+    fireEvent.click(closeButton);
+
+    // Change the field type to "firstName"
+    fireEvent.change(fieldTypeSelects[0], { target: { value: "firstName" } });
+
+    // Simulate clicking the preview button again to show the updated JSON output
+    fireEvent.click(previewButton);
+
+    // Wait for the preview to be rendered again
+    await waitFor(() =>
+      screen.getByText("Preview", {
+        selector: "span:not(button span)",
+      }),
+    );
+
+    // Find the updated previewed JSON
+    const updatedPreviewOutput = screen.getByTestId("preview-json");
+
+    // Parse the updated JSON output
+    const updatedJsonContent = JSON.parse(updatedPreviewOutput.textContent);
+
+    // Assert: Check that the new field type "firstName" generates a string
+    const generatedFirstNameValue = Object.values(updatedJsonContent[0]).some(
+      (value) => typeof value === "string" && /^[A-Z][a-z]+$/.test(value), // Example regex for a name
+    );
+    expect(generatedFirstNameValue).toBe(true);
+  });
 });
