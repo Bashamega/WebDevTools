@@ -45,6 +45,7 @@ const Item = ({ field, handleChange, removeField, controls, categoryData }) => {
         </select>
         <button
           onClick={() => removeField(field.id)}
+          aria-label="Remove Field"
           className="text-gray-500 hover:text-red-400"
         >
           <CiCircleRemove
