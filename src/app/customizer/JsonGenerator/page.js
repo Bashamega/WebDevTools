@@ -5,7 +5,7 @@ import CardForm from "./components/CardForm";
 import Heroish from "./components/Heroish";
 import { Nav } from "@/components/nav";
 
-export function JsonGeneratorMain() {
+function JsonGeneratorMain() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleTheme = () => {
