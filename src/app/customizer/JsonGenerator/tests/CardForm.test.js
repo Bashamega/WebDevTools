@@ -74,10 +74,19 @@ describe("CardForm Component", () => {
   test('shows preview when "Preview" button is clicked', async () => {
     render(<CardForm isDarkMode={false} />);
     const fieldTypeSelects = screen.getAllByRole("combobox");
+    // Change all field types to "int" so preview button is enabled
     fieldTypeSelects.forEach((select) => {
       fireEvent.change(select, { target: { value: "int" } });
     });
-    const modalHeading = await screen.findByText(/preview/i);
-    expect(modalHeading).toBeInTheDocument();
+    // Click the preview button
+    const previewButton = await screen.getByRole("button", {
+      name: /preview/i,
+    });
+    fireEvent.click(previewButton);
+    // Check if the preview text is displayed
+    const previewSectionHeader = await screen.getByText("Preview", {
+      selector: "span:not(button span)",
+    });
+    expect(previewSectionHeader).toBeInTheDocument();
   });
 });
