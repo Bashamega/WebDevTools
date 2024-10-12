@@ -1,12 +1,13 @@
-name: Sync to GitLab on PR
+name: Sync to GitLab
 
 on:
-  pull_request:
+  push:
     branches:
-      - main # Trigger on pull requests targeting the main branch
+      - main # Trigger on pushes to the main branch
 
 jobs:
   push-to-gitlab:
+    if: github.repository == 'Bashamega/WebDevTools'
     runs-on: ubuntu-latest
 
     steps:
