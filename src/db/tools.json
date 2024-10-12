@@ -7,19 +7,19 @@
   },
   {
     "id": 2,
-    "name": "JSON GENERATOR",
+    "name": "JSON Generator",
     "link": "/customizer/JsonGenerator",
     "ctg": "generator"
   },
   {
     "id": 3,
-    "name": "Code editor",
+    "name": "Code Editor",
     "link": "/codeedit",
     "ctg": "editor"
   },
   {
     "id": 4,
-    "name": "Button customizer",
+    "name": "Button Customizer",
     "link": "/customizer/button",
     "ctg": "other"
   },
@@ -49,25 +49,25 @@
   },
   {
     "id": 9,
-    "name": "Mark down Editor",
+    "name": "Markdown Editor",
     "link": "/MD",
     "ctg": "editor"
   },
   {
     "id": 10,
-    "name": "Box shadow generator",
+    "name": "Box Shadow Generator",
     "link": "/customizer/box-shadow-generator",
     "ctg": "generator"
   },
   {
     "id": 11,
-    "name": "Image color picker",
+    "name": "Image Color Picker",
     "link": "/customizer/image-color-picker",
     "ctg": "other"
   },
   {
     "id": 12,
-    "name": "Readme generator",
+    "name": "Readme Generator",
     "link": "/customizer/Readme-generator",
     "ctg": "generator"
   },
@@ -85,7 +85,7 @@
   },
   {
     "id": 15,
-    "name": "HTML to jsx",
+    "name": "HTML to JSX",
     "link": "/convert/html-jsx",
     "ctg": "other"
   },
@@ -97,7 +97,7 @@
   },
   {
     "id": 17,
-    "name": "scss to css",
+    "name": "SCSS to CSS",
     "link": "/convert/css-scss",
     "ctg": "other"
   },
@@ -133,7 +133,7 @@
   },
   {
     "id": 23,
-    "name": "Public Apis",
+    "name": "Public APIs",
     "link": "/apis",
     "ctg": "other"
   },
@@ -145,19 +145,19 @@
   },
   {
     "id": 25,
-    "name": "Js To Ts Converter",
+    "name": "JS to TS Converter",
     "link": "/Js-to-Ts-Converter",
     "ctg": "other"
   },
   {
     "id": 26,
-    "name": "CSS To Tailwind Converter",
+    "name": "CSS to Tailwind Converter",
     "link": "/CSS-to-Tailwind-converter",
     "ctg": "other"
   },
   {
     "id": 27,
-    "name": "JSON TO Java ",
+    "name": "JSON to Java",
     "link": "/convert/Json-to-Java",
     "ctg": "other"
   }
