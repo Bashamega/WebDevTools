@@ -1,0 +1,30 @@
+name: Sync to GitLab on PR
+
+on:
+  pull_request:
+    branches:
+      - main # Trigger on pull requests targeting the main branch
+
+jobs:
+  push-to-gitlab:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Git for GitLab
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Add GitLab remote
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+        run: |
+          git remote add gitlab https://oauth2:$GITLAB_TOKEN@gitlab.com/bashaHub/web-dev-tools.git
+          git fetch gitlab
+
+      - name: Push changes to GitLab
+        run: |
+          git push gitlab HEAD:main --force  # Push the current branch to the main branch on GitLab
