@@ -178,5 +178,95 @@
     "name": "Slack API",
     "link": "https://api.slack.com/",
     "ctg": "Communication"
+  },
+  {
+    "id": 31,
+    "name": "Imgur API",
+    "link": "https://apidocs.imgur.com/",
+    "ctg": "Images"
+  },
+  {
+    "id": 32,
+    "name": "NumbersAPI",
+    "link": "https://numbersapi.com/",
+    "ctg": "Trivia"
+  },
+  {
+    "id": 33,
+    "name": "WeatherAPI",
+    "link": "https://www.weatherapi.com/",
+    "ctg": "Weather"
+  },
+  {
+    "id": 34,
+    "name": "Dropbox API",
+    "link": "https://www.dropbox.com/developers/documentation",
+    "ctg": "Storage"
+  },
+  {
+    "id": 35,
+    "name": "Agify API",
+    "link": "https://agify.io/",
+    "ctg": "Demographics"
+  },
+  {
+    "id": 36,
+    "name": "Clarifai API",
+    "link": "https://docs.clarifai.com/",
+    "ctg": "AI"
+  },
+  {
+    "id": 37,
+    "name": "Eventbrite API",
+    "link": "https://www.eventbrite.com/platform/api",
+    "ctg": "Events"
+  },
+  {
+    "id": 38,
+    "name": "Last.fm API",
+    "link": "https://www.last.fm/api",
+    "ctg": "Music"
+  },
+  {
+    "id": 39,
+    "name": "TMDb API",
+    "link": "https://developers.themoviedb.org/3/getting-started/introduction",
+    "ctg": "Video"
+  },
+  {
+    "id": 40,
+    "name": "OpenLibrary API",
+    "link": "https://openlibrary.org/developers/api",
+    "ctg": "Books"
+  },
+  {
+    "id": 41,
+    "name": "OpenCage Geocoding API",
+    "link": "https://opencagedata.com/api",
+    "ctg": "Mapping"
+  },
+  {
+    "id": 42,
+    "name": "Jikan API",
+    "link": "https://jikan.moe/",
+    "ctg": "Anime"
+  },
+  {
+    "id": 43,
+    "name": "IPinfo API",
+    "link": "https://ipinfo.io/developers",
+    "ctg": "IP/Location"
+  },
+  {
+    "id": 44,
+    "name": "IEX Cloud API",
+    "link": "https://iexcloud.io/docs/api/",
+    "ctg": "Financial"
+  },
+  {
+    "id": 45,
+    "name": "Alpha Vantage API",
+    "link": "https://www.alphavantage.co/documentation/",
+    "ctg": "Financial"
   }
 ]

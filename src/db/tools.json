@@ -148,5 +148,11 @@
     "name": "Js To Ts Converter",
     "link": "/Js-to-Ts-Converter",
     "ctg": "other"
+  },
+  {
+    "id": 26,
+    "name": "CSS To Tailwind Converter",
+    "link": "/CSS-to-Tailwind-converter",
+    "ctg": "other"
   }
 ]

@@ -5,7 +5,7 @@ export const ActionButtons = ({
   numRows,
   setNumRows,
 }) => (
-  <div className="fixed bottom-5 bg-white left-1/2 -translate-x-1/2 px-40 rounded flex gap-2 justify-center items-center py-2 dark:bg-gray-800">
+  <div className="fixed bottom-1 bg-white left-1/2 -translate-x-1/2 px-40 rounded flex gap-2 justify-center items-center py-2 dark:bg-gray-800">
     <button
       onClick={() => {
         setIsLoading(true);

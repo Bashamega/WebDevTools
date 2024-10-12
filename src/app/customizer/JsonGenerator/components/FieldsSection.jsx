@@ -12,23 +12,25 @@ export const FieldsSection = ({
   categoryData,
 }) => (
   <div className="flex flex-col">
-    <FieldHeader />
-    {fields.map((field) => (
-      <Reorder.Item
-        key={field.id}
-        value={field}
-        className="flex items-center bg-black-200 w-fit"
-      >
-        <Item
-          field={field}
-          handleChange={handleFieldChange}
-          removeField={removeField}
-          controls={controls}
-          categoryData={categoryData}
-          isDarkMode={isDarkMode}
-        />
-      </Reorder.Item>
-    ))}
+    {!!fields.length && <FieldHeader />}
+    <div className="h-40 overflow-auto">
+      {fields.map((field) => (
+        <Reorder.Item
+          key={field.id}
+          value={field}
+          className="flex items-center bg-black-200 w-fit"
+        >
+          <Item
+            field={field}
+            handleChange={handleFieldChange}
+            removeField={removeField}
+            controls={controls}
+            categoryData={categoryData}
+            isDarkMode={isDarkMode}
+          />
+        </Reorder.Item>
+      ))}
+    </div>
     <AddFieldButton onClick={addField} />
   </div>
 );

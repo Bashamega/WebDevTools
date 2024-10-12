@@ -225,7 +225,11 @@ export default function Nav({ isDarkMode, toggleTheme }) {
           <span className="w-8 h-0.5 bg-black dark:bg-white"></span>
           <span className="w-8 h-0.5 bg-black dark:bg-white"></span>
         </div>
-        <HamburgerMenu open={open} togglePanel={togglePanel} />
+        <HamburgerMenu
+          open={open}
+          togglePanel={togglePanel}
+          isDarkMode={isDarkMode}
+        />
       </div>
     </nav>
   );

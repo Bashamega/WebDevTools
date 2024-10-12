@@ -8,6 +8,20 @@ import { ActionButtons } from "./ActionButtons";
 import { PreviewSection } from "./PreviewSection";
 import { initialFields } from "./Init";
 
+export const exportJsonData = (data) => {
+  const blob = new Blob(
+    [
+      JSON.stringify(
+        data,
+        (_, value) => (typeof value === "bigint" ? value.toString() : value),
+        2,
+      ),
+    ],
+    { type: "application/json" },
+  );
+  saveAs(blob, "WebDevTools.json");
+};
+
 export default function CardForm({ isDarkMode }) {
   const [fields, setFields] = useState(initialFields());
   const [numRows, setNumRows] = useState(5);
@@ -46,20 +60,6 @@ export default function CardForm({ isDarkMode }) {
     }).filter((item) => Object.keys(item).length > 0);
   };
 
-  const exportJsonData = (data) => {
-    const blob = new Blob(
-      [
-        JSON.stringify(
-          data,
-          (_, value) => (typeof value === "bigint" ? value.toString() : value),
-          2,
-        ),
-      ],
-      { type: "application/json" },
-    );
-    saveAs(blob, "WebDevTools.json");
-  };
-
   const resetClicks = () => {
     setIsLoading(false);
     setPreviewClicked(false);
@@ -86,7 +86,7 @@ export default function CardForm({ isDarkMode }) {
 
   return (
     <Reorder.Group
-      className={`mt-10 ${isDarkMode ? "dark" : ""}`}
+      className={`mt-5 ${isDarkMode ? "dark" : ""}`}
       axis="y"
       values={fields}
       onReorder={setFields}

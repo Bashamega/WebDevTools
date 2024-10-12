@@ -1,0 +1,5 @@
+# Code owners file
+# Automatically requests review from 'bashamega' when a pull request is created.
+
+# Define code owners for all files in the repository
+*       @bashamega
