@@ -12,6 +12,7 @@ Fixes #(issue)
 ## Checklist:
 
 - [ ] My code follows the style guidelines of this project
+- [ ] Any new tools are named according to the Tool Naming Convention outlined in contributing.md
 - [ ] I have performed a self-review of my own code
 - [ ] I have commented my code, particularly in hard-to-understand areas
 - [ ] My changes generate no new warnings
