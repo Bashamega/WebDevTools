@@ -81,14 +81,30 @@ export default class Categories {
   }
 
   isDataCached(currentRowsRequested, previousResponseData, mappedSchema) {
+    // Ensure previousResponseData is valid and has data to compare
+    if (
+      !previousResponseData ||
+      previousResponseData.length === 0 ||
+      !mappedSchema
+    ) {
+      return false;
+    }
+
+    // Serialize the schema and the cached data structure for comparison
+    const previousSchema = Object.entries(previousResponseData[0])
+      .map(([key, value]) => [key, typeof value])
+      .sort()
+      .join(",");
+    const currentSchema = Object.entries(mappedSchema)
+      .map(([key, value]) => [key, typeof value()])
+      .sort()
+      .join(",");
+
     return (
-      // Check if a request has already been made for data (check for cached data)
-      previousResponseData.length > 0 &&
-      // Check if the requested data has changed from the previous data requested
-      Object.keys(mappedSchema).sort().join(",") ==
-        Object.keys(previousResponseData[0]).sort().join(",") &&
+      // Check if the schema (keys and types) matches
+      previousSchema === currentSchema &&
       // Check if the number of rows requested is the same as the number of rows in the previous request
-      currentRowsRequested == previousResponseData.length
+      currentRowsRequested === previousResponseData.length
     );
   }
 }
