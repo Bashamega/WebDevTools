@@ -5,7 +5,7 @@ import { NavBar } from "@/components/navbar";
 import React, { useEffect, useState } from "react";
 const convert = require("convert-units");
 
-export default function ButtonCustomizer() {
+export default function ConversionCalculator() {
   const [from, setFrom] = useState("10");
   const [to, setTo] = useState("10000");
   const [opTo, setOpTo] = useState("m");
@@ -69,13 +69,15 @@ export default function ButtonCustomizer() {
           <section className="">
             <input
               type="number"
+              data-testid="from"
               value={from}
               className="text-black text-center p-2 border border-gray-300 rounded "
               onChange={handleFromChange}
             />
             <br></br>
             <select
-              id="dropdown"
+              id="from-units-dropdown"
+              data-testid="from-units-dropdown"
               value={opFrom}
               onChange={handleOpFromChange}
               className="bg-slate-500 text-center p-2 border border-gray-300 rounded w-full mt-2 text-black font-bold"
@@ -90,12 +92,14 @@ export default function ButtonCustomizer() {
           <section className="flex flex-col gap-2">
             <input
               type="number"
+              data-testid="to"
               value={to}
               className="text-black text-center p-2 border border-gray-300 rounded"
               readOnly
             />
             <select
-              id="dropdown"
+              id="to-units-dropdown"
+              data-testid="to-units-dropdown"
               value={opTo}
               onChange={handleToChange}
               className="bg-slate-500 text-center p-2 border border-gray-300 rounded  text-black font-bold"
