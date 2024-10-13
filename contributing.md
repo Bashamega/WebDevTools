@@ -11,6 +11,9 @@ Thank you for considering contributing to WebDevTools! We welcome contributions 
    - [Submitting Code Changes](#submitting-code-changes)
 3. [Development Workflow](#development-workflow)
 4. [Style Guides](#style-guides)
+   - [Code Style](#code-style)
+   - [Documentation Style](#documentation-style)
+   - [Tool Naming Convention](#tool-naming-convention)
 5. [Getting Help](#getting-help)
 
 ## Code of Conduct
@@ -73,12 +76,31 @@ For code contributions:
 - Follow the existing coding standards.
 - Use meaningful names for variables and functions.
 - Keep functions small and focused.
+- New tools must follow the tool naming convention outlined below.
 
 ### Documentation Style
 
 - Write clear comments.
 - Document important functions and classes.
 - Update README.md as necessary.
+
+### Tool Naming Convention
+
+When adding tools to db/tools.json, the tool name must be spelt correctly, and capitalized according to the following rules. Apply the rules in order, top to bottom (so that later rules, overrule previous ones if conflicting).
+
+| Rule                                                                                                                                                         | :white_check_mark: Good Example | :x: Bad example      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------- | -------------------- |
+| Names must be title case ([more info](https://en.wikipedia.org/wiki/Title_case#:~:text=Title%20case%20or%20headline%20case,last%20word%20of%20the%20title.)) | Box Shadow Generator            | Box shadow generator |
+| Acronyms must be uppercase                                                                                                                                   | API                             | Api                  |
+| Coding languages must be named correctly                                                                                                                     | Markdown                        | Mark down            |
+| Coding languages must have their official capitalization                                                                                                     | JavaScript                      | Javascript           |
+| If coding language has unknown/inconsistent capitalization, it's a proper noun so capitalize it                                                              | Tailwind                        | tailwind             |
+
+**Why we use this naming convention:**
+
+- Names are uniform, and therefore look better on homepage.
+- Accessability is improved as users know in what format to expect the names. This mitigates errors in visually scanning a page.
+  - For example, those with dyslexia (or other similar impairments) are prone to errors recognizing capital and lowercase letters (such as 'G' and 'g') as interchangeable. This could lead to not finding 'Json' because they were expecting 'JSON'.
 
 ## Getting Help
 
