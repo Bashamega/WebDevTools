@@ -19,7 +19,9 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={inTer.className}>
-        <Banner showButton={false} />
+        <div id="banner" className="sticky top-0 z-50">
+          <Banner showButton={false} className="mb-7" />
+        </div>
         {children}
         <Analytics />
       </body>

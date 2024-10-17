@@ -62,7 +62,9 @@ ${license}`;
         title={"Github Readme Generator"}
       />
       <div className="w-2/3 mx-auto">
-        <h1 className="text-4xl font-bold mb-6">GitHub README Generator</h1>
+        <h1 className="relative p-2 z-10 font-sans text-xl sm:text-4xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600">
+          GitHub README Generator
+        </h1>
         <div className="mb-4">
           <label className="block text-lg font-medium mb-2" htmlFor="title">
             Project Title
