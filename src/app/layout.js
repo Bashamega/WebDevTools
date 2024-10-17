@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import Banner from "free-ps-banner";
+import { useState, useEffect } from "react";
 
 const inTer = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,11 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={inTer.className}>
-        <Banner showButton={false} />
+        {/* <Banner showButton={false} /> */}
+        <div id="banner" className="sticky top-0 z-50">
+          <Banner showButton={false} className="mb-7" />
+        </div>
+
         {children}
         <Analytics />
       </body>

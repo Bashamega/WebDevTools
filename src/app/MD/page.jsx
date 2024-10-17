@@ -129,18 +129,20 @@ export default function MarkdownEditor() {
     <main
       className={`h-screen overflow-auto ${
         isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
-      }`}
+      } `}
     >
       <nav>
         <div
           className={`py-4 px-6 flex items-center justify-between h-[69px] ${
             isDarkMode ? "bg-gray-800" : "bg-blue-500"
-          }`}
+          }  w-full`}
         >
           <Link
             href="/"
             className={`mr-2 flex border items-center p-2 hover:bg-blue-700 transition-all duration-700 rounded-lg ${
-              isDarkMode ? "border-gray-600" : ""
+              isDarkMode
+                ? "border-gray-600 hover:bg-gray-700"
+                : "hover:bg-blue-700"
             }`}
           >
             <h1 className="text-sm md:text-2xl font-bold mr-4 ml-1">
@@ -235,16 +237,16 @@ export default function MarkdownEditor() {
           </div>
         </div>
       </nav>
-      <div className="flex justify-between">
+      <div className="flex justify-between mt-7 w-full">
         <div className="flex flex-wrap justify-center md:justify-normal ">
           {markdownButtons.map((button, index) => (
             <button
               key={index}
               onClick={() => insertMarkdown(button.data)}
-              className={`text-sm rounded px-2 py-2 hover:bg-gray-600 m-2 ${
+              className={`text-sm rounded px-2 py-2 m-2 ${
                 isDarkMode
-                  ? "bg-gray-700 border-gray-600 text-white"
-                  : "bg-gray-300 border-gray-200 text-black"
+                  ? "bg-gray-700 border-gray-600 text-white hover:bg-gray-600"
+                  : "bg-gray-300 border-gray-200 text-black hover:bg-blue-600"
               }`}
             >
               {button.label}

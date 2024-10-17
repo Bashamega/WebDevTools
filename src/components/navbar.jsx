@@ -4,8 +4,10 @@ import { useEffect } from "react";
 import Link from "next/link";
 import SunIcon from "./icons/sunicon";
 import MoonIcon from "./icons/moonicon";
+import { useState } from "react";
 
 export function NavBar({ title, isDarkMode, toggleTheme }) {
+  const [isNavFixed, setIsNavFixed] = useState(false);
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
     try {
@@ -21,11 +23,27 @@ export function NavBar({ title, isDarkMode, toggleTheme }) {
     localStorage.setItem("theme", !isDarkMode);
     toggleTheme();
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const bannerHeight = document.querySelector("#banner").offsetHeight;
+      if (window.scrollY >= bannerHeight) {
+        setIsNavFixed(true);
+      } else {
+        setIsNavFixed(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <nav
       className={`py-4 px-6 flex items-center justify-between ${
         isDarkMode ? "bg-gray-800" : "bg-blue-500"
-      }`}
+      } ${isNavFixed ? "fixed top-0 z-40" : "relative"} max-w-100vh w-full fixed top-0 z-50`}
     >
       <span className="flex items-end">
         <Link href="/">

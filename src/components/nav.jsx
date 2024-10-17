@@ -18,6 +18,7 @@ import OtherDropdown from "./dropdowns/others";
 export default function Nav({ isDarkMode, toggleTheme }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(null);
   const [open, setOpen] = useState(false);
+  const [isNavFixed, setIsNavFixed] = useState(false);
   const dropdownRefs = {
     generator: useRef(null),
     editor: useRef(null),
@@ -49,6 +50,21 @@ export default function Nav({ isDarkMode, toggleTheme }) {
   }, []);
 
   useEffect(() => {
+    const handleScroll = () => {
+      const bannerHeight = document.querySelector("#banner").offsetHeight;
+      if (window.scrollY >= bannerHeight) {
+        setIsNavFixed(true);
+      } else {
+        setIsNavFixed(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
     try {
       if (storedTheme !== null && JSON.parse(storedTheme) !== isDarkMode) {
@@ -72,8 +88,9 @@ export default function Nav({ isDarkMode, toggleTheme }) {
   return (
     <nav
       className={`${
-        isDarkMode ? "bg-gray-800 text-white" : "bg-blue-500 text-black"
-      } py-2 px-4 flex items-center justify-between lg:justify-around gap-1 w-full relative mb-8 max-h-[10vh] min-w-80`}
+        isNavFixed ? "fixed top-0 z-40" : "relative"
+      } ${isDarkMode ? "bg-gray-800 text-white" : "bg-blue-500 text-black"}
+     py-2 px-4 flex items-center justify-between lg:justify-around gap-1 w-full mb-8 min-w-80 transition-all duration-300`}
     >
       <div className="flex flex-0 items-center flex-shrink">
         <Link href="/" className="group">
