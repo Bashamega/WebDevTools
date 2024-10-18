@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import SunIcon from "./icons/sunicon";
 import MoonIcon from "./icons/moonicon";
@@ -21,11 +21,28 @@ export function NavBar({ title, isDarkMode, toggleTheme }) {
     localStorage.setItem("theme", !isDarkMode);
     toggleTheme();
   };
+
+  const [isNavFixed, setIsNavFixed] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const bannerHeight = document.querySelector("#banner").offsetHeight;
+      if (window.scrollY >= bannerHeight) {
+        setIsNavFixed(true);
+      } else {
+        setIsNavFixed(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <nav
       className={`py-4 px-6 flex items-center justify-between ${
         isDarkMode ? "bg-gray-800" : "bg-blue-500"
-      }`}
+      } ${isNavFixed ? "fixed top-0 z-40" : "relative"} max-w-100vh w-full fixed top-0 z-50`}
     >
       <span className="flex items-end">
         <Link href="/">
