@@ -20,7 +20,7 @@
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.11.5",
     "@faker-js/faker": "^9.1.0",
-    "@headlessui/react": "^2.1.10",
+    "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.1.4",
     "@monaco-editor/react": "^4.6.0",
     "@mui/icons-material": "^5.15.19",
