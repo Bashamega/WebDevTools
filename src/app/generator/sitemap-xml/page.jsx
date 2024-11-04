@@ -4,7 +4,7 @@ import { NavBar } from "@/components/navbar";
 import { cn, getSitemapXmlGeneratorLimit, isUrlValid } from "@/lib/utils";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { CircularProgress } from "@mui/material";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function Page() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -12,14 +12,16 @@ export default function Page() {
     setIsDarkMode(!isDarkMode);
   };
 
+  const urlInputRef = useRef(null);
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const [url, setUrl] = useState("");
   const [sitemap, setSitemap] = useState("");
   const [sitemapUrl, setSitemapUrl] = useState("");
 
   const handleGenerate = async () => {
+    const url = urlInputRef.current?.value?.trim() ?? "";
     const isValid = isUrlValid(url);
 
     if (!isValid) {
@@ -59,7 +61,6 @@ export default function Page() {
         ),
       );
     } catch (e) {
-      console.error(e);
       setError("Ups, an error occurred while generating the sitemap");
     } finally {
       setIsLoading(false);
@@ -89,20 +90,19 @@ export default function Page() {
         </div>
 
         <div>
-          <div className="flex items-stretch gap-2 mt-8">
+          <div className="flex items-stretch flex-col sm:flex-row gap-2 mt-8">
             <input
               placeholder="https://website.com"
-              className={`${isDarkMode ? "bg-slate-800 border-slate-700 text-white focus:border-slate-500" : "bg-slate-50 border-slate-200 text-slate-950 placeholder:text-slate-300"} focus-visible:outline-none flex w-full rounded-md border px-3 py-2 flex-grow text-lg h-auto placeholder:text-white/50`}
-              value={url}
+              className={`${isDarkMode ? "bg-slate-800 border-slate-700 text-white focus:border-slate-500" : "bg-slate-50 border-slate-200 text-slate-950 placeholder:text-slate-400"} focus-visible:outline-none flex w-full rounded-md border px-3 py-2 flex-grow text-lg h-auto placeholder:text-white/50`}
+              ref={urlInputRef}
               disabled={isLoading}
-              onChange={(e) => setUrl(e.target.value)}
               name="url"
             />
 
             <Button
               onClick={handleGenerate}
               disabled={isLoading}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 py-3"
               isDarkMode={isDarkMode}
             >
               <p>{isLoading ? "Generating" : "Generate"}</p>
@@ -114,21 +114,23 @@ export default function Page() {
 
         {sitemap.length > 0 && (
           <div className="mt-8 max-w-full rounded-lg bg-slate-800 shadow-lg">
-            <div className="p-4 border-b border-slate-700 flex items-center gap-4">
-              {isLoading && (
-                <CircularProgress
-                  size="1.5rem"
-                  color="inherit"
-                  className="text-white"
-                />
-              )}
-              <p className="font-mono text-white text-lg font-medium">
-                sitemap.xml
-              </p>
+            <div className="p-4 border-b border-slate-700 flex justify-between flex-wrap items-center gap-4">
+              <div className="flex items-center gap-4 flex-shrink-0">
+                {isLoading && (
+                  <CircularProgress
+                    size="1.5rem"
+                    color="inherit"
+                    className="text-white"
+                  />
+                )}
+                <p className="font-mono text-white text-lg font-medium">
+                  sitemap.xml
+                </p>
+              </div>
 
-              <div className="flex items-stretch gap-1 ml-auto">
+              <div className="flex items-stretch gap-1 flex-shrink-0">
                 {isLoading ? (
-                  <p>
+                  <p className="text-slate-400">
                     {sitemap.split("<url>").length - 1}/
                     {getSitemapXmlGeneratorLimit()}
                   </p>
@@ -167,7 +169,7 @@ function Button({ children, className, isDarkMode, ...props }) {
     <button
       {...props}
       className={cn(
-        `${isDarkMode ? "bg-slate-100 text-slate-950" : "bg-slate-800 text-slate-100"} disabled:opacity-60 px-4 py-2 rounded font-medium`,
+        `${isDarkMode ? "bg-slate-100 text-slate-950" : "bg-slate-800 text-slate-100"} disabled:opacity-60 px-4 py-2 flex items-center justify-center rounded font-medium`,
         className,
       )}
     >
