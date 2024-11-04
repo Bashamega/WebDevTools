@@ -1,7 +1,7 @@
 "use client";
 
 import { NavBar } from "@/components/navbar";
-import { cn, getSitemapXmlGeneratorLimit, isUrlValid } from "@/lib/utils";
+import { cn, isUrlValid } from "@/lib/utils";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { CircularProgress } from "@mui/material";
 import { useRef, useState } from "react";
@@ -90,7 +90,13 @@ export default function Page() {
         </div>
 
         <div>
-          <div className="flex items-stretch flex-col sm:flex-row gap-2 mt-8">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleGenerate();
+            }}
+            className="flex items-stretch flex-col sm:flex-row gap-2 mt-8"
+          >
             <input
               placeholder="https://website.com"
               className={`${isDarkMode ? "bg-slate-800 border-slate-700 text-white focus:border-slate-500" : "bg-slate-50 border-slate-200 text-slate-950 placeholder:text-slate-400"} focus-visible:outline-none flex w-full rounded-md border px-3 py-2 flex-grow text-lg h-auto placeholder:text-white/50`}
@@ -100,14 +106,14 @@ export default function Page() {
             />
 
             <Button
-              onClick={handleGenerate}
               disabled={isLoading}
               className="flex items-center gap-2 py-3"
               isDarkMode={isDarkMode}
+              type="submit"
             >
               <p>{isLoading ? "Generating" : "Generate"}</p>
             </Button>
-          </div>
+          </form>
 
           {!!error && <p className="mt-2 text-red-500">{error}</p>}
         </div>
@@ -131,8 +137,7 @@ export default function Page() {
               <div className="flex items-stretch gap-1 flex-shrink-0">
                 {isLoading ? (
                   <p className="text-slate-400">
-                    {sitemap.split("<url>").length - 1}/
-                    {getSitemapXmlGeneratorLimit()}
+                    Found pages: {sitemap.split("<url>").length - 1}
                   </p>
                 ) : (
                   <>
