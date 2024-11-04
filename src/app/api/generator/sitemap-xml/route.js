@@ -1,3 +1,4 @@
+import { isUrlValid } from "@/lib/utils";
 import { NextRequest } from "next/server";
 
 const SITEMAP_HEADER = `<?xml version="1.0" encoding="UTF-8"?>
@@ -27,17 +28,24 @@ export async function GET(req) {
   const _url = Object.fromEntries(requestUrl.searchParams).url;
 
   if (typeof _url !== "string") {
+    return new Response("Missing URL", { status: 400 });
+  }
+
+  let url = decodeURIComponent(_url);
+
+  if (!isUrlValid(url)) {
     return new Response("Invalid URL", { status: 400 });
   }
 
-  const url = decodeURIComponent(_url);
+  if (!url.endsWith("/")) {
+    url += "/";
+  }
 
   const iterator = generateSitemapXML(url);
 
   const stream = new ReadableStream({
     async pull(controller) {
       const { value, done } = await iterator.next();
-
       if (done) {
         controller.close();
       } else {
@@ -57,28 +65,61 @@ export async function GET(req) {
 /**
  * Generates a sitemap in XML format starting from the given URL.
  *
- * @param {string} url - The base URL to start generating the sitemap.
+ * @param {string} baseUrl - The base URL to start generating the sitemap.
+ * @param {number} limit - The maximum number of pages to visit.
  * @returns {AsyncGenerator<string>} An asynchronous generator that yields XML sitemap strings.
  */
-async function* generateSitemapXML(url) {
-  const queue = [url];
+async function* generateSitemapXML(baseUrl, limit = 100) {
+  /**
+   * @type {{url: string, depth: number}[]}
+   */
+  const queue = [{ url: baseUrl, depth: 0 }];
   const visited = new Set();
 
   yield SITEMAP_HEADER;
 
+  const defaultLastMod = formatDate(new Date());
+
   while (queue.length > 0) {
     const currentPage = queue.shift();
 
-    if (currentPage && !visited.has(currentPage)) {
-      visited.add(currentPage);
+    if (currentPage && !visited.has(currentPage.url)) {
+      const url = currentPage.url;
+      visited.add(url);
 
-      yield `\t<url>\n\t\t<loc>${currentPage}</loc>\n\t</url>\n`;
+      let lastModified = defaultLastMod;
 
-      const links = await getLinks(currentPage, url);
-      queue.push(...links);
+      try {
+        const response = await fetch(url, { method: "HEAD" });
 
-      // TODO: remove
-      console.log("queue", queue);
+        if (!response.ok) {
+          console.error(`Failed to fetch metadata for URL: ${url}`);
+          continue;
+        }
+
+        if (!response.headers.get("content-type").includes("text/html")) {
+          continue;
+        }
+
+        const lastModifiedHeader = response.headers.get("last-modified");
+        if (lastModifiedHeader) {
+          lastModified = formatDate(new Date(lastModifiedHeader));
+        }
+      } catch (e) {
+        console.error(`Error on HEAD request: ${url}`, error);
+      }
+
+      const priority = 0.8 ** currentPage.depth;
+      yield `\t<url>\n\t\t<loc>${url}</loc>\n\t\t<priority>${priority.toFixed(2)}</priority>\n\t\t<lastmod>${lastModified}</lastmod>\n\t</url>\n`;
+
+      if (visited.size >= limit) {
+        break;
+      }
+
+      const links = await getLinks(currentPage.url, baseUrl);
+      queue.push(
+        ...links.map((url) => ({ url, depth: currentPage.depth + 1 })),
+      );
     }
   }
 
@@ -99,11 +140,6 @@ async function getLinks(currentUrl, baseUrl) {
 
     if (!response.body) {
       console.error("ReadableStream is not supported");
-      return links;
-    }
-
-    if (!response.headers.get("content-type")?.includes("text/html")) {
-      console.error("Content type is not text/html");
       return links;
     }
 
@@ -194,4 +230,13 @@ function parseLink(link, baseUrl) {
  */
 function getDomainFromUrl(url) {
   return new URL(url).hostname.replace(/^www\./, "");
+}
+
+/**
+ *
+ * @param {Date} date
+ * @returns {string}
+ */
+function formatDate(date) {
+  return date.toISOString().slice(0, -5) + "+00:00";
 }
