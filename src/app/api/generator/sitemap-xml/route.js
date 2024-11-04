@@ -1,10 +1,11 @@
-import { isUrlValid } from "@/lib/utils";
+import { getSitemapXmlGeneratorLimit, isUrlValid } from "@/lib/utils";
 import { NextRequest } from "next/server";
 
 const SITEMAP_HEADER = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">\n`;
 const SITEMAP_FOOTER = `</urlset>`;
-const IGNORED_EXTENSIONS = [
+
+const IGNORED_SUFFIX = [
   ".jpg",
   ".jpeg",
   ".png",
@@ -15,6 +16,7 @@ const IGNORED_EXTENSIONS = [
   ".js",
   ".ico",
 ];
+const IGNORED_PREFIX = ["#", "mailto:", "tel:"];
 
 const encoder = new TextEncoder();
 
@@ -41,7 +43,7 @@ export async function GET(req) {
     url += "/";
   }
 
-  const iterator = generateSitemapXML(url);
+  const iterator = generateSitemapXML(url, getSitemapXmlGeneratorLimit());
 
   const stream = new ReadableStream({
     async pull(controller) {
@@ -69,12 +71,13 @@ export async function GET(req) {
  * @param {number} limit - The maximum number of pages to visit.
  * @returns {AsyncGenerator<string>} An asynchronous generator that yields XML sitemap strings.
  */
-async function* generateSitemapXML(baseUrl, limit = 100) {
+async function* generateSitemapXML(baseUrl, limit) {
   /**
    * @type {{url: string, depth: number}[]}
    */
   const queue = [{ url: baseUrl, depth: 0 }];
   const visited = new Set();
+  const rejected = new Set();
 
   yield SITEMAP_HEADER;
 
@@ -83,7 +86,12 @@ async function* generateSitemapXML(baseUrl, limit = 100) {
   while (queue.length > 0) {
     const currentPage = queue.shift();
 
-    if (currentPage && !visited.has(currentPage.url)) {
+    if (
+      currentPage &&
+      !visited.has(currentPage.url) &&
+      !rejected.has(currentPage.url)
+    ) {
+      devLogger(`Processing URL: ${currentPage.url}`);
       const url = currentPage.url;
       visited.add(url);
 
@@ -93,11 +101,19 @@ async function* generateSitemapXML(baseUrl, limit = 100) {
         const response = await fetch(url, { method: "HEAD" });
 
         if (!response.ok) {
-          console.error(`Failed to fetch metadata for URL: ${url}`);
+          devLogger(
+            `Failed to fetch metadata for URL: ${url}`,
+            new Error(response.body),
+          );
+          rejected.add(url);
+          visited.delete(url);
           continue;
         }
 
         if (!response.headers.get("content-type").includes("text/html")) {
+          devLogger(`Ignoring non-HTML URL: ${url}`);
+          rejected.add(url);
+          visited.delete(url);
           continue;
         }
 
@@ -106,12 +122,21 @@ async function* generateSitemapXML(baseUrl, limit = 100) {
           lastModified = formatDate(new Date(lastModifiedHeader));
         }
       } catch (e) {
-        console.error(`Error on HEAD request: ${url}`, error);
+        devLogger(`Error on HEAD request: ${url}`, error);
       }
 
       const priority = 0.8 ** currentPage.depth;
-      yield `\t<url>\n\t\t<loc>${url}</loc>\n\t\t<priority>${priority.toFixed(2)}</priority>\n\t\t<lastmod>${lastModified}</lastmod>\n\t</url>\n`;
 
+      const xmlUrl = [
+        "\t<url>",
+        `\t\t<loc>${url}</loc>`,
+        `\t\t<lastmod>${lastModified}</lastmod>`,
+        `\t\t<priority>${priority.toFixed(2)}</priority>`,
+        "\t</url>",
+      ];
+      yield `${xmlUrl.join("\n")}\n`;
+
+      // Break early to avoid unnecessary processing
       if (visited.size >= limit) {
         break;
       }
@@ -139,7 +164,7 @@ async function getLinks(currentUrl, baseUrl) {
     const response = await fetch(currentUrl);
 
     if (!response.body) {
-      console.error("ReadableStream is not supported");
+      devLogger(`Failed to process page: ${currentUrl}`, error);
       return links;
     }
 
@@ -169,7 +194,7 @@ async function getLinks(currentUrl, baseUrl) {
     links.push(...newLinks);
     buffer = "";
   } catch (error) {
-    console.error(`Failed to process page: ${currentUrl}`, error);
+    devLogger(`Failed to process page: ${currentUrl}`, error);
   }
 
   return links;
@@ -206,30 +231,33 @@ function processBuffer(baseUrl, buffer) {
  * @returns {string|null} The normalized URL or null if invalid.
  */
 function parseLink(link, baseUrl) {
-  if (IGNORED_EXTENSIONS.some((ext) => link.endsWith(ext))) {
+  if (
+    IGNORED_SUFFIX.some((ext) => link.endsWith(ext)) ||
+    IGNORED_PREFIX.some((prefix) => link.startsWith(prefix))
+  ) {
     return null;
   }
 
-  const domain = getDomainFromUrl(baseUrl);
-
   try {
-    const linkUrl = new URL(link, link.startsWith("/") ? domain : undefined);
-    return linkUrl.hostname.replace(/^www\./, "") === domain
+    const baseUrlObj = new URL(baseUrl);
+
+    const linkUrl = new URL(link, baseUrlObj.origin);
+    return removeWWW(linkUrl.hostname) === removeWWW(baseUrlObj.hostname)
       ? new URL(linkUrl.pathname, baseUrl).href
       : null;
   } catch (e) {
+    devLogger(`Error parsing link: ${link}`, e);
     return null;
   }
 }
 
 /**
- * Extracts the domain from the given URL.
  *
- * @param {string} url - The URL to extract the domain from.
- * @returns {string} The domain of the URL without 'www.' prefix.
+ * @param {String} hostname  e.g. `www.example.com`
+ * @returns String e.g. `example.com`
  */
-function getDomainFromUrl(url) {
-  return new URL(url).hostname.replace(/^www\./, "");
+function removeWWW(hostname) {
+  return hostname.replace(/^www\./, "");
 }
 
 /**
@@ -239,4 +267,18 @@ function getDomainFromUrl(url) {
  */
 function formatDate(date) {
   return date.toISOString().slice(0, -5) + "+00:00";
+}
+
+/**
+ * Only log in development environment
+ *
+ * @param {String} message
+ * @param {unknown | undefined} e error
+ */
+function devLogger(message, e = undefined) {
+  if (process.env.NODE_ENV === "development") {
+    e instanceof Error
+      ? console.error(`❌ ${message}`, e)
+      : console.log(`ℹ️ ${message}`);
+  }
 }

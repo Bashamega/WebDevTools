@@ -1,7 +1,7 @@
 "use client";
 
 import { NavBar } from "@/components/navbar";
-import { cn, isUrlValid } from "@/lib/utils";
+import { cn, getSitemapXmlGeneratorLimit, isUrlValid } from "@/lib/utils";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { CircularProgress } from "@mui/material";
 import { useState } from "react";
@@ -96,6 +96,7 @@ export default function Page() {
               value={url}
               disabled={isLoading}
               onChange={(e) => setUrl(e.target.value)}
+              name="url"
             />
 
             <Button
@@ -121,28 +122,35 @@ export default function Page() {
                   className="text-white"
                 />
               )}
-              <p className="font-mono text-white text-lg font-medium flex">
+              <p className="font-mono text-white text-lg font-medium">
                 sitemap.xml
               </p>
 
-              {!isLoading && (
-                <div className="flex items-stretch gap-1 ml-auto">
-                  <a
-                    href={sitemapUrl}
-                    download="sitemap.xml"
-                    target="_blank"
-                    className="bg-slate-700 text-slate-200 px-4 py-2 rounded font-medium"
-                  >
-                    <p>Download</p>
-                  </a>
-                  <Button
-                    onClick={() => navigator.clipboard.writeText(sitemap)}
-                    className="bg-slate-700 text-slate-200 flex items-center"
-                  >
-                    <ContentCopyIcon className="w-5 h-5" />
-                  </Button>
-                </div>
-              )}
+              <div className="flex items-stretch gap-1 ml-auto">
+                {isLoading ? (
+                  <p>
+                    {sitemap.split("<url>").length - 1}/
+                    {getSitemapXmlGeneratorLimit()}
+                  </p>
+                ) : (
+                  <>
+                    <a
+                      href={sitemapUrl}
+                      download="sitemap.xml"
+                      target="_blank"
+                      className="bg-slate-700 text-slate-200 px-4 py-2 rounded font-medium"
+                    >
+                      <p>Download</p>
+                    </a>
+                    <Button
+                      onClick={() => navigator.clipboard.writeText(sitemap)}
+                      className="bg-slate-700 text-slate-200 flex items-center"
+                    >
+                      <ContentCopyIcon className="w-5 h-5" />
+                    </Button>
+                  </>
+                )}
+              </div>
             </div>
             <pre className="font-mono text-sm overflow-x-auto text-slate-300 p-4">
               {sitemap}

@@ -7,8 +7,8 @@ export function cn(...inputs) {
 
 /**
  *
- * @param {String} url
- * @returns {Boolean}
+ * @param {string} url
+ * @returns {boolean}
  */
 export function isUrlValid(url) {
   try {
@@ -17,4 +17,17 @@ export function isUrlValid(url) {
   } catch (_) {
     return false;
   }
+}
+
+/**
+ *
+ *
+ * @returns {number} limit number of pages that will be visited
+ */
+export function getSitemapXmlGeneratorLimit() {
+  const limit = parseInt(
+    process.env.NEXT_PUBLIC_GENERATOR_SITEMAP_XML_LIMIT,
+    10,
+  );
+  return Number.isInteger(limit) ? limit : 100;
 }
