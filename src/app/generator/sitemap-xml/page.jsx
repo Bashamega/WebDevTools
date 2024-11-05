@@ -18,21 +18,29 @@ export default function Page() {
   const [error, setError] = useState("");
 
   const [sitemap, setSitemap] = useState("");
-  const [sitemapUrl, setSitemapUrl] = useState("");
+  const [downloadSitemapUrl, setDownloadSitemapUrl] = useState("");
 
   const handleGenerate = async () => {
+    /**
+     * @type {string}
+     */
     const url = urlInputRef.current?.value?.trim() ?? "";
-    const isValid = isUrlValid(url);
 
+    if (!url.startsWith("http")) {
+      setError("URL must start with https://");
+      return;
+    }
+
+    const isValid = isUrlValid(url);
     if (!isValid) {
-      setError("Invalid URL");
+      setError("Invalid URL (valid example: https://website.com)");
       return;
     }
 
     setError("");
     setIsLoading(true);
     setSitemap("");
-    setSitemapUrl("");
+    setDownloadSitemapUrl("");
 
     try {
       const response = await fetch(
@@ -49,19 +57,25 @@ export default function Page() {
       let sitemapContent = "";
 
       while (true) {
-        const { done, value } = await reader.read(); // Read chunks
-        if (done) break; // If no more data, exit the loop
-        sitemapContent += decoder.decode(value, { stream: true }); // Decode and append each chunk
+        const { done, value } = await reader.read();
+        if (done) {
+          break;
+        }
+        sitemapContent += decoder.decode(value, { stream: true });
         setSitemap(sitemapContent);
       }
 
-      setSitemapUrl(
+      // create downloadable file
+      setDownloadSitemapUrl(
         URL.createObjectURL(
           new Blob([sitemapContent], { type: "application/xml" }),
         ),
       );
     } catch (e) {
-      setError("Ups, an error occurred while generating the sitemap");
+      setError(
+        "Oh no, an unexpected error occurred while generating the sitemap" +
+          (e instanceof Error ? ` (${e.message})` : ""),
+      );
     } finally {
       setIsLoading(false);
     }
@@ -142,7 +156,7 @@ export default function Page() {
                 ) : (
                   <>
                     <a
-                      href={sitemapUrl}
+                      href={downloadSitemapUrl}
                       download="sitemap.xml"
                       target="_blank"
                       className="bg-slate-700 text-slate-200 px-4 py-2 rounded font-medium"
