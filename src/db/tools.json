@@ -160,5 +160,11 @@
     "name": "JSON to Java",
     "link": "/convert/Json-to-Java",
     "ctg": "other"
+  },
+  {
+    "id": 28,
+    "name": "Sitemap XML Generator",
+    "link": "/generator/sitemap-xml",
+    "ctg": "generator"
   }
 ]
