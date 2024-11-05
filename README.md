@@ -2,6 +2,9 @@
 
 <p align="center">
   <img src="https://socialify.git.ci/Bashamega/WebDevTools/image?description=1&amp;forks=1&amp;issues=1&amp;language=1&amp;name=1&amp;owner=1&amp;pulls=1&amp;stargazers=1&amp;theme=Dark" alt="project-image">
+    <a href="https://discord.gg/fHQv7EXEGF">
+    <img src="https://img.shields.io/discord/1296806270585802863?logo=discord&style=for-the-badge&color=404EED" alt="EddieHub Discord"/>
+  </a>
 </p>
 
 <a href="https://gitpod.io/#https://github.com/bashamega/webdevtools" target="_blank">

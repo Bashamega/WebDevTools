@@ -1,6 +1,7 @@
 import { PreviewHeader } from "./PreviewHeader";
 import { LoadingSpinner } from "./LoadingSpinner";
 import { JsonPreview } from "./JsonPreview";
+import { CopyButton } from "./CopyButton";
 export const PreviewSection = ({
   responseData,
   showPreview,
@@ -17,8 +18,17 @@ export const PreviewSection = ({
     {responseData.length > 0 && showPreview && (
       <div className="flex flex-col max-h-[50vh] max-w-[40vw] min-w-[45vw] overflow-auto mr-2 p-2 ">
         <PreviewHeader setShowPreview={setShowPreview} />
-        <div className="flex max-w-full pr-2 ">
-          {isLoading ? <LoadingSpinner /> : <JsonPreview data={responseData} />}
+        <div className="max-w-full pr-2">
+          {isLoading ? (
+            <LoadingSpinner />
+          ) : (
+            <>
+              <div className="flex justify-center">
+                <CopyButton data={responseData} />
+              </div>
+              <JsonPreview data={responseData} />
+            </>
+          )}
         </div>
       </div>
     )}
