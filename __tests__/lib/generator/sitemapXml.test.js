@@ -10,6 +10,9 @@ global.fetch = jest.fn(() => {
         if (header === "content-type") {
           return "text/html";
         }
+        if (header === "last-modified") {
+          return "Mon, 01 Jan 2024 00:00:00 GMT";
+        }
         return undefined;
       },
     },
@@ -45,7 +48,7 @@ describe("generateSitemapXML", () => {
     fetchCount = 0;
   });
 
-  test("generates XML with multiple links", async () => {
+  test("generates sitemap XML with multiple links", async () => {
     const baseUrl = "https://wdt.adambashaahmednaji.com/";
     const limit = 100;
 
@@ -57,18 +60,30 @@ describe("generateSitemapXML", () => {
     const sitemapXML = sitemapParts.join("");
     expect(sitemapXML).toContain("<urlset");
     expect(sitemapXML).toContain(
-      "<loc>https://wdt.adambashaahmednaji.com/</loc>",
+      [
+        "\t\t<loc>https://wdt.adambashaahmednaji.com/</loc>",
+        "\t\t<lastmod>2024-01-01T00:00:00+00:00</lastmod>",
+        "\t\t<priority>1.00</priority>",
+      ].join("\n"),
     );
     expect(sitemapXML).toContain(
-      "<loc>https://wdt.adambashaahmednaji.com/page1</loc>",
+      [
+        "\t\t<loc>https://wdt.adambashaahmednaji.com/page1</loc>",
+        "\t\t<lastmod>2024-01-01T00:00:00+00:00</lastmod>",
+        "\t\t<priority>0.80</priority>",
+      ].join("\n"),
     );
     expect(sitemapXML).toContain(
-      "<loc>https://wdt.adambashaahmednaji.com/page2</loc>",
+      [
+        "\t\t<loc>https://wdt.adambashaahmednaji.com/page2</loc>",
+        "\t\t<lastmod>2024-01-01T00:00:00+00:00</lastmod>",
+        "\t\t<priority>0.80</priority>",
+      ].join("\n"),
     );
     expect(sitemapXML).toContain("</urlset>");
   });
 
-  test("stops generating XML when limit is reached", async () => {
+  test("stops generating sitemap XML when limit is reached", async () => {
     const baseUrl = "https://wdt.adambashaahmednaji.com/";
     const limit = 1;
 
