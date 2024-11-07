@@ -59,6 +59,7 @@ export default function Page() {
       while (true) {
         const { done, value } = await reader.read();
         if (done) {
+          decoder.decode();
           break;
         }
         sitemapContent += decoder.decode(value, { stream: true });
@@ -113,6 +114,7 @@ export default function Page() {
           >
             <input
               placeholder="https://website.com"
+              aria-label="Website URL"
               className={`${isDarkMode ? "bg-slate-800 border-slate-700 text-white focus:border-slate-500" : "bg-slate-50 border-slate-200 text-slate-950 placeholder:text-slate-400"} focus-visible:outline-none flex w-full rounded-md border px-3 py-2 flex-grow text-lg h-auto placeholder:text-white/50`}
               ref={urlInputRef}
               disabled={isLoading}
@@ -159,12 +161,20 @@ export default function Page() {
                       href={downloadSitemapUrl}
                       download="sitemap.xml"
                       target="_blank"
+                      rel="noopener noreferrer"
                       className="bg-slate-700 text-slate-200 px-4 py-2 rounded font-medium"
                     >
                       <p>Download</p>
                     </a>
                     <Button
-                      onClick={() => navigator.clipboard.writeText(sitemap)}
+                      onClick={async () => {
+                        try {
+                          await navigator.clipboard.writeText(sitemap);
+                        } catch (e) {
+                          setError("Failed to copy to clipboard");
+                        }
+                      }}
+                      aria-label="Copy to clipboard"
                       className="bg-slate-700 text-slate-200 flex items-center"
                     >
                       <ContentCopyIcon className="w-5 h-5" />

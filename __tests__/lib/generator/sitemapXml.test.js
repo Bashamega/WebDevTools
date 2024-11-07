@@ -47,6 +47,13 @@ describe("generateSitemapXML", () => {
   beforeEach(() => {
     fetchCount = 0;
   });
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+  afterAll(() => {
+    delete global.TextEncoder;
+    delete global.TextDecoder;
+  });
 
   test("generates sitemap XML with multiple links", async () => {
     const baseUrl = "https://wdt.adambashaahmednaji.com/";

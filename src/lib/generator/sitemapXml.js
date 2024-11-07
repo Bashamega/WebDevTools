@@ -63,7 +63,7 @@ export async function* generateSitemapXML(baseUrl, limit) {
           continue;
         }
 
-        if (!response.headers.get("content-type").includes("text/html")) {
+        if (!response.headers.get("content-type")?.includes("text/html")) {
           devLogger(`Ignoring non-HTML URL: ${url}`);
           console.dir(response.headers, { depth: Infinity });
           rejected.add(url);
@@ -122,7 +122,7 @@ async function getLinks(currentUrl, baseUrl) {
     const response = await fetch(currentUrl);
 
     if (!response.body) {
-      devLogger(`Failed to process page: ${currentUrl}`, new Error("No body"));
+      logger(`Failed to process page: ${currentUrl}`, new Error("No body"));
       return links;
     }
 
@@ -156,7 +156,7 @@ async function getLinks(currentUrl, baseUrl) {
       }
     }
   } catch (e) {
-    devLogger(`Failed to process page: ${currentUrl}`, e);
+    logger(`Failed to process page: ${currentUrl}`, e);
   }
 
   return links;
@@ -239,8 +239,16 @@ function formatDate(date) {
  */
 function devLogger(message, e = undefined) {
   if (process.env.NODE_ENV === "development") {
-    e instanceof Error
-      ? console.error(`❌ ${message}`, e)
-      : console.log(`ℹ️ ${message}`);
+    logger(message, e);
   }
+}
+
+/**
+ * @param {String} message
+ * @param {unknown | undefined} e error
+ */
+function logger(message, e = undefined) {
+  e instanceof Error
+    ? console.error(`[/api/generator/sitemap-xml] ❌ ${message}`, e)
+    : console.log(`[/api/generator/sitemap-xml] ℹ️ ${message}`);
 }

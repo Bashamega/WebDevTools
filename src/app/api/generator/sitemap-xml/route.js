@@ -34,11 +34,17 @@ export async function GET(req) {
   const encoder = new TextEncoder();
   const stream = new ReadableStream({
     async pull(controller) {
-      const { value, done } = await iterator.next();
-      if (done) {
-        controller.close();
-      } else {
-        controller.enqueue(encoder.encode(value));
+      try {
+        const { value, done } = await iterator.next();
+        if (done) {
+          controller.close();
+        } else {
+          controller.enqueue(encoder.encode(value));
+        }
+      } catch (e) {
+        controller.error(
+          new Error("Failed to generate sitemap: " + error.message),
+        );
       }
     },
   });
