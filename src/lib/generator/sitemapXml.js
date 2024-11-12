@@ -65,7 +65,6 @@ export async function* generateSitemapXML(baseUrl, limit) {
 
         if (!response.headers.get("content-type")?.includes("text/html")) {
           devLogger(`Ignoring non-HTML URL: ${url}`);
-          console.dir(response.headers, { depth: Infinity });
           rejected.add(url);
           visited.delete(url);
           continue;
@@ -178,13 +177,13 @@ async function getLinks(currentUrl, baseUrl) {
  * @returns {string[]} An array of extracted links.
  */
 function processBuffer(baseUrl, buffer) {
-  const linkRegex = /<a\s+(?:[^>]*?\s+)?href="([^"]*)"/g;
+  const linkRegex = /<a\s+(?:[^>]*?\s+)?href=(["']?)([^"'\s>]+)\1/g;
 
   const links = [];
 
   let match;
   while ((match = linkRegex.exec(buffer)) !== null) {
-    const url = parseLink(match[1], baseUrl);
+    const url = parseLink(match[2], baseUrl);
     if (url) {
       links.push(url);
     }
