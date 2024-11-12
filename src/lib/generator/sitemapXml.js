@@ -121,6 +121,14 @@ async function getLinks(currentUrl, baseUrl) {
   try {
     const response = await fetch(currentUrl);
 
+    if (!response.ok) {
+      logger(
+        `Failed to process page: ${currentUrl}`,
+        new Error(`Not ok response: ${response.status}`),
+      );
+      return links;
+    }
+
     if (!response.body) {
       logger(`Failed to process page: ${currentUrl}`, new Error("No body"));
       return links;
@@ -171,10 +179,10 @@ async function getLinks(currentUrl, baseUrl) {
  */
 function processBuffer(baseUrl, buffer) {
   const linkRegex = /<a\s+(?:[^>]*?\s+)?href="([^"]*)"/g;
-  let match;
 
   const links = [];
 
+  let match;
   while ((match = linkRegex.exec(buffer)) !== null) {
     const url = parseLink(match[1], baseUrl);
     if (url) {

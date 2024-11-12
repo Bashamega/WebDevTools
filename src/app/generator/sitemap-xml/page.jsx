@@ -4,7 +4,7 @@ import { NavBar } from "@/components/navbar";
 import { cn, isUrlValid } from "@/lib/utils";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { CircularProgress } from "@mui/material";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Page() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -47,8 +47,15 @@ export default function Page() {
         `/api/generator/sitemap-xml?url=${encodeURIComponent(url)}`,
       );
 
+      if (!response.ok) {
+        console.error("Failed to fetch sitemap");
+        setError("Failed to fetch sitemap");
+        return;
+      }
+
       if (!response.body) {
         console.error("ReadableStream is not supported");
+        setError("ReadableStream is not supported");
         return;
       }
 
@@ -59,7 +66,11 @@ export default function Page() {
       while (true) {
         const { done, value } = await reader.read();
         if (done) {
-          decoder.decode();
+          const remaining = decoder.decode();
+          if (remaining) {
+            sitemapContent += remaining;
+            setSitemap(sitemapContent);
+          }
           break;
         }
         sitemapContent += decoder.decode(value, { stream: true });
@@ -81,6 +92,14 @@ export default function Page() {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    return () => {
+      if (downloadSitemapUrl) {
+        URL.revokeObjectURL(downloadSitemapUrl);
+      }
+    };
+  }, [downloadSitemapUrl]);
 
   return (
     <div
