@@ -81,8 +81,6 @@ const MainPage = () => {
           >
             Contribute Repo
           </a>
-
-         
         </div>
       </div>
 
