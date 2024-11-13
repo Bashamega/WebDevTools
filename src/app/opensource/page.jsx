@@ -82,15 +82,7 @@ const MainPage = () => {
             Contribute Repo
           </a>
 
-          {/* Download Guide Button */}
-          <a
-            href="/readme.md"
-            download="readme.md"
-            className="px-2 py-1 bg-[#FF00FF] text-black font-semibold rounded-lg shadow-lg hover:bg-[#CC00CC] transition-transform duration-300 transform hover:scale-105"
-            style={{ boxShadow: "0 0 10px rgba(255, 0, 255, 0.8)" }}
-          >
-            Download Guide
-          </a>
+         
         </div>
       </div>
 
