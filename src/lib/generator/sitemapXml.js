@@ -56,7 +56,7 @@ export async function* generateSitemapXML(baseUrl, limit) {
         if (!response.ok) {
           devLogger(
             `Failed to fetch metadata for URL: ${url}`,
-            new Error(response.body),
+            new Error(`Not ok response: ${response.status}`),
           );
           rejected.add(url);
           visited.delete(url);
