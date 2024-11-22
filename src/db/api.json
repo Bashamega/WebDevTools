@@ -271,18 +271,12 @@
   },
   {
     "id": 46,
-    "name": "Bored API",
-    "link": "https://www.boredapi.com/",
-    "ctg": "Fun"
-  },
-  {
-    "id": 47,
     "name": "Genderize API",
     "link": "https://genderize.io/",
     "ctg": "Demographics"
   },
   {
-    "id": 48,
+    "id": 47,
     "name": "Nationalize API",
     "link": "https://nationalize.io/",
     "ctg": "Demographics"
