@@ -2,9 +2,7 @@ import { generateSitemapXML } from "@/lib/generator/sitemapXml";
 import { getSitemapXmlGeneratorLimit, isUrlValid } from "@/lib/utils";
 import { NextRequest } from "next/server";
 
-export const config = {
-  runtime: "edge",
-};
+export const runtime = "edge";
 
 /**
  *
