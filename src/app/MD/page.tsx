@@ -13,10 +13,6 @@ import Link from "next/link";
 import SunIcon from "../../components/icons/sunicon";
 import MoonIcon from "../../components/icons/moonicon";
 
-interface MarkdownEditorProps {
-  toggleTheme: () => void;
-}
-
 interface MarkdownButton {
   label: string;
   data: string;
@@ -26,7 +22,7 @@ interface InsertMarkdownProps {
   markdownToInsert: string;
 }
 
-export default function MarkdownEditor({}: MarkdownEditorProps) {
+export default function MarkdownEditor() {
   const [markdown, setMarkdown] = useState<string>("# hey");
   const [name, setName] = useState<string>("untitled");
   const [toggle, setToggle] = useState<boolean>(false);
@@ -34,22 +30,26 @@ export default function MarkdownEditor({}: MarkdownEditorProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  const toggleTheme = useCallback(() => {
-    const newTheme = !isDarkMode;
-    setIsDarkMode(newTheme);
-    localStorage.setItem("theme", JSON.stringify(newTheme));
-  }, [isDarkMode]);
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    try {
-      if (storedTheme !== null && JSON.parse(storedTheme) !== isDarkMode) {
-        toggleTheme();
-      }
-    } catch {
-      console.log("Failed to read localstorage");
-    }
-  }, [isDarkMode, toggleTheme]);
+  // const toggleTheme = useCallback(() => {
+  //   const newTheme = !isDarkMode;
+  //   setIsDarkMode(newTheme);
+  //   localStorage.setItem("theme", JSON.stringify(newTheme));
+  // }, [isDarkMode]);
+
+  // useEffect(() => {
+  //   const storedTheme = localStorage.getItem("theme");
+  //   try {
+  //     if (storedTheme !== null && JSON.parse(storedTheme) !== isDarkMode) {
+  //       toggleTheme();
+  //     }
+  //   } catch {
+  //     console.log("Failed to read localstorage");
+  //   }
+  // }, [isDarkMode, toggleTheme]);
 
   const previousMarkdownRef = useRef<string>(markdown);
 
