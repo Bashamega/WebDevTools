@@ -26,6 +26,14 @@ const config: NextConfig = {
   //module.exports = {
   images: {
     domains: ["localhost"], // Add localhost to allowed domains
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
   // };
 };

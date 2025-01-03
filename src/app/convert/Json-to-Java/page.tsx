@@ -1,32 +1,136 @@
+// "use client";
+// import React, { useState } from "react";
+// import NavBar from "@/components/navbar";
+
+// interface ConverterProps {
+//   isDarkMode: boolean;
+//   toggleTheme: () => void;
+// }
+
+// interface JsonObject {
+//   [key: string]: any;
+// }
+
+// const Converter: React.FC<ConverterProps> = () => {
+//   const [inputJSON, setInputJSON] = useState("");
+//   const [outputJava, setOutputJava] = useState("");
+//   const [isDarkMode, setIsDarkMode] = useState(false);
+//   const [copySuccess, setCopySuccess] = useState(false);
+
+//   const handleCopy = () => {
+//     if (outputJava) {
+//       navigator.clipboard.writeText(outputJava);
+//       setCopySuccess(true);
+//       setTimeout(() => setCopySuccess(false), 3000);
+//     }
+//   };
+
+//   const toggleTheme = () => {
+//     setIsDarkMode(!isDarkMode);
+//   };
+
+//   const handleConvert = () => {
+//     try {
+//       const jsonObject = JSON.parse(inputJSON);
+//       const convertedCode = convertJsonToJava(jsonObject, "RootClass");
+//       setOutputJava(convertedCode);
+//     } catch (error) {
+//       if (error instanceof Error) {
+//         setOutputJava(`Error: ${error.message}. Please check your JSON input.`);
+//       } else {
+//         setOutputJava(
+//           "An unknown error occurred. Please check your JSON input.",
+//         );
+//       }
+//     }
+//   };
+
+//   const convertJsonToJava = (json: JsonObject, className: string): string => {
+//     let javaCode = `public class ${className} {\n`;
+
+//     for (const [key, value] of Object.entries(json)) {
+//       const type = getJavaType(value);
+//       const fieldName = toCamelCase(key);
+//       javaCode += `    private ${type} ${fieldName};\n`;
+//     }
+
+//     // Generate getters and setters
+//     for (const [key, value] of Object.entries(json)) {
+//       const type = getJavaType(value);
+//       const fieldName = toCamelCase(key);
+//       const capitalizedFieldName =
+//         fieldName.charAt(0).toUpperCase() + fieldName.slice(1);
+
+//       // Getter
+//       javaCode += `\n    public ${type} get${capitalizedFieldName}() {\n`;
+//       javaCode += `        return ${fieldName};\n`;
+//       javaCode += `    }\n`;
+
+//       // Setter
+//       javaCode += `\n    public void set${capitalizedFieldName}(${type} ${fieldName}) {\n`;
+//       javaCode += `        this.${fieldName} = ${fieldName};\n`;
+//       javaCode += `    }\n`;
+//     }
+
+//     javaCode += "}\n";
+
+//     // Generate nested classes
+//     for (const [key, value] of Object.entries(json)) {
+//       if (
+//         typeof value === "object" &&
+//         value !== null &&
+//         !Array.isArray(value)
+//       ) {
+//         const nestedClassName = key.charAt(0).toUpperCase() + key.slice(1);
+//         javaCode += "\n" + convertJsonToJava(value, nestedClassName);
+//       }
+//     }
+
+//     return javaCode;
+//   };
+
+//   const getJavaType = (value: any): string => {
+//     if (value === null) return "Object";
+//     if (typeof value === "string") return "String";
+//     if (typeof value === "number") {
+//       return Number.isInteger(value) ? "int" : "double";
+//     }
+//     if (typeof value === "boolean") return "boolean";
+//     if (Array.isArray(value)) {
+//       if (value.length === 0) return "List<Object>";
+//       return `List<${getJavaType(value[0])}>`;
+//     }
+//     if (typeof value === "object") {
+//       return capitalizeFirstLetter(value.constructor.name);
+//     }
+//     return "Object";
+//   };
+
+//   const toCamelCase = (str: string): string => {
+//     return str.replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
+//   };
+
+//   const capitalizeFirstLetter = (string: string): string => {
+//     return string.charAt(0).toUpperCase() + string.slice(1);
+//   };
+
 "use client";
+
 import React, { useState } from "react";
 import NavBar from "@/components/navbar";
-
-interface ConverterProps {
-  isDarkMode: boolean;
-  toggleTheme: () => void;
-}
 
 interface JsonObject {
   [key: string]: any;
 }
 
-const Converter: React.FC<ConverterProps> = () => {
+const Converter: React.FC = () => {
   const [inputJSON, setInputJSON] = useState("");
   const [outputJava, setOutputJava] = useState("");
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
 
-  const handleCopy = () => {
-    if (outputJava) {
-      navigator.clipboard.writeText(outputJava);
-      setCopySuccess(true);
-      setTimeout(() => setCopySuccess(false), 3000);
-    }
-  };
-
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+    setIsDarkMode((prev) => !prev);
   };
 
   const handleConvert = () => {
@@ -35,13 +139,9 @@ const Converter: React.FC<ConverterProps> = () => {
       const convertedCode = convertJsonToJava(jsonObject, "RootClass");
       setOutputJava(convertedCode);
     } catch (error) {
-      if (error instanceof Error) {
-        setOutputJava(`Error: ${error.message}. Please check your JSON input.`);
-      } else {
-        setOutputJava(
-          "An unknown error occurred. Please check your JSON input.",
-        );
-      }
+      setOutputJava(
+        `Error: ${error instanceof Error ? error.message : "Invalid JSON"}`,
+      );
     }
   };
 
@@ -54,34 +154,15 @@ const Converter: React.FC<ConverterProps> = () => {
       javaCode += `    private ${type} ${fieldName};\n`;
     }
 
-    // Generate getters and setters
-    for (const [key, value] of Object.entries(json)) {
-      const type = getJavaType(value);
-      const fieldName = toCamelCase(key);
-      const capitalizedFieldName =
-        fieldName.charAt(0).toUpperCase() + fieldName.slice(1);
-
-      // Getter
-      javaCode += `\n    public ${type} get${capitalizedFieldName}() {\n`;
-      javaCode += `        return ${fieldName};\n`;
-      javaCode += `    }\n`;
-
-      // Setter
-      javaCode += `\n    public void set${capitalizedFieldName}(${type} ${fieldName}) {\n`;
-      javaCode += `        this.${fieldName} = ${fieldName};\n`;
-      javaCode += `    }\n`;
-    }
-
     javaCode += "}\n";
 
-    // Generate nested classes
     for (const [key, value] of Object.entries(json)) {
       if (
         typeof value === "object" &&
         value !== null &&
         !Array.isArray(value)
       ) {
-        const nestedClassName = key.charAt(0).toUpperCase() + key.slice(1);
+        const nestedClassName = capitalizeFirstLetter(key);
         javaCode += "\n" + convertJsonToJava(value, nestedClassName);
       }
     }
@@ -92,28 +173,28 @@ const Converter: React.FC<ConverterProps> = () => {
   const getJavaType = (value: any): string => {
     if (value === null) return "Object";
     if (typeof value === "string") return "String";
-    if (typeof value === "number") {
+    if (typeof value === "number")
       return Number.isInteger(value) ? "int" : "double";
-    }
     if (typeof value === "boolean") return "boolean";
     if (Array.isArray(value)) {
       if (value.length === 0) return "List<Object>";
       return `List<${getJavaType(value[0])}>`;
     }
-    if (typeof value === "object") {
-      return capitalizeFirstLetter(value.constructor.name);
-    }
     return "Object";
   };
 
-  const toCamelCase = (str: string): string => {
-    return str.replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
-  };
+  const toCamelCase = (str: string): string =>
+    str.replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
+  const capitalizeFirstLetter = (str: string): string =>
+    str.charAt(0).toUpperCase() + str.slice(1);
 
-  const capitalizeFirstLetter = (string: string): string => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+  const handleCopy = () => {
+    if (outputJava) {
+      navigator.clipboard.writeText(outputJava);
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 3000);
+    }
   };
-
   return (
     <div
       className={`${isDarkMode ? "bg-gray-900 text-gray-400" : "bg-gray-100 text-gray-500"} min-h-screen w-full pb-2`}

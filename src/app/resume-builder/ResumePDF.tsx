@@ -346,7 +346,7 @@ const ResumePDF: React.FC<{ data: ResumeData }> = ({ data }) => {
                         : styles1.rectangleImage
                     }
                     src={image || ""}
-                    //alt="" // Decorative image
+                    alt-text="image" // Decorative image
                   />
                 )}
               </View>

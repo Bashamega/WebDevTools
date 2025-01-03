@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  useMemo,
+} from "react";
 import Link from "next/link";
 
 import { FaTools, FaInfo } from "react-icons/fa";
@@ -15,6 +21,94 @@ import GeneratorDropdown from "./dropdowns/generators";
 import EditorDropdown from "./dropdowns/editors";
 import OtherDropdown from "./dropdowns/others";
 
+// interface NavProps {
+//   isDarkMode: boolean;
+//   toggleTheme: () => void;
+// }
+
+// interface DropdownRefs {
+//   generator: React.RefObject<HTMLDivElement>;
+//   editor: React.RefObject<HTMLDivElement>;
+//   other: React.RefObject<HTMLDivElement>;
+// }
+
+// const Nav: React.FC<NavProps> = ({ isDarkMode, toggleTheme }) => {
+//   //const [isDropdownOpen, setIsDropdownOpen] = useState(null);
+//   const [isDropdownOpen, setIsDropdownOpen] = useState<string | null>(null);
+//   //const [open, setOpen] = useState(false);
+//   const [open, setOpen] = useState<boolean>(false);
+//   //const [isNavFixed, setIsNavFixed] = useState(false);
+//   const [isNavFixed, setIsNavFixed] = useState<boolean>(false);
+//   const dropdownRefs: DropdownRefs = {
+//     generator: useRef<HTMLDivElement>(null),
+//     editor: useRef<HTMLDivElement>(null),
+//     other: useRef<HTMLDivElement>(null),
+//   };
+
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       const banner = document.querySelector("#banner");
+//       const bannerHeight = banner ? (banner as HTMLElement).offsetHeight : 0;
+//       if (window.scrollY >= bannerHeight) {
+//         setIsNavFixed(true);
+//       } else {
+//         setIsNavFixed(false);
+//       }
+//     };
+//     window.addEventListener("scroll", handleScroll);
+//     return () => {
+//       window.removeEventListener("scroll", handleScroll);
+//     };
+//   }, []);
+
+//   const toggleDropdown = (category: string) => {
+//     setIsDropdownOpen((prevState) =>
+//       prevState === category ? null : category,
+//     );
+//   };
+
+//   const handleClickOutside = useCallback(
+//     (event: MouseEvent) => {
+//       // Check if the click is outside of all dropdowns
+//       if (
+//         !dropdownRefs.generator.current?.contains(event.target as Node) &&
+//         !dropdownRefs.editor.current?.contains(event.target as Node) &&
+//         !dropdownRefs.other.current?.contains(event.target as Node)
+//       ) {
+//         setIsDropdownOpen(null);
+//       }
+//     },
+//     [dropdownRefs],
+//   );
+
+//   useEffect(() => {
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => {
+//       document.removeEventListener("mousedown", handleClickOutside);
+//     };
+//   }, [handleClickOutside]);
+
+//   useEffect(() => {
+//     const storedTheme = localStorage.getItem("theme");
+//     try {
+//       if (storedTheme !== null && JSON.parse(storedTheme) !== isDarkMode) {
+//         toggleTheme();
+//       }
+//     } catch {
+//       console.log("Failed to read localstorage");
+//     }
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, []);
+
+//   const togglePanel = () => {
+//     setOpen((prev) => !prev);
+//   };
+
+//   const handleToggleTheme = () => {
+//     localStorage.setItem("theme", JSON.stringify(!isDarkMode));
+//     toggleTheme();
+//   };
+
 interface NavProps {
   isDarkMode: boolean;
   toggleTheme: () => void;
@@ -27,17 +121,19 @@ interface DropdownRefs {
 }
 
 const Nav: React.FC<NavProps> = ({ isDarkMode, toggleTheme }) => {
-  //const [isDropdownOpen, setIsDropdownOpen] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState<string | null>(null);
-  //const [open, setOpen] = useState(false);
   const [open, setOpen] = useState<boolean>(false);
-  //const [isNavFixed, setIsNavFixed] = useState(false);
   const [isNavFixed, setIsNavFixed] = useState<boolean>(false);
-  const dropdownRefs: DropdownRefs = {
-    generator: useRef<HTMLDivElement>(null),
-    editor: useRef<HTMLDivElement>(null),
-    other: useRef<HTMLDivElement>(null),
-  };
+
+  // Use useMemo to ensure dropdownRefs remains stable
+  const dropdownRefs: DropdownRefs = useMemo(
+    () => ({
+      generator: React.createRef<HTMLDivElement>(),
+      editor: React.createRef<HTMLDivElement>(),
+      other: React.createRef<HTMLDivElement>(),
+    }),
+    [],
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,6 +145,7 @@ const Nav: React.FC<NavProps> = ({ isDarkMode, toggleTheme }) => {
         setIsNavFixed(false);
       }
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -89,7 +186,7 @@ const Nav: React.FC<NavProps> = ({ isDarkMode, toggleTheme }) => {
         toggleTheme();
       }
     } catch {
-      console.log("Failed to read localstorage");
+      console.log("Failed to read localStorage");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -102,7 +199,6 @@ const Nav: React.FC<NavProps> = ({ isDarkMode, toggleTheme }) => {
     localStorage.setItem("theme", JSON.stringify(!isDarkMode));
     toggleTheme();
   };
-
   return (
     <nav
       className={`${
@@ -271,3 +367,13 @@ const Nav: React.FC<NavProps> = ({ isDarkMode, toggleTheme }) => {
 };
 
 export default Nav;
+function useCustomMemo(
+  arg0: () => {
+    generator: React.RefObject<HTMLDivElement>;
+    editor: React.RefObject<HTMLDivElement>;
+    other: React.RefObject<HTMLDivElement>;
+  },
+  arg1: never[],
+): DropdownRefs {
+  throw new Error("Function not implemented.");
+}

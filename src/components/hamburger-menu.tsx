@@ -92,17 +92,84 @@ import OtherDropdown from "./dropdowns/others";
 //     setOpenDropdown((prevState) => (prevState === category ? null : category));
 //   };
 
+// interface HamburgerMenuProps {
+//   open: boolean;
+//   togglePanel: () => void;
+//   isDarkMode: boolean;
+// }
+// interface ToggleDropdown {
+//   (category: string): void;
+// }
+
+// interface DropdownRefs {
+//   [key: string]: React.RefObject<HTMLDivElement>;
+// }
+
+// const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
+//   open,
+//   togglePanel,
+//   isDarkMode,
+// }) => {
+//   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+//   const menuRef = useRef<HTMLDivElement>(null);
+
+//   // const dropdownRefs: DropdownRefs = {
+//   //   generator: useRef<HTMLDivElement>(null),
+//   //   editor: useRef<HTMLDivElement>(null),
+//   //   other: useRef<HTMLDivElement>(null),
+//   // };
+
+//   const dropdownRefs: DropdownRefs = {
+//     generator: useRef<HTMLDivElement>(null),
+//     editor: useRef<HTMLDivElement>(null),
+//     other: useRef<HTMLDivElement>(null),
+//   };
+
+//   // Memoize the handleClickOutside function
+//   const handleClickOutside = useCallback(
+//     (event: MouseEvent) => {
+//       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+//         // Close all dropdowns if clicked outside the menu
+//         setOpenDropdown(null);
+//       } else {
+//         // Check each dropdown individually
+//         Object.keys(dropdownRefs).forEach((key) => {
+//           if (
+//             dropdownRefs[key].current &&
+//             !dropdownRefs[key].current.contains(event.target as Node)
+//           ) {
+//             if (openDropdown === key) {
+//               setOpenDropdown(null); // Close the dropdown if clicked outside of it
+//             }
+//           }
+//         });
+//       }
+//     },
+//     [dropdownRefs, openDropdown],
+//   );
+
+//   // Add/remove event listener for mouse clicks
+//   useEffect(() => {
+//     document.addEventListener("mousedown", handleClickOutside);
+//     return () => {
+//       document.removeEventListener("mousedown", handleClickOutside);
+//     };
+//   }, [handleClickOutside]);
+
+//   const toggleDropdown: ToggleDropdown = (category) => {
+//     setOpenDropdown((prevState) => (prevState === category ? null : category));
+//   };
+
 interface HamburgerMenuProps {
   open: boolean;
   togglePanel: () => void;
   isDarkMode: boolean;
 }
-interface ToggleDropdown {
-  (category: string): void;
-}
 
 interface DropdownRefs {
-  [key: string]: React.RefObject<HTMLDivElement>;
+  generator: React.RefObject<HTMLDivElement>;
+  editor: React.RefObject<HTMLDivElement>;
+  other: React.RefObject<HTMLDivElement>;
 }
 
 const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
@@ -111,44 +178,31 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
   isDarkMode,
 }) => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // const dropdownRefs: DropdownRefs = {
-  //   generator: useRef<HTMLDivElement>(null),
-  //   editor: useRef<HTMLDivElement>(null),
-  //   other: useRef<HTMLDivElement>(null),
-  // };
-
-  const dropdownRefs: DropdownRefs = {
-    generator: useRef<HTMLDivElement>(null),
-    editor: useRef<HTMLDivElement>(null),
-    other: useRef<HTMLDivElement>(null),
-  };
-
-  // Memoize the handleClickOutside function
-  const handleClickOutside = useCallback(
-    (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        // Close all dropdowns if clicked outside the menu
-        setOpenDropdown(null);
-      } else {
-        // Check each dropdown individually
-        Object.keys(dropdownRefs).forEach((key) => {
-          if (
-            dropdownRefs[key].current &&
-            !dropdownRefs[key].current.contains(event.target as Node)
-          ) {
-            if (openDropdown === key) {
-              setOpenDropdown(null); // Close the dropdown if clicked outside of it
-            }
-          }
-        });
-      }
-    },
-    [dropdownRefs, openDropdown],
+  const dropdownRefs: DropdownRefs = useMemo(
+    () => ({
+      generator: React.createRef<HTMLDivElement>(),
+      editor: React.createRef<HTMLDivElement>(),
+      other: React.createRef<HTMLDivElement>(),
+    }),
+    [],
   );
 
-  // Add/remove event listener for mouse clicks
+  const handleClickOutside = useCallback(
+    (event: MouseEvent) => {
+      if (
+        !dropdownRefs.generator.current?.contains(event.target as Node) &&
+        !dropdownRefs.editor.current?.contains(event.target as Node) &&
+        !dropdownRefs.other.current?.contains(event.target as Node)
+      ) {
+        setOpenDropdown(null);
+      }
+    },
+    [dropdownRefs],
+  );
+
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -156,10 +210,9 @@ const HamburgerMenu: React.FC<HamburgerMenuProps> = ({
     };
   }, [handleClickOutside]);
 
-  const toggleDropdown: ToggleDropdown = (category) => {
+  const toggleDropdown = (category: string) => {
     setOpenDropdown((prevState) => (prevState === category ? null : category));
   };
-
   return (
     <Dialog
       open={open}

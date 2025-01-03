@@ -177,7 +177,7 @@ const BadgeMakerPage = () => {
           <div className="w-2/3 mx-auto mt-8">
             <div className="mb-6">
               <h2 className="text-2xl font-semibold mb-2">Badge Preview</h2>
-              <img
+              <Image
                 src={badgeImage}
                 alt="Badge Preview"
                 width={400}

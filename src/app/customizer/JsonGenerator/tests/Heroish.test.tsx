@@ -7,7 +7,7 @@ describe("Heroish Component", () => {
   // Test that main heading renders
   test("renders the main heading", () => {
     render(<Heroish />);
-    const heading = screen.getByRole("heading", { name: "Json Generator" });
+    const heading = screen.getByRole("heading", { name: /Json Generator/i });
     expect(heading).toBeInTheDocument();
   });
 

@@ -72,17 +72,11 @@ import languages from "@/db/codesnippets/categories.json";
 import { promises as fs } from "fs";
 import path from "path";
 
-interface RequestParams {
-  params: {
-    language: string;
-  };
-}
-
 export async function GET(
   request: Request,
-  { params }: RequestParams,
+  context: { params: Record<string, string> }, // Use the correct type for context
 ): Promise<Response> {
-  const { language } = params; // Extract language from params
+  const { language } = context.params; // Extract language from params
   const encodedLanguage = encodeURIComponent(language.toLowerCase());
 
   // Check if the language exists in the languages list

@@ -55,17 +55,6 @@ export default function GhFinder() {
     items?: Issue[];
   }
 
-  // const fetchData = async (url: string): Promise<FetchResult | Issue[]> => {
-  //   try {
-  //     const response = await fetch(url);
-  //     const result = await response.json();
-  //     return result;
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //     return [];
-  //   }
-  // };
-
   const fetchData = useCallback(
     async (url: string): Promise<FetchResult | Issue[]> => {
       try {
@@ -202,11 +191,39 @@ export default function GhFinder() {
   ]);
 
   // Filter issues by search keywords and assignment status
-  useEffect(() => {
-    interface IssueWithPRs extends Issue {
-      linkedPRs: string[];
-    }
+  // useEffect(() => {
+  //   interface IssueWithPRs extends Issue {
+  //     linkedPRs: string[];
+  //   }
 
+  //   const issuesBySearch = (issues: IssueWithPRs[]): IssueWithPRs[] => {
+  //     return issues.filter((issue) => {
+  //       const matchesSearch = issue.title
+  //         .toLowerCase()
+  //         .includes(searchQuery.toLowerCase());
+  //       const matchesAssignment = isAssigned
+  //         ? issue.assignees.length > 0
+  //         : true;
+  //       return matchesSearch && matchesAssignment;
+  //     });
+  //   };
+
+  //   // Filter issues by label
+  //   const issuesByLabel = (issues: IssueWithPRs[]): IssueWithPRs[] => {
+  //     return issues.filter((issue: IssueWithPRs) => {
+  //       return selectedLabels.every((selectedLabel: string) => {
+  //         return issue.labels.some(
+  //           (label: Label) => label.name === selectedLabel,
+  //         );
+  //       });
+  //     });
+  //   };
+
+  //   setFilteredIssues(issuesByLabel(issuesBySearch(data)));
+  //   setCurrentPage(1);
+  // }, [data, isAssigned, searchQuery, selectedLabels]);
+
+  useEffect(() => {
     const issuesBySearch = (issues: IssueWithPRs[]): IssueWithPRs[] => {
       return issues.filter((issue) => {
         const matchesSearch = issue.title
@@ -219,7 +236,6 @@ export default function GhFinder() {
       });
     };
 
-    // Filter issues by label
     const issuesByLabel = (issues: IssueWithPRs[]): IssueWithPRs[] => {
       return issues.filter((issue: IssueWithPRs) => {
         return selectedLabels.every((selectedLabel: string) => {
