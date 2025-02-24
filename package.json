@@ -23,7 +23,7 @@
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@monaco-editor/react": "^4.7.0",
-    "@mui/icons-material": "^5.15.19",
+    "@mui/icons-material": "^6.4.5",
     "@mui/material": "^5.15.19",
     "@radix-ui/react-select": "^2.1.4",
     "@react-pdf/renderer": "^4.1.6",
