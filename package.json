@@ -44,7 +44,7 @@
     "html-to-jsx-transform": "^1.2.0",
     "json-to-pretty-yaml": "^1.2.2",
     "jszip": "^3.10.1",
-    "lucide-react": "^0.471.0",
+    "lucide-react": "^0.479.0",
     "next": "^15.1.6",
     "next-navigation": "^1.0.6",
     "postcss": "8.5.3",
