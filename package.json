@@ -61,7 +61,7 @@
     "react-markdown": "^9.0.3",
     "react-tabs": "^6.1.0",
     "remark-gfm": "^4.0.1",
-    "sass": "^1.85.0",
+    "sass": "^1.86.3",
     "snarkdown": "^2.0.0",
     "sweetalert2": "^11.17.2",
     "tailwind-merge": "^3.0.2",
