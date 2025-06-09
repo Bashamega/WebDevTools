@@ -41,7 +41,7 @@
     "framer-motion": "^12.16.0",
     "free-ps-banner": "^0.0.2",
     "fuse.js": "^7.1.0",
-    "html-to-jsx-transform": "^1.2.0",
+    "html-to-jsx-transform": "^1.2.1",
     "json-to-pretty-yaml": "^1.2.2",
     "jszip": "^3.10.1",
     "lucide-react": "^0.511.0",
