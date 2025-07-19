@@ -50,7 +50,7 @@
     "postcss": "8.5.3",
     "react": "^18.3.1",
     "react-beautiful-dnd": "^13.1.1",
-    "react-bootstrap": "^2.10.6",
+    "react-bootstrap": "^2.10.10",
     "react-color": "^2.19.3",
     "react-colorful": "^5.6.1",
     "react-dom": "^18.3.1",
