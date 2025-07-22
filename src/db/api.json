@@ -258,6 +258,12 @@
     "ctg": "Financial"
   },
   {
+    "id": 44,
+    "name": "Bored API",
+    "link": "https://www.boredapi.com/",
+    "ctg": "Fun"
+  },
+  {
     "id": 45,
     "name": "Agify API",
     "link": "https://agify.io/",
