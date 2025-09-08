@@ -34,7 +34,7 @@
     "badge-maker": "^5.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "codemirror": "^6.0.1",
+    "codemirror": "^6.0.2",
     "convert-units": "^2.3.4",
     "eslint-config-next": "^15.1.6",
     "file-saver": "^2.0.5",
