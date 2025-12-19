@@ -63,7 +63,7 @@
     "remark-gfm": "^4.0.1",
     "sass": "^1.86.3",
     "snarkdown": "^2.0.0",
-    "sweetalert2": "^11.22.4",
+    "sweetalert2": "^11.26.10",
     "tailwind-merge": "^3.3.0",
     "tailwindcss": "3.4.17",
     "tailwindcss-animate": "^1.0.7",
