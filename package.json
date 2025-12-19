@@ -45,7 +45,7 @@
     "json-to-pretty-yaml": "^1.2.2",
     "jszip": "^3.10.1",
     "lucide-react": "^0.511.0",
-    "next": "^15.5.9",
+    "next": "^16.0.10",
     "next-navigation": "^1.0.6",
     "postcss": "8.5.3",
     "react": "^18.3.1",
