@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import snarkdown from "snarkdown";
 import { saveAs } from "file-saver";
+import DOMPurify from "dompurify";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
@@ -37,6 +38,7 @@ export default function MarkdownEditor() {
     if (iframeRef.current && markdown !== previousMarkdownRef.current) {
       const iframeDoc = iframeRef.current.contentDocument;
       if (iframeDoc) {
+        const sanitizedHtml = DOMPurify.sanitize(snarkdown(markdown));
         iframeDoc.open();
         iframeDoc.write(`
           <!DOCTYPE html>
@@ -53,7 +55,7 @@ export default function MarkdownEditor() {
               </style>
             </head>
             <body class="markdown-body">
-              ${snarkdown(markdown)}
+              ${sanitizedHtml}
             </body>
           </html>
         `);
