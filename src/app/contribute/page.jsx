@@ -71,7 +71,7 @@ export default function ContributePage() {
       <Nav isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <div className="flex justify-center flex-col items-center w-full">
         <div
-          className={`my-9 max-w-[26rem] md:max-w-[40rem] break-words block py-6 md:p-6 ${
+          className={`my-9 max-w-104 md:max-w-160 wrap-break-word block py-6 md:p-6 ${
             isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
           } border border-gray-200 rounded-lg shadow`}
         >
@@ -112,7 +112,7 @@ export default function ContributePage() {
           </div>
         </div>
         <div
-          className={`p-4 mb-24 text-center max-w-[26rem] md:max-w-[40rem] ${
+          className={`p-4 mb-24 text-center max-w-104 md:max-w-160 ${
             isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
           } border border-gray-200 rounded-lg shadow sm:p-8`}
         >
@@ -126,7 +126,7 @@ export default function ContributePage() {
           <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
             <Link
               href="https://github.com/Bashamega/WebDevTools"
-              className="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 hover:shadow-card-shadow  transition-all duration-500 ease-in"
+              className="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-hidden focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 hover:shadow-card-shadow  transition-all duration-500 ease-in"
             >
               <svg
                 className="mr-3 w-7 h-7"

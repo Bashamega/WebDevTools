@@ -113,7 +113,7 @@ const Converter = () => {
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
       />
-      <h1 className="relative z-10 font-sans text-5xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600 mb-7 mt-4">
+      <h1 className="relative z-10 font-sans text-5xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-linear-to-b from-neutral-200 to-neutral-600 mb-7 mt-4">
         JS to TS Converter
       </h1>
 
@@ -127,10 +127,10 @@ const Converter = () => {
             rounded-lg 
             border border-gray-300 
             focus:ring-2 focus:ring-blue-500 
-            focus:outline-none 
+            focus:outline-hidden 
             transition duration-200 ease-in-out 
             placeholder-gray-400 
-            shadow-sm 
+            shadow-xs 
             hover:shadow-md
             resize-none
             ${
@@ -152,10 +152,10 @@ const Converter = () => {
             rounded-lg 
             border border-gray-300 
             focus:ring-2 focus:ring-blue-500 
-            focus:outline-none 
+            focus:outline-hidden 
             transition duration-200 ease-in-out 
             placeholder-gray-400 
-            shadow-sm 
+            shadow-xs 
             hover:shadow-md
             resize-none
             ${
@@ -188,7 +188,7 @@ const Converter = () => {
             </button>
           ) : (
             <button
-              className="absolute top-2 right-2 bg-gray-200 hover:bg-gray-300 rounded p-2 focus:outline-none"
+              className="absolute top-2 right-2 bg-gray-200 hover:bg-gray-300 rounded p-2 focus:outline-hidden"
               onClick={handleCopy}
             >
               <svg
@@ -211,7 +211,7 @@ const Converter = () => {
       </div>
 
       <button
-        className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 mt-6 rounded-lg shadow-lg hover:from-blue-600 hover:to-indigo-700 hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-blue-300 ml-7"
+        className="bg-linear-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 mt-6 rounded-lg shadow-lg hover:from-blue-600 hover:to-indigo-700 hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out focus:outline-hidden focus:ring-4 focus:ring-blue-300 ml-7"
         onClick={handleConvert}
       >
         Convert to TypeScript

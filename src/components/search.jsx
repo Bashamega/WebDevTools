@@ -80,7 +80,7 @@ export default function Search({ isDarkMode }) {
           onChange={handleInputChange}
           type="search"
           id="search"
-          className={`grow border outline-none border-none ${
+          className={`grow border outline-hidden border-none ${
             isDarkMode ? "bg-gray-700 text-white" : "bg-white text-gray-900"
           } text-sm block w-full p-1.5 px-2 dark:placeholder-gray-400`}
           placeholder="Search"

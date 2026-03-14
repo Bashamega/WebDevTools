@@ -108,13 +108,13 @@ const Converter = () => {
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
       />
-      <h1 className="relative z-10 font-sans text-5xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600 mb-7 mt-4">
+      <h1 className="relative z-10 font-sans text-5xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-linear-to-b from-neutral-200 to-neutral-600 mb-7 mt-4">
         JSON to Java Converter
       </h1>
 
       <div className="flex flex-col md:flex-row gap-2">
         <textarea
-          className={`w-full ml-7 mr-4 p-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition duration-200 ease-in-out placeholder-gray-400 shadow-sm hover:shadow-md resize-none ${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-gray-200 text-gray-500"}`}
+          className={`w-full ml-7 mr-4 p-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-hidden transition duration-200 ease-in-out placeholder-gray-400 shadow-xs hover:shadow-md resize-none ${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-gray-200 text-gray-500"}`}
           rows="10"
           placeholder="Paste JSON here..."
           value={inputJSON}
@@ -123,7 +123,7 @@ const Converter = () => {
 
         <div className="relative w-full mr-7">
           <textarea
-            className={`w-full p-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition duration-200 ease-in-out placeholder-gray-400 shadow-sm hover:shadow-md resize-none ${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-gray-200 text-gray-500"}`}
+            className={`w-full p-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-hidden transition duration-200 ease-in-out placeholder-gray-400 shadow-xs hover:shadow-md resize-none ${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-gray-200 text-gray-500"}`}
             rows="10"
             readOnly
             value={outputJava}
@@ -132,7 +132,7 @@ const Converter = () => {
           <button
             className={`absolute top-2 right-2 ${
               copySuccess ? "bg-green-500" : "bg-gray-200 hover:bg-gray-300"
-            } rounded p-2 focus:outline-none transition-colors duration-200`}
+            } rounded p-2 focus:outline-hidden transition-colors duration-200`}
             onClick={handleCopy}
           >
             {copySuccess ? (
@@ -169,7 +169,7 @@ const Converter = () => {
       </div>
 
       <button
-        className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 mt-6 rounded-lg shadow-lg hover:from-blue-600 hover:to-indigo-700 hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-blue-300 ml-7"
+        className="bg-linear-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 mt-6 rounded-lg shadow-lg hover:from-blue-600 hover:to-indigo-700 hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out focus:outline-hidden focus:ring-4 focus:ring-blue-300 ml-7"
         onClick={handleConvert}
       >
         Convert to Java

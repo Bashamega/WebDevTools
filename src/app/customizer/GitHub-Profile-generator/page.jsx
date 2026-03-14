@@ -359,7 +359,7 @@ export default function ButtonCustomizer() {
         toggleTheme={toggleTheme}
       />
 
-      <h1 className="relative z-10 font-sans text-5xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600 mb-5">
+      <h1 className="relative z-10 font-sans text-5xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-linear-to-b from-neutral-200 to-neutral-600 mb-5">
         Github Profile Generator
       </h1>
 
@@ -376,7 +376,7 @@ export default function ButtonCustomizer() {
             value={formValues.name}
             onChange={handleChange}
             className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-900 border-gray-400"} w-full
-            p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            p-2 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
           />
 
           <div className="mt-4">
@@ -393,7 +393,7 @@ export default function ButtonCustomizer() {
                 isDarkMode
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
-              } w-full p-2 border rounded-lg focus:outline-none
+              } w-full p-2 border rounded-lg focus:outline-hidden
                 focus:ring-2 focus:ring-blue-500`}
             />
           </div>
@@ -414,7 +414,7 @@ export default function ButtonCustomizer() {
                 isDarkMode
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
-              } w-full p-2 border rounded-lg focus:outline-none
+              } w-full p-2 border rounded-lg focus:outline-hidden
                 focus:ring-2 focus:ring-blue-500`}
             />
           </div>
@@ -435,7 +435,7 @@ export default function ButtonCustomizer() {
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
               } w-full p-2 border rounded-lg
-                focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             />
           </div>
 
@@ -453,7 +453,7 @@ export default function ButtonCustomizer() {
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
               } w-full p-2 border rounded-lg
-                focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
               placeholder="Portfolio/Website Title"
             />
 
@@ -468,7 +468,7 @@ export default function ButtonCustomizer() {
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
               } w-full p-2 border rounded-lg
-                    focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                    focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             />
           </div>
 
@@ -487,7 +487,7 @@ export default function ButtonCustomizer() {
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
               } w-full p-2 border rounded-lg
-                focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
               placeholder="MyApp"
             />
           </div>
@@ -507,7 +507,7 @@ export default function ButtonCustomizer() {
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
               } w-full p-2 border rounded-lg
-                focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
               placeholder="a new framework"
             />
           </div>
@@ -527,7 +527,7 @@ export default function ButtonCustomizer() {
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
               } w-full p-2 border rounded-lg
-                focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
               placeholder="interesting projects"
             />
           </div>
@@ -546,7 +546,7 @@ export default function ButtonCustomizer() {
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
               } w-full p-2 border rounded-lg
-                focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
               placeholder="I'm secretly Spiderman... but don't tell anyone"
             />
           </div>
@@ -571,7 +571,7 @@ export default function ButtonCustomizer() {
                 isDarkMode
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
-              } w-full p-2 border rounded-lg focus:outline-none
+              } w-full p-2 border rounded-lg focus:outline-hidden
                     focus:ring-2 focus:ring-blue-500`}
             />
             {/* Gmail Badge */}
@@ -600,7 +600,7 @@ export default function ButtonCustomizer() {
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
               } w-full p-2 border
-                    rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                    rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             />
 
             <a
@@ -628,7 +628,7 @@ export default function ButtonCustomizer() {
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
               } w-full p-2 border
-                    rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                    rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             />
 
             <a
@@ -655,7 +655,7 @@ export default function ButtonCustomizer() {
                 isDarkMode
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
-              } w-full p-2 border rounded-lg focus:outline-none
+              } w-full p-2 border rounded-lg focus:outline-hidden
                     focus:ring-2 focus:ring-blue-500`}
             />
             <a
@@ -687,7 +687,7 @@ export default function ButtonCustomizer() {
                 isDarkMode
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
-              } w-full p-2 border rounded-lg focus:outline-none
+              } w-full p-2 border rounded-lg focus:outline-hidden
             focus:ring-2 focus:ring-blue-500`}
             />
             <button
@@ -719,7 +719,7 @@ export default function ButtonCustomizer() {
                 placeholder="GitHub Username"
                 value={formValues.githubUsername}
                 onChange={handleChange}
-                className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-900 border-gray-400"} w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-900 border-gray-400"} w-full p-2 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
               />
             </div>
           </div>
@@ -740,7 +740,7 @@ export default function ButtonCustomizer() {
               isDarkMode
                 ? "bg-gray-800 text-gray-200"
                 : "bg-white text-gray-900 border-gray-400"
-            } w-full p-2 border rounded-lg focus:outline-none
+            } w-full p-2 border rounded-lg focus:outline-hidden
                 focus:ring-2 focus:ring-blue-500`}
           />
           <a
@@ -766,7 +766,7 @@ export default function ButtonCustomizer() {
             value={formValues.kofi}
             onChange={handleChange}
             className={`${isDarkMode ? "bg-gray-800 text-gray-200" : "bg-white text-gray-900 border-gray-400"}
-                w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                w-full p-2 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
           />
           <a
             href={encodeURIComponent(formValues.kofi)}

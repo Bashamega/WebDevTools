@@ -1,7 +1,7 @@
 export default function Heroish() {
   return (
     <div className="w-full mt-6">
-      <h1 className="relative z-10 font-sans text-lg font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600">
+      <h1 className="relative z-10 font-sans text-lg font-bold text-center text-transparent md:text-7xl bg-clip-text bg-linear-to-b from-neutral-200 to-neutral-600">
         Json Generator
       </h1>
       <p></p>

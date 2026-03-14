@@ -134,7 +134,7 @@ export default function Page() {
             <input
               placeholder="https://website.com"
               aria-label="Website URL"
-              className={`${isDarkMode ? "bg-slate-800 border-slate-700 text-white focus:border-slate-500" : "bg-slate-50 border-slate-200 text-slate-950 placeholder:text-slate-400"} focus-visible:outline-none flex w-full rounded-md border px-3 py-2 flex-grow text-lg h-auto placeholder:text-white/50`}
+              className={`${isDarkMode ? "bg-slate-800 border-slate-700 text-white focus:border-slate-500" : "bg-slate-50 border-slate-200 text-slate-950 placeholder:text-slate-400"} focus-visible:outline-hidden flex w-full rounded-md border px-3 py-2 grow text-lg h-auto placeholder:text-white/50`}
               ref={urlInputRef}
               disabled={isLoading}
               name="url"
@@ -156,7 +156,7 @@ export default function Page() {
         {sitemap.length > 0 && (
           <div className="mt-8 max-w-full rounded-lg bg-slate-800 shadow-lg">
             <div className="p-4 border-b border-slate-700 flex justify-between flex-wrap items-center gap-4">
-              <div className="flex items-center gap-4 flex-shrink-0">
+              <div className="flex items-center gap-4 shrink-0">
                 {isLoading && (
                   <CircularProgress
                     size="1.5rem"
@@ -169,7 +169,7 @@ export default function Page() {
                 </p>
               </div>
 
-              <div className="flex items-stretch gap-1 flex-shrink-0">
+              <div className="flex items-stretch gap-1 shrink-0">
                 {isLoading ? (
                   <p className="text-slate-400">
                     Found pages: {sitemap.split("<url>").length - 1}

@@ -152,7 +152,7 @@ export default function MarkdownEditor() {
             <input
               value={name}
               onChange={handleNameChange}
-              className={`outline-none border text-sm rounded p-1.5 px-2 ${
+              className={`outline-hidden border text-sm rounded p-1.5 px-2 ${
                 isDarkMode
                   ? "bg-gray-700 border-gray-600 text-white"
                   : "bg-gray-50 border-gray-300 text-gray-900"
@@ -185,7 +185,7 @@ export default function MarkdownEditor() {
             } ${
               toggle
                 ? "left-0 duration-300 ease-in"
-                : "left-[100%] duration-300 ease-in"
+                : "left-full duration-300 ease-in"
             } `}
           >
             <div className="flex flex-1 items-center justify-center relative">
@@ -214,7 +214,7 @@ export default function MarkdownEditor() {
           <input
             value={name}
             onChange={handleNameChange}
-            className={`outline-none border text-sm rounded p-1.5 px-2 ${
+            className={`outline-hidden border text-sm rounded p-1.5 px-2 ${
               isDarkMode
                 ? "bg-gray-700 border-gray-600 text-white"
                 : "bg-gray-50 border-gray-300 text-gray-900"
@@ -253,7 +253,7 @@ export default function MarkdownEditor() {
         </div>
       </div>
 
-      <section className="flex flex-col md:flex-row w-full h-[100%] gap-3">
+      <section className="flex flex-col md:flex-row w-full h-full gap-3">
         <section className="w-[96%] h-full  md:w-1/2 ml-2 mr-2 relative">
           <button
             onClick={copyToClipboard}

@@ -26,7 +26,7 @@ export const ActionButtons = ({
     </button>
     <input
       type="text"
-      className="w-40 p-2 mt-2 bg-black border border-gray-700 rounded-md focus:outline-none focus:border-gray-500 text-zinc-300 focus:bg-gray-800 ml-7"
+      className="w-40 p-2 mt-2 bg-black border border-gray-700 rounded-md focus:outline-hidden focus:border-gray-500 text-zinc-300 focus:bg-gray-800 ml-7"
       placeholder="# Rows"
       value={numRows}
       onChange={(e) => setNumRows(e.target.value)}

@@ -31,7 +31,7 @@ export function FooterOptions({ file, setFile, files, saveFunction }) {
       </button>
       {Popup ? (
         <section className="absolute top-0 left-0 flex justify-center items-center w-screen h-screen backdrop-blur-lg">
-          <div className="p-5 rounded-lg shadow bg-gray-700 w-1/2 max-h-1/2">
+          <div className="p-5 rounded-lg shadow-sm bg-gray-700 w-1/2 max-h-1/2">
             <CloseSharp
               onClick={() => {
                 setPop(false);

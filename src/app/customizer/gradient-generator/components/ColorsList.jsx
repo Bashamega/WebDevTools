@@ -52,7 +52,7 @@ const ColorsList = ({ colorsList, setColorsList }) => {
             >
               <div className="rounded-lg border-[3px] border-gray-900 shadow-[0px_0px_1px_2px_#5B656F] hover:shadow-[0px_0px_1px_2px_#9CA8B4] flex justify-center items-center min-w-[84px] min-h-[84px] mr-[15px]">
                 <button
-                  className="outline-none text-white rounded-full justify-center items-center text-4xl font-thin h-full w-full active:scale-75 transition-all duration-300 ease-in-out "
+                  className="outline-hidden text-white rounded-full justify-center items-center text-4xl font-thin h-full w-full active:scale-75 transition-all duration-300 ease-in-out "
                   onClick={() =>
                     setColorsList([
                       ...colorsList,
@@ -82,7 +82,7 @@ const ColorsList = ({ colorsList, setColorsList }) => {
                       )}
                       className="group rounded-lg border-[3px] border-gray-900 shadow-[0px_0px_1px_2px_#5B656F] hover:shadow-[0px_0px_1px_2px_#9CA8B4]"
                     >
-                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-transparent outline-none text-[#ffffff] px-2 py-1 rounded-full w-10 h-10 justify-center items-center text-2xl font-normal flex opacity-50 hover:opacity-100 transition-all duration-300 ease-in-out cursor-grab">
+                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-transparent outline-hidden text-[#ffffff] px-2 py-1 rounded-full w-10 h-10 justify-center items-center text-2xl font-normal flex opacity-50 hover:opacity-100 transition-all duration-300 ease-in-out cursor-grab">
                         <svg
                           stroke="currentColor"
                           fill="none"
@@ -126,7 +126,7 @@ const ColorsList = ({ colorsList, setColorsList }) => {
                               newItems[index].position = e.target.value;
                               setColorsList(newItems);
                             }}
-                            className="w-full h-1 bg-gray-200 rounded-full appearance-none focus:outline-none"
+                            className="w-full h-1 bg-gray-200 rounded-full appearance-none focus:outline-hidden"
                           />
                         </div>
 
@@ -137,7 +137,7 @@ const ColorsList = ({ colorsList, setColorsList }) => {
                             newItems.splice(index, 1);
                             setColorsList(newItems);
                           }}
-                          className="bg-transparent mt-1 outline-none text-neutral-400 hover:text-white px-2 py-1 rounded-full w-5 h-5 justify-center items-center text-2xl font-normal flex opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
+                          className="bg-transparent mt-1 outline-hidden text-neutral-400 hover:text-white px-2 py-1 rounded-full w-5 h-5 justify-center items-center text-2xl font-normal flex opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out"
                         >
                           &times;
                         </button>

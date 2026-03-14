@@ -52,7 +52,7 @@ export default function BadgeForm({ onSubmit, isDarkMode }) {
                 isDarkMode
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
-              } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              } w-full p-2 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
               value={label}
               onChange={(e) => setLabel(e.target.value)}
             />
@@ -68,7 +68,7 @@ export default function BadgeForm({ onSubmit, isDarkMode }) {
                 isDarkMode
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
-              } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              } w-full p-2 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
@@ -87,7 +87,7 @@ export default function BadgeForm({ onSubmit, isDarkMode }) {
                 isDarkMode
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
-              } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              } w-full p-2 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
               value={labelColor}
               onChange={(e) => setLabelColor(e.target.value)}
             />
@@ -103,7 +103,7 @@ export default function BadgeForm({ onSubmit, isDarkMode }) {
                 isDarkMode
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
-              } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              } w-full p-2 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
               value={color}
               onChange={(e) => setColor(e.target.value)}
             />
@@ -122,7 +122,7 @@ export default function BadgeForm({ onSubmit, isDarkMode }) {
                 isDarkMode
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
-              } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              } w-full p-2 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
               value={logoBase64}
               onChange={(e) => setLogoBase64(e.target.value)}
             />
@@ -138,7 +138,7 @@ export default function BadgeForm({ onSubmit, isDarkMode }) {
                 isDarkMode
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
-              } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              } w-full p-2 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
               value={links}
               onChange={(e) => setLinks(e.target.value)}
             />
@@ -153,7 +153,7 @@ export default function BadgeForm({ onSubmit, isDarkMode }) {
                 isDarkMode
                   ? "bg-gray-800 text-gray-200"
                   : "bg-white text-gray-900 border-gray-400"
-              } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              } w-full p-2 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
               value={style}
               onChange={(e) => setStyle(e.target.value)}
             >

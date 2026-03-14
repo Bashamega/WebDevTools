@@ -130,7 +130,7 @@ const mapCssToTailwind = (property, value, pseudoClass = "") => {
                 : convertValueToTailwind(width);
         classes.push(`border-${twWidth}`);
       } else {
-        classes.push("border"); // Default to border-1 if no width specified
+        classes.push("border"); // Default to border if no width specified
       }
 
       if (style) {
@@ -230,7 +230,7 @@ const mapCssToTailwind = (property, value, pseudoClass = "") => {
     color: (v) => getColorClass(v, `${pseudoClass}text`),
     "background-color": (v) => getColorClass(v, `${pseudoClass}bg`),
     "border-color": (v) => getColorClass(v, `${pseudoClass}border`),
-    "outline-color": (v) => getColorClass(v, `${pseudoClass}outline`),
+    "outline-color": (v) => getColorClass(v, `${pseudoClass}outline-solid`),
     "text-decoration-color": (v) =>
       getColorClass(v, `${pseudoClass}decoration`),
     fill: (v) => getColorClass(v, `${pseudoClass}fill`),
@@ -251,8 +251,8 @@ const mapCssToTailwind = (property, value, pseudoClass = "") => {
     "box-shadow": (v) => {
       const shadows = {
         none: `${pseudoClass}shadow-none`,
-        "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)": `${pseudoClass}shadow-sm`,
-        "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)": `${pseudoClass}shadow`,
+        "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)": `${pseudoClass}shadow-xs`,
+        "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)": `${pseudoClass}shadow-sm`,
         "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)": `${pseudoClass}shadow-md`,
         "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)": `${pseudoClass}shadow-lg`,
         "0 25px 50px -12px rgba(0, 0, 0, 0.25)": `${pseudoClass}shadow-xl`,
@@ -266,9 +266,9 @@ const mapCssToTailwind = (property, value, pseudoClass = "") => {
       const shadows = {
         none: "shadow-none",
         "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)":
-          "shadow-sm",
+          "shadow-xs",
         "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)":
-          "shadow",
+          "shadow-sm",
         "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)":
           "shadow-md",
         "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)":
@@ -829,7 +829,7 @@ const mapCssToTailwind = (property, value, pseudoClass = "") => {
 
     "outline-width": (v) =>
       ({
-        0: "outline-none",
+        0: "outline-hidden",
         "1px": "outline-1",
         "2px": "outline-2",
         "3px": "outline-3",
@@ -843,7 +843,7 @@ const mapCssToTailwind = (property, value, pseudoClass = "") => {
       })[v] || `outline-${v}`,
     "outline-style": (v) =>
       ({
-        none: "outline-none",
+        none: "outline-hidden",
         solid: "outline-solid",
         dashed: "outline-dashed",
         dotted: "outline-dotted",
@@ -892,14 +892,14 @@ const mapCssToTailwind = (property, value, pseudoClass = "") => {
         "var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color)":
           "ring-2",
         "var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color)":
-          "ring",
+          "ring-3",
         "var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color)":
           "ring-4",
         "var(--tw-ring-inset) 0 0 0 calc(8px + var(--tw-ring-offset-width)) var(--tw-ring-color)":
           "ring-8",
-        " 0 1px 2px 0 rgb(0 0 0 / 0.05)": "shadow-sm",
+        " 0 1px 2px 0 rgb(0 0 0 / 0.05)": "shadow-xs",
         "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)":
-          "shadow",
+          "shadow-sm",
         "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)":
           "shadow-md",
         "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)":
@@ -940,8 +940,8 @@ const mapCssToTailwind = (property, value, pseudoClass = "") => {
     //filter
     filter: (v) =>
       ({
-        "blur(4px)": "blur-sm",
-        "blur(8px)": "blur",
+        "blur(4px)": "blur-xs",
+        "blur(8px)": "blur-sm",
         0: "blur-none",
         "blur(12px)": "blur-md",
         "blur(16px)": "blur-lg",
@@ -964,8 +964,8 @@ const mapCssToTailwind = (property, value, pseudoClass = "") => {
     //backdrop-filter
     "backdrop-filter": (v) =>
       ({
-        "blur(4px)": "blur-sm",
-        "blur(8px)": "blur",
+        "blur(4px)": "blur-xs",
+        "blur(8px)": "blur-sm",
         0: "blur-none",
         "blur(12px)": "blur-md",
         "blur(16px)": "blur-lg",
@@ -1319,8 +1319,8 @@ const mapCssToTailwind = (property, value, pseudoClass = "") => {
         wrap: "flex-wrap",
         "wrap-reverse": "flex-wrap-reverse",
       })[v],
-    "flex-grow": (v) => (v === "1" ? "flex-grow" : `flex-grow-[${v}]`),
-    "flex-shrink": (v) => (v === "1" ? "flex-shrink" : `flex-shrink-[${v}]`),
+    grow: (v) => (v === "1" ? "grow" : `flex-grow-[${v}]`),
+    shrink: (v) => (v === "1" ? "shrink" : `flex-shrink-[${v}]`),
     gap: (v) => `gap-${v}`,
 
     // Effects
@@ -1474,12 +1474,12 @@ export default function Home() {
         toggleTheme={toggleTheme}
       />
 
-      <h1 className="relative z-10 font-sans text-5xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600 mb-7 mt-4">
+      <h1 className="relative z-10 font-sans text-5xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-linear-to-b from-neutral-200 to-neutral-600 mb-7 mt-4">
         CSS to Tailwind Converter
       </h1>
       <div className="flex flex-col items-center justify-center p-4">
         <textarea
-          className={`w-full max-w-2xl h-60 p-3 border border-gray-300 rounded-lg mb-4 ${isDarkMode ? "bg-gray-800 text-gray-400" : "bg-gray-200 text-gray-500"}hover:border-blue-400 focus:border-blue-500 focus:outline-none`}
+          className={`w-full max-w-2xl h-60 p-3 border border-gray-300 rounded-lg mb-4 ${isDarkMode ? "bg-gray-800 text-gray-400" : "bg-gray-200 text-gray-500"}hover:border-blue-400 focus:border-blue-500 focus:outline-hidden`}
           placeholder="Enter CSS here..."
           value={cssInput}
           onChange={(e) => setCssInput(e.target.value)}
@@ -1494,13 +1494,15 @@ export default function Home() {
 
         {tailwindOutput && (
           <div
-            className={`w-full max-w-2xl p-4 rounded-lg shadow-md mb-4 relative items-center justify-center ${isDarkMode ? "bg-gray-800 border-gray-300  text-gray-400" : "bg-gray-200 border-gray-300  text-gray-500"}hover:border-blue-400 focus:border-blue-500 outline-none`}
+            className={`w-full max-w-2xl p-4 rounded-lg shadow-md mb-4 relative items-center justify-center ${isDarkMode ? "bg-gray-800 border-gray-300  text-gray-400" : "bg-gray-200 border-gray-300  text-gray-500"}hover:border-blue-400 focus:border-blue-500 outline-hidden`}
           >
             <h2 className="text-xl font-semibold mb-2">Tailwind Output:</h2>
-            <p className="font-mono text-sm break-words">{tailwindOutput}</p>
+            <p className="font-mono text-sm wrap-break-word">
+              {tailwindOutput}
+            </p>
 
             <button
-              className={`absolute top-2 right-2 ${copySuccess ? "bg-green-500" : "bg-gray-200 hover:bg-gray-300"} rounded p-2 focus:outline-none transition-colors duration-300`}
+              className={`absolute top-2 right-2 ${copySuccess ? "bg-green-500" : "bg-gray-200 hover:bg-gray-300"} rounded p-2 focus:outline-hidden transition-colors duration-300`}
               onClick={handleCopy}
             >
               {copySuccess ? (

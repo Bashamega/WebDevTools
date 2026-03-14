@@ -92,19 +92,17 @@ export default function Nav({ isDarkMode, toggleTheme }) {
       } ${isDarkMode ? "bg-gray-800 text-white" : "bg-blue-500 text-black"}
      py-2 px-4 flex items-center justify-between lg:justify-around gap-1 w-full mb-8 min-w-80 transition-all duration-300`}
     >
-      <div className="flex flex-0 items-center flex-shrink">
-        <Link href="/" className="group">
-          <h1 className="md:text-lg lg:text-xl font-bold group-hover:underline">
-            Web Dev Tools
-          </h1>
-        </Link>
-      </div>
+      <Link href="/" className="">
+        <h1 className="md:text-lg lg:text-xl font-bold hover:underline">
+          Web Dev Tools
+        </h1>
+      </Link>
 
       <div className="flex gap-4">
         <div className="relative hidden lg:block" ref={dropdownRefs.generator}>
           <button
             onClick={() => toggleDropdown("generator")}
-            className={`focus:outline-none text-[0.58rem] font-semibold items-center sm:text-sm flex md:text-sm flex-1 p-2 hover:${
+            className={`focus:outline-hidden text-[0.58rem] font-semibold items-center sm:text-sm flex md:text-sm flex-1 p-2 hover:${
               isDarkMode ? "bg-gray-700" : "bg-blue-700"
             } transition-all duration-200 rounded-lg`}
           >
@@ -136,7 +134,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
         <div className="relative hidden lg:block" ref={dropdownRefs.editor}>
           <button
             onClick={() => toggleDropdown("editor")}
-            className={`focus:outline-none text-[0.58rem] font-semibold items-center sm:text-sm flex md:text-sm flex-1 p-2 hover:${
+            className={`focus:outline-hidden text-[0.58rem] font-semibold items-center sm:text-sm flex md:text-sm flex-1 p-2 hover:${
               isDarkMode ? "bg-gray-700" : "bg-blue-700"
             } transition-all duration-200 rounded-lg`}
           >
@@ -168,7 +166,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
         <div className="relative hidden lg:block " ref={dropdownRefs.other}>
           <button
             onClick={() => toggleDropdown("other")}
-            className={`focus:outline-none text-[0.58rem] font-semibold items-center sm:text-sm flex md:text-sm flex-1 p-2 hover:${
+            className={`focus:outline-hidden text-[0.58rem] font-semibold items-center sm:text-sm flex md:text-sm flex-1 p-2 hover:${
               isDarkMode ? "bg-gray-700" : "bg-blue-700"
             } transition-all duration-200 rounded-lg`}
           >

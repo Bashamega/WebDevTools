@@ -267,7 +267,7 @@ export default function GhFinder() {
       />
       <div className="mt-10 flex w-screen justify-center">
         <header>
-          <h1 className="relative z-10 font-sans text-5xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600">
+          <h1 className="relative z-10 font-sans text-5xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-linear-to-b from-neutral-200 to-neutral-600">
             Github Issue Finder
           </h1>
 
@@ -287,11 +287,11 @@ export default function GhFinder() {
                 rounded-lg 
                 border border-gray-300 
                 focus:ring-2 focus:ring-blue-500 
-                focus:outline-none 
+                focus:outline-hidden 
                 transition duration-200 ease-in-out 
                 text-gray-700 
                 placeholder-gray-400 
-                shadow-sm 
+                shadow-xs 
                 hover:shadow-md
                 ${
                   isDarkMode
@@ -373,7 +373,7 @@ export default function GhFinder() {
           <div className="flex gap-1.5 md:gap-3 w-full my-5 items-center justify-center">
             <button
               className={`md:w-1/3 px-2.5 md:px-5 py-3 md:py-4 sm:text-sm text-[12px] font-medium rounded-full transition-all duration-200 ease-in-out
-      border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+      border border-transparent focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
       ${
         selected === 1
           ? "bg-blue-600 text-white shadow-lg"
@@ -386,7 +386,7 @@ export default function GhFinder() {
             </button>
             <button
               className={`md:w-1/3 px-4 py-3 md:py-4 sm:text-sm text-[12px] font-medium rounded-full transition-all duration-200 ease-in-out
-    border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+    border border-transparent focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
     ${
       selected === 2
         ? "bg-blue-600 text-white shadow-lg"

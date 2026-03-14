@@ -225,7 +225,7 @@ const GradientGenerator = () => {
                     isDarkMode
                       ? "bg-gray-700 text-white"
                       : "bg-gray-300 text-gray-800"
-                  } p-3 text-md font-semibold w-full text-center border outline-none border-gray-600 active:scale-95 transition-transform duration-200`}
+                  } p-3 text-md font-semibold w-full text-center border outline-hidden border-gray-600 active:scale-95 transition-transform duration-200`}
                   onClick={generateRandomGradient}
                 >
                   Random
@@ -236,7 +236,7 @@ const GradientGenerator = () => {
                 <button
                   className={`rounded-lg ${
                     isDarkMode ? "bg-blue-600" : "bg-blue-500"
-                  } p-3 text-md font-semibold text-white w-full text-center border outline-none border-blue-600 active:scale-95 transition-transform duration-200`}
+                  } p-3 text-md font-semibold text-white w-full text-center border outline-hidden border-blue-600 active:scale-95 transition-transform duration-200`}
                   onClick={handleCopyCSSClick}
                 >
                   Copy CSS

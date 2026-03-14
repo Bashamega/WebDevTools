@@ -91,7 +91,7 @@ const MainPage = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search by repo or owner..."
-          className="px-4 py-2 rounded-lg border border-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-600 text-gray-700"
+          className="px-4 py-2 rounded-lg border border-gray-800 focus:outline-hidden focus:ring-2 focus:ring-indigo-600 text-gray-700"
         />
       </div>
 
