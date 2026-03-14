@@ -66,11 +66,14 @@ export default function Search({ isDarkMode }) {
     <div className="relative">
       <div
         ref={inputRef}
-        className={`flex items-center w-full rounded p-1 px-2 border ${
-          isDarkMode
-            ? "bg-gray-700 border-gray-600"
-            : "bg-white border-gray-300"
-        }`}
+        className={`flex items-center w-full rounded p-1 px-2 border-2
+          ${isDarkMode ? "bg-gray-700" : "bg-white"}
+          ${
+            isDarkMode
+              ? "border-gray-600 focus-within:border-blue-400"
+              : "border-gray-300 focus-within:border-blue-500"
+          }
+        `}
       >
         <FaSearch
           className={`mr-2 ${isDarkMode ? "text-gray-400" : "text-gray-800"}`}

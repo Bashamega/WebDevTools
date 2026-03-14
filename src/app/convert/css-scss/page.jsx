@@ -273,7 +273,7 @@ export default function CSS_TO_SCSS() {
         </h1>
         <div
           //Responsive
-          className={`h-auto p-4 m-4 w-5/6 break-words border rounded-lg shadow ${
+          className={`h-auto p-4 m-4 w-5/6 wrap-break-word border rounded-lg shadow ${
             isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
           } flex flex-col items-center gap-4 sm:w-100 md:flex-row `}
         >
@@ -305,7 +305,7 @@ export default function CSS_TO_SCSS() {
           </h2>
           <button
             onClick={() => handleConvert()}
-            className="rounded-lg bg-blue-600 p-3 text-md font-semibold text-white w-60 text-center border outline-none border-blue-600 active:scale-95 transition-transform duration-200"
+            className="rounded-lg bg-blue-600 p-3 text-md font-semibold text-white w-60 text-center border outline-hidden border-blue-600 active:scale-95 transition-transform duration-200"
           >
             Convert
           </button>

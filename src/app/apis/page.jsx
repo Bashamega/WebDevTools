@@ -71,7 +71,7 @@ export default function Home() {
       />
       <div className="flex justify-center flex-col items-center w-full">
         <div
-          className={`mr-4 p-5 my-9 mb-28 w-4/5 break-words py-6 md:p-6 rounded-lg shadow-md ${
+          className={`mr-4 p-5 my-9 mb-28 w-4/5 wrap-break-word py-6 md:p-6 rounded-lg shadow-md ${
             isDarkMode
               ? "bg-gray-800 text-white"
               : "bg-white border-gray-200 text-black"
@@ -93,7 +93,7 @@ export default function Home() {
             <Select
               value={selectedTag}
               onValueChange={handleTagChange}
-              className="p-2 border rounded-lg shadow"
+              className="p-2 border rounded-lg shadow-sm"
             >
               <SelectTrigger className="w-[280px]">
                 <SelectValue placeholder="Filter by Tags" />

@@ -12,7 +12,7 @@ export default function Endpoints() {
   };
 
   const sectionStyle =
-    "p-4 text-left w-full max-w-[26rem] md:max-w-[40rem] bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700";
+    "p-4 text-left w-full max-w-104 md:max-w-160 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-gray-800 dark:border-gray-700";
 
   return (
     <main
@@ -28,7 +28,7 @@ export default function Endpoints() {
       <div className="flex justify-center flex-col items-center w-full">
         <div
           id="about"
-          className="my-9 break-words block max-w-[26rem] md:max-w-[40rem] p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+          className="my-9 wrap-break-word block max-w-104 md:max-w-160 p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
         >
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             API Endpoints for Dummy JSON Data

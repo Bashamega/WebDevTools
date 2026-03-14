@@ -95,7 +95,7 @@ export default function BasicModal({
             d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L14 12.414V18a1 1 0 01-.553.894l-4 2A1 1 0 018 20v-7.586L3.293 6.707A1 1 0 013 6V4z"
           />
         </svg>
-        <span className="sm:!text-sm !text-[12px]">Filter</span>
+        <span className="sm:text-sm! text-[12px]!">Filter</span>
       </Button>
       <Modal
         open={open}
@@ -106,11 +106,11 @@ export default function BasicModal({
       >
         <Box
           sx={style}
-          className={`sm:!h-[300px] !overflow-y-auto ${
+          className={`sm:h-[300px]! overflow-y-auto! ${
             isDarkMode ? "bg-slate-800 text-white" : "bg-slate-200 text-black"
           }`}
         >
-          <FormGroup className="!grid sm:grid-cols-2">
+          <FormGroup className="grid! sm:grid-cols-2">
             <input
               type="text"
               className={`
@@ -119,11 +119,11 @@ export default function BasicModal({
                 rounded-lg 
                 border border-gray-300 
                 focus:ring-2 focus:ring-blue-500 
-                focus:outline-none 
+                focus:outline-hidden 
                 transition duration-200 ease-in-out 
                 text-gray-700 
                 placeholder-gray-400 
-                shadow-sm 
+                shadow-xs 
                 hover:shadow-md
                 ${
                   isDarkMode

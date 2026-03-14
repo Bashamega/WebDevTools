@@ -56,7 +56,7 @@ export default function ColorPicker() {
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
       />
-      <div className="grid grid-rows-2 grid-cols-1 sm:grid-cols-2 sm:grid-rows-1 sm:gap-x-8 h-[100vh] w-[100vw] items-center overflow-hidden">
+      <div className="grid grid-rows-2 grid-cols-1 sm:grid-cols-2 sm:grid-rows-1 sm:gap-x-8 h-screen w-screen items-center overflow-hidden">
         <div className="flex justify-center items-center sm:flex sm:justify-end sm:items-center">
           <span className="custom-color-picker">
             <HexColorPicker color={hexColor} onChange={setHexColor} />

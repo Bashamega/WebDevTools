@@ -11,7 +11,7 @@ export const PreviewSection = ({
 }) => (
   <div
     className={
-      " absolute top-1/2 shadow-lg rounded-md -translate-y-1/2 z-10 flex flex-col flex-shrink-0 h-[50vh]" +
+      " absolute top-1/2 shadow-lg rounded-md -translate-y-1/2 z-10 flex flex-col shrink-0 h-[50vh]" +
       (isDarkMode ? " bg-gray-700 text-white" : " bg-white text-black")
     }
   >

@@ -58,7 +58,7 @@ const Home = () => {
         toggleTheme={toggleTheme}
       />
       <div className="lg:w-2/3 mx-auto p-4 my-4">
-        <h1 className="relative z-10 font-sans text-lg font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600">
+        <h1 className="relative z-10 font-sans text-lg font-bold text-center text-transparent md:text-7xl bg-clip-text bg-linear-to-b from-neutral-200 to-neutral-600">
           Resume Builder
         </h1>
         <div className="w-full mt-8 ">

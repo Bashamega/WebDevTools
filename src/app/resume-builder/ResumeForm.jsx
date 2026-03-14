@@ -134,7 +134,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                 isDarkMode
                   ? "bg-slate-800 text-slate-50 border-none"
                   : "bg-slate-50 text-slate-800 border border-slate-500"
-              } w-full py-3 px-4 outline-none rounded-md shadow-sm`}
+              } w-full py-3 px-4 outline-hidden rounded-md shadow-xs`}
               type="text"
               name="name"
               placeholder="John Doe"
@@ -156,7 +156,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                 isDarkMode
                   ? "bg-slate-800 text-slate-50 border-none"
                   : "bg-slate-50 text-slate-800 border border-slate-500"
-              } w-full py-3 px-4 outline-none rounded-md shadow-sm`}
+              } w-full py-3 px-4 outline-hidden rounded-md shadow-xs`}
               type="email"
               name="email"
               placeholder="johnd@princess.com"
@@ -178,7 +178,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                 isDarkMode
                   ? "bg-slate-800 text-slate-50 border-none"
                   : "bg-slate-50 text-slate-800 border border-slate-500"
-              } w-full py-3 px-4 outline-none rounded-md shadow-sm`}
+              } w-full py-3 px-4 outline-hidden rounded-md shadow-xs`}
               type="tel"
               name="phone"
               placeholder="9839475294"
@@ -200,7 +200,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                 isDarkMode
                   ? "bg-slate-800 text-slate-50 border-none"
                   : "bg-slate-50 text-slate-800 border border-slate-500"
-              } w-full py-3 px-4 outline-none rounded-md shadow-sm`}
+              } w-full py-3 px-4 outline-hidden rounded-md shadow-xs`}
               type="url"
               name="linkedIn"
               placeholder="https://www.linkedin.com/in/johndev/"
@@ -220,7 +220,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                 isDarkMode
                   ? "bg-slate-800 text-slate-50 border-none"
                   : "bg-slate-50 text-slate-800 border border-slate-500"
-              } w-full py-3 px-4 outline-none rounded-md shadow-sm`}
+              } w-full py-3 px-4 outline-hidden rounded-md shadow-xs`}
               type="url"
               name="website"
               placeholder="https://www.johndoe.dev"
@@ -241,7 +241,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                 isDarkMode
                   ? "bg-slate-800 text-slate-50 border-none"
                   : "bg-slate-50 text-slate-800 border border-slate-500"
-              } w-full py-3 px-4 outline-none rounded-md shadow-sm`}
+              } w-full py-3 px-4 outline-hidden rounded-md shadow-xs`}
               type="url"
               name="github"
               placeholder="https://www.github.com/johndev"
@@ -262,7 +262,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                 isDarkMode
                   ? "bg-slate-800 text-slate-50 border-none"
                   : "bg-slate-50 text-slate-800 border border-slate-500"
-              } w-full py-3 px-4 outline-none rounded-md shadow-sm`}
+              } w-full py-3 px-4 outline-hidden rounded-md shadow-xs`}
               type="text"
               name="address"
               placeholder="5th street, clock tower, New York"
@@ -283,7 +283,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                 isDarkMode
                   ? "bg-slate-800 text-slate-50 border-none"
                   : "bg-slate-50 text-slate-800 border border-slate-500"
-              } w-full py-3 px-4 outline-none rounded-md shadow-sm ${
+              } w-full py-3 px-4 outline-hidden rounded-md shadow-xs ${
                 formData.template === "template2"
                   ? "cursor-not-allowed"
                   : "cursor-pointer"
@@ -315,7 +315,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                   isDarkMode
                     ? "bg-slate-800 text-slate-50 border-none"
                     : "bg-slate-50 text-slate-800 border border-slate-500"
-                } w-full py-3 px-4 outline-none rounded-md shadow-sm`}
+                } w-full py-3 px-4 outline-hidden rounded-md shadow-xs`}
                 type="text"
                 name="title"
                 placeholder="Software Engineer"
@@ -337,7 +337,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                   isDarkMode
                     ? "bg-slate-800 text-slate-50 border-none"
                     : "bg-slate-50 text-slate-800 border border-slate-500"
-                } w-full py-3 px-4 outline-none rounded-md shadow-sm`}
+                } w-full py-3 px-4 outline-hidden rounded-md shadow-xs`}
                 type="text"
                 name="company"
                 placeholder="Google"
@@ -359,7 +359,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                   isDarkMode
                     ? "bg-slate-800 text-slate-50 border-none"
                     : "bg-slate-50 text-slate-800 border border-slate-500"
-                } w-full py-3 px-4 outline-none rounded-md shadow-sm h-[51px]`}
+                } w-full py-3 px-4 outline-hidden rounded-md shadow-xs h-[51px]`}
                 name="description"
                 placeholder="Job Description"
                 value={job.description}
@@ -377,7 +377,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             isDarkMode
               ? "bg-slate-800 text-slate-50 border-none"
               : "bg-slate-50 text-slate-800 border border-slate-500"
-          } rounded-md shadow-sm hover:bg-blue-800 hover:text-white transition-colors duration-500 ease-in-out`}
+          } rounded-md shadow-xs hover:bg-blue-800 hover:text-white transition-colors duration-500 ease-in-out`}
         >
           <AddBox />
           Add Work Experience
@@ -400,7 +400,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                   isDarkMode
                     ? "bg-slate-800 text-slate-50 border-none"
                     : "bg-slate-50 text-slate-800 border border-slate-500"
-                } w-full py-3 px-4 outline-none rounded-md shadow-sm`}
+                } w-full py-3 px-4 outline-hidden rounded-md shadow-xs`}
                 type="text"
                 name="degree"
                 placeholder="Degree"
@@ -422,7 +422,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                   isDarkMode
                     ? "bg-slate-800 text-slate-50 border-none"
                     : "bg-slate-50 text-slate-800 border border-slate-500"
-                } w-full py-3 px-4 outline-none rounded-md shadow-sm`}
+                } w-full py-3 px-4 outline-hidden rounded-md shadow-xs`}
                 type="text"
                 name="institution"
                 placeholder="Institution"
@@ -444,7 +444,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                   isDarkMode
                     ? "bg-slate-800 text-slate-50 border-none"
                     : "bg-slate-50 text-slate-800 border border-slate-500"
-                } w-full py-3 px-4 outline-none rounded-md shadow-sm h-[51px]`}
+                } w-full py-3 px-4 outline-hidden rounded-md shadow-xs h-[51px]`}
                 name="description"
                 placeholder="Description"
                 value={edu.description}
@@ -462,7 +462,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             isDarkMode
               ? "bg-slate-800 text-slate-50 border-none"
               : "bg-slate-50 text-slate-800 border border-slate-500"
-          } rounded-md shadow-sm hover:bg-blue-800 hover:text-white transition-colors duration-500 ease-in-out`}
+          } rounded-md shadow-xs hover:bg-blue-800 hover:text-white transition-colors duration-500 ease-in-out`}
         >
           <AddBox />
           Add Education
@@ -485,7 +485,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                   isDarkMode
                     ? "bg-slate-800 text-slate-50 border-none"
                     : "bg-slate-50 text-slate-800 border border-slate-500"
-                } w-full py-3 px-4 outline-none rounded-md shadow-sm`}
+                } w-full py-3 px-4 outline-hidden rounded-md shadow-xs`}
                 type="text"
                 name="title"
                 placeholder="Google Clone"
@@ -507,7 +507,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                   isDarkMode
                     ? "bg-slate-800 text-slate-50 border-none"
                     : "bg-slate-50 text-slate-800 border border-slate-500"
-                } w-full py-3 px-4 outline-none rounded-md shadow-sm`}
+                } w-full py-3 px-4 outline-hidden rounded-md shadow-xs`}
                 type="url"
                 name="liveUrl"
                 placeholder="your-project.xyz"
@@ -529,7 +529,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                   isDarkMode
                     ? "bg-slate-800 text-slate-50 border-none"
                     : "bg-slate-50 text-slate-800 border border-slate-500"
-                } w-full py-3 px-4 outline-none rounded-md shadow-sm h-[51px]`}
+                } w-full py-3 px-4 outline-hidden rounded-md shadow-xs h-[51px]`}
                 name="description"
                 placeholder="Project Description"
                 value={project.description}
@@ -547,7 +547,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             isDarkMode
               ? "bg-slate-800 text-slate-50 border-none"
               : "bg-slate-50 text-slate-800 border border-slate-500"
-          } rounded-md shadow-sm  hover:bg-blue-800 hover:text-white transition-colors duration-500 ease-in-out`}
+          } rounded-md shadow-xs  hover:bg-blue-800 hover:text-white transition-colors duration-500 ease-in-out`}
         >
           <AddBox />
           Add Project
@@ -567,7 +567,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                     isDarkMode
                       ? "bg-slate-800 text-slate-50 border-none"
                       : "bg-slate-50 text-slate-800 border border-slate-500"
-                  } w-[309px] py-3 px-4 outline-none rounded-md shadow-sm my-2`}
+                  } w-[309px] py-3 px-4 outline-hidden rounded-md shadow-xs my-2`}
                   type="text"
                   name={skillCategory.category}
                   placeholder={`${skillCategory.category === "Languages" ? "Add Programming languages" : "Add" + " " + skillCategory.category} `}
@@ -607,7 +607,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                   isDarkMode
                     ? "bg-slate-800 text-slate-50 border-none"
                     : "bg-slate-50 text-slate-800 border border-slate-500"
-                } w-full py-3 px-4 outline-none rounded-md shadow-sm`}
+                } w-full py-3 px-4 outline-hidden rounded-md shadow-xs`}
                 type="text"
                 name="title"
                 placeholder="Title"
@@ -629,7 +629,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
                   isDarkMode
                     ? "bg-slate-800 text-slate-50 border-none"
                     : "bg-slate-50 text-slate-800 border border-slate-500"
-                } w-full py-3 px-4 outline-none rounded-md shadow-sm h-[51px]`}
+                } w-full py-3 px-4 outline-hidden rounded-md shadow-xs h-[51px]`}
                 name="description"
                 placeholder="Description"
                 value={achievement.description}
@@ -647,7 +647,7 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
             isDarkMode
               ? "bg-slate-800 text-slate-50 border-none"
               : "bg-slate-50 text-slate-800 border border-slate-500"
-          } rounded-md shadow-sm hover:bg-blue-800 hover:text-white transition-colors duration-500 ease-in-out`}
+          } rounded-md shadow-xs hover:bg-blue-800 hover:text-white transition-colors duration-500 ease-in-out`}
         >
           <AddBox />
           Add Achievement

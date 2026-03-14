@@ -18,7 +18,7 @@ const GradientType = ({ gradientType, setGradientType, gradientTypes }) => {
       <Listbox value={gradientType} onChange={setGradientType}>
         <ListboxButton
           className="relative block w-full rounded-lg bg-gray-700 py-3 pr-8 pl-3 text-left text-sm/6 text-white
-          focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
+          focus:outline-hidden data-focus:outline-2 data-focus:-outline-offset-2 data-focus:outline-white/25"
         >
           {gradientType.name}
           <FaChevronDown
@@ -33,7 +33,7 @@ const GradientType = ({ gradientType, setGradientType, gradientTypes }) => {
         >
           <ListboxOptions
             anchor="bottom"
-            className="w-[var(--button-width)] rounded-xl border border-white/5 bg-gray-700 p-1 focus:outline-none"
+            className="w-(--button-width) rounded-xl border border-white/5 bg-gray-700 p-1 focus:outline-hidden"
           >
             {gradientTypes.map((grad) => (
               <ListboxOption
@@ -41,14 +41,14 @@ const GradientType = ({ gradientType, setGradientType, gradientTypes }) => {
                 value={grad}
                 className={`group flex cursor-default items-center gap-2 rounded-lg py-1.5 px-3 select-none ${
                   gradientType.id == grad.id
-                    ? "bg-blue-500 bg-opacity-20"
-                    : "data-[focus]:bg-white/10"
+                    ? "bg-blue-500/20"
+                    : "data-focus:bg-white/10"
                 }`}
               >
                 <FaCheck
                   className={`invisible text-xs ${
                     gradientType.id == grad.id ? "fill-blue-500" : "fill-white"
-                  } group-data-[selected]:visible`}
+                  } group-data-selected:visible`}
                 />
                 <div
                   className={`text-sm/6 ${

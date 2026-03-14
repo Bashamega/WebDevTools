@@ -1,74 +1,153 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@media screen and (max-width: 1024px) {
-  .custom-color-picker .react-colorful {
-    width: 270px;
-    height: 270px;
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --background-image-gradient-conic: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--tw-gradient-stops)
+  );
+
+  --shadow-card-shadow: 0px 0px 20px 5px #6b7280;
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
   }
 }
 
-@media screen and (max-width: 700px) {
-  .custom-color-picker .react-colorful {
-    width: 270px;
-    height: 270px;
-  }
-}
-
-@layer components {
-  .custom-color-picker .react-colorful {
+@utility custom-color-picker {
+  & .react-colorful {
     width: 400px;
     height: 400px;
   }
 }
 
-:root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
-  --radius: 0.5rem;
+@utility react-colorful {
+  .custom-color-picker & {
+    width: 400px;
+    height: 400px;
+  }
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  overflow-x: hidden;
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-/* globals.css */
-
-/* Light mode styles (default) */
-/* body {
-  background-color: #ffffff;
-  color: #000000;
-} */
-
-/* Customized Scrollbar */
-@layer utilities {
-  .scrollbar::-webkit-scrollbar {
+@utility scrollbar {
+  &::-webkit-scrollbar {
     width: 10px;
     height: 10px;
   }
 
-  .scrollbar::-webkit-scrollbar-track {
+  &::-webkit-scrollbar-track {
     border-radius: 100vh;
     background: #1f2937;
     height: 10px;
   }
 
-  .scrollbar::-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-thumb {
     background: #eff4ff;
     border-radius: 100vh;
     border: 1px solid #0b61ff;
   }
 
-  .scrollbar::-webkit-scrollbar-thumb:hover {
+  &::-webkit-scrollbar-thumb:hover {
     background: #000000;
   }
+}
+
+@layer utilities {
+  @media screen and (max-width: 1024px) {
+    .custom-color-picker .react-colorful {
+      width: 270px;
+      height: 270px;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    .custom-color-picker .react-colorful {
+      width: 270px;
+      height: 270px;
+    }
+  }
+}
+
+@layer utilities {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+    --radius: 0.5rem;
+  }
+
+  body {
+    color: rgb(var(--foreground-rgb));
+    overflow-x: hidden;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgb(var(--background-end-rgb))
+      )
+      rgb(var(--background-start-rgb));
+  }
+
+  /* globals.css */
+
+  /* Light mode styles (default) */
+  /* body {
+  background-color: #ffffff;
+  color: #000000;
+} */
+
+  /* Customized Scrollbar */
 }

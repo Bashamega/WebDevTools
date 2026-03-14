@@ -92,21 +92,21 @@ export default function Nav({ isDarkMode, toggleTheme }) {
       } ${isDarkMode ? "bg-gray-800 text-white" : "bg-blue-500 text-black"}
      py-2 px-4 flex items-center justify-between lg:justify-around gap-1 w-full mb-8 min-w-80 transition-all duration-300`}
     >
-      <div className="flex flex-0 items-center flex-shrink">
-        <Link href="/" className="group">
-          <h1 className="md:text-lg lg:text-xl font-bold group-hover:underline">
-            Web Dev Tools
-          </h1>
-        </Link>
-      </div>
+      <Link href="/" className="">
+        <h1 className="md:text-lg lg:text-xl font-bold hover:underline">
+          Web Dev Tools
+        </h1>
+      </Link>
 
       <div className="flex gap-4">
         <div className="relative hidden lg:block" ref={dropdownRefs.generator}>
           <button
             onClick={() => toggleDropdown("generator")}
-            className={`focus:outline-none text-[0.58rem] font-semibold items-center sm:text-sm flex md:text-sm flex-1 p-2 hover:${
-              isDarkMode ? "bg-gray-700" : "bg-blue-700"
-            } transition-all duration-200 rounded-lg`}
+            className={`text-[0.58rem] font-semibold items-center sm:text-sm flex md:text-sm flex-1 p-2 transition-all duration-200 rounded-lg focus:outline-2 focus:outline-offset-2 ${
+              isDarkMode
+                ? "hover:bg-gray-700 focus:outline-blue-400"
+                : "hover:bg-blue-700 focus:outline-blue-600"
+            }`}
           >
             <FaGears fontSize={20} className="mr-2" />
             Generator Tools
@@ -136,9 +136,11 @@ export default function Nav({ isDarkMode, toggleTheme }) {
         <div className="relative hidden lg:block" ref={dropdownRefs.editor}>
           <button
             onClick={() => toggleDropdown("editor")}
-            className={`focus:outline-none text-[0.58rem] font-semibold items-center sm:text-sm flex md:text-sm flex-1 p-2 hover:${
-              isDarkMode ? "bg-gray-700" : "bg-blue-700"
-            } transition-all duration-200 rounded-lg`}
+            className={`text-[0.58rem] font-semibold items-center sm:text-sm flex md:text-sm flex-1 p-2 transition-all duration-200 rounded-lg focus:outline-2 focus:outline-offset-2 ${
+              isDarkMode
+                ? "hover:bg-gray-700 focus:outline-blue-400"
+                : "hover:bg-blue-700 focus:outline-blue-600"
+            }`}
           >
             <RiEdit2Fill fontSize={20} className="mr-2" />
             Editor Tools
@@ -168,9 +170,11 @@ export default function Nav({ isDarkMode, toggleTheme }) {
         <div className="relative hidden lg:block " ref={dropdownRefs.other}>
           <button
             onClick={() => toggleDropdown("other")}
-            className={`focus:outline-none text-[0.58rem] font-semibold items-center sm:text-sm flex md:text-sm flex-1 p-2 hover:${
-              isDarkMode ? "bg-gray-700" : "bg-blue-700"
-            } transition-all duration-200 rounded-lg`}
+            className={`text-[0.58rem] font-semibold items-center sm:text-sm flex md:text-sm flex-1 p-2 transition-all duration-200 rounded-lg focus:outline-2 focus:outline-offset-2 ${
+              isDarkMode
+                ? "hover:bg-gray-700 focus:outline-blue-400"
+                : "hover:bg-blue-700 focus:outline-blue-600"
+            }`}
           >
             <FaTools fontSize={20} className="mr-2" />
             Other Tools
@@ -201,18 +205,18 @@ export default function Nav({ isDarkMode, toggleTheme }) {
       <div className="justify-center hidden md:flex gap-2 md:gap-4 items-center lg:flex">
         <Link
           href="/about"
-          className={`font-semibold text-[0.6rem] sm:text-sm p-2 hover:${
-            isDarkMode ? "bg-gray-700" : "bg-blue-700"
-          } transition-all duration-200 rounded-lg flex items-center justify-center gap-2`}
+          className={`font-semibold text-[0.6rem] sm:text-sm p-2 transition-all duration-200 rounded-lg flex items-center justify-center gap-2 ${
+            isDarkMode ? "hover:bg-gray-700" : "hover:bg-blue-700"
+          }`}
         >
           <FaInfo fontSize={15} />
           About
         </Link>
         <Link
           href="/contribute"
-          className={`font-semibold hidden md:flex text-[0.6rem] sm:text-sm p-2 hover:${
-            isDarkMode ? "bg-gray-700" : "bg-blue-700"
-          } transition-all duration-200 rounded-lg flex items-center justify-center gap-2`}
+          className={`font-semibold hidden md:flex text-[0.6rem] sm:text-sm p-2 transition-all duration-200 rounded-lg flex items-center justify-center gap-2 ${
+            isDarkMode ? "hover:bg-gray-700" : "hover:bg-blue-700"
+          }`}
         >
           <IoMdGitPullRequest fontSize={20} />
           Contribute
@@ -223,7 +227,7 @@ export default function Nav({ isDarkMode, toggleTheme }) {
         <div className="flex items-center">
           <button
             onClick={handleToggleTheme}
-            className="p-2 rounded-full hover:bg-opacity-20 hover:bg-gray-200 transition-colors duration-200"
+            className="p-2 rounded-full hover:bg-gray-200/20 transition-colors duration-200"
             aria-label="Toggle dark mode"
           >
             {isDarkMode ? (

@@ -21,7 +21,7 @@ export default function Home() {
       <div className="flex justify-center flex-col items-center w-full gap-3">
         <div
           id="about"
-          className={`break-words block max-w-[26rem] md:max-w-[40rem] p-6 ${
+          className={`wrap-break-word block max-w-104 md:max-w-160 p-6 ${
             isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
           } border border-gray-200 rounded-lg shadow`}
         >
@@ -37,7 +37,7 @@ export default function Home() {
         </div>
 
         <div
-          className={`p-4 text-center max-w-[26rem] md:max-w-[40rem] ${
+          className={`p-4 text-center max-w-104 md:max-w-160 ${
             isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"
           } border border-gray-200 rounded-lg shadow sm:p-8`}
         >
@@ -49,7 +49,7 @@ export default function Home() {
           <div className="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
             <Link
               href="https://github.com/Bashamega/WebDevTools"
-              className="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 transition-all duration-500 ease-in"
+              className="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-hidden focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 transition-all duration-500 ease-in"
             >
               <svg
                 className="mr-3 w-7 h-7"

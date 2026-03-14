@@ -24,7 +24,7 @@ const GradientRotation = ({
           <input
             type="number"
             placeholder="Rotation"
-            className="outline-none bg-transparent pr-2 w-full text-center"
+            className="outline-hidden bg-transparent pr-2 w-full text-center"
             value={gradientRotation.value}
             onChange={(e) => {
               setGradientRotation({
@@ -37,7 +37,7 @@ const GradientRotation = ({
         </div>
 
         <Listbox value={gradientRotation} onChange={setGradientRotation}>
-          <ListboxButton className="relative block focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25 w-8 h-6 text-center">
+          <ListboxButton className="relative block focus:outline-hidden data-focus:outline-2 data-focus:-outline-offset-2 data-focus:outline-white/25 w-8 h-6 text-center">
             <FaChevronDown
               className="group pointer-events-none absolute top-1.5 right-0 text-xs fill-white"
               aria-hidden="true"
@@ -50,7 +50,7 @@ const GradientRotation = ({
           >
             <ListboxOptions
               anchor="bottom"
-              className="w-fit rounded-xl border border-white/5 bg-gray-700 p-1 focus:outline-none"
+              className="w-fit rounded-xl border border-white/5 bg-gray-700 p-1 focus:outline-hidden"
             >
               {gradientRotations.map((rot) => (
                 <ListboxOption
@@ -58,8 +58,8 @@ const GradientRotation = ({
                   value={rot}
                   className={`group flex cursor-default items-center gap-2 rounded-lg py-1.5 px-3 select-none ${
                     gradientRotation.id == rot.id
-                      ? "bg-blue-500 bg-opacity-20"
-                      : "data-[focus]:bg-white/10"
+                      ? "bg-blue-400/20"
+                      : "data-focus:bg-white/10"
                   }`}
                 >
                   <FaCheck
@@ -67,7 +67,7 @@ const GradientRotation = ({
                       gradientRotation.id == rot.id
                         ? "fill-blue-500"
                         : "fill-white"
-                    } group-data-[selected]:visible`}
+                    } group-data-selected:visible`}
                   />
                   <div
                     className={`text-sm/6 ${

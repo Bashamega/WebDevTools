@@ -159,7 +159,7 @@ const ColorPicker = () => {
               <canvas
                 ref={canvasRef}
                 onClick={handleCanvasClick}
-                className="w-full max-w-screen-2xl max-h-1/2 max-w-1/2 cursor-crosshair flex-1"
+                className="w-full max-w-(--breakpoint-2xl) max-h-1/2 max-w-1/2 cursor-crosshair flex-1"
               />
             )}
             {image && (

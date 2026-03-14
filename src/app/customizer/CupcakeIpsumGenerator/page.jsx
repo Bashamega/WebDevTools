@@ -51,7 +51,7 @@ export default function ButtonCustomizer() {
         toggleTheme={toggleTheme}
       />
       <section className="flex flex-col gap-10 items-center justify-center h-screen">
-        <h1 className="relative p-2 z-10 font-sans text-xl sm:text-4xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600">
+        <h1 className="relative p-2 z-10 font-sans text-xl sm:text-4xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-linear-to-b from-neutral-200 to-neutral-600">
           Cupcake Ipsum Generator
         </h1>
         <div
@@ -72,17 +72,17 @@ export default function ButtonCustomizer() {
               min={1}
               max={10}
               onChange={(e) => setCupcakes(e.target.value)}
-              className="focus:outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="focus:outline-hidden bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
             />
           </div>
           <br />
-          <div className="inline-flex rounded-md shadow-sm" role="group">
+          <div className="inline-flex rounded-md shadow-xs" role="group">
             <button
               onClick={generate}
-              className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:outline-none"
+              className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-linear-to-br from-red-200 via-red-300 to-yellow-200 group-hover:from-red-200 group-hover:via-red-300 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900 focus:outline-hidden"
             >
-              <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent">
                 Generate
               </span>
             </button>
@@ -90,7 +90,7 @@ export default function ButtonCustomizer() {
             <button
               type="button"
               onClick={copy}
-              className="text-gray-900 bg-white hover:bg-gray-200 border border-gray-200 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center transition duration-200 ease-in-out dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-600 mr-2 mb-2"
+              className="text-gray-900 bg-white hover:bg-gray-200 border border-gray-200 focus:outline-hidden font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center transition duration-200 ease-in-out dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-600 mr-2 mb-2"
             >
               Copy
             </button>

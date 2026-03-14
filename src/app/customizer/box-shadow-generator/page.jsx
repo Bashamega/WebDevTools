@@ -82,7 +82,7 @@ const Page = () => {
         isDarkMode={isDarkMode}
         toggleTheme={toggleTheme}
       />
-      <main className="h-[100vh] max-w-6xl m-auto min-w-80">
+      <main className="h-screen max-w-6xl m-auto min-w-80">
         <div className="flex flex-col gap-3 mt-10 items-center">
           <h1 className="text-5xl font-extrabold text-center">
             Box Shadow Generator
@@ -174,7 +174,7 @@ const Page = () => {
               </h3>
               <div className="w-full relative py-2">
                 <button
-                  className="rounded-lg bg-blue-600 p-3 text-md font-semibold text-white w-full text-center border outline-none border-blue-600 active:scale-95 transition-transform duration-200 hover:bg-blue-700 hover:border-blue-700"
+                  className="rounded-lg bg-blue-600 p-3 text-md font-semibold text-white w-full text-center border outline-hidden border-blue-600 active:scale-95 transition-transform duration-200 hover:bg-blue-700 hover:border-blue-700"
                   onClick={handleCopyCSSClick}
                 >
                   Copy CSS
@@ -182,7 +182,7 @@ const Page = () => {
               </div>
               <div className="w-full relative py-2">
                 <button
-                  className="rounded-lg bg-blue-600 p-3 text-md font-semibold text-white w-full text-center border outline-none border-blue-600 active:scale-95 transition-transform duration-200 hover:bg-blue-700 hover:border-blue-700"
+                  className="rounded-lg bg-blue-600 p-3 text-md font-semibold text-white w-full text-center border outline-hidden border-blue-600 active:scale-95 transition-transform duration-200 hover:bg-blue-700 hover:border-blue-700"
                   onClick={handleCopyTailwindClick}
                 >
                   Copy TailwindCSS

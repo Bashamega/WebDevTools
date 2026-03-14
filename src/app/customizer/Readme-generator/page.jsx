@@ -62,7 +62,7 @@ ${license}`;
         title={"Github Readme Generator"}
       />
       <div className="w-2/3 mx-auto">
-        <h1 className="relative p-2 z-10 font-sans text-xl sm:text-4xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600">
+        <h1 className="relative p-2 z-10 font-sans text-xl sm:text-4xl font-bold text-center text-transparent md:text-7xl bg-clip-text bg-linear-to-b from-neutral-200 to-neutral-600">
           GitHub README Generator
         </h1>
         <div className="mb-4">
@@ -76,7 +76,7 @@ ${license}`;
               isDarkMode
                 ? "bg-gray-800 text-gray-200"
                 : "bg-white text-gray-900 border-gray-400"
-            } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            } w-full p-2 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -94,7 +94,7 @@ ${license}`;
               isDarkMode
                 ? "bg-gray-800 text-gray-200"
                 : "bg-white text-gray-900 border-gray-400"
-            } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            } w-full p-2 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             rows={4}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -113,7 +113,7 @@ ${license}`;
               isDarkMode
                 ? "bg-gray-800 text-gray-200"
                 : "bg-white text-gray-900 border-gray-400"
-            } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            } w-full p-2 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             rows={4}
             value={installation}
             onChange={(e) => setInstallation(e.target.value)}
@@ -129,7 +129,7 @@ ${license}`;
               isDarkMode
                 ? "bg-gray-800 text-gray-200"
                 : "bg-white text-gray-900 border-gray-400"
-            } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            } w-full p-2 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             rows={4}
             value={usage}
             onChange={(e) => setUsage(e.target.value)}
@@ -146,7 +146,7 @@ ${license}`;
               isDarkMode
                 ? "bg-gray-800 text-gray-200"
                 : "bg-white text-gray-900 border-gray-400"
-            } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            } w-full p-2 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             value={license}
             onChange={(e) => setLicense(e.target.value)}
           />
@@ -161,7 +161,7 @@ ${license}`;
               isDarkMode
                 ? "bg-gray-800 text-gray-200"
                 : "bg-white text-gray-900 border-gray-400"
-            } w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            } w-full p-2 border rounded-lg focus:outline-hidden focus:ring-2 focus:ring-blue-500`}
             rows={4}
             value={badges}
             onChange={(e) => setBadges(e.target.value)}
