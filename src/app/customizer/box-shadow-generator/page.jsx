@@ -130,7 +130,7 @@ const Page = () => {
               />
               <InputRange
                 value={shadow.blur}
-                name={"blur-sm"}
+                name={"blur"}
                 onChange={(e) => setShadow({ ...shadow, blur: e.target.value })}
               />
               <InputRange
