@@ -75,7 +75,7 @@ const CopyCSSModal = ({ gradientRef, colorsListRef, setCopyCSSModal }) => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full md:h-full h-screen overflow-hidden md:overflow-auto p-4 z-50 flex justify-center items-center bg-slate-400 bg-opacity-30">
+    <div className="fixed top-0 left-0 w-full md:h-full h-screen overflow-hidden md:overflow-auto p-4 z-50 flex justify-center items-center bg-slate-400/30">
       <div className="bg-white rounded-lg md:w-2/4 w-full p-3 md:h-auto h-full overflow-auto">
         <div className="flex flex-col justify-between gap-3 relative">
           <div className="flex items-center justify-center">

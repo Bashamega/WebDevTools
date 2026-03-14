@@ -65,7 +65,7 @@ export function NavBar({ title, isDarkMode, toggleTheme }) {
       <div className="flex items-center">
         <button
           onClick={handleToggleTheme}
-          className="p-2 rounded-full hover:bg-opacity-20 hover:bg-gray-200 transition-colors duration-200"
+          className="p-2 rounded-full hover:bg-gray-200/20 transition-colors duration-200"
           aria-label="Toggle dark mode"
         >
           {isDarkMode ? (

@@ -41,7 +41,7 @@ const GradientType = ({ gradientType, setGradientType, gradientTypes }) => {
                 value={grad}
                 className={`group flex cursor-default items-center gap-2 rounded-lg py-1.5 px-3 select-none ${
                   gradientType.id == grad.id
-                    ? "bg-blue-500 bg-opacity-20"
+                    ? "bg-blue-500/20"
                     : "data-focus:bg-white/10"
                 }`}
               >

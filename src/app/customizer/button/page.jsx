@@ -569,7 +569,7 @@ width: ${width}px;
       </button>
 
       {showCode && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50">
           <div className="bg-slate-200 p-8 rounded-lg lg:w-1/2">
             <Tabs>
               <TabList>

@@ -66,7 +66,7 @@ export default function HamburgerMenu({ open, togglePanel, isDarkMode }) {
       <DialogBackdrop
         transition
         className={`fixed inset-0 ${
-          isDarkMode ? "bg-opacity-75 bg-gray-900" : "bg-opacity-75 bg-gray-500"
+          isDarkMode ? "bg-gray-900/75" : "bg-gray-500/75"
         } transition-opacity duration-500 ease-in-out data-closed:opacity-0`}
       />
 

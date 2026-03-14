@@ -199,7 +199,7 @@ export default function MarkdownEditor() {
           <div className="flex items-center">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-opacity-20 hover:bg-gray-200 transition-colors duration-200"
+              className="p-2 rounded-full hover:bg-gray-200/20 transition-colors duration-200"
               aria-label="Toggle dark mode"
             >
               {isDarkMode ? (
@@ -257,7 +257,7 @@ export default function MarkdownEditor() {
         <section className="w-[96%] h-full  md:w-1/2 ml-2 mr-2 relative">
           <button
             onClick={copyToClipboard}
-            className="absolute top-9 right-2 p-1 rounded hover:bg-opacity-20 hover:bg-gray-200 transition-colors duration-200"
+            className="absolute top-9 right-2 p-1 rounded hover:bg-gray-200/20 transition-colors duration-200"
             aria-label="Copy to clipboard"
           >
             <ContentCopyIcon />

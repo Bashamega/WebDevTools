@@ -58,7 +58,7 @@ const GradientRotation = ({
                   value={rot}
                   className={`group flex cursor-default items-center gap-2 rounded-lg py-1.5 px-3 select-none ${
                     gradientRotation.id == rot.id
-                      ? "bg-blue-500 bg-opacity-20"
+                      ? "bg-blue-400/20"
                       : "data-focus:bg-white/10"
                   }`}
                 >
