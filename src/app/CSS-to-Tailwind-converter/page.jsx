@@ -1494,7 +1494,7 @@ export default function Home() {
 
         {tailwindOutput && (
           <div
-            className={`w-full max-w-2xl p-4 rounded-lg shadow-md mb-4 relative items-center justify-center ${isDarkMode ? "bg-gray-800 border-gray-300  text-gray-400" : "bg-gray-200 border-gray-300  text-gray-500"}hover:border-blue-400 focus:border-blue-500 outline-hidden`}
+            className={`w-full max-w-2xl p-4 rounded-lg shadow-md mb-4 relative items-center justify-center ${isDarkMode ? "bg-gray-800 border-gray-300  text-gray-400" : "bg-gray-200 border-gray-300  text-gray-500"} hover:border-blue-400 focus:border-blue-500 outline-hidden`}
           >
             <h2 className="text-xl font-semibold mb-2">Tailwind Output:</h2>
             <p className="font-mono text-sm wrap-break-word">
