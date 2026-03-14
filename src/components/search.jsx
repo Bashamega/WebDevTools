@@ -9,7 +9,6 @@ export default function Search({ isDarkMode }) {
   const [searchValue, setSearchValue] = useState(""); // State to store the value of search input
   const [searchResults, setSearchResults] = useState([]); // State to store the filtered search results
   const [showDropdown, setShowDropdown] = useState(false); // State to control the visibility of the dropdown
-  const [isInputFocused, setIsInputFocused] = useState(false); // State for input focus
   const inputRef = useRef(null); // Reference to the input element
   const dropdownRef = useRef(null); // Reference to the dropdown list element
 
@@ -63,25 +62,17 @@ export default function Search({ isDarkMode }) {
     }
   }, [showDropdown]);
 
-  // Handlers for input focus/blur to enable border on focus
-  const handleInputFocus = () => setIsInputFocused(true);
-  const handleInputBlur = () => setIsInputFocused(false);
-
   return (
     <div className="relative">
       <div
         ref={inputRef}
         className={`flex items-center w-full rounded p-1 px-2 border-2
-          ${
-            isInputFocused
-              ? isDarkMode
-                ? "border-blue-400"
-                : "border-blue-500"
-              : isDarkMode
-                ? "border-gray-600"
-                : "border-gray-300"
-          }
           ${isDarkMode ? "bg-gray-700" : "bg-white"}
+          ${
+            isDarkMode
+              ? "border-gray-600 focus-within:border-blue-400"
+              : "border-gray-300 focus-within:border-blue-500"
+          }
         `}
       >
         <FaSearch
@@ -90,8 +81,6 @@ export default function Search({ isDarkMode }) {
         <input
           value={searchValue}
           onChange={handleInputChange}
-          onFocus={handleInputFocus}
-          onBlur={handleInputBlur}
           type="search"
           id="search"
           className={`grow border outline-none border-none ${
