@@ -27,7 +27,7 @@
     "@mui/material": "^5.15.19",
     "@radix-ui/react-select": "^2.2.6",
     "@react-pdf/renderer": "^4.3.0",
-    "@tailwindcss/postcss": "^4.2.1",
+    "@tailwindcss/postcss": "^4.2.2",
     "@types/typescript": "^2.0.0",
     "@vercel/analytics": "^1.5.0",
     "asciidoctor": "^3.0.4",
