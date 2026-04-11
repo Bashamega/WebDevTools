@@ -1,101 +1,108 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AddBox } from "@mui/icons-material";
+import { defaultResumeData } from "./defaultResumeData";
 
-const ResumeForm = ({ onFormChange, isDarkMode }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    image: "",
-    imageShape: "circle",
-    workExperience: [{ title: "", company: "", description: "" }],
-    projects: [{ title: "", liveUrl: "", description: "" }],
-    education: [{ degree: "", institution: "", description: "" }],
-    skills: [
-      { category: "Frontend", skills: [""] },
-      { category: "Backend", skills: [""] },
-      { category: "Languages", skills: [""] },
-      { category: "Tools", skills: [""] },
-    ],
-    links: { linkedIn: "", website: "", github: "" },
-    achievements: [{ title: "", description: "" }],
-    template: "template1",
-  });
+const ResumeForm = ({ onFormChange, isDarkMode, initialData }) => {
+  const [formData, setFormData] = useState(initialData ?? defaultResumeData);
+
+  useEffect(() => {
+    if (initialData) {
+      setFormData(initialData);
+    }
+  }, [initialData]);
+
+  const updateFormData = (updater) => {
+    setFormData((prevData) => {
+      const nextData =
+        typeof updater === "function"
+          ? updater(prevData)
+          : { ...prevData, ...updater };
+      onFormChange?.(nextData);
+      return nextData;
+    });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setFormData({ ...formData, [name]: value });
-    onFormChange({ ...formData, [name]: value });
+    updateFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleArrayChange = (e, index, field, arrayName) => {
-    const newArray = [...formData[arrayName]];
-    newArray[index][field] = e.target.value;
-    setFormData({ ...formData, [arrayName]: newArray });
-    onFormChange({ ...formData, [arrayName]: newArray });
+    const { value } = e.target;
+    updateFormData((prevData) => ({
+      ...prevData,
+      [arrayName]: prevData[arrayName].map((item, itemIndex) =>
+        itemIndex === index ? { ...item, [field]: value } : item,
+      ),
+    }));
   };
 
   const handleSkillsChange = (e, categoryIndex, skillIndex) => {
     const { value } = e.target;
-    const updatedSkills = [...formData.skills];
-    updatedSkills[categoryIndex].skills[skillIndex] = value;
-    setFormData((prevData) => ({
+    updateFormData((prevData) => ({
       ...prevData,
-      skills: updatedSkills,
+      skills: prevData.skills.map((skillCategory, idx) =>
+        idx === categoryIndex
+          ? {
+              ...skillCategory,
+              skills: skillCategory.skills.map((skill, skillIdx) =>
+                skillIdx === skillIndex ? value : skill,
+              ),
+            }
+          : skillCategory,
+      ),
     }));
-    onFormChange({ ...formData, skills: updatedSkills });
   };
 
   const handleLinksChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, links: { ...formData.links, [name]: value } });
-    onFormChange({ ...formData, links: { ...formData.links, [name]: value } });
+    updateFormData((prevData) => ({
+      ...prevData,
+      links: { ...prevData.links, [name]: value },
+    }));
   };
 
   const handlePhotoChange = (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files?.[0];
+    if (!file) return;
+
     const reader = new FileReader();
     reader.onloadend = () => {
-      setFormData({ ...formData, image: reader.result });
-      onFormChange({ ...formData, image: reader.result });
+      updateFormData((prevData) => ({ ...prevData, image: reader.result }));
     };
-    if (file) {
-      reader.readAsDataURL(file);
-    }
+    reader.readAsDataURL(file);
   };
 
   const addWorkExperience = () => {
-    setFormData({
-      ...formData,
+    updateFormData((prevData) => ({
+      ...prevData,
       workExperience: [
-        ...formData.workExperience,
+        ...prevData.workExperience,
         { title: "", company: "", description: "" },
       ],
-    });
+    }));
   };
 
   const addProjects = () => {
-    setFormData({
-      ...formData,
+    updateFormData((prevData) => ({
+      ...prevData,
       projects: [
-        ...formData.projects,
+        ...prevData.projects,
         { title: "", liveUrl: "", description: "" },
       ],
-    });
+    }));
   };
 
   const addEducation = () => {
-    setFormData({
-      ...formData,
+    updateFormData((prevData) => ({
+      ...prevData,
       education: [
-        ...formData.education,
+        ...prevData.education,
         { degree: "", institution: "", description: "" },
       ],
-    });
+    }));
   };
 
   // const addSkill = () => {
@@ -112,10 +119,10 @@ const ResumeForm = ({ onFormChange, isDarkMode }) => {
   // };
 
   const addAchievement = () => {
-    setFormData({
-      ...formData,
-      achievements: [...formData.achievements, { title: "", description: "" }],
-    });
+    updateFormData((prevData) => ({
+      ...prevData,
+      achievements: [...prevData.achievements, { title: "", description: "" }],
+    }));
   };
 
   return (
