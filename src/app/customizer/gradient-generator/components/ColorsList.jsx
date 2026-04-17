@@ -1,4 +1,4 @@
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
