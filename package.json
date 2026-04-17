@@ -24,7 +24,7 @@
     "@heroicons/react": "^2.2.0",
     "@monaco-editor/react": "^4.7.0",
     "@mui/icons-material": "^5.15.19",
-    "@mui/material": "^5.15.19",
+    "@mui/material": "^9.0.0",
     "@radix-ui/react-select": "^2.2.6",
     "@react-pdf/renderer": "^4.4.1",
     "@tailwindcss/postcss": "^4.2.2",
