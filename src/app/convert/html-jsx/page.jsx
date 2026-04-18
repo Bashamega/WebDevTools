@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { NavBar } from "@/components/navbar";
 import CodeEditor from "./components/editor";
 import { htmlToJsx } from "html-to-jsx-transform";
@@ -8,7 +8,7 @@ import { htmlToJsx } from "html-to-jsx-transform";
 export default function HTML_JSX() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [value, setValue] = useState("");
-  const [cache, setCache] = useState({});
+  const cacheRef = useRef({});
 
   // Handle editor change
   const handleChange = (val) => {
@@ -24,13 +24,13 @@ export default function HTML_JSX() {
 
   // Generate JSX from HTML with caching
   const generateJSX = () => {
-    if (cache[value]) {
-      return cache[value];
+    if (cacheRef.current[value]) {
+      return cacheRef.current[value];
     }
 
     const jsx = htmlToJsx(value);
     const jsxCode = `function component() { return (${jsx}) }`;
-    setCache((prevCache) => ({ ...prevCache, [value]: jsxCode }));
+    cacheRef.current[value] = jsxCode;
     return jsxCode;
   };
 
