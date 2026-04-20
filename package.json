@@ -27,7 +27,7 @@
     "@mui/icons-material": "^9.0.0",
     "@mui/material": "^9.0.0",
     "@radix-ui/react-select": "^2.2.6",
-    "@react-pdf/renderer": "^4.4.1",
+    "@react-pdf/renderer": "^4.5.1",
     "@tailwindcss/postcss": "^4.2.2",
     "@types/typescript": "^2.0.0",
     "@vercel/analytics": "^1.5.0",
