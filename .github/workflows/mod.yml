@@ -1,0 +1,34 @@
+name: Moderate Issues and PRs
+on:
+  issues:
+    types: [opened, reopened]
+  pull_request_target:
+    types: [opened, reopened]
+
+jobs:
+  moderate:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Run gh-admin-mod
+        uses: Bashamega/gh-admin-mod@v1
+        with:
+          # Enable blocklist (enabled by default, but shown here for clarity)
+          block-issues: "true"
+          block-prs: "true"
+          blocked-users-file: "blockedUser.md"
+
+          # Enable auto-mod (disabled by default)
+          auto-mod: "true"
+          auto-mod-keywords: "telegram,whatsapp,t.me,airdrop,bonus,dm me,contact me,investment opportunity"
+          auto-mod-max-links: "3"
+          auto-mod-new-contributors-only: "true"
+          auto-mod-label: "auto-moderated"
+
+          # General settings
+          add-label: "moderated"
+          lock-conversation: "true"
+          close-reason: "not_planned"
+          dry-run: "false"
