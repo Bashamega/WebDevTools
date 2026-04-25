@@ -16,9 +16,7 @@ jobs:
         uses: Bashamega/gh-admin-mod@v1
         with:
           # Enable blocklist (enabled by default, but shown here for clarity)
-          block-issues: "true"
-          block-prs: "true"
-          blocked-users-file: "blockedUser.md"
+          block-issues: "false"
 
           # Enable auto-mod (disabled by default)
           auto-mod: "true"
