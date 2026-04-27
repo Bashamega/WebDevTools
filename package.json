@@ -48,7 +48,7 @@
     "lucide-react": "^0.577.0",
     "next": "^16.2.3",
     "next-navigation": "^1.0.6",
-    "postcss": "8.5.8",
+    "postcss": "8.5.12",
     "react": "^19.2.5",
     "react-bootstrap": "^2.10.10",
     "react-color": "^2.19.3",
