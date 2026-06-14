@@ -5,33 +5,14 @@ import dynamic from "next/dynamic";
 import Preview from "./Preview";
 import { NavBar } from "../../components/navbar";
 import ResumeForm from "./ResumeForm";
+import { defaultResumeData } from "./defaultResumeData";
 
 const ResumePDFDownloadLink = dynamic(() => import("./ResumePDF"), {
   ssr: false,
 });
 
 const Home = () => {
-  const [resumeData, setResumeData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    image: "",
-    imageShape: "circle",
-    workExperience: [{ title: "", company: "", description: "" }],
-    projects: [{ title: "", liveUrl: "", description: "" }],
-    education: [{ degree: "", institution: "", description: "" }],
-    skills: [
-      { category: "frontend", skills: [""] },
-      { category: "backend", skills: [""] },
-      { category: "languages", skills: [""] },
-      { category: "other", skills: [""] },
-    ],
-    links: { linkedin: "", website: "", github: "" },
-    achievements: [{ title: "", description: "" }],
-
-    template: "template1",
-  });
+  const [resumeData, setResumeData] = useState(defaultResumeData);
 
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -62,7 +43,11 @@ const Home = () => {
           Resume Builder
         </h1>
         <div className="w-full mt-8 ">
-          <ResumeForm isDarkMode={isDarkMode} onFormChange={handleFormChange} />
+          <ResumeForm
+            isDarkMode={isDarkMode}
+            onFormChange={handleFormChange}
+            initialData={resumeData}
+          />
           {resumeData && <Preview isDarkMode={isDarkMode} data={resumeData} />}
           {resumeData && <ResumePDFDownloadLink data={resumeData} />}
         </div>
