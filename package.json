@@ -68,8 +68,7 @@
     "tailwindcss": "^4.2.1",
     "tailwindcss-animate": "^1.0.7",
     "typeify": "^0.1.1",
-    "typescript": "^5.9.3",
-    "uuid": "^11.1.0"
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.1",

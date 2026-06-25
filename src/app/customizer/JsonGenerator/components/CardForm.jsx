@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { Reorder, useDragControls } from "framer-motion";
 import { saveAs } from "file-saver";
 import Categories from "../utils";
@@ -67,7 +66,10 @@ export default function CardForm({ isDarkMode }) {
   };
 
   const addField = () => {
-    setFields([...fields, { id: uuidv4(), fieldName: "", fieldType: "" }]);
+    setFields([
+      ...fields,
+      { id: crypto.randomUUID(), fieldName: "", fieldType: "" },
+    ]);
   };
 
   const removeField = (id) => {

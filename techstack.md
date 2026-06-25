@@ -179,7 +179,6 @@
 | [react-icons](https://www.npmjs.com/react-icons)               | v5.2.1   | 07/09/24     | Jitendra        | MIT         | N/A                                                         |
 | [react-tabs](https://www.npmjs.com/react-tabs)                 | v6.0.2   | 07/09/24     | Jitendra        | N/A         | N/A                                                         |
 | [tailwindcss](https://www.npmjs.com/tailwindcss)               | v3.4.4   | 07/05/24     | renovate[bot]   | MIT         | N/A                                                         |
-| [uuid](https://www.npmjs.com/uuid)                             | v10.0.0  | 07/04/24     | renovate[bot]   | MIT         | N/A                                                         |
 | [xml2js](https://www.npmjs.com/xml2js)                         | v0.6.2   | 07/21/24     | Bashamega       | MIT         | N/A                                                         |
 
 <br/>
