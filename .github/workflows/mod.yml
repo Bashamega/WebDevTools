@@ -13,7 +13,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Run gh-admin-mod
-        uses: Bashamega/gh-admin-mod@v1
+        uses: Bashamega/gh-admin-mod@v1.0.1
         with:
           # Enable blocklist (enabled by default, but shown here for clarity)
           block-issues: "false"
@@ -30,3 +30,4 @@ jobs:
           lock-conversation: "true"
           close-reason: "not_planned"
           dry-run: "false"
+          blocked-users-file: "./github/workflows/blockedUser.md"
