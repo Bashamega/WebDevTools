@@ -12,6 +12,8 @@ jobs:
       issues: write
       pull-requests: write
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Run gh-admin-mod
         uses: Bashamega/gh-admin-mod@v1.0.1
         with:
@@ -30,4 +32,4 @@ jobs:
           lock-conversation: "true"
           close-reason: "not_planned"
           dry-run: "false"
-          blocked-users-file: "./github/workflows/blockedUser.md"
+          blocked-users-file: ".github/workflows/blockedUser.md"
