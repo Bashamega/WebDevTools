@@ -65,7 +65,7 @@
     "snarkdown": "^2.0.0",
     "sweetalert2": "^11.26.10",
     "tailwind-merge": "^3.3.0",
-    "tailwindcss": "^4.2.1",
+    "tailwindcss": "^4.3.2",
     "tailwindcss-animate": "^1.0.7",
     "typeify": "^0.1.1",
     "typescript": "^6.0.3"
