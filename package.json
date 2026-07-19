@@ -32,7 +32,7 @@
     "@types/typescript": "^2.0.0",
     "@vercel/analytics": "^1.5.0",
     "asciidoctor": "^3.0.4",
-    "badge-maker": "^5.0.2",
+    "badge-maker": "^6.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "codemirror": "^6.0.2",
