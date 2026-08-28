@@ -1,0 +1,20 @@
+export const defaultResumeData = {
+  name: "",
+  email: "",
+  phone: "",
+  address: "",
+  image: "",
+  imageShape: "circle",
+  workExperience: [{ title: "", company: "", description: "" }],
+  projects: [{ title: "", liveUrl: "", description: "" }],
+  education: [{ degree: "", institution: "", description: "" }],
+  skills: [
+    { category: "Frontend", skills: [""] },
+    { category: "Backend", skills: [""] },
+    { category: "Languages", skills: [""] },
+    { category: "Tools", skills: [""] },
+  ],
+  links: { linkedIn: "", website: "", github: "" },
+  achievements: [{ title: "", description: "" }],
+  template: "template1",
+};

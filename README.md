@@ -48,8 +48,20 @@ Here're some of the project's best features:
    ```
 
 3. **Run Development Server**:
+
    ```bash
    npm run dev
+   ```
+
+4. **Run Tests**:
+
+   ```bash
+   npm test
+   ```
+
+5. **Run Coverage Report**:
+   ```bash
+   npm run test:coverage
    ```
 
 <h2>💻 Built with</h2>
