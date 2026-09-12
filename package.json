@@ -12,14 +12,14 @@
     "lint": "next lint",
     "seo": "node scripts/seo.js",
     "prepare": "husky",
-    "test": "jest",
-    "test:watch": "jest --watchAll",
-    "test:coverage": "jest --coverage"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watchAll",
+    "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@faker-js/faker": "^9.8.0",
+    "@faker-js/faker": "^10.6.0",
     "@headlessui/react": "^2.2.10",
     "@hello-pangea/dnd": "^18.0.1",
     "@heroicons/react": "^2.2.0",
@@ -79,7 +79,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
     "husky": "^9.1.7",
-    "jest": "^30.3.0",
+    "jest": "^30.5.1",
     "jest-environment-jsdom": "^30.4.1",
     "prettier": "^3.9.6",
     "xml2js": "^0.6.2"
