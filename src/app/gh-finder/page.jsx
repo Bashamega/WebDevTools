@@ -112,13 +112,11 @@ export default function GhFinder() {
     const cacheTimestamp = localStorage.getItem(cacheExpirationKey);
     const now = new Date().getTime();
 
-    if (
-      !(
-        cachedData &&
-        cacheTimestamp &&
-        now - cacheTimestamp < cacheExpirationTime
-      )
-    ) {
+    if (!(
+      cachedData &&
+      cacheTimestamp &&
+      now - cacheTimestamp < cacheExpirationTime
+    )) {
       fetchDataAndSet();
     } else {
       setData(JSON.parse(cachedData));
