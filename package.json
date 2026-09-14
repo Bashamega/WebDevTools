@@ -52,7 +52,7 @@
     "react": "^19.2.5",
     "react-bootstrap": "^2.10.10",
     "react-color": "^2.19.3",
-    "react-colorful": "^5.6.1",
+    "react-colorful": "^5.8.1",
     "react-dom": "^19.2.7",
     "react-dropdown-select": "^4.12.2",
     "react-hot-toast": "^2.6.0",
