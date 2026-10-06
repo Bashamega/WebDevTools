@@ -37,7 +37,7 @@
     "clsx": "^2.1.1",
     "codemirror": "^6.0.2",
     "convert-units": "^2.3.4",
-    "dompurify": "^3.4.13",
+    "dompurify": "^3.4.16",
     "eslint-config-next": "^16.2.9",
     "file-saver": "^2.0.5",
     "framer-motion": "^12.42.2",
