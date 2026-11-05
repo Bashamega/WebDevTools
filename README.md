@@ -52,6 +52,12 @@ Here're some of the project's best features:
    npm run dev
    ```
 
+<h2>🧪 Running the Tests</h2>
+
+Run the tests with `npm test`. For a coverage report, run `npm run test:coverage`. To run one test file, add its path, like `npm test -- src/app/customizer/image-color-picker`.
+
+Use Node 24.9 or newer. On older versions, two test suites fail with an error from `@faker-js/faker`.
+
 <h2>💻 Built with</h2>
 
 Technologies used in the project:
