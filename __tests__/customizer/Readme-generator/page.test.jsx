@@ -95,6 +95,15 @@ describe("Readme generator interactions", () => {
     expect(preview).toContain("color: white");
     expect(localStorage.getItem("theme")).toBe("true");
   });
+
+  test("a saved dark theme is restored when the page loads", () => {
+    localStorage.setItem("theme", "true");
+    render(<ReadmeGenerator />);
+
+    const preview = getPreviewSource();
+    expect(preview).toContain("background-color: #1a202c");
+    expect(preview).toContain("color: white");
+  });
 });
 
 describe("Readme generator download", () => {
