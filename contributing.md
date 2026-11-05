@@ -68,6 +68,19 @@ For code contributions:
    ```bash
    npm run dev
    ```
+4. **Run the Tests**:
+   Tests use Jest and React Testing Library and live in `__tests__/`, mirroring the `src/app` path of the page they cover.
+   ```bash
+   npm test                      # run the whole suite once
+   npm run test:watch            # rerun tests as files change
+   npm run test:coverage         # run the suite with a coverage report
+   npm test -- __tests__/customizer/Readme-generator   # run one folder or file
+   ```
+   The scripts set `NODE_OPTIONS` with Unix shell syntax. In Windows PowerShell, set it first and call Jest directly:
+   ```powershell
+   $env:NODE_OPTIONS = "--experimental-vm-modules"
+   npx jest
+   ```
 
 ## Style Guides
 
