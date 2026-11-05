@@ -101,6 +101,23 @@ describe("Image Color Picker", () => {
     expect(screen.getByText(/ff0000/)).toBeInTheDocument();
   });
 
+  test("should toggle dark mode when the theme button is clicked", () => {
+    const { container } = render(<ColorPicker />);
+    const main = container.querySelector("main");
+    const toggle = screen.getByLabelText("Toggle dark mode");
+
+    expect(main).toHaveClass("bg-white");
+
+    fireEvent.click(toggle);
+
+    expect(main).toHaveClass("bg-gray-900");
+    expect(main).not.toHaveClass("bg-white");
+
+    fireEvent.click(toggle);
+
+    expect(main).toHaveClass("bg-white");
+  });
+
   test.each([
     {
       buttonText: "RGB Code",
