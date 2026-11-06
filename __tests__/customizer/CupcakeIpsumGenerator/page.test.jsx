@@ -113,3 +113,41 @@ describe("Cupcake Ipsum generator theme", () => {
     expect(container.querySelector("main")).toHaveClass("bg-gray-900");
   });
 });
+
+describe("Cupcake Ipsum generator light theme", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  test("a second toggle click returns to the light theme and saves it", () => {
+    const { container } = render(<CupcakeIpsumGenerator />);
+    const toggle = screen.getByRole("button", { name: "Toggle dark mode" });
+
+    fireEvent.click(toggle);
+    fireEvent.click(toggle);
+
+    expect(container.querySelector("main")).toHaveClass("bg-white");
+    expect(localStorage.getItem("theme")).toBe("false");
+  });
+
+  test("a saved light theme loads as light", () => {
+    localStorage.setItem("theme", "false");
+
+    const { container } = render(<CupcakeIpsumGenerator />);
+
+    expect(container.querySelector("main")).toHaveClass("bg-white");
+  });
+
+  test("a malformed saved theme is logged and the page stays usable in light mode", () => {
+    // page.jsx catches the JSON.parse error and logs it with console.log.
+    const logSpy = jest.spyOn(console, "log").mockImplementation(() => {});
+    localStorage.setItem("theme", "not-json");
+
+    const { container } = render(<CupcakeIpsumGenerator />);
+
+    expect(logSpy).toHaveBeenCalledWith("Failed to read localstorage");
+    expect(container.querySelector("main")).toHaveClass("bg-white");
+    fireEvent.click(screen.getByRole("button", { name: "Generate" }));
+    expect(countParagraphs(getOutputText())).toBe(1);
+  });
+});
