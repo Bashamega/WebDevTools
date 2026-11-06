@@ -4,6 +4,9 @@ import LoremIpsumGenerator from "@/app/customizer/LoremIpsumGenerator/page";
 
 const PARAGRAPH_START = "Lorem ipsum dolor sit amet";
 
+const PARAGRAPH =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus auctor orci quis metus ultricies, vitae finibus urna pellentesque. Sed commodo, tortor sed pharetra bibendum, turpis purus gravida orci, nec aliquet mi ligula eu purus. In at elit ex. Quisque ultricies pulvinar purus, at luctus justo lacinia vel. Vestibulum pulvinar lacus eu turpis rutrum, et fermentum sapien rhoncus. Nullam dapibus felis in neque ultricies ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In hac habitasse platea dictumst. Donec efficitur dolor a bibendum vehicula. Curabitur vitae est elit. Integer tempus massa elit, eget euismod nunc pharetra eget. Morbi efficitur metus in viverra finibus. Aliquam sollicitudin pharetra sapien nec bibendum. Etiam congue faucibus malesuada. Nunc vulputate congue vulputate.";
+
 const countParagraphs = (text) => text.split(PARAGRAPH_START).length - 1;
 
 const shownParagraphs = () => countParagraphs(document.body.textContent);
@@ -56,6 +59,7 @@ describe("Lorem Ipsum generator interactions", () => {
     fireEvent.click(screen.getByRole("button", { name: "Generate" }));
 
     expect(shownParagraphs()).toBe(1);
+    expect(screen.getByText(PARAGRAPH, { exact: false })).toBeVisible();
   });
 
   test("changing the count to 3 and generating shows three paragraphs", () => {
@@ -67,6 +71,7 @@ describe("Lorem Ipsum generator interactions", () => {
     fireEvent.click(screen.getByRole("button", { name: "Generate" }));
 
     expect(shownParagraphs()).toBe(3);
+    expect(screen.getByText(PARAGRAPH, { exact: false })).toBeVisible();
   });
 
   test("Copy sends the generated text to the clipboard and confirms it", () => {
@@ -77,7 +82,7 @@ describe("Lorem Ipsum generator interactions", () => {
 
     expect(writeText).toHaveBeenCalledTimes(1);
     const copied = writeText.mock.calls[0][0];
-    expect(copied.startsWith(PARAGRAPH_START)).toBe(true);
+    expect(copied).toBe(`${PARAGRAPH}\n\n`);
     expect(countParagraphs(copied)).toBe(1);
     expect(screen.getByText("Text copied successfully")).toBeInTheDocument();
     expect(shownParagraphs()).toBe(0);
@@ -120,14 +125,16 @@ describe("Lorem Ipsum generator workflow", () => {
 
     setParagraphCount(2);
     fireEvent.click(screen.getByRole("button", { name: "Generate" }));
+
     expect(shownParagraphs()).toBe(2);
+    expect(screen.getByText(PARAGRAPH, { exact: false })).toBeVisible();
 
     fireEvent.click(screen.getByRole("button", { name: "Copy" }));
 
     expect(writeText).toHaveBeenCalledTimes(1);
     const copied = writeText.mock.calls[0][0];
     expect(countParagraphs(copied)).toBe(2);
-    expect(copied.split("\n\n").filter(Boolean)).toHaveLength(2);
+    expect(copied).toBe(`${PARAGRAPH}\n\n${PARAGRAPH}\n\n`);
     expect(screen.getByText("Text copied successfully")).toBeInTheDocument();
     expect(shownParagraphs()).toBe(0);
   });
