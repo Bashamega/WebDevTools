@@ -24,7 +24,7 @@
     "@hello-pangea/dnd": "^18.0.1",
     "@heroicons/react": "^2.2.0",
     "@monaco-editor/react": "^4.7.0",
-    "@mui/icons-material": "^9.0.0",
+    "@mui/icons-material": "^9.4.0",
     "@mui/material": "^9.4.0",
     "@radix-ui/react-select": "^2.3.7",
     "@react-pdf/renderer": "^4.5.1",
