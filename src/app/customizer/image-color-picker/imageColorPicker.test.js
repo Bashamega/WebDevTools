@@ -15,23 +15,38 @@ Object.defineProperty(window, "matchMedia", {
   })),
 });
 
-// jsdom has no canvas, so these stand in for the pieces the page uses.
+// jsdom has no canvas and does not load images, so these stand in for them.
 const getImageData = jest.fn(() => ({ data: [255, 0, 0, 255] }));
+const drawImage = jest.fn();
+const images = [];
+const RealImage = global.Image;
 let getContextSpy;
 let getRectSpy;
+
+class MockImage {
+  constructor() {
+    this.width = 40;
+    this.height = 30;
+    images.push(this);
+  }
+}
 
 beforeEach(() => {
   navigator.clipboard.writeText.mockClear();
   getImageData.mockClear();
+  drawImage.mockClear();
+  images.length = 0;
+  global.Image = MockImage;
   getContextSpy = jest
     .spyOn(HTMLCanvasElement.prototype, "getContext")
-    .mockReturnValue({ getImageData, drawImage: jest.fn() });
+    .mockReturnValue({ getImageData, drawImage });
   getRectSpy = jest
     .spyOn(HTMLCanvasElement.prototype, "getBoundingClientRect")
     .mockReturnValue({ left: 0, top: 0, width: 100, height: 100 });
 });
 
 afterEach(() => {
+  global.Image = RealImage;
   getContextSpy.mockRestore();
   getRectSpy.mockRestore();
 });
@@ -88,17 +103,31 @@ describe("Image Color Picker", () => {
     expect(container.querySelector("canvas")).toBeInTheDocument();
   });
 
-  test("should show the picked color when the canvas is clicked", async () => {
+  test("should draw the uploaded image on the canvas once it loads", async () => {
     const container = await uploadImage();
+    const canvas = container.querySelector("canvas");
+    const image = images[0];
 
-    fireEvent.click(container.querySelector("canvas"), {
-      clientX: 10,
-      clientY: 10,
-    });
+    image.onload();
+
+    expect(canvas.width).toBe(40);
+    expect(canvas.height).toBe(30);
+    expect(drawImage).toHaveBeenCalledWith(image, 0, 0);
+  });
+
+  test("should sample the clicked pixel and show the picked color", async () => {
+    const container = await uploadImage();
+    const canvas = container.querySelector("canvas");
+    canvas.width = 150;
+    canvas.height = 250;
+    getRectSpy.mockReturnValue({ left: 5, top: 6, width: 100, height: 100 });
+
+    fireEvent.click(canvas, { clientX: 16, clientY: 27 });
 
     expect(getImageData).toHaveBeenCalledTimes(1);
+    expect(getImageData).toHaveBeenCalledWith(16, 52, 1, 1);
     expect(screen.getByText("rgb(255, 0, 0)")).toBeInTheDocument();
-    expect(screen.getByText(/ff0000/)).toBeInTheDocument();
+    expect(screen.getByText("#ff0000")).toBeInTheDocument();
   });
 
   test("should toggle dark mode when the theme button is clicked", () => {
@@ -127,7 +156,7 @@ describe("Image Color Picker", () => {
     {
       buttonText: "Hex Code",
       toastText: "Hex Code Copied!!",
-      copied: expect.stringContaining("ff0000"),
+      copied: "#ff0000",
     },
   ])(
     "should correctly copy with $buttonText and display toast message",
