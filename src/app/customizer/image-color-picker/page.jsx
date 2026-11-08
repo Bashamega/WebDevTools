@@ -79,7 +79,7 @@ const ColorPicker = () => {
     const green = parseInt(match[2], 10).toString(16).padStart(2, "0");
     const blue = parseInt(match[3], 10).toString(16).padStart(2, "0");
 
-    return `# ${red}${green}${blue}`;
+    return `#${red}${green}${blue}`;
   }
 
   const handleHex = () => {
