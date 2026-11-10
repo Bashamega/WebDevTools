@@ -121,6 +121,19 @@ describe("Readme generator interactions", () => {
     // body selector, so the page's rule must also match the class.
     expect(getPreviewSource()).toContain("<style>body.markdown-body {");
   });
+
+  test("the preview loads the Markdown stylesheet for the selected theme", () => {
+    render(<ReadmeGenerator />);
+
+    // The default stylesheet follows the OS color scheme, which can clash with
+    // the page's own toggle, so each theme loads its matching stylesheet.
+    expect(getPreviewSource()).toContain("github-markdown-light.min.css");
+
+    fireEvent.click(screen.getByRole("button", { name: "Toggle dark mode" }));
+
+    expect(getPreviewSource()).toContain("github-markdown-dark.min.css");
+    expect(getPreviewSource()).not.toContain("github-markdown-light.min.css");
+  });
 });
 
 describe("Readme generator download", () => {
