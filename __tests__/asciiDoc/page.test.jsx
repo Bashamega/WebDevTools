@@ -193,6 +193,15 @@ describe("AsciiDoc editor theme", () => {
     expect(getEditor()).toHaveAttribute("data-theme", "vs-dark");
   });
 
+  test("a stored light theme is applied on load", () => {
+    localStorage.setItem("theme", "false");
+
+    const { container } = render(<AsciiDocEditor />);
+
+    expect(container.firstChild).toHaveClass("bg-white", "text-gray-800");
+    expect(getEditor()).toHaveAttribute("data-theme", "vs-light");
+  });
+
   test("an invalid stored theme falls back to light mode", () => {
     localStorage.setItem("theme", "notjson");
     const log = jest.spyOn(console, "log").mockImplementation(() => {});
