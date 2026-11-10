@@ -104,6 +104,23 @@ describe("Readme generator interactions", () => {
     expect(preview).toContain("background-color: #1a202c");
     expect(preview).toContain("color: white");
   });
+
+  test("a saved light theme keeps the preview light", () => {
+    localStorage.setItem("theme", "false");
+    render(<ReadmeGenerator />);
+
+    const preview = getPreviewSource();
+    expect(preview).toContain("background-color: white");
+    expect(preview).toContain("color: black");
+  });
+
+  test("the preview's theme colors outrank the GitHub Markdown stylesheet", () => {
+    render(<ReadmeGenerator />);
+
+    // github-markdown-css sets colors on .markdown-body, which beats a plain
+    // body selector, so the page's rule must also match the class.
+    expect(getPreviewSource()).toContain("<style>body.markdown-body {");
+  });
 });
 
 describe("Readme generator download", () => {
