@@ -95,6 +95,45 @@ describe("Readme generator interactions", () => {
     expect(preview).toContain("color: white");
     expect(localStorage.getItem("theme")).toBe("true");
   });
+
+  test("a saved dark theme is restored when the page loads", () => {
+    localStorage.setItem("theme", "true");
+    render(<ReadmeGenerator />);
+
+    const preview = getPreviewSource();
+    expect(preview).toContain("background-color: #1a202c");
+    expect(preview).toContain("color: white");
+  });
+
+  test("a saved light theme keeps the preview light", () => {
+    localStorage.setItem("theme", "false");
+    render(<ReadmeGenerator />);
+
+    const preview = getPreviewSource();
+    expect(preview).toContain("background-color: white");
+    expect(preview).toContain("color: black");
+  });
+
+  test("the preview's theme colors outrank the GitHub Markdown stylesheet", () => {
+    render(<ReadmeGenerator />);
+
+    // github-markdown-css sets colors on .markdown-body, which beats a plain
+    // body selector, so the page's rule must also match the class.
+    expect(getPreviewSource()).toContain("<style>body.markdown-body {");
+  });
+
+  test("the preview loads the Markdown stylesheet for the selected theme", () => {
+    render(<ReadmeGenerator />);
+
+    // The default stylesheet follows the OS color scheme, which can clash with
+    // the page's own toggle, so each theme loads its matching stylesheet.
+    expect(getPreviewSource()).toContain("github-markdown-light.min.css");
+
+    fireEvent.click(screen.getByRole("button", { name: "Toggle dark mode" }));
+
+    expect(getPreviewSource()).toContain("github-markdown-dark.min.css");
+    expect(getPreviewSource()).not.toContain("github-markdown-light.min.css");
+  });
 });
 
 describe("Readme generator download", () => {
