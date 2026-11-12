@@ -12,6 +12,11 @@ jest.mock("sweetalert2", () => ({
 const cssOutput = () => screen.getByText(/^box-shadow:/);
 const tailwindOutput = () => screen.getByText(/^shadow-\[/);
 
+// The preview box is the only element with an inline box-shadow. Its style
+// comes from its own expression in the page, separate from the text outputs.
+const previewShadow = (container) =>
+  container.querySelector('[style*="box-shadow"]').style.boxShadow;
+
 // The four sliders share one id and have no labels, so they are picked by
 // position, in the order the page renders them.
 const sliders = () => {
@@ -54,7 +59,7 @@ describe("Box Shadow generator rendering", () => {
   });
 
   test("starts from the default shadow", () => {
-    render(<BoxShadowGenerator />);
+    const { container } = render(<BoxShadowGenerator />);
     const { hOffset, vOffset, blur, spread } = sliders();
 
     expect(hOffset).toHaveValue("0");
@@ -68,12 +73,13 @@ describe("Box Shadow generator rendering", () => {
     expect(tailwindOutput()).toHaveTextContent(
       "shadow-[0px_8px_24px_0px_#00000080]",
     );
+    expect(previewShadow(container)).toBe("0px 8px 24px 0px #00000080");
   });
 });
 
 describe("Box Shadow generator interactions", () => {
-  test("moving each slider updates its label and both outputs", () => {
-    render(<BoxShadowGenerator />);
+  test("moving each slider updates its label, both outputs, and the preview", () => {
+    const { container } = render(<BoxShadowGenerator />);
     const { hOffset, vOffset, blur, spread } = sliders();
 
     fireEvent.change(hOffset, { target: { value: "5" } });
@@ -91,9 +97,10 @@ describe("Box Shadow generator interactions", () => {
     expect(tailwindOutput()).toHaveTextContent(
       "shadow-[5px_10px_15px_3px_#00000080]",
     );
+    expect(previewShadow(container)).toBe("5px 10px 15px 3px #00000080");
   });
 
-  test("picking a color updates the label and both outputs", () => {
+  test("picking a color updates the label, both outputs, and the preview", () => {
     const { container } = render(<BoxShadowGenerator />);
 
     fireEvent.change(container.querySelector("#color"), {
@@ -107,10 +114,11 @@ describe("Box Shadow generator interactions", () => {
     expect(tailwindOutput()).toHaveTextContent(
       "shadow-[0px_8px_24px_0px_#ff0000]",
     );
+    expect(previewShadow(container)).toBe("0px 8px 24px 0px #ff0000");
   });
 
-  test("checking inset adds it to both outputs, unchecking removes it", () => {
-    render(<BoxShadowGenerator />);
+  test("checking inset adds it to both outputs and the preview, unchecking removes it", () => {
+    const { container } = render(<BoxShadowGenerator />);
     const inset = screen.getByRole("checkbox");
 
     fireEvent.click(inset);
@@ -120,10 +128,12 @@ describe("Box Shadow generator interactions", () => {
     expect(tailwindOutput()).toHaveTextContent(
       "shadow-[inset_0px_8px_24px_0px_#00000080]",
     );
+    expect(previewShadow(container)).toBe("0px 8px 24px 0px #00000080 inset");
 
     fireEvent.click(inset);
     expect(cssOutput()).not.toHaveTextContent("inset");
     expect(tailwindOutput()).not.toHaveTextContent("inset");
+    expect(previewShadow(container)).toBe("0px 8px 24px 0px #00000080");
   });
 });
 
