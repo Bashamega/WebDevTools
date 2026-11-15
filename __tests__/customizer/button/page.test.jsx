@@ -124,11 +124,15 @@ describe("Button Customizer Show Code modal", () => {
 });
 
 describe("Button Customizer copy", () => {
-  test("clicking Copy Code calls the clipboard API", () => {
+  test("clicking Copy Code calls the clipboard API with the CSS content", () => {
     render(<ButtonCustomizer />);
     fireEvent.click(screen.getByRole("button", { name: /show code/i }));
     fireEvent.click(screen.getByRole("button", { name: /copy code/i }));
     expect(writeText).toHaveBeenCalledTimes(1);
+    const copied = writeText.mock.calls[0][0];
+    expect(copied).toEqual(
+      expect.stringContaining("background-color: #3B82F6"),
+    );
   });
 
   test("clicking Copy Code shows the success toast", () => {
