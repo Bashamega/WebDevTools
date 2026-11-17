@@ -36,7 +36,7 @@ export default function ButtonCustomizer() {
   font-family: ${fontFamily};
 border-width: ${borderWidth}px;
   border-color: ${borderColor};
-  border-style: ${borderColor};  
+  border-style: ${borderStyle};
   cursor: ${cursor};
 width: ${width}px;
   height: ${height}px;
