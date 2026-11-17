@@ -133,6 +133,7 @@ describe("Button Customizer copy", () => {
     expect(copied).toEqual(
       expect.stringContaining("background-color: #3B82F6"),
     );
+    expect(copied).toEqual(expect.stringContaining("border-style: solid"));
   });
 
   test("clicking Copy Code shows the success toast", () => {
