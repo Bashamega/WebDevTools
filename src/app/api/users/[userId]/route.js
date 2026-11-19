@@ -12,7 +12,8 @@ export async function GET(req, { params }) {
     }, {});
   }
 
-  const userId = parseInt(params.userId);
+  // Next.js passes the route params as a promise
+  const userId = parseInt((await params).userId);
 
   // Find user in the cached data
   const user = cachedUsers[userId];
