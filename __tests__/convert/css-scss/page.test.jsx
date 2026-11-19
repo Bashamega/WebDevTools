@@ -12,6 +12,11 @@ const typeScss = (text) =>
 const clickConvert = () =>
   fireEvent.click(screen.getByRole("button", { name: "Convert" }));
 
+beforeEach(() => {
+  // The navbar remembers the chosen theme in localStorage.
+  localStorage.clear();
+});
+
 describe("SCSS to CSS converter rendering", () => {
   test("renders the navbar with a link home and the theme toggle", () => {
     render(<CSS_TO_SCSS />);
